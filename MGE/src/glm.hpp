@@ -5,7 +5,7 @@
 #include <iomanip>
 
 #define GLM_FORCE_RADIANS
-#include <glm/glm.hpp>
+#include <glm.hpp>
 #include <glm/ext.hpp>
 
 /* the functions:
