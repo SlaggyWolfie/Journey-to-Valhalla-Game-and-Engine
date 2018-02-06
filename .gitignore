@@ -28,6 +28,9 @@ TestResult.xml
 [Rr]eleasePS/
 dlldata.c
 
+# Build results
+*_[Bb]uild/
+
 # DNX
 project.lock.json
 artifacts/
