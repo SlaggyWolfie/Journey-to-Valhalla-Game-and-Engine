@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_2b216fdd516721294ddbb828d9a94442" kind="dir">
+    <compoundname>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge</compoundname>
+    <innerdir refid="dir_400a13255e722644900a2f23813841d1">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours</innerdir>
+    <innerdir refid="dir_c4dd0877462e5f928c9acb2f973728f9">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core</innerdir>
+    <innerdir refid="dir_ee185ac698446cf8396892a24a744212">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials</innerdir>
+    <innerdir refid="dir_f846e09628e203938b899f73425850ee">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/util</innerdir>
+    <innerfile refid="config_8hpp">config.hpp</innerfile>
+    <innerfile refid="_m_g_e_demo_8cpp">MGEDemo.cpp</innerfile>
+    <innerfile refid="_m_g_e_demo_8hpp">MGEDemo.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/"/>
+  </compounddef>
+</doxygen>

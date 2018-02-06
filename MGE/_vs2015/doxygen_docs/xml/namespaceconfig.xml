@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="namespaceconfig" kind="namespace" language="C++">
+    <compoundname>config</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceconfig_1abbe53e213aad2818b2603658562b4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string config::MGE_MODEL_PATH</definition>
+        <argsstring>(&quot;mge/models/&quot;)</argsstring>
+        <name>MGE_MODEL_PATH</name>
+        <param>
+          <type>&quot;mge/models/&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/config.hpp" line="3" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceconfig_1aebf9d372ea0f3add6882e1448136c9e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string config::MGE_TEXTURE_PATH</definition>
+        <argsstring>(&quot;mge/textures/&quot;)</argsstring>
+        <name>MGE_TEXTURE_PATH</name>
+        <param>
+          <type>&quot;mge/textures/&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/config.hpp" line="4" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceconfig_1aa0f87be60f0f595e4e06d070a44a2aac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string config::MGE_SHADER_PATH</definition>
+        <argsstring>(&quot;mge/shaders/&quot;)</argsstring>
+        <name>MGE_SHADER_PATH</name>
+        <param>
+          <type>&quot;mge/shaders/&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/config.hpp" line="5" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceconfig_1a78e26401ea88d3e2acdc4e2604ffc109" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string config::MGE_FONT_PATH</definition>
+        <argsstring>(&quot;mge/fonts/&quot;)</argsstring>
+        <name>MGE_FONT_PATH</name>
+        <param>
+          <type>&quot;mge/fonts/&quot;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/config.hpp" line="6" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/config.hpp" line="1" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="class_camera" kind="class" language="C++" prot="public">
+    <compoundname>Camera</compoundname>
+    <basecompoundref refid="class_game_object" prot="public" virt="non-virtual">GameObject</basecompoundref>
+    <includes refid="_camera_8hpp" local="no">Camera.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_camera_1a5ae78f01917c3871a57142884e9a8089" prot="private" static="no" mutable="no">
+        <type>glm::mat4</type>
+        <definition>glm::mat4 Camera::_projection</definition>
+        <argsstring></argsstring>
+        <name>_projection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.hpp" line="26" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_camera_1a92459deb83a15f0c55f1b8c37d0592c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Camera::Camera</definition>
+        <argsstring>(std::string pName=&quot;camera&quot;, glm::vec3 pPosition=glm::vec3(0.0f, 3.0f, 5.0f), glm::mat4 pProjectionMatrix=glm::perspective(glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f))</argsstring>
+        <name>Camera</name>
+        <param>
+          <type>std::string</type>
+          <declname>pName</declname>
+          <defval>&quot;camera&quot;</defval>
+        </param>
+        <param>
+          <type>glm::vec3</type>
+          <declname>pPosition</declname>
+          <defval>glm::vec3(0.0f, 3.0f, 5.0f)</defval>
+        </param>
+        <param>
+          <type>glm::mat4</type>
+          <declname>pProjectionMatrix</declname>
+          <defval>glm::perspective(glm::radians(60.0f), 4.0f/3.0f, 0.1f, 1000.0f)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.hpp" line="15" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.cpp" bodystart="4" bodyend="7"/>
+      </memberdef>
+      <memberdef kind="function" id="class_camera_1ad1897942d0ccf91052386388a497349f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Camera::~Camera</definition>
+        <argsstring>()</argsstring>
+        <name>~Camera</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.hpp" line="21" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.cpp" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_camera_1af079ee73026d888a209fb2ccc42cb5be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::mat4 &amp;</type>
+        <definition>glm::mat4 &amp; Camera::getProjection</definition>
+        <argsstring>()</argsstring>
+        <name>getProjection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.hpp" line="23" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.cpp" bodystart="14" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_camera_1a86d1f32065d79e35714c3b48d551949e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Camera::Camera</definition>
+        <argsstring>(const Camera &amp;)</argsstring>
+        <name>Camera</name>
+        <param>
+          <type>const <ref refid="class_camera" kindref="compound">Camera</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.hpp" line="29" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_camera_1a82d2ec54ea053c84415010c3e4a08030" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_camera" kindref="compound">Camera</ref> &amp;</type>
+        <definition>Camera&amp; Camera::operator=</definition>
+        <argsstring>(const Camera &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="class_camera" kindref="compound">Camera</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.hpp" line="30" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="class_camera" kindref="compound">Camera</ref> is just a <ref refid="class_game_object" kindref="compound">GameObject</ref> with an additional projection matrix. The camera&apos;s own transform is used to generate a world-to-view matrix by taking the inverse of the camera transform. The camera&apos;s perspective matrix is used in the MVP matrix creation. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="23">
+        <label>Camera</label>
+        <link refid="class_camera"/>
+        <childnode refid="24" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>GameObject</label>
+        <link refid="class_game_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="30">
+        <label>World</label>
+        <link refid="class_world"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>Mesh</label>
+        <link refid="class_mesh"/>
+      </node>
+      <node id="25">
+        <label>Camera</label>
+        <link refid="class_camera"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>AbstractMaterial</label>
+        <link refid="class_abstract_material"/>
+      </node>
+      <node id="26">
+        <label>GameObject</label>
+        <link refid="class_game_object"/>
+        <childnode refid="26" relation="usage">
+          <edgelabel>_parent</edgelabel>
+        </childnode>
+        <childnode refid="27" relation="usage">
+          <edgelabel>_material</edgelabel>
+        </childnode>
+        <childnode refid="28" relation="usage">
+          <edgelabel>_behaviour</edgelabel>
+        </childnode>
+        <childnode refid="29" relation="usage">
+          <edgelabel>_mesh</edgelabel>
+        </childnode>
+        <childnode refid="30" relation="usage">
+          <edgelabel>_world</edgelabel>
+        </childnode>
+      </node>
+      <node id="28">
+        <label>AbstractBehaviour</label>
+        <link refid="class_abstract_behaviour"/>
+        <childnode refid="26" relation="usage">
+          <edgelabel>_owner</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.hpp" line="13" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Camera.hpp" bodystart="12" bodyend="31"/>
+    <listofallmembers>
+      <member refid="class_game_object_1a546179bdc1b86e9d47b30a6cf6559f96" prot="protected" virt="non-virtual"><scope>Camera</scope><name>_behaviour</name></member>
+      <member refid="class_game_object_1a2282d6ca6ef3fa9ba075d8af3b106590" prot="protected" virt="non-virtual"><scope>Camera</scope><name>_children</name></member>
+      <member refid="class_game_object_1a04274bf8c08b32852f210ee679a8b2c1" prot="protected" virt="non-virtual"><scope>Camera</scope><name>_innerAdd</name></member>
+      <member refid="class_game_object_1ac2e6b6e1afd5245f42c5098416019bee" prot="protected" virt="non-virtual"><scope>Camera</scope><name>_innerRemove</name></member>
+      <member refid="class_game_object_1a60ecd63910fcd2ec4aefae0f2bb15257" prot="protected" virt="non-virtual"><scope>Camera</scope><name>_material</name></member>
+      <member refid="class_game_object_1aff09bdb1373cb1e7e4d7591a074c5f6a" prot="protected" virt="non-virtual"><scope>Camera</scope><name>_mesh</name></member>
+      <member refid="class_game_object_1a59ac39111811a8fac5b1704490ef5564" prot="protected" virt="non-virtual"><scope>Camera</scope><name>_name</name></member>
+      <member refid="class_game_object_1a8c7c7294ec4e640011a490e0ae5be0b4" prot="protected" virt="non-virtual"><scope>Camera</scope><name>_parent</name></member>
+      <member refid="class_camera_1a5ae78f01917c3871a57142884e9a8089" prot="private" virt="non-virtual"><scope>Camera</scope><name>_projection</name></member>
+      <member refid="class_game_object_1aa5bed62bb5c172c129a7923874f1f28f" prot="protected" virt="virtual"><scope>Camera</scope><name>_setWorldRecursively</name></member>
+      <member refid="class_game_object_1ae9da4708d15a581404a5a2a8bd24fbfe" prot="protected" virt="non-virtual"><scope>Camera</scope><name>_transform</name></member>
+      <member refid="class_game_object_1a9b0f75b50567252d44f54ade803901ad" prot="protected" virt="non-virtual"><scope>Camera</scope><name>_world</name></member>
+      <member refid="class_game_object_1a94c51049d9bf37188d02614dcac068cc" prot="public" virt="non-virtual"><scope>Camera</scope><name>add</name></member>
+      <member refid="class_camera_1a92459deb83a15f0c55f1b8c37d0592c2" prot="public" virt="non-virtual"><scope>Camera</scope><name>Camera</name></member>
+      <member refid="class_camera_1a86d1f32065d79e35714c3b48d551949e" prot="private" virt="non-virtual"><scope>Camera</scope><name>Camera</name></member>
+      <member refid="class_game_object_1acec36aa765c00f8cf7b4db721f4584b9" prot="public" virt="non-virtual"><scope>Camera</scope><name>GameObject</name></member>
+      <member refid="class_game_object_1a7259948dfef630b15fb8164307551afc" prot="public" virt="non-virtual"><scope>Camera</scope><name>getBehaviour</name></member>
+      <member refid="class_game_object_1ad5116d3539d73354b930f21fefbfaccc" prot="public" virt="non-virtual"><scope>Camera</scope><name>getChildAt</name></member>
+      <member refid="class_game_object_1a2e1341a3aa30d9b1abe17d14cbc889d8" prot="public" virt="non-virtual"><scope>Camera</scope><name>getChildCount</name></member>
+      <member refid="class_game_object_1a07e8caeeff352d59e551a9fca554ed19" prot="public" virt="non-virtual"><scope>Camera</scope><name>getLocalPosition</name></member>
+      <member refid="class_game_object_1addfb8efd835feb016e5dd9c4135b17c0" prot="public" virt="non-virtual"><scope>Camera</scope><name>getMaterial</name></member>
+      <member refid="class_game_object_1ac2fbadb6ffac8604f1738c670215dd7c" prot="public" virt="non-virtual"><scope>Camera</scope><name>getMesh</name></member>
+      <member refid="class_game_object_1a7b5b5ca6b3754cdfb175cd1938c77f10" prot="public" virt="non-virtual"><scope>Camera</scope><name>getName</name></member>
+      <member refid="class_game_object_1af8f83d7dda12c0f5d4ec0853880499cd" prot="public" virt="non-virtual"><scope>Camera</scope><name>getParent</name></member>
+      <member refid="class_camera_1af079ee73026d888a209fb2ccc42cb5be" prot="public" virt="non-virtual"><scope>Camera</scope><name>getProjection</name></member>
+      <member refid="class_game_object_1a6ec03807a1610c3ba966ed32ca5fec38" prot="public" virt="non-virtual"><scope>Camera</scope><name>getTransform</name></member>
+      <member refid="class_game_object_1aab9f94527bef86b7e4e22b9a1513d708" prot="public" virt="non-virtual"><scope>Camera</scope><name>getWorldPosition</name></member>
+      <member refid="class_game_object_1a375bf052182a8cd0cf1c22235ba2d1c5" prot="public" virt="non-virtual"><scope>Camera</scope><name>getWorldTransform</name></member>
+      <member refid="class_camera_1a82d2ec54ea053c84415010c3e4a08030" prot="private" virt="non-virtual"><scope>Camera</scope><name>operator=</name></member>
+      <member refid="class_game_object_1ae135688942edd8f0d3c672f2264e73fb" prot="public" virt="non-virtual"><scope>Camera</scope><name>remove</name></member>
+      <member refid="class_game_object_1a2824a7e78edb801277979a71c0228fa1" prot="public" virt="non-virtual"><scope>Camera</scope><name>rotate</name></member>
+      <member refid="class_game_object_1ac66a302f73c2a4acd3663ec56df159fd" prot="public" virt="non-virtual"><scope>Camera</scope><name>scale</name></member>
+      <member refid="class_game_object_1ae86154a1b05408e4394e1cb7eea58c1d" prot="public" virt="non-virtual"><scope>Camera</scope><name>setBehaviour</name></member>
+      <member refid="class_game_object_1ae1cfc4344ae84558b6bb072aac6ccb61" prot="public" virt="non-virtual"><scope>Camera</scope><name>setLocalPosition</name></member>
+      <member refid="class_game_object_1a83827bb988a613b2cceb859b9286405c" prot="public" virt="non-virtual"><scope>Camera</scope><name>setMaterial</name></member>
+      <member refid="class_game_object_1a8d4949e95b1ad4d721ff38aef54af383" prot="public" virt="non-virtual"><scope>Camera</scope><name>setMesh</name></member>
+      <member refid="class_game_object_1a30a481c29dac54936d192c9ca65904a6" prot="public" virt="non-virtual"><scope>Camera</scope><name>setName</name></member>
+      <member refid="class_game_object_1acfbea5ad99e0bff4f0141fb4469324ce" prot="public" virt="non-virtual"><scope>Camera</scope><name>setParent</name></member>
+      <member refid="class_game_object_1a428fa8f64a7d2e2d56e0d0d049d97570" prot="public" virt="non-virtual"><scope>Camera</scope><name>setTransform</name></member>
+      <member refid="class_game_object_1a7a7a3a7456e1257f9b2be6745624ae56" prot="public" virt="non-virtual"><scope>Camera</scope><name>translate</name></member>
+      <member refid="class_game_object_1ac4b054d1c38e0fb93a28e1c20cc848a7" prot="public" virt="virtual"><scope>Camera</scope><name>update</name></member>
+      <member refid="class_camera_1ad1897942d0ccf91052386388a497349f" prot="public" virt="virtual"><scope>Camera</scope><name>~Camera</name></member>
+      <member refid="class_game_object_1ab82dfdb656f9051c0587e6593b2dda97" prot="public" virt="virtual"><scope>Camera</scope><name>~GameObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

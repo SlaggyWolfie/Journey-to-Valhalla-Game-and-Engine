@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_light_8hpp" kind="file" language="C++">
+    <compoundname>Light.hpp</compoundname>
+    <includes refid="glm_8hpp" local="yes">glm.hpp</includes>
+    <includes refid="_game_object_8hpp" local="yes">mge/core/GameObject.hpp</includes>
+    <includedby refid="_light_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Light.cpp</includedby>
+    <includedby refid="_world_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/World.cpp</includedby>
+    <includedby refid="_texture_material_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp</includedby>
+    <includedby refid="_m_g_e_demo_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp</includedby>
+    <includedby refid="_my_engine_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myEngine/MyEngine.cpp</includedby>
+    <includedby refid="_my_game_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myGame/MyGame.cpp</includedby>
+    <incdepgraph>
+      <node id="200">
+        <label>iomanip</label>
+      </node>
+      <node id="204">
+        <label>vector</label>
+      </node>
+      <node id="198">
+        <label>glm.hpp</label>
+        <link refid="glm_8hpp"/>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+      </node>
+      <node id="202">
+        <label>glm/ext.hpp</label>
+      </node>
+      <node id="203">
+        <label>mge/core/GameObject.hpp</label>
+        <link refid="_game_object_8hpp"/>
+        <childnode refid="204" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+      </node>
+      <node id="199">
+        <label>iostream</label>
+      </node>
+      <node id="197">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Light.hpp</label>
+        <link refid="_light_8hpp"/>
+        <childnode refid="198" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+      </node>
+      <node id="201">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="206">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Light.cpp</label>
+        <link refid="_light_8cpp"/>
+      </node>
+      <node id="210">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myEngine/MyEngine.cpp</label>
+        <link refid="_my_engine_8cpp"/>
+      </node>
+      <node id="207">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/World.cpp</label>
+        <link refid="_world_8cpp"/>
+      </node>
+      <node id="208">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp</label>
+        <link refid="_texture_material_8cpp"/>
+      </node>
+      <node id="209">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp</label>
+        <link refid="_m_g_e_demo_8cpp"/>
+      </node>
+      <node id="205">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Light.hpp</label>
+        <link refid="_light_8hpp"/>
+        <childnode refid="206" relation="include">
+        </childnode>
+        <childnode refid="207" relation="include">
+        </childnode>
+        <childnode refid="208" relation="include">
+        </childnode>
+        <childnode refid="209" relation="include">
+        </childnode>
+        <childnode refid="210" relation="include">
+        </childnode>
+        <childnode refid="211" relation="include">
+        </childnode>
+      </node>
+      <node id="211">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myGame/MyGame.cpp</label>
+        <link refid="_my_game_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_light" prot="public">Light</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>LIGHT_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LIGHT_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="glm_8hpp" kindref="compound">glm.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_game_object_8hpp" kindref="compound">mge/core/GameObject.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="class_light" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_light" kindref="compound">Light</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_game_object" kindref="compound">GameObject</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_light_1a82414b0f9b6f569a7b8abe25ee1eff88" kindref="member">Light</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>aName<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::vec3&amp;<sp/>aPosition<sp/>=<sp/>glm::vec3(<sp/>2.0f,<sp/>10.0f,<sp/>5.0f<sp/>)<sp/>);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="class_light_1ad0e59fad13bb6cfadc25b2c477e9ddc7" kindref="member">~Light</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//override<sp/>set<sp/>parent<sp/>to<sp/>register/deregister<sp/>light...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_light_1a2d6425577e725059abff937ae6aeda75" kindref="member">_setWorldRecursively</ref><sp/>(<ref refid="class_world" kindref="compound">World</ref>*<sp/>pWorld)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>LIGHT_HPP</highlight></codeline>
+    </programlisting>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Light.hpp"/>
+  </compounddef>
+</doxygen>

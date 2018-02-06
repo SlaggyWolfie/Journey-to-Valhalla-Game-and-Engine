@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="class_texture" kind="class" language="C++" prot="public">
+    <compoundname>Texture</compoundname>
+    <includes refid="_texture_8hpp" local="no">Texture.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_texture_1af6563b9b08f4bf2749639eb4434c9c35" prot="protected" static="no" mutable="no">
+        <type>GLuint</type>
+        <definition>GLuint Texture::_id</definition>
+        <argsstring></argsstring>
+        <name>_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.hpp" line="22" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_texture_1a38fbcc58ce545aed8321d5a7a9dae103" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_texture" kindref="compound">Texture</ref> *</type>
+        <definition>Texture * Texture::load</definition>
+        <argsstring>(const std::string &amp;pTexturePath)</argsstring>
+        <name>load</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pTexturePath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.hpp" line="11" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.cpp" bodystart="21" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_texture_1ae5e31b308a56a6829b8f75b79bf1d359" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint Texture::getId</definition>
+        <argsstring>()</argsstring>
+        <name>getId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.hpp" line="13" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.cpp" bodystart="16" bodyend="18"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_texture_1a6c275e3f186675ff6ed73ccf970e552f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Texture::Texture</definition>
+        <argsstring>()</argsstring>
+        <name>Texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.hpp" line="16" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.cpp" bodystart="7" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_texture_1a09c4bcb7462f64c1d20fa69dba3cee8a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Texture::~Texture</definition>
+        <argsstring>()</argsstring>
+        <name>~Texture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.hpp" line="17" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.cpp" bodystart="11" bodyend="14"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="class_texture_1a06c4e8246c03cfc94e38cf01d66b6388" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_texture" kindref="compound">Texture</ref> *</type>
+        <definition>static Texture* Texture::_loadFromFile</definition>
+        <argsstring>(const std::string pTexturePath)</argsstring>
+        <name>_loadFromFile</name>
+        <param>
+          <type>const std::string</type>
+          <declname>pTexturePath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.hpp" line="19" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.hpp" line="9" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Texture.hpp" bodystart="8" bodyend="23"/>
+    <listofallmembers>
+      <member refid="class_texture_1af6563b9b08f4bf2749639eb4434c9c35" prot="protected" virt="non-virtual"><scope>Texture</scope><name>_id</name></member>
+      <member refid="class_texture_1a06c4e8246c03cfc94e38cf01d66b6388" prot="protected" virt="non-virtual"><scope>Texture</scope><name>_loadFromFile</name></member>
+      <member refid="class_texture_1ae5e31b308a56a6829b8f75b79bf1d359" prot="public" virt="non-virtual"><scope>Texture</scope><name>getId</name></member>
+      <member refid="class_texture_1a38fbcc58ce545aed8321d5a7a9dae103" prot="public" virt="non-virtual"><scope>Texture</scope><name>load</name></member>
+      <member refid="class_texture_1a6c275e3f186675ff6ed73ccf970e552f" prot="protected" virt="non-virtual"><scope>Texture</scope><name>Texture</name></member>
+      <member refid="class_texture_1a09c4bcb7462f64c1d20fa69dba3cee8a" prot="protected" virt="virtual"><scope>Texture</scope><name>~Texture</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

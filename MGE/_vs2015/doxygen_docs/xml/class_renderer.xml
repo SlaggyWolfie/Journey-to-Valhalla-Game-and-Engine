@@ -1,0 +1,502 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="class_renderer" kind="class" language="C++" prot="public">
+    <compoundname>Renderer</compoundname>
+    <includes refid="_renderer_8hpp" local="no">Renderer.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_renderer_1a6851034b2586243a882e0b3e95d5703b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Renderer::debug</definition>
+        <argsstring></argsstring>
+        <name>debug</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="22" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_renderer_1a7ebf46f54dab9905f79b80f7fddb76a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Renderer::Renderer</definition>
+        <argsstring>()</argsstring>
+        <name>Renderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="19" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp" bodystart="8" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_renderer_1afeee408862d5bd6255a6882d47e6d5cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>Renderer::~Renderer</definition>
+        <argsstring>()</argsstring>
+        <name>~Renderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="20" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_renderer_1a7a802e520eff79ff5d789fc1d2819b4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Renderer::setClearColor</definition>
+        <argsstring>(GLbyte pR, GLbyte pG, GLbyte pB)</argsstring>
+        <name>setClearColor</name>
+        <param>
+          <type>GLbyte</type>
+          <declname>pR</declname>
+        </param>
+        <param>
+          <type>GLbyte</type>
+          <declname>pG</declname>
+        </param>
+        <param>
+          <type>GLbyte</type>
+          <declname>pB</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Utility call </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="27" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_renderer_1a08d66d1f7d3a681cebae9da543b302ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Renderer::render</definition>
+        <argsstring>(World *pWorld)</argsstring>
+        <name>render</name>
+        <param>
+          <type><ref refid="class_world" kindref="compound">World</ref> *</type>
+          <declname>pWorld</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convenience method to render whole world, visits each gameobject in the world recursively, using each gameobject&apos;s mesh &amp; material, and the world&apos;s main camera. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="33" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_renderer_1a7e869292911ac18ed84bb24a7521fe0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Renderer::render</definition>
+        <argsstring>(World *pWorld, GameObject *pGameObject, AbstractMaterial *pMaterial, Camera *pCamera, bool pRecursive)</argsstring>
+        <name>render</name>
+        <param>
+          <type><ref refid="class_world" kindref="compound">World</ref> *</type>
+          <declname>pWorld</declname>
+        </param>
+        <param>
+          <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+          <declname>pGameObject</declname>
+        </param>
+        <param>
+          <type><ref refid="class_abstract_material" kindref="compound">AbstractMaterial</ref> *</type>
+          <declname>pMaterial</declname>
+        </param>
+        <param>
+          <type><ref refid="class_camera" kindref="compound">Camera</ref> *</type>
+          <declname>pCamera</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>pRecursive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Renders a specific <ref refid="class_game_object" kindref="compound">GameObject</ref> in the world using a specific camera. Convenience method for calling render (world, gameobject, material, modelmatrix, viewmatrix, projectionmatrix, recursive)</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pWorld</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the world the mesh is a part of, can be used to retrieve lighting information </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pGameObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the gameobject to render, will use the this gameobject&apos;s world transform for the model matrix </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pMaterial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the material to use, is passed on to render (world, gameobject, material, modelmatrix, viewmatrix, projectionmatrix, recursive) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pCamera</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>used for the view and perspective matrix </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pRecursive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>render everything recursively </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="45" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp" bodystart="43" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_renderer_1a3cdb04b2e58d79dff6507f72228698f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Renderer::render</definition>
+        <argsstring>(World *pWorld, GameObject *pGameObject, AbstractMaterial *pMaterial, const glm::mat4 &amp;pModelMatrix, const glm::mat4 &amp;pViewMatrix, const glm::mat4 &amp;pProjectionMatrix, bool pRecursive)</argsstring>
+        <name>render</name>
+        <param>
+          <type><ref refid="class_world" kindref="compound">World</ref> *</type>
+          <declname>pWorld</declname>
+        </param>
+        <param>
+          <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+          <declname>pGameObject</declname>
+        </param>
+        <param>
+          <type><ref refid="class_abstract_material" kindref="compound">AbstractMaterial</ref> *</type>
+          <declname>pMaterial</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pModelMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pViewMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pProjectionMatrix</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>pRecursive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Renders a specific game object in the world by calling: renderSelf renderChildren</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pWorld</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the world the gameobject is a part of, can be used to retrieve lighting information </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pGameObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the gameobject to render </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pMaterial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the material to use, if NULL, the pGameObject-&gt;getMaterial() will be used, if NOT null it overrides the material for each and every gameobject </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pModelMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the world transform of the model </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pViewMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the view matrix of the camera </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pProjectionMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the projectionmatrix of the camera </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pRecursive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>render everything recursively </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="60" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp" bodystart="48" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_renderer_1aab0ddfca39ec0e2d3fdf68caecade79b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Renderer::render</definition>
+        <argsstring>(World *pWorld, Mesh *pMesh, AbstractMaterial *pMaterial, const glm::mat4 &amp;pModelMatrix, const glm::mat4 &amp;pViewMatrix, const glm::mat4 &amp;pProjectionMatrix)</argsstring>
+        <name>render</name>
+        <param>
+          <type><ref refid="class_world" kindref="compound">World</ref> *</type>
+          <declname>pWorld</declname>
+        </param>
+        <param>
+          <type><ref refid="class_mesh" kindref="compound">Mesh</ref> *</type>
+          <declname>pMesh</declname>
+        </param>
+        <param>
+          <type><ref refid="class_abstract_material" kindref="compound">AbstractMaterial</ref> *</type>
+          <declname>pMaterial</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pModelMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pViewMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pProjectionMatrix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Renders a specific mesh in the world.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pWorld</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the world the mesh is a part of, can be used to retrieve lighting information </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pMesh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the mesh to render </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pMaterial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the material to use, CANNOT be NULL !! </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pModelMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the world transform of the model </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pViewMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the view matrix of the camera </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pProjectionMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the projectionmatrix of the camera </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="72" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp" bodystart="70" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_renderer_1a4b84851629f76a006db0564537caf789" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Renderer::renderMeshDebugInfo</definition>
+        <argsstring>(Mesh *pMesh, const glm::mat4 &amp;pModelMatrix, const glm::mat4 &amp;pViewMatrix, const glm::mat4 &amp;pProjectionMatrix)</argsstring>
+        <name>renderMeshDebugInfo</name>
+        <param>
+          <type><ref refid="class_mesh" kindref="compound">Mesh</ref> *</type>
+          <declname>pMesh</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pModelMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pViewMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pProjectionMatrix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Helper method to render debug info for a mesh </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="77" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp" bodystart="74" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_renderer_1a50c566f7eb1bfff0adf76003b70bf246" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Renderer::renderSelf</definition>
+        <argsstring>(World *pWorld, GameObject *pGameObject, AbstractMaterial *pMaterial, const glm::mat4 &amp;pModelMatrix, const glm::mat4 &amp;pViewMatrix, const glm::mat4 &amp;pProjectionMatrix)</argsstring>
+        <name>renderSelf</name>
+        <param>
+          <type><ref refid="class_world" kindref="compound">World</ref> *</type>
+          <declname>pWorld</declname>
+        </param>
+        <param>
+          <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+          <declname>pGameObject</declname>
+        </param>
+        <param>
+          <type><ref refid="class_abstract_material" kindref="compound">AbstractMaterial</ref> *</type>
+          <declname>pMaterial</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pModelMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pViewMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pProjectionMatrix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Renders a specific game object in the world.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pWorld</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the world the gameobject is a part of, can be used to retrieve lighting information </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pGameObject</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the gameobject to render </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pMaterial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the material to use, CANNOT BE NULL </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pModelMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the world transform of the model </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pViewMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the view matrix of the camera </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pProjectionMatrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the projectionmatrix of the camera </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="91" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_renderer_1af1f0c6aa17ef0aa001778a06cb18aedd" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Renderer::renderChildren</definition>
+        <argsstring>(World *pWorld, GameObject *pGameObject, AbstractMaterial *pMaterial, const glm::mat4 &amp;pModelMatrix, const glm::mat4 &amp;pViewMatrix, const glm::mat4 &amp;pProjectionMatrix, bool pRecursive)</argsstring>
+        <name>renderChildren</name>
+        <param>
+          <type><ref refid="class_world" kindref="compound">World</ref> *</type>
+          <declname>pWorld</declname>
+        </param>
+        <param>
+          <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+          <declname>pGameObject</declname>
+        </param>
+        <param>
+          <type><ref refid="class_abstract_material" kindref="compound">AbstractMaterial</ref> *</type>
+          <declname>pMaterial</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pModelMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pViewMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pProjectionMatrix</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>pRecursive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="94" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp" bodystart="58" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="class_renderer" kindref="compound">Renderer</ref> implements a default single pass forward renderer. </para>    </detaileddescription>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" line="17" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.hpp" bodystart="16" bodyend="95"/>
+    <listofallmembers>
+      <member refid="class_renderer_1a6851034b2586243a882e0b3e95d5703b" prot="public" virt="non-virtual"><scope>Renderer</scope><name>debug</name></member>
+      <member refid="class_renderer_1a08d66d1f7d3a681cebae9da543b302ec" prot="public" virt="non-virtual"><scope>Renderer</scope><name>render</name></member>
+      <member refid="class_renderer_1a7e869292911ac18ed84bb24a7521fe0e" prot="public" virt="non-virtual"><scope>Renderer</scope><name>render</name></member>
+      <member refid="class_renderer_1a3cdb04b2e58d79dff6507f72228698f4" prot="public" virt="non-virtual"><scope>Renderer</scope><name>render</name></member>
+      <member refid="class_renderer_1aab0ddfca39ec0e2d3fdf68caecade79b" prot="public" virt="non-virtual"><scope>Renderer</scope><name>render</name></member>
+      <member refid="class_renderer_1af1f0c6aa17ef0aa001778a06cb18aedd" prot="protected" virt="non-virtual"><scope>Renderer</scope><name>renderChildren</name></member>
+      <member refid="class_renderer_1a7ebf46f54dab9905f79b80f7fddb76a6" prot="public" virt="non-virtual"><scope>Renderer</scope><name>Renderer</name></member>
+      <member refid="class_renderer_1a4b84851629f76a006db0564537caf789" prot="public" virt="non-virtual"><scope>Renderer</scope><name>renderMeshDebugInfo</name></member>
+      <member refid="class_renderer_1a50c566f7eb1bfff0adf76003b70bf246" prot="protected" virt="non-virtual"><scope>Renderer</scope><name>renderSelf</name></member>
+      <member refid="class_renderer_1a7a802e520eff79ff5d789fc1d2819b4a" prot="public" virt="non-virtual"><scope>Renderer</scope><name>setClearColor</name></member>
+      <member refid="class_renderer_1afeee408862d5bd6255a6882d47e6d5cd" prot="public" virt="virtual"><scope>Renderer</scope><name>~Renderer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

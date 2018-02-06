@@ -1,0 +1,59 @@
+.TH "TextureMaterial" 3 "Mon Jan 1 2018" "MGE" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TextureMaterial
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <TextureMaterial\&.hpp>\fP
+.PP
+Inherits \fBAbstractMaterial\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTextureMaterial\fP (\fBTexture\fP *pDiffuseTexture)"
+.br
+.ti -1c
+.RI "virtual \fB~TextureMaterial\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBrender\fP (\fBWorld\fP *pWorld, \fBMesh\fP *pMesh, const glm::mat4 &pModelMatrix, const glm::mat4 &pViewMatrix, const glm::mat4 &pProjectionMatrix) override"
+.br
+.ti -1c
+.RI "void \fBsetDiffuseTexture\fP (\fBTexture\fP *pDiffuseTexture)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This material is already a little bit more complicated, instead of a color we can pass in a texture, all attributes and uniforms are cached and we precompute the MVP matrix passing it in as one entity\&. 
+.PP
+Definition at line 14 of file TextureMaterial\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TextureMaterial::TextureMaterial (\fBTexture\fP * pDiffuseTexture)"
+
+.PP
+Definition at line 21 of file TextureMaterial\&.cpp\&.
+.SS "TextureMaterial::~TextureMaterial ()\fC [virtual]\fP"
+
+.PP
+Definition at line 25 of file TextureMaterial\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void TextureMaterial::render (\fBWorld\fP * pWorld, \fBMesh\fP * pMesh, const glm::mat4 & pModelMatrix, const glm::mat4 & pViewMatrix, const glm::mat4 & pPerspectiveMatrix)\fC [override]\fP, \fC [virtual]\fP"
+Render the given mesh in the given world using the given mvp matrices\&. Implement in subclass\&. 
+.PP
+Implements \fBAbstractMaterial\fP\&.
+.PP
+Definition at line 48 of file TextureMaterial\&.cpp\&.
+.SS "void TextureMaterial::setDiffuseTexture (\fBTexture\fP * pDiffuseTexture)"
+
+.PP
+Definition at line 44 of file TextureMaterial\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MGE from the source code\&.

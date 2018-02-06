@@ -1,0 +1,72 @@
+.TH "AbstractBehaviour" 3 "Mon Jan 1 2018" "MGE" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AbstractBehaviour
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <AbstractBehaviour\&.hpp>\fP
+.PP
+Inherited by \fBKeysBehaviour\fP, and \fBRotatingBehaviour\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAbstractBehaviour\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~AbstractBehaviour\fP ()=0"
+.br
+.ti -1c
+.RI "virtual void \fBsetOwner\fP (\fBGameObject\fP *pGameObject)"
+.br
+.ti -1c
+.RI "virtual void \fBupdate\fP (float pStep)=0"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBGameObject\fP * \fB_owner\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An \fBAbstractBehaviour\fP allows you to attach reusable behaviours to GameObjects (steering, rotating, billboarding, etc)\&. A behaviour is set on a \fBGameObject\fP, which in turn passes in a reference to itself through the setOwner method\&. This way we can enforce that a Behaviour can never have an owner different from the object it has been attached to\&.
+.PP
+The concept is similar to MonoBehaviours in Unity\&. 
+.PP
+Definition at line 13 of file AbstractBehaviour\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AbstractBehaviour::AbstractBehaviour ()"
+
+.PP
+Definition at line 3 of file AbstractBehaviour\&.cpp\&.
+.SS "AbstractBehaviour::~AbstractBehaviour ()\fC [pure virtual]\fP"
+
+.PP
+Definition at line 5 of file AbstractBehaviour\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void AbstractBehaviour::setOwner (\fBGameObject\fP * pGameObject)\fC [virtual]\fP"
+
+.PP
+Definition at line 10 of file AbstractBehaviour\&.cpp\&.
+.SS "virtual void AbstractBehaviour::update (float pStep)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBKeysBehaviour\fP, and \fBRotatingBehaviour\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBGameObject\fP* AbstractBehaviour::_owner\fC [protected]\fP"
+
+.PP
+Definition at line 28 of file AbstractBehaviour\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MGE from the source code\&.

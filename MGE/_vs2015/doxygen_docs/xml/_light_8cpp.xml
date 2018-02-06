@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_light_8cpp" kind="file" language="C++">
+    <compoundname>Light.cpp</compoundname>
+    <includes refid="_light_8hpp" local="yes">mge/core/Light.hpp</includes>
+    <includes refid="_world_8hpp" local="yes">mge/core/World.hpp</includes>
+    <incdepgraph>
+      <node id="190">
+        <label>iomanip</label>
+      </node>
+      <node id="186">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Light.cpp</label>
+        <link refid="_light_8cpp"/>
+        <childnode refid="187" relation="include">
+        </childnode>
+        <childnode refid="195" relation="include">
+        </childnode>
+      </node>
+      <node id="194">
+        <label>vector</label>
+      </node>
+      <node id="188">
+        <label>glm.hpp</label>
+        <link refid="glm_8hpp"/>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+        <childnode refid="192" relation="include">
+        </childnode>
+      </node>
+      <node id="192">
+        <label>glm/ext.hpp</label>
+      </node>
+      <node id="193">
+        <label>mge/core/GameObject.hpp</label>
+        <link refid="_game_object_8hpp"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="188" relation="include">
+        </childnode>
+      </node>
+      <node id="189">
+        <label>iostream</label>
+      </node>
+      <node id="187">
+        <label>mge/core/Light.hpp</label>
+        <link refid="_light_8hpp"/>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="193" relation="include">
+        </childnode>
+      </node>
+      <node id="195">
+        <label>mge/core/World.hpp</label>
+        <link refid="_world_8hpp"/>
+        <childnode refid="193" relation="include">
+        </childnode>
+      </node>
+      <node id="191">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_light_8hpp" kindref="compound">mge/core/Light.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_world_8hpp" kindref="compound">mge/core/World.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="class_light_1a82414b0f9b6f569a7b8abe25ee1eff88" refkind="member"><highlight class="normal"><ref refid="class_light_1a82414b0f9b6f569a7b8abe25ee1eff88" kindref="member">Light::Light</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>pName,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::vec3&amp;<sp/>pPosition):<ref refid="class_game_object" kindref="compound">GameObject</ref>(pName,<sp/>pPosition)</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">{}</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="class_light_1ad0e59fad13bb6cfadc25b2c477e9ddc7" refkind="member"><highlight class="normal"><ref refid="class_light_1ad0e59fad13bb6cfadc25b2c477e9ddc7" kindref="member">Light::~Light</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//Override<sp/>setWorldRecursively<sp/>to<sp/>make<sp/>sure<sp/>we<sp/>are<sp/>registered</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//to<sp/>the<sp/>world<sp/>we<sp/>are<sp/>a<sp/>part<sp/>of.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="class_light_1a2d6425577e725059abff937ae6aeda75" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_light_1a2d6425577e725059abff937ae6aeda75" kindref="member">Light::_setWorldRecursively</ref><sp/>(<ref refid="class_world" kindref="compound">World</ref>*<sp/>pWorld)<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//store<sp/>the<sp/>previous<sp/>and<sp/>new<sp/>world<sp/>before<sp/>and<sp/>after<sp/>storing<sp/>the<sp/>given<sp/>world</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_world" kindref="compound">World</ref>*<sp/>previousWorld<sp/>=<sp/><ref refid="class_game_object_1a9b0f75b50567252d44f54ade803901ad" kindref="member">_world</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_game_object_1aa5bed62bb5c172c129a7923874f1f28f" kindref="member">GameObject::_setWorldRecursively</ref>(pWorld);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_world" kindref="compound">World</ref>*<sp/>newWorld<sp/>=<sp/><ref refid="class_game_object_1a9b0f75b50567252d44f54ade803901ad" kindref="member">_world</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//check<sp/>whether<sp/>we<sp/>need<sp/>to<sp/>register<sp/>or<sp/>unregister</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(previousWorld<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>previousWorld-&gt;<ref refid="class_world_1af8f37ed308a937f989032db7ecad2f2f" kindref="member">unregisterLight</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(newWorld<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>newWorld-&gt;<ref refid="class_world_1a31d926efa3161a54ae96f2d7e81ec858" kindref="member">registerLight</ref>(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Light.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mge", "mge.vcxproj", "{9BF1737F-5BBF-413D-A25B-8DA45BE5CF13}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Dynamic|x86 = Debug Dynamic|x86
+		Debug Static|x86 = Debug Static|x86
+		Release Dynamic|x86 = Release Dynamic|x86
+		Release Static|x86 = Release Static|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9BF1737F-5BBF-413D-A25B-8DA45BE5CF13}.Debug Dynamic|x86.ActiveCfg = Debug Dynamic|Win32
+		{9BF1737F-5BBF-413D-A25B-8DA45BE5CF13}.Debug Dynamic|x86.Build.0 = Debug Dynamic|Win32
+		{9BF1737F-5BBF-413D-A25B-8DA45BE5CF13}.Debug Static|x86.ActiveCfg = Debug Static|Win32
+		{9BF1737F-5BBF-413D-A25B-8DA45BE5CF13}.Debug Static|x86.Build.0 = Debug Static|Win32
+		{9BF1737F-5BBF-413D-A25B-8DA45BE5CF13}.Release Dynamic|x86.ActiveCfg = Release Dynamic|Win32
+		{9BF1737F-5BBF-413D-A25B-8DA45BE5CF13}.Release Dynamic|x86.Build.0 = Release Dynamic|Win32
+		{9BF1737F-5BBF-413D-A25B-8DA45BE5CF13}.Release Static|x86.ActiveCfg = Release Static|Win32
+		{9BF1737F-5BBF-413D-A25B-8DA45BE5CF13}.Release Static|x86.Build.0 = Release Static|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

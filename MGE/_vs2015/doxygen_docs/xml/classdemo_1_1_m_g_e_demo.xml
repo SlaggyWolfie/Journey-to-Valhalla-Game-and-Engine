@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="classdemo_1_1_m_g_e_demo" kind="class" language="C++" prot="public">
+    <compoundname>demo::MGEDemo</compoundname>
+    <basecompoundref refid="class_abstract_game" prot="public" virt="non-virtual">AbstractGame</basecompoundref>
+    <includes refid="_m_g_e_demo_8hpp" local="no">MGEDemo.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classdemo_1_1_m_g_e_demo_1ad192537580b0455b77a455d7aef47c54" prot="private" static="no" mutable="no">
+        <type><ref refid="class_debug_hud" kindref="compound">DebugHud</ref> *</type>
+        <definition>DebugHud* demo::MGEDemo::_hud</definition>
+        <argsstring></argsstring>
+        <name>_hud</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" line="32" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classdemo_1_1_m_g_e_demo_1a0074c54a59560a447382686cc45ae2bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>demo::MGEDemo::MGEDemo</definition>
+        <argsstring>()</argsstring>
+        <name>MGEDemo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" line="18" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp" bodystart="30" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classdemo_1_1_m_g_e_demo_1ad3540790112351521035bb833cba9180" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>demo::MGEDemo::~MGEDemo</definition>
+        <argsstring>()</argsstring>
+        <name>~MGEDemo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" line="19" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp" bodystart="112" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classdemo_1_1_m_g_e_demo_1a8d9a76bd01586969f83043be8352618f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void demo::MGEDemo::initialize</definition>
+        <argsstring>()</argsstring>
+        <name>initialize</name>
+        <reimplements refid="class_abstract_game_1ae8e8403861002ba2829729833ba5856b">initialize</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" line="22" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp" bodystart="34" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classdemo_1_1_m_g_e_demo_1ab6b57ab28c358f2e23e504c0d47fa1dd" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void demo::MGEDemo::_initializeScene</definition>
+        <argsstring>()</argsstring>
+        <name>_initializeScene</name>
+        <reimplements refid="class_abstract_game_1a4782be677de61f626d7bca4638af8671">_initializeScene</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" line="26" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp" bodystart="45" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classdemo_1_1_m_g_e_demo_1a2adb7c5c56bdadc898ed4acf2e2b2c04" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void demo::MGEDemo::_render</definition>
+        <argsstring>()</argsstring>
+        <name>_render</name>
+        <reimplements refid="class_abstract_game_1ad361c6fb964e05d17ab97129535b1ece">_render</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" line="29" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp" bodystart="99" bodyend="102"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classdemo_1_1_m_g_e_demo_1ab39273347306eea55b76b31c93d21803" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void demo::MGEDemo::_updateHud</definition>
+        <argsstring>()</argsstring>
+        <name>_updateHud</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" line="34" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp" bodystart="104" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classdemo_1_1_m_g_e_demo_1afa4b7a91f95fa8b80679404cee4c7895" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>demo::MGEDemo::MGEDemo</definition>
+        <argsstring>(const MGEDemo &amp;)</argsstring>
+        <name>MGEDemo</name>
+        <param>
+          <type>const <ref refid="classdemo_1_1_m_g_e_demo" kindref="compound">MGEDemo</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" line="36" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classdemo_1_1_m_g_e_demo_1ae52cb615fd3dc867727ffa78e6f61f3a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classdemo_1_1_m_g_e_demo" kindref="compound">MGEDemo</ref> &amp;</type>
+        <definition>MGEDemo&amp; demo::MGEDemo::operator=</definition>
+        <argsstring>(const MGEDemo &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classdemo_1_1_m_g_e_demo" kindref="compound">MGEDemo</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" line="37" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An example subclass of <ref refid="class_abstract_game" kindref="compound">AbstractGame</ref> showing how we can setup a scene. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="87">
+        <label>AbstractGame</label>
+        <link refid="class_abstract_game"/>
+      </node>
+      <node id="86">
+        <label>demo::MGEDemo</label>
+        <link refid="classdemo_1_1_m_g_e_demo"/>
+        <childnode refid="87" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="91">
+        <label>World</label>
+        <link refid="class_world"/>
+        <childnode refid="92" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="95">
+        <label>Mesh</label>
+        <link refid="class_mesh"/>
+      </node>
+      <node id="93">
+        <label>AbstractMaterial</label>
+        <link refid="class_abstract_material"/>
+      </node>
+      <node id="90">
+        <label>Renderer</label>
+        <link refid="class_renderer"/>
+      </node>
+      <node id="89">
+        <label>AbstractGame</label>
+        <link refid="class_abstract_game"/>
+        <childnode refid="90" relation="usage">
+          <edgelabel>_renderer</edgelabel>
+        </childnode>
+        <childnode refid="91" relation="usage">
+          <edgelabel>_world</edgelabel>
+        </childnode>
+      </node>
+      <node id="88">
+        <label>demo::MGEDemo</label>
+        <link refid="classdemo_1_1_m_g_e_demo"/>
+        <childnode refid="89" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="92">
+        <label>GameObject</label>
+        <link refid="class_game_object"/>
+        <childnode refid="92" relation="usage">
+          <edgelabel>_parent</edgelabel>
+        </childnode>
+        <childnode refid="93" relation="usage">
+          <edgelabel>_material</edgelabel>
+        </childnode>
+        <childnode refid="94" relation="usage">
+          <edgelabel>_behaviour</edgelabel>
+        </childnode>
+        <childnode refid="95" relation="usage">
+          <edgelabel>_mesh</edgelabel>
+        </childnode>
+        <childnode refid="91" relation="usage">
+          <edgelabel>_world</edgelabel>
+        </childnode>
+      </node>
+      <node id="94">
+        <label>AbstractBehaviour</label>
+        <link refid="class_abstract_behaviour"/>
+        <childnode refid="92" relation="usage">
+          <edgelabel>_owner</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" line="14" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.hpp" bodystart="13" bodyend="38"/>
+    <listofallmembers>
+      <member refid="class_abstract_game_1a1335b38225389c69b82bb6922a55f199" prot="protected" virt="non-virtual"><scope>demo::MGEDemo</scope><name>_fps</name></member>
+      <member refid="classdemo_1_1_m_g_e_demo_1ad192537580b0455b77a455d7aef47c54" prot="private" virt="non-virtual"><scope>demo::MGEDemo</scope><name>_hud</name></member>
+      <member refid="class_abstract_game_1ae0e77dfc49743a10c99fdb160eea0777" prot="protected" virt="virtual"><scope>demo::MGEDemo</scope><name>_initializeGlew</name></member>
+      <member refid="class_abstract_game_1ac7e9b0e160282f92f2e1cd4e2cc1847b" prot="protected" virt="virtual"><scope>demo::MGEDemo</scope><name>_initializeRenderer</name></member>
+      <member refid="classdemo_1_1_m_g_e_demo_1ab6b57ab28c358f2e23e504c0d47fa1dd" prot="protected" virt="virtual"><scope>demo::MGEDemo</scope><name>_initializeScene</name></member>
+      <member refid="class_abstract_game_1a81ac7a22d021bd104b7eef629a78b996" prot="protected" virt="virtual"><scope>demo::MGEDemo</scope><name>_initializeWindow</name></member>
+      <member refid="class_abstract_game_1a2a7102cf02389ee5e9167f59961c3e09" prot="protected" virt="virtual"><scope>demo::MGEDemo</scope><name>_initializeWorld</name></member>
+      <member refid="class_abstract_game_1a0afb8f95958dd613f433c5d3b8aefb3f" prot="protected" virt="virtual"><scope>demo::MGEDemo</scope><name>_printVersionInfo</name></member>
+      <member refid="class_abstract_game_1a33032270a07356313b5ba4de5a35025e" prot="protected" virt="virtual"><scope>demo::MGEDemo</scope><name>_processEvents</name></member>
+      <member refid="classdemo_1_1_m_g_e_demo_1a2adb7c5c56bdadc898ed4acf2e2b2c04" prot="protected" virt="virtual"><scope>demo::MGEDemo</scope><name>_render</name></member>
+      <member refid="class_abstract_game_1a4f883824aafd41b7c24795078f6a78bd" prot="protected" virt="non-virtual"><scope>demo::MGEDemo</scope><name>_renderer</name></member>
+      <member refid="class_abstract_game_1a04a0addd21e4b0c37ebde2e446d41625" prot="protected" virt="virtual"><scope>demo::MGEDemo</scope><name>_update</name></member>
+      <member refid="classdemo_1_1_m_g_e_demo_1ab39273347306eea55b76b31c93d21803" prot="private" virt="non-virtual"><scope>demo::MGEDemo</scope><name>_updateHud</name></member>
+      <member refid="class_abstract_game_1a9caa463f6cb983844d5bd54f7d3bf2ec" prot="protected" virt="non-virtual"><scope>demo::MGEDemo</scope><name>_window</name></member>
+      <member refid="class_abstract_game_1a1c08954b5e503d316224b0adb71d96cc" prot="protected" virt="non-virtual"><scope>demo::MGEDemo</scope><name>_world</name></member>
+      <member refid="class_abstract_game_1a0fa2c7df592f68efaecf267f48b9041c" prot="public" virt="non-virtual"><scope>demo::MGEDemo</scope><name>AbstractGame</name></member>
+      <member refid="classdemo_1_1_m_g_e_demo_1a8d9a76bd01586969f83043be8352618f" prot="public" virt="virtual"><scope>demo::MGEDemo</scope><name>initialize</name></member>
+      <member refid="classdemo_1_1_m_g_e_demo_1a0074c54a59560a447382686cc45ae2bc" prot="public" virt="non-virtual"><scope>demo::MGEDemo</scope><name>MGEDemo</name></member>
+      <member refid="classdemo_1_1_m_g_e_demo_1afa4b7a91f95fa8b80679404cee4c7895" prot="private" virt="non-virtual"><scope>demo::MGEDemo</scope><name>MGEDemo</name></member>
+      <member refid="classdemo_1_1_m_g_e_demo_1ae52cb615fd3dc867727ffa78e6f61f3a" prot="private" virt="non-virtual"><scope>demo::MGEDemo</scope><name>operator=</name></member>
+      <member refid="class_abstract_game_1abab83c44ded629289495429c8a4c01c3" prot="public" virt="virtual"><scope>demo::MGEDemo</scope><name>run</name></member>
+      <member refid="class_abstract_game_1aecb5ec1d55616d346fe5457b63faad8e" prot="public" virt="virtual"><scope>demo::MGEDemo</scope><name>~AbstractGame</name></member>
+      <member refid="classdemo_1_1_m_g_e_demo_1ad3540790112351521035bb833cba9180" prot="public" virt="virtual"><scope>demo::MGEDemo</scope><name>~MGEDemo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

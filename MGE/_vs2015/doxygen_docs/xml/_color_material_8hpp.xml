@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_color_material_8hpp" kind="file" language="C++">
+    <compoundname>ColorMaterial.hpp</compoundname>
+    <includes local="yes">GL/glew.h</includes>
+    <includes refid="_abstract_material_8hpp" local="yes">mge/materials/AbstractMaterial.hpp</includes>
+    <includedby refid="_color_material_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/ColorMaterial.cpp</includedby>
+    <includedby refid="_m_g_e_demo_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp</includedby>
+    <includedby refid="_my_engine_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myEngine/MyEngine.cpp</includedby>
+    <includedby refid="_my_game_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myGame/MyGame.cpp</includedby>
+    <incdepgraph>
+      <node id="378">
+        <label>iomanip</label>
+      </node>
+      <node id="374">
+        <label>GL/glew.h</label>
+      </node>
+      <node id="373">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/ColorMaterial.hpp</label>
+        <link refid="_color_material_8hpp"/>
+        <childnode refid="374" relation="include">
+        </childnode>
+        <childnode refid="375" relation="include">
+        </childnode>
+      </node>
+      <node id="376">
+        <label>glm.hpp</label>
+        <link refid="glm_8hpp"/>
+        <childnode refid="377" relation="include">
+        </childnode>
+        <childnode refid="378" relation="include">
+        </childnode>
+        <childnode refid="379" relation="include">
+        </childnode>
+        <childnode refid="380" relation="include">
+        </childnode>
+      </node>
+      <node id="380">
+        <label>glm/ext.hpp</label>
+      </node>
+      <node id="375">
+        <label>mge/materials/AbstractMaterial.hpp</label>
+        <link refid="_abstract_material_8hpp"/>
+        <childnode refid="376" relation="include">
+        </childnode>
+      </node>
+      <node id="377">
+        <label>iostream</label>
+      </node>
+      <node id="379">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="384">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myEngine/MyEngine.cpp</label>
+        <link refid="_my_engine_8cpp"/>
+      </node>
+      <node id="382">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/ColorMaterial.cpp</label>
+        <link refid="_color_material_8cpp"/>
+      </node>
+      <node id="381">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/ColorMaterial.hpp</label>
+        <link refid="_color_material_8hpp"/>
+        <childnode refid="382" relation="include">
+        </childnode>
+        <childnode refid="383" relation="include">
+        </childnode>
+        <childnode refid="384" relation="include">
+        </childnode>
+        <childnode refid="385" relation="include">
+        </childnode>
+      </node>
+      <node id="383">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp</label>
+        <link refid="_m_g_e_demo_8cpp"/>
+      </node>
+      <node id="385">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myGame/MyGame.cpp</label>
+        <link refid="_my_game_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_color_material" prot="public">ColorMaterial</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>COLORMATERIAL_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>COLORMATERIAL_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;GL/glew.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_abstract_material_8hpp" kindref="compound">mge/materials/AbstractMaterial.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_shader_program" kindref="compound">ShaderProgram</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="class_color_material" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_color_material" kindref="compound">ColorMaterial</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_abstract_material" kindref="compound">AbstractMaterial</ref></highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_color_material_1a7ede9b1d1f84c12743be9e47463af2f0" kindref="member">ColorMaterial</ref>(glm::vec3<sp/>pColor<sp/>=<sp/>glm::vec3(1,0,0));</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="class_color_material_1aeacc4453d0edf227b4770868cdb757b0" kindref="member">~ColorMaterial</ref>();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_color_material_1a5ca542a1b6c72398ff9e095c28d52975" kindref="member">render</ref>(<ref refid="class_world" kindref="compound">World</ref>*<sp/>pWorld,<sp/><ref refid="class_mesh" kindref="compound">Mesh</ref>*<sp/>pMesh,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::mat4&amp;<sp/>pModelMatrix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::mat4&amp;<sp/>pViewMatrix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::mat4&amp;<sp/>pProjectionMatrix)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//in<sp/>rgb<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_color_material_1aefa97a5c6b436f99bdf40463b06ba48f" kindref="member">setDiffuseColor</ref><sp/>(glm::vec3<sp/>pDiffuseColor);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//all<sp/>the<sp/>static<sp/>properties<sp/>are<sp/>shared<sp/>between<sp/>instances<sp/>of<sp/>ColorMaterial</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//note<sp/>that<sp/>they<sp/>are<sp/>all<sp/>PRIVATE,<sp/>we<sp/>do<sp/>not<sp/>expose<sp/>this<sp/>static<sp/>info<sp/>to<sp/>the<sp/>outside<sp/>world</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="class_shader_program" kindref="compound">ShaderProgram</ref>*<sp/>_shader;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_lazyInitializeShader();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//this<sp/>one<sp/>is<sp/>unique<sp/>per<sp/>instance<sp/>of<sp/>color<sp/>material</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>glm::vec3<sp/>_diffuseColor;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>COLORMATERIAL_HPP</highlight></codeline>
+    </programlisting>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/ColorMaterial.hpp"/>
+  </compounddef>
+</doxygen>

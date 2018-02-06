@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="class_shader_program" kind="class" language="C++" prot="public">
+    <compoundname>ShaderProgram</compoundname>
+    <includes refid="_shader_program_8hpp" local="no">ShaderProgram.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_shader_program_1aee6a23c6d13d72e5ae1339b2d12a8920" prot="private" static="no" mutable="no">
+        <type>GLint</type>
+        <definition>GLint ShaderProgram::_programId</definition>
+        <argsstring></argsstring>
+        <name>_programId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="39" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_shader_program_1af7616dfdae39b101420f7ec464fed54e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; GLuint &gt;</type>
+        <definition>std::vector&lt;GLuint&gt; ShaderProgram::_shaderIds</definition>
+        <argsstring></argsstring>
+        <name>_shaderIds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="41" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_shader_program_1add585b75cb78f4afa865ea7b27c9651e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ShaderProgram::ShaderProgram</definition>
+        <argsstring>()</argsstring>
+        <name>ShaderProgram</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="23" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.cpp" bodystart="5" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shader_program_1a2d2eadcfc48cc2e2ddb82aba70553a9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>ShaderProgram::~ShaderProgram</definition>
+        <argsstring>()</argsstring>
+        <name>~ShaderProgram</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="24" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.cpp" bodystart="11" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shader_program_1a3214d80d90063cd6eac2dc404cbb07ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ShaderProgram::addShader</definition>
+        <argsstring>(GLuint pShaderType, const std::string &amp;pShaderPath)</argsstring>
+        <name>addShader</name>
+        <param>
+          <type>GLuint</type>
+          <declname>pShaderType</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pShaderPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="27" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.cpp" bodystart="13" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shader_program_1a531579551eaa1fcbb6ad403794956a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ShaderProgram::finalize</definition>
+        <argsstring>()</argsstring>
+        <name>finalize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="29" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.cpp" bodystart="65" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shader_program_1a285c27da064068522f4900a8e8075f68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ShaderProgram::use</definition>
+        <argsstring>()</argsstring>
+        <name>use</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="31" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.cpp" bodystart="102" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shader_program_1a7a89bd3e283f884d665504335b2b6698" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint ShaderProgram::getUniformLocation</definition>
+        <argsstring>(const std::string &amp;pName)</argsstring>
+        <name>getUniformLocation</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="34" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.cpp" bodystart="94" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shader_program_1a212a243637024e0d69b4ce7c6ac16220" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint ShaderProgram::getAttribLocation</definition>
+        <argsstring>(const std::string &amp;pName)</argsstring>
+        <name>getAttribLocation</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="36" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.cpp" bodystart="98" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_shader_program_1a45eac032cd09edbb35354fd915899352" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string ShaderProgram::_readFile</definition>
+        <argsstring>(const std::string &amp;pShaderPath)</argsstring>
+        <name>_readFile</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pShaderPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="43" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.cpp" bodystart="22" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_shader_program_1aae4f62e74b0da247f55b4fd5552cb440" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>GLuint</type>
+        <definition>GLuint ShaderProgram::_compileShader</definition>
+        <argsstring>(GLuint pShaderType, const std::string &amp;pShaderSource)</argsstring>
+        <name>_compileShader</name>
+        <param>
+          <type>GLuint</type>
+          <declname>pShaderType</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pShaderSource</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="44" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.cpp" bodystart="39" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Generic shader program to which you can add separate shaders. Nice exercise for the reader: make it possible to add shaders by passing in the code as a string instead of through a file.</para><para>Usage: -create shader program -add shaders -finalize shader program -use shader program</para><para>See the example material classes for a demo. </para>    </detaileddescription>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" line="21" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/ShaderProgram.hpp" bodystart="20" bodyend="45"/>
+    <listofallmembers>
+      <member refid="class_shader_program_1aae4f62e74b0da247f55b4fd5552cb440" prot="private" virt="non-virtual"><scope>ShaderProgram</scope><name>_compileShader</name></member>
+      <member refid="class_shader_program_1aee6a23c6d13d72e5ae1339b2d12a8920" prot="private" virt="non-virtual"><scope>ShaderProgram</scope><name>_programId</name></member>
+      <member refid="class_shader_program_1a45eac032cd09edbb35354fd915899352" prot="private" virt="non-virtual"><scope>ShaderProgram</scope><name>_readFile</name></member>
+      <member refid="class_shader_program_1af7616dfdae39b101420f7ec464fed54e" prot="private" virt="non-virtual"><scope>ShaderProgram</scope><name>_shaderIds</name></member>
+      <member refid="class_shader_program_1a3214d80d90063cd6eac2dc404cbb07ac" prot="public" virt="non-virtual"><scope>ShaderProgram</scope><name>addShader</name></member>
+      <member refid="class_shader_program_1a531579551eaa1fcbb6ad403794956a05" prot="public" virt="non-virtual"><scope>ShaderProgram</scope><name>finalize</name></member>
+      <member refid="class_shader_program_1a212a243637024e0d69b4ce7c6ac16220" prot="public" virt="non-virtual"><scope>ShaderProgram</scope><name>getAttribLocation</name></member>
+      <member refid="class_shader_program_1a7a89bd3e283f884d665504335b2b6698" prot="public" virt="non-virtual"><scope>ShaderProgram</scope><name>getUniformLocation</name></member>
+      <member refid="class_shader_program_1add585b75cb78f4afa865ea7b27c9651e" prot="public" virt="non-virtual"><scope>ShaderProgram</scope><name>ShaderProgram</name></member>
+      <member refid="class_shader_program_1a285c27da064068522f4900a8e8075f68" prot="public" virt="non-virtual"><scope>ShaderProgram</scope><name>use</name></member>
+      <member refid="class_shader_program_1a2d2eadcfc48cc2e2ddb82aba70553a9f" prot="public" virt="virtual"><scope>ShaderProgram</scope><name>~ShaderProgram</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

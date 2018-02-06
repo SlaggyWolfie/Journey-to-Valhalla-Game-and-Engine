@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="config_8hpp" kind="file" language="C++">
+    <compoundname>config.hpp</compoundname>
+    <includes local="no">string</includes>
+    <includedby refid="_color_material_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/ColorMaterial.cpp</includedby>
+    <includedby refid="_texture_material_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp</includedby>
+    <includedby refid="_m_g_e_demo_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp</includedby>
+    <includedby refid="_debug_hud_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/util/DebugHud.cpp</includedby>
+    <includedby refid="_my_engine_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myEngine/MyEngine.cpp</includedby>
+    <includedby refid="_my_game_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myGame/MyGame.cpp</includedby>
+    <incdepgraph>
+      <node id="90">
+        <label>string</label>
+      </node>
+      <node id="89">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/config.hpp</label>
+        <link refid="config_8hpp"/>
+        <childnode refid="90" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="95">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/util/DebugHud.cpp</label>
+        <link refid="_debug_hud_8cpp"/>
+      </node>
+      <node id="96">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myEngine/MyEngine.cpp</label>
+        <link refid="_my_engine_8cpp"/>
+      </node>
+      <node id="92">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/ColorMaterial.cpp</label>
+        <link refid="_color_material_8cpp"/>
+      </node>
+      <node id="93">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp</label>
+        <link refid="_texture_material_8cpp"/>
+      </node>
+      <node id="94">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp</label>
+        <link refid="_m_g_e_demo_8cpp"/>
+      </node>
+      <node id="91">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/config.hpp</label>
+        <link refid="config_8hpp"/>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="97" relation="include">
+        </childnode>
+      </node>
+      <node id="97">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myGame/MyGame.cpp</label>
+        <link refid="_my_game_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceconfig">config</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespaceconfig" refkind="compound"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceconfig" kindref="compound">config</ref><sp/>{</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceconfig_1abbe53e213aad2818b2603658562b4a07" kindref="member">MGE_MODEL_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;mge/models/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceconfig_1aebf9d372ea0f3add6882e1448136c9e0" kindref="member">MGE_TEXTURE_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;mge/textures/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceconfig_1aa0f87be60f0f595e4e06d070a44a2aac" kindref="member">MGE_SHADER_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;mge/shaders/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespaceconfig_1a78e26401ea88d3e2acdc4e2604ffc109" kindref="member">MGE_FONT_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;mge/fonts/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/config.hpp"/>
+  </compounddef>
+</doxygen>

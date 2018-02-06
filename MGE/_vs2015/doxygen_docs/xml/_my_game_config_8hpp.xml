@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_my_game_config_8hpp" kind="file" language="C++">
+    <compoundname>MyGameConfig.hpp</compoundname>
+    <includes local="no">string</includes>
+    <incdepgraph>
+      <node id="550">
+        <label>string</label>
+      </node>
+      <node id="549">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myGame/MyGameConfig.hpp</label>
+        <link refid="_my_game_config_8hpp"/>
+        <childnode refid="550" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_my_game">MyGame</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_my_game" kindref="compound">MyGame</ref></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespace_my_game_1aa198e87398d3ec3794bdb14ecc537657" kindref="member">MGE_MODEL_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;myGame/models/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespace_my_game_1afd87f16f8dbc6f89e8e868d785e2f398" kindref="member">MGE_TEXTURE_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;myGame/textures/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespace_my_game_1aa6f71407428eee486880507ff205b3a0" kindref="member">MGE_SHADER_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;myGame/shaders/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespace_my_game_1a5a634ee18b7d7a2fba6ef46236cd4d7a" kindref="member">MGE_FONT_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;myGame/fonts/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myGame/MyGameConfig.hpp"/>
+  </compounddef>
+</doxygen>

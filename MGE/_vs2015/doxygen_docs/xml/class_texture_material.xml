@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="class_texture_material" kind="class" language="C++" prot="public">
+    <compoundname>TextureMaterial</compoundname>
+    <basecompoundref refid="class_abstract_material" prot="public" virt="non-virtual">AbstractMaterial</basecompoundref>
+    <includes refid="_texture_material_8hpp" local="no">TextureMaterial.hpp</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_texture_material_1a0a6e85aa39ce0b8987fa6943a026e7c5" prot="private" static="yes" mutable="no">
+        <type><ref refid="class_shader_program" kindref="compound">ShaderProgram</ref> *</type>
+        <definition>ShaderProgram * TextureMaterial::_shader</definition>
+        <argsstring></argsstring>
+        <name>_shader</name>
+        <initializer>= NULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="26" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_texture_material_1aa9d8493233be42f11bb0b7ad13a897d5" prot="private" static="yes" mutable="no">
+        <type>GLint</type>
+        <definition>GLint TextureMaterial::_uMVPMatrix</definition>
+        <argsstring></argsstring>
+        <name>_uMVPMatrix</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="30" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_texture_material_1aa6d0d949f550fd1b465743787246104b" prot="private" static="yes" mutable="no">
+        <type>GLint</type>
+        <definition>GLint TextureMaterial::_uDiffuseTexture</definition>
+        <argsstring></argsstring>
+        <name>_uDiffuseTexture</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="31" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_texture_material_1a427a34021e048c30d5907014820010f7" prot="private" static="yes" mutable="no">
+        <type>GLint</type>
+        <definition>GLint TextureMaterial::_aVertex</definition>
+        <argsstring></argsstring>
+        <name>_aVertex</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="33" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_texture_material_1a8044936c412f70919d79a81fdc86233d" prot="private" static="yes" mutable="no">
+        <type>GLint</type>
+        <definition>GLint TextureMaterial::_aNormal</definition>
+        <argsstring></argsstring>
+        <name>_aNormal</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="34" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_texture_material_1ab2eca7b5e1b66968b6e2656f1783777f" prot="private" static="yes" mutable="no">
+        <type>GLint</type>
+        <definition>GLint TextureMaterial::_aUV</definition>
+        <argsstring></argsstring>
+        <name>_aUV</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="35" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_texture_material_1ad87a8cecf58aed7beead125a756ad2c5" prot="private" static="no" mutable="no">
+        <type><ref refid="class_texture" kindref="compound">Texture</ref> *</type>
+        <definition>Texture* TextureMaterial::_diffuseTexture</definition>
+        <argsstring></argsstring>
+        <name>_diffuseTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="37" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_texture_material_1ae274f8e21609fe3c928aff4f8a279ff7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TextureMaterial::TextureMaterial</definition>
+        <argsstring>(Texture *pDiffuseTexture)</argsstring>
+        <name>TextureMaterial</name>
+        <param>
+          <type><ref refid="class_texture" kindref="compound">Texture</ref> *</type>
+          <declname>pDiffuseTexture</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="17" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp" bodystart="21" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="class_texture_material_1a29d88f9b89992caccfd916d41b0a4575" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>TextureMaterial::~TextureMaterial</definition>
+        <argsstring>()</argsstring>
+        <name>~TextureMaterial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="18" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp" bodystart="25" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="class_texture_material_1a44908146101c7f0c3ef49738186e6d87" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void TextureMaterial::render</definition>
+        <argsstring>(World *pWorld, Mesh *pMesh, const glm::mat4 &amp;pModelMatrix, const glm::mat4 &amp;pViewMatrix, const glm::mat4 &amp;pProjectionMatrix) override</argsstring>
+        <name>render</name>
+        <reimplements refid="class_abstract_material_1ae77142c95c40bc18a379c3dd226ca7a7">render</reimplements>
+        <param>
+          <type><ref refid="class_world" kindref="compound">World</ref> *</type>
+          <declname>pWorld</declname>
+        </param>
+        <param>
+          <type><ref refid="class_mesh" kindref="compound">Mesh</ref> *</type>
+          <declname>pMesh</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pModelMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pViewMatrix</declname>
+        </param>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pPerspectiveMatrix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Render the given mesh in the given world using the given mvp matrices. Implement in subclass. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="20" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp" bodystart="48" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_texture_material_1a07631f39e68197508d8a7b709d694303" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TextureMaterial::setDiffuseTexture</definition>
+        <argsstring>(Texture *pDiffuseTexture)</argsstring>
+        <name>setDiffuseTexture</name>
+        <param>
+          <type><ref refid="class_texture" kindref="compound">Texture</ref> *</type>
+          <declname>pDiffuseTexture</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="22" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp" bodystart="44" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_texture_material_1ab0ad59dd96db72497e507fb061858029" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TextureMaterial::_lazyInitializeShader</definition>
+        <argsstring>()</argsstring>
+        <name>_lazyInitializeShader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="27" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp" bodystart="27" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_texture_material_1a23531b60ea9121f439ffd40773df6fc6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TextureMaterial::TextureMaterial</definition>
+        <argsstring>(const TextureMaterial &amp;)</argsstring>
+        <name>TextureMaterial</name>
+        <param>
+          <type>const <ref refid="class_texture_material" kindref="compound">TextureMaterial</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="39" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_texture_material_1a0fd89bae2554ae797194cdc6abaad9ee" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_texture_material" kindref="compound">TextureMaterial</ref> &amp;</type>
+        <definition>TextureMaterial&amp; TextureMaterial::operator=</definition>
+        <argsstring>(const TextureMaterial &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="class_texture_material" kindref="compound">TextureMaterial</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="40" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This material is already a little bit more complicated, instead of a color we can pass in a texture, all attributes and uniforms are cached and we precompute the MVP matrix passing it in as one entity. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="111">
+        <label>AbstractMaterial</label>
+        <link refid="class_abstract_material"/>
+      </node>
+      <node id="110">
+        <label>TextureMaterial</label>
+        <link refid="class_texture_material"/>
+        <childnode refid="111" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="113">
+        <label>AbstractMaterial</label>
+        <link refid="class_abstract_material"/>
+      </node>
+      <node id="112">
+        <label>TextureMaterial</label>
+        <link refid="class_texture_material"/>
+        <childnode refid="113" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" line="15" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.hpp" bodystart="14" bodyend="42"/>
+    <listofallmembers>
+      <member refid="class_texture_material_1a8044936c412f70919d79a81fdc86233d" prot="private" virt="non-virtual"><scope>TextureMaterial</scope><name>_aNormal</name></member>
+      <member refid="class_texture_material_1ab2eca7b5e1b66968b6e2656f1783777f" prot="private" virt="non-virtual"><scope>TextureMaterial</scope><name>_aUV</name></member>
+      <member refid="class_texture_material_1a427a34021e048c30d5907014820010f7" prot="private" virt="non-virtual"><scope>TextureMaterial</scope><name>_aVertex</name></member>
+      <member refid="class_texture_material_1ad87a8cecf58aed7beead125a756ad2c5" prot="private" virt="non-virtual"><scope>TextureMaterial</scope><name>_diffuseTexture</name></member>
+      <member refid="class_texture_material_1ab0ad59dd96db72497e507fb061858029" prot="private" virt="non-virtual"><scope>TextureMaterial</scope><name>_lazyInitializeShader</name></member>
+      <member refid="class_texture_material_1a0a6e85aa39ce0b8987fa6943a026e7c5" prot="private" virt="non-virtual"><scope>TextureMaterial</scope><name>_shader</name></member>
+      <member refid="class_texture_material_1aa6d0d949f550fd1b465743787246104b" prot="private" virt="non-virtual"><scope>TextureMaterial</scope><name>_uDiffuseTexture</name></member>
+      <member refid="class_texture_material_1aa9d8493233be42f11bb0b7ad13a897d5" prot="private" virt="non-virtual"><scope>TextureMaterial</scope><name>_uMVPMatrix</name></member>
+      <member refid="class_abstract_material_1a5a301620e6a83dd4df129f41ebc0432e" prot="public" virt="non-virtual"><scope>TextureMaterial</scope><name>AbstractMaterial</name></member>
+      <member refid="class_texture_material_1a0fd89bae2554ae797194cdc6abaad9ee" prot="private" virt="non-virtual"><scope>TextureMaterial</scope><name>operator=</name></member>
+      <member refid="class_texture_material_1a44908146101c7f0c3ef49738186e6d87" prot="public" virt="virtual"><scope>TextureMaterial</scope><name>render</name></member>
+      <member refid="class_texture_material_1a07631f39e68197508d8a7b709d694303" prot="public" virt="non-virtual"><scope>TextureMaterial</scope><name>setDiffuseTexture</name></member>
+      <member refid="class_texture_material_1ae274f8e21609fe3c928aff4f8a279ff7" prot="public" virt="non-virtual"><scope>TextureMaterial</scope><name>TextureMaterial</name></member>
+      <member refid="class_texture_material_1a23531b60ea9121f439ffd40773df6fc6" prot="private" virt="non-virtual"><scope>TextureMaterial</scope><name>TextureMaterial</name></member>
+      <member refid="class_abstract_material_1a57c989601dbb6e9e6661bd2f0dae4a6b" prot="public" virt="virtual"><scope>TextureMaterial</scope><name>~AbstractMaterial</name></member>
+      <member refid="class_texture_material_1a29d88f9b89992caccfd916d41b0a4575" prot="public" virt="virtual"><scope>TextureMaterial</scope><name>~TextureMaterial</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

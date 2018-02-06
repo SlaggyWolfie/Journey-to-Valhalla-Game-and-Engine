@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="dir_c4dd0877462e5f928c9acb2f973728f9" kind="dir">
+    <compoundname>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core</compoundname>
+    <innerfile refid="_abstract_game_8cpp">AbstractGame.cpp</innerfile>
+    <innerfile refid="_abstract_game_8hpp">AbstractGame.hpp</innerfile>
+    <innerfile refid="_camera_8cpp">Camera.cpp</innerfile>
+    <innerfile refid="_camera_8hpp">Camera.hpp</innerfile>
+    <innerfile refid="_game_object_8cpp">GameObject.cpp</innerfile>
+    <innerfile refid="_game_object_8hpp">GameObject.hpp</innerfile>
+    <innerfile refid="_light_8cpp">Light.cpp</innerfile>
+    <innerfile refid="_light_8hpp">Light.hpp</innerfile>
+    <innerfile refid="_mesh_8cpp">Mesh.cpp</innerfile>
+    <innerfile refid="_mesh_8hpp">Mesh.hpp</innerfile>
+    <innerfile refid="_renderer_8cpp">Renderer.cpp</innerfile>
+    <innerfile refid="_renderer_8hpp">Renderer.hpp</innerfile>
+    <innerfile refid="_shader_program_8cpp">ShaderProgram.cpp</innerfile>
+    <innerfile refid="_shader_program_8hpp">ShaderProgram.hpp</innerfile>
+    <innerfile refid="_texture_8cpp">Texture.cpp</innerfile>
+    <innerfile refid="_texture_8hpp">Texture.hpp</innerfile>
+    <innerfile refid="_world_8cpp">World.cpp</innerfile>
+    <innerfile refid="_world_8hpp">World.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/"/>
+  </compounddef>
+</doxygen>

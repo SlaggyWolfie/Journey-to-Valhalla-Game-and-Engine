@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_my_engine_config_8hpp" kind="file" language="C++">
+    <compoundname>MyEngineConfig.hpp</compoundname>
+    <includes local="no">string</includes>
+    <incdepgraph>
+      <node id="511">
+        <label>string</label>
+      </node>
+      <node id="510">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myEngine/MyEngineConfig.hpp</label>
+        <link refid="_my_engine_config_8hpp"/>
+        <childnode refid="511" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespace_my_engine_config">MyEngineConfig</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="namespace_my_engine_config" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_my_engine_config" kindref="compound">MyEngineConfig</ref><sp/></highlight></codeline>
+<codeline lineno="4"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespace_my_engine_config_1aa8e0fc26412bb3d7e4fddf00aae288e7" kindref="member">MGE_MODEL_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;myEngine/models/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespace_my_engine_config_1a19d30987081015ec0032f51529da1a1d" kindref="member">MGE_TEXTURE_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;myEngine/textures/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespace_my_engine_config_1aeaf9f6e24a8ec09401d447145bf0a974" kindref="member">MGE_SHADER_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;myEngine/shaders/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="namespace_my_engine_config_1a967d9988ed064a2d57fe9fc140144a04" kindref="member">MGE_FONT_PATH</ref><sp/>(</highlight><highlight class="stringliteral">&quot;myEngine/fonts/&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myEngine/MyEngineConfig.hpp"/>
+  </compounddef>
+</doxygen>

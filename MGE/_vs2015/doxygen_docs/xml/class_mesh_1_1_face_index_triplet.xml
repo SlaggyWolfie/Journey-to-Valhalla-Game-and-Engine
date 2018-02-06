@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="class_mesh_1_1_face_index_triplet" kind="class" language="C++" prot="protected">
+    <compoundname>Mesh::FaceIndexTriplet</compoundname>
+    <includes refid="_mesh_8hpp" local="no">Mesh.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_mesh_1_1_face_index_triplet_1a434a10edc221474fc109efd674eac7da" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Mesh::FaceIndexTriplet::v</definition>
+        <argsstring></argsstring>
+        <name>v</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" line="67" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mesh_1_1_face_index_triplet_1a0a2294d16ca16f21534521d7535dbf43" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Mesh::FaceIndexTriplet::uv</definition>
+        <argsstring></argsstring>
+        <name>uv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" line="68" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_mesh_1_1_face_index_triplet_1af0e49bb6b312c237249c03f8a3d4b4ee" prot="public" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned Mesh::FaceIndexTriplet::n</definition>
+        <argsstring></argsstring>
+        <name>n</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" line="69" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_mesh_1_1_face_index_triplet_1adace4602aac1412189cfe569a4cd8e1a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Mesh::FaceIndexTriplet::FaceIndexTriplet</definition>
+        <argsstring>(unsigned pV, unsigned pUV, unsigned pN)</argsstring>
+        <name>FaceIndexTriplet</name>
+        <param>
+          <type>unsigned</type>
+          <declname>pV</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>pUV</declname>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>pN</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" line="70" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" bodystart="70" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_mesh_1_1_face_index_triplet_1a7811a16d62fc2893ff01c86b049d599d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mesh::FaceIndexTriplet::operator&lt;</definition>
+        <argsstring>(const FaceIndexTriplet other) const</argsstring>
+        <name>operator&lt;</name>
+        <param>
+          <type>const <ref refid="class_mesh_1_1_face_index_triplet" kindref="compound">FaceIndexTriplet</ref></type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" line="74" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" bodystart="74" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" line="65" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp" bodystart="65" bodyend="77"/>
+    <listofallmembers>
+      <member refid="class_mesh_1_1_face_index_triplet_1adace4602aac1412189cfe569a4cd8e1a" prot="public" virt="non-virtual"><scope>Mesh::FaceIndexTriplet</scope><name>FaceIndexTriplet</name></member>
+      <member refid="class_mesh_1_1_face_index_triplet_1af0e49bb6b312c237249c03f8a3d4b4ee" prot="public" virt="non-virtual"><scope>Mesh::FaceIndexTriplet</scope><name>n</name></member>
+      <member refid="class_mesh_1_1_face_index_triplet_1a7811a16d62fc2893ff01c86b049d599d" prot="public" virt="non-virtual"><scope>Mesh::FaceIndexTriplet</scope><name>operator&lt;</name></member>
+      <member refid="class_mesh_1_1_face_index_triplet_1a0a2294d16ca16f21534521d7535dbf43" prot="public" virt="non-virtual"><scope>Mesh::FaceIndexTriplet</scope><name>uv</name></member>
+      <member refid="class_mesh_1_1_face_index_triplet_1a434a10edc221474fc109efd674eac7da" prot="public" virt="non-virtual"><scope>Mesh::FaceIndexTriplet</scope><name>v</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

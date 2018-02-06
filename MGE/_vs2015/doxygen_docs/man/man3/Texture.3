@@ -1,0 +1,83 @@
+.TH "Texture" 3 "Mon Jan 1 2018" "MGE" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Texture
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Texture\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "GLuint \fBgetId\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBTexture\fP * \fBload\fP (const std::string &pTexturePath)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTexture\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~Texture\fP ()"
+.br
+.in -1c
+.SS "Static Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBTexture\fP * \fB_loadFromFile\fP (const std::string pTexturePath)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "GLuint \fB_id\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 8 of file Texture\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Texture::Texture ()\fC [protected]\fP"
+
+.PP
+Definition at line 7 of file Texture\&.cpp\&.
+.SS "Texture::~Texture ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 11 of file Texture\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static \fBTexture\fP* Texture::_loadFromFile (const std::string pTexturePath)\fC [static]\fP, \fC [protected]\fP"
+
+.SS "GLuint Texture::getId ()"
+
+.PP
+Definition at line 16 of file Texture\&.cpp\&.
+.SS "\fBTexture\fP * Texture::load (const std::string & pTexturePath)\fC [static]\fP"
+
+.PP
+Definition at line 21 of file Texture\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "GLuint Texture::_id\fC [protected]\fP"
+
+.PP
+Definition at line 22 of file Texture\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MGE from the source code\&.

@@ -1,0 +1,726 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="class_game_object" kind="class" language="C++" prot="public">
+    <compoundname>GameObject</compoundname>
+    <derivedcompoundref refid="class_camera" prot="public" virt="non-virtual">Camera</derivedcompoundref>
+    <derivedcompoundref refid="class_light" prot="public" virt="non-virtual">Light</derivedcompoundref>
+    <derivedcompoundref refid="class_world" prot="public" virt="non-virtual">World</derivedcompoundref>
+    <includes refid="_game_object_8hpp" local="no">GameObject.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_game_object_1a59ac39111811a8fac5b1704490ef5564" prot="protected" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string GameObject::_name</definition>
+        <argsstring></argsstring>
+        <name>_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="72" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_object_1ae9da4708d15a581404a5a2a8bd24fbfe" prot="protected" static="no" mutable="no">
+        <type>glm::mat4</type>
+        <definition>glm::mat4 GameObject::_transform</definition>
+        <argsstring></argsstring>
+        <name>_transform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="73" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_object_1a8c7c7294ec4e640011a490e0ae5be0b4" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+        <definition>GameObject* GameObject::_parent</definition>
+        <argsstring></argsstring>
+        <name>_parent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="75" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_object_1a2282d6ca6ef3fa9ba075d8af3b106590" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_game_object" kindref="compound">GameObject</ref> * &gt;</type>
+        <definition>std::vector&lt;GameObject*&gt; GameObject::_children</definition>
+        <argsstring></argsstring>
+        <name>_children</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="76" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_object_1aff09bdb1373cb1e7e4d7591a074c5f6a" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_mesh" kindref="compound">Mesh</ref> *</type>
+        <definition>Mesh* GameObject::_mesh</definition>
+        <argsstring></argsstring>
+        <name>_mesh</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="78" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_object_1a546179bdc1b86e9d47b30a6cf6559f96" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_abstract_behaviour" kindref="compound">AbstractBehaviour</ref> *</type>
+        <definition>AbstractBehaviour* GameObject::_behaviour</definition>
+        <argsstring></argsstring>
+        <name>_behaviour</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="79" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_object_1a60ecd63910fcd2ec4aefae0f2bb15257" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_abstract_material" kindref="compound">AbstractMaterial</ref> *</type>
+        <definition>AbstractMaterial* GameObject::_material</definition>
+        <argsstring></argsstring>
+        <name>_material</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="80" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_game_object_1a9b0f75b50567252d44f54ade803901ad" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_world" kindref="compound">World</ref> *</type>
+        <definition>World* GameObject::_world</definition>
+        <argsstring></argsstring>
+        <name>_world</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="81" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_game_object_1acec36aa765c00f8cf7b4db721f4584b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GameObject::GameObject</definition>
+        <argsstring>(const std::string &amp;pName=nullptr, const glm::vec3 &amp;pPosition=glm::vec3(0.0f, 0.0f, 0.0f))</argsstring>
+        <name>GameObject</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pName</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>const glm::vec3 &amp;</type>
+          <declname>pPosition</declname>
+          <defval>glm::vec3(0.0f, 0.0f, 0.0f)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="19" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="5" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1ab82dfdb656f9051c0587e6593b2dda97" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>GameObject::~GameObject</definition>
+        <argsstring>()</argsstring>
+        <name>~GameObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="20" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="12" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a30a481c29dac54936d192c9ca65904a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::setName</definition>
+        <argsstring>(const std::string &amp;pName)</argsstring>
+        <name>setName</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="22" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="26" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a7b5b5ca6b3754cdfb175cd1938c77f10" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string GameObject::getName</definition>
+        <argsstring>() const</argsstring>
+        <name>getName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="23" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="31" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a428fa8f64a7d2e2d56e0d0d049d97570" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::setTransform</definition>
+        <argsstring>(const glm::mat4 &amp;pTransform)</argsstring>
+        <name>setTransform</name>
+        <param>
+          <type>const glm::mat4 &amp;</type>
+          <declname>pTransform</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="26" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="36" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a6ec03807a1610c3ba966ed32ca5fec38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const glm::mat4 &amp;</type>
+        <definition>const glm::mat4 &amp; GameObject::getTransform</definition>
+        <argsstring>() const</argsstring>
+        <name>getTransform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="27" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1ae1cfc4344ae84558b6bb072aac6ccb61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::setLocalPosition</definition>
+        <argsstring>(glm::vec3 pPosition)</argsstring>
+        <name>setLocalPosition</name>
+        <param>
+          <type>glm::vec3</type>
+          <declname>pPosition</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="30" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a07e8caeeff352d59e551a9fca554ed19" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::vec3</type>
+        <definition>glm::vec3 GameObject::getLocalPosition</definition>
+        <argsstring>() const</argsstring>
+        <name>getLocalPosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="31" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1aab9f94527bef86b7e4e22b9a1513d708" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::vec3</type>
+        <definition>glm::vec3 GameObject::getWorldPosition</definition>
+        <argsstring>() const</argsstring>
+        <name>getWorldPosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="34" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="142" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a375bf052182a8cd0cf1c22235ba2d1c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>glm::mat4</type>
+        <definition>glm::mat4 GameObject::getWorldTransform</definition>
+        <argsstring>() const</argsstring>
+        <name>getWorldTransform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="35" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="148" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a7a7a3a7456e1257f9b2be6745624ae56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::translate</definition>
+        <argsstring>(glm::vec3 pTranslation)</argsstring>
+        <name>translate</name>
+        <param>
+          <type>glm::vec3</type>
+          <declname>pTranslation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="38" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="156" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a2824a7e78edb801277979a71c0228fa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::rotate</definition>
+        <argsstring>(float pAngle, glm::vec3 pAxis)</argsstring>
+        <name>rotate</name>
+        <param>
+          <type>float</type>
+          <declname>pAngle</declname>
+        </param>
+        <param>
+          <type>glm::vec3</type>
+          <declname>pAxis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="39" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="166" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1ac66a302f73c2a4acd3663ec56df159fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::scale</definition>
+        <argsstring>(glm::vec3 pScale)</argsstring>
+        <name>scale</name>
+        <param>
+          <type>glm::vec3</type>
+          <declname>pScale</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="40" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="161" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a8d4949e95b1ad4d721ff38aef54af383" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::setMesh</definition>
+        <argsstring>(Mesh *pMesh)</argsstring>
+        <name>setMesh</name>
+        <param>
+          <type><ref refid="class_mesh" kindref="compound">Mesh</ref> *</type>
+          <declname>pMesh</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="43" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="66" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1ac2fbadb6ffac8604f1738c670215dd7c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_mesh" kindref="compound">Mesh</ref> *</type>
+        <definition>Mesh * GameObject::getMesh</definition>
+        <argsstring>() const</argsstring>
+        <name>getMesh</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="44" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="71" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a83827bb988a613b2cceb859b9286405c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::setMaterial</definition>
+        <argsstring>(AbstractMaterial *pMaterial)</argsstring>
+        <name>setMaterial</name>
+        <param>
+          <type><ref refid="class_abstract_material" kindref="compound">AbstractMaterial</ref> *</type>
+          <declname>pMaterial</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="47" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1addfb8efd835feb016e5dd9c4135b17c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_abstract_material" kindref="compound">AbstractMaterial</ref> *</type>
+        <definition>AbstractMaterial * GameObject::getMaterial</definition>
+        <argsstring>() const</argsstring>
+        <name>getMaterial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="48" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1ae86154a1b05408e4394e1cb7eea58c1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::setBehaviour</definition>
+        <argsstring>(AbstractBehaviour *pBehaviour)</argsstring>
+        <name>setBehaviour</name>
+        <param>
+          <type><ref refid="class_abstract_behaviour" kindref="compound">AbstractBehaviour</ref> *</type>
+          <declname>pBehaviour</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="51" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="76" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a7259948dfef630b15fb8164307551afc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_abstract_behaviour" kindref="compound">AbstractBehaviour</ref> *</type>
+        <definition>AbstractBehaviour * GameObject::getBehaviour</definition>
+        <argsstring>() const</argsstring>
+        <name>getBehaviour</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="52" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1ac4b054d1c38e0fb93a28e1c20cc848a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void GameObject::update</definition>
+        <argsstring>(float pStep)</argsstring>
+        <name>update</name>
+        <param>
+          <type>float</type>
+          <declname>pStep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="54" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="171" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a94c51049d9bf37188d02614dcac068cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::add</definition>
+        <argsstring>(GameObject *pChild)</argsstring>
+        <name>add</name>
+        <param>
+          <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+          <declname>pChild</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="61" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="127" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1ae135688942edd8f0d3c672f2264e73fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::remove</definition>
+        <argsstring>(GameObject *pChild)</argsstring>
+        <name>remove</name>
+        <param>
+          <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+          <declname>pChild</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="63" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="131" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1acfbea5ad99e0bff4f0141fb4469324ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::setParent</definition>
+        <argsstring>(GameObject *pGameObject)</argsstring>
+        <name>setParent</name>
+        <param>
+          <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+          <declname>pGameObject</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="65" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="87" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1af8f83d7dda12c0f5d4ec0853880499cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+        <definition>GameObject * GameObject::getParent</definition>
+        <argsstring>() const</argsstring>
+        <name>getParent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="66" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="135" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a2e1341a3aa30d9b1abe17d14cbc889d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int GameObject::getChildCount</definition>
+        <argsstring>() const</argsstring>
+        <name>getChildCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="68" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="191" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1ad5116d3539d73354b930f21fefbfaccc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+        <definition>GameObject * GameObject::getChildAt</definition>
+        <argsstring>(int pIndex) const</argsstring>
+        <name>getChildAt</name>
+        <param>
+          <type>int</type>
+          <declname>pIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="69" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="195" bodyend="197"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_game_object_1a04274bf8c08b32852f210ee679a8b2c1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::_innerAdd</definition>
+        <argsstring>(GameObject *pChild)</argsstring>
+        <name>_innerAdd</name>
+        <param>
+          <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+          <declname>pChild</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="84" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="121" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1ac2e6b6e1afd5245f42c5098416019bee" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GameObject::_innerRemove</definition>
+        <argsstring>(GameObject *pChild)</argsstring>
+        <name>_innerRemove</name>
+        <param>
+          <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+          <declname>pChild</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="85" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="111" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1aa5bed62bb5c172c129a7923874f1f28f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void GameObject::_setWorldRecursively</definition>
+        <argsstring>(World *pWorld)</argsstring>
+        <name>_setWorldRecursively</name>
+        <reimplementedby refid="class_light_1a2d6425577e725059abff937ae6aeda75">_setWorldRecursively</reimplementedby>
+        <param>
+          <type><ref refid="class_world" kindref="compound">World</ref> *</type>
+          <declname>pWorld</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="88" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.cpp" bodystart="183" bodyend="189"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_game_object_1a78837e97e5dc9ef01b8c76fa85ff486a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GameObject::GameObject</definition>
+        <argsstring>(const GameObject &amp;)</argsstring>
+        <name>GameObject</name>
+        <param>
+          <type>const <ref refid="class_game_object" kindref="compound">GameObject</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="91" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_game_object_1a895cf19d84086a20ed6ff2d6e9c4c362" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_game_object" kindref="compound">GameObject</ref> &amp;</type>
+        <definition>GameObject&amp; GameObject::operator=</definition>
+        <argsstring>(const GameObject &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="class_game_object" kindref="compound">GameObject</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="92" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A <ref refid="class_game_object" kindref="compound">GameObject</ref> wraps all data required to display an object, but knows nothing about OpenGL or rendering. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="42">
+        <label>World</label>
+        <link refid="class_world"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>Camera</label>
+        <link refid="class_camera"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>Light</label>
+        <link refid="class_light"/>
+        <childnode refid="39" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>GameObject</label>
+        <link refid="class_game_object"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="47">
+        <label>World</label>
+        <link refid="class_world"/>
+        <childnode refid="43" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>Mesh</label>
+        <link refid="class_mesh"/>
+      </node>
+      <node id="44">
+        <label>AbstractMaterial</label>
+        <link refid="class_abstract_material"/>
+      </node>
+      <node id="43">
+        <label>GameObject</label>
+        <link refid="class_game_object"/>
+        <childnode refid="43" relation="usage">
+          <edgelabel>_parent</edgelabel>
+        </childnode>
+        <childnode refid="44" relation="usage">
+          <edgelabel>_material</edgelabel>
+        </childnode>
+        <childnode refid="45" relation="usage">
+          <edgelabel>_behaviour</edgelabel>
+        </childnode>
+        <childnode refid="46" relation="usage">
+          <edgelabel>_mesh</edgelabel>
+        </childnode>
+        <childnode refid="47" relation="usage">
+          <edgelabel>_world</edgelabel>
+        </childnode>
+      </node>
+      <node id="45">
+        <label>AbstractBehaviour</label>
+        <link refid="class_abstract_behaviour"/>
+        <childnode refid="43" relation="usage">
+          <edgelabel>_owner</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" line="17" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/GameObject.hpp" bodystart="16" bodyend="93"/>
+    <listofallmembers>
+      <member refid="class_game_object_1a546179bdc1b86e9d47b30a6cf6559f96" prot="protected" virt="non-virtual"><scope>GameObject</scope><name>_behaviour</name></member>
+      <member refid="class_game_object_1a2282d6ca6ef3fa9ba075d8af3b106590" prot="protected" virt="non-virtual"><scope>GameObject</scope><name>_children</name></member>
+      <member refid="class_game_object_1a04274bf8c08b32852f210ee679a8b2c1" prot="protected" virt="non-virtual"><scope>GameObject</scope><name>_innerAdd</name></member>
+      <member refid="class_game_object_1ac2e6b6e1afd5245f42c5098416019bee" prot="protected" virt="non-virtual"><scope>GameObject</scope><name>_innerRemove</name></member>
+      <member refid="class_game_object_1a60ecd63910fcd2ec4aefae0f2bb15257" prot="protected" virt="non-virtual"><scope>GameObject</scope><name>_material</name></member>
+      <member refid="class_game_object_1aff09bdb1373cb1e7e4d7591a074c5f6a" prot="protected" virt="non-virtual"><scope>GameObject</scope><name>_mesh</name></member>
+      <member refid="class_game_object_1a59ac39111811a8fac5b1704490ef5564" prot="protected" virt="non-virtual"><scope>GameObject</scope><name>_name</name></member>
+      <member refid="class_game_object_1a8c7c7294ec4e640011a490e0ae5be0b4" prot="protected" virt="non-virtual"><scope>GameObject</scope><name>_parent</name></member>
+      <member refid="class_game_object_1aa5bed62bb5c172c129a7923874f1f28f" prot="protected" virt="virtual"><scope>GameObject</scope><name>_setWorldRecursively</name></member>
+      <member refid="class_game_object_1ae9da4708d15a581404a5a2a8bd24fbfe" prot="protected" virt="non-virtual"><scope>GameObject</scope><name>_transform</name></member>
+      <member refid="class_game_object_1a9b0f75b50567252d44f54ade803901ad" prot="protected" virt="non-virtual"><scope>GameObject</scope><name>_world</name></member>
+      <member refid="class_game_object_1a94c51049d9bf37188d02614dcac068cc" prot="public" virt="non-virtual"><scope>GameObject</scope><name>add</name></member>
+      <member refid="class_game_object_1acec36aa765c00f8cf7b4db721f4584b9" prot="public" virt="non-virtual"><scope>GameObject</scope><name>GameObject</name></member>
+      <member refid="class_game_object_1a78837e97e5dc9ef01b8c76fa85ff486a" prot="private" virt="non-virtual"><scope>GameObject</scope><name>GameObject</name></member>
+      <member refid="class_game_object_1a7259948dfef630b15fb8164307551afc" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getBehaviour</name></member>
+      <member refid="class_game_object_1ad5116d3539d73354b930f21fefbfaccc" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getChildAt</name></member>
+      <member refid="class_game_object_1a2e1341a3aa30d9b1abe17d14cbc889d8" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getChildCount</name></member>
+      <member refid="class_game_object_1a07e8caeeff352d59e551a9fca554ed19" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getLocalPosition</name></member>
+      <member refid="class_game_object_1addfb8efd835feb016e5dd9c4135b17c0" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getMaterial</name></member>
+      <member refid="class_game_object_1ac2fbadb6ffac8604f1738c670215dd7c" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getMesh</name></member>
+      <member refid="class_game_object_1a7b5b5ca6b3754cdfb175cd1938c77f10" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getName</name></member>
+      <member refid="class_game_object_1af8f83d7dda12c0f5d4ec0853880499cd" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getParent</name></member>
+      <member refid="class_game_object_1a6ec03807a1610c3ba966ed32ca5fec38" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getTransform</name></member>
+      <member refid="class_game_object_1aab9f94527bef86b7e4e22b9a1513d708" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getWorldPosition</name></member>
+      <member refid="class_game_object_1a375bf052182a8cd0cf1c22235ba2d1c5" prot="public" virt="non-virtual"><scope>GameObject</scope><name>getWorldTransform</name></member>
+      <member refid="class_game_object_1a895cf19d84086a20ed6ff2d6e9c4c362" prot="private" virt="non-virtual"><scope>GameObject</scope><name>operator=</name></member>
+      <member refid="class_game_object_1ae135688942edd8f0d3c672f2264e73fb" prot="public" virt="non-virtual"><scope>GameObject</scope><name>remove</name></member>
+      <member refid="class_game_object_1a2824a7e78edb801277979a71c0228fa1" prot="public" virt="non-virtual"><scope>GameObject</scope><name>rotate</name></member>
+      <member refid="class_game_object_1ac66a302f73c2a4acd3663ec56df159fd" prot="public" virt="non-virtual"><scope>GameObject</scope><name>scale</name></member>
+      <member refid="class_game_object_1ae86154a1b05408e4394e1cb7eea58c1d" prot="public" virt="non-virtual"><scope>GameObject</scope><name>setBehaviour</name></member>
+      <member refid="class_game_object_1ae1cfc4344ae84558b6bb072aac6ccb61" prot="public" virt="non-virtual"><scope>GameObject</scope><name>setLocalPosition</name></member>
+      <member refid="class_game_object_1a83827bb988a613b2cceb859b9286405c" prot="public" virt="non-virtual"><scope>GameObject</scope><name>setMaterial</name></member>
+      <member refid="class_game_object_1a8d4949e95b1ad4d721ff38aef54af383" prot="public" virt="non-virtual"><scope>GameObject</scope><name>setMesh</name></member>
+      <member refid="class_game_object_1a30a481c29dac54936d192c9ca65904a6" prot="public" virt="non-virtual"><scope>GameObject</scope><name>setName</name></member>
+      <member refid="class_game_object_1acfbea5ad99e0bff4f0141fb4469324ce" prot="public" virt="non-virtual"><scope>GameObject</scope><name>setParent</name></member>
+      <member refid="class_game_object_1a428fa8f64a7d2e2d56e0d0d049d97570" prot="public" virt="non-virtual"><scope>GameObject</scope><name>setTransform</name></member>
+      <member refid="class_game_object_1a7a7a3a7456e1257f9b2be6745624ae56" prot="public" virt="non-virtual"><scope>GameObject</scope><name>translate</name></member>
+      <member refid="class_game_object_1ac4b054d1c38e0fb93a28e1c20cc848a7" prot="public" virt="virtual"><scope>GameObject</scope><name>update</name></member>
+      <member refid="class_game_object_1ab82dfdb656f9051c0587e6593b2dda97" prot="public" virt="virtual"><scope>GameObject</scope><name>~GameObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

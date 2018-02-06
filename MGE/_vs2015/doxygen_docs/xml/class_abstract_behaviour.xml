@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="class_abstract_behaviour" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>AbstractBehaviour</compoundname>
+    <derivedcompoundref refid="class_keys_behaviour" prot="public" virt="non-virtual">KeysBehaviour</derivedcompoundref>
+    <derivedcompoundref refid="class_rotating_behaviour" prot="public" virt="non-virtual">RotatingBehaviour</derivedcompoundref>
+    <includes refid="_abstract_behaviour_8hpp" local="no">AbstractBehaviour.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_abstract_behaviour_1a6a878f46d571388ffcaf6715e3d60b91" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+        <definition>GameObject* AbstractBehaviour::_owner</definition>
+        <argsstring></argsstring>
+        <name>_owner</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.hpp" line="28" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_abstract_behaviour_1a9ecad19acc013ea668d5af4d17fe5835" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AbstractBehaviour::AbstractBehaviour</definition>
+        <argsstring>()</argsstring>
+        <name>AbstractBehaviour</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.hpp" line="17" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.cpp" bodystart="3" bodyend="3"/>
+      </memberdef>
+      <memberdef kind="function" id="class_abstract_behaviour_1a71958e78a5c6e50417ede60d78146bca" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type></type>
+        <definition>AbstractBehaviour::~AbstractBehaviour</definition>
+        <argsstring>()=0</argsstring>
+        <name>~AbstractBehaviour</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.hpp" line="18" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.cpp" bodystart="5" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="function" id="class_abstract_behaviour_1afb6ef666e43ccd115418e0cd8ea491aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void AbstractBehaviour::setOwner</definition>
+        <argsstring>(GameObject *pGameObject)</argsstring>
+        <name>setOwner</name>
+        <param>
+          <type><ref refid="class_game_object" kindref="compound">GameObject</ref> *</type>
+          <declname>pGameObject</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.hpp" line="21" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.cpp" bodystart="10" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="class_abstract_behaviour_1a934a06f3d639d1423dafc9ad710548ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void AbstractBehaviour::update</definition>
+        <argsstring>(float pStep)=0</argsstring>
+        <name>update</name>
+        <reimplementedby refid="class_rotating_behaviour_1ae27609a52d24319c3cc4dbde54cf9d4f">update</reimplementedby>
+        <reimplementedby refid="class_keys_behaviour_1ae31dd556db57a003cbc4fdfd3cdfdf12">update</reimplementedby>
+        <param>
+          <type>float</type>
+          <declname>pStep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.hpp" line="24" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_abstract_behaviour_1a3d8fa39f2e91f45933e0e0af3ba43baa" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AbstractBehaviour::AbstractBehaviour</definition>
+        <argsstring>(const AbstractBehaviour &amp;)</argsstring>
+        <name>AbstractBehaviour</name>
+        <param>
+          <type>const <ref refid="class_abstract_behaviour" kindref="compound">AbstractBehaviour</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.hpp" line="33" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_abstract_behaviour_1a192798e9c08dfcc360c6b94b104c2e63" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_abstract_behaviour" kindref="compound">AbstractBehaviour</ref> &amp;</type>
+        <definition>AbstractBehaviour&amp; AbstractBehaviour::operator=</definition>
+        <argsstring>(const AbstractBehaviour &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="class_abstract_behaviour" kindref="compound">AbstractBehaviour</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.hpp" line="34" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>An <ref refid="class_abstract_behaviour" kindref="compound">AbstractBehaviour</ref> allows you to attach reusable behaviours to GameObjects (steering, rotating, billboarding, etc). A behaviour is set on a <ref refid="class_game_object" kindref="compound">GameObject</ref>, which in turn passes in a reference to itself through the setOwner method. This way we can enforce that a Behaviour can never have an owner different from the object it has been attached to.</para><para>The concept is similar to MonoBehaviours in Unity. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>KeysBehaviour</label>
+        <link refid="class_keys_behaviour"/>
+        <childnode refid="0" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>RotatingBehaviour</label>
+        <link refid="class_rotating_behaviour"/>
+        <childnode refid="0" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="0">
+        <label>AbstractBehaviour</label>
+        <link refid="class_abstract_behaviour"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7">
+        <label>World</label>
+        <link refid="class_world"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Mesh</label>
+        <link refid="class_mesh"/>
+      </node>
+      <node id="5">
+        <label>AbstractMaterial</label>
+        <link refid="class_abstract_material"/>
+      </node>
+      <node id="4">
+        <label>GameObject</label>
+        <link refid="class_game_object"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_parent</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>_material</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>_behaviour</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>_mesh</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>_world</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractBehaviour</label>
+        <link refid="class_abstract_behaviour"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>_owner</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.hpp" line="14" column="1" bodyfile="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.hpp" bodystart="13" bodyend="36"/>
+    <listofallmembers>
+      <member refid="class_abstract_behaviour_1a6a878f46d571388ffcaf6715e3d60b91" prot="protected" virt="non-virtual"><scope>AbstractBehaviour</scope><name>_owner</name></member>
+      <member refid="class_abstract_behaviour_1a9ecad19acc013ea668d5af4d17fe5835" prot="public" virt="non-virtual"><scope>AbstractBehaviour</scope><name>AbstractBehaviour</name></member>
+      <member refid="class_abstract_behaviour_1a3d8fa39f2e91f45933e0e0af3ba43baa" prot="private" virt="non-virtual"><scope>AbstractBehaviour</scope><name>AbstractBehaviour</name></member>
+      <member refid="class_abstract_behaviour_1a192798e9c08dfcc360c6b94b104c2e63" prot="private" virt="non-virtual"><scope>AbstractBehaviour</scope><name>operator=</name></member>
+      <member refid="class_abstract_behaviour_1afb6ef666e43ccd115418e0cd8ea491aa" prot="public" virt="virtual"><scope>AbstractBehaviour</scope><name>setOwner</name></member>
+      <member refid="class_abstract_behaviour_1a934a06f3d639d1423dafc9ad710548ed" prot="public" virt="pure-virtual"><scope>AbstractBehaviour</scope><name>update</name></member>
+      <member refid="class_abstract_behaviour_1a71958e78a5c6e50417ede60d78146bca" prot="public" virt="pure-virtual"><scope>AbstractBehaviour</scope><name>~AbstractBehaviour</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

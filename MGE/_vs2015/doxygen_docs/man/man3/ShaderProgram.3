@@ -1,0 +1,80 @@
+.TH "ShaderProgram" 3 "Mon Jan 1 2018" "MGE" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ShaderProgram
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ShaderProgram\&.hpp>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBShaderProgram\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~ShaderProgram\fP ()"
+.br
+.ti -1c
+.RI "void \fBaddShader\fP (GLuint pShaderType, const std::string &pShaderPath)"
+.br
+.ti -1c
+.RI "void \fBfinalize\fP ()"
+.br
+.ti -1c
+.RI "void \fBuse\fP ()"
+.br
+.ti -1c
+.RI "GLuint \fBgetUniformLocation\fP (const std::string &pName)"
+.br
+.ti -1c
+.RI "GLuint \fBgetAttribLocation\fP (const std::string &pName)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Generic shader program to which you can add separate shaders\&. Nice exercise for the reader: make it possible to add shaders by passing in the code as a string instead of through a file\&.
+.PP
+Usage: -create shader program -add shaders -finalize shader program -use shader program
+.PP
+See the example material classes for a demo\&. 
+.PP
+Definition at line 20 of file ShaderProgram\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ShaderProgram::ShaderProgram ()"
+
+.PP
+Definition at line 5 of file ShaderProgram\&.cpp\&.
+.SS "ShaderProgram::~ShaderProgram ()\fC [virtual]\fP"
+
+.PP
+Definition at line 11 of file ShaderProgram\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ShaderProgram::addShader (GLuint pShaderType, const std::string & pShaderPath)"
+
+.PP
+Definition at line 13 of file ShaderProgram\&.cpp\&.
+.SS "void ShaderProgram::finalize ()"
+
+.PP
+Definition at line 65 of file ShaderProgram\&.cpp\&.
+.SS "GLuint ShaderProgram::getAttribLocation (const std::string & pName)"
+
+.PP
+Definition at line 98 of file ShaderProgram\&.cpp\&.
+.SS "GLuint ShaderProgram::getUniformLocation (const std::string & pName)"
+
+.PP
+Definition at line 94 of file ShaderProgram\&.cpp\&.
+.SS "void ShaderProgram::use ()"
+
+.PP
+Definition at line 102 of file ShaderProgram\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MGE from the source code\&.

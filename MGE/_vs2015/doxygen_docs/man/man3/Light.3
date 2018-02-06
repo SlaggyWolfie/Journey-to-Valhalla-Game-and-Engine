@@ -1,0 +1,53 @@
+.TH "Light" 3 "Mon Jan 1 2018" "MGE" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Light
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Light\&.hpp>\fP
+.PP
+Inherits \fBGameObject\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLight\fP (const std::string &aName=nullptr, const glm::vec3 &aPosition=glm::vec3(2\&.0f, 10\&.0f, 5\&.0f))"
+.br
+.ti -1c
+.RI "virtual \fB~Light\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fB_setWorldRecursively\fP (\fBWorld\fP *pWorld) override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Exercise for the student: implement the \fBLight\fP class\&.\&.\&. Imagine things like setLightType, setLightIntensity, setFalloffAngle etc, see the corresponding lectures 
+.PP
+Definition at line 11 of file Light\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Light::Light (const std::string & aName = \fCnullptr\fP, const glm::vec3 & aPosition = \fCglm::vec3( 2\&.0f, 10\&.0f, 5\&.0f )\fP)"
+
+.PP
+Definition at line 4 of file Light\&.cpp\&.
+.SS "Light::~Light ()\fC [virtual]\fP"
+
+.PP
+Definition at line 7 of file Light\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Light::_setWorldRecursively (\fBWorld\fP * pWorld)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBGameObject\fP\&.
+.PP
+Definition at line 12 of file Light\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MGE from the source code\&.

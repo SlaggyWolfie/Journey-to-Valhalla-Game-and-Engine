@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_abstract_behaviour_8cpp" kind="file" language="C++">
+    <compoundname>AbstractBehaviour.cpp</compoundname>
+    <includes refid="_abstract_behaviour_8hpp" local="yes">AbstractBehaviour.hpp</includes>
+    <incdepgraph>
+      <node id="39">
+        <label>AbstractBehaviour.hpp</label>
+        <link refid="_abstract_behaviour_8hpp"/>
+      </node>
+      <node id="38">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.cpp</label>
+        <link refid="_abstract_behaviour_8cpp"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="_abstract_behaviour_8hpp" kindref="compound">AbstractBehaviour.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3" refid="class_abstract_behaviour_1a9ecad19acc013ea668d5af4d17fe5835" refkind="member"><highlight class="normal"><ref refid="class_abstract_behaviour_1a9ecad19acc013ea668d5af4d17fe5835" kindref="member">AbstractBehaviour::AbstractBehaviour</ref>():_owner(nullptr)<sp/>{}</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="class_abstract_behaviour_1a71958e78a5c6e50417ede60d78146bca" refkind="member"><highlight class="normal"><ref refid="class_abstract_behaviour_1a71958e78a5c6e50417ede60d78146bca" kindref="member">AbstractBehaviour::~AbstractBehaviour</ref>()</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_abstract_behaviour_1a6a878f46d571388ffcaf6715e3d60b91" kindref="member">_owner</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="class_abstract_behaviour_1afb6ef666e43ccd115418e0cd8ea491aa" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_abstract_behaviour_1afb6ef666e43ccd115418e0cd8ea491aa" kindref="member">AbstractBehaviour::setOwner</ref><sp/>(<ref refid="class_game_object" kindref="compound">GameObject</ref>*<sp/>pOwner)<sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_abstract_behaviour_1a6a878f46d571388ffcaf6715e3d60b91" kindref="member">_owner</ref><sp/>=<sp/>pOwner;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/behaviours/AbstractBehaviour.cpp"/>
+  </compounddef>
+</doxygen>

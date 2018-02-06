@@ -1,0 +1,168 @@
+.TH "Mesh" 3 "Mon Jan 1 2018" "MGE" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Mesh
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <Mesh\&.hpp>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBFaceIndexTriplet\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBstreamToOpenGL\fP (GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib)"
+.br
+.ti -1c
+.RI "void \fBdrawDebugInfo\fP (const glm::mat4 &pModelMatrix, const glm::mat4 &pViewMatrix, const glm::mat4 &pProjectionMatrix)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBMesh\fP * \fBload\fP (std::string pFilename)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMesh\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~Mesh\fP ()"
+.br
+.ti -1c
+.RI "void \fB_buffer\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "GLuint \fB_indexBufferId\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_vertexBufferId\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_normalBufferId\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_uvBufferId\fP"
+.br
+.ti -1c
+.RI "std::vector< glm::vec3 > \fB_vertices\fP"
+.br
+.ti -1c
+.RI "std::vector< glm::vec3 > \fB_normals\fP"
+.br
+.ti -1c
+.RI "std::vector< glm::vec2 > \fB_uvs\fP"
+.br
+.ti -1c
+.RI "std::vector< unsigned > \fB_indices\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A mesh represents an \&.OBJ file\&. It knows how it is constructed, how its data should be buffered to OpenGL and how it should be streamed to OpenGL 
+.PP
+Definition at line 14 of file Mesh\&.hpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Mesh::Mesh ()\fC [protected]\fP"
+
+.PP
+Definition at line 8 of file Mesh\&.cpp\&.
+.SS "Mesh::~Mesh ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 13 of file Mesh\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Mesh::_buffer ()\fC [protected]\fP"
+
+.PP
+Definition at line 191 of file Mesh\&.cpp\&.
+.SS "void Mesh::drawDebugInfo (const glm::mat4 & pModelMatrix, const glm::mat4 & pViewMatrix, const glm::mat4 & pProjectionMatrix)"
+Draws debug info (normals) for the mesh using the given matrices) 
+.PP
+Definition at line 245 of file Mesh\&.cpp\&.
+.SS "\fBMesh\fP * Mesh::load (std::string pFilename)\fC [static]\fP"
+Loads a mesh from an \&.obj file\&. The file has to have: vertexes, uvs, normals and face indexes\&. See load source for more format information\&.
+.PP
+Load reads the obj data into a new mesh using C++ combined with c style coding\&. The result is an indexed mesh for use with glDrawElements\&. Expects a obj file with following layout v/vt/vn/f eg
+.PP
+For example the obj file for a simple plane describes two triangles, based on four vertices, with 4 uv's all having the same vertex normals (NOT FACE NORMALS!)
+.PP
+v 10\&.000000 0\&.000000 10\&.000000 //vertex 1 v -10\&.000000 0\&.000000 10\&.000000 //vertex 2 v 10\&.000000 0\&.000000 -10\&.000000 //vertex 3 v -10\&.000000 0\&.000000 -10\&.000000 //vertex 4 vt 0\&.000000 0\&.000000 //uv 1 vt 1\&.000000 0\&.000000 //uv 2 vt 1\&.000000 1\&.000000 //uv 3 vt 0\&.000000 1\&.000000 //uv 4 vn 0\&.000000 1\&.000000 -0\&.000000 //normal 1 (normal for each vertex is same) s off
+.PP
+Using these vertices, uvs and normals we can construct faces, made up of 3 triplets (vertex, uv, normal) f 2/1/1 1/2/1 3/3/1 //face 1 (triangle 1) f 4/4/1 2/1/1 3/3/1 //face 2 (triangle 2)
+.PP
+So although this is a good format for blender and other tools reading \&.obj files, this is not an index mechanism that OpenGL supports out of the box\&. The reason is that OpenGL supports only one indexbuffer, and the value at a certain point in the indexbuffer, eg 3 refers to all three other buffers (v, vt, vn) at once, eg if index[0] = 5, opengl will stream vertexBuffer[5], uvBuffer[5], normalBuffer[5] into the shader\&.
+.PP
+So what we have to do after reading the file with all vertices, is construct unique indexes for all pairs that are described by the faces in the object file, eg if you have f 2/1/1 1/2/1 3/3/1 //face 1 (triangle 1) f 4/4/1 2/1/1 3/3/1 //face 2 (triangle 2)
+.PP
+v/vt/vn[0] will represent 2/1/1 v/vt/vn[1] will represent 1/2/1 v/vt/vn[2] will represent 3/3/1 v/vt/vn[3] will represent 4/4/1
+.PP
+and that are all unique pairs, after which our index buffer can contain:
+.PP
+0,1,2,3,0,2
+.PP
+So the basic process is, read ALL data into separate arrays, then use the faces to create unique entries in a new set of arrays and create the indexbuffer to go along with it\&.
+.PP
+Note that loading this mesh isn't cached like we do with texturing, this is an exercise left for the students\&. 
+.PP
+Definition at line 66 of file Mesh\&.cpp\&.
+.SS "void Mesh::streamToOpenGL (GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib)"
+Streams the mesh to opengl using the given indexes for the different attributes 
+.PP
+Definition at line 212 of file Mesh\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "GLuint Mesh::_indexBufferId\fC [protected]\fP"
+
+.PP
+Definition at line 39 of file Mesh\&.hpp\&.
+.SS "std::vector<unsigned> Mesh::_indices\fC [protected]\fP"
+
+.PP
+Definition at line 50 of file Mesh\&.hpp\&.
+.SS "GLuint Mesh::_normalBufferId\fC [protected]\fP"
+
+.PP
+Definition at line 41 of file Mesh\&.hpp\&.
+.SS "std::vector<glm::vec3> Mesh::_normals\fC [protected]\fP"
+
+.PP
+Definition at line 46 of file Mesh\&.hpp\&.
+.SS "GLuint Mesh::_uvBufferId\fC [protected]\fP"
+
+.PP
+Definition at line 42 of file Mesh\&.hpp\&.
+.SS "std::vector<glm::vec2> Mesh::_uvs\fC [protected]\fP"
+
+.PP
+Definition at line 47 of file Mesh\&.hpp\&.
+.SS "GLuint Mesh::_vertexBufferId\fC [protected]\fP"
+
+.PP
+Definition at line 40 of file Mesh\&.hpp\&.
+.SS "std::vector<glm::vec3> Mesh::_vertices\fC [protected]\fP"
+
+.PP
+Definition at line 45 of file Mesh\&.hpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MGE from the source code\&.

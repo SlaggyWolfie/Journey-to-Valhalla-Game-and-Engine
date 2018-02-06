@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.14">
+  <compounddef id="_mesh_8hpp" kind="file" language="C++">
+    <compoundname>Mesh.hpp</compoundname>
+    <includes local="no">vector</includes>
+    <includes local="no">GL/glew.h</includes>
+    <includes refid="glm_8hpp" local="yes">glm.hpp</includes>
+    <includedby refid="_mesh_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.cpp</includedby>
+    <includedby refid="_renderer_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp</includedby>
+    <includedby refid="_color_material_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/ColorMaterial.cpp</includedby>
+    <includedby refid="_texture_material_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp</includedby>
+    <includedby refid="_m_g_e_demo_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp</includedby>
+    <includedby refid="_my_engine_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myEngine/MyEngine.cpp</includedby>
+    <includedby refid="_my_game_8cpp" local="yes">F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myGame/MyGame.cpp</includedby>
+    <incdepgraph>
+      <node id="230">
+        <label>iomanip</label>
+      </node>
+      <node id="227">
+        <label>GL/glew.h</label>
+      </node>
+      <node id="225">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp</label>
+        <link refid="_mesh_8hpp"/>
+        <childnode refid="226" relation="include">
+        </childnode>
+        <childnode refid="227" relation="include">
+        </childnode>
+        <childnode refid="228" relation="include">
+        </childnode>
+      </node>
+      <node id="228">
+        <label>glm.hpp</label>
+        <link refid="glm_8hpp"/>
+        <childnode refid="229" relation="include">
+        </childnode>
+        <childnode refid="230" relation="include">
+        </childnode>
+        <childnode refid="231" relation="include">
+        </childnode>
+        <childnode refid="232" relation="include">
+        </childnode>
+      </node>
+      <node id="226">
+        <label>vector</label>
+      </node>
+      <node id="232">
+        <label>glm/ext.hpp</label>
+      </node>
+      <node id="229">
+        <label>iostream</label>
+      </node>
+      <node id="231">
+        <label>glm/glm.hpp</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="234">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.cpp</label>
+        <link refid="_mesh_8cpp"/>
+      </node>
+      <node id="235">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Renderer.cpp</label>
+        <link refid="_renderer_8cpp"/>
+      </node>
+      <node id="239">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myEngine/MyEngine.cpp</label>
+        <link refid="_my_engine_8cpp"/>
+      </node>
+      <node id="236">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/ColorMaterial.cpp</label>
+        <link refid="_color_material_8cpp"/>
+      </node>
+      <node id="233">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp</label>
+        <link refid="_mesh_8hpp"/>
+        <childnode refid="234" relation="include">
+        </childnode>
+        <childnode refid="235" relation="include">
+        </childnode>
+        <childnode refid="236" relation="include">
+        </childnode>
+        <childnode refid="237" relation="include">
+        </childnode>
+        <childnode refid="238" relation="include">
+        </childnode>
+        <childnode refid="239" relation="include">
+        </childnode>
+        <childnode refid="240" relation="include">
+        </childnode>
+      </node>
+      <node id="237">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/materials/TextureMaterial.cpp</label>
+        <link refid="_texture_material_8cpp"/>
+      </node>
+      <node id="238">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/MGEDemo.cpp</label>
+        <link refid="_m_g_e_demo_8cpp"/>
+      </node>
+      <node id="240">
+        <label>F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/myGame/MyGame.cpp</label>
+        <link refid="_my_game_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_mesh" prot="public">Mesh</innerclass>
+    <innerclass refid="class_mesh_1_1_face_index_triplet" prot="protected">Mesh::FaceIndexTriplet</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>MESH_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MESH_HPP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;GL/glew.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="glm_8hpp" kindref="compound">glm.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_world" kindref="compound">World</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="class_mesh" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_mesh" kindref="compound">Mesh</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="class_mesh" kindref="compound">Mesh</ref>*<sp/><ref refid="class_mesh_1ae7542d6b5dae9e85a08a58757ea0f82b" kindref="member">load</ref>(std::string<sp/>pFilename);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_mesh_1a1acf9ac81862610a3d8079e3bde3cf65" kindref="member">streamToOpenGL</ref>(GLint<sp/>pVerticesAttrib,<sp/>GLint<sp/>pNormalsAttrib,<sp/>GLint<sp/>pUVsAttrib);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_mesh_1a043f6ee2923e5bd586316f6814a81658" kindref="member">drawDebugInfo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::mat4&amp;<sp/>pModelMatrix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::mat4&amp;<sp/>pViewMatrix,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>glm::mat4&amp;<sp/>pProjectionMatrix);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_mesh_1a2af137f1571af89172b9c102302c416b" kindref="member">Mesh</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="class_mesh_1a5efe4da1a4c0971cfb037bd70304c303" kindref="member">~Mesh</ref>();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//OpenGL<sp/>id&apos;s<sp/>for<sp/>the<sp/>different<sp/>buffers<sp/>created<sp/>for<sp/>this<sp/>mesh</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="class_mesh_1a7091e6ddc8932be2f8b51a3ad333ab48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="class_mesh_1a7091e6ddc8932be2f8b51a3ad333ab48" kindref="member">_indexBufferId</ref>;</highlight></codeline>
+<codeline lineno="40" refid="class_mesh_1a055e1169abbc0e751284ae684af7db18" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="class_mesh_1a055e1169abbc0e751284ae684af7db18" kindref="member">_vertexBufferId</ref>;</highlight></codeline>
+<codeline lineno="41" refid="class_mesh_1a5a54e3ae760a5d06fb45b764f1a8d379" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="class_mesh_1a5a54e3ae760a5d06fb45b764f1a8d379" kindref="member">_normalBufferId</ref>;</highlight></codeline>
+<codeline lineno="42" refid="class_mesh_1a59743f61ad778bf9c65d787adc2058eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GLuint<sp/><ref refid="class_mesh_1a59743f61ad778bf9c65d787adc2058eb" kindref="member">_uvBufferId</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//the<sp/>actual<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="class_mesh_1a997c9889bc01425242f2e823dbc898fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;glm::vec3&gt;<sp/><ref refid="class_mesh_1a997c9889bc01425242f2e823dbc898fa" kindref="member">_vertices</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//vec3<sp/>with<sp/>3d<sp/>coords<sp/>for<sp/>all<sp/>vertices</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="class_mesh_1af0b91b9348233093f225a766703b50a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;glm::vec3&gt;<sp/><ref refid="class_mesh_1af0b91b9348233093f225a766703b50a8" kindref="member">_normals</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//vec3<sp/>with<sp/>3d<sp/>normal<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="class_mesh_1a8554298c8cae614bef2c4e7ac27ca9e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;glm::vec2&gt;<sp/><ref refid="class_mesh_1a8554298c8cae614bef2c4e7ac27ca9e7" kindref="member">_uvs</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//vec2<sp/>for<sp/>uv</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//references<sp/>to<sp/>the<sp/>vertices/normals<sp/>&amp;<sp/>uvs<sp/>in<sp/>previous<sp/>vectors</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="class_mesh_1a7c3aadefd5a09b2036b0880c806878fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;unsigned&gt;<sp/><ref refid="class_mesh_1a7c3aadefd5a09b2036b0880c806878fe" kindref="member">_indices</ref>;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//buffer<sp/>vertices,<sp/>normals,<sp/>and<sp/>uv&apos;s</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_mesh_1a8e3538f6da6c5b01cb84caeae29fa413" kindref="member">_buffer</ref>();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Please<sp/>read<sp/>the<sp/>&quot;load&quot;<sp/>function<sp/>documentation<sp/>on<sp/>the<sp/>.obj<sp/>file<sp/>format<sp/>first.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//FaceVertexTriplet<sp/><sp/>is<sp/>a<sp/>helper<sp/>class<sp/>for<sp/>loading<sp/>and<sp/>converting<sp/>to<sp/>obj<sp/>file<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//indexed<sp/>arrays.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//If<sp/>we<sp/>list<sp/>all<sp/>the<sp/>unique<sp/>v/uv/vn<sp/>triplets<sp/>under<sp/>the<sp/>faces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//section<sp/>in<sp/>an<sp/>object<sp/>file<sp/>sequentially<sp/>and<sp/>assign<sp/>them<sp/>a<sp/>number</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//it<sp/>would<sp/>be<sp/>a<sp/>map<sp/>of<sp/>FaceVertexTriplet.<sp/>Each<sp/>FaceVertexTriplet<sp/>refers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//to<sp/>an<sp/>index<sp/>with<sp/>the<sp/>originally<sp/>loaded<sp/>vertex<sp/>list,<sp/>normal<sp/>list<sp/>and<sp/>uv<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//and<sp/>is<sp/>only<sp/>used<sp/>during<sp/>conversion<sp/>(unpacking)<sp/>of<sp/>the<sp/>facevertextriplet<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//to<sp/>a<sp/>format<sp/>that<sp/>OpenGL<sp/>can<sp/>handle.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//So<sp/>for<sp/>a<sp/>vertex<sp/>index<sp/>a<sp/>FaceVertexTriplet<sp/>contains<sp/>the<sp/>index<sp/>for<sp/>uv<sp/>and<sp/>n<sp/>as<sp/>well.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="class_mesh_1_1_face_index_triplet" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_mesh_1_1_face_index_triplet" kindref="compound">FaceIndexTriplet</ref><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="67" refid="class_mesh_1_1_face_index_triplet_1a434a10edc221474fc109efd674eac7da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="class_mesh_1_1_face_index_triplet_1a434a10edc221474fc109efd674eac7da" kindref="member">v</ref>;<sp/></highlight><highlight class="comment">//vertex</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="class_mesh_1_1_face_index_triplet_1a0a2294d16ca16f21534521d7535dbf43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="class_mesh_1_1_face_index_triplet_1a0a2294d16ca16f21534521d7535dbf43" kindref="member">uv</ref>;</highlight><highlight class="comment">//uv</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="class_mesh_1_1_face_index_triplet_1af0e49bb6b312c237249c03f8a3d4b4ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/><ref refid="class_mesh_1_1_face_index_triplet_1af0e49bb6b312c237249c03f8a3d4b4ee" kindref="member">n</ref>;<sp/></highlight><highlight class="comment">//normal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="class_mesh_1_1_face_index_triplet_1adace4602aac1412189cfe569a4cd8e1a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_mesh_1_1_face_index_triplet_1adace4602aac1412189cfe569a4cd8e1a" kindref="member">FaceIndexTriplet</ref>(<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>pV,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>pUV,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>pN<sp/>)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><sp/><sp/><ref refid="class_mesh_1_1_face_index_triplet_1a434a10edc221474fc109efd674eac7da" kindref="member">v</ref>(pV),<ref refid="class_mesh_1_1_face_index_triplet_1a0a2294d16ca16f21534521d7535dbf43" kindref="member">uv</ref>(pUV),<ref refid="class_mesh_1_1_face_index_triplet_1af0e49bb6b312c237249c03f8a3d4b4ee" kindref="member">n</ref>(pN)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//needed<sp/>for<sp/>use<sp/>as<sp/>key<sp/>in<sp/>map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="class_mesh_1_1_face_index_triplet_1a7811a16d62fc2893ff01c86b049d599d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_mesh_1_1_face_index_triplet_1a7811a16d62fc2893ff01c86b049d599d" kindref="member">operator&lt;</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_mesh_1_1_face_index_triplet" kindref="compound">FaceIndexTriplet</ref><sp/>other)</highlight><highlight class="keyword"><sp/>const</highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>memcmp((</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)&amp;other,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="class_mesh_1_1_face_index_triplet" kindref="compound">FaceIndexTriplet</ref>))&gt;0;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>MESH_HPP</highlight></codeline>
+    </programlisting>
+    <location file="F:/Uni/2.2/3D Rendering/mge_v18_student_version(3)/mge_v18_student_version/src/mge/core/Mesh.hpp"/>
+  </compounddef>
+</doxygen>
