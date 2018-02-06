@@ -5,8 +5,11 @@
 #include <iomanip>
 
 #define GLM_FORCE_RADIANS
-#include <glm.hpp>
-#include <glm/ext.hpp>
+//#include <glm/glm.hpp>
+//#include <glm/ext.hpp>
+//#include <glm>
+#include "..\..\externals\glew_sfml_glm\include\glm\glm.hpp"
+#include "..\..\externals\glew_sfml_glm\include\glm\ext.hpp"
 
 /* the functions:
  * std::ostream & operator << ( std::ostream & out, glm::vec3 v );

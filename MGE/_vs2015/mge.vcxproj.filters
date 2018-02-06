@@ -43,9 +43,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\glm.hpp">
-      <Filter>MGE Source files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp">
       <Filter>MGE Source files\mge\behaviours</Filter>
     </ClInclude>
@@ -174,6 +171,9 @@
     </ClInclude>
     <ClInclude Include="..\src\myGame\Other\MeshGeneration.hpp">
       <Filter>MGE Source files\MyGame\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\glm.hpp">
+      <Filter>MGE Source files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
