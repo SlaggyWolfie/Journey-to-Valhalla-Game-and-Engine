@@ -30,7 +30,7 @@ dlldata.c
 
 # Build results
 *ic_[Bb]uild/
-*ic_[Ee]xe/
+*static_[Ee]xe/
 
 # DNX
 project.lock.json
