@@ -29,8 +29,8 @@ TestResult.xml
 dlldata.c
 
 # Build results
-debug_dynamic_build/
-debug_static_build/
+*ic_[Bb]uild/
+*ic_[Ee]xe/
 
 # DNX
 project.lock.json
