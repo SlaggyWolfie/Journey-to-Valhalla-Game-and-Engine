@@ -43,6 +43,12 @@ namespace Engine
 		template <typename T>
 		T* getComponent();
 
+		template <typename T>
+		T** getComponents();
+
+		template <typename T>
+		std::vector<T*> getComponents();
+
 	private:
 		std::string _name;
 		std::string _tag;

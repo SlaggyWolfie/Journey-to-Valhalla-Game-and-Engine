@@ -48,6 +48,40 @@ namespace Engine
 	}
 
 	template <typename T>
+	T** GameObject_::getComponents()
+	{
+		std::vector<T*> components = getComponents<T>();
+		const int size = static_cast<unsigned int>(components.size());
+		T** componentArray = new T*[size];
+		std::copy(components.begin(), components.end(), componentArray);
+
+		return componentArray;
+	}
+
+	template <typename T>
+	std::vector<T*> GameObject_::getComponents()
+	{
+		//Confirm that type T is a component
+		if (!std::is_base_of<Engine::Component, T>())
+		{
+			std::cout << std::string("Type T is not of type Component in getComponent<T>!") << std::endl;
+			return nullptr;
+		}
+
+		std::vector<T*> components = new std::vector<T*>();
+
+		//Search for a component that can be cast to T
+		for (int i = 0; i < _components.size(); i++)
+		{
+			if (dynamic_cast<T>(_components[i].get()) != nullptr)
+				components.push_back(_components[i].get());
+		}
+
+		//Return null if we can't find anything
+		return components;
+	}
+
+	template <typename T>
 	void GameObject_::addComponent()
 	{
 		//Confirm that type T is a component
