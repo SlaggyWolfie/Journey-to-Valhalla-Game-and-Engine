@@ -210,6 +210,10 @@
     <ClInclude Include="..\src\myGame\Scenes\SeventhScene.hpp" />
     <ClInclude Include="..\src\myGame\Scenes\SixthScene.hpp" />
     <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp" />
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="GameObject_.hpp" />
+    <ClInclude Include="Object.hpp" />
+    <ClInclude Include="Transform.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
@@ -253,6 +257,9 @@
     <ClCompile Include="..\src\myGame\Scenes\SeventhScene.cpp" />
     <ClCompile Include="..\src\myGame\Scenes\SixthScene.cpp" />
     <ClCompile Include="..\src\myGame\Scenes\ThirdScene.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="GameObject_.cpp" />
+    <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

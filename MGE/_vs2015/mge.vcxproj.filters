@@ -41,6 +41,12 @@
     <Filter Include="MGE Source files\MyGame\Other">
       <UniqueIdentifier>{8660e865-109a-4aa4-a2e5-87b6c75ca884}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{e571750a-5a7a-45e2-ac9c-b26a0ff4700e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Core">
+      <UniqueIdentifier>{b36f1e4d-6538-4817-b773-ecc43ecdfcb7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp">
@@ -173,13 +179,22 @@
       <Filter>MGE Source files\MyGame\Other</Filter>
     </ClInclude>
     <ClInclude Include="..\src\glm.hpp">
-      <Filter>MGE Source files</Filter>
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.hpp">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.hpp">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.hpp">
+      <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject_.hpp">
+      <Filter>Engine\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\main.cpp">
-      <Filter>MGE Source files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp">
       <Filter>MGE Source files\mge\behaviours</Filter>
     </ClCompile>
@@ -299,6 +314,18 @@
     </ClCompile>
     <ClCompile Include="..\src\myGame\Other\MeshGeneration.cpp">
       <Filter>MGE Source files\MyGame\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject_.cpp">
+      <Filter>Engine\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
