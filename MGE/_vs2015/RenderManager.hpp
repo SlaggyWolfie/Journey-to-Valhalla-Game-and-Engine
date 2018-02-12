@@ -10,6 +10,7 @@ namespace Engine
 	{
 		class Manager;
 		class Renderer;
+		class LightManager;
 
 		class RenderManager// : public Manager
 		{
@@ -22,6 +23,7 @@ namespace Engine
 		private:
 			void render(float deltaTime);
 			std::vector<Renderer*> _renderers;
+			LightManager* _lightManager;
 		};
 	}
 }

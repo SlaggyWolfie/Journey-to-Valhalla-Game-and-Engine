@@ -208,7 +208,8 @@
     <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="GameObject_.hpp" />
-    <ClInclude Include="General.hpp" />
+    <ClInclude Include="GeneralHelpers.hpp" />
+    <ClInclude Include="Material.hpp" />
     <ClInclude Include="Object.hpp" />
     <ClInclude Include="Renderer.hpp" />
     <ClInclude Include="RenderManager.hpp" />
@@ -258,6 +259,7 @@
     <ClCompile Include="..\src\myGame\Scenes\ThirdScene.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject_.cpp" />
+    <ClCompile Include="GeneralHelpers.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -205,8 +205,11 @@
     <ClInclude Include="Renderer.hpp">
       <Filter>Engine\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="General.hpp">
+    <ClInclude Include="GeneralHelpers.hpp">
       <Filter>Engine\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.hpp">
+      <Filter>Engine\Rendering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -341,6 +344,9 @@
     </ClCompile>
     <ClCompile Include="GameObject_.cpp">
       <Filter>Engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneralHelpers.cpp">
+      <Filter>Engine\Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
