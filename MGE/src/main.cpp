@@ -34,16 +34,6 @@ int main()
 {
     std::cout << "Starting Game" << std::endl;
 
-	//AbstractGame* game = new /*demo::*/MGEDemo();
-	//AbstractGame* game = new MyGame::FirstScene();
-
-	//AbstractGame* game = new MyGame::SecondScene();
-	//AbstractGame* game = new MyGame::ThirdScene();
-	//AbstractGame* game = new MyGame::FourthScene();
-	//AbstractGame* game = new MyGame::FifthScene();
-	//AbstractGame* game = new MyGame::SixthScene();
-	//AbstractGame* game = new MyGame::SeventhScene();
-	//AbstractGame* game = new MyGame::EighthScene();
 	AbstractGame* game = new MyGame::NinthScene();
     game->initialize();
     game->run();
@@ -52,6 +42,3 @@ int main()
 
     return 0;
 }
-
-
-

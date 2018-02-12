@@ -9,55 +9,66 @@
 
 namespace Engine
 {
-	class Component;
-	class Transform;
-
-	class GameObject_ : Object
+	namespace Core
 	{
-	public:
-		GameObject_(
-			std::string name = nullptr,
-			std::string tag = nullptr,
-			const glm::vec3& position = glm::vec3(0.0f, 0.0f, 0.0f));
-		virtual ~GameObject_();
+		class Component;
+		class Transform;
 
-		GameObject_(const GameObject_& other);
-		GameObject_& operator= (const GameObject_& other);
+		class GameObject_ : Object
+		{
+		public:
+			GameObject_(
+				std::string name = nullptr,
+				std::string tag = nullptr,
+				const glm::vec3& position = glm::vec3(0.0f, 0.0f, 0.0f));
+			virtual ~GameObject_();
 
-		void setName(const std::string& name);
-		std::string getName() const;
+			GameObject_(const GameObject_& other);
+			GameObject_& operator= (const GameObject_& other);
 
-		void setTag(const std::string& tag);
-		std::string getTag() const;
+			void destroy();
 
-		//contains rotation, scale, position
-		Transform* getTransform() const;
+			void setName(const std::string& name);
+			std::string getName() const;
 
-		bool isStatic() const;
-		bool setStatic(bool isStatic = true);
+			void setTag(const std::string& tag);
+			std::string getTag() const;
 
-		template <typename T>
-		void addComponent();
-		template <typename T>
-		void removeComponent();
-		template <typename T>
-		T* getComponent();
+			//contains rotation, scale, position
+			Transform* getTransform() const;
 
-		template <typename T>
-		T** getComponents();
+			bool isStatic() const;
+			bool setStatic(bool isStatic = false);
 
-		template <typename T>
-		std::vector<T*> getComponents();
+			bool isActive() const;
+			bool setActive(bool isActive = true);
 
-	private:
-		std::string _name;
-		std::string _tag;
-		std::unique_ptr<Transform> _transform;
+			template <typename T>
+			void addComponent();
+			template <typename T>
+			void removeComponent();
 
-		bool _isStatic;
+			void addComponent(Component* component);
+			void removeComponent(Component* component);
 
-		std::vector<std::unique_ptr<Component>> _components;
-	};
+			template <typename T>
+			T* getComponent();
+			template <typename T>
+			T** getComponents();
+			template <typename T>
+			std::vector<T*> getComponents();
+
+		private:
+			std::string _name;
+			std::string _tag;
+			std::unique_ptr<Transform> _transform;
+
+			bool _isStatic;
+			bool _isActive;
+
+			std::vector<std::unique_ptr<Component>> _components;
+		};
+	}
 }
 
 #endif //GAME_OBJECT_HPP

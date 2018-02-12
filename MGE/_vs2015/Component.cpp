@@ -1,36 +1,45 @@
 #include "Component.hpp"
+#include "GameObject_.hpp"
 
 namespace Engine
 {
-	GameObject_* Component::getGameObject() const
+	namespace Core
 	{
-		return _gameObject;
-	}
+		GameObject_* Component::getGameObject() const
+		{
+			return _gameObject;
+		}
 
-	Component::Component() :_gameObject(nullptr)
-	{
-	}
+		Component::Component() :_gameObject(nullptr)
+		{
+		}
 
-	Component::~Component()
-		= default;
+		Component::~Component()
+			= default;
 
-	Component::Component(const Component& other) : _gameObject(other._gameObject)
-	{
-	}
+		Component::Component(const Component& other) : _gameObject(other._gameObject)
+		{
+		}
 
-	Component& Component::operator=(const Component& other)
-	{
-		_gameObject = other._gameObject;
-		return *this;
-	}
+		Component& Component::operator=(const Component& other)
+		{
+			_gameObject = other._gameObject;
+			return *this;
+		}
 
-	void Component::setGameObject(GameObject_* gameObject)
-	{
-		_gameObject = gameObject;
-	}
+		void Component::destroy()
+		{
+			_gameObject->removeComponent(this);
+		}
 
-	bool Component::isUniquePerGameObject()
-	{
-		return true;
+		void Component::setGameObject(GameObject_* gameObject)
+		{
+			_gameObject = gameObject;
+		}
+
+		bool Component::isUniquePerGameObject()
+		{
+			return true;
+		}
 	}
 }

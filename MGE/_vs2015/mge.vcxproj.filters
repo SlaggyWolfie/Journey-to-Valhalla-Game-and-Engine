@@ -47,6 +47,12 @@
     <Filter Include="Engine\Core">
       <UniqueIdentifier>{b36f1e4d-6538-4817-b773-ecc43ecdfcb7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Rendering">
+      <UniqueIdentifier>{51641341-4a42-45b2-9e5f-25f17913d2f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Helpers">
+      <UniqueIdentifier>{8e9701af-978a-49e8-8ec2-7efcff4a8656}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp">
@@ -192,6 +198,15 @@
     </ClInclude>
     <ClInclude Include="GameObject_.hpp">
       <Filter>Engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.hpp">
+      <Filter>Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.hpp">
+      <Filter>Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="General.hpp">
+      <Filter>Engine\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
