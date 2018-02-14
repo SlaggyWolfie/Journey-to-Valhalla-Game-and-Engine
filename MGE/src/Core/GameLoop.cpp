@@ -89,6 +89,10 @@ void GameLoop::fixedUpdate()
 
 }
 
+void GameLoop::lateUpdate()
+{
+}
+
 
 void GameLoop::_update(float pStep) {
 	/*or (int i = _gameobjectupdatelist.size(); i>0; i--)
