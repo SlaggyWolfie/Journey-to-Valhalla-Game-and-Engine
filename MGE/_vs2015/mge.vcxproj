@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\Core\Deserealizer.hpp" />
     <ClInclude Include="..\src\Core\Game.hpp" />
     <ClInclude Include="..\src\Core\GameLoop.hpp" />
     <ClInclude Include="..\src\glm.hpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="Transform.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Core\Deserealizer.cpp" />
     <ClCompile Include="..\src\Core\Game.cpp" />
     <ClCompile Include="..\src\Core\GameLoop.cpp" />
     <ClCompile Include="..\src\main.cpp" />
