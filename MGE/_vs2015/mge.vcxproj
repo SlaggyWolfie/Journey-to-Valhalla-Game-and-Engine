@@ -162,6 +162,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\Core\Game.hpp" />
+    <ClInclude Include="..\src\Core\GameLoop.hpp" />
     <ClInclude Include="..\src\glm.hpp" />
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
@@ -216,6 +218,8 @@
     <ClInclude Include="Transform.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Core\Game.cpp" />
+    <ClCompile Include="..\src\Core\GameLoop.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp" />

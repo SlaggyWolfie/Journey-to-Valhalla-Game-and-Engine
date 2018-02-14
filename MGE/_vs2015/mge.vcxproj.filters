@@ -41,6 +41,10 @@
     <Filter Include="MGE Source files\MyGame\Other">
       <UniqueIdentifier>{8660e865-109a-4aa4-a2e5-87b6c75ca884}</UniqueIdentifier>
     </Filter>
+<<<<<<< HEAD
+    <Filter Include="Core">
+      <UniqueIdentifier>{9ead657a-1bd7-48d4-a6fc-1c5270e7ac08}</UniqueIdentifier>
+=======
     <Filter Include="Engine">
       <UniqueIdentifier>{e571750a-5a7a-45e2-ac9c-b26a0ff4700e}</UniqueIdentifier>
     </Filter>
@@ -52,6 +56,7 @@
     </Filter>
     <Filter Include="Engine\Helpers">
       <UniqueIdentifier>{8e9701af-978a-49e8-8ec2-7efcff4a8656}</UniqueIdentifier>
+>>>>>>> aa498bde61fb01da19bb7d1b69fc975a356e5e16
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +216,12 @@
     <ClInclude Include="Material.hpp">
       <Filter>Engine\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Core\GameLoop.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\Game.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp">
@@ -333,6 +344,13 @@
     <ClCompile Include="..\src\myGame\Other\MeshGeneration.cpp">
       <Filter>MGE Source files\MyGame\Other</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="..\src\Core\GameLoop.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Game.cpp">
+      <Filter>Core</Filter>
+=======
     <ClCompile Include="..\src\main.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
@@ -347,6 +365,7 @@
     </ClCompile>
     <ClCompile Include="GeneralHelpers.cpp">
       <Filter>Engine\Helpers</Filter>
+>>>>>>> aa498bde61fb01da19bb7d1b69fc975a356e5e16
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
