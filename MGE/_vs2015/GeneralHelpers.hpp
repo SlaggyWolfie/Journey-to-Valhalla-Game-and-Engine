@@ -9,8 +9,9 @@ namespace Engine
 	class Random
 	{
 	public:
-		static float range(float min = 0, float max = 1, int decimalAccuracy = 6);
-		static int range(int min = 0, int max = 2);
+		static float range(float min, float max, int decimalAccuracy = 6);
+		static int range(int min, int max);
+		static float value();
 	private:
 		static void setup();
 		static bool _setup;

@@ -12,14 +12,15 @@ namespace Engine
 		if (_setup) setup();
 
 		while (std::pow(10, decimalAccuracy) >= RAND_MAX) decimalAccuracy /= 2;
+		const float decimal = std::pow(10, decimalAccuracy);
 
-		if (fabs(max - min) <= 1 / std::pow(10, decimalAccuracy))
+		if (fabs(max - min) <= 1 / decimal)
 		{
 			std::cout << "Random Range Max and Min shouldn't be the same (or they're too close as float values)." << std::endl;
 			return 0;
 		}
 
-		return fmod(rand() / std::pow(10, decimalAccuracy), max - min) + min;
+		return fmod(rand() / decimal, max - min) + min;
 	}
 
 	int Random::range(const int min, const int max)
@@ -33,6 +34,11 @@ namespace Engine
 		}
 
 		return rand() % (max - min) + min;
+	}
+
+	float Random::value()
+	{
+		return range(0.0f, 1.0f);
 	}
 
 	void Random::setup()
