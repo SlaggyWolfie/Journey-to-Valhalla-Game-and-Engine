@@ -96,8 +96,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Dynamic|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -111,8 +110,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -127,8 +125,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Dynamic|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -146,8 +143,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Static|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -212,6 +208,14 @@
     <ClInclude Include="..\src\myGame\Scenes\SeventhScene.hpp" />
     <ClInclude Include="..\src\myGame\Scenes\SixthScene.hpp" />
     <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp" />
+    <ClInclude Include="Component.hpp" />
+    <ClInclude Include="GameObject_.hpp" />
+    <ClInclude Include="GeneralHelpers.hpp" />
+    <ClInclude Include="Material.hpp" />
+    <ClInclude Include="Object.hpp" />
+    <ClInclude Include="Renderer.hpp" />
+    <ClInclude Include="RenderManager.hpp" />
+    <ClInclude Include="Transform.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Core\Game.cpp" />
@@ -257,6 +261,10 @@
     <ClCompile Include="..\src\myGame\Scenes\SeventhScene.cpp" />
     <ClCompile Include="..\src\myGame\Scenes\SixthScene.cpp" />
     <ClCompile Include="..\src\myGame\Scenes\ThirdScene.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="GameObject_.cpp" />
+    <ClCompile Include="GeneralHelpers.cpp" />
+    <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
