@@ -51,10 +51,15 @@ namespace Engine
 				while (lag > Utility::Time::fixedDeltaTime())
 				{
 					lag -= Utility::Time::fixedDeltaTime();
-					_fixedUpdate->execute(/*timePerFrame.asSeconds()*/);
+					//physics update
+					//_collisionManager->execute();
+					//_physicsManager->execute();
+					_fixedUpdate->execute();
 				}
 
-				_update->execute(/*timePerFrame.asSeconds()*/);
+				//_animationManager->execute();
+
+				_update->execute();
 				_lateUpdate->execute();
 
 				//0 doesn't matter for now
