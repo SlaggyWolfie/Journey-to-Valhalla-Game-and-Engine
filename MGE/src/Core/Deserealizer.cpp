@@ -77,9 +77,5 @@ void ConstructGameObj()
 		objList.push_back(gameObj);
 	}
 
-	for (int i = 0; i < objList.size; i++)
-	{
-
-	}
 
 }
