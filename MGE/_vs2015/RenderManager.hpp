@@ -2,7 +2,7 @@
 #ifndef RENDER_MANAGER_HPP
 #define RENDER_MANAGER_HPP
 
-#include <vector>
+#include <memory>
 #include "Manager.hpp"
 #include <SFML/System/Clock.hpp>
 #include "FunctionGroup.hpp"

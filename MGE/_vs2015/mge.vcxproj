@@ -162,7 +162,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Event.h" />
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
     <ClInclude Include="..\src\Core\Game.hpp" />
     <ClInclude Include="..\src\Core\GameLoop.hpp" />

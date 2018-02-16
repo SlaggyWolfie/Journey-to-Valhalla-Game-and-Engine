@@ -7,6 +7,7 @@
 
 //#include "RenderManager.hpp"
 #include "../_vs2015/RenderManager.hpp"
+#include "../_vs2015/ServiceLocator.hpp"
 
 namespace Engine
 {
@@ -96,7 +97,7 @@ namespace Engine
 		_renderManager = new Engine::Rendering::RenderManager();
 
 		//Register
-		Engine::ServiceLocator::instance()->addService(static_cast<Service*>(_renderManager));
+		Engine::ServiceLocator::instance()->addService(_renderManager);
 	}
 
 	void Game::initializeScene() const

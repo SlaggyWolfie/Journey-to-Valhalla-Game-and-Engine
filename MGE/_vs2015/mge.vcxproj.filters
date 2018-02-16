@@ -1,51 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\src\Core\Deserealizer.cpp" />
-    <ClCompile Include="..\src\Core\Game.cpp" />
-    <ClCompile Include="..\src\Core\GameLoop.cpp" />
     <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp" />
-    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
-    <ClCompile Include="..\src\mge\core\GameObject.cpp" />
-    <ClCompile Include="..\src\mge\core\Light.cpp" />
-    <ClCompile Include="..\src\mge\core\Mesh.cpp" />
-    <ClCompile Include="..\src\mge\core\Renderer.cpp" />
-    <ClCompile Include="..\src\mge\core\ShaderProgram.cpp" />
-    <ClCompile Include="..\src\mge\core\Texture.cpp" />
-    <ClCompile Include="..\src\mge\core\World.cpp" />
-    <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
-    <ClCompile Include="..\src\mge\MGEDemo.cpp" />
-    <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
-    <ClCompile Include="..\src\myEngine\Light\OldLight.cpp" />
-    <ClCompile Include="..\src\myEngine\SystemEvent.cpp" />
-    <ClCompile Include="..\src\myEngine\SystemEventDispatcher.cpp" />
-    <ClCompile Include="..\src\myEngine\SystemEventListener.cpp" />
-    <ClCompile Include="..\src\myGame\Behaviours\ElevationBehaviour.cpp" />
-    <ClCompile Include="..\src\myGame\Materials\FrankenMaterial.cpp" />
-    <ClCompile Include="..\src\myGame\Materials\LitMaterial.cpp" />
-    <ClCompile Include="..\src\myGame\Materials\LitTerrainMaterial.cpp" />
-    <ClCompile Include="..\src\myGame\Materials\LitTextureMaterial.cpp" />
-    <ClCompile Include="..\src\myGame\Materials\WaterMaterial.cpp" />
-    <ClCompile Include="..\src\myGame\Materials\WobbleMaterial.cpp" />
-    <ClCompile Include="..\src\myGame\Other\MeshGeneration.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\EighthScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\FifthScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\FourthScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\MyScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\MySceneSP.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\NinthScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\SecondScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\SeventhScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\SixthScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\ThirdScene.cpp" />
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="GameObject_.cpp" />
-    <ClCompile Include="GeneralHelpers.cpp" />
-    <ClCompile Include="RenderManager.cpp" />
-    <ClCompile Include="ServiceLocator.cpp" />
-    <ClCompile Include="Time.cpp" />
-    <ClCompile Include="Transform.cpp" />
     <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp">
       <Filter>old\mge</Filter>
     </ClCompile>
@@ -64,64 +20,141 @@
     <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp">
       <Filter>old\mge</Filter>
     </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\util\DebugHud.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Scenes\EighthScene.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Behaviours\ElevationBehaviour.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Deserealizer.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Scenes\FifthScene.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Scenes\FourthScene.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Materials\FrankenMaterial.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Game.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\GameLoop.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\GameObject.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject_.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneralHelpers.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\Light.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Materials\LitMaterial.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Materials\LitTerrainMaterial.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Materials\LitTextureMaterial.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Other\MeshGeneration.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\MGEDemo.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Scenes\MyScene.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Scenes\MySceneSP.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Scenes\NinthScene.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myEngine\Light\OldLight.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\Renderer.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceLocator.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\ShaderProgram.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myEngine\SystemEvent.cpp">
+      <Filter>old\myengine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myEngine\SystemEventDispatcher.cpp">
+      <Filter>old\myengine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myEngine\SystemEventListener.cpp">
+      <Filter>old\myengine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\Mesh.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Scenes\SecondScene.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Scenes\SeventhScene.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Scenes\SixthScene.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Materials\WobbleMaterial.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Materials\WaterMaterial.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\myGame\Scenes\ThirdScene.cpp">
+      <Filter>old\mygame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\Texture.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\World.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp">
+      <Filter>old\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Event.h" />
-    <ClInclude Include="..\src\Core\Deserealizer.hpp" />
-    <ClInclude Include="..\src\Core\Game.hpp" />
-    <ClInclude Include="..\src\Core\GameLoop.hpp" />
     <ClInclude Include="..\src\glm.hpp" />
-    <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
-    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
-    <ClInclude Include="..\src\mge\config.hpp" />
-    <ClInclude Include="..\src\mge\core\GameObject.hpp" />
-    <ClInclude Include="..\src\mge\core\Light.hpp" />
-    <ClInclude Include="..\src\mge\core\Mesh.hpp" />
-    <ClInclude Include="..\src\mge\core\Renderer.hpp" />
-    <ClInclude Include="..\src\mge\core\ShaderProgram.hpp" />
-    <ClInclude Include="..\src\mge\core\Texture.hpp" />
-    <ClInclude Include="..\src\mge\core\World.hpp" />
-    <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
-    <ClInclude Include="..\src\mge\MGEDemo.hpp" />
-    <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
-    <ClInclude Include="..\src\myEngine\Light\OldLight.hpp" />
-    <ClInclude Include="..\src\myEngine\MyEngineConfig.hpp" />
-    <ClInclude Include="..\src\myEngine\SystemEvent.hpp" />
-    <ClInclude Include="..\src\myEngine\SystemEventDispatcher.hpp" />
-    <ClInclude Include="..\src\myEngine\SystemEventListener.hpp" />
-    <ClInclude Include="..\src\myGame\Behaviours\ElevationBehaviour.hpp" />
-    <ClInclude Include="..\src\myGame\Materials\FrankenMaterial.hpp" />
-    <ClInclude Include="..\src\myGame\Materials\LitMaterial.hpp" />
-    <ClInclude Include="..\src\myGame\Materials\LitTerrainMaterial.hpp" />
-    <ClInclude Include="..\src\myGame\Materials\LitTextureMaterial.hpp" />
-    <ClInclude Include="..\src\myGame\Materials\WaterMaterial.hpp" />
-    <ClInclude Include="..\src\myGame\Materials\WobbleMaterial.hpp" />
-    <ClInclude Include="..\src\myGame\MyGameConfig.hpp" />
-    <ClInclude Include="..\src\myGame\Other\MeshGeneration.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\EighthScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\FifthScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\FourthScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\MyScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\MySceneSP.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\NinthScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\SecondScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\SeventhScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\SixthScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp" />
-    <ClInclude Include="Component.hpp" />
-    <ClInclude Include="GameObject_.hpp" />
-    <ClInclude Include="GeneralHelpers.hpp" />
-    <ClInclude Include="FunctionGroup.hpp" />
-    <ClInclude Include="Manager.hpp" />
-    <ClInclude Include="Material.hpp" />
-    <ClInclude Include="Mesh_.hpp" />
-    <ClInclude Include="Object.hpp" />
-    <ClInclude Include="Renderer_.hpp" />
-    <ClInclude Include="RenderManager.hpp" />
-    <ClInclude Include="Service.hpp" />
-    <ClInclude Include="ServiceLocator.hpp" />
-    <ClInclude Include="Time.hpp" />
-    <ClInclude Include="Transform.hpp" />
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp">
       <Filter>old\mge</Filter>
     </ClInclude>
@@ -140,6 +173,168 @@
     <ClInclude Include="..\src\mge\materials\ColorMaterial.hpp">
       <Filter>old\mge</Filter>
     </ClInclude>
+    <ClInclude Include="Component.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\config.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\util\DebugHud.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Scenes\EighthScene.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Behaviours\ElevationBehaviour.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\Deserealizer.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Scenes\FifthScene.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Scenes\FourthScene.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Materials\FrankenMaterial.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="FunctionGroup.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\Game.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\GameLoop.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\GameObject.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject_.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneralHelpers.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\Light.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Materials\LitMaterial.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Materials\LitTerrainMaterial.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Materials\LitTextureMaterial.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh_.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\Mesh.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Other\MeshGeneration.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\MGEDemo.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myEngine\MyEngineConfig.hpp">
+      <Filter>old\myengine</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\MyGameConfig.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Scenes\MyScene.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Scenes\MySceneSP.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Scenes\NinthScene.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myEngine\Light\OldLight.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\Renderer.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="Service.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceLocator.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\ShaderProgram.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myEngine\SystemEvent.hpp">
+      <Filter>old\myengine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myEngine\SystemEventDispatcher.hpp">
+      <Filter>old\myengine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myEngine\SystemEventListener.hpp">
+      <Filter>old\myengine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Scenes\SecondScene.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Scenes\SeventhScene.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Scenes\SixthScene.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Materials\WobbleMaterial.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Materials\WaterMaterial.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp">
+      <Filter>old\mygame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\Texture.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\World.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp">
+      <Filter>old\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer_.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -156,6 +351,9 @@
     </Filter>
     <Filter Include="old\myengine">
       <UniqueIdentifier>{51d14af0-d33b-49ca-95e3-75369ba0a4b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine">
+      <UniqueIdentifier>{221a2b03-d8d5-4867-81dc-7ec2ac7ed407}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

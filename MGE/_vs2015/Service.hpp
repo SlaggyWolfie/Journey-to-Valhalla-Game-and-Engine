@@ -2,8 +2,6 @@
 #ifndef SERVICE_HPP
 #define SERVICE_HPP
 
-#include "../_vs2015/ServiceLocator.hpp"
-
 namespace Engine
 {
 	class Service

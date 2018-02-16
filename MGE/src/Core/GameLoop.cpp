@@ -4,6 +4,7 @@
 #include "Game.hpp"
 #include "../../_vs2015/RenderManager.hpp"
 #include "../../_vs2015/Time.hpp"
+#include "../../_vs2015/ServiceLocator.hpp"
 
 namespace Engine
 {
@@ -12,12 +13,12 @@ namespace Engine
 		GameLoop::GameLoop()
 		{
 			//ctor
-			//_game = ServiceLocator::instance()->getService<Game>();
+			_game = ServiceLocator::instance()->getService<Game>();
 			//_window = ServiceLocator::instance()->getService<Game>()->getWindow();
 			//_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
 			//_collisionManager = ServiceLocator::instance()->getService<Collisions::CollisionManager>();
 			//_physicsManager = ServiceLocator::instance()->getService<Physics::PhysicsManager>();
-			//_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
+			_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
 			createOwnedLoops();
 		}
 
@@ -35,7 +36,7 @@ namespace Engine
 			//sf::Clock renderClock;
 			//int frameCount = 0;
 			//float timeSinceLastFPSCalculation = 0;
-			//ServiceLocator::instance()->getService<Rendering::RenderManager>()->startFPSClock();
+			_renderManager->startFPSClock();
 
 			//settings to make sure the update loop runs at 60 fps
 			const sf::Time timePerFixedFrame = sf::seconds(1.0f / 60.0f);

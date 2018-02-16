@@ -2,8 +2,10 @@
 #ifndef GAMELOOP_HPP
 #define GAMELOOP_HPP
 
+#include <memory>
 #include "../../_vs2015/Service.hpp"
 #include "../../_vs2015/FunctionGroup.hpp"
+#include "../_vs2015/RenderManager.hpp"
 
 namespace Engine
 {

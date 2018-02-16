@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "../../_vs2015/Service.hpp"
+#include <memory>
 
 /**
  * Defines the basic structure for a game, with defaults already filled in.
@@ -12,6 +13,10 @@
  */
 namespace Engine
 {
+	namespace Rendering
+	{
+		class RenderManager;
+	}
 	class Game : Engine::Service
 	{
 	public:
