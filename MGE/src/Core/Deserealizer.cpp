@@ -14,9 +14,12 @@ void ConstructGameObj()
 
 	struct GameObject_ {
 		string name_;
+		string meshName;
 		glm::vec3 position;
 		glm::vec3 rotation;
 		glm::vec3 scale;
+		int parentID;
+		int selfID;
 		
 	};
 
@@ -65,34 +68,18 @@ void ConstructGameObj()
 		gameObj.scale.x = ju.at(2).at("GameObject").at("transform")["scale"]["x"];
 		gameObj.scale.y = ju.at(2).at("GameObject").at("transform")["scale"]["y"];
 		gameObj.scale.z = ju.at(2).at("GameObject").at("transform")["scale"]["z"];
+		string n= ju.at(2).at("GameObject").at("meshString");
+		gameObj.meshName = n;
+
+		gameObj.parentID = ju.at(2).at("GameObject").at("parentID");
+		gameObj.selfID=ju.at(2).at("GameObject").at("selfID");
+
 		objList.push_back(gameObj);
 	}
 
-
-	/*for (int j = 0; j < GameObjString.size(); j++)
+	for (int i = 0; i < objList.size; i++)
 	{
-	string str = GameObjString[j];
-	string temp;
-	string name;
-	json jeson;
-	for (int k = 0; k < str.length(); k++)
-	{
-	if (str[k] != '}')
-	{
-	temp += str[k];
-	if()
-	}
-	else
-	{
-
 
 	}
-	}
-	}*/
-
-
-	string str;
-	getline(cin, str);
-
 
 }

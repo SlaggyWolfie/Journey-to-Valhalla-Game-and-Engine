@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-
+class Game;
 /**
  * Defines the basic structure for a game, with defaults already filled in.
  * The only item that MUST be overridden/implemented is _initializeScene()
@@ -16,7 +16,7 @@ class Deserealizer
 {
     public:
 
-		Deserealizer();
+		Deserealizer(Game* game);
         virtual ~Deserealizer();
 		void ConstructGameObj();
 
