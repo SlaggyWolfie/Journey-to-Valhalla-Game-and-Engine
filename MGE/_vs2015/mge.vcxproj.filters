@@ -5,7 +5,6 @@
     <ClCompile Include="..\src\Core\Game.cpp" />
     <ClCompile Include="..\src\Core\GameLoop.cpp" />
     <ClCompile Include="..\src\main.cpp" />
-<<<<<<< HEAD
     <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp">
       <Filter>mge\mge</Filter>
     </ClCompile>
@@ -153,7 +152,6 @@
     <ClCompile Include="Time.cpp">
       <Filter>engine\Utility</Filter>
     </ClCompile>
-=======
     <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
@@ -198,14 +196,12 @@
     <ClCompile Include="GameObject_.cpp" />
     <ClCompile Include="GeneralHelpers.cpp" />
     <ClCompile Include="Transform.cpp" />
->>>>>>> b2c936ee550206ab3557dade6543afb63215355a
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
     <ClInclude Include="..\src\Core\Game.hpp" />
     <ClInclude Include="..\src\Core\GameLoop.hpp" />
     <ClInclude Include="..\src\glm.hpp" />
-<<<<<<< HEAD
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp">
       <Filter>mge\mge</Filter>
     </ClInclude>
@@ -386,7 +382,6 @@
     <ClInclude Include="Time.hpp">
       <Filter>engine\Utility</Filter>
     </ClInclude>
-=======
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
@@ -438,7 +433,6 @@
     <ClInclude Include="Renderer.hpp" />
     <ClInclude Include="RenderManager.hpp" />
     <ClInclude Include="Transform.hpp" />
->>>>>>> b2c936ee550206ab3557dade6543afb63215355a
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -473,6 +467,4 @@
       <UniqueIdentifier>{e6d23ac0-782a-481a-995f-cefeb985d750}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
-=======
->>>>>>> b2c936ee550206ab3557dade6543afb63215355a
 </Project>
