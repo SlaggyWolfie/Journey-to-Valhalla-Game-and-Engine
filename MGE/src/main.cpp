@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdio>
 
 #include "mge/core/AbstractGame.hpp"
 #include "mge/MGEDemo.hpp"
@@ -11,6 +12,7 @@
 #include "myGame/Scenes/SeventhScene.hpp"
 #include "myGame/Scenes/EighthScene.hpp"
 #include "myGame/Scenes/NinthScene.hpp"
+#include <lua\lua.hpp>
 
 /**
  * Main entry point for the Micro Engine.
@@ -32,6 +34,14 @@
 
 int main()
 {
+	printf("Hi\n");
+
+	lua_State * state = luaL_newstate(); // open lua state
+	luaL_openlibs(state); // get all libs in state (math, os, io)
+
+	luaL_dostring(state, "print('Hi',5)");
+
+
     std::cout << "Starting Game" << std::endl;
 
 	AbstractGame* game = new MyGame::FourthScene();
