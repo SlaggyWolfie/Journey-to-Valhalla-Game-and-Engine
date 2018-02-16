@@ -26,7 +26,7 @@ namespace Engine
 			GameObject_(const GameObject_& other);
 			GameObject_& operator= (const GameObject_& other);
 
-			void destroy();
+			virtual void destroy() override;
 
 			void setName(const std::string& name);
 			std::string getName() const;
@@ -47,9 +47,12 @@ namespace Engine
 			void addComponent();
 			template <typename T>
 			void removeComponent();
+			template <typename T>
+			bool containsComponent();
 
 			void addComponent(Component* component);
 			void removeComponent(Component* component);
+			bool containsComponent(Component* component);
 
 			template <typename T>
 			T* getComponent();

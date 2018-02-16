@@ -1,5 +1,6 @@
 #pragma once
 #ifndef GENERAL_HELPERS_HPP
+#define GENERAL_HELPERS_HPP
 
 #include <vector>
 #include <ctime>
@@ -22,6 +23,8 @@ namespace Engine
 	public:
 		template<typename T>
 		static void removeFrom(std::vector<T> vector, T item);
+		template<typename T>
+		static bool contains(std::vector<T> vector, T item);
 	};
 }
 

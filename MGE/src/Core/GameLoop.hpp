@@ -1,50 +1,45 @@
+#pragma once
 #ifndef GAMELOOP_HPP
 #define GAMELOOP_HPP
 
-#include <SFML/Graphics.hpp>
-#include <GL/glew.h>
-#include <string>
+#include "../../_vs2015/Service.hpp"
+#include "../../_vs2015/FunctionGroup.hpp"
 
-class Game;
-class Renderer;
-
-/**
- * Defines the basic structure for a game, with defaults already filled in.
- * The only item that MUST be overridden/implemented is _initializeScene()
- * where you build up your world, the rest is optional to override (with care/caution).
- */
-class GameLoop
+namespace Engine
 {
-    public:
+	class Game;
 
-        GameLoop(Renderer* renderer);
-        virtual ~GameLoop();
+	namespace Core
+	{
+		class Component;
+		class GameLoop : public Service
+		{
+		public:
 
-		virtual void update();
-		virtual void fixedUpdate();
-		virtual void lateUpdate();
-        //run the actual process of updating all objects, rendering them and processing events
-		virtual void renderUpdate();
+			GameLoop();
+			virtual ~GameLoop();
+			GameLoop(const GameLoop& other);
+			GameLoop& operator=(const GameLoop& other);
 
-    protected:
-        //call update on all game objects in the display root
-        virtual void _update(float pStep);
-        //render all game objects in the display root
-        virtual void _render();
-        //process any sfml window events (see SystemEventDispatcher/Listener)
-        virtual void _processEvents();
+			void run();
 
-		sf::RenderWindow* _window;  //sfml window to render into
-		Renderer* _renderer;        //the renderer class to render the world
-		Game* _game;              //the root game object that represents our scene
-		float _fps;                 //stores the real fps
-		//std::vector<GameObject*> _gameObjectUpdateList;
+		//protected:
+		private:
+			std::unique_ptr<Utility::FunctionGroup<Component*>> _update;
+			std::unique_ptr<Utility::FunctionGroup<Component*>> _fixedUpdate;
+			std::unique_ptr<Utility::FunctionGroup<Component*>> _lateUpdate;
+			Rendering::RenderManager* _renderManager;
+			//AnimationManager _animationManager;
+			//CollisionManager _collisionManager;
+			//PhysicsManager _physicsManager;
 
-    private:
-        GameLoop(const GameLoop&);
-        GameLoop& operator=(const GameLoop&);
+			void createOwnedLoops();
+			void destroyOwnedLoops();
 
-
-};
+			//sf::RenderWindow* _window;
+			Game* _game;
+		};
+	}
+}
 
 #endif // GAMELOOP_HPP

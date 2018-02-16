@@ -6,7 +6,7 @@ namespace Engine
 {
 	class Object
 	{
-
+		virtual void destroy() = 0;
 	};
 }
 

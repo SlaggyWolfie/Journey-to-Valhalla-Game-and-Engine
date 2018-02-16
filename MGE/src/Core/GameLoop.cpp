@@ -1,156 +1,83 @@
-#include <iostream>
-
 #include "GameLoop.hpp"
-#include "mge/core/Renderer.hpp"
-#include "mge/core/World.hpp"
+#include <SFML/System/Clock.hpp>
+#include <SFML/Window.hpp>
+#include "Game.hpp"
+#include "../../_vs2015/RenderManager.hpp"
+#include "../../_vs2015/Time.hpp"
 
-GameLoop::GameLoop(Renderer* pRenderer) :_renderer(pRenderer), _fps(0)
+namespace Engine
 {
-	
-
-	
-	//ctor
-}
-
-GameLoop::~GameLoop()
-{
-	//dtor
-	delete _renderer;
-	delete _game;
-}
-
-
-
-
-
-
-
-
-///MAIN GAME LOOP
-void GameLoop::update()
-{
-	//setting to calculate fps
-
-	while (_window->isOpen()) {
-
-			_window->display();
-
-
-		//empty the event queue
-		//_processEvents();
-	}
-}
-
-void GameLoop::renderUpdate()
-{
-
-}
-
-void GameLoop::fixedUpdate()
-{
-	sf::Clock renderClock;
-	int frameCount = 0;
-	float timeSinceLastFPSCalculation = 0;
-
-	//settings to make sure the update loop runs at 60 fps
-	sf::Time timePerFrame = sf::seconds(1.0f / 60.0f);
-	sf::Clock updateClock;
-	sf::Time timeSinceLastUpdate = sf::Time::Zero;
-
-	while (_window->isOpen()) {
-		timeSinceLastUpdate += updateClock.restart();
-
-		if (timeSinceLastUpdate > timePerFrame)
-		{
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-			while (timeSinceLastUpdate > timePerFrame) {
-				timeSinceLastUpdate -= timePerFrame;
-				_update(timePerFrame.asSeconds());
-			}
-
-			renderUpdate();
-			_window->display();
-
-			//fps count is updated once every 1 second
-			frameCount++;
-			timeSinceLastFPSCalculation += renderClock.restart().asSeconds();
-			if (timeSinceLastFPSCalculation > 1) {
-				_fps = frameCount / timeSinceLastFPSCalculation;
-				timeSinceLastFPSCalculation -= 1;
-				frameCount = 0;
-			}
-
-		}
-
-		//empty the event queue
-		//_processEvents();
-	}
-
-}
-
-void GameLoop::lateUpdate()
-{
-}
-
-
-void GameLoop::_update(float pStep) {
-	/*or (int i = _gameobjectupdatelist.size(); i>0; i--)
+	namespace Core
 	{
-		_gameobjectupdatelist[i]->update();
-		(*_gameobjectupdatelist[i]).update();
-	}*/
-}
-
-void GameLoop::_render() {
-	//_renderer->render(_game);
-}
-
-void GameLoop::_processEvents()
-{
-	sf::Event event;
-	bool exit = false;
-
-	//we must empty the event queue
-	while (_window->pollEvent(event)) {
-		//give all system event listeners a chance to handle events
-		//optionally to be implemented by you for example you could implement a
-		//SystemEventDispatcher / SystemEventListener pair which allows Listeners to
-		//register with the dispatcher and then do something like:
-		//SystemEventDispatcher::dispatchEvent(event);
-
-		switch (event.type) {
-
-		case sf::Event::MouseWheelMoved:
-		case sf::Event::MouseWheelScrolled:
+		GameLoop::GameLoop()
 		{
-			//mouseScrollWheel += (event.mouseWheel.delta * 0.01f);
-			//if (mouseScrollWheel < 0) mouseScrollWheel = 0;
-			break;
+			//ctor
+			//_game = ServiceLocator::instance()->getService<Game>();
+			//_window = ServiceLocator::instance()->getService<Game>()->getWindow();
+			//_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
+			//_collisionManager = ServiceLocator::instance()->getService<Collisions::CollisionManager>();
+			//_physicsManager = ServiceLocator::instance()->getService<Physics::PhysicsManager>();
+			//_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
+			createOwnedLoops();
 		}
-		case sf::Event::Closed:
-			exit = true;
-			break;
-		case sf::Event::KeyPressed:
-			if (event.key.code == sf::Keyboard::Escape) {
-				exit = true;
+
+		GameLoop::~GameLoop()
+		{
+			//dtor
+			//delete _renderer;
+			//delete _game;
+			destroyOwnedLoops();
+		}
+
+		void GameLoop::run()
+		{
+			//setting to calculate fps
+			//sf::Clock renderClock;
+			//int frameCount = 0;
+			//float timeSinceLastFPSCalculation = 0;
+			//ServiceLocator::instance()->getService<Rendering::RenderManager>()->startFPSClock();
+
+			//settings to make sure the update loop runs at 60 fps
+			const sf::Time timePerFixedFrame = sf::seconds(1.0f / 60.0f);
+			Utility::Time::start(timePerFixedFrame.asSeconds());
+			float lag = 0;
+
+			while (_game->running())
+			{
+				Utility::Time::update();
+				lag += Utility::Time::deltaTime();
+
+				while (lag > Utility::Time::fixedDeltaTime())
+				{
+					lag -= Utility::Time::fixedDeltaTime();
+					_fixedUpdate->execute(/*timePerFrame.asSeconds()*/);
+				}
+
+				_update->execute(/*timePerFrame.asSeconds()*/);
+				_lateUpdate->execute();
+
+				//0 doesn't matter for now
+				_renderManager->render(0);
+
+				//empty the event queue
+				_game->processEvents();
 			}
-			break;
-		case sf::Event::Resized:
-			//would be better to move this to the renderer
-			//this version implements nonconstrained match viewport scaling
-			glViewport(0, 0, event.size.width, event.size.height);
-			break;
-
-		default:
-			break;
 		}
-	}
 
-	if (exit) {
-		_window->close();
+		void GameLoop::createOwnedLoops()
+		{
+			_update = std::make_unique<Utility::FunctionGroup<Component*>>();
+			_fixedUpdate = std::make_unique<Utility::FunctionGroup<Component*>>();
+			_lateUpdate = std::make_unique<Utility::FunctionGroup<Component*>>();
+		}
+
+		void GameLoop::destroyOwnedLoops()
+		{
+			_update.release();
+			_fixedUpdate.release();
+			_lateUpdate.release();
+		}
 	}
 }
-
 
 

@@ -10,13 +10,13 @@ namespace Engine
 		class Material;
 		class Mesh;
 
-		class Renderer : public Core::Component
+		class Renderer_ : public Core::Component
 		{
 			friend class RenderManager;
 		public:
-			Renderer();
-			virtual ~Renderer();
-			Renderer(Material* material, Mesh* mesh);
+			Renderer_();
+			virtual ~Renderer_();
+			Renderer_(Material* material, Mesh* mesh);
 			void destroy() override;
 		protected:
 			Material * _material;

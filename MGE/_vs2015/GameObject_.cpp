@@ -124,7 +124,7 @@ namespace Engine
 		void GameObject_::removeComponent()
 		{
 			//Confirm that type T is a component
-			if (!std::is_base_of<Engine::Component, T>())
+			if (!std::is_base_of<Component, T>())
 			{
 				std::cout << std::string("Type T is not of type Component in removeComponent<T>!") << std::endl;
 				return;
@@ -147,6 +147,26 @@ namespace Engine
 					return;
 				}
 			}
+		}
+		template <typename T>
+		bool GameObject_::containsComponent()
+		{
+			//Confirm that type T is a component
+			if (!std::is_base_of<Component, T>())
+			{
+				std::cout << std::string("Type T is not of type Component in removeComponent<T>!") << std::endl;
+				return false;
+			}
+
+			//Search for a component that can be cast to T
+			for (int i = 0; i < _components.size(); i++)
+			{
+				Component* component = _components[i].get();
+				T* derivedComponent = dynamic_cast<T>(component);
+				if (derivedComponent != nullptr) return true;
+			}
+
+			return false;
 		}
 
 		std::string GameObject_::getName() const
@@ -218,6 +238,18 @@ namespace Engine
 					return;
 				}
 			}
+		}
+
+		bool GameObject_::containsComponent(Component* component)
+		{
+			//Search for a component that can be cast to T
+			for (auto & i_Component : _components)
+			{
+				Component* iteratedComponent = i_Component.get();
+				if (iteratedComponent == component) return true;
+			}
+
+			return false;
 		}
 
 		GameObject_::GameObject_(const GameObject_& other) :

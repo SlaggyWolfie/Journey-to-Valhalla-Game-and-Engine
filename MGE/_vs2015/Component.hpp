@@ -20,7 +20,7 @@ namespace Engine
 			virtual ~Component();
 			Component(const Component&);
 			Component& operator=(const Component&);
-			virtual void destroy();
+			virtual void destroy() override;
 		protected:
 			virtual void start() {};
 			virtual void awake() {};

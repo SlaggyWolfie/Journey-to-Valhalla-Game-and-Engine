@@ -98,21 +98,6 @@
     <ClCompile Include="..\src\myGame\Other\MeshGeneration.cpp">
       <Filter>mge\mygame</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Core\Game.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Core\GameLoop.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject_.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneralHelpers.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\mge\core\Renderer.cpp">
       <Filter>mge\mge</Filter>
     </ClCompile>
@@ -139,6 +124,30 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\MGEDemo.cpp">
       <Filter>mge\mge</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\Game.cpp">
+      <Filter>engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Core\GameLoop.cpp">
+      <Filter>engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject_.cpp">
+      <Filter>engine\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneralHelpers.cpp">
+      <Filter>engine\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceLocator.cpp">
+      <Filter>engine\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>engine\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>engine\Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -245,24 +254,6 @@
     <ClInclude Include="..\src\myGame\Other\MeshGeneration.hpp">
       <Filter>mge\mygame</Filter>
     </ClInclude>
-    <ClInclude Include="Component.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Core\Game.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Core\GameLoop.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject_.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneralHelpers.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\core\Renderer.hpp">
       <Filter>mge\mge</Filter>
     </ClInclude>
@@ -287,20 +278,59 @@
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp">
       <Filter>mge\mge</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderManager.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\myEngine\MyEngineConfig.hpp">
       <Filter>mge\myengine</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mge\MGEDemo.hpp">
       <Filter>mge\mge</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.hpp">
+      <Filter>engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\Game.hpp">
+      <Filter>engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Core\GameLoop.hpp">
+      <Filter>engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject_.hpp">
+      <Filter>engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.hpp">
+      <Filter>engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.hpp">
+      <Filter>engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.hpp">
+      <Filter>engine\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneralHelpers.hpp">
+      <Filter>engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Service.hpp">
+      <Filter>engine\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.hpp">
+      <Filter>engine\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceLocator.hpp">
+      <Filter>engine\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh_.hpp">
+      <Filter>engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\Event.h">
+      <Filter>engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="FunctionGroup.hpp">
+      <Filter>engine\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer_.hpp">
+      <Filter>engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.hpp">
+      <Filter>engine\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -321,6 +351,18 @@
     </Filter>
     <Filter Include="engine">
       <UniqueIdentifier>{46bdfbc8-45b3-4449-b294-26af7c49699d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Core">
+      <UniqueIdentifier>{fd0a41db-165f-4b4c-aff5-75ebf5c444b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Rendering">
+      <UniqueIdentifier>{51858b76-4999-4c49-9074-adaaec88bd84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Utility">
+      <UniqueIdentifier>{3259801f-b580-4496-87ae-0885c032c0f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\Managers">
+      <UniqueIdentifier>{e6d23ac0-782a-481a-995f-cefeb985d750}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

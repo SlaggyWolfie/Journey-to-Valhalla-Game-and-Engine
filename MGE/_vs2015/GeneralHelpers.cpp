@@ -56,4 +56,9 @@ namespace Engine
 			), vector.end());
 	}
 
+	template <typename T>
+	bool List::contains(std::vector<T> vector, T item)
+	{
+		return std::find(vector.begin(), vector.end(), item) != vector.end();
+	}
 }

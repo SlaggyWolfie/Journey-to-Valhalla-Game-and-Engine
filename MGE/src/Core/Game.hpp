@@ -2,55 +2,50 @@
 #define GAME_HPP
 
 #include <SFML/Graphics.hpp>
-#include <GL/glew.h>
 #include <string>
-
-class World;
-class Renderer;
+#include "../../_vs2015/Service.hpp"
 
 /**
  * Defines the basic structure for a game, with defaults already filled in.
  * The only item that MUST be overridden/implemented is _initializeScene()
  * where you build up your world, the rest is optional to override (with care/caution).
  */
-class Game
+namespace Engine
 {
-    public:
+	class Game : Engine::Service
+	{
+	public:
+		Game();
+		~Game();
 
-        Game();
-        virtual ~Game();
+		//creates a window, initializes glew, a renderer and a world instance
+		void initialize();
+		sf::RenderWindow* getWindow() const;
+		void processEvents();
+		bool running();
+		void exit();
 
-        //creates a window, initializes glew, a renderer and a world instance
-        virtual void initialize();
-        //run the actual process of updating all objects, rendering them and processing events
+	private:
+		//print info about the current driver version etc
+		static void printVersionInfo();
+		//initialize the extension wrangler
+		static void initializeGlew();
+		void initializeWindow();
+		void initializeServices();
 
-    protected:
+		//initialize the actual scene, HAS to be done by a subclass
+		void initializeScene() const;
+		void initializeScene(const std::string& filepath) const;
+		std::unique_ptr<sf::RenderWindow> _window;  //sfml window to render into
+		//Renderer* _renderer;        //the renderer class to render the world
+		//World* _world;              //the root game object that represents our scene
+		//float _fps;                 //stores the real fps
+		Engine::Rendering::RenderManager* _renderManager;
+		std::string _defaultScenePath;
 
-        //methods above delegate behaviour to the methods below so that you can override it in a subclass
-
-        //initialize sfml rendering context
-        virtual void _initializeWindow();
-        //print info about the current driver version etc
-        virtual void _printVersionInfo();
-        //initialize the extension wrangler
-        virtual void _initializeGlew();
-        //create our own custom renderer instance
-        virtual void _initializeRenderer();
-        //initialize a scene root to which we can attach/add objects
-        virtual void _initializeWorld();
-
-        //initialize the actual scene, HAS to be done by a subclass
-        virtual void _initializeScene() = 0;
-		sf::RenderWindow* _window;  //sfml window to render into
-		Renderer* _renderer;        //the renderer class to render the world
-		World* _world;              //the root game object that represents our scene
-		float _fps;                 //stores the real fps
-
-    private:
-        Game(const Game&);
-        Game& operator=(const Game&);
-
-
-};
+		Game(const Game&);
+		Game& operator=(const Game&);
+	};
+}
 
 #endif // GAME_HPP

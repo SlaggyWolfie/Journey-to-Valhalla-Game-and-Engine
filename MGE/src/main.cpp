@@ -34,8 +34,9 @@ int main()
 {
     std::cout << "Starting Game" << std::endl;
 
+	AbstractGame* game = new MyGame::FourthScene();
 	//AbstractGame* game = new MyGame::SixthScene();
-	AbstractGame* game = new MyGame::NinthScene();
+	//AbstractGame* game = new MyGame::NinthScene();
     game->initialize();
     game->run();
 

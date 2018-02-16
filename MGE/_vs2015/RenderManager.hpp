@@ -3,26 +3,44 @@
 #define RENDER_MANAGER_HPP
 
 #include <vector>
+#include "Manager.hpp"
+#include <SFML/System/Clock.hpp>
+#include "FunctionGroup.hpp"
+#include <SFML/Graphics/RenderWindow.hpp>
 
 namespace Engine
 {
 	namespace Rendering
 	{
-		class Manager;
-		class Renderer;
+		class Renderer_;
 		class LightManager;
 
-		class RenderManager// : public Manager
+		class RenderManager : public Manager
 		{
 		public:
 			RenderManager();
 			~RenderManager();
-			void addRenderer(Renderer* renderer);
-			void removeRenderer(Renderer* renderer);
+			void addRenderer(Renderer_* renderer);
+			void removeRenderer(Renderer_* renderer);
+			void calculateFPS();
+
+			void render(float deltaTime);
+
+			void startFPSClock();
 		protected:
 		private:
-			void render(float deltaTime);
-			std::vector<Renderer*> _renderers;
+
+			std::unique_ptr<Utility::FunctionGroup<Renderer_*>> _render;
+
+			//FPS
+			float _fps;
+			std::unique_ptr<sf::Clock> _renderClock;
+			int _frameCount;
+			float _timeSinceLastFPSCalculation;
+
+			//Other
+			sf::RenderWindow* _window;
+
 			LightManager* _lightManager;
 		};
 	}
