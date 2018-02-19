@@ -22,6 +22,9 @@ namespace Engine
 			virtual ~GameLoop();
 			GameLoop(const GameLoop& other);
 			GameLoop& operator=(const GameLoop& other);
+			Utility::FunctionGroup<Component*>* update() const;
+			Utility::FunctionGroup<Component*>* fixedUpdate() const;
+			Utility::FunctionGroup<Component*>* lateUpdate() const;
 
 			void run();
 

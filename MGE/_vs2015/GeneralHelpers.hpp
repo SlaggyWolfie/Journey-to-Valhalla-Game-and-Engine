@@ -26,6 +26,21 @@ namespace Engine
 		template<typename T>
 		static bool contains(std::vector<T> vector, T item);
 	};
+
+	template <typename T>
+	void List::removeFrom(std::vector<T> vector, T item)
+	{
+		vector.erase(
+			std::remove(
+				vector.begin(), vector.end(), item
+			), vector.end());
+	}
+
+	template <typename T>
+	bool List::contains(std::vector<T> vector, T item)
+	{
+		return std::find(vector.begin(), vector.end(), item) != vector.end();
+	}
 }
 
 #endif //GENERAL_HELPERS_HPP

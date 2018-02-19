@@ -209,18 +209,22 @@
     <ClInclude Include="..\src\myGame\Scenes\SeventhScene.hpp" />
     <ClInclude Include="..\src\myGame\Scenes\SixthScene.hpp" />
     <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp" />
+    <ClInclude Include="Camera_.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="GameObject_.hpp" />
     <ClInclude Include="GeneralHelpers.hpp" />
     <ClInclude Include="FunctionGroup.hpp" />
     <ClInclude Include="Manager.hpp" />
-    <ClInclude Include="Material.hpp" />
+    <ClInclude Include="Material_.hpp" />
     <ClInclude Include="Mesh_.hpp" />
+    <ClInclude Include="Model.hpp" />
+    <ClInclude Include="NeedsGLSetup.hpp" />
     <ClInclude Include="Object.hpp" />
     <ClInclude Include="Renderer_.hpp" />
     <ClInclude Include="RenderManager.hpp" />
     <ClInclude Include="Service.hpp" />
     <ClInclude Include="ServiceLocator.hpp" />
+    <ClInclude Include="Texture_.hpp" />
     <ClInclude Include="Time.hpp" />
     <ClInclude Include="Transform.hpp" />
   </ItemGroup>
@@ -269,11 +273,16 @@
     <ClCompile Include="..\src\myGame\Scenes\SeventhScene.cpp" />
     <ClCompile Include="..\src\myGame\Scenes\SixthScene.cpp" />
     <ClCompile Include="..\src\myGame\Scenes\ThirdScene.cpp" />
+    <ClCompile Include="Camera_.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject_.cpp" />
     <ClCompile Include="GeneralHelpers.cpp" />
+    <ClCompile Include="Material_.cpp" />
+    <ClCompile Include="Mesh_.cpp" />
+    <ClCompile Include="Renderer_.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="ServiceLocator.cpp" />
+    <ClCompile Include="Texture_.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>

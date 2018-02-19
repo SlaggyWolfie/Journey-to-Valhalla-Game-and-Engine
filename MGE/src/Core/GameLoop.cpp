@@ -5,6 +5,8 @@
 #include "../../_vs2015/RenderManager.hpp"
 #include "../../_vs2015/Time.hpp"
 #include "../../_vs2015/ServiceLocator.hpp"
+#include "../_vs2015/GameObject_.hpp"
+#include "../_vs2015/Component.hpp"
 
 namespace Engine
 {
@@ -30,12 +32,23 @@ namespace Engine
 			destroyOwnedLoops();
 		}
 
+		Utility::FunctionGroup<Component*>* GameLoop::update() const
+		{
+			return _update.get();
+		}
+
+		Utility::FunctionGroup<Component*>* GameLoop::fixedUpdate() const
+		{
+			return _fixedUpdate.get();
+		}
+
+		Utility::FunctionGroup<Component*>* GameLoop::lateUpdate() const
+		{
+			return _lateUpdate.get();
+		}
+
 		void GameLoop::run()
 		{
-			//setting to calculate fps
-			//sf::Clock renderClock;
-			//int frameCount = 0;
-			//float timeSinceLastFPSCalculation = 0;
 			_renderManager->startFPSClock();
 
 			//settings to make sure the update loop runs at 60 fps
@@ -47,10 +60,11 @@ namespace Engine
 			{
 				Utility::Time::update();
 				lag += Utility::Time::deltaTime();
+				const float fixedTimeStep = Utility::Time::fixedDeltaTime();
 
-				while (lag > Utility::Time::fixedDeltaTime())
+				while (lag > fixedTimeStep)
 				{
-					lag -= Utility::Time::fixedDeltaTime();
+					lag -= fixedTimeStep;
 					//physics update
 					//_collisionManager->execute();
 					//_physicsManager->execute();
@@ -72,9 +86,11 @@ namespace Engine
 
 		void GameLoop::createOwnedLoops()
 		{
-			_update = std::make_unique<Utility::FunctionGroup<Component*>>();
-			_fixedUpdate = std::make_unique<Utility::FunctionGroup<Component*>>();
-			_lateUpdate = std::make_unique<Utility::FunctionGroup<Component*>>();
+			std::function<bool(Component*)> predicate =
+				[](Component* comp) -> bool { return comp->isEnabled() && comp->getGameObject()->isActive(); };
+			_update = std::make_unique<Utility::FunctionGroup<Component*>>(predicate);
+			_fixedUpdate = std::make_unique<Utility::FunctionGroup<Component*>>(predicate);
+			_lateUpdate = std::make_unique<Utility::FunctionGroup<Component*>>(predicate);
 		}
 
 		void GameLoop::destroyOwnedLoops()

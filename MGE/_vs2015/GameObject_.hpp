@@ -5,7 +5,10 @@
 #include <glm.hpp>
 #include <vector>
 #include <memory>
+#include <algorithm>
 #include "Object.hpp"
+#include "GeneralHelpers.hpp"
+#include "Component.hpp"
 
 namespace Engine
 {
@@ -59,18 +62,127 @@ namespace Engine
 			template <typename T>
 			T** getComponents();
 			template <typename T>
-			std::vector<T*> getComponents();
+			std::vector<T*> getComponentsList();
 
 		private:
 			std::string _name;
 			std::string _tag;
 			std::unique_ptr<Transform> _transform;
 
+			template <typename T>
+			std::unique_ptr<T> findComponent();
+
 			bool _isStatic;
 			bool _isActive;
 
 			std::vector<std::unique_ptr<Component>> _components;
 		};
+
+
+		template <typename T>
+		T* GameObject_::getComponent()
+		{
+			const auto comp = findComponent<T>();
+
+			if (comp != nullptr && comp.get() != nullptr)
+				return comp.get();
+			return nullptr;
+		}
+
+		template <typename T>
+		T** GameObject_::getComponents()
+		{
+			std::vector<T*> components = getComponentsList<T>();
+			const auto size = static_cast<unsigned int>(components.size());
+			T** componentArray = new T*[size];
+			std::copy(components.begin(), components.end(), componentArray);
+
+			return componentArray;
+		}
+
+		template <typename T>
+		std::vector<T*> GameObject_::getComponentsList()
+		{
+			//Confirm that type T is a component
+			if (!std::is_base_of<Component, T>())
+			{
+				std::cout << std::string("Type T is not of type Component in getComponentsList<T>!") << std::endl;
+				return nullptr;
+			}
+
+			std::vector<T*> components = new std::vector<T*>();
+
+			//Search for a component that can be cast to T
+			for (size_t i = 0; i < _components.size(); i++)
+			{
+				const auto comp = dynamic_cast<T*>(_components[i].get());
+				if (comp != nullptr)
+					components.push_back(comp);
+			}
+
+			//Return null if we can't find anything
+			return components;
+		}
+
+		template <typename T>
+		void GameObject_::addComponent()
+		{
+			const auto comp = findComponent<T>();
+
+			if (comp != nullptr && comp.get() != nullptr
+				&& static_cast<Component*>(comp.get())->isUniquePerGameObject())
+			{
+				std::cout << "Attempting to add unique per game object component:" << std::endl;
+				return;
+			}
+
+			//Might crash
+			if (std::is_default_constructible<T>::value)
+			{
+				T* derivedComponent = new T();
+				std::unique_ptr<Component> newComponent = std::unique_ptr<Component>(derivedComponent);
+				newComponent.get()->setGameObject(this);
+				_components.push_back(newComponent);
+			}
+			else std::cout << "Failed to add component. Has no default constructor." << std::endl;
+		}
+
+		template <typename T>
+		void GameObject_::removeComponent()
+		{
+			const auto comp = findComponent<T>();
+
+			if (comp == nullptr) return;
+
+			List::removeFrom(_components, comp);
+			comp.reset();
+		}
+
+		template <typename T>
+		bool GameObject_::containsComponent()
+		{
+			const auto comp = findComponent<T>();
+
+			return comp != nullptr && comp.get() != nullptr;
+		}
+
+		template <typename T>
+		std::unique_ptr<T> GameObject_::findComponent()
+		{
+			if (!std::is_base_of<Component, T>())
+			{
+				std::cout << "Type T is not of type Component in findComponent()" << std::endl;
+				return nullptr;
+			}
+
+			for (auto & component : _components)
+			{
+				T* cast_component = dynamic_cast<T*>(component.get());
+				if (cast_component != nullptr) return std::unique_ptr<T>(cast_component);
+			}
+
+			return nullptr;
+		}
 	}
 }
 
