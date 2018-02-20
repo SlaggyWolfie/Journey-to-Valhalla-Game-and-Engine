@@ -19,7 +19,7 @@ namespace Engine
 		{
 		public:
 			Material_();
-			virtual ~Material_() = default;
+			virtual ~Material_();
 			Shader* getShader();
 
 			void setDiffuseColor(glm::vec3 color);
@@ -36,14 +36,15 @@ namespace Engine
 			void setEmissionMap(Texture* map, bool use = true);
 			Texture* getEmissionMap() const;
 
-			bool useDiffuseMap(bool use = true);
-			bool useSpecularMap(bool use = true);
-			bool useEmissionMap(bool use = true);
-			bool useEmission(bool use = true);
+			void useDiffuseMap(bool use = true);
+			void useSpecularMap(bool use = true);
+			void useEmissionMap(bool use = true);
+			void useEmission(bool use = true);
 
-			//virtual void bind();
-			//virtual void unbind();
-			//virtual void draw();
+			bool isDiffuseMapUsed() const;
+			bool isSpecularMapUsed() const;
+			bool isEmissionMapUsed() const;
+			bool isEmissionUsed() const;
 
 		protected:
 			//void setupGL() override;
@@ -56,6 +57,11 @@ namespace Engine
 			std::shared_ptr<Texture> _diffuseMap;
 			std::shared_ptr<Texture> _specularMap;
 			std::shared_ptr<Texture> _emissionMap;
+
+			bool _useDiffuseMap;
+			bool _useSpecularMap;
+			bool _useEmissionMap;
+			bool _useEmission;
 		};
 	}
 }

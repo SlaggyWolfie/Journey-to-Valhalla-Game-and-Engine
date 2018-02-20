@@ -130,7 +130,7 @@ namespace Engine
 			_name = other._name;
 			_tag = other._tag;
 			_isStatic = other._isStatic;
-			_isStatic = other._isActive;
+			_isActive = other._isActive;
 			//_transform = other._transform;
 			//_components = other._components;
 
