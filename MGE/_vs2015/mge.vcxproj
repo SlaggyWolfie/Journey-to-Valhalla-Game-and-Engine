@@ -224,6 +224,7 @@
     <ClInclude Include="RenderManager.hpp" />
     <ClInclude Include="Service.hpp" />
     <ClInclude Include="ServiceLocator.hpp" />
+    <ClInclude Include="Shader.hpp" />
     <ClInclude Include="Texture_.hpp" />
     <ClInclude Include="Time.hpp" />
     <ClInclude Include="Transform.hpp" />

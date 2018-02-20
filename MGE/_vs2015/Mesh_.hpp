@@ -5,6 +5,7 @@
 #include <glm/glm.hpp>
 #include "NeedsGLSetup.hpp"
 #include <vector>
+#include "GL/glew.h"
 
 namespace Engine
 {
@@ -34,6 +35,8 @@ namespace Engine
 			Mesh_& operator=(const Mesh_& other) = default;
 
 			static Mesh_ * load(const std::string& path);
+			void stream(GLint verticesAttribute, GLint normalsAttribute, GLint UVsAttribute) const;
+			void generateBuffers();
 
 			void addVertex(Vertex vertex);
 			void addVertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv);
@@ -58,6 +61,11 @@ namespace Engine
 
 			std::vector<Vertex> _vertices;
 			std::vector<int> _indices;
+
+			GLuint _bufferVertexPositions;
+			GLuint _bufferVertexNormals;
+			GLuint _bufferVertexUVs;
+			GLuint _bufferIndex;
 		};
 	}
 }

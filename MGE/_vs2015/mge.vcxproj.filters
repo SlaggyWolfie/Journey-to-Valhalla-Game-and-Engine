@@ -362,6 +362,9 @@
     <ClInclude Include="Model.hpp">
       <Filter>engine</Filter>
     </ClInclude>
+    <ClInclude Include="Shader.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
