@@ -18,13 +18,7 @@ class Deserealizer
     public:
 
 		Deserealizer(Game* game);
-        virtual ~Deserealizer();
 		Scene ConstructGameObj();
-
-    protected:
-
-     
-    private:
 };
 
 #endif // DESEREALIZER_HPP

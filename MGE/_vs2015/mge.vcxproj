@@ -105,7 +105,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp_x86_debug_d.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;%(AdditionalDependencies);lua51.lib</AdditionalDependencies>
+      <AdditionalDependencies>assimp_x86_debug_d.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;%(AdditionalDependencies);lua51.lib;lua51.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
@@ -119,7 +119,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp_x86_debug_d.lib;glew32sd.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies);lua51.lib</AdditionalDependencies>
+      <AdditionalDependencies>assimp_x86_debug_d.lib;glew32sd.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies);lua51.lib;lua51.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Dynamic|Win32'">
@@ -137,7 +137,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp_x86_release_d.lib;glew32.lib;opengl32.lib;sfml-graphics.lib;sfml-system.lib;sfml-window.lib;sfml-audio.lib;%(AdditionalDependencies);lua51.lib</AdditionalDependencies>
+      <AdditionalDependencies>assimp_x86_release_d.lib;glew32.lib;opengl32.lib;sfml-graphics.lib;sfml-system.lib;sfml-window.lib;sfml-audio.lib;%(AdditionalDependencies);lua51.lib;lua51.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Static|Win32'">
@@ -155,7 +155,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp_x86_release_d.lib;glew32s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-audio-s.lib;sfml-system-s.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies);lua51.lib</AdditionalDependencies>
+      <AdditionalDependencies>assimp_x86_release_d.lib;glew32s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-audio-s.lib;sfml-system-s.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies);lua51.lib;lua51.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
@@ -214,6 +214,7 @@
     <ClInclude Include="GameObject_.hpp" />
     <ClInclude Include="GeneralHelpers.hpp" />
     <ClInclude Include="FunctionGroup.hpp" />
+    <ClInclude Include="LuaScript.h" />
     <ClInclude Include="Manager.hpp" />
     <ClInclude Include="Material_.hpp" />
     <ClInclude Include="Mesh_.hpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="Object.hpp" />
     <ClInclude Include="Renderer_.hpp" />
     <ClInclude Include="RenderManager.hpp" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Service.hpp" />
     <ClInclude Include="ServiceLocator.hpp" />
     <ClInclude Include="Texture_.hpp" />
@@ -277,10 +279,12 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject_.cpp" />
     <ClCompile Include="GeneralHelpers.cpp" />
+    <ClCompile Include="LuaScript.cpp" />
     <ClCompile Include="Material_.cpp" />
     <ClCompile Include="Mesh_.cpp" />
     <ClCompile Include="Renderer_.cpp" />
     <ClCompile Include="RenderManager.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="Texture_.cpp" />
     <ClCompile Include="Time.cpp" />

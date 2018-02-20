@@ -7,12 +7,15 @@
 #include <../_vs2015/Scene.h>
 #include <../_vs2015/GameObject_.hpp>
 #include <../_vs2015/Transform.hpp>
+#include "Deserealizer.hpp"
 
 using namespace nlohmann;
 using namespace std;
 
+Deserealizer::Deserealizer(Game* pGame) {}
 
-Scene ConstructGameObj()
+
+Scene Deserealizer::ConstructGameObj()
 {
 
 	struct GameObject_s {
@@ -82,7 +85,7 @@ Scene ConstructGameObj()
 
 	Scene parsedScene;
 
-	for (int i = 0; i < objList.size; i++)
+	for (int i = 0; i < objList.size(); i++)
 	{
 		GameObject_* obj = new GameObject_(objList[i].name_, "", objList[i].position);
 		//obj->getTransform()->setRotation(/*convert to quaternion here*/);

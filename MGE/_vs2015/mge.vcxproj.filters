@@ -167,6 +167,10 @@
     <ClCompile Include="Texture_.cpp">
       <Filter>engine</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp" />
@@ -362,6 +366,10 @@
     <ClInclude Include="Model.hpp">
       <Filter>engine</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
