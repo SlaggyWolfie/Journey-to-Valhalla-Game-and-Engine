@@ -5,6 +5,7 @@
 #include "mge/core/World.hpp"
 #include "GameLoop.hpp"
 
+#include "../../externals/glew_sfml_glm/include/lua/lua.hpp"
 //#include "RenderManager.hpp"
 #include "../_vs2015/RenderManager.hpp"
 #include "../_vs2015/ServiceLocator.hpp"
@@ -13,6 +14,7 @@ namespace Engine
 {
 	Game::Game()
 	{
+
 		//ctor
 	}
 

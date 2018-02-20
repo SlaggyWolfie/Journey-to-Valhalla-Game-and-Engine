@@ -7,12 +7,15 @@
 #include <../_vs2015/Scene.h>
 #include <../_vs2015/GameObject_.hpp>
 #include <../_vs2015/Transform.hpp>
+#include "Deserealizer.hpp"
 
 using namespace nlohmann;
 using namespace std;
 
+Deserealizer::Deserealizer(Game* pGame) {}
 
-Scene ConstructGameObj()
+
+Scene Deserealizer::ConstructGameObj()
 {
 
 	struct GameObject_s {
