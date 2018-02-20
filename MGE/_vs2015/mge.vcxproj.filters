@@ -152,6 +152,21 @@
     <ClCompile Include="Transform.cpp">
       <Filter>engine</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer_.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Material_.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh_.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera_.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture_.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp" />
@@ -234,9 +249,6 @@
       <Filter>old\mygame</Filter>
     </ClInclude>
     <ClInclude Include="Manager.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.hpp">
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="Mesh_.hpp">
@@ -333,6 +345,21 @@
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="Transform.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Material_.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="NeedsGLSetup.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera_.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture_.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.hpp">
       <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>

@@ -20,10 +20,15 @@ namespace Engine
 			virtual ~Component();
 			Component(const Component&);
 			Component& operator=(const Component&);
+
+			bool isEnabled() const;
+			void setEnabled(bool enable);
+
 			virtual void destroy() override;
 		protected:
 			virtual void start() {};
 			virtual void awake() {};
+			virtual void prewake() {};
 			virtual void update() {};
 			virtual void fixedUpdate() {};
 			virtual void lateUpdate() {};
@@ -33,6 +38,7 @@ namespace Engine
 			virtual bool isUniquePerGameObject();
 		private:
 			GameObject_ * _gameObject;
+			bool _enabled;
 		};
 	}
 }

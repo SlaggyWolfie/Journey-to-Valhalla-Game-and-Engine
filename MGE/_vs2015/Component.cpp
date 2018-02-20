@@ -10,14 +10,14 @@ namespace Engine
 			return _gameObject;
 		}
 
-		Component::Component() :_gameObject(nullptr)
+		Component::Component() : _gameObject(nullptr), _enabled(true)
 		{
 		}
 
 		Component::~Component()
 			= default;
 
-		Component::Component(const Component& other) : _gameObject(other._gameObject)
+		Component::Component(const Component& other) : _gameObject(other._gameObject), _enabled(other._enabled)
 		{
 		}
 
@@ -25,6 +25,16 @@ namespace Engine
 		{
 			_gameObject = other._gameObject;
 			return *this;
+		}
+
+		bool Component::isEnabled() const
+		{
+			return _enabled;
+		}
+
+		void Component::setEnabled(const bool enable)
+		{
+			_enabled = enable;
 		}
 
 		void Component::destroy()
@@ -35,6 +45,9 @@ namespace Engine
 		void Component::setGameObject(GameObject_* gameObject)
 		{
 			_gameObject = gameObject;
+			std::cout << "Awake() is in setGameObject()" << std::endl;
+			prewake();
+			awake();
 		}
 
 		bool Component::isUniquePerGameObject()

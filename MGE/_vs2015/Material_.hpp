@@ -4,18 +4,23 @@
 #include "Component.hpp"
 #include <glm/glm.hpp>
 #include <memory>
-#include "mge/core/ShaderProgram.hpp"
+#include "NeedsGLSetup.hpp"
+
+//#include "mge/core/ShaderProgram.hpp"
 
 namespace Engine
 {
 	namespace Rendering
 	{
+		class Shader;
 		class Texture;
 
-		class Material : public Core::Component
+		class Material_ : public Core::Component
 		{
 		public:
-			static ShaderProgram* getShader();
+			Material_();
+			virtual ~Material_() = default;
+			Shader* getShader();
 
 			void setDiffuseColor(glm::vec3 color);
 			glm::vec3 getDiffuseColor() const;
@@ -36,19 +41,21 @@ namespace Engine
 			bool useEmissionMap(bool use = true);
 			bool useEmission(bool use = true);
 
-			void bind();
-			void unbind();
+			//virtual void bind();
+			//virtual void unbind();
+			//virtual void draw();
 
 		protected:
-			static std::shared_ptr<ShaderProgram> _shader;
+			//void setupGL() override;
+			static std::shared_ptr<Shader> _shader;
 
 			glm::vec3 _diffuseColor;
 			glm::vec3 _specularColor;
 			glm::vec3 _emissionColor;
 
-			std::unique_ptr<Texture> _diffuseMap;
-			std::unique_ptr<Texture> _specularMap;
-			std::unique_ptr<Texture> _emissionMap;
+			std::shared_ptr<Texture> _diffuseMap;
+			std::shared_ptr<Texture> _specularMap;
+			std::shared_ptr<Texture> _emissionMap;
 		};
 	}
 }

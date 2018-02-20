@@ -2,34 +2,75 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 #include "Component.hpp"
+#include "glm/glm.hpp"
+#include "NeedsGLSetup.hpp"
 
 namespace Engine
 {
 	namespace Rendering
 	{
-		class Material;
-		class Mesh;
+		enum RenderQueue { Opaque, Transparent };
+		class Material_;
+		class Mesh_;
 
-		class Renderer_ : public Core::Component
+		class Renderer_ : public Core::Component, public NeedsGLSetup
 		{
 			friend class RenderManager;
 		public:
 			Renderer_();
-			virtual ~Renderer_();
-			Renderer_(Material* material, Mesh* mesh);
+			Renderer_(Material_* material, Mesh_* mesh, RenderQueue renderQueue = Opaque, bool castShadows = true);
+			virtual ~Renderer_() = default;
+			Renderer_(const Renderer_& other) = default;
+			Renderer_& operator=(const Renderer_& other) = default;
+
 			void destroy() override;
+
+			bool shouldCastShadows(bool castShadows = false);
+			bool castsShadows() const;
 		protected:
-			Material * _material;
-			Mesh *_mesh;
+			//GL cache location
+			static glm::uint _uModelMatrix;
+			static glm::uint _uViewMatrix;
+			static glm::uint _uProjectionMatrix;
 
-			void render(float deltaTime);
+			static glm::uint _uMVP_Matrix;
+			static glm::uint _uMV_Matrix;
+			static glm::uint _uVP_Matrix;
 
-			void start() override;
-			void awake() override;
-			void update() override;
-			void fixedUpdate() override;
-			void lateUpdate() override;
-			void onValidate() override;
+			static glm::uint _uNormalMatrix;
+
+			static glm::uint _uDiffuseColor;
+			static glm::uint _uSpecularColor;
+			static glm::uint _uEmissionColor;
+
+			static glm::uint _uDiffuseMap;
+			static glm::uint _uSpecularMap;
+			static glm::uint _uEmissionMap;
+
+			static glm::uint _aPositions;
+			static glm::uint _aNormals;
+			static glm::uint _aUVs;
+
+			static glm::uint _aIndices;
+
+			//Everything else
+			void setupGL() override;
+			void bind();
+			void pushMatrix();
+			void unbind();
+			void draw();
+
+			void render();
+
+			Material_ * _material;
+			Mesh_ * _mesh;
+
+			RenderQueue _renderQueue;
+			bool _castsShadows;
+
+			void findMesh();
+			void findMaterial();
+			void prewake() override;
 			bool isUniquePerGameObject() override;
 		};
 	}
