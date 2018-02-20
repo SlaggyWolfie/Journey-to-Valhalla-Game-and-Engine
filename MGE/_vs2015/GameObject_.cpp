@@ -1,6 +1,5 @@
 #include "GameObject_.hpp"
 #include <utility>
-//#include "GameObject.hpp"
 #include <algorithm>
 #include "Transform.hpp"
 #include "Component.hpp"
