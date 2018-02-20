@@ -4,15 +4,18 @@
 #include <fstream>
 #include <vector>
 #include <glm.hpp>
+#include <../_vs2015/Scene.h>
+#include <../_vs2015/GameObject_.hpp>
+#include <../_vs2015/Transform.hpp>
 
 using namespace nlohmann;
 using namespace std;
 
 
-void ConstructGameObj()
+Scene ConstructGameObj()
 {
 
-	struct GameObject_ {
+	struct GameObject_s {
 		string name_;
 		string meshName;
 		glm::vec3 position;
@@ -25,7 +28,7 @@ void ConstructGameObj()
 
 	json j;
 
-	vector <GameObject_> objList;
+	vector <GameObject_s> objList;
 	ifstream i("test.json");
 	ostringstream tmp;
 	tmp << i.rdbuf();
@@ -52,7 +55,7 @@ void ConstructGameObj()
 	int g = 0;
 	for (int j = 0; j < ju.size(); j++)
 	{
-		GameObject_ gameObj;
+		GameObject_s gameObj;
 		string s = ju.at(2).at("GameObject").at("name");
 		//cout << s;
 		gameObj.name_ = s;
@@ -76,6 +79,22 @@ void ConstructGameObj()
 
 		objList.push_back(gameObj);
 	}
+
+	Scene parsedScene;
+
+	for (int i = 0; i < objList.size; i++)
+	{
+		GameObject_* obj = new GameObject_(objList[i].name_, "", objList[i].position);
+		//obj->getTransform()->setRotation(/*convert to quaternion here*/);
+		obj->getTransform()->setPosition(objList[i].position);
+		obj->getTransform()->setRotation(objList[i].rotation);
+		obj->getTransform()->setScale(objList[i].scale);
+		obj->setName(objList[i].name_);
+
+		parsedScene.AddGameObject(obj);
+	}
+
+	return parsedScene;
 
 
 }

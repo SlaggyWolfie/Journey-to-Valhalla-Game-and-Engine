@@ -5,6 +5,7 @@
 #include <GL/glew.h>
 #include <string>
 #include <vector>
+#include "../_vs2015/Scene.h"
 
 class Game;
 /**
@@ -18,7 +19,7 @@ class Deserealizer
 
 		Deserealizer(Game* game);
         virtual ~Deserealizer();
-		void ConstructGameObj();
+		Scene ConstructGameObj();
 
     protected:
 
