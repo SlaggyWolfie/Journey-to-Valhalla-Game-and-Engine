@@ -170,7 +170,9 @@
     <ClCompile Include="Scene.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="LuaScript.cpp" />
+    <ClCompile Include="LuaScript.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp" />
@@ -369,7 +371,9 @@
     <ClInclude Include="Scene.h">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="LuaScript.h" />
+    <ClInclude Include="LuaScript.h">
+      <Filter>engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
