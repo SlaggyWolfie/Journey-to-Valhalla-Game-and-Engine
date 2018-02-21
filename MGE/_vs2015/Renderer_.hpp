@@ -29,29 +29,29 @@ namespace Engine
 			bool castsShadows() const;
 		protected:
 			//GL cache location
-			static glm::uint _uModelMatrix;
-			static glm::uint _uViewMatrix;
-			static glm::uint _uProjectionMatrix;
+			static glm::uint _uniformModelMatrix;
+			static glm::uint _uniformViewMatrix;
+			static glm::uint _uniformProjectionMatrix;
 
-			static glm::uint _uMVP_Matrix;
-			static glm::uint _uMV_Matrix;
-			static glm::uint _uVP_Matrix;
+			static glm::uint _uniformMVP_Matrix;
+			static glm::uint _uniformMV_Matrix;
+			static glm::uint _uniformVP_Matrix;
 
-			static glm::uint _uNormalMatrix;
+			static glm::uint _uniformNormalMatrix;
 
-			static glm::uint _uDiffuseColor;
-			static glm::uint _uSpecularColor;
-			static glm::uint _uEmissionColor;
+			static glm::uint _uniformDiffuseColor;
+			static glm::uint _uniformSpecularColor;
+			static glm::uint _uniformEmissionColor;
 
-			static glm::uint _uDiffuseMap;
-			static glm::uint _uSpecularMap;
-			static glm::uint _uEmissionMap;
+			static glm::uint _uniformDiffuseMap;
+			static glm::uint _uniformSpecularMap;
+			static glm::uint _uniformEmissionMap;
 
-			static glm::uint _aPositions;
-			static glm::uint _aNormals;
-			static glm::uint _aUVs;
+			static glm::uint _attributePositions;
+			static glm::uint _attributeNormals;
+			static glm::uint _attributeUVs;
 
-			static glm::uint _aIndices;
+			static glm::uint _attributeIndices;
 
 			//Everything else
 			void setupGL() override;

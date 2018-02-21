@@ -368,12 +368,22 @@
     <ClInclude Include="Model.hpp">
       <Filter>engine</Filter>
     </ClInclude>
+<<<<<<< HEAD
+    <ClInclude Include="Shader.hpp">
+      <Filter>engine</Filter>
+    </ClInclude>
+=======
     <ClInclude Include="Scene.h">
       <Filter>engine</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="LuaScript.h">
       <Filter>engine</Filter>
     </ClInclude>
+=======
+    <ClInclude Include="LuaScript.h" />
+>>>>>>> b054249cd6f42494495a31ae3359e208a629601a
+>>>>>>> ebc848c6fb5bb33a6eb34f0c03a004f0c1e238e1
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

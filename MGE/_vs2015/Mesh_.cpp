@@ -93,8 +93,68 @@ namespace Engine
 		}
 
 		Mesh_::Mesh_(std::vector<Vertex>  vertices, std::vector<int>  indices) :
-			_vertices(std::move(vertices)), _indices(std::move(indices))
+			_vertices(std::move(vertices)), _indices(std::move(indices)),
+			_bufferVertexPositions(0), _bufferVertexNormals(0),
+			_bufferVertexUVs(0), _bufferIndex(0)
 		{
+		}
+
+		void Mesh_::stream(const GLint verticesAttribute, const GLint normalsAttribute, const GLint UVsAttribute) const
+		{
+			if (verticesAttribute != -1)
+			{
+				glBindBuffer(GL_ARRAY_BUFFER, _bufferVertexPositions);
+				glEnableVertexAttribArray(verticesAttribute);
+				glVertexAttribPointer(verticesAttribute, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+			}
+
+			if (normalsAttribute != -1)
+			{
+				glBindBuffer(GL_ARRAY_BUFFER, _bufferVertexNormals);
+				glEnableVertexAttribArray(normalsAttribute);
+				glVertexAttribPointer(normalsAttribute, 3, GL_FLOAT, GL_TRUE, 0, nullptr);
+			}
+
+			if (UVsAttribute != -1)
+			{
+				glBindBuffer(GL_ARRAY_BUFFER, _bufferVertexUVs);
+				glEnableVertexAttribArray(UVsAttribute);
+				glVertexAttribPointer(UVsAttribute, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+			}
+
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _bufferIndex);
+
+			glDrawElements(GL_TRIANGLES, _indices.size(), GL_UNSIGNED_INT, static_cast<GLvoid*>(nullptr));
+
+			// no current buffer, to avoid mishaps, very important for performance
+
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+			//fix for serious performance issue
+			if (UVsAttribute != -1) glDisableVertexAttribArray(UVsAttribute);
+			if (normalsAttribute != -1) glDisableVertexAttribArray(normalsAttribute);
+			if (verticesAttribute != -1) glDisableVertexAttribArray(verticesAttribute);
+		}
+
+		void Mesh_::generateBuffers()
+		{
+			glGenBuffers(1, &_bufferIndex);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _bufferIndex);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, _indices.size() * sizeof(unsigned int), &_indices[0], GL_STATIC_DRAW);
+
+			glGenBuffers(1, &_bufferVertexPositions);
+			glBindBuffer(GL_ARRAY_BUFFER, _bufferVertexPositions);
+			glBufferData(GL_ARRAY_BUFFER, _vertices.size() * sizeof(glm::vec3), &_vertices[0].position, GL_STATIC_DRAW);
+
+			glGenBuffers(1, &_bufferVertexNormals);
+			glBindBuffer(GL_ARRAY_BUFFER, _bufferVertexNormals);
+			glBufferData(GL_ARRAY_BUFFER, _vertices.size() * sizeof(glm::vec3), &_vertices[0].normal, GL_STATIC_DRAW);
+
+			glGenBuffers(1, &_bufferVertexUVs);
+			glBindBuffer(GL_ARRAY_BUFFER, _bufferVertexUVs);
+			glBufferData(GL_ARRAY_BUFFER, _vertices.size() * sizeof(glm::vec2), &_vertices[0].textureCoordinate, GL_STATIC_DRAW);
+
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
 		}
 	}
 }

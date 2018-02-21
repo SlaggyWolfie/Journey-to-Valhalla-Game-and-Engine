@@ -37,11 +37,15 @@ int main()
 {
     std::cout << "Starting Game" << std::endl;
 
+<<<<<<< HEAD
 	LuaScript* luaS = new LuaScript();
 	luaS->GameLoop();
 	AbstractGame* game = new MyGame::FourthScene();
+=======
+	//AbstractGame* game = new MyGame::FourthScene();
+>>>>>>> ebc848c6fb5bb33a6eb34f0c03a004f0c1e238e1
 	//AbstractGame* game = new MyGame::SixthScene();
-	//AbstractGame* game = new MyGame::NinthScene();
+	AbstractGame* game = new MyGame::NinthScene();
     game->initialize();
     game->run();
 

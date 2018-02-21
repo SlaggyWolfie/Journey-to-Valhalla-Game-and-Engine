@@ -56,7 +56,7 @@ Scene Deserealizer::ConstructGameObj()
 	//}
 	//cout << j.begin().key() << endl;
 	int g = 0;
-	for (int j = 0; j < ju.size(); j++)
+	for (int j = 0; j < static_cast<int>(ju.size()); j++)
 	{
 		GameObject_s gameObj;
 		string s = ju.at(2).at("GameObject").at("name");

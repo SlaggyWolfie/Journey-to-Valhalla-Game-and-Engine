@@ -6,28 +6,28 @@ namespace Engine
 {
 	namespace Rendering
 	{
-		glm::uint Renderer_::_uModelMatrix = 0;
-		glm::uint Renderer_::_uViewMatrix = 0;
-		glm::uint Renderer_::_uProjectionMatrix = 0;
+		glm::uint Renderer_::_uniformModelMatrix = 0;
+		glm::uint Renderer_::_uniformViewMatrix = 0;
+		glm::uint Renderer_::_uniformProjectionMatrix = 0;
 
-		glm::uint Renderer_::_uMVP_Matrix = 0;
-		glm::uint Renderer_::_uMV_Matrix = 0;
-		glm::uint Renderer_::_uVP_Matrix = 0;
+		glm::uint Renderer_::_uniformMVP_Matrix = 0;
+		glm::uint Renderer_::_uniformMV_Matrix = 0;
+		glm::uint Renderer_::_uniformVP_Matrix = 0;
 
-		glm::uint Renderer_::_uNormalMatrix = 0;
+		glm::uint Renderer_::_uniformNormalMatrix = 0;
 
-		glm::uint Renderer_::_uDiffuseColor = 0;
-		glm::uint Renderer_::_uSpecularColor = 0;
-		glm::uint Renderer_::_uEmissionColor = 0;
+		glm::uint Renderer_::_uniformDiffuseColor = 0;
+		glm::uint Renderer_::_uniformSpecularColor = 0;
+		glm::uint Renderer_::_uniformEmissionColor = 0;
 
-		glm::uint Renderer_::_uDiffuseMap = 0;
-		glm::uint Renderer_::_uSpecularMap = 0;
-		glm::uint Renderer_::_uEmissionMap = 0;
+		glm::uint Renderer_::_uniformDiffuseMap = 0;
+		glm::uint Renderer_::_uniformSpecularMap = 0;
+		glm::uint Renderer_::_uniformEmissionMap = 0;
 
-		glm::uint Renderer_::_aPositions = 0;
-		glm::uint Renderer_::_aNormals = 0;
-		glm::uint Renderer_::_aUVs = 0;
-		glm::uint Renderer_::_aIndices = 0;
+		glm::uint Renderer_::_attributePositions = 0;
+		glm::uint Renderer_::_attributeNormals = 0;
+		glm::uint Renderer_::_attributeUVs = 0;
+		glm::uint Renderer_::_attributeIndices = 0;
 
 		Renderer_::Renderer_(): 
 		_material(nullptr), _mesh(nullptr), _renderQueue(Opaque), _castsShadows(true)
@@ -62,6 +62,7 @@ namespace Engine
 
 		void Renderer_::render()
 		{
+			return;
 		}
 
 		void Renderer_::findMesh()
