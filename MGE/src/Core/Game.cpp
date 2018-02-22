@@ -8,7 +8,9 @@
 #include "../../externals/glew_sfml_glm/include/lua/lua.hpp"
 //#include "RenderManager.hpp"
 #include "../_vs2015/RenderManager.hpp"
+#include "../_vs2015/LightManager.hpp"
 #include "../_vs2015/ServiceLocator.hpp"
+//#include "GameLoop.hpp"
 
 namespace Engine
 {
@@ -41,7 +43,7 @@ namespace Engine
 		return _window.get();
 	}
 
-	bool Game::running()
+	bool Game::running() const
 	{
 		return _window->isOpen();
 	}
@@ -76,11 +78,11 @@ namespace Engine
 		glGetIntegerv(GL_MAJOR_VERSION, &major);
 		glGetIntegerv(GL_MINOR_VERSION, &minor);
 
-		printf("GL Vendor : %s\n", vendor);
-		printf("GL Renderer : %s\n", renderer);
-		printf("GL Version (string) : %s\n", version);
+		printf("GL Vendor : %p\n", vendor);
+		printf("GL Renderer : %p\n", renderer);
+		printf("GL Version (string) : %p\n", version);
 		printf("GL Version (integer) : %d.%d\n", major, minor);
-		printf("GLSL Version : %s\n", glslVersion);
+		printf("GLSL Version : %p\n", glslVersion);
 
 		std::cout << "----------------------------------" << std::endl << std::endl;
 	}
@@ -96,9 +98,13 @@ namespace Engine
 	void Game::initializeServices()
 	{
 		//Create
+		_gameLoop = new Engine::Core::GameLoop();
 		_renderManager = new Engine::Rendering::RenderManager();
+		_lightManager = new Engine::Rendering::LightManager();
 
 		//Register
+		Engine::ServiceLocator::instance()->addService(_gameLoop);
+		Engine::ServiceLocator::instance()->addService(_lightManager);
 		Engine::ServiceLocator::instance()->addService(_renderManager);
 	}
 

@@ -16,6 +16,11 @@ namespace Engine
 	namespace Rendering
 	{
 		class RenderManager;
+		class LightManager;
+	}
+	namespace Core
+	{
+		class GameLoop;
 	}
 	class Game : Engine::Service
 	{
@@ -27,7 +32,7 @@ namespace Engine
 		void initialize();
 		sf::RenderWindow* getWindow() const;
 		void processEvents();
-		bool running();
+		bool running() const;
 		void exit();
 
 	private:
@@ -46,10 +51,12 @@ namespace Engine
 		//World* _world;              //the root game object that represents our scene
 		//float _fps;                 //stores the real fps
 		Engine::Rendering::RenderManager* _renderManager;
+		Engine::Rendering::LightManager* _lightManager;
+		Engine::Core::GameLoop* _gameLoop;
 		std::string _defaultScenePath;
 
-		Game(const Game&);
-		Game& operator=(const Game&);
+		Game(const Game&) = delete;
+		Game& operator=(const Game&) = delete;
 	};
 }
 

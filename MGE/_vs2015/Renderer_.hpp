@@ -2,18 +2,21 @@
 #ifndef RENDERER_HPP
 #define RENDERER_HPP
 #include "Component.hpp"
-#include "glm/glm.hpp"
-#include "NeedsGLSetup.hpp"
+#include "GL/glew.h"
+#include <string>
 
 namespace Engine
 {
+	namespace Core { class Transform; }
 	namespace Rendering
 	{
 		enum RenderQueue { Opaque, Transparent };
 		class Material_;
 		class Mesh_;
+		class Shader;
+		class LightManager;
 
-		class Renderer_ : public Core::Component, public NeedsGLSetup
+		class Renderer_ : public Core::Component
 		{
 			friend class RenderManager;
 		public:
@@ -29,41 +32,69 @@ namespace Engine
 			bool castsShadows() const;
 		protected:
 			//GL cache location
-			static glm::uint _uniformModelMatrix;
-			static glm::uint _uniformViewMatrix;
-			static glm::uint _uniformProjectionMatrix;
+			static GLint _uniformModelMatrix;
+			static GLint _uniformViewMatrix;
+			static GLint _uniformProjectionMatrix;
 
-			static glm::uint _uniformMVP_Matrix;
-			static glm::uint _uniformMV_Matrix;
-			static glm::uint _uniformVP_Matrix;
+			static GLint _uniformModelViewProjectionMatrix;
+			static GLint _uniformModelViewMatrix;
+			static GLint _uniformViewProjectionMatrix;
 
-			static glm::uint _uniformNormalMatrix;
+			static GLint _uniformNormalMatrix;
 
-			static glm::uint _uniformDiffuseColor;
-			static glm::uint _uniformSpecularColor;
-			static glm::uint _uniformEmissionColor;
+			static GLint _attributeVertexPositions;
+			static GLint _attributeVertexNormals;
+			static GLint _attributeVertexUVs;
 
-			static glm::uint _uniformDiffuseMap;
-			static glm::uint _uniformSpecularMap;
-			static glm::uint _uniformEmissionMap;
+			static GLint _bufferVertexPositions;
+			static GLint _bufferVertexNormals;
+			static GLint _bufferVertexUVs;
+			static GLint _bufferIndex;
 
-			static glm::uint _attributePositions;
-			static glm::uint _attributeNormals;
-			static glm::uint _attributeUVs;
+			static GLint _uniformMaterialDiffuseColor;
+			static GLint _uniformMaterialSpecularColor;
+			static GLint _uniformMaterialEmissionColor;
 
-			static glm::uint _attributeIndices;
+			static GLint _uniformMaterialDiffuseMap;
+			static GLint _uniformMaterialSpecularMap;
+			static GLint _uniformMaterialEmissionMap;
+
+			static GLint _uniformMaterialUseDiffuseMap;
+			static GLint _uniformMaterialUseSpecularMap;
+			static GLint _uniformMaterialUseEmissionMap;
+			static GLint _uniformMaterialUseEmission;
+
+			static GLint _uniformMaterialShininess;
+
+			static GLint _uniformCameraPosition;
+
+			static GLint _uniformAmbientLightColor;
+			static GLint _uniformAmbientLightStrength;
+			static GLint _uniformAmbientLightTerm;
+			static GLint _uniformAttenuationConstants;
+
+			static GLint _uniformDirectionalLightsAmount;
+			static GLint _uniformPointLightsAmount;
+			static GLint _uniformSpotLightsAmount;
 
 			//Everything else
-			void setupGL() override;
-			void bind();
-			void pushMatrix();
-			void unbind();
-			void draw();
+			void initialize();
+			void initializeShader(const std::string& path);
+			void setup() const;
+			void pushMatrices() const;
+			void pushLights() const;
+			void pushMaterial() const;
+			void pushCameraPosition() const;
+			void pushMesh() const;
 
-			void render();
+			void render() const;
 
+			LightManager* _lightManager;
+
+			Core::Transform* _transform;
 			Material_ * _material;
 			Mesh_ * _mesh;
+			Shader* _shader;
 
 			RenderQueue _renderQueue;
 			bool _castsShadows;

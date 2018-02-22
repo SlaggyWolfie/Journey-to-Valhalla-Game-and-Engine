@@ -10,7 +10,7 @@ namespace Engine
 	{
 		class GameObject_;
 
-		class Component : Object
+		class Component : public Object
 		{
 			friend class GameObject_;
 

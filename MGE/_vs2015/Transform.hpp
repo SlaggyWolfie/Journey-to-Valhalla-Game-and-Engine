@@ -32,7 +32,7 @@ namespace Engine
 			 * \brief Gets the transform's world position.
 			 * \return The transform's world position.
 			 */
-			glm::vec3 getPosition() const;
+			glm::vec3 getPosition();
 
 			/**
 			* \brief Sets the transform's world rotation.
@@ -43,7 +43,7 @@ namespace Engine
 			* \brief Gets the transform's world rotation.
 			* \return The transform's world rotation.
 			*/
-			glm::quat getRotation() const;
+			glm::quat getRotation();
 
 			/**
 			* \brief Sets the transform's world scale.
@@ -54,7 +54,7 @@ namespace Engine
 			* \brief Gets the transform's position.
 			* \return The transform's position.
 			*/
-			glm::vec3 getScale() const;
+			glm::vec3 getScale();
 
 			/**
 			* \brief Gets the transform's position.
@@ -65,7 +65,7 @@ namespace Engine
 			* \brief Gets the transform's position.
 			* \return The transform's position.
 			*/
-			glm::mat4 getMatrix4X4() const;
+			glm::mat4 getMatrix4X4();
 
 			//Local
 
@@ -79,16 +79,18 @@ namespace Engine
 			glm::vec3 getLocalScale() const;
 
 			void setLocalMatrix4X4(const glm::mat4& matrix);
-			glm::mat4 getLocalMatrix4X4() const;
+			glm::mat4 getLocalMatrix4X4();
 
-			glm::vec3 forward() const;
-			glm::vec3 up() const;
-			glm::vec3 right() const;
+			glm::mat3 getNormalMatrix();
+
+			glm::vec3 forward();
+			glm::vec3 up();
+			glm::vec3 right();
 
 			//Operations
 
-			glm::vec3 transformPoint(const glm::vec3& point) const;
-			glm::vec3 inverseTransformPoint(const glm::vec3& point) const;
+			glm::vec3 transformPoint(const glm::vec3& point);
+			glm::vec3 inverseTransformPoint(const glm::vec3& point);
 
 			void lookAt(Transform* lookAtTarget, const glm::vec3& up = glm::vec3(0, 1, 0));
 			void translate(const glm::vec3& translation);
@@ -118,6 +120,7 @@ namespace Engine
 			glm::quat _worldRotation; //unused
 			glm::vec3 _worldScale; //unused
 			glm::mat4 _worldMatrix; //unused
+			glm::mat3 _normalMatrix;
 
 			bool _isDirty; //unused
 
@@ -125,32 +128,32 @@ namespace Engine
 			void _cacheLocal();
 			void _cacheWorld();
 
-			glm::mat4 _calculateLocalMatrix() const;
+			glm::mat4 _calculateLocalMatrix();
 
 			//good
 			//Recurse through parents to construct World Matrix
 			//Use said matrix to construct TRS
 
-			glm::vec3 _calculateWorldPosition() const;
-			glm::quat _calculateWorldRotation() const;
-			glm::vec3 _calculateWorldScale() const;
-			glm::mat4 _calculateWorldMatrix() const;
+			glm::vec3 _calculateWorldPosition();
+			glm::quat _calculateWorldRotation();
+			glm::vec3 _calculateWorldScale();
+			glm::mat4 _calculateWorldMatrix();
 
 			//bad
 			//Recurse through parents to construct components (TRS)
 			//Use said components to construct World Matrix
 
-			glm::vec3 _calculateWorldPosition2() const;
-			glm::quat _calculateWorldRotation2() const;
-			glm::vec3 _calculateWorldScale2() const;
-			glm::mat4 _calculateWorldMatrix2() const;
+			glm::vec3 _calculateWorldPosition2();
+			glm::quat _calculateWorldRotation2();
+			glm::vec3 _calculateWorldScale2();
+			glm::mat4 _calculateWorldMatrix2();
 
 			//Convenience
-			static glm::vec3 _getTranslation(const glm::mat4& modelMatrix);
-			static glm::quat _getOrientation(const glm::mat4& modelMatrix);
-			static glm::vec3 _getScale(const glm::mat4& modelMatrix);
-			static glm::vec3 _getSkew(const glm::mat4& modelMatrix);
-			static glm::vec4 _getPerspective(const glm::mat4& modelMatrix);
+			static glm::vec3 _getTranslation(const glm::mat4& matrix);
+			static glm::quat _getOrientation(const glm::mat4& matrix);
+			static glm::vec3 _getScale(const glm::mat4& matrix);
+			static glm::vec3 _getSkew(const glm::mat4& matrix);
+			static glm::vec4 _getPerspective(const glm::mat4& matrix);
 
 		protected:
 			void start() override {};

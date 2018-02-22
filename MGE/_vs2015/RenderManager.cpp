@@ -2,7 +2,6 @@
 #include <GL/glew.h>
 #include "Renderer_.hpp"
 #include "FunctionGroup.hpp"
-#include <iostream>
 #include <functional>
 #include "../_vs2015/GameObject_.hpp"
 #include "../_vs2015/Transform.hpp"
@@ -17,7 +16,7 @@ namespace Engine
 	{
 		RenderManager::RenderManager() :
 			_fps(0), _frameCount(0), _timeSinceLastFPSCalculation(0),
-			_window(nullptr), _lightManager(nullptr)
+			_window(nullptr)
 		{
 			//make sure we test the depthbuffer
 			glEnable(GL_DEPTH_TEST);
@@ -111,8 +110,8 @@ namespace Engine
 
 		void RenderManager::renderOpaque() const
 		{
-			std::cout << "Not Done. RenderManager" << std::endl;
-			std::cout << "Added predicate" << std::endl;
+			//std::cout << "Not Done. RenderManager" << std::endl;
+			//std::cout << "Added predicate" << std::endl;
 			_renderOpaque->execute();
 		}
 
@@ -135,11 +134,9 @@ namespace Engine
 					sorted.insert(std::make_pair(glm::length2(cameraPosition - 
 						itr->getGameObject()->getTransform()->getPosition()), itr));
 
-			for (std::map<float, Renderer_*>::value_type itr : sorted)
-			{
+			for (const std::multimap<float, Renderer_*>::value_type itr : sorted)
 				if (itr.second->isEnabled() && itr.second->getGameObject()->isActive())
 					itr.second->render();
-			}
 
 			glDisable(GL_BLEND);
 		}

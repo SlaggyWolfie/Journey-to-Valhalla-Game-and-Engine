@@ -20,13 +20,13 @@ namespace Engine
 
 			GameLoop();
 			virtual ~GameLoop();
-			GameLoop(const GameLoop& other);
-			GameLoop& operator=(const GameLoop& other);
+			GameLoop(const GameLoop& other) = delete;
+			GameLoop& operator=(const GameLoop& other) = delete;
 			Utility::FunctionGroup<Component*>* update() const;
 			Utility::FunctionGroup<Component*>* fixedUpdate() const;
 			Utility::FunctionGroup<Component*>* lateUpdate() const;
 
-			void run();
+			void run() const;
 
 		//protected:
 		private:

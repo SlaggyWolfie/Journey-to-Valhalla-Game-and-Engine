@@ -7,7 +7,6 @@
 #include <SFML/System/Clock.hpp>
 #include "FunctionGroup.hpp"
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <glm/glm.hpp>
 
 namespace Engine
 {
@@ -20,7 +19,7 @@ namespace Engine
 		{
 		public:
 			RenderManager();
-			~RenderManager();
+			virtual ~RenderManager();
 			void addRenderer(Renderer_* renderer) const;
 			void removeRenderer(Renderer_* renderer) const;
 			bool containsRenderer(Renderer_* renderer) const;
@@ -48,8 +47,6 @@ namespace Engine
 
 			//Other
 			sf::RenderWindow* _window;
-
-			LightManager* _lightManager;
 		};
 	}
 }

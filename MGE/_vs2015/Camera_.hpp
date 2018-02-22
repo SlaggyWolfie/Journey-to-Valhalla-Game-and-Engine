@@ -8,7 +8,7 @@ namespace Engine
 {
 	namespace Core
 	{
-		enum ProjectionMode { Perspective, Ortographic };
+		enum ProjectionMode { Perspective, Orthographic };
 
 		class Camera_ : public Component
 		{
@@ -21,6 +21,7 @@ namespace Engine
 
 			static Camera_* getMainCamera();
 			glm::mat4 getViewMatrix() const;
+			glm::mat4 getProjectionMatrix() const;
 			glm::vec3 getPosition() const;
 
 			void setFOV(float fov);

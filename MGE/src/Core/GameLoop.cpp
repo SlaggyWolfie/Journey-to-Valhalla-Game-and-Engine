@@ -1,4 +1,4 @@
-#include "GameLoop.hpp"
+ #include "GameLoop.hpp"
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window.hpp>
 #include "Game.hpp"
@@ -47,7 +47,7 @@ namespace Engine
 			return _lateUpdate.get();
 		}
 
-		void GameLoop::run()
+		void GameLoop::run() const
 		{
 			_renderManager->startFPSClock();
 
