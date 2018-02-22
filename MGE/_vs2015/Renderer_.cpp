@@ -9,6 +9,7 @@
 #include "LightManager.hpp"
 #include "Light_.hpp"
 #include "ServiceLocator.hpp"
+#include "RenderManager.hpp"
 
 namespace Engine
 {
@@ -55,7 +56,7 @@ namespace Engine
 		GLint Renderer_::_uniformSpotLightsAmount = 0;
 
 		Renderer_::Renderer_() : _lightManager(nullptr), _transform(nullptr),
-			_material(nullptr), _mesh(nullptr), _shader(nullptr), _renderQueue(Opaque),
+			_material(nullptr), _mesh(nullptr), _shader(nullptr), _renderQueue(RenderQueue::Opaque),
 			_castsShadows(true)
 		{
 		}
@@ -78,15 +79,10 @@ namespace Engine
 			return _castsShadows;
 		}
 
-		void Renderer_::destroy()
-		{
-			Component::destroy();
-			delete this;
-		}
-
 		void Renderer_::initialize()
 		{
-			initializeShader("default");
+			//initializeShader("default");
+			_shader = _material->getShader();
 			setup();
 		}
 
@@ -285,7 +281,7 @@ namespace Engine
 			_mesh->stream(_attributeVertexPositions, _attributeVertexNormals, _attributeVertexUVs);
 		}
 
-		void Renderer_::render() const
+		void Renderer_::render()
 		{
 			_shader->bind();
 
@@ -324,6 +320,8 @@ namespace Engine
 
 			_transform = getGameObject()->getTransform();
 			_lightManager = ServiceLocator::instance()->getService<LightManager>();
+			_renderManager = ServiceLocator::instance()->getService<RenderManager>();
+			_renderManager->addRenderer(this);
 
 			initialize();
 		}

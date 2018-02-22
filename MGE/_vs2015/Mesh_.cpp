@@ -13,12 +13,6 @@ namespace Engine
 
 		}
 
-		Mesh_* Mesh_::load(const std::string& path)
-		{
-			std::cout << "Load " + path << std::endl;
-			return nullptr;
-		}
-
 		void Mesh_::addVertex(const Vertex vertex)
 		{
 			_vertices.push_back(vertex);
@@ -99,7 +93,12 @@ namespace Engine
 		{
 		}
 
-		void Mesh_::stream(const GLint verticesAttribute, const GLint normalsAttribute, const GLint UVsAttribute) const
+		void Mesh_::prewake()
+		{
+			generateBuffers();
+		}
+
+		void Mesh_::stream(const GLint& verticesAttribute, const GLint& normalsAttribute, const GLint& UVsAttribute) const
 		{
 			if (verticesAttribute != -1)
 			{

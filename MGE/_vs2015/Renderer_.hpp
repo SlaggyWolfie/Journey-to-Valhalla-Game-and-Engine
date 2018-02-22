@@ -1,6 +1,6 @@
-#pragma once
-#ifndef RENDERER_HPP
-#define RENDERER_HPP
+//#pragma once
+#ifndef RENDERER__HPP
+#define RENDERER__HPP
 #include "Component.hpp"
 #include "GL/glew.h"
 #include <string>
@@ -10,23 +10,24 @@ namespace Engine
 	namespace Core { class Transform; }
 	namespace Rendering
 	{
-		enum RenderQueue { Opaque, Transparent };
+		enum class RenderQueue { Opaque, Transparent };
 		class Material_;
 		class Mesh_;
 		class Shader;
 		class LightManager;
+		class RenderManager;
 
 		class Renderer_ : public Core::Component
 		{
 			friend class RenderManager;
 		public:
 			Renderer_();
-			Renderer_(Material_* material, Mesh_* mesh, RenderQueue renderQueue = Opaque, bool castShadows = true);
+			Renderer_(Material_* material, Mesh_* mesh, RenderQueue renderQueue = RenderQueue::Opaque, bool castShadows = true);
 			virtual ~Renderer_() = default;
 			Renderer_(const Renderer_& other) = default;
 			Renderer_& operator=(const Renderer_& other) = default;
 
-			void destroy() override;
+			//void destroy() override;
 
 			bool shouldCastShadows(bool castShadows = false);
 			bool castsShadows() const;
@@ -87,9 +88,10 @@ namespace Engine
 			void pushCameraPosition() const;
 			void pushMesh() const;
 
-			void render() const;
+			void render();
 
 			LightManager* _lightManager;
+			RenderManager* _renderManager;
 
 			Core::Transform* _transform;
 			Material_ * _material;

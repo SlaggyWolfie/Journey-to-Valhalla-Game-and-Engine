@@ -26,6 +26,11 @@ namespace Engine
 			return _main;
 		}
 
+		void Camera_::setMainCamera(Camera_* camera)
+		{
+			_main = camera;
+		}
+
 		glm::mat4 Camera_::getViewMatrix() const
 		{
 			return glm::inverse(getGameObject()->getTransform()->getMatrix4X4());
@@ -98,7 +103,14 @@ namespace Engine
 
 		void Camera_::awake()
 		{
-			_main = this;
+			//_main = this;
+		}
+
+		void Camera_::update()
+		{
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(0, 0, -1));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(0, 0, 1));
+			std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
 		}
 	}
 }

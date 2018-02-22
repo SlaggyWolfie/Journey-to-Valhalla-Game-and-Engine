@@ -17,7 +17,7 @@ namespace Engine
 			friend class GameObject_;
 
 			Transform();
-			~Transform();
+			virtual ~Transform();
 
 			Transform(const Transform& other);
 			Transform& operator=(const Transform& other);

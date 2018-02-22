@@ -458,7 +458,7 @@ namespace Engine
 			_isDirty(true)
 		{
 			_children = std::vector<Transform*>();
-			_children.push_back(this);
+			//_children.push_back(this);
 		}
 
 		Transform::~Transform()

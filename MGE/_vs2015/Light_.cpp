@@ -96,10 +96,5 @@ namespace Engine
 		{
 			return _lightColor;
 		}
-
-		void Light_::destroy()
-		{
-			delete this;
-		}
 	}
 }

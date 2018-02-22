@@ -35,7 +35,7 @@ namespace Engine
 			Mesh_& operator=(const Mesh_& other) = default;
 
 			static Mesh_ * load(const std::string& path);
-			void stream(GLint verticesAttribute, GLint normalsAttribute, GLint UVsAttribute) const;
+			void stream(const GLint& verticesAttribute, const GLint & normalsAttribute, const GLint& UVsAttribute) const;
 			void generateBuffers();
 
 			void addVertex(Vertex vertex);
@@ -59,6 +59,9 @@ namespace Engine
 		private:
 			Mesh_(std::vector<Vertex> vertices, std::vector<int> indices);
 
+		protected:
+			void prewake() override;
+		private:
 			std::vector<Vertex> _vertices;
 			std::vector<int> _indices;
 

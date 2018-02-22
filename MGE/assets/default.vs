@@ -17,9 +17,9 @@ out vec3 worldNormal;
 out vec3 worldPosition;
 out vec2 textureCoordinate;
 
-void main (void) 
+void main() 
 {
-    gl_Position = mvpMatrix * vec4(vertex,1);
+    gl_Position = mvpMatrix * vec4(vertexPosition, 1);
 	
     worldNormal = vec3 (normalMatrix * vec4 (vertexNormal, 0));
 	worldPosition = vec3(modelMatrix * vec4 (vertexPosition, 1));

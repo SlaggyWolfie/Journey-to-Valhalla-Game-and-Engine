@@ -38,6 +38,8 @@ namespace Engine
 			Mesh_* mymesh = nullptr;
 			const RenderQueue queue = processMesh(mesh, scene, mymesh, mymat);
 			//std::cout << "Wrong" << std::endl;
+			//std::cout << "My Mesh: " + std::to_string(mymesh != nullptr) << std::endl;
+			//std::cout << "My Material: " + std::to_string(mymat != nullptr) << std::endl;
 			go->addComponent(mymesh);
 			go->addComponent(mymat);
 			go->addComponent(new Renderer_(mymat, mymesh, queue, true));
@@ -54,7 +56,7 @@ namespace Engine
 		return go;
 	}
 
-	RenderQueue Model::processMesh(aiMesh *mesh, const aiScene *scene, Mesh_* outMesh, Material_* outMaterial)
+	RenderQueue Model::processMesh(aiMesh *mesh, const aiScene *scene, Mesh_*& outMesh, Material_*& outMaterial)
 	{
 		std::vector<Vertex> vertices;
 		std::vector<int> indices;
@@ -109,6 +111,8 @@ namespace Engine
 		if (glm::epsilonEqual(opacity, 1.0f, glm::epsilon<float>()))
 			queue = RenderQueue::Opaque;
 
+		//std::cout << "Out Mesh: " + std::to_string(outMesh != nullptr) << std::endl;
+		//std::cout << "Out Material: " + std::to_string(outMaterial != nullptr) << std::endl;
 		return queue;
 	}
 

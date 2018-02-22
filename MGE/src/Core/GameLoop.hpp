@@ -22,18 +22,22 @@ namespace Engine
 			virtual ~GameLoop();
 			GameLoop(const GameLoop& other) = delete;
 			GameLoop& operator=(const GameLoop& other) = delete;
-			Utility::FunctionGroup<Component*>* update() const;
-			Utility::FunctionGroup<Component*>* fixedUpdate() const;
-			Utility::FunctionGroup<Component*>* lateUpdate() const;
+			void initialize() override;
+			void subscribe(Component* component);
+			void unsubscribe(Component* component);
+			bool isSubscribed(Component* component);
 
-			void run() const;
+			void run();
 
-		//protected:
 		private:
-			std::unique_ptr<Utility::FunctionGroup<Component*>> _update;
-			std::unique_ptr<Utility::FunctionGroup<Component*>> _fixedUpdate;
-			std::unique_ptr<Utility::FunctionGroup<Component*>> _lateUpdate;
-			Rendering::RenderManager* _renderManager;
+
+			//std::vector<Component*> _components;
+			std::vector<std::shared_ptr<Component>> _components;
+			std::shared_ptr<Component> find(Component* component);
+			void update();
+			void fixedUpdate();
+			void lateUpdate();
+			Rendering::RenderManager* _renderManager{};
 			//AnimationManager _animationManager;
 			//CollisionManager _collisionManager;
 			//PhysicsManager _physicsManager;
@@ -41,8 +45,9 @@ namespace Engine
 			void createOwnedLoops();
 			void destroyOwnedLoops();
 
+
 			//sf::RenderWindow* _window;
-			Game* _game;
+			Game* _game{};
 		};
 	}
 }

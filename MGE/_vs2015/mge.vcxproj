@@ -225,6 +225,7 @@
     <ClInclude Include="Renderer_.hpp" />
     <ClInclude Include="RenderManager.hpp" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Scene.hpp" />
     <ClInclude Include="Service.hpp" />
     <ClInclude Include="ServiceLocator.hpp" />
     <ClInclude Include="Shader.hpp" />

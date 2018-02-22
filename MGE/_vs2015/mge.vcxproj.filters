@@ -485,9 +485,6 @@
     <ClInclude Include="Material_.hpp">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="NeedsGLSetup.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="Camera_.hpp">
       <Filter>engine</Filter>
     </ClInclude>
@@ -506,8 +503,8 @@
     <ClInclude Include="LuaScript.h">
       <Filter>engine</Filter>
     </ClInclude>
-
     <ClInclude Include="LuaScript.h" />
+    <ClInclude Include="Scene.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

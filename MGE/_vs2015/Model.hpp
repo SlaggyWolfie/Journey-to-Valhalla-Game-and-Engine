@@ -13,7 +13,7 @@
 namespace Engine
 {
 	namespace Core { class GameObject_; }
-	namespace Rendering { class Mesh_; class Material_; class Renderer_; }
+	namespace Rendering { class Mesh_; class Material_; }
 
 	class Model
 	{
@@ -21,7 +21,7 @@ namespace Engine
 		static Core::GameObject_* loadModel(const std::string& path);
 	private:
 		static Core::GameObject_* processNode(aiNode *node, const aiScene *scene);
-		static Rendering::RenderQueue processMesh(aiMesh *mesh, const aiScene *scene, Rendering::Mesh_* outMesh, Rendering::Material_* outMaterial);
+		static Rendering::RenderQueue processMesh(aiMesh *mesh, const aiScene *scene, Rendering::Mesh_* &outMesh, Rendering::Material_* &outMaterial);
 		static Rendering::Material_* loadMaterial(aiMaterial *material);
 
 	};

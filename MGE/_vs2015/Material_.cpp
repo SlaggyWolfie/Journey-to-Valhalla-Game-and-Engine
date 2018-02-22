@@ -181,8 +181,8 @@ namespace Engine
 		void Material_::initializeShader(const std::string& path)
 		{
 			_shader = std::make_unique<Shader>();
-			_shader->addShader(GL_VERTEX_SHADER, path);
-			_shader->addShader(GL_FRAGMENT_SHADER, path);
+			_shader->addShader(GL_VERTEX_SHADER, path + ".vs");
+			_shader->addShader(GL_FRAGMENT_SHADER, path + ".fs");
 			_shader->finalize();
 		}
 

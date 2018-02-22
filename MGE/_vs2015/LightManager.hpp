@@ -16,6 +16,7 @@ namespace Engine
 		public:
 			LightManager();
 			virtual ~LightManager();
+				void initialize() override;
 
 			void addLight(Light_* light);
 			void removeLight(Light_* light);
@@ -59,6 +60,7 @@ namespace Engine
 
 			template <typename T>
 			T* getArray(std::vector<T> list) const;
+		
 		};
 
 		template <typename T>

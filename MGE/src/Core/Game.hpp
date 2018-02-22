@@ -22,17 +22,18 @@ namespace Engine
 	{
 		class GameLoop;
 	}
-	class Game : Engine::Service
+	class Game : public Engine::Service
 	{
 	public:
 		Game();
-		~Game();
+		virtual ~Game();
 
 		//creates a window, initializes glew, a renderer and a world instance
-		void initialize();
+		void initialize() override;
 		sf::RenderWindow* getWindow() const;
 		void processEvents();
-		bool running() const;
+		void run();
+		bool currentlyRunning() const;
 		void exit();
 
 	private:

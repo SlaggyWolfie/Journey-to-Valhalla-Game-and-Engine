@@ -38,7 +38,7 @@ namespace Engine
 
 			void setColor(glm::vec3 color);
 			glm::vec3 getColor() const;
-			void destroy() override;
+			//void destroy() override;
 		protected:
 			//void start() override;
 			//void awake() override;

@@ -56,10 +56,10 @@ struct Material
 	
 	float shininess;
 	
-	int useDiffuseMap;
-	int useSpecularMap;
-	int useEmissionMap;
-	int useEmission;
+	bool useDiffuseMap;
+	bool useSpecularMap;
+	bool useEmissionMap;
+	bool useEmission;
 };
 
 #define MAX_LIGHTS 32
@@ -82,7 +82,7 @@ vec3 GetDirectionalLight(vec3 diffuseColor, vec3 specularColor,
  DirectionalLight directional, vec3 normal, vec3 viewDirection)
 {
 	float diffuseIntensity = max (0, dot(-directional.direction, normal));
-	float specularIntensity = pow(max(dot(reflect(directional.direction, normal), -viewDirection), 0), shininess);
+	float specularIntensity = pow(max(dot(reflect(directional.direction, normal), -viewDirection), 0), material.shininess);
 	
     vec3 diffuseTerm = diffuseIntensity * directional.color * diffuseColor;
 	vec3 specularTerm = specularIntensity * directional.color * specularColor;
@@ -99,7 +99,7 @@ vec3 GetPointLight(vec3 diffuseColor, vec3 specularColor,
 	
 	//Attenuation
 	float linearQuadraticSum = light.attenuationConstants[1] + light.attenuationConstants[2];
-	if (attenuationConstants[0] + linearQuadraticSum > 0.01f) 
+	if (light.attenuationConstants[0] + linearQuadraticSum > 0.01f) 
 	{
 		float distanceFromLight = 0; 
 		if (linearQuadraticSum > 0.01f) distanceFromLight = length(deltaDirection) - point.range / 2;
@@ -113,8 +113,8 @@ vec3 GetPointLight(vec3 diffuseColor, vec3 specularColor,
 		specularIntensity *= attenuation;
 	}
 	
-    vec3 diffuseTerm = diffuseIntensity * spot.color * diffuseColor;
-	vec3 specularTerm = specularIntensity * spot.color * specularColor;
+    vec3 diffuseTerm = diffuseIntensity * point.color * diffuseColor;
+	vec3 specularTerm = specularIntensity * point.color * specularColor;
 	
 	return diffuseTerm + specularTerm;
 }
@@ -131,19 +131,19 @@ vec3 GetSpotLight(vec3 diffuseColor, vec3 specularColor,
 	float fallOffDelta = spot.fallOff - spot.fallOffOuter;
 	diffuseIntensity = clamp((incident - spot.fallOffOuter) / fallOffDelta, minimumIntensity, maximumIntensity); 
 		
-	float specularIntensity = pow(max(dot(reflect(-normalize(deltaDirection), normal), -viewDirection), 0), shininess);
+	float specularIntensity = pow(max(dot(reflect(-normalize(deltaDirection), normal), -viewDirection), 0), material.shininess);
 	
 	//Attenuation
-	float linearQuadraticSum = attenuationConstants[1] + attenuationConstants[2];
-	if (attenuationConstants[0] + linearQuadraticSum > 0.01f) 
+	float linearQuadraticSum = light.attenuationConstants[1] + light.attenuationConstants[2];
+	if (light.attenuationConstants[0] + linearQuadraticSum > 0.01f) 
 	{
 		float distanceFromLight = 0; 
-		if (linearQuadraticSum > 0.01f) distanceFromLight = length(deltaDirection) - point.range / 2;
+		if (linearQuadraticSum > 0.01f) distanceFromLight = length(deltaDirection) - spot.range / 2;
 		
 		float attenuation = 1 / 
-		( attenuationConstants[0] 
-		+ attenuationConstants[1] * distanceFromLight 
-		+ attenuationConstants[2] * distanceFromLight * distanceFromLight);
+		( light.attenuationConstants[0] 
+		+ light.attenuationConstants[1] * distanceFromLight 
+		+ light.attenuationConstants[2] * distanceFromLight * distanceFromLight);
 		
 		diffuseIntensity *= attenuation;
 		specularIntensity *= attenuation;
@@ -157,7 +157,7 @@ vec3 GetSpotLight(vec3 diffuseColor, vec3 specularColor,
 	return diffuseTerm + specularTerm;
 }
 
-void main (void) 
+void main() 
 {
 	vec3 diffuseColor = vec3(0);
 	float alpha = 0;
@@ -197,18 +197,19 @@ void main (void)
 	vec3 result = light.ambientTerm * diffuseColor;
 	
     //Directional light(s) - usually one
-    for(int i = 0; i < material.directionalLightsAmount; i++) 
+    for(int i = 0; i < light.directionalLightsAmount; i++) 
 		result += GetDirectionalLight(diffuseColor, specularColor, directionalLights[i], normal, viewDirection);
 	
     //Point lights
-    for(int j = 0; j < material.pointLightsAmount; j++) 
+    for(int j = 0; j < light.pointLightsAmount; j++) 
 		result += GetPointLight(diffuseColor, specularColor, pointLights[j], normal, viewDirection);   
 	
     //Spot lights
-    for(int k = 0; k < material.spotLightsAmount; k++) 
+    for(int k = 0; k < light.spotLightsAmount; k++) 
 		result += GetSpotLight(diffuseColor, specularColor, spotLights[k], normal, viewDirection, light.ambientStrength, 1); 
 	
 	result += emissionColor;
 	
-    finalColor = vec4(result, alpha);
+    // finalColor = vec4(result, alpha);
+	finalColor = vec4(diffuseColor, alpha);
 }

@@ -8,6 +8,7 @@
 #include <algorithm>
 #include "Object.hpp"
 #include "GeneralHelpers.hpp"
+#include "Core/GameLoop.hpp"
 #include "Component.hpp"
 
 namespace Engine
@@ -16,6 +17,7 @@ namespace Engine
 	{
 		class Component;
 		class Transform;
+		class GameLoop;
 
 		class GameObject_ : Object
 		{
@@ -53,7 +55,7 @@ namespace Engine
 			template <typename T>
 			bool containsComponent();
 
-			void addComponent(Component* component);
+			void addComponent(Component* newComponent);
 			void removeComponent(Component* component);
 			bool containsComponent(Component* component);
 
@@ -69,6 +71,8 @@ namespace Engine
 			std::string _tag;
 			std::unique_ptr<Transform> _transform;
 
+			GameLoop* _gameLoop;
+
 			template <typename T>
 			std::unique_ptr<T> findComponent();
 
@@ -83,9 +87,9 @@ namespace Engine
 		T* GameObject_::getComponent()
 		{
 			const auto comp = findComponent<T>();
-
 			if (comp != nullptr && comp.get() != nullptr)
 				return comp.get();
+			//std::cout << "boi" << std::endl;
 			return nullptr;
 		}
 
@@ -143,6 +147,7 @@ namespace Engine
 				std::unique_ptr<Component> newComponent = std::unique_ptr<Component>(derivedComponent);
 				newComponent.get()->setGameObject(this);
 				_components.push_back(newComponent);
+				_gameLoop->subscribe(newComponent.get());
 			}
 			else std::cout << "Failed to add component. Has no default constructor." << std::endl;
 		}
@@ -153,6 +158,8 @@ namespace Engine
 			const auto comp = findComponent<T>();
 
 			if (comp == nullptr) return;
+
+			_gameLoop->unsubscribe(comp);
 
 			List::removeFrom(_components, comp);
 			comp.reset();
@@ -178,8 +185,13 @@ namespace Engine
 			for (auto & component : _components)
 			{
 				T* cast_component = dynamic_cast<T*>(component.get());
-				if (cast_component != nullptr) return std::unique_ptr<T>(cast_component);
+				if (cast_component != nullptr)
+				{
+					auto x = std::unique_ptr<T>(cast_component);
+					return x;
+				}
 			}
+			std::cout << "boi_______" << std::endl;
 
 			return nullptr;
 		}

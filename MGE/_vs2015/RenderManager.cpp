@@ -7,6 +7,10 @@
 #include "../_vs2015/Transform.hpp"
 #include <map>
 #include "../_vs2015/Camera_.hpp"
+#include "Texture_.hpp"
+#include "ServiceLocator.hpp"
+#include "Core/Game.hpp"
+#include <algorithm>
 
 //#include "LightManager.hpp"
 
@@ -17,6 +21,18 @@ namespace Engine
 		RenderManager::RenderManager() :
 			_fps(0), _frameCount(0), _timeSinceLastFPSCalculation(0),
 			_window(nullptr)
+		{
+		}
+
+		RenderManager::~RenderManager()
+		{
+			//delete _lightManager;
+			_fpsClock = nullptr;
+			destroyOwnedLoops();
+			Texture_::textureMap.clear();
+		}
+
+		void RenderManager::initialize()
 		{
 			//make sure we test the depthbuffer
 			glEnable(GL_DEPTH_TEST);
@@ -31,57 +47,71 @@ namespace Engine
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-			glClearColor(
-				static_cast<float>(0x2d) / 0xff,
-				static_cast<float>(0x6b) / 0xff,
-				static_cast<float>(0xce) / 0xff,
-				1.0f);
+			//glClearColor(
+			//	static_cast<float>(0x2d) / 0xff,
+			//	static_cast<float>(0x6b) / 0xff,
+			//	static_cast<float>(0xce) / 0xff,
+			//	1.0f);
+
+			glClearColor(0, 0, 0, 1.0f);
+			Game* game = ServiceLocator::instance()->getService<Game>();
+			//std::cout << std::to_string(game != nullptr) << std::endl;
+			_window = game->getWindow();
+
 			createOwnedLoops();
 		}
 
-		RenderManager::~RenderManager()
+		void RenderManager::addRenderer(Renderer_* renderer)
 		{
-			//delete _lightManager;
-			destroyOwnedLoops();
-		}
-
-		void RenderManager::addRenderer(Renderer_* renderer) const
-		{
-			if (renderer->_renderQueue == Opaque)
+			if (renderer->_renderQueue == RenderQueue::Opaque)
 			{
-				std::function<void()> func = std::bind(&Renderer_::render, &*renderer);
+				//std::function<void()> func = std::bind(&Renderer_::render, &*renderer);
 				//_renderOpaque->subscribe(renderer, [&] {renderer->render();});
-				_renderOpaque->subscribe(renderer, *&func);
+				//_renderOpaque->subscribe(renderer, *&func);
+				//_ro.push_back(&*renderer);
+				if (!containsRenderer(renderer)) //List::removeFrom(_ro, renderer);
+					_ro.push_back(renderer);
+				//_ro.
 			}
 			else
 			{
 				//_renderTransparent->subscribe(renderer, [&] {renderer->render();});
-				std::function<void()> func = std::bind(&Renderer_::render, &*renderer);
-				_renderTransparent->subscribe(renderer, *&func);
+				//std::function<void()> func = std::bind(&Renderer_::render, &*renderer);
+				//_renderTransparent->subscribe(renderer, *&func);
+				if (!containsRenderer(renderer)) //List::removeFrom(_ro, renderer);
+					_rt.push_back(renderer);
 			}
 		}
 
-		void RenderManager::removeRenderer(Renderer_* renderer) const
+		void RenderManager::removeRenderer(Renderer_* renderer)
 		{
-			if (renderer->_renderQueue == Opaque)
-				_renderOpaque->unsubscribe(renderer);
+			if (renderer->_renderQueue == RenderQueue::Opaque)
+			{
+				//_renderOpaque->unsubscribe(renderer);
+				if (containsRenderer(renderer)) List::removeFrom(_ro, renderer);
+			}
 			else
-				_renderTransparent->unsubscribe(renderer);
+				if (containsRenderer(renderer)) List::removeFrom(_rt, renderer);
+			//_renderTransparent->unsubscribe(renderer);
 		}
 
 		bool RenderManager::containsRenderer(Renderer_* renderer) const
 		{
-			if (renderer->_renderQueue == Opaque)
-				return _renderOpaque->isSubscribed(renderer);
+			if (renderer->_renderQueue == RenderQueue::Opaque)
+				std::find(_ro.begin(), _ro.end(), renderer) != _ro.end();
 
-			return _renderTransparent->isSubscribed(renderer);
+			return
+				//_renderTransparent->isSubscribed(renderer);
+				std::find(_rt.begin(), _rt.end(), renderer) != _rt.end();
 		}
 
 		void RenderManager::render(const float deltaTime)
 		{
+			std::cout << "Pl0x" << std::endl;
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			glDisable(GL_BLEND);
+			//glEnable(GL_BLEND);
 
 			glDepthFunc(GL_LESS);
 			glDepthMask(GL_TRUE);
@@ -90,10 +120,9 @@ namespace Engine
 
 			renderOpaque();
 			renderTransparent();
-
 			_window->display();
 
-			calculateFPS();
+			//calculateFPS();
 		}
 
 		void RenderManager::startFPSClock()
@@ -112,7 +141,12 @@ namespace Engine
 		{
 			//std::cout << "Not Done. RenderManager" << std::endl;
 			//std::cout << "Added predicate" << std::endl;
-			_renderOpaque->execute();
+			//_renderOpaque->execute();
+			//const std::vector<Renderer_*> vector = _renderTransparent->getObjects();
+			for (auto r : _ro) r->render();
+			//vector[0]->render();
+			//vector[1]->render();
+			//vector[2]->render();
 		}
 
 		void RenderManager::renderTransparent() const
@@ -129,9 +163,10 @@ namespace Engine
 
 			//Iterate over, add based on distance squared to camera
 			const std::vector<Renderer_*> vector = _renderTransparent->getObjects();
-			for (Renderer_* itr : vector)
+			for (Renderer_* itr : _rt)
+				//for (Renderer_* itr : vector)
 				if (itr != nullptr && itr->getGameObject() != nullptr)
-					sorted.insert(std::make_pair(glm::length2(cameraPosition - 
+					sorted.insert(std::make_pair(glm::length2(cameraPosition -
 						itr->getGameObject()->getTransform()->getPosition()), itr));
 
 			for (const std::multimap<float, Renderer_*>::value_type itr : sorted)
@@ -147,10 +182,15 @@ namespace Engine
 				[](Renderer_* comp) -> bool { return comp->isEnabled() && comp->getGameObject()->isActive(); };
 			_renderOpaque = std::make_unique<Utility::FunctionGroup<Renderer_*>>(predicate);
 			_renderTransparent = std::make_unique<Utility::FunctionGroup<Renderer_*>>(predicate);
+
+			_ro = std::vector<Renderer_*>();
+			_rt = std::vector<Renderer_*>();
 		}
 
 		void RenderManager::destroyOwnedLoops()
 		{
+			_ro.clear();
+			_rt.clear();
 			_renderTransparent.release();
 			_renderOpaque.release();
 		}

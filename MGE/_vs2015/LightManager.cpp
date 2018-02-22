@@ -19,6 +19,10 @@ namespace Engine
 			_spotLights.clear();
 		}
 
+		void LightManager::initialize()
+		{
+		}
+
 		void LightManager::addLight(Light_* light)
 		{
 			if (findLight(light)) return;

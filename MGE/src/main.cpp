@@ -14,6 +14,7 @@
 #include "myGame/Scenes/NinthScene.hpp"
 #include <lua\lua.hpp>
 #include"Core\LuaScript.h"
+#include "Core/Game.hpp"
 
 /**
  * Main entry point for the Micro Engine.
@@ -30,23 +31,26 @@
  * All documentation is contained within the HEADER files, not the CPP files if possible.
  *
  */
-//using namespace demo;
-//using namespace MyGame;
+ //using namespace demo;
+ //using namespace MyGame;
 
 int main()
 {
-    std::cout << "Starting Game" << std::endl;
+	std::cout << "Starting Game" << std::endl;
 
 	LuaScript* luaS = new LuaScript();
 	luaS->GameLoop();
-	AbstractGame* game = new MyGame::FourthScene();
+	//AbstractGame* game = new MyGame::FourthScene();
 	//AbstractGame* game = new MyGame::FourthScene();
 	//AbstractGame* game = new MyGame::SixthScene();
-	AbstractGame* game = new MyGame::NinthScene();
-    game->initialize();
-    game->run();
+	//AbstractGame* game = new MyGame::NinthScene();
+	Engine::Game* game = new Engine::Game();
+
+	game->initialize();
+	game->run();
+	game->exit();
 
 	delete game;
 
-    return 0;
+	return 0;
 }
