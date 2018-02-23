@@ -17,6 +17,7 @@
 #include "../_vs2015/Camera_.hpp"
 #include "../../_vs2015/Light_.hpp"
 #include "../_vs2015/Transform.hpp"
+#include "Deserealizer.hpp"
 
 //#include "GameLoop.hpp"
 
@@ -134,6 +135,10 @@ namespace Engine
 
 	void Game::initializeScene(const std::string& filepath) const
 	{
+		Deserealizer _d;
+		Core::GameObject_* sth = Model::loadModel(_d.gms[0]->getName()+".fbx");
+		//sth->getTransform()->setPosition(_d.gms[0]->getTransform()->getPosition());
+		//std::cout << sth->getTransform()->getPosition();
 		std::cout << "Loading Scene..." << std::endl;
 		//load scene
 		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
@@ -146,8 +151,8 @@ namespace Engine
 		camera->addComponent(cameraComp);
 		Core::Camera_::setMainCamera(cameraComp);
 
-		Core::GameObject_* go = Model::loadModel("Tower.fbx");
-		go->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		//Core::GameObject_* go = Model::loadModel("Tower.fbx");
+		//go->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//lightgo->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//Core::GameObject_* go = Model::loadModel("cube_smooth.obj");
 

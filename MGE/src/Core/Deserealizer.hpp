@@ -7,6 +7,7 @@
 #include <vector>
 #include "../_vs2015/Scene.h"
 
+using namespace std;
 class Game;
 /**
  * Defines the basic structure for a game, with defaults already filled in.
@@ -16,9 +17,10 @@ class Game;
 class Deserealizer
 {
     public:
-
-		Deserealizer(Game* game);
-		Scene ConstructGameObj();
+		Deserealizer();
+		void Deserealizer::ConstructGameObj();
+		vector<GameObject_*> gms;
+		string oneMesh;
 };
 
 #endif // DESEREALIZER_HPP
