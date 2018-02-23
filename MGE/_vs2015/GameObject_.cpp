@@ -3,7 +3,6 @@
 #include <algorithm>
 #include "Transform.hpp"
 #include "Component.hpp"
-
 namespace Engine
 {
 	namespace Core
