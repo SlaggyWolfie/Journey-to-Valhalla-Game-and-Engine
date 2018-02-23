@@ -13,6 +13,8 @@
  */
 namespace Engine
 {
+	class SceneManager;
+
 	namespace Rendering
 	{
 		class RenderManager;
@@ -51,9 +53,11 @@ namespace Engine
 		//Renderer* _renderer;        //the renderer class to render the world
 		//World* _world;              //the root game object that represents our scene
 		//float _fps;                 //stores the real fps
-		Engine::Rendering::RenderManager* _renderManager;
-		Engine::Rendering::LightManager* _lightManager;
-		Engine::Core::GameLoop* _gameLoop;
+		Rendering::RenderManager* _renderManager;
+		Rendering::LightManager* _lightManager;
+		Core::GameLoop* _gameLoop;
+		SceneManager* _sceneManager;
+
 		std::string _defaultScenePath;
 
 		Game(const Game&) = delete;

@@ -25,6 +25,8 @@ namespace Engine
 		static Rendering::RenderQueue processMesh(aiMesh *mesh, const aiScene *scene, Rendering::Mesh_* &outMesh, Rendering::Material_* &outMaterial);
 		static Rendering::Material_* loadMaterial(aiMaterial *material);
 		static glm::mat4 convert(aiMatrix4x4 aiMatrix);
+		static int _recursionLevel;
+		static void print(const std::string& message);
 	};
 }
 

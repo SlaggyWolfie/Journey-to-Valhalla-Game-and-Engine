@@ -5,7 +5,7 @@
 #include <GL/glew.h>
 #include <string>
 #include <vector>
-#include "../_vs2015/Scene.h"
+#include "../_vs2015/Scene.hpp"
 
 class Game;
 /**
@@ -18,7 +18,7 @@ class Deserealizer
     public:
 
 		Deserealizer(Game* game);
-		Scene ConstructGameObj();
+		Engine::Scene ConstructGameObj();
 };
 
 #endif // DESEREALIZER_HPP

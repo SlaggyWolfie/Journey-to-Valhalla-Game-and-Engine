@@ -102,12 +102,17 @@ vec3 GetPointLight(vec3 diffuseColor, vec3 specularColor,
 	if (light.attenuationConstants[0] + linearQuadraticSum > 0.01f) 
 	{
 		float distanceFromLight = 0; 
-		if (linearQuadraticSum > 0.01f) distanceFromLight = length(deltaDirection) - point.range / 2;
+		float distanceValue = 0;
+		if (linearQuadraticSum > 0.01f)
+		{
+			distanceFromLight = length(deltaDirection);
+			distanceValue = max(distanceFromLight - point.range / 2, 1);
+		}
 		
 		float attenuation = 1 / 
 		( light.attenuationConstants[0] 
-		+ light.attenuationConstants[1] * distanceFromLight 
-		+ light.attenuationConstants[2] * distanceFromLight * distanceFromLight);
+		+ light.attenuationConstants[1] * distanceValue 
+		+ light.attenuationConstants[2] * distanceValue * distanceValue);
 		
 		diffuseIntensity *= attenuation;
 		specularIntensity *= attenuation;
@@ -138,12 +143,17 @@ vec3 GetSpotLight(vec3 diffuseColor, vec3 specularColor,
 	if (light.attenuationConstants[0] + linearQuadraticSum > 0.01f) 
 	{
 		float distanceFromLight = 0; 
-		if (linearQuadraticSum > 0.01f) distanceFromLight = length(deltaDirection) - spot.range / 2;
+		float distanceValue = 0;
+		if (linearQuadraticSum > 0.01f)
+		{
+			distanceFromLight = length(deltaDirection);
+			distanceValue = max(distanceFromLight - spot.range / 2, 0.01f);
+		}
 		
 		float attenuation = 1 / 
 		( light.attenuationConstants[0] 
-		+ light.attenuationConstants[1] * distanceFromLight 
-		+ light.attenuationConstants[2] * distanceFromLight * distanceFromLight);
+		+ light.attenuationConstants[1] * distanceValue 
+		+ light.attenuationConstants[2] * distanceValue * distanceValue);
 		
 		diffuseIntensity *= attenuation;
 		specularIntensity *= attenuation;

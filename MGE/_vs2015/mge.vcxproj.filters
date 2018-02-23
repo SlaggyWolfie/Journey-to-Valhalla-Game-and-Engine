@@ -234,6 +234,7 @@
     <ClCompile Include="LuaScript.cpp">
       <Filter>engine</Filter>
     </ClCompile>
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -296,7 +297,6 @@
     <ClInclude Include="Object.hpp" />
     <ClInclude Include="Renderer_.hpp" />
     <ClInclude Include="RenderManager.hpp" />
-    <ClInclude Include="Scene.h" />
     <ClInclude Include="Service.hpp" />
     <ClInclude Include="ServiceLocator.hpp" />
     <ClInclude Include="Shader.hpp" />
@@ -505,6 +505,7 @@
     </ClInclude>
     <ClInclude Include="LuaScript.h" />
     <ClInclude Include="Scene.hpp" />
+    <ClInclude Include="SceneManager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

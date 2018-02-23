@@ -224,8 +224,8 @@
     <ClInclude Include="Object.hpp" />
     <ClInclude Include="Renderer_.hpp" />
     <ClInclude Include="RenderManager.hpp" />
-    <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene.hpp" />
+    <ClInclude Include="SceneManager.hpp" />
     <ClInclude Include="Service.hpp" />
     <ClInclude Include="ServiceLocator.hpp" />
     <ClInclude Include="Shader.hpp" />
@@ -291,6 +291,7 @@
     <ClCompile Include="Renderer_.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Texture_.cpp" />

@@ -11,6 +11,9 @@ namespace Engine
 {
 	using namespace Core;
 	using namespace Rendering;
+
+	int Model::_recursionLevel = 0;
+
 	GameObject_* Model::loadModel(const std::string& path)
 	{
 		std::cout << "Loading model at " + path << std::endl;
@@ -26,20 +29,26 @@ namespace Engine
 
 		GameObject_* go = processNode(scene->mRootNode, scene);
 		std::cout << "Loaded model at " + path << std::endl;
+		_recursionLevel = 0;
 		return go;
 	}
 
 	GameObject_* Model::processNode(aiNode *node, const aiScene *scene)
 	{
-		std::cout << "Processing node " << node->mName.C_Str() << std::endl;
+		_recursionLevel++;
+		print(std::string("Processing node ") + node->mName.C_Str());
 		GameObject_* go;// = new GameObject_(node->mName.C_Str(), "");
 		// process all the node's meshes (if any)
-		std::cout << "Has " << node->mNumMeshes << " amount of meshes." << std::endl;
-		std::cout << "Has " << node->mNumChildren << " amount of children." << std::endl;
+		print(std::string("Has ") + std::to_string(node->mNumMeshes) + " amount of meshes.");
+		print(std::string("Has ") + std::to_string(node->mNumChildren) + " amount of children.");
 
+		bool skip = false;
 		// then do the same for each of its children
 		if (node->mNumChildren == 1)
+		{
 			go = processNode(node->mChildren[0], scene);
+			skip = true;
+		}
 		else
 			go = new GameObject_(node->mName.C_Str(), "");
 
@@ -60,14 +69,17 @@ namespace Engine
 			//go->addComponent<Renderer_>();
 		}
 
-		for (unsigned int i = 0; i < node->mNumChildren; i++)
-		{
-			GameObject_* childGO = processNode(node->mChildren[i], scene);
-			childGO->getTransform()->setParent(go->getTransform(), true);
-		}
+		if (!skip)
+			for (unsigned int i = 0; i < node->mNumChildren; i++)
+			{
+				GameObject_* childGO = processNode(node->mChildren[i], scene);
+				childGO->getTransform()->setParent(go->getTransform(), true);
+			}
 
-		std::cout << "Processed node " << node->mName.C_Str() << std::endl;
+		print(std::string("Processed node ") + node->mName.C_Str());
+		//std::cout << "Processed node " << node->mName.C_Str() << std::endl;
 
+		_recursionLevel--;
 		return go;
 	}
 
@@ -77,7 +89,6 @@ namespace Engine
 		std::vector<int> indices;
 		//std::vector<Texture_*> textures;
 		//outMaterial = new Material_();
-
 		for (unsigned int i = 0; i < mesh->mNumVertices; i++)
 		{
 			Vertex vertex;
@@ -110,18 +121,19 @@ namespace Engine
 		//std::cout << std::endl;
 
 		// process indices
-		//int index = 0;
+		int index = 0;
 		for (unsigned int i = 0; i < mesh->mNumFaces; i++)
 		{
 			const aiFace face = mesh->mFaces[i];
 			for (unsigned int j = 0; j < face.mNumIndices; j++)
 			{
-				//index++;
+				index++;
 				//std::cout << "Index " + std::to_string(index) + " " + std::to_string(face.mIndices[j]) + " " << std::endl;
 				indices.push_back(face.mIndices[j]);
 			}
 		}
-		std::cout << std::endl;
+		print(std::string("Processing mesh") + mesh->mName.C_Str() + " with " + std::to_string(mesh->mNumVertices) + " vertices with " + std::to_string(index) + " indices.");
+		//std::cout << std::endl;
 
 		// process material
 		aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
@@ -136,13 +148,16 @@ namespace Engine
 
 		//std::cout << "Out Mesh: " + std::to_string(outMesh != nullptr) << std::endl;
 		//std::cout << "Out Material: " + std::to_string(outMaterial != nullptr) << std::endl;
+		print(std::string("Processing mesh") + mesh->mName.C_Str());
 		return queue;
 	}
 
 	Material_* Model::loadMaterial(aiMaterial* material)
 	{
+		_recursionLevel++;
 		//float opacity;
 		//material->Get(AI_MATKEY_OPACITY, opacity);
+		print(std::string("Processing material."));
 
 		Material_* outMaterial = new Material_();
 		aiString str;
@@ -152,18 +167,20 @@ namespace Engine
 			outMaterial->setDiffuseMap(Texture_::load(str.C_Str()));
 		}
 
-		if (material->GetTextureCount(aiTextureType_DIFFUSE) > 0)
+		if (material->GetTextureCount(aiTextureType_SPECULAR) > 0)
 		{
 			material->GetTexture(aiTextureType_SPECULAR, 0, &str);
 			outMaterial->setSpecularMap(Texture_::load(str.C_Str()));
 		}
 
-		if (material->GetTextureCount(aiTextureType_DIFFUSE) > 0)
+		if (material->GetTextureCount(aiTextureType_EMISSIVE) > 0)
 		{
 			material->GetTexture(aiTextureType_EMISSIVE, 0, &str);
 			outMaterial->setEmissionMap(Texture_::load(str.C_Str()));
 		}
 
+		print("Processed material.");
+		_recursionLevel--;
 		return outMaterial;
 	}
 
@@ -175,5 +192,13 @@ namespace Engine
 			aiMatrix.c1, aiMatrix.c2, aiMatrix.c3, aiMatrix.c4,
 			aiMatrix.d1, aiMatrix.d2, aiMatrix.d3, aiMatrix.d4
 		);
+	}
+
+	void Model::print(const std::string& message)
+	{
+		std::string prefix;
+		for (int i = 0; i < _recursionLevel; i++)
+			prefix += "\t";
+		std::cout << prefix + message << std::endl;
 	}
 }
