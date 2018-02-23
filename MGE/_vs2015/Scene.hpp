@@ -2,15 +2,30 @@
 #ifndef SCENE_HPP
 #define SCENE_HPP
 #include <vector>
-#include "GameObject_.hpp"
+#include <memory>
 
 namespace Engine
 {
+	namespace Core
+	{
+		class GameObject_;
+	}
 	class Scene
 	{
 	public:
+		Scene();
+		explicit Scene(std::string name);
+		~Scene();
+		void initialize(bool hard = false);
+		Core::GameObject_* findGameObject(const std::string& name) const;
+		Core::GameObject_** getGameObjectsArray() const;
+		std::vector<Core::GameObject_*> getGameObjects()const;
+		std::string getName() const;
+		void addGameObject(Core::GameObject_* gameObject);
 	private:
-		std::vector<Core::GameObject_*>
+		void hardCode();
+		std::string _name = nullptr;
+		std::vector<std::unique_ptr<Core::GameObject_>> _gameObjects;
 	};
 }
 

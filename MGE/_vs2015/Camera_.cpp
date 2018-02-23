@@ -108,11 +108,21 @@ namespace Engine
 
 		void Camera_::update()
 		{
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(0, 0, -1));
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(0, 0, 1));
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-1, 0, 0));
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(1, 0, 0));
-			std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) getGameObject()->getTransform()->setPosition(
+				getGameObject()->getTransform()->getPosition() + getGameObject()->getTransform()->forward() * 1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) getGameObject()->getTransform()->setPosition(
+				getGameObject()->getTransform()->getPosition() + getGameObject()->getTransform()->forward() * -1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) getGameObject()->getTransform()->setPosition(
+				getGameObject()->getTransform()->getPosition() + getGameObject()->getTransform()->right() * -1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) getGameObject()->getTransform()->setPosition(
+				getGameObject()->getTransform()->getPosition() + getGameObject()->getTransform()->right() * 1);
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) getGameObject()->getTransform()->rotate(getGameObject()->getTransform()->right(), glm::radians(1.0f));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) getGameObject()->getTransform()->rotate(getGameObject()->getTransform()->right(), glm::radians(-1.0f));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) getGameObject()->getTransform()->rotate(getGameObject()->getTransform()->up(), glm::radians(1.0f));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) getGameObject()->getTransform()->rotate(getGameObject()->getTransform()->up(), glm::radians(-1.0f));
+			
+			//std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
 		}
 	}
 }
