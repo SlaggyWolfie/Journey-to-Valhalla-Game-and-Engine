@@ -1,0 +1,5 @@
+[{"GameObject":{"name":"Tower (1)","meshString":"Tower","parentID":0,"selfID":1,"transform":{"position":{"x":12.720000267028809,"y":0.0,"z":0.0},"rotation":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}}}},
+{"GameObject":{"name":"Tower","meshString":"Tower","parentID":0,"selfID":2,"transform":{"position":{"x":0.0,"y":0.0,"z":0.0},"rotation":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":0.30000001192092898,"y":0.30000001192092898,"z":0.30000001192092898}}}},
+{"GameObject":{"name":"Camera","meshString":"","parentID":0,"selfID":3,"transform":{"position":{"x":-1.7699999809265137,"y":1.0099999904632569,"z":-0.6200000047683716},"rotation":{"x":0.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}}}},
+{"GameObject":{"name":"Directional light","meshString":"","parentID":0,"selfID":4,"transform":{"position":{"x":-37.099998474121097,"y":74.9000015258789,"z":-51.69999694824219},"rotation":{"x":79.16749572753906,"y":180.0,"z":180.0},"scale":{"x":1.0,"y":1.0,"z":1.0}}}}
+]

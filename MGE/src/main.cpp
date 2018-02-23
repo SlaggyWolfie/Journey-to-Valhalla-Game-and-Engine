@@ -13,7 +13,7 @@
 #include "myGame/Scenes/EighthScene.hpp"
 #include "myGame/Scenes/NinthScene.hpp"
 #include <lua\lua.hpp>
-#include"Core\LuaScript.h"
+#include "Core\LuaScript.h"
 #include "Core/Game.hpp"
 
 /**
@@ -39,8 +39,17 @@ int main()
 	std::cout << "Starting Game" << std::endl;
 
 	LuaScript* luaS = new LuaScript();
+<<<<<<< HEAD
 	//luaS->GameLoop();
 	//AbstractGame* game = new MyGame::FourthScene();
+=======
+	luaS->start();
+	luaS->update();
+	//AbstractGame* game = new MyGame::FourthScene();
+	//AbstractGame* game = new MyGame::FourthScene();
+	//AbstractGame* game = new MyGame::FourthScene();
+	//AbstractGame* game = new MyGame::FourthScene();
+>>>>>>> ed61c7d9087f39b811c7fde4c7d6fb1a34a3c5b9
 	//AbstractGame* game = new MyGame::SixthScene();
 	//AbstractGame* game = new MyGame::NinthScene();
 	Engine::Game* game = new Engine::Game();

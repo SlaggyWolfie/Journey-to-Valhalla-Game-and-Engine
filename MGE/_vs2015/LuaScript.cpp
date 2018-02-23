@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 //#include "Core\LuaScript.h"
+=======
+#include "LuaScript.h"
+>>>>>>> ed61c7d9087f39b811c7fde4c7d6fb1a34a3c5b9
 #include <list>
 #include <lua/lua.hpp>
 #include <iostream>
 #include <string>
-#include "LuaScript.h"
+#include"LuaScript.h"
 
 
 std::string LuaScript::message;
@@ -24,8 +28,11 @@ LuaScript::LuaScript()
 
 	}
 	registerFunctions();
+<<<<<<< HEAD
 
 	//Initialize();
+=======
+>>>>>>> ed61c7d9087f39b811c7fde4c7d6fb1a34a3c5b9
 }
 void LuaScript::start()
 {
@@ -63,7 +70,8 @@ void LuaScript::update()
 			return;
 		}
 	}
-	//prints message tha is written from lua
+	//prints message that is written in lua
+	std::cout << message;
 }
 int LuaScript::MovePlayer(lua_State * state)
 {
@@ -78,9 +86,7 @@ int LuaScript::ShowHint(lua_State * state)
 		//text.setString("start message");
 		message = (std::string)lua_tostring(state, 1);
 		message += "\n";
-		//if (lua_pcall(state, 0, 0, 0) != 0) {
-		//}
-		
+
 		//text.setString((sf::String)lua_tostring(state, 1));
 		//text.setCharacterSize((int)lua_tonumber(state, 4));
 		//text.setPosition(lua_tonumber(state, 2), lua_tonumber(state, 3));
