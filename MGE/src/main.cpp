@@ -39,14 +39,8 @@ int main()
 	std::cout << "Starting Game" << std::endl;
 
 	LuaScript* luaS = new LuaScript();
-	luaS->GameLoop();
-<<<<<<< HEAD
-	AbstractGame* game = new MyGame::FourthScene();
+	//luaS->GameLoop();
 	//AbstractGame* game = new MyGame::FourthScene();
-=======
-	//AbstractGame* game = new MyGame::FourthScene();
-	//AbstractGame* game = new MyGame::FourthScene();
->>>>>>> a9d1ec3779a259ab430c0ab6c6f31e84cc321493
 	//AbstractGame* game = new MyGame::SixthScene();
 	//AbstractGame* game = new MyGame::NinthScene();
 	Engine::Game* game = new Engine::Game();

@@ -10,16 +10,16 @@ public:
 	LuaScript();
 	void LuaScript::registerFunctions();
 	void GameLoop();
-	static int LuaScript::MovePlayer(lua_State* state);
-	void LuaScript::Initialize();
-	static int LuaScript::ShowHint(lua_State * state);
-	static int LuaScript::OpenDoor(lua_State * state);
+	static int MovePlayer(lua_State* state);
+	void Initialize();
+	static int ShowHint(lua_State * state);
+	static int OpenDoor(lua_State * state);
 	void printMsg();
-	void LuaScript::stackDump(lua_State *state, const char * pre);
+	void stackDump(lua_State *state, const char * pre);
 	void update() override;
 	void start() override;
 private:
 	lua_State *  state_;
-	static std::string LuaScript::message;
+	static std::string message;
 };
 

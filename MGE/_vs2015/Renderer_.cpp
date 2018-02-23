@@ -148,7 +148,7 @@ namespace Engine
 			const glm::mat4 mv = view * model;
 			const glm::mat4 vp = projection * view;
 
-			const glm::mat4 normal = getGameObject()->getTransform()->getNormalMatrix();
+			const glm::mat3 normal = getGameObject()->getTransform()->getNormalMatrix();
 
 			//pass in all MVP matrices separately
 			glUniformMatrix4fv(_uniformModelMatrix, 1, GL_FALSE, glm::value_ptr(model));
@@ -157,7 +157,7 @@ namespace Engine
 			glUniformMatrix4fv(_uniformModelViewProjectionMatrix, 1, GL_FALSE, glm::value_ptr(mvp));
 			glUniformMatrix4fv(_uniformModelViewMatrix, 1, GL_FALSE, glm::value_ptr(mv));
 			glUniformMatrix4fv(_uniformViewProjectionMatrix, 1, GL_FALSE, glm::value_ptr(vp));
-			glUniformMatrix4fv(_uniformNormalMatrix, 1, GL_FALSE, glm::value_ptr(normal));
+			glUniformMatrix3fv(_uniformNormalMatrix, 1, GL_FALSE, glm::value_ptr(normal));
 		}
 
 		void Renderer_::pushLights() const

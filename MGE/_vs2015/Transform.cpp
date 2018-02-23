@@ -125,13 +125,14 @@ namespace Engine
 
 		glm::mat3 Transform::getNormalMatrix()
 		{
-			return _normalMatrix;
+			return
+				(_normalMatrix = glm::mat3(glm::transpose(glm::inverse(getLocalMatrix4X4()))));;
 		}
 
 		glm::vec3 Transform::transformPoint(const glm::vec3& point)
 		{
-			glm::vec4 const transformedPointer = glm::vec4(point, 1) * getMatrix4X4();
-			return glm::vec3(transformedPointer);
+			glm::vec4 const transformedPoint = glm::vec4(point, 1) * getMatrix4X4();
+			return glm::vec3(transformedPoint);
 		}
 
 		glm::vec3 Transform::inverseTransformPoint(const glm::vec3& point)
@@ -310,7 +311,6 @@ namespace Engine
 				glm::scale(_localScale) *
 				glm::mat4(1);
 
-			_normalMatrix = glm::mat3(glm::transpose(glm::inverse(local)));
 
 			return local;
 		}

@@ -1,4 +1,4 @@
-#include "Core\LuaScript.h"
+//#include "Core\LuaScript.h"
 #include <list>
 #include <lua/lua.hpp>
 #include <iostream>
@@ -25,10 +25,7 @@ LuaScript::LuaScript()
 	}
 	registerFunctions();
 
-	Initialize();
-}
-void LuaScript::update()
-{
+	//Initialize();
 }
 void LuaScript::start()
 {
