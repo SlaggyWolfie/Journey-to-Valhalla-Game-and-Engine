@@ -3,6 +3,7 @@
 #include <lua/lua.hpp>
 #include <iostream>
 #include <string>
+#include "LuaScript.h"
 
 
 std::string LuaScript::message;
@@ -26,7 +27,10 @@ LuaScript::LuaScript()
 
 	Initialize();
 }
-void LuaScript::Initialize()
+void LuaScript::update()
+{
+}
+void LuaScript::start()
 {
 	std::cout << "initializing Lua" << std::endl;
 
@@ -53,7 +57,7 @@ void LuaScript::registerFunctions()
 
 }
 
-void LuaScript::GameLoop()
+void LuaScript::update()
 {
 	lua_getglobal(state_, "Update");
 	int isFunc = lua_isfunction(state_, -1);
