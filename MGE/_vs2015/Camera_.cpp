@@ -1,6 +1,9 @@
 #include "Camera_.hpp"
 #include "GameObject_.hpp"
 #include "Transform.hpp"
+#include <SFML/Graphics/RenderWindow.hpp>
+#include "ServiceLocator.hpp"
+#include "Core/Game.hpp"
 
 namespace Engine
 {
@@ -8,13 +11,13 @@ namespace Engine
 	{
 		Camera_* Camera_::_main = nullptr;
 
-		Camera_::Camera_(): 
-		_fov(45), _nearPlaneDistance(0.3f), _farPlaneDistance(1000), _projectionMode(Perspective)
+		Camera_::Camera_() :
+			_fov(45), _nearPlaneDistance(0.3f), _farPlaneDistance(10000), _projectionMode(Perspective)
 		{
 		}
 
-		Camera_::Camera_(const ProjectionMode projectionMode) : 
-		_fov(45), _nearPlaneDistance(0.3f), _farPlaneDistance(1000), _projectionMode(projectionMode)
+		Camera_::Camera_(const ProjectionMode projectionMode) :
+			_fov(45), _nearPlaneDistance(0.3f), _farPlaneDistance(10000), _projectionMode(projectionMode)
 		{
 		}
 
@@ -23,9 +26,34 @@ namespace Engine
 			return _main;
 		}
 
+		void Camera_::setMainCamera(Camera_* camera)
+		{
+			_main = camera;
+		}
+
 		glm::mat4 Camera_::getViewMatrix() const
 		{
 			return glm::inverse(getGameObject()->getTransform()->getMatrix4X4());
+		}
+
+		glm::mat4 Camera_::getProjectionMatrix() const
+		{
+			sf::RenderWindow* window = ServiceLocator::instance()->getService<Game>()->getWindow();
+			switch (_projectionMode)
+			{
+			case Perspective:
+				return glm::perspective(
+					glm::radians(_fov),
+					window->getSize().x / static_cast<float>(window->getSize().y),
+					_nearPlaneDistance, _farPlaneDistance);
+			case Orthographic:
+				return glm::ortho(
+					0.0f, static_cast<float>(window->getSize().x),
+					0.0f, static_cast<float>(window->getSize().y),
+					_nearPlaneDistance, _farPlaneDistance);
+			default:
+				return glm::mat4();
+			}
 		}
 
 		glm::vec3 Camera_::getPosition() const
@@ -75,7 +103,16 @@ namespace Engine
 
 		void Camera_::awake()
 		{
-			_main = this;
+			//_main = this;
+		}
+
+		void Camera_::update()
+		{
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(0, 0, -1));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(0, 0, 1));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-1, 0, 0));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(1, 0, 0));
+			std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
 		}
 	}
 }

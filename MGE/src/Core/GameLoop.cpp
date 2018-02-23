@@ -15,13 +15,8 @@ namespace Engine
 		GameLoop::GameLoop()
 		{
 			//ctor
-			_game = ServiceLocator::instance()->getService<Game>();
-			//_window = ServiceLocator::instance()->getService<Game>()->getWindow();
-			//_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
-			//_collisionManager = ServiceLocator::instance()->getService<Collisions::CollisionManager>();
-			//_physicsManager = ServiceLocator::instance()->getService<Physics::PhysicsManager>();
-			_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
 			createOwnedLoops();
+			//_components;
 		}
 
 		GameLoop::~GameLoop()
@@ -32,31 +27,60 @@ namespace Engine
 			destroyOwnedLoops();
 		}
 
-		Utility::FunctionGroup<Component*>* GameLoop::update() const
+		void GameLoop::initialize()
 		{
-			return _update.get();
+			_game = ServiceLocator::instance()->getService<Game>();
+			//_window = ServiceLocator::instance()->getService<Game>()->getWindow();
+			//_collisionManager = ServiceLocator::instance()->getService<Collisions::CollisionManager>();
+			//_physicsManager = ServiceLocator::instance()->getService<Physics::PhysicsManager>();
+			_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
 		}
 
-		Utility::FunctionGroup<Component*>* GameLoop::fixedUpdate() const
+		void GameLoop::subscribe(Component* component)
 		{
-			return _fixedUpdate.get();
+			if (!isSubscribed(component))
+				_components.push_back(component);
+			//_components.push_back(std::shared_ptr<Component>(component));
 		}
 
-		Utility::FunctionGroup<Component*>* GameLoop::lateUpdate() const
+		void GameLoop::unsubscribe(Component* component)
 		{
-			return _lateUpdate.get();
+			//const auto check = find(component);
+
+			//if (check != nullptr)
+			//	List::removeFrom(_components, check);
+
+			if (isSubscribed(component))
+				List::removeFrom(_components, component);
 		}
+
+		bool GameLoop::isSubscribed(Component* component)
+		{
+			//return find(component) != nullptr;
+			return !_components.empty() && std::find(_components.begin(), _components.end(), component) != _components.end();
+		}
+
+		//std::shared_ptr<Component> GameLoop::find(Component* component)
+		//{
+		//	for (std::shared_ptr<Component> i : _components)
+		//	{
+		//		if (i.get() == component)
+		//			return i;
+		//	}
+
+		//	return nullptr;
+		//}
 
 		void GameLoop::run()
 		{
-			_renderManager->startFPSClock();
+			//_renderManager->startFPSClock();
 
 			//settings to make sure the update loop runs at 60 fps
 			const sf::Time timePerFixedFrame = sf::seconds(1.0f / 60.0f);
 			Utility::Time::start(timePerFixedFrame.asSeconds());
 			float lag = 0;
 
-			while (_game->running())
+			while (_game->currentlyRunning())
 			{
 				Utility::Time::update();
 				lag += Utility::Time::deltaTime();
@@ -68,13 +92,13 @@ namespace Engine
 					//physics update
 					//_collisionManager->execute();
 					//_physicsManager->execute();
-					_fixedUpdate->execute();
+					fixedUpdate();
 				}
 
 				//_animationManager->execute();
 
-				_update->execute();
-				_lateUpdate->execute();
+				update();
+				lateUpdate();
 
 				//0 doesn't matter for now
 				_renderManager->render(0);
@@ -84,20 +108,40 @@ namespace Engine
 			}
 		}
 
+		void GameLoop::update()
+		{
+			if (!_components.empty())
+				for (const auto& comp : _components)
+					if (comp->isEnabled() && comp->getGameObject()->isActive())
+						comp->update();
+		}
+
+		void GameLoop::fixedUpdate()
+		{
+			if (!_components.empty())
+				for (const auto& comp : _components)
+					if (comp->isEnabled() && comp->getGameObject()->isActive())
+						comp->fixedUpdate();
+		}
+
+		void GameLoop::lateUpdate()
+		{
+			if (!_components.empty())
+				for (const auto& comp : _components)
+					if (comp->isEnabled() && comp->getGameObject()->isActive())
+						comp->lateUpdate();
+		}
+
 		void GameLoop::createOwnedLoops()
 		{
-			std::function<bool(Component*)> predicate =
-				[](Component* comp) -> bool { return comp->isEnabled() && comp->getGameObject()->isActive(); };
-			_update = std::make_unique<Utility::FunctionGroup<Component*>>(predicate);
-			_fixedUpdate = std::make_unique<Utility::FunctionGroup<Component*>>(predicate);
-			_lateUpdate = std::make_unique<Utility::FunctionGroup<Component*>>(predicate);
+			_components = std::vector<Component*>();
+			//_components.push_back(new Component());
+			//_components = std::vector<std::shared_ptr<Component>>();
 		}
 
 		void GameLoop::destroyOwnedLoops()
 		{
-			_update.release();
-			_fixedUpdate.release();
-			_lateUpdate.release();
+			_components.clear();
 		}
 	}
 }

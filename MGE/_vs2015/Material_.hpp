@@ -5,6 +5,7 @@
 #include <glm/glm.hpp>
 #include <memory>
 #include "NeedsGLSetup.hpp"
+#include <string>
 
 //#include "mge/core/ShaderProgram.hpp"
 
@@ -13,14 +14,14 @@ namespace Engine
 	namespace Rendering
 	{
 		class Shader;
-		class Texture;
+		class Texture_;
 
 		class Material_ : public Core::Component
 		{
 		public:
-			Material_();
+			Material_(const std::string& path = "default");
 			virtual ~Material_();
-			Shader* getShader();
+			Shader* getShader() const;
 
 			void setDiffuseColor(glm::vec3 color);
 			glm::vec3 getDiffuseColor() const;
@@ -29,12 +30,12 @@ namespace Engine
 			void setEmissionColor(glm::vec3 color);
 			glm::vec3 getEmissionColor() const;
 
-			void setDiffuseMap(Texture* map, bool use = true);
-			Texture* getDiffuseMap() const;
-			void setSpecularMap(Texture* map, bool use = true);
-			Texture* getSpecularMap() const;
-			void setEmissionMap(Texture* map, bool use = true);
-			Texture* getEmissionMap() const;
+			void setDiffuseMap(Texture_* map, bool use = true);
+			Texture_* getDiffuseMap();
+			void setSpecularMap(Texture_* map, bool use = true);
+			Texture_* getSpecularMap();
+			void setEmissionMap(Texture_* map, bool use = true);
+			Texture_* getEmissionMap();
 
 			void useDiffuseMap(bool use = true);
 			void useSpecularMap(bool use = true);
@@ -46,22 +47,40 @@ namespace Engine
 			bool isEmissionMapUsed() const;
 			bool isEmissionUsed() const;
 
+			void setShininess(float shininess);
+			void setSpecularStrength(float strength);
+			void setEmissionStrength(float strength);
+			void setDiffuseStrength(float strength);
+
+			float getShininess() const;
+			float getSpecularStrength() const;
+			float getEmissionStrength() const;
+			float getDiffuseStrength() const;
+
 		protected:
 			//void setupGL() override;
-			static std::shared_ptr<Shader> _shader;
+			std::unique_ptr<Shader> _shader;
+			void initializeShader(const std::string& path);
 
 			glm::vec3 _diffuseColor;
 			glm::vec3 _specularColor;
 			glm::vec3 _emissionColor;
 
-			std::shared_ptr<Texture> _diffuseMap;
-			std::shared_ptr<Texture> _specularMap;
-			std::shared_ptr<Texture> _emissionMap;
+			Texture_* _diffuseMap;
+			Texture_* _specularMap;
+			Texture_* _emissionMap;
 
 			bool _useDiffuseMap;
 			bool _useSpecularMap;
 			bool _useEmissionMap;
 			bool _useEmission;
+
+			float _shininess;
+			float _specularStrength;
+			float _emissionStrength;
+			float _diffuseStrength;
+
+			int RGB_to_Hex(glm::vec3 color) const;
 		};
 	}
 }

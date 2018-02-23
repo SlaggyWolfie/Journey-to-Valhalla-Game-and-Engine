@@ -10,10 +10,10 @@ namespace Engine
 	{
 		class GameObject_;
 
-		class Component : Object
+		class Component : public Object
 		{
 			friend class GameObject_;
-
+			friend class GameLoop;
 		public:
 			GameObject_ * getGameObject() const;
 			Component();

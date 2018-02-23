@@ -11,12 +11,15 @@ namespace Engine
 {
 	namespace Rendering
 	{
-		enum TextureType { Diffuse, Specular, Emission, Normal };
+		enum class TextureType : int { Diffuse, Specular, Emission, Normal };
 
 		class Texture_
 		{
 		public:
-			static Texture_* load(const std::string& texturePath, TextureType type = Diffuse);
+			static Texture_* load(const std::string& texturePath, TextureType type = TextureType::Diffuse);
+			static Texture_* loadDefault(float r, float g, float b, TextureType type = TextureType::Diffuse);
+
+			~Texture_();
 
 			GLuint getId() const;
 			std::string getPath() const;
@@ -25,10 +28,11 @@ namespace Engine
 			void bind() const;
 			static void unbind();
 
-			static std::unordered_map<std::string, std::shared_ptr<Texture_>> textureMap;
+			static std::unordered_map<std::string, std::unique_ptr<Texture_>> textureMap;
 		private:
-			Texture_(TextureType type = Diffuse);
-			~Texture_();
+			Texture_(TextureType type = TextureType::Diffuse);
+
+			static int RGB_to_Hex(float r, float g, float b);
 
 			std::string _path;
 			std::unique_ptr<sf::Image> _image;

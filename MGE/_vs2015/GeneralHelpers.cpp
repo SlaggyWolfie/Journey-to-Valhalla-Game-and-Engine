@@ -12,7 +12,7 @@ namespace Engine
 		if (_setup) setup();
 
 		while (std::pow(10, decimalAccuracy) >= RAND_MAX) decimalAccuracy /= 2;
-		const float decimal = std::pow(10, decimalAccuracy);
+		const float decimal = static_cast<float>(std::pow(10, decimalAccuracy));
 
 		if (fabs(max - min) <= 1 / decimal)
 		{
@@ -43,7 +43,8 @@ namespace Engine
 
 	void Random::setup()
 	{
-		srand(time(nullptr));
+		//srand(0);
+		srand(static_cast<unsigned>(time(nullptr)));
 		_setup = true;
 	}
 }

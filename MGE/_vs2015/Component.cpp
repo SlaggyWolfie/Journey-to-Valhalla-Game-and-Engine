@@ -40,12 +40,14 @@ namespace Engine
 		void Component::destroy()
 		{
 			_gameObject->removeComponent(this);
+			delete this;
 		}
 
 		void Component::setGameObject(GameObject_* gameObject)
 		{
 			_gameObject = gameObject;
-			std::cout << "Awake() is in setGameObject()" << std::endl;
+			if (gameObject == nullptr) std::cout << "GameObject null " << std::endl;
+			//std::cout << "Awake() is in setGameObject()" << std::endl;
 			prewake();
 			awake();
 		}

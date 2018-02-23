@@ -5,18 +5,22 @@
 #include <vector>
 #include <iostream>
 #include <../_vs2015/GeneralHelpers.hpp>
-#include <../_vs2015/Service.hpp>
+//#include <../_vs2015/Service.hpp>
+#include <string>
 
 namespace Engine
 {
 	//class Service;
 	namespace Rendering { class RenderManager; }
 	namespace Core { class GameLoop; }
+	class Service;
+
 	class ServiceLocator
 	{
 	public:
 		static ServiceLocator* instance();
 		static void destroyInstance();
+		void removeServiceDirect(Service* service);
 
 		template<typename T>
 		void addService(T* service);
@@ -25,12 +29,12 @@ namespace Engine
 		template<typename T>
 		T* getService();
 		template<typename T>
-		std::shared_ptr<T> findService();
+		T* findService();
 	private:
 		ServiceLocator();
 		~ServiceLocator();
 		static ServiceLocator* _instance;
-		std::vector<std::shared_ptr<Engine::Service>> _services;
+		std::vector<Service*> _services;
 	};
 
 	template <typename T>
@@ -38,28 +42,28 @@ namespace Engine
 	{
 		auto check = findService<T>();
 
-		if (check != nullptr && check.get() != nullptr)
-			_services.push_back(std::shared_ptr<Service>(static_cast<Service*>(service)));
+		if (check == nullptr)
+			_services.push_back(static_cast<Service*>(service));
 	}
 
 	template <typename T>
 	void ServiceLocator::removeService()
 	{
-		auto check = findService<T>();
+		T* check = findService<T>();
 
-		if (check != nullptr) List::removeFrom(_services, check);
+		if (check != nullptr) List::removeFrom(_services, &*static_cast<Service*>(check));
 	}
 
 	template <typename T>
 	T* ServiceLocator::getService()
 	{
 		auto check = findService<T>();
-		if (check != nullptr && check.get() != nullptr) return check.get();
+		if (check != nullptr) return check;
 		return nullptr;
 	}
 
 	template <typename T>
-	std::shared_ptr<T> ServiceLocator::findService()
+	T* ServiceLocator::findService()
 	{
 		if (!std::is_base_of<Service, T>())
 		{
@@ -69,9 +73,12 @@ namespace Engine
 
 		for (auto & service : _services)
 		{
-			T* cast_service = dynamic_cast<T*>(service.get());
-			if (cast_service != nullptr) return std::shared_ptr<T>(cast_service);
+			T* cast_service = dynamic_cast<T*>(service);
+			if (cast_service != nullptr) return cast_service;
+			//std::cout << "Saltier" + std::to_string(typeid(T)) << std::endl;
 		}
+		 //std::cout << "Salty" << std::endl;
+
 
 		return nullptr;
 	}

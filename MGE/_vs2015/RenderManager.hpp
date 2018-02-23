@@ -7,7 +7,7 @@
 #include <SFML/System/Clock.hpp>
 #include "FunctionGroup.hpp"
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <glm/glm.hpp>
+#include <vector>
 
 namespace Engine
 {
@@ -20,9 +20,10 @@ namespace Engine
 		{
 		public:
 			RenderManager();
-			~RenderManager();
-			void addRenderer(Renderer_* renderer) const;
-			void removeRenderer(Renderer_* renderer) const;
+			virtual ~RenderManager();
+			void initialize() override;
+			void addRenderer(Renderer_* renderer);
+			void removeRenderer(Renderer_* renderer);
 			bool containsRenderer(Renderer_* renderer) const;
 			void calculateFPS();
 
@@ -35,11 +36,13 @@ namespace Engine
 			void renderOpaque() const;
 			void renderTransparent() const;
 
+			std::vector<Renderer_*> _ro;
+			std::vector<Renderer_*> _rt;
+
 			std::unique_ptr<Utility::FunctionGroup<Renderer_*>> _renderOpaque;
 			std::unique_ptr<Utility::FunctionGroup<Renderer_*>> _renderTransparent;
 			void createOwnedLoops();
 			void destroyOwnedLoops();
-
 			//FPS
 			float _fps;
 			std::unique_ptr<sf::Clock> _fpsClock;
@@ -48,8 +51,6 @@ namespace Engine
 
 			//Other
 			sf::RenderWindow* _window;
-
-			LightManager* _lightManager;
 		};
 	}
 }

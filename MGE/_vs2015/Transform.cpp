@@ -16,7 +16,7 @@ namespace Engine
 			else _localPosition = _parent->inverseTransformPoint(position);
 		}
 
-		glm::vec3 Transform::getPosition() const
+		glm::vec3 Transform::getPosition()
 		{
 			if (_parent == nullptr) return _localPosition;
 			else return _calculateWorldPosition();
@@ -34,7 +34,7 @@ namespace Engine
 			}
 		}
 
-		glm::quat Transform::getRotation() const
+		glm::quat Transform::getRotation()
 		{
 			if (_parent == nullptr) return _localScale;
 			return _calculateWorldRotation();
@@ -46,7 +46,7 @@ namespace Engine
 			else _localScale = scale / _getScale(_parent->getMatrix4X4());
 		}
 
-		glm::vec3 Transform::getScale() const
+		glm::vec3 Transform::getScale()
 		{
 			if (_parent == nullptr) return _localScale;
 			else return _calculateWorldScale();
@@ -67,7 +67,7 @@ namespace Engine
 			setScale(scale);
 		}
 
-		glm::mat4 Transform::getMatrix4X4() const
+		glm::mat4 Transform::getMatrix4X4()
 		{
 			if (_parent == nullptr) return getLocalMatrix4X4();
 			else return _calculateWorldMatrix();
@@ -118,18 +118,23 @@ namespace Engine
 			setLocalScale(scale);
 		}
 
-		glm::mat4 Transform::getLocalMatrix4X4() const
+		glm::mat4 Transform::getLocalMatrix4X4()
 		{
 			return _calculateLocalMatrix();
 		}
 
-		glm::vec3 Transform::transformPoint(const glm::vec3& point) const
+		glm::mat3 Transform::getNormalMatrix()
+		{
+			return _normalMatrix;
+		}
+
+		glm::vec3 Transform::transformPoint(const glm::vec3& point)
 		{
 			glm::vec4 const transformedPointer = glm::vec4(point, 1) * getMatrix4X4();
 			return glm::vec3(transformedPointer);
 		}
 
-		glm::vec3 Transform::inverseTransformPoint(const glm::vec3& point) const
+		glm::vec3 Transform::inverseTransformPoint(const glm::vec3& point)
 		{
 			glm::vec4 const transformedPoint = glm::vec4(point, 1) * glm::inverse(getMatrix4X4());
 			return glm::vec3(transformedPoint);
@@ -172,17 +177,17 @@ namespace Engine
 			_localScale *= scaler;
 		}
 
-		glm::vec3 Transform::forward() const
+		glm::vec3 Transform::forward()
 		{
 			return transformPoint(glm::vec3(0, 0, -1));
 		}
 
-		glm::vec3 Transform::up() const
+		glm::vec3 Transform::up()
 		{
 			return transformPoint(glm::vec3(0, 1, 0));
 		}
 
-		glm::vec3 Transform::right() const
+		glm::vec3 Transform::right()
 		{
 			return transformPoint(glm::vec3(1, 0, 0));
 		}
@@ -296,32 +301,36 @@ namespace Engine
 			_worldMatrix = _calculateWorldMatrix();
 		}
 
-		glm::mat4 Transform::_calculateLocalMatrix() const
+		glm::mat4 Transform::_calculateLocalMatrix()
 		{
 			const glm::vec3 p = glm::eulerAngles(_localRotation);
-			return
+			const glm::mat4 local =
 				glm::translate(_localPosition) *
 				glm::eulerAngleXYZ(p.x, p.y, p.z) *
 				glm::scale(_localScale) *
 				glm::mat4(1);
+
+			_normalMatrix = glm::mat3(glm::transpose(glm::inverse(local)));
+
+			return local;
 		}
 
-		glm::vec3 Transform::_calculateWorldPosition() const
+		glm::vec3 Transform::_calculateWorldPosition()
 		{
 			return _getTranslation(_calculateWorldMatrix());
 		}
 
-		glm::quat Transform::_calculateWorldRotation() const
+		glm::quat Transform::_calculateWorldRotation()
 		{
 			return _getOrientation(_calculateWorldMatrix());
 		}
 
-		glm::vec3 Transform::_calculateWorldScale() const
+		glm::vec3 Transform::_calculateWorldScale()
 		{
 			return _getScale(_calculateWorldMatrix());
 		}
 
-		glm::mat4 Transform::_calculateWorldMatrix() const
+		glm::mat4 Transform::_calculateWorldMatrix()
 		{
 			glm::mat4 matrix = getLocalMatrix4X4();
 			for (Transform* parent = _parent; parent != nullptr; parent = parent->_parent)
@@ -329,7 +338,7 @@ namespace Engine
 			return matrix;
 		}
 
-		glm::vec3 Transform::_calculateWorldPosition2() const
+		glm::vec3 Transform::_calculateWorldPosition2()
 		{
 			glm::vec3 position = _localPosition;
 			for (Transform* parent = _parent; parent != nullptr; parent = parent->_parent)
@@ -337,7 +346,7 @@ namespace Engine
 			return position;
 		}
 
-		glm::quat Transform::_calculateWorldRotation2() const
+		glm::quat Transform::_calculateWorldRotation2()
 		{
 			glm::quat rotation = _localRotation;
 			for (Transform* parent = _parent; parent != nullptr; parent = parent->_parent)
@@ -345,7 +354,7 @@ namespace Engine
 			return rotation;
 		}
 
-		glm::vec3 Transform::_calculateWorldScale2() const
+		glm::vec3 Transform::_calculateWorldScale2()
 		{
 			glm::vec3 scale = _localScale;
 			for (Transform* parent = _parent; parent != nullptr; parent = parent->_parent)
@@ -353,9 +362,9 @@ namespace Engine
 			return scale;
 		}
 
-		glm::mat4 Transform::_calculateWorldMatrix2() const
+		glm::mat4 Transform::_calculateWorldMatrix2()
 		{
-			const glm::vec3 p = glm::eulerAngles(getRotation());
+			glm::vec3 p = glm::eulerAngles(getRotation());
 			return
 				glm::translate(getPosition()) *
 				glm::eulerAngleXYZ(p.x, p.y, p.z) *
@@ -363,7 +372,7 @@ namespace Engine
 				glm::mat4(1);
 		}
 
-		glm::vec3 Transform::_getTranslation(const glm::mat4& modelMatrix)
+		glm::vec3 Transform::_getTranslation(const glm::mat4& matrix)
 		{
 			glm::vec3 translation;
 			glm::quat rotation;
@@ -371,12 +380,12 @@ namespace Engine
 			glm::vec3 skew;
 			glm::vec4 perspective;
 
-			glm::decompose(modelMatrix, scale, rotation, translation, skew, perspective);
+			glm::decompose(matrix, scale, rotation, translation, skew, perspective);
 
 			return translation;
 		}
 
-		glm::quat Transform::_getOrientation(const glm::mat4& modelMatrix)
+		glm::quat Transform::_getOrientation(const glm::mat4& matrix)
 		{
 			glm::vec3 translation;
 			glm::quat rotation;
@@ -384,12 +393,12 @@ namespace Engine
 			glm::vec3 skew;
 			glm::vec4 perspective;
 
-			glm::decompose(modelMatrix, scale, rotation, translation, skew, perspective);
+			glm::decompose(matrix, scale, rotation, translation, skew, perspective);
 
 			return rotation;
 		}
 
-		glm::vec3 Transform::_getScale(const glm::mat4& modelMatrix)
+		glm::vec3 Transform::_getScale(const glm::mat4& matrix)
 		{
 			glm::vec3 translation;
 			glm::quat rotation;
@@ -397,12 +406,12 @@ namespace Engine
 			glm::vec3 skew;
 			glm::vec4 perspective;
 
-			glm::decompose(modelMatrix, scale, rotation, translation, skew, perspective);
+			glm::decompose(matrix, scale, rotation, translation, skew, perspective);
 
 			return scale;
 		}
 
-		glm::vec3 Transform::_getSkew(const glm::mat4& modelMatrix)
+		glm::vec3 Transform::_getSkew(const glm::mat4& matrix)
 		{
 			glm::vec3 translation;
 			glm::quat rotation;
@@ -410,12 +419,12 @@ namespace Engine
 			glm::vec3 skew;
 			glm::vec4 perspective;
 
-			glm::decompose(modelMatrix, scale, rotation, translation, skew, perspective);
+			glm::decompose(matrix, scale, rotation, translation, skew, perspective);
 
 			return skew;
 		}
 
-		glm::vec4 Transform::_getPerspective(const glm::mat4& modelMatrix)
+		glm::vec4 Transform::_getPerspective(const glm::mat4& matrix)
 		{
 			glm::vec3 translation;
 			glm::quat rotation;
@@ -423,7 +432,7 @@ namespace Engine
 			glm::vec3 skew;
 			glm::vec4 perspective;
 
-			glm::decompose(modelMatrix, scale, rotation, translation, skew, perspective);
+			glm::decompose(matrix, scale, rotation, translation, skew, perspective);
 
 			return perspective;
 		}
@@ -449,7 +458,7 @@ namespace Engine
 			_isDirty(true)
 		{
 			_children = std::vector<Transform*>();
-			_children.push_back(this);
+			//_children.push_back(this);
 		}
 
 		Transform::~Transform()

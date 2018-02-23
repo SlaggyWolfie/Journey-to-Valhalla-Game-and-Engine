@@ -8,7 +8,17 @@
 #include "../../externals/glew_sfml_glm/include/lua/lua.hpp"
 //#include "RenderManager.hpp"
 #include "../_vs2015/RenderManager.hpp"
+#include "../_vs2015/LightManager.hpp"
 #include "../_vs2015/ServiceLocator.hpp"
+#include "../../_vs2015/GameObject_.hpp"
+#include "../_vs2015/Model.hpp"
+#include "../_vs2015/Texture_.hpp"
+#include <map>
+#include "../_vs2015/Camera_.hpp"
+#include "../../_vs2015/Light_.hpp"
+#include "../_vs2015/Transform.hpp"
+
+//#include "GameLoop.hpp"
 
 namespace Engine
 {
@@ -21,7 +31,9 @@ namespace Engine
 	Game::~Game()
 	{
 		//dtor
-		_window.release();
+		//_window.release();
+		ServiceLocator::destroyInstance();
+		_window = nullptr;
 	}
 
 	void Game::initialize()
@@ -41,24 +53,27 @@ namespace Engine
 		return _window.get();
 	}
 
-	bool Game::running()
+	bool Game::currentlyRunning() const
 	{
+		if (_window == nullptr && _window.get() == nullptr) return false;
 		return _window->isOpen();
 	}
 
 	void Game::exit()
 	{
-		_window->close();
-		delete this;
+
+		if (_window->isOpen()) _window->close();
+		//delete this;
 	}
 
 	///SETUP
 
 	void Game::initializeWindow() {
 		std::cout << "Initializing window..." << std::endl;
-		_window = std::make_unique<sf::RenderWindow>(sf::VideoMode(800, 600), "Thot", sf::Style::Default, sf::ContextSettings(24, 8, 0, 3, 3));
-		//_window = new sf::RenderWindow(sf::VideoMode(800, 600), "My Game!", sf::Style::Default, sf::ContextSettings(24, 8, 0, 3, 3));
+		_window = std::make_unique<sf::RenderWindow>(
+			sf::VideoMode(1280, 960), "Thot", sf::Style::Default, sf::ContextSettings(24, 8, 0, 3, 3));
 		//_window->setVerticalSyncEnabled(true);
+		//std::cout << std::to_string(_window.get() != nullptr) << std::endl;
 		std::cout << "Window initialized." << std::endl << std::endl;
 	}
 
@@ -76,11 +91,11 @@ namespace Engine
 		glGetIntegerv(GL_MAJOR_VERSION, &major);
 		glGetIntegerv(GL_MINOR_VERSION, &minor);
 
-		printf("GL Vendor : %s\n", vendor);
-		printf("GL Renderer : %s\n", renderer);
-		printf("GL Version (string) : %s\n", version);
+		printf("GL Vendor : %p\n", vendor);
+		printf("GL Renderer : %p\n", renderer);
+		printf("GL Version (string) : %p\n", version);
 		printf("GL Version (integer) : %d.%d\n", major, minor);
-		printf("GLSL Version : %s\n", glslVersion);
+		printf("GLSL Version : %p\n", glslVersion);
 
 		std::cout << "----------------------------------" << std::endl << std::endl;
 	}
@@ -96,10 +111,19 @@ namespace Engine
 	void Game::initializeServices()
 	{
 		//Create
+		_gameLoop = new Engine::Core::GameLoop();
 		_renderManager = new Engine::Rendering::RenderManager();
+		_lightManager = new Engine::Rendering::LightManager();
 
 		//Register
+		Engine::ServiceLocator::instance()->addService(this);
+		Engine::ServiceLocator::instance()->addService(_gameLoop);
+		Engine::ServiceLocator::instance()->addService(_lightManager);
 		Engine::ServiceLocator::instance()->addService(_renderManager);
+
+		_renderManager->initialize();
+		_gameLoop->initialize();
+		_lightManager->initialize();
 	}
 
 	void Game::initializeScene() const
@@ -112,7 +136,25 @@ namespace Engine
 	{
 		std::cout << "Loading Scene..." << std::endl;
 		//load scene
+		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
+		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(0,0,2000));
+		Rendering::Light_* light = new Rendering::Light_();
+		lightgo->addComponent(light);
+		light->setLightType(Rendering::LightType::Point);
+		lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
+		Core::Camera_* cameraComp = new Core::Camera_();
+		camera->addComponent(cameraComp);
+		Core::Camera_::setMainCamera(cameraComp);
+
+		Core::GameObject_* go = Model::loadModel("Tower.fbx");
+		go->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		//lightgo->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		//Core::GameObject_* go = Model::loadModel("cube_smooth.obj");
+
+		//std::cout << go->getComponent<Rendering::Renderer_>()->getGameObject()->getName() << std::endl;
+		//go->destroy();
 		std::cout << "Loaded Scene." << std::endl;
+
 	}
 
 	void Game::processEvents()
@@ -160,5 +202,10 @@ namespace Engine
 
 		if (exit) Game::exit();
 		//return event;
+	}
+
+	void Game::run()
+	{
+		_gameLoop->run();
 	}
 }

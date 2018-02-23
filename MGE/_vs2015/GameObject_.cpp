@@ -19,15 +19,12 @@ namespace Engine
 			_transform = std::make_unique<Transform>();
 			_components = std::vector<std::unique_ptr<Component>>();
 			_components.push_back(std::unique_ptr<Component>(_transform.get()));
+			_transform->setGameObject(this);
+			_transform->setPosition(position);
 		}
 
 		GameObject_::~GameObject_()
-		{
-			//Search for a component that can be cast to T
-			for (std::unique_ptr<Component> & component : _components)
-				component->destroy();
-			_components.clear();
-		}
+		= default;
 
 
 		std::string GameObject_::getName() const
@@ -77,10 +74,11 @@ namespace Engine
 			return isActive;
 		}
 
-		void GameObject_::addComponent(Component* component)
+		void GameObject_::addComponent(Component* newComponent)
 		{
-			component->setGameObject(this);
-			_components.push_back(std::unique_ptr<Component>(component));
+			newComponent->setGameObject(this);
+			_components.push_back(std::unique_ptr<Component>(newComponent));
+			getGameLoop()->subscribe(newComponent);
 		}
 
 		void GameObject_::removeComponent(Component* component)
@@ -91,6 +89,7 @@ namespace Engine
 
 				if (component == iteratedComponent)
 				{
+					getGameLoop()->unsubscribe(component);
 					_components.erase(
 						std::remove(
 							_components.begin(), _components.end(), _components[i]
@@ -113,9 +112,16 @@ namespace Engine
 			return false;
 		}
 
+		GameLoop* GameObject_::getGameLoop()
+		{
+			if (_gameLoop == nullptr) 
+				_gameLoop = ServiceLocator::instance()->getService<GameLoop>();
+			return _gameLoop;
+		}
+
 		GameObject_::GameObject_(const GameObject_& other) :
 			_name(other._name),
-			_tag(other._tag),
+			_tag(other._tag), _gameLoop(nullptr),
 			_isStatic(other._isStatic),
 			_isActive(other._isActive)
 		{
@@ -137,6 +143,11 @@ namespace Engine
 
 		void GameObject_::destroy()
 		{
+			//Search for a component that can be cast to T
+			for (std::unique_ptr<Component> & component : _components)
+				component.release();
+			_components.clear();
+
 			delete this;
 		}
 	}

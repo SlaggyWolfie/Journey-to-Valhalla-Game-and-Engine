@@ -22,13 +22,13 @@ namespace Engine
 	{
 	public:
 		template<typename T>
-		static void removeFrom(std::vector<T> vector, T item);
+		static void removeFrom(std::vector<T>& vector, T item);
 		template<typename T>
-		static bool contains(std::vector<T> vector, T item);
+		static bool contains(std::vector<T>& vector, T item);
 	};
 
 	template <typename T>
-	void List::removeFrom(std::vector<T> vector, T item)
+	void List::removeFrom(std::vector<T>& vector, T item)
 	{
 		vector.erase(
 			std::remove(
@@ -37,7 +37,7 @@ namespace Engine
 	}
 
 	template <typename T>
-	bool List::contains(std::vector<T> vector, T item)
+	bool List::contains(std::vector<T>& vector, T item)
 	{
 		return std::find(vector.begin(), vector.end(), item) != vector.end();
 	}

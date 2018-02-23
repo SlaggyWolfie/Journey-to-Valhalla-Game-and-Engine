@@ -95,7 +95,7 @@ void LitTextureMaterial::_lazyInitializeShader() {
 
 		//texture
 		_uDiffuseTexture = _shader->getUniformLocation("diffuseTexture");
-		std::cout << _uDiffuseTexture<<std::endl;
+		std::cout << _uDiffuseTexture << std::endl;
 
 		//colors
 		_uDiffuseColor = _shader->getUniformLocation("diffuseColor");
@@ -193,7 +193,7 @@ void LitTextureMaterial::render(World* pWorld, Mesh* pMesh,
 	//tell the shader the texture slot for the diffuse texture is slot 0
 	glUniform1i(_uDiffuseTexture, 0);
 
-	
+
 	int lightCount = pWorld->getLightCount();
 	int directionalLightCount = 0;
 	int pointLightCount = 0;
@@ -315,7 +315,7 @@ void LitTextureMaterial::render(World* pWorld, Mesh* pMesh,
 
 	//set the material color
 	glUniform3fv(_uDiffuseColor, 1, glm::value_ptr(_diffuseColor));
-	
+
 	//pass in all MVP matrices separately
 	glUniformMatrix4fv(_uProjectionMatrix, 1, GL_FALSE, glm::value_ptr(pProjectionMatrix));
 	glUniformMatrix4fv(_uViewMatrix, 1, GL_FALSE, glm::value_ptr(pViewMatrix));
