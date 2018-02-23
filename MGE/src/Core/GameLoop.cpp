@@ -16,7 +16,7 @@ namespace Engine
 		{
 			//ctor
 			createOwnedLoops();
-			_components;
+			//_components;
 		}
 
 		GameLoop::~GameLoop()
@@ -39,37 +39,37 @@ namespace Engine
 		void GameLoop::subscribe(Component* component)
 		{
 			if (!isSubscribed(component))
-				//_components.push_back(component);
-			_components.push_back(std::shared_ptr<Component>(component));
+				_components.push_back(component);
+			//_components.push_back(std::shared_ptr<Component>(component));
 		}
 
 		void GameLoop::unsubscribe(Component* component)
 		{
-			const auto check = find(component);
+			//const auto check = find(component);
 
-			if (check != nullptr)
-				List::removeFrom(_components, check);
+			//if (check != nullptr)
+			//	List::removeFrom(_components, check);
 
-			//if (isSubscribed(component))
-			//	List::removeFrom(_components, component);
+			if (isSubscribed(component))
+				List::removeFrom(_components, component);
 		}
 
 		bool GameLoop::isSubscribed(Component* component)
 		{
-			return find(component) != nullptr;
-			//return !_components.empty() && std::find(_components.begin(), _components.end(), component) != _components.end();
+			//return find(component) != nullptr;
+			return !_components.empty() && std::find(_components.begin(), _components.end(), component) != _components.end();
 		}
 
-		std::shared_ptr<Component> GameLoop::find(Component* component)
-		{
-			for (std::shared_ptr<Component> i : _components)
-			{
-				if (i.get() == component)
-					return i;
-			}
+		//std::shared_ptr<Component> GameLoop::find(Component* component)
+		//{
+		//	for (std::shared_ptr<Component> i : _components)
+		//	{
+		//		if (i.get() == component)
+		//			return i;
+		//	}
 
-			return nullptr;
-		}
+		//	return nullptr;
+		//}
 
 		void GameLoop::run()
 		{
@@ -111,7 +111,7 @@ namespace Engine
 		void GameLoop::update()
 		{
 			if (!_components.empty())
-				for (auto comp : _components)
+				for (const auto& comp : _components)
 					if (comp->isEnabled() && comp->getGameObject()->isActive())
 						comp->update();
 		}
@@ -127,16 +127,16 @@ namespace Engine
 		void GameLoop::lateUpdate()
 		{
 			if (!_components.empty())
-				for (auto comp : _components)
+				for (const auto& comp : _components)
 					if (comp->isEnabled() && comp->getGameObject()->isActive())
 						comp->lateUpdate();
 		}
 
 		void GameLoop::createOwnedLoops()
 		{
-			//_components = std::vector<Component*>();
+			_components = std::vector<Component*>();
 			//_components.push_back(new Component());
-			_components = std::vector<std::shared_ptr<Component>>();
+			//_components = std::vector<std::shared_ptr<Component>>();
 		}
 
 		void GameLoop::destroyOwnedLoops()

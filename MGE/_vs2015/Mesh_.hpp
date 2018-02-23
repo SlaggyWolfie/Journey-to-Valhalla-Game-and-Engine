@@ -34,9 +34,11 @@ namespace Engine
 			Mesh_(const Mesh_& other) = default;
 			Mesh_& operator=(const Mesh_& other) = default;
 
-			static Mesh_ * load(const std::string& path);
+			//static Mesh_ * load(const std::string& path);
 			void stream(const GLint& verticesAttribute, const GLint & normalsAttribute, const GLint& UVsAttribute) const;
+			void stream2(const GLint& verticesAttribute, const GLint & normalsAttribute, const GLint& UVsAttribute) const;
 			void generateBuffers();
+			void generateBuffers2();
 
 			void addVertex(Vertex vertex);
 			void addVertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv);
@@ -56,14 +58,16 @@ namespace Engine
 
 			Vertex* getAllVertices() const;
 			int* getAllIndices() const;
-		private:
-			Mesh_(std::vector<Vertex> vertices, std::vector<int> indices);
+
+			unsigned int VAO;
 
 		protected:
 			void prewake() override;
 		private:
+			Mesh_(std::vector<Vertex> vertices, std::vector<int> indices);
 			std::vector<Vertex> _vertices;
 			std::vector<int> _indices;
+			unsigned int VBO, EBO;
 
 			GLuint _bufferVertexPositions;
 			GLuint _bufferVertexNormals;

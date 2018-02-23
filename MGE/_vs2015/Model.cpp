@@ -13,6 +13,7 @@ namespace Engine
 	using namespace Rendering;
 	GameObject_* Model::loadModel(const std::string& path)
 	{
+		std::cout << "Loading model at " + path << std::endl;
 		Assimp::Importer import;
 		const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
 
@@ -24,13 +25,26 @@ namespace Engine
 		//this->path = path.substr(0, path.find_last_of('/'));
 
 		GameObject_* go = processNode(scene->mRootNode, scene);
+		std::cout << "Loaded model at " + path << std::endl;
 		return go;
 	}
 
 	GameObject_* Model::processNode(aiNode *node, const aiScene *scene)
 	{
-		GameObject_* go = new GameObject_(node->mName.C_Str(), "");
+		std::cout << "Processing node " << node->mName.C_Str() << std::endl;
+		GameObject_* go;// = new GameObject_(node->mName.C_Str(), "");
 		// process all the node's meshes (if any)
+		std::cout << "Has " << node->mNumMeshes << " amount of meshes." << std::endl;
+		std::cout << "Has " << node->mNumChildren << " amount of children." << std::endl;
+
+		// then do the same for each of its children
+		if (node->mNumChildren == 1)
+			go = processNode(node->mChildren[0], scene);
+		else
+			go = new GameObject_(node->mName.C_Str(), "");
+
+		go->getTransform()->setWorldMatrix4X4(convert(node->mTransformation));
+
 		for (unsigned int i = 0; i < node->mNumMeshes; i++)
 		{
 			aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
@@ -46,12 +60,13 @@ namespace Engine
 			//go->addComponent<Renderer_>();
 		}
 
-		// then do the same for each of its children
 		for (unsigned int i = 0; i < node->mNumChildren; i++)
 		{
 			GameObject_* childGO = processNode(node->mChildren[i], scene);
-			childGO->getTransform()->setParent(go->getTransform());
+			childGO->getTransform()->setParent(go->getTransform(), true);
 		}
+
+		std::cout << "Processed node " << node->mName.C_Str() << std::endl;
 
 		return go;
 	}
@@ -89,16 +104,24 @@ namespace Engine
 			else
 				vertex.textureCoordinate = glm::vec2(0.0f, 0.0f);
 
+			//std::cout << "Vertex " + std::to_string(i) + " " + glm::to_string(vertex.position) + " " << std::endl;
 			vertices.push_back(vertex);
 		}
+		//std::cout << std::endl;
 
 		// process indices
+		//int index = 0;
 		for (unsigned int i = 0; i < mesh->mNumFaces; i++)
 		{
 			const aiFace face = mesh->mFaces[i];
 			for (unsigned int j = 0; j < face.mNumIndices; j++)
+			{
+				//index++;
+				//std::cout << "Index " + std::to_string(index) + " " + std::to_string(face.mIndices[j]) + " " << std::endl;
 				indices.push_back(face.mIndices[j]);
+			}
 		}
+		std::cout << std::endl;
 
 		// process material
 		aiMaterial *material = scene->mMaterials[mesh->mMaterialIndex];
@@ -118,8 +141,8 @@ namespace Engine
 
 	Material_* Model::loadMaterial(aiMaterial* material)
 	{
-		float opacity;
-		material->Get(AI_MATKEY_OPACITY, opacity);
+		//float opacity;
+		//material->Get(AI_MATKEY_OPACITY, opacity);
 
 		Material_* outMaterial = new Material_();
 		aiString str;
@@ -142,5 +165,15 @@ namespace Engine
 		}
 
 		return outMaterial;
+	}
+
+	glm::mat4 Model::convert(aiMatrix4x4 aiMatrix)
+	{
+		return glm::mat4(
+			aiMatrix.a1, aiMatrix.a2, aiMatrix.a3, aiMatrix.a4,
+			aiMatrix.b1, aiMatrix.b2, aiMatrix.b3, aiMatrix.b4,
+			aiMatrix.c1, aiMatrix.c2, aiMatrix.c3, aiMatrix.c4,
+			aiMatrix.d1, aiMatrix.d2, aiMatrix.d3, aiMatrix.d4
+		);
 	}
 }

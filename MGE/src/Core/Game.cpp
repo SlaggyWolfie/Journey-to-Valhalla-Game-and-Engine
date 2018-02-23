@@ -16,6 +16,7 @@
 #include <map>
 #include "../_vs2015/Camera_.hpp"
 #include "../../_vs2015/Light_.hpp"
+#include "../_vs2015/Transform.hpp"
 
 //#include "GameLoop.hpp"
 
@@ -135,16 +136,19 @@ namespace Engine
 	{
 		std::cout << "Loading Scene..." << std::endl;
 		//load scene
-		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 10));
-		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(0,0,-10));
-		//Rendering::Light_* light = new Rendering::Light_();
-		//lightgo->addComponent(light);
-		//light->setLightType(Rendering::LightType::Directional);
+		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
+		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(0,0,2000));
+		Rendering::Light_* light = new Rendering::Light_();
+		lightgo->addComponent(light);
+		light->setLightType(Rendering::LightType::Point);
+		lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
 		Core::Camera_* cameraComp = new Core::Camera_();
 		camera->addComponent(cameraComp);
 		Core::Camera_::setMainCamera(cameraComp);
 
 		Core::GameObject_* go = Model::loadModel("Tower.fbx");
+		go->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		//lightgo->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//Core::GameObject_* go = Model::loadModel("cube_smooth.obj");
 
 		//std::cout << go->getComponent<Rendering::Renderer_>()->getGameObject()->getName() << std::endl;

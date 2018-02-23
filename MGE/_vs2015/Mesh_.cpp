@@ -86,16 +86,19 @@ namespace Engine
 			return indexArray;
 		}
 
-		Mesh_::Mesh_(std::vector<Vertex>  vertices, std::vector<int>  indices) :
-			_vertices(std::move(vertices)), _indices(std::move(indices)),
-			_bufferVertexPositions(0), _bufferVertexNormals(0),
-			_bufferVertexUVs(0), _bufferIndex(0)
+		Mesh_::Mesh_(std::vector<Vertex>  vertices, std::vector<int>  indices) : VAO(0),
+		                                                                         _vertices(std::move(vertices)),
+		                                                                         _indices(std::move(indices)), VBO(0), EBO(0),
+		                                                                         _bufferVertexPositions(0),
+		                                                                         _bufferVertexNormals(0),
+		                                                                         _bufferVertexUVs(0), _bufferIndex(0)
 		{
 		}
 
 		void Mesh_::prewake()
 		{
-			generateBuffers();
+			generateBuffers2();
+			//generateBuffers();
 		}
 
 		void Mesh_::stream(const GLint& verticesAttribute, const GLint& normalsAttribute, const GLint& UVsAttribute) const
@@ -135,6 +138,14 @@ namespace Engine
 			if (verticesAttribute != -1) glDisableVertexAttribArray(verticesAttribute);
 		}
 
+		void Mesh_::stream2(const GLint& verticesAttribute, const GLint& normalsAttribute, const GLint& UVsAttribute) const
+		{
+			// draw mesh
+			glBindVertexArray(VAO);
+			glDrawElements(GL_TRIANGLES, _indices.size(), GL_UNSIGNED_INT, 0);
+			glBindVertexArray(0);
+		}
+
 		void Mesh_::generateBuffers()
 		{
 			glGenBuffers(1, &_bufferIndex);
@@ -154,6 +165,38 @@ namespace Engine
 			glBufferData(GL_ARRAY_BUFFER, _vertices.size() * sizeof(glm::vec2), &_vertices[0].textureCoordinate, GL_STATIC_DRAW);
 
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
+		}
+
+		void Mesh_::generateBuffers2()
+		{
+			// create buffers/arrays
+			glGenVertexArrays(1, &VAO);
+			glGenBuffers(1, &VBO);
+			glGenBuffers(1, &EBO);
+
+			glBindVertexArray(VAO);
+			// load data into vertex buffers
+			glBindBuffer(GL_ARRAY_BUFFER, VBO);
+			// A great thing about structs is that their memory layout is sequential for all its items.
+			// The effect is that we can simply pass a pointer to the struct and it translates perfectly to a glm::vec3/2 array which
+			// again translates to 3/2 floats which translates to a byte array.
+			glBufferData(GL_ARRAY_BUFFER, _vertices.size() * sizeof(Vertex), &_vertices[0], GL_STATIC_DRAW);
+
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, _indices.size() * sizeof(unsigned int), &_indices[0], GL_STATIC_DRAW);
+
+			// set the vertex attribute pointers
+			// vertex Positions
+			glEnableVertexAttribArray(0);
+			glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+			// vertex normals
+			glEnableVertexAttribArray(1);
+			glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+			// vertex texture coords
+			glEnableVertexAttribArray(2);
+			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, textureCoordinate));
+
+			glBindVertexArray(0);
 		}
 	}
 }

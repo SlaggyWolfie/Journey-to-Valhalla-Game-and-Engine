@@ -278,7 +278,8 @@ namespace Engine
 
 		void Renderer_::pushMesh() const
 		{
-			_mesh->stream(_attributeVertexPositions, _attributeVertexNormals, _attributeVertexUVs);
+			_mesh->stream2(_attributeVertexPositions, _attributeVertexNormals, _attributeVertexUVs);
+			//_mesh->stream(_attributeVertexPositions, _attributeVertexNormals, _attributeVertexUVs);
 		}
 
 		void Renderer_::render()

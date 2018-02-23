@@ -21,7 +21,7 @@ void main()
 {
     gl_Position = mvpMatrix * vec4(vertexPosition, 1);
 	
-    worldNormal = vec3 (normalMatrix * vec4 (vertexNormal, 0));
+    worldNormal = vec3 (modelMatrix * vec4 (vertexNormal, 0));
 	worldPosition = vec3(modelMatrix * vec4 (vertexPosition, 1));
 	
 	textureCoordinate = vertexUV;

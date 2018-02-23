@@ -67,11 +67,12 @@ namespace Engine
 			std::vector<T*> getComponentsList();
 
 		private:
-			std::string _name;
-			std::string _tag;
+			std::string _name = nullptr;
+			std::string _tag = nullptr;
 			std::unique_ptr<Transform> _transform;
 
-			GameLoop* _gameLoop;
+			GameLoop* _gameLoop = nullptr;
+			GameLoop* getGameLoop();
 
 			template <typename T>
 			std::unique_ptr<T> findComponent();
@@ -147,7 +148,7 @@ namespace Engine
 				std::unique_ptr<Component> newComponent = std::unique_ptr<Component>(derivedComponent);
 				newComponent.get()->setGameObject(this);
 				_components.push_back(newComponent);
-				_gameLoop->subscribe(newComponent.get());
+				getGameLoop()->subscribe(newComponent.get());
 			}
 			else std::cout << "Failed to add component. Has no default constructor." << std::endl;
 		}
@@ -159,7 +160,7 @@ namespace Engine
 
 			if (comp == nullptr) return;
 
-			_gameLoop->unsubscribe(comp);
+			getGameLoop()->unsubscribe(comp);
 
 			List::removeFrom(_components, comp);
 			comp.reset();

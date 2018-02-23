@@ -12,12 +12,12 @@ namespace Engine
 		Camera_* Camera_::_main = nullptr;
 
 		Camera_::Camera_() :
-			_fov(45), _nearPlaneDistance(0.3f), _farPlaneDistance(1000), _projectionMode(Perspective)
+			_fov(45), _nearPlaneDistance(0.3f), _farPlaneDistance(10000), _projectionMode(Perspective)
 		{
 		}
 
 		Camera_::Camera_(const ProjectionMode projectionMode) :
-			_fov(45), _nearPlaneDistance(0.3f), _farPlaneDistance(1000), _projectionMode(projectionMode)
+			_fov(45), _nearPlaneDistance(0.3f), _farPlaneDistance(10000), _projectionMode(projectionMode)
 		{
 		}
 
@@ -110,6 +110,8 @@ namespace Engine
 		{
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(0, 0, -1));
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(0, 0, 1));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-1, 0, 0));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) getGameObject()->getTransform()->setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(1, 0, 0));
 			std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
 		}
 	}

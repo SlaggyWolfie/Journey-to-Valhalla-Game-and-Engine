@@ -6,6 +6,7 @@
 #include "../../_vs2015/Service.hpp"
 #include "../../_vs2015/FunctionGroup.hpp"
 #include "../_vs2015/RenderManager.hpp"
+#include "../_vs2015/Component.hpp"
 
 namespace Engine
 {
@@ -31,9 +32,9 @@ namespace Engine
 
 		private:
 
-			//std::vector<Component*> _components;
-			std::vector<std::shared_ptr<Component>> _components;
-			std::shared_ptr<Component> find(Component* component);
+			std::vector<Component*> _components;
+			//std::vector<std::shared_ptr<Component>> _components;
+			//std::shared_ptr<Component> find(Component* component);
 			void update();
 			void fixedUpdate();
 			void lateUpdate();

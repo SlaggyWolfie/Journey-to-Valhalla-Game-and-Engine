@@ -194,7 +194,8 @@ void main()
     vec3 normal = normalize(worldNormal);
     vec3 viewDirection = normalize(worldPosition - cameraPosition);
 
-	vec3 result = light.ambientTerm * diffuseColor;
+	vec3 result = vec3(0);
+	result += light.ambientTerm * diffuseColor;
 	
     //Directional light(s) - usually one
     for(int i = 0; i < light.directionalLightsAmount; i++) 
@@ -208,8 +209,8 @@ void main()
     for(int k = 0; k < light.spotLightsAmount; k++) 
 		result += GetSpotLight(diffuseColor, specularColor, spotLights[k], normal, viewDirection, light.ambientStrength, 1); 
 	
-	result += emissionColor;
+	// result += emissionColor;
 	
-    // finalColor = vec4(result, alpha);
-	finalColor = vec4(diffuseColor, alpha);
+    finalColor = vec4(result, alpha);
+	// finalColor = vec4(diffuseColor, alpha);
 }

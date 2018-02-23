@@ -47,10 +47,10 @@ namespace Engine
 			static GLint _attributeVertexNormals;
 			static GLint _attributeVertexUVs;
 
-			static GLint _bufferVertexPositions;
-			static GLint _bufferVertexNormals;
-			static GLint _bufferVertexUVs;
-			static GLint _bufferIndex;
+			//static GLint _bufferVertexPositions;
+			//static GLint _bufferVertexNormals;
+			//static GLint _bufferVertexUVs;
+			//static GLint _bufferIndex;
 
 			static GLint _uniformMaterialDiffuseColor;
 			static GLint _uniformMaterialSpecularColor;

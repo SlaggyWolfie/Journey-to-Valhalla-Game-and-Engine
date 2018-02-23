@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 //#include <assimp/>
+#include <glm/glm.hpp>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include "Renderer_.hpp"
@@ -23,7 +24,7 @@ namespace Engine
 		static Core::GameObject_* processNode(aiNode *node, const aiScene *scene);
 		static Rendering::RenderQueue processMesh(aiMesh *mesh, const aiScene *scene, Rendering::Mesh_* &outMesh, Rendering::Material_* &outMaterial);
 		static Rendering::Material_* loadMaterial(aiMaterial *material);
-
+		static glm::mat4 convert(aiMatrix4x4 aiMatrix);
 	};
 }
 

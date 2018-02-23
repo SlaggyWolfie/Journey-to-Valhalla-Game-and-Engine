@@ -21,6 +21,7 @@ namespace Engine
 			_components = std::vector<std::unique_ptr<Component>>();
 			_components.push_back(std::unique_ptr<Component>(_transform.get()));
 			_transform->setGameObject(this);
+			_transform->setPosition(position);
 		}
 
 		GameObject_::~GameObject_()
@@ -78,7 +79,7 @@ namespace Engine
 		{
 			newComponent->setGameObject(this);
 			_components.push_back(std::unique_ptr<Component>(newComponent));
-			_gameLoop->subscribe(newComponent);
+			getGameLoop()->subscribe(newComponent);
 		}
 
 		void GameObject_::removeComponent(Component* component)
@@ -89,7 +90,7 @@ namespace Engine
 
 				if (component == iteratedComponent)
 				{
-					_gameLoop->unsubscribe(component);
+					getGameLoop()->unsubscribe(component);
 					_components.erase(
 						std::remove(
 							_components.begin(), _components.end(), _components[i]
@@ -110,6 +111,13 @@ namespace Engine
 			}
 
 			return false;
+		}
+
+		GameLoop* GameObject_::getGameLoop()
+		{
+			if (_gameLoop == nullptr) 
+				_gameLoop = ServiceLocator::instance()->getService<GameLoop>();
+			return _gameLoop;
 		}
 
 		GameObject_::GameObject_(const GameObject_& other) :

@@ -47,13 +47,13 @@ namespace Engine
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-			//glClearColor(
-			//	static_cast<float>(0x2d) / 0xff,
-			//	static_cast<float>(0x6b) / 0xff,
-			//	static_cast<float>(0xce) / 0xff,
-			//	1.0f);
+			glClearColor(
+				static_cast<float>(0x2d) / 0xff,
+				static_cast<float>(0x6b) / 0xff,
+				static_cast<float>(0xce) / 0xff,
+				1.0f);
 
-			glClearColor(0, 0, 0, 1.0f);
+			//glClearColor(0, 0, 0, 1.0f);
 			Game* game = ServiceLocator::instance()->getService<Game>();
 			//std::cout << std::to_string(game != nullptr) << std::endl;
 			_window = game->getWindow();
@@ -107,7 +107,7 @@ namespace Engine
 
 		void RenderManager::render(const float deltaTime)
 		{
-			std::cout << "Pl0x" << std::endl;
+			//std::cout << "Pl0x" << std::endl;
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			glDisable(GL_BLEND);
@@ -139,14 +139,7 @@ namespace Engine
 
 		void RenderManager::renderOpaque() const
 		{
-			//std::cout << "Not Done. RenderManager" << std::endl;
-			//std::cout << "Added predicate" << std::endl;
-			//_renderOpaque->execute();
-			//const std::vector<Renderer_*> vector = _renderTransparent->getObjects();
 			for (auto r : _ro) r->render();
-			//vector[0]->render();
-			//vector[1]->render();
-			//vector[2]->render();
 		}
 
 		void RenderManager::renderTransparent() const
