@@ -20,11 +20,7 @@ Deserealizer::Deserealizer() {
 }
 
 
-<<<<<<< HEAD
 void Deserealizer::ConstructGameObj()
-=======
-Engine::Scene Deserealizer::ConstructGameObj()
->>>>>>> f5e6312b9895fddb1fc553656729c4784828f5f2
 {
 
 	//struct GameObject_s {
@@ -91,54 +87,51 @@ Engine::Scene Deserealizer::ConstructGameObj()
 
 	//	objList.push_back(gameObj);
 	//}
-<<<<<<< HEAD
 	//cout << j.begin().key() << endl;
-	int g = 0;
-	for (int j = 0; j < static_cast<int>(ju.size()); j++)
-	{
-		GameObject_s gameObj;
-		string s = ju.at(j).at("GameObject").at("name");
-		//cout << s;
-		gameObj.name_ = s;
-		std::cout << s;
-		gameObj.position.x= ju.at(j).at("GameObject").at("transform")["position"]["x"];
-		gameObj.position.y = ju.at(j).at("GameObject").at("transform")["position"]["y"];
-		gameObj.position.z = ju.at(j).at("GameObject").at("transform")["position"]["z"];
+	//int g = 0;
+	//for (int j = 0; j < static_cast<int>(ju.size()); j++)
+	//{
+	//	GameObject_s gameObj;
+	//	string s = ju.at(j).at("GameObject").at("name");
+	//	//cout << s;
+	//	gameObj.name_ = s;
+	//	std::cout << s;
+	//	gameObj.position.x= ju.at(j).at("GameObject").at("transform")["position"]["x"];
+	//	gameObj.position.y = ju.at(j).at("GameObject").at("transform")["position"]["y"];
+	//	gameObj.position.z = ju.at(j).at("GameObject").at("transform")["position"]["z"];
 
-		gameObj.rotation.x = ju.at(j).at("GameObject").at("transform")["rotation"]["x"];
-		gameObj.rotation.y = ju.at(j).at("GameObject").at("transform")["rotation"]["y"];
-		gameObj.rotation.z = ju.at(j).at("GameObject").at("transform")["rotation"]["z"];
+	//	gameObj.rotation.x = ju.at(j).at("GameObject").at("transform")["rotation"]["x"];
+	//	gameObj.rotation.y = ju.at(j).at("GameObject").at("transform")["rotation"]["y"];
+	//	gameObj.rotation.z = ju.at(j).at("GameObject").at("transform")["rotation"]["z"];
 
-		gameObj.scale.x = ju.at(j).at("GameObject").at("transform")["scale"]["x"];
-		gameObj.scale.y = ju.at(j).at("GameObject").at("transform")["scale"]["y"];
-		gameObj.scale.z = ju.at(j).at("GameObject").at("transform")["scale"]["z"];
-		string n= ju.at(j).at("GameObject").at("meshString");
-		gameObj.meshName = n;
-		if (j == 0)
-			oneMesh = n;
+	//	gameObj.scale.x = ju.at(j).at("GameObject").at("transform")["scale"]["x"];
+	//	gameObj.scale.y = ju.at(j).at("GameObject").at("transform")["scale"]["y"];
+	//	gameObj.scale.z = ju.at(j).at("GameObject").at("transform")["scale"]["z"];
+	//	string n= ju.at(j).at("GameObject").at("meshString");
+	//	gameObj.meshName = n;
+	//	if (j == 0)
+	//		oneMesh = n;
 
-		gameObj.parentID = ju.at(j).at("GameObject").at("parentID");
-		gameObj.selfID=ju.at(j).at("GameObject").at("selfID");
+	//	gameObj.parentID = ju.at(j).at("GameObject").at("parentID");
+	//	gameObj.selfID=ju.at(j).at("GameObject").at("selfID");
 
-		objList.push_back(gameObj);
-	}
+	//	objList.push_back(gameObj);
+	//}
 
-	Scene parsedScene;
+	//Scene parsedScene;
 
-	for (int i = 0; i < objList.size(); i++)
-	{
-		GameObject_* obj = new GameObject_(objList[i].name_, "", objList[i].position);
-		//obj->getTransform()->setRotation(/*convert to quaternion here*/);
-		obj->getTransform()->setPosition(objList[i].position);
-		obj->getTransform()->setRotation(objList[i].rotation);
-		obj->getTransform()->setScale(objList[i].scale);
-		obj->setName(objList[i].name_);
+	//for (int i = 0; i < objList.size(); i++)
+	//{
+	//	GameObject_* obj = new GameObject_(objList[i].name_, "", objList[i].position);
+	//	//obj->getTransform()->setRotation(/*convert to quaternion here*/);
+	//	obj->getTransform()->setPosition(objList[i].position);
+	//	obj->getTransform()->setRotation(objList[i].rotation);
+	//	obj->getTransform()->setScale(objList[i].scale);
+	//	obj->setName(objList[i].name_);
 
-		obj->setName(objList[i].meshName);
-		gms.push_back(obj);
-	}
-
-=======
+	//	obj->setName(objList[i].meshName);
+	//	gms.push_back(obj);
+	//}
 
 	//Engine::Scene* parsedScene = nullptr;
 
@@ -155,7 +148,6 @@ Engine::Scene Deserealizer::ConstructGameObj()
 	//}
 
 	//return *parsedScene;
->>>>>>> f5e6312b9895fddb1fc553656729c4784828f5f2
 
-	return Engine::Scene();
+	//return Engine::Scene();
 }

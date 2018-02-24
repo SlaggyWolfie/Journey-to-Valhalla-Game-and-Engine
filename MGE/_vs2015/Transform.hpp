@@ -100,6 +100,8 @@ namespace Engine
 			//Parent/Children
 			void setParent(Transform* parent, bool keepWorldTransform = false);
 			Transform* getParent() const;
+			void makeStatic();
+			void unmakeStatic(bool children = true);
 
 			//Transform* addChild(Transform* child, bool keepWorldTransform = false);
 			Transform* removeChild(const int& index);
@@ -108,27 +110,23 @@ namespace Engine
 			Transform* getChild(int index) const;
 			Transform** getChildren() const;
 		private:
-			Transform * _parent;
+			Transform * _parent = nullptr;
 			std::vector<Transform*> _children;
 
-			glm::vec3 _localPosition;
-			glm::quat _localRotation;
-			glm::vec3 _localScale;
-			glm::mat4 _localMatrix; //unused
+			glm::vec3 _localPosition = glm::vec3();
+			glm::quat _localRotation = glm::quat();
+			glm::vec3 _localScale = glm::vec3(1);
+			glm::mat4 _localMatrix = glm::mat4();
 
-			glm::vec3 _worldPosition; //unused
-			glm::quat _worldRotation; //unused
-			glm::vec3 _worldScale; //unused
-			glm::mat4 _worldMatrix; //unused
-			glm::mat3 _normalMatrix;
+			glm::mat4 _worldMatrix = glm::mat4();
+			glm::mat3 _normalMatrix = glm::mat4();
 
-			bool _isDirty; //unused
+			bool _isLocalMatrixDirty = true;
+			bool _isWorldMatrixDirty = true;
 
-			void _determineCaching();
-			void _cacheLocal();
-			void _cacheWorld();
+			void _determineCaching(bool forWorldMatrix);
 
-			glm::mat4 _calculateLocalMatrix();
+			glm::mat4 _calculateLocalMatrix() const;
 
 			//good
 			//Recurse through parents to construct World Matrix

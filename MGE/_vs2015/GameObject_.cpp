@@ -60,6 +60,8 @@ namespace Engine
 		bool GameObject_::setStatic(const bool isStatic)
 		{
 			_isStatic = isStatic;
+			if (isStatic) getTransform()->makeStatic();
+			else getTransform()->unmakeStatic();
 			return isStatic;
 		}
 

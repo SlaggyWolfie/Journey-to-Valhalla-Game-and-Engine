@@ -165,6 +165,7 @@
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
     <ClInclude Include="..\src\Core\Game.hpp" />
     <ClInclude Include="..\src\Core\GameLoop.hpp" />
+    <ClInclude Include="..\src\Core\LuaScript.h" />
     <ClInclude Include="..\src\glm.hpp" />
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
@@ -216,7 +217,6 @@
     <ClInclude Include="FunctionGroup.hpp" />
     <ClInclude Include="LightManager.hpp" />
     <ClInclude Include="Light_.hpp" />
-    <ClInclude Include="LuaScript.h" />
     <ClInclude Include="Manager.hpp" />
     <ClInclude Include="Material_.hpp" />
     <ClInclude Include="Mesh_.hpp" />
@@ -237,6 +237,7 @@
     <ClCompile Include="..\src\Core\Deserealizer.cpp" />
     <ClCompile Include="..\src\Core\Game.cpp" />
     <ClCompile Include="..\src\Core\GameLoop.cpp" />
+    <ClCompile Include="..\src\Core\LuaScript.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp" />
@@ -284,7 +285,6 @@
     <ClCompile Include="GeneralHelpers.cpp" />
     <ClCompile Include="LightManager.cpp" />
     <ClCompile Include="Light_.cpp" />
-    <ClCompile Include="LuaScript.cpp" />
     <ClCompile Include="Material_.cpp" />
     <ClCompile Include="Mesh_.cpp" />
     <ClCompile Include="Model.cpp" />

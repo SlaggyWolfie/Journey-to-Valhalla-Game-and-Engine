@@ -77,8 +77,8 @@ namespace Engine
 			template <typename T>
 			std::unique_ptr<T> findComponent();
 
-			bool _isStatic;
-			bool _isActive;
+			bool _isStatic = false;
+			bool _isActive = true;
 
 			std::vector<std::unique_ptr<Component>> _components;
 		};

@@ -8,13 +8,13 @@ class LuaScript: public Component
 {
 public:
 	LuaScript();
-	void LuaScript::registerFunctions();
-	static int LuaScript::MovePlayer(lua_State* state);
-	void LuaScript::Initialize();
-	static int LuaScript::ShowHint(lua_State * state);
-	static int LuaScript::OpenDoor(lua_State * state);
+	void registerFunctions();
+	static int MovePlayer(lua_State* state);
+	void Initialize();
+	static int ShowHint(lua_State * state);
+	static int OpenDoor(lua_State * state);
 	void printMsg();
-	void LuaScript::stackDump(lua_State *state, const char * pre);
+	void stackDump(lua_State *state, const char * pre);
 	void update() override;
 	void start() override;
 private:

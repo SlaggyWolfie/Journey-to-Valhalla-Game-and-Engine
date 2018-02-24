@@ -69,6 +69,11 @@ int LuaScript::MovePlayer(lua_State * state)
 {
 	return 0;
 }
+
+void LuaScript::Initialize()
+{
+}
+
 int LuaScript::ShowHint(lua_State * state)
 {
 

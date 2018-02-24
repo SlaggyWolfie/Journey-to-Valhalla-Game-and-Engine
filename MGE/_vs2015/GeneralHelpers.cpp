@@ -47,4 +47,34 @@ namespace Engine
 		srand(static_cast<unsigned>(time(nullptr)));
 		_setup = true;
 	}
+
+	glm::vec3 Vector3::forward()
+	{
+		return glm::vec3(0, 0, -1);
+	}
+
+	glm::vec3 Vector3::up()
+	{
+		return glm::vec3(0, 1, 0);
+	}
+
+	glm::vec3 Vector3::right()
+	{
+		return glm::vec3(1, 0, 0);
+	}
+
+	glm::vec3 Vector3::backward()
+	{
+		return -forward();
+	}
+
+	glm::vec3 Vector3::down()
+	{
+		return -up();
+	}
+
+	glm::vec3 Vector3::left()
+	{
+		return -right();
+	}
 }

@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <ctime>
+#include <glm/detail/type_vec3.hpp>
 
 namespace Engine
 {
@@ -41,6 +42,16 @@ namespace Engine
 	{
 		return std::find(vector.begin(), vector.end(), item) != vector.end();
 	}
+
+	class Vector3
+	{
+		static glm::vec3 forward();
+		static glm::vec3 up();
+		static glm::vec3 right();
+		static glm::vec3 backward();
+		static glm::vec3 down();
+		static glm::vec3 left();
+	};
 }
 
 #endif //GENERAL_HELPERS_HPP

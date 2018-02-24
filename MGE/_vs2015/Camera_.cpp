@@ -122,7 +122,7 @@ namespace Engine
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) getGameObject()->getTransform()->rotate(getGameObject()->getTransform()->up(), glm::radians(1.0f));
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) getGameObject()->getTransform()->rotate(getGameObject()->getTransform()->up(), glm::radians(-1.0f));
 			
-			//std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
+			std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
 		}
 	}
 }

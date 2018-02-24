@@ -1,7 +1,7 @@
 //LIT COLOR VERTEX SHADER
 #version 330 // for glsl version (12 is for older versions , say opengl 2.1
 
-uniform mat3 modelMatrix;
+uniform mat4 modelMatrix;
 uniform mat4 viewMatrix;
 uniform mat4 projectionMatrix;
 uniform mat4 mvMatrix;
@@ -23,7 +23,7 @@ void main()
 	
     worldNormal = normalMatrix * vertexNormal;
     // worldNormal = vec3 (modelMatrix * vec4 (vertexNormal, 0));
-	worldPosition = vec3(normalMatrix * vec4 (vertexPosition, 1));
+	worldPosition = vec3(modelMatrix * vec4 (vertexPosition, 1));
 	
 	textureCoordinate = vertexUV;
 }

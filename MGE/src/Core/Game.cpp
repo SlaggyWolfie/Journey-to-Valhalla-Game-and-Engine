@@ -140,22 +140,21 @@ namespace Engine
 
 	void Game::initializeScene(const std::string& filepath) const
 	{
-		Deserealizer _d;
-		Core::GameObject_* sth = Model::loadModel(_d.gms[0]->getName()+".fbx");
+		//Deserealizer _d;
+		//Core::GameObject_* sth = Model::loadModel(_d.gms[0]->getName()+".fbx");
 		//sth->getTransform()->setPosition(_d.gms[0]->getTransform()->getPosition());
 		//std::cout << sth->getTransform()->getPosition();
 		std::cout << "Loading Scene..." << std::endl;
 		//load scene
-<<<<<<< HEAD
-		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
-		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(0,0,2000));
-		Rendering::Light_* light = new Rendering::Light_();
-		lightgo->addComponent(light);
-		light->setLightType(Rendering::LightType::Point);
-		lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
-		Core::Camera_* cameraComp = new Core::Camera_();
-		camera->addComponent(cameraComp);
-		Core::Camera_::setMainCamera(cameraComp);
+		//Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
+		//Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(0,0,2000));
+		//Rendering::Light_* light = new Rendering::Light_();
+		//lightgo->addComponent(light);
+		//light->setLightType(Rendering::LightType::Point);
+		//lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
+		//Core::Camera_* cameraComp = new Core::Camera_();
+		//camera->addComponent(cameraComp);
+		//Core::Camera_::setMainCamera(cameraComp);
 
 		//Core::GameObject_* go = Model::loadModel("Tower.fbx");
 		//go->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
@@ -164,9 +163,7 @@ namespace Engine
 
 		//std::cout << go->getComponent<Rendering::Renderer_>()->getGameObject()->getName() << std::endl;
 		//go->destroy();
-=======
 		_sceneManager->loadScene(filepath)->initialize(true);
->>>>>>> f5e6312b9895fddb1fc553656729c4784828f5f2
 		std::cout << "Loaded Scene." << std::endl;
 
 	}

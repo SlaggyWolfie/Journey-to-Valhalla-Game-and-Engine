@@ -49,7 +49,6 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject_.cpp" />
     <ClCompile Include="GeneralHelpers.cpp" />
-    <ClCompile Include="LuaScript.cpp" />
     <ClCompile Include="Material_.cpp" />
     <ClCompile Include="Mesh_.cpp" />
     <ClCompile Include="Renderer_.cpp" />
@@ -235,6 +234,7 @@
       <Filter>engine</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="..\src\Core\LuaScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -289,7 +289,6 @@
     <ClInclude Include="GameObject_.hpp" />
     <ClInclude Include="GeneralHelpers.hpp" />
     <ClInclude Include="FunctionGroup.hpp" />
-    <ClInclude Include="LuaScript.h" />
     <ClInclude Include="Manager.hpp" />
     <ClInclude Include="Material_.hpp" />
     <ClInclude Include="Mesh_.hpp" />
@@ -497,15 +496,13 @@
     <ClInclude Include="Shader.hpp">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>engine</Filter>
-    </ClInclude>
     <ClInclude Include="LuaScript.h">
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="LuaScript.h" />
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="SceneManager.hpp" />
+    <ClInclude Include="..\src\Core\LuaScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
