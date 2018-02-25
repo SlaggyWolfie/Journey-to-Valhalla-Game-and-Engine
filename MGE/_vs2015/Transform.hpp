@@ -9,6 +9,7 @@
 
 namespace Engine
 {
+	class Game;
 	namespace Core
 	{
 		class Transform : public Component
@@ -116,10 +117,10 @@ namespace Engine
 			glm::vec3 _localPosition = glm::vec3();
 			glm::quat _localRotation = glm::quat();
 			glm::vec3 _localScale = glm::vec3(1);
-			glm::mat4 _localMatrix = glm::mat4();
+			glm::mat4 _localMatrix = glm::mat4(1);
 
-			glm::mat4 _worldMatrix = glm::mat4();
-			glm::mat3 _normalMatrix = glm::mat4();
+			glm::mat4 _worldMatrix = glm::mat4(1);
+			glm::mat3 _normalMatrix = glm::mat4(1);
 
 			bool _isLocalMatrixDirty = true;
 			bool _isWorldMatrixDirty = true;
@@ -153,15 +154,12 @@ namespace Engine
 			static glm::vec3 _getSkew(const glm::mat4& matrix);
 			static glm::vec4 _getPerspective(const glm::mat4& matrix);
 
+			Game* _game = nullptr;
+
 		protected:
-			void start() override {};
-			void awake() override {};
-			void update() override {};
-			void fixedUpdate() override {};
-			void lateUpdate() override {};
-			void onValidate() override {};
 			bool isUniquePerGameObject() override;
 			void destroy() override;
+			void prewake() override;
 		};
 	}
 }

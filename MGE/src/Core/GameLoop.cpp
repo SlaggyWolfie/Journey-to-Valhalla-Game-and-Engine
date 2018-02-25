@@ -80,7 +80,7 @@ namespace Engine
 			Utility::Time::start(timePerFixedFrame.asSeconds());
 			float lag = 0;
 
-			while (_game->currentlyRunning())
+			while (_game->isRunning())
 			{
 				Utility::Time::update();
 				lag += Utility::Time::deltaTime();

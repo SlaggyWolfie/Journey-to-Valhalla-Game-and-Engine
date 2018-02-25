@@ -2,6 +2,8 @@
 #include <utility>
 #include <iostream>
 #include <string>
+#include <glm/glm.hpp>
+#include "Camera_.hpp"
 
 namespace Engine
 {
@@ -87,11 +89,11 @@ namespace Engine
 		}
 
 		Mesh_::Mesh_(std::vector<Vertex>  vertices, std::vector<int>  indices) : VAO(0),
-		                                                                         _vertices(std::move(vertices)),
-		                                                                         _indices(std::move(indices)), VBO(0), EBO(0),
-		                                                                         _bufferVertexPositions(0),
-		                                                                         _bufferVertexNormals(0),
-		                                                                         _bufferVertexUVs(0), _bufferIndex(0)
+			_vertices(std::move(vertices)),
+			_indices(std::move(indices)), VBO(0), EBO(0),
+			_bufferVertexPositions(0),
+			_bufferVertexNormals(0),
+			_bufferVertexUVs(0), _bufferIndex(0)
 		{
 		}
 

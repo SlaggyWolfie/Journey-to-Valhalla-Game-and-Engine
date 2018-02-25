@@ -38,33 +38,19 @@ namespace Engine
 
 			void setColor(glm::vec3 color);
 			glm::vec3 getColor() const;
-			//void destroy() override;
 		protected:
-			//void start() override;
-			//void awake() override;
-			//void prewake() override;
-			//void update() override;
-			//void fixedUpdate() override;
-			//void lateUpdate() override;
-			//void onValidate() override;
 			bool isUniquePerGameObject() override;
 		private:
 			LightManager * _lightManager;
 
 			LightType _lightType;
-			glm::vec3 _lightDirection;
+
 			float _intensity;
 			float _range;
 			float _fallOffAngle;
 			float _fallOffOuterAngle;
 
 			glm::vec3 _lightColor;
-
-			//Statics
-			static float _ambientContribution;
-
-			static glm::vec3 _ambientLightColor;
-			static glm::vec3 _attenuationConstants;
 		};
 	}
 }

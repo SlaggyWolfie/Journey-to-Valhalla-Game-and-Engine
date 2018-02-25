@@ -3,6 +3,7 @@
 #include <algorithm>
 //#include "glm/gtx/decomposition.hpp"
 #include "glm/gtx/matrix_decompose.hpp"
+#include "Core/Game.hpp"
 
 namespace Engine
 {
@@ -78,6 +79,8 @@ namespace Engine
 
 		void Transform::setLocalPosition(const glm::vec3& position)
 		{
+			if (getGameObject()->isStatic() && _game->isRunning()) return;
+
 			_localPosition = position;
 			_isLocalMatrixDirty = true;
 			_isWorldMatrixDirty = true;
@@ -90,6 +93,8 @@ namespace Engine
 
 		void Transform::setLocalRotation(const glm::quat& rotation)
 		{
+			if (getGameObject()->isStatic() && _game->isRunning()) return;
+
 			_localRotation = rotation;
 			_isLocalMatrixDirty = true;
 			_isWorldMatrixDirty = true;
@@ -102,6 +107,8 @@ namespace Engine
 
 		void Transform::setLocalScale(const glm::vec3& scale)
 		{
+			if (getGameObject()->isStatic() && _game->isRunning()) return;
+
 			_localScale = scale;
 			_isLocalMatrixDirty = true;
 			_isWorldMatrixDirty = true;
@@ -142,12 +149,14 @@ namespace Engine
 
 		glm::vec3 Transform::transformPoint(const glm::vec3& point)
 		{
-			glm::vec4 const transformedPoint = getMatrix4X4() * glm::vec4(point, 1);
+			//glm::vec4 const transformedPoint = getMatrix4X4() * glm::vec4(point, 1);
+			glm::vec4 const transformedPoint = glm::vec4(point, 1) * getMatrix4X4();
 			return glm::vec3(transformedPoint);
 		}
 
 		glm::vec3 Transform::inverseTransformPoint(const glm::vec3& point)
 		{
+			//glm::vec4 const transformedPoint = glm::inverse(getMatrix4X4()) * glm::vec4(point, 1);
 			glm::vec4 const transformedPoint = glm::vec4(point, 1) * glm::inverse(getMatrix4X4());
 			return glm::vec3(transformedPoint);
 		}
@@ -174,39 +183,46 @@ namespace Engine
 
 		void Transform::translate(const glm::vec3& translation)
 		{
-			if (getGameObject()->isStatic()) return;
-			_localPosition += translation;
+			if (getGameObject()->isStatic() && _game->isRunning()) return;
+			//_localPosition += translation;
+			//setLocalPosition()
+			setLocalPosition(_localPosition + translation);
 		}
 
-		void Transform::rotate(const glm::vec3& axis, float angleRotation)
+		void Transform::rotate(const glm::vec3& axis, const float angleRotation)
 		{
-			if (getGameObject()->isStatic()) return;
+			if (getGameObject()->isStatic() && _game->isRunning()) return;
 			//Angle is in Radians.
 
 			//_localRotation *= glm::mat4_cast(rotation);
 			//_localRotation *= glm::mat4();
-			_localRotation = glm::rotate(_localRotation, angleRotation, axis);
+			//_localRotation = glm::rotate(_localRotation, angleRotation, axis);
+			setLocalRotation(glm::rotate(_localRotation, angleRotation, axis));
 		}
 
 		void Transform::scale(const glm::vec3& scaler)
 		{
-			if (getGameObject()->isStatic()) return;
-			_localScale *= scaler;
+			if (getGameObject()->isStatic() && _game->isRunning()) return;
+			//_localScale *= scaler;
+			setLocalScale(_localScale * scaler);
 		}
 
 		glm::vec3 Transform::forward()
 		{
-			return glm::normalize(transformPoint(glm::vec3(0, 0, -1)));
+			return glm::normalize(inverseTransformPoint(glm::vec3(0, 0, -1)));
+			//return glm::normalize(transformPoint(glm::vec3(0, 0, -1)));
 		}
 
 		glm::vec3 Transform::up()
 		{
-			return glm::normalize(transformPoint(glm::vec3(0, 1, 0)));
+			return glm::normalize(inverseTransformPoint(glm::vec3(0, 1, 0)));
+			//return glm::normalize(transformPoint(glm::vec3(0, 1, 0)));
 		}
 
 		glm::vec3 Transform::right()
 		{
-			return glm::normalize(transformPoint(glm::vec3(1, 0, 0)));
+			return glm::normalize(inverseTransformPoint(glm::vec3(1, 0, 0)));
+			//return glm::normalize(transformPoint(glm::vec3(1, 0, 0)));
 		}
 
 		//Parenting
@@ -484,12 +500,18 @@ namespace Engine
 			delete this;
 		}
 
+		void Transform::prewake()
+		{
+			_game = ServiceLocator::instance()->getService<Game>();
+		}
+
 		Transform::Transform() :
 			_parent(nullptr),
 			_localPosition(glm::vec3(0, 0, 0)),
 			_localRotation(glm::quat(glm::vec3(0, 0, 0))),
 			_localScale(glm::vec3(1, 1, 1)),
-			_isLocalMatrixDirty(false), _isWorldMatrixDirty(false)
+			_isLocalMatrixDirty(false), _isWorldMatrixDirty(false),
+			_game(nullptr)
 		{
 			_children = std::vector<Transform*>();
 			//_children.push_back(this);
@@ -515,7 +537,8 @@ namespace Engine
 			_localRotation(other._localRotation),
 			_localScale(other._localScale),
 			_isLocalMatrixDirty(other._isLocalMatrixDirty),
-			_isWorldMatrixDirty(other._isWorldMatrixDirty)
+			_isWorldMatrixDirty(other._isWorldMatrixDirty),
+			_game(other._game)
 		{
 		}
 
@@ -527,6 +550,7 @@ namespace Engine
 			_parent = other._parent;
 			_isLocalMatrixDirty = other._isLocalMatrixDirty;
 			_isWorldMatrixDirty = other._isWorldMatrixDirty;
+			_game = other._game;
 
 			return *this;
 		}

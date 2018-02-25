@@ -56,7 +56,7 @@ namespace Engine
 		return _window.get();
 	}
 
-	bool Game::currentlyRunning() const
+	bool Game::isRunning() const
 	{
 		if (_window == nullptr && _window.get() == nullptr) return false;
 		return _window->isOpen();

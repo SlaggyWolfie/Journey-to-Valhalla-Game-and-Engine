@@ -26,6 +26,8 @@ namespace Engine
 		static Rendering::Material_* loadMaterial(aiMaterial *material);
 		static glm::mat4 convert(aiMatrix4x4 aiMatrix);
 		static int _recursionLevel;
+		static bool _debug;
+		static void debug(bool debug);
 		static void print(const std::string& message);
 	};
 }

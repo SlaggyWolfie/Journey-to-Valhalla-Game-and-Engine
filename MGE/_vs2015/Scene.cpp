@@ -77,8 +77,8 @@ namespace Engine
 		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(500, 0, 2000));
 		Rendering::Light_* light = new Rendering::Light_();
 		lightgo->addComponent(light);
-		light->setLightType(Rendering::LightType::Point);
-		lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
+		light->setLightType(Rendering::LightType::Directional);
+		//lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
 		Core::GameObject_* lightgo1 = new Core::GameObject_("Light", "", glm::vec3(-500, 0, 2000));
 		Rendering::Light_* light1 = new Rendering::Light_();
 		lightgo1->addComponent(light1);
@@ -95,7 +95,7 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
 		Core::GameObject_* go = Model::loadModel("Tower.fbx");
 		go->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
-		std::cout << glm::to_string(go->getTransform()->getScale()) << std::endl;
+		//std::cout << glm::to_string(go->getTransform()->getScale()) << std::endl;
 		//lightgo->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//Core::GameObject_* go = Model::loadModel("cube_smooth.obj");
 

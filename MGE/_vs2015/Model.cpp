@@ -13,14 +13,15 @@ namespace Engine
 	using namespace Rendering;
 
 	int Model::_recursionLevel = 0;
+	bool Model::_debug = false;
 
 	GameObject_* Model::loadModel(const std::string& path)
 	{
-		std::cout << "Loading model at " + path << std::endl;
+		std::cout << "Loading model at path " + path << std::endl;
 		Assimp::Importer import;
 		const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
 
-		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+		if (scene == nullptr || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || scene->mRootNode == nullptr)
 		{
 			std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
 			return nullptr;
@@ -28,7 +29,7 @@ namespace Engine
 		//this->path = path.substr(0, path.find_last_of('/'));
 
 		GameObject_* go = processNode(scene->mRootNode, scene);
-		std::cout << "Loaded model at " + path << std::endl;
+		std::cout << "Loaded model at path " + path << std::endl;
 		_recursionLevel = 0;
 		return go;
 	}
@@ -132,7 +133,8 @@ namespace Engine
 				indices.push_back(face.mIndices[j]);
 			}
 		}
-		print(std::string("Processing mesh") + mesh->mName.C_Str() + " with " + std::to_string(mesh->mNumVertices) + " vertices with " + std::to_string(index) + " indices.");
+		print(std::string("Processing mesh") + mesh->mName.C_Str() + " with " + 
+			std::to_string(mesh->mNumVertices) + " vertices with " + std::to_string(index) + " indices.");
 		//std::cout << std::endl;
 
 		// process material
@@ -184,7 +186,7 @@ namespace Engine
 		return outMaterial;
 	}
 
-	glm::mat4 Model::convert(aiMatrix4x4 aiMatrix)
+	glm::mat4 Model::convert(const aiMatrix4x4 aiMatrix)
 	{
 		return glm::mat4(
 			aiMatrix.a1, aiMatrix.a2, aiMatrix.a3, aiMatrix.a4,
@@ -194,11 +196,19 @@ namespace Engine
 		);
 	}
 
+	void Model::debug(const bool debug)
+	{
+		_debug = debug;
+	}
+
 	void Model::print(const std::string& message)
 	{
-		std::string prefix;
-		for (int i = 0; i < _recursionLevel; i++)
-			prefix += "\t";
-		std::cout << prefix + message << std::endl;
+		if (_debug)
+		{
+			std::string prefix;
+			for (int i = 0; i < _recursionLevel; i++)
+				prefix += "\t";
+			std::cout << prefix + message << std::endl;
+		}
 	}
 }

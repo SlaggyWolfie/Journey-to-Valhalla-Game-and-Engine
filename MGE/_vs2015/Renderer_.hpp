@@ -31,6 +31,9 @@ namespace Engine
 
 			bool shouldCastShadows(bool castShadows = false);
 			bool castsShadows() const;
+
+			void debug(bool debug);
+			bool isDebugMode() const;
 		protected:
 			//GL cache location
 			static GLint _uniformModelMatrix;
@@ -87,19 +90,23 @@ namespace Engine
 			void pushMaterial() const;
 			void pushCameraPosition() const;
 			void pushMesh() const;
+			void drawDebug() const;
+
+			void warning() const;
 
 			void render();
 
-			LightManager* _lightManager;
-			RenderManager* _renderManager;
+			LightManager* _lightManager = nullptr;
+			RenderManager* _renderManager = nullptr;
 
-			Core::Transform* _transform;
-			Material_ * _material;
-			Mesh_ * _mesh;
-			Shader* _shader;
+			Core::Transform* _transform = nullptr;
+			Material_ * _material = nullptr;
+			Mesh_ * _mesh = nullptr;
+			Shader* _shader = nullptr;
 
-			RenderQueue _renderQueue;
-			bool _castsShadows;
+			RenderQueue _renderQueue = RenderQueue::Opaque;
+			bool _castsShadows = true;
+			bool _debug = false;
 
 			void findMesh();
 			void findMaterial();

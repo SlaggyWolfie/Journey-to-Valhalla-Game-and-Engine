@@ -108,21 +108,28 @@ namespace Engine
 
 		void Camera_::update()
 		{
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) getGameObject()->getTransform()->setPosition(
-				getGameObject()->getTransform()->getPosition() + getGameObject()->getTransform()->forward() * 1);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) getGameObject()->getTransform()->setPosition(
-				getGameObject()->getTransform()->getPosition() + getGameObject()->getTransform()->forward() * -1);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) getGameObject()->getTransform()->setPosition(
-				getGameObject()->getTransform()->getPosition() + getGameObject()->getTransform()->right() * -1);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) getGameObject()->getTransform()->setPosition(
-				getGameObject()->getTransform()->getPosition() + getGameObject()->getTransform()->right() * 1);
+			Transform* transform = getGameObject()->getTransform();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) transform->translate(transform->forward() * 1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) transform->translate(transform->forward() * -1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) transform->translate(transform->right() * -1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) transform->translate(transform->right() * 1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) transform->translate(transform->up() * 1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) transform->translate(transform->up() * -1);
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) getGameObject()->getTransform()->rotate(getGameObject()->getTransform()->right(), glm::radians(1.0f));
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) getGameObject()->getTransform()->rotate(getGameObject()->getTransform()->right(), glm::radians(-1.0f));
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) getGameObject()->getTransform()->rotate(getGameObject()->getTransform()->up(), glm::radians(1.0f));
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) getGameObject()->getTransform()->rotate(getGameObject()->getTransform()->up(), glm::radians(-1.0f));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) transform->rotate(transform->right(), glm::radians(1.0f));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) transform->rotate(transform->right(), glm::radians(-1.0f));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) transform->rotate(transform->up(), glm::radians(1.0f));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) transform->rotate(transform->up(), glm::radians(-1.0f));
 			
-			std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
+			//std::cout << "Position: " + glm::to_string(transform->getPosition()) << std::endl;
+			//std::cout << "Rotation: " + glm::to_string(glm::degrees(glm::eulerAngles(transform->getRotation()))) << std::endl;
+			//std::cout << "Scale: " + glm::to_string(transform->getScale()) << std::endl;
+			//std::cout << "Forward: " + glm::to_string(transform->forward()) << std::endl;
+			//std::cout << "Right: " + glm::to_string(transform->right()) << std::endl;
+			//std::cout << "Up: " + glm::to_string(transform->up()) << std::endl << std::endl;
+
+			//std::cout << "Local Matrix: " << std::endl << glm::to_string(transform->getLocalMatrix4X4()) << std::endl << std::endl;
+			//std::cout << "World Matrix: " <<std::endl << glm::to_string(transform->getMatrix4X4()) << std::endl << std::endl;
 		}
 	}
 }

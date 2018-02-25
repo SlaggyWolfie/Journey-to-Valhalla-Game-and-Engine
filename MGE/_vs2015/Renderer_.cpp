@@ -79,6 +79,16 @@ namespace Engine
 			return _castsShadows;
 		}
 
+		void Renderer_::debug(const bool debug)
+		{
+			_debug = debug;
+		}
+
+		bool Renderer_::isDebugMode() const
+		{
+			return _debug;
+		}
+
 		void Renderer_::initialize()
 		{
 			//initializeShader("default");
@@ -282,8 +292,52 @@ namespace Engine
 			//_mesh->stream(_attributeVertexPositions, _attributeVertexNormals, _attributeVertexUVs);
 		}
 
+		void Renderer_::drawDebug() const
+		{
+			//Direct Rendering Mode
+			glUseProgram(0);
+
+			Core::Camera_* camera = Core::Camera_::getMainCamera();
+			auto vertices = _mesh->getAllVerticesList();
+			auto indices = _mesh->getAllIndicesList();
+
+			glMatrixMode(GL_PROJECTION);
+			glLoadMatrixf(glm::value_ptr(camera->getProjectionMatrix()));
+			glMatrixMode(GL_MODELVIEW);
+			glLoadMatrixf(glm::value_ptr(camera->getProjectionMatrix() * _transform->getMatrix4X4()));
+
+			glBegin(GL_LINES);
+			//for each index draw the normal starting at the corresponding vertex
+			for (int index : indices)
+			{
+				//draw normal for vertex
+
+				glm::vec3 normal = vertices[index].normal;
+				glColor3fv(glm::value_ptr(normal));
+
+				//now get normal end
+				glm::vec3 normalStart = vertices[index].position;
+				glVertex3fv(glm::value_ptr(normalStart));
+				glm::vec3 normalEnd = normalStart + normal * 0.2f;
+				glVertex3fv(glm::value_ptr(normalEnd));
+			}
+			glEnd();
+		}
+
+		void Renderer_::warning() const
+		{
+			if (!getGameObject()) return;
+			if (!_mesh) std::cout << getGameObject()->getName() + " renderer has missing mesh reference." << std::endl;
+			if (!_material) std::cout << getGameObject()->getName() + " renderer has missing material reference." << std::endl;
+			if (!_transform) std::cout << getGameObject()->getName() + " renderer has missing transform reference." << std::endl;
+			if (!_lightManager) std::cout << getGameObject()->getName() + " renderer has missing light manager reference." << std::endl;
+			if (!_shader) std::cout << getGameObject()->getName() + " has missing shader reference." << std::endl;
+		}
+
 		void Renderer_::render()
 		{
+			warning();
+
 			_shader->bind();
 
 			pushLights();
@@ -291,6 +345,7 @@ namespace Engine
 			pushMaterial();
 			pushCameraPosition();
 			pushMesh();
+			if (_debug) drawDebug();
 
 			Shader::unbind();
 		}

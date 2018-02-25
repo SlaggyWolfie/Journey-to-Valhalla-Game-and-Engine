@@ -35,7 +35,7 @@ namespace Engine
 		sf::RenderWindow* getWindow() const;
 		void processEvents();
 		void run();
-		bool currentlyRunning() const;
+		bool isRunning() const;
 		void exit();
 
 	private:

@@ -23,7 +23,12 @@ namespace Engine
 
 		void Light_::setLightType(const LightType type)
 		{
-			_lightType = type;
+			if (_lightType != type)
+			{
+				_lightManager->removeLight(this);
+				_lightType = type;
+				_lightManager->addLight(this);
+			}
 		}
 
 		LightType Light_::getLightType()

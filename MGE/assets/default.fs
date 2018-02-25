@@ -63,7 +63,7 @@ struct Material
 };
 
 #define MAX_LIGHTS 32
-uniform DirectionalLight directionalLights[MAX_LIGHTS / 4];
+uniform DirectionalLight directionalLights[MAX_LIGHTS];
 uniform PointLight pointLights[MAX_LIGHTS];
 uniform SpotLight spotLights[MAX_LIGHTS];
 
@@ -77,6 +77,30 @@ in vec3 worldPosition;
 in vec2 textureCoordinate;
 
 out vec4 finalColor;
+
+void Attenuate(vec3 delta, float range, inout float diffuseIntensity, inout float specularIntensity)
+{
+	//Attenuation
+	float linearQuadraticSum = light.attenuationConstants[1] + light.attenuationConstants[2];
+	if (light.attenuationConstants[0] + linearQuadraticSum > 0.01f) 
+	{
+		float distanceFromLight = 0; 
+		float distanceValue = 0;
+		if (linearQuadraticSum > 0.01f)
+		{
+			distanceFromLight = length(delta);
+			distanceValue = max(distanceFromLight - range / 2, 1);
+		}
+		
+		float attenuation = 1 / 
+		( light.attenuationConstants[0] 
+		+ light.attenuationConstants[1] * distanceFromLight 
+		+ light.attenuationConstants[2] * distanceFromLight * distanceFromLight);
+		
+		diffuseIntensity *= attenuation;
+		specularIntensity *= attenuation;
+	}
+}
 
 vec3 GetDirectionalLight(vec3 diffuseColor, vec3 specularColor,
  DirectionalLight directional, vec3 normal, vec3 viewDirection)
@@ -97,26 +121,7 @@ vec3 GetPointLight(vec3 diffuseColor, vec3 specularColor,
 	float diffuseIntensity = max (0, dot(normalize(deltaDirection), normalize (normal)));
 	float specularIntensity = pow(max(dot(reflect(-normalize(deltaDirection), normal), -viewDirection), 0), material.shininess);
 	
-	//Attenuation
-	float linearQuadraticSum = light.attenuationConstants[1] + light.attenuationConstants[2];
-	if (light.attenuationConstants[0] + linearQuadraticSum > 0.01f) 
-	{
-		float distanceFromLight = 0; 
-		float distanceValue = 0;
-		if (linearQuadraticSum > 0.01f)
-		{
-			distanceFromLight = length(deltaDirection);
-			distanceValue = max(distanceFromLight - point.range / 2, 1);
-		}
-		
-		float attenuation = 1 / 
-		( light.attenuationConstants[0] 
-		+ light.attenuationConstants[1] * distanceValue 
-		+ light.attenuationConstants[2] * distanceValue * distanceValue);
-		
-		diffuseIntensity *= attenuation;
-		specularIntensity *= attenuation;
-	}
+	Attenuate(deltaDirection, point.range, diffuseIntensity, specularIntensity);
 	
     vec3 diffuseTerm = diffuseIntensity * point.color * diffuseColor;
 	vec3 specularTerm = specularIntensity * point.color * specularColor;
@@ -138,26 +143,7 @@ vec3 GetSpotLight(vec3 diffuseColor, vec3 specularColor,
 		
 	float specularIntensity = pow(max(dot(reflect(-normalize(deltaDirection), normal), -viewDirection), 0), material.shininess);
 	
-	//Attenuation
-	float linearQuadraticSum = light.attenuationConstants[1] + light.attenuationConstants[2];
-	if (light.attenuationConstants[0] + linearQuadraticSum > 0.01f) 
-	{
-		float distanceFromLight = 0; 
-		float distanceValue = 0;
-		if (linearQuadraticSum > 0.01f)
-		{
-			distanceFromLight = length(deltaDirection);
-			distanceValue = max(distanceFromLight - spot.range / 2, 0.01f);
-		}
-		
-		float attenuation = 1 / 
-		( light.attenuationConstants[0] 
-		+ light.attenuationConstants[1] * distanceValue 
-		+ light.attenuationConstants[2] * distanceValue * distanceValue);
-		
-		diffuseIntensity *= attenuation;
-		specularIntensity *= attenuation;
-	}
+	Attenuate(deltaDirection, spot.range, diffuseIntensity, specularIntensity);
 	
 	specularIntensity *= diffuseIntensity;
 	
@@ -169,8 +155,8 @@ vec3 GetSpotLight(vec3 diffuseColor, vec3 specularColor,
 
 void main() 
 {
-	vec3 diffuseColor = vec3(0);
-	float alpha = 0;
+	vec3 diffuseColor = material.diffuseColor;
+	float alpha = 1;
 	
 	if (material.useDiffuseMap)
 	{
@@ -178,28 +164,11 @@ void main()
 		diffuseColor = diffuseTexture.rgb;
 		alpha = diffuseTexture.a;
 	}
-	else
-	{
-		diffuseColor = material.diffuseColor;
-		alpha = 1;
-	}
 	
-	vec3 specularColor = vec3(0);
+	vec3 specularColor = material.specularColor;
 	
 	if (material.useSpecularMap)
 		specularColor = texture2D(material.specularMap, textureCoordinate).rgb;
-	else
-		specularColor = material.specularColor;
-	
-	vec3 emissionColor = vec3(0);
-	
-	if (material.useEmission)
-	{
-		if (material.useEmissionMap)
-			emissionColor = texture2D(material.emissionMap, textureCoordinate).rgb;
-		else
-			emissionColor = material.emissionColor;
-	}
 	
     vec3 normal = normalize(worldNormal);
     vec3 viewDirection = normalize(worldPosition - cameraPosition);
@@ -219,7 +188,15 @@ void main()
     for(int k = 0; k < light.spotLightsAmount; k++) 
 		result += GetSpotLight(diffuseColor, specularColor, spotLights[k], normal, viewDirection, light.ambientStrength, 1); 
 	
-	// result += emissionColor;
+	if (material.useEmission)
+	{
+		vec3 emissionColor = material.emissionColor;
+		
+		if (material.useEmissionMap)
+			emissionColor = texture2D(material.emissionMap, textureCoordinate).rgb;
+			
+		result += emissionColor;
+	}
 	
     finalColor = vec4(result, alpha);
 	// finalColor = vec4(diffuseColor, alpha);
