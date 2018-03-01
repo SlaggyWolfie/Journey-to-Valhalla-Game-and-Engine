@@ -9,13 +9,15 @@
 #include <../_vs2015/Transform.hpp>
 #include "Deserealizer.hpp"
 #include "Game.hpp"
+#include "../_vs2015/Scene.hpp"
 
 using namespace nlohmann;
 using namespace std;
 using namespace Engine::Core;
 
 Deserealizer::Deserealizer() {
-	gms = vector<GameObject_*>();
+
+	structs = vector<GameObject_s>();
 	ConstructGameObj();
 }
 
@@ -23,44 +25,33 @@ Deserealizer::Deserealizer() {
 void Deserealizer::ConstructGameObj()
 {
 
-	//struct GameObject_s {
-	//	string name_;
-	//	string meshName;
-	//	glm::vec3 position;
-	//	glm::vec3 rotation;
-	//	glm::vec3 scale;
-	//	int parentID;
-	//	int selfID;
-	//	
-	//};
+	
 
-	//json j;
+	json j;
 
-	//vector <GameObject_s> objList;
-	//ifstream i("test.json");
-	//ostringstream tmp;
-	//tmp << i.rdbuf();
-	//string s = tmp.str();
-	//string objs;
-	//json ju;
-	//ju = json::parse(s);
-	////cout << ju.at(2).at("GameObject").at("transform")["rotation"]["x"];
-	//cout << ju.at(2).at("GameObject").at("name");
+	ifstream i("test.json");
+	ostringstream tmp;
+	tmp << i.rdbuf();
+	string s = tmp.str();
+	string objs;
+	json ju;
+	ju = json::parse(s);
+	//cout << ju.at(2).at("GameObject").at("transform")["rotation"]["x"];
 
 
 
-	////cout << ju.is_array();
-	////auto rex = json::parse(s);
-	////cout << rex;
-	////cout<<j.is_array();
-	////j.parse(tmp.str());
-	////string name = ju['name'];
-	////cout << ju.get<string>(); 
-	////for (auto& element : j) {
-	////	std::cout << element << '\n';
-	////}
-	////cout << j.begin().key() << endl;
-	//int g = 0;
+	//cout << ju.is_array();
+	//auto rex = json::parse(s);
+	//cout << rex;
+	//cout<<j.is_array();
+	//j.parse(tmp.str());
+	//string name = ju['name'];
+	//cout << ju.get<string>(); 
+	//for (auto& element : j) {
+	//	std::cout << element << '\n';
+	//}
+	//cout << j.begin().key() << endl;
+	int g = 0;
 	//for (int j = 0; j < static_cast<int>(ju.size()); j++)
 	//{
 	//	GameObject_s gameObj;
@@ -85,69 +76,64 @@ void Deserealizer::ConstructGameObj()
 	//	gameObj.parentID = ju.at(2).at("GameObject").at("parentID");
 	//	gameObj.selfID=ju.at(2).at("GameObject").at("selfID");
 
-	//	objList.push_back(gameObj);
+	//	structs.push_back(gameObj);
 	//}
-	//cout << j.begin().key() << endl;
-	//int g = 0;
-	//for (int j = 0; j < static_cast<int>(ju.size()); j++)
+	for (int j = 0; j < static_cast<int>(ju.size()); j++)
+	{
+		GameObject_s gameObj;
+		string s = ju.at(j).at("GameObject").at("name");
+		//cout << s;
+		gameObj.name_ = s;
+		std::cout << s;
+		gameObj.position.x= ju.at(j).at("GameObject").at("transform")["position"]["x"];
+		gameObj.position.y = ju.at(j).at("GameObject").at("transform")["position"]["y"];
+		gameObj.position.z = ju.at(j).at("GameObject").at("transform")["position"]["z"];
+
+		gameObj.rotation.x = ju.at(j).at("GameObject").at("transform")["rotation"]["x"];
+		gameObj.rotation.y = ju.at(j).at("GameObject").at("transform")["rotation"]["y"];
+		gameObj.rotation.z = ju.at(j).at("GameObject").at("transform")["rotation"]["z"];
+
+		gameObj.scale.x = ju.at(j).at("GameObject").at("transform")["scale"]["x"];
+		gameObj.scale.y = ju.at(j).at("GameObject").at("transform")["scale"]["y"];
+		gameObj.scale.z = ju.at(j).at("GameObject").at("transform")["scale"]["z"];
+		string n= ju.at(j).at("GameObject").at("meshString");
+		gameObj.meshName = n;
+		if (j == 0)
+			oneMesh = n;
+
+		gameObj.parentID = ju.at(j).at("GameObject").at("parentID");
+		gameObj.selfID=ju.at(j).at("GameObject").at("selfID");
+
+		structs.push_back(gameObj);
+
+	}
+
+
+	//for (int i = 0; i < structs.size(); i++)
 	//{
-	//	GameObject_s gameObj;
-	//	string s = ju.at(j).at("GameObject").at("name");
-	//	//cout << s;
-	//	gameObj.name_ = s;
-	//	std::cout << s;
-	//	gameObj.position.x= ju.at(j).at("GameObject").at("transform")["position"]["x"];
-	//	gameObj.position.y = ju.at(j).at("GameObject").at("transform")["position"]["y"];
-	//	gameObj.position.z = ju.at(j).at("GameObject").at("transform")["position"]["z"];
-
-	//	gameObj.rotation.x = ju.at(j).at("GameObject").at("transform")["rotation"]["x"];
-	//	gameObj.rotation.y = ju.at(j).at("GameObject").at("transform")["rotation"]["y"];
-	//	gameObj.rotation.z = ju.at(j).at("GameObject").at("transform")["rotation"]["z"];
-
-	//	gameObj.scale.x = ju.at(j).at("GameObject").at("transform")["scale"]["x"];
-	//	gameObj.scale.y = ju.at(j).at("GameObject").at("transform")["scale"]["y"];
-	//	gameObj.scale.z = ju.at(j).at("GameObject").at("transform")["scale"]["z"];
-	//	string n= ju.at(j).at("GameObject").at("meshString");
-	//	gameObj.meshName = n;
-	//	if (j == 0)
-	//		oneMesh = n;
-
-	//	gameObj.parentID = ju.at(j).at("GameObject").at("parentID");
-	//	gameObj.selfID=ju.at(j).at("GameObject").at("selfID");
-
-	//	objList.push_back(gameObj);
-	//}
-
-	//Scene parsedScene;
-
-	//for (int i = 0; i < objList.size(); i++)
-	//{
-	//	GameObject_* obj = new GameObject_(objList[i].name_, "", objList[i].position);
+	//	GameObject_* obj = new GameObject_(structs[i].name_, "", structs[i].position);
 	//	//obj->getTransform()->setRotation(/*convert to quaternion here*/);
-	//	obj->getTransform()->setPosition(objList[i].position);
-	//	obj->getTransform()->setRotation(objList[i].rotation);
-	//	obj->getTransform()->setScale(objList[i].scale);
-	//	obj->setName(objList[i].name_);
+	//	obj->getTransform()->setPosition(structs[i].position);
+	//	obj->getTransform()->setRotation(structs[i].rotation);
+	//	obj->getTransform()->setScale(structs[i].scale);
+	//	obj->setName(structs[i].name_);
 
-	//	obj->setName(objList[i].meshName);
-	//	gms.push_back(obj);
+	//	obj->setName(structs[i].meshName);
+	//	//gms.push_back(obj);
 	//}
 
-	//Engine::Scene* parsedScene = nullptr;
+	Engine::Scene* parsedScene = nullptr;
 
-	//for (int i = 0; i < objList.size(); i++)
-	//{
-	//	Engine::Core::GameObject_* obj = new Engine::Core::GameObject_(objList[i].name_, "", objList[i].position);
-	//	//obj->getTransform()->setRotation(/*convert to quaternion here*/);
-	//	obj->getTransform()->setPosition(objList[i].position);
-	//	obj->getTransform()->setRotation(objList[i].rotation);
-	//	obj->getTransform()->setScale(objList[i].scale);
-	//	obj->setName(objList[i].name_);
+	for (int i = 0; i < structs.size(); i++)
+	{
+		Engine::Core::GameObject_* obj = new Engine::Core::GameObject_(structs[i].name_, "", structs[i].position);
+		//obj->getTransform()->setRotation(/*convert to quaternion here*/);
+		obj->getTransform()->setPosition(structs[i].position);
+		obj->getTransform()->setRotation(structs[i].rotation);
+		obj->getTransform()->setScale(structs[i].scale);
+		obj->setName(structs[i].name_);
 
-	//	parsedScene->addGameObject(obj);
-	//}
+	}
 
-	//return *parsedScene;
 
-	//return Engine::Scene();
 }

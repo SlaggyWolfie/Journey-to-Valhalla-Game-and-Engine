@@ -8,6 +8,9 @@
 #include "../_vs2015/Transform.hpp"
 #include "LightManager.hpp"
 #include "ServiceLocator.hpp"
+#include "BulletCollision\CollisionShapes\btBoxShape.h"
+#include "BulletCollision\CollisionShapes/btCollisionShape.h"
+//#include "BulletCollision\CollisionShapes\.h"
 
 
 namespace Engine
@@ -93,7 +96,7 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
-		Core::GameObject_* go = Model::loadModel("Tower.fbx");
+		Core::GameObject_* go = Model::loadModel("Player.obj");
 		go->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//std::cout << glm::to_string(go->getTransform()->getScale()) << std::endl;
 		//lightgo->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));

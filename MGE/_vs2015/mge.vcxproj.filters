@@ -230,9 +230,6 @@
     <ClCompile Include="Scene.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="LuaScript.cpp">
-      <Filter>engine</Filter>
-    </ClCompile>
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="..\src\Core\LuaScript.cpp" />
   </ItemGroup>
@@ -494,9 +491,6 @@
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="Shader.hpp">
-      <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="LuaScript.h">
       <Filter>engine</Filter>
     </ClInclude>
     <ClInclude Include="LuaScript.h" />
