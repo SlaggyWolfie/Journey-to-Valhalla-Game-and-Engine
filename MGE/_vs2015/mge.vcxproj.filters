@@ -494,7 +494,6 @@
     <ClInclude Include="Shader.hpp">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="LuaScript.h" />
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="SceneManager.hpp" />
     <ClInclude Include="..\src\Core\LuaScript.h" />

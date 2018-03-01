@@ -8,19 +8,25 @@
 #include "../_vs2015/Scene.hpp"
 
 using namespace std;
-//class Game;
-/**
- * Defines the basic structure for a game, with defaults already filled in.
- * The only item that MUST be overridden/implemented is _initializeScene()
- * where you build up your world, the rest is optional to override (with care/caution).
- */
+
+struct GameObject_s 
+{
+	string name_;
+	string meshName;
+	glm::vec3 position;
+	glm::vec3 rotation;
+	glm::vec3 scale;
+	int parentID;
+	int selfID;
+
+};
 class Deserealizer
 {
-    public:
-		Deserealizer();
-		void ConstructGameObj();
-		vector<Engine::Core::GameObject_*> gms;
-		string oneMesh;
+public:
+	vector<GameObject_s> structs;
+	Deserealizer();
+	void ConstructGameObj();
+	string oneMesh;
 };
 
 #endif // DESEREALIZER_HPP
