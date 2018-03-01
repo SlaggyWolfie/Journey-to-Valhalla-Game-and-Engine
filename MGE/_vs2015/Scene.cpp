@@ -89,12 +89,12 @@ namespace Engine
 		lightgo1->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
 		light1->setColor(glm::vec3(0, 1, 0));
 		light1->setRange(350000);
-		light->setRange(3500);
+		light->setRange(35000);
 		Core::Camera_* cameraComp = new Core::Camera_();
 		camera->addComponent(cameraComp);
 		Core::Camera_::setMainCamera(cameraComp);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
-		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
+		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
 		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
 		plane->getTransform()->scale(glm::vec3(5000));
