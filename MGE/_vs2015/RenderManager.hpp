@@ -15,9 +15,11 @@ namespace Engine
 	{
 		class Renderer_;
 		class LightManager;
+		class Light_;
 
 		class RenderManager : public Manager
 		{
+			friend class LightManager;
 		public:
 			RenderManager();
 			virtual ~RenderManager();
@@ -32,17 +34,20 @@ namespace Engine
 			void startFPSClock();
 			float getFPS() const;
 		private:
-
 			void renderOpaque() const;
 			void renderTransparent() const;
 
-			std::vector<Renderer_*> _ro;
-			std::vector<Renderer_*> _rt;
+			std::vector<Renderer_*> _opaqueRenderers;
+			std::vector<Renderer_*> _transparentRenderers;
 
-			std::unique_ptr<Utility::FunctionGroup<Renderer_*>> _renderOpaque;
-			std::unique_ptr<Utility::FunctionGroup<Renderer_*>> _renderTransparent;
+			void renderShadowBuffer(Light_* light);
+			//void renderShadows();
+
+			//std::unique_ptr<Utility::FunctionGroup<Renderer_*>> _renderOpaque;
+			//std::unique_ptr<Utility::FunctionGroup<Renderer_*>> _renderTransparent;
 			void createOwnedLoops();
 			void destroyOwnedLoops();
+
 			//FPS
 			float _fps;
 			std::unique_ptr<sf::Clock> _fpsClock;
@@ -50,6 +55,10 @@ namespace Engine
 			float _timeSinceLastFPSCalculation;
 
 			//Other
+			LightManager* getLightManager();
+			LightManager* _lightManager;
+
+			sf::RenderWindow* getWindow();
 			sf::RenderWindow* _window;
 		};
 	}

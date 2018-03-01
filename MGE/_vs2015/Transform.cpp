@@ -149,15 +149,15 @@ namespace Engine
 
 		glm::vec3 Transform::transformPoint(const glm::vec3& point)
 		{
-			//glm::vec4 const transformedPoint = getMatrix4X4() * glm::vec4(point, 1);
-			glm::vec4 const transformedPoint = glm::vec4(point, 1) * getMatrix4X4();
+			glm::vec4 const transformedPoint = getMatrix4X4() * glm::vec4(point, 1);
+			//glm::vec4 const transformedPoint = glm::vec4(point, 1) * getMatrix4X4();
 			return glm::vec3(transformedPoint);
 		}
 
 		glm::vec3 Transform::inverseTransformPoint(const glm::vec3& point)
 		{
-			//glm::vec4 const transformedPoint = glm::inverse(getMatrix4X4()) * glm::vec4(point, 1);
-			glm::vec4 const transformedPoint = glm::vec4(point, 1) * glm::inverse(getMatrix4X4());
+			glm::vec4 const transformedPoint = glm::inverse(getMatrix4X4()) * glm::vec4(point, 1);
+			//glm::vec4 const transformedPoint = glm::vec4(point, 1) * glm::inverse(getMatrix4X4());
 			return glm::vec3(transformedPoint);
 		}
 
@@ -209,19 +209,25 @@ namespace Engine
 
 		glm::vec3 Transform::forward()
 		{
-			return glm::normalize(inverseTransformPoint(glm::vec3(0, 0, -1)));
+			//return -getMatrix4X4()[2];
+			return glm::normalize(getLocalSpaceDirection(glm::vec3(0, 0, -1)));
+			//return glm::normalize(inverseTransformPoint(glm::vec3(0, 0, -1)));
 			//return glm::normalize(transformPoint(glm::vec3(0, 0, -1)));
 		}
 
 		glm::vec3 Transform::up()
 		{
-			return glm::normalize(inverseTransformPoint(glm::vec3(0, 1, 0)));
+			//return getMatrix4X4()[1];
+			return glm::normalize(getLocalSpaceDirection(glm::vec3(0, 1, 0)));
+			//return glm::normalize(inverseTransformPoint(glm::vec3(0, 1, 0)));
 			//return glm::normalize(transformPoint(glm::vec3(0, 1, 0)));
 		}
 
 		glm::vec3 Transform::right()
 		{
-			return glm::normalize(inverseTransformPoint(glm::vec3(1, 0, 0)));
+			//return getMatrix4X4()[0];
+			return glm::normalize(getLocalSpaceDirection(glm::vec3(1, 0, 0)));
+			//return glm::normalize(inverseTransformPoint(glm::vec3(1, 0, 0)));
 			//return glm::normalize(transformPoint(glm::vec3(1, 0, 0)));
 		}
 
@@ -408,7 +414,7 @@ namespace Engine
 		{
 			glm::vec3 scale = _localScale;
 			for (Transform* parent = _parent; parent != nullptr; parent = parent->_parent)
-				scale += parent->_localScale;
+				scale *= parent->_localScale;
 			return scale;
 		}
 
@@ -485,6 +491,16 @@ namespace Engine
 			glm::decompose(matrix, scale, rotation, translation, skew, perspective);
 
 			return perspective;
+		}
+
+		glm::vec3 Transform::getLocalSpaceDirection(const glm::vec3& direction)
+		{
+			return glm::rotate(getRotation(), direction);
+			//const glm::mat4 rotationMatrix = glm::mat4_cast(getRotation());
+			//glm::rotate(direction, getRotation());
+			//return glm::vec3(getRotation() * glm::vec4(direction, 0));
+			//return glm::vec3(rotationMatrix * glm::vec4(direction, 0));
+			//return glm::vec3(glm::vec4(direction, 0) * rotationMatrix);
 		}
 
 		bool Transform::isUniquePerGameObject()

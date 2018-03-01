@@ -229,6 +229,7 @@
     <ClInclude Include="Service.hpp" />
     <ClInclude Include="ServiceLocator.hpp" />
     <ClInclude Include="Shader.hpp" />
+    <ClInclude Include="ShadowMap.hpp" />
     <ClInclude Include="Texture_.hpp" />
     <ClInclude Include="Time.hpp" />
     <ClInclude Include="Transform.hpp" />
@@ -294,6 +295,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShadowMap.cpp" />
     <ClCompile Include="Texture_.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Transform.cpp" />

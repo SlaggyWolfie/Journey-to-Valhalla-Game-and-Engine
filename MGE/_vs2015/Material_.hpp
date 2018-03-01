@@ -19,7 +19,7 @@ namespace Engine
 		class Material_ : public Core::Component
 		{
 		public:
-			Material_(const std::string& path = "default");
+			Material_(const std::string& path = "shaders/hidden/default");
 			virtual ~Material_();
 			Shader* getShader() const;
 

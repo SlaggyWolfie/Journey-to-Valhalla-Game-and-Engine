@@ -3,12 +3,16 @@
 #include <iostream>
 #include "GeneralHelpers.hpp"
 #include <algorithm>
+#include <GL/glew.h>
+#include "ShadowMap.hpp"
+#include "Transform.hpp"
+#include "GameObject_.hpp"
 
 namespace Engine
 {
 	namespace Rendering
 	{
-		LightManager::LightManager() : _ambientLightStrength(0)
+		LightManager::LightManager() :_renderManager(nullptr), _ambientLightColor(glm::vec3(1)), _ambientLightStrength(0.1f)
 		{
 		}
 
@@ -142,6 +146,24 @@ namespace Engine
 		float LightManager::getAmbientStrength() const
 		{
 			return _ambientLightStrength;
+		}
+
+		void LightManager::renderShadowMaps()
+		{
+			for (Light_* light : _directionalLights)
+				getRenderManager()->renderShadowBuffer(light);
+			//for (Light_* light : _pointLights)
+			//	getRenderManager()->renderShadowBuffer(light);
+			//for (Light_* light : _spotLights)
+			//	getRenderManager()->renderShadowBuffer(light);
+		}
+
+		RenderManager* LightManager::getRenderManager()
+		{
+			if (!_renderManager)
+				_renderManager = ServiceLocator::instance()->getService<RenderManager>();
+
+			return _renderManager;
 		}
 
 		bool LightManager::findLight(Light_* light) const

@@ -16,7 +16,7 @@ namespace Engine
 		public:
 			LightManager();
 			virtual ~LightManager();
-				void initialize() override;
+			void initialize() override;
 
 			void addLight(Light_* light);
 			void removeLight(Light_* light);
@@ -46,21 +46,27 @@ namespace Engine
 
 			void setAmbientStrength(float strength);
 			float getAmbientStrength() const;
+
+			void renderShadowMaps();
+			//void renderShadows();
 		private:
+			RenderManager * _renderManager = nullptr;
+			RenderManager* getRenderManager();
+
 			bool findLight(Light_* light) const;
 
 			std::vector<Light_*> _directionalLights;
 			std::vector<Light_*> _pointLights;
 			std::vector<Light_*> _spotLights;
 
-			glm::vec3 _attenuationConstants;
+			glm::vec3 _attenuationConstants = glm::vec3(0);
 
-			glm::vec3 _ambientLightColor;
-			float _ambientLightStrength;
+			glm::vec3 _ambientLightColor = glm::vec3(0);
+			float _ambientLightStrength = 0;
 
 			template <typename T>
 			T* getArray(std::vector<T> list) const;
-		
+
 		};
 
 		template <typename T>

@@ -32,7 +32,7 @@ namespace Engine
 		private:
 			Texture_(TextureType type = TextureType::Diffuse);
 
-			static int RGB_to_Hex(float r, float g, float b);
+			static int rgb_to_hex(float r, float g, float b);
 
 			std::string _path;
 			std::unique_ptr<sf::Image> _image;

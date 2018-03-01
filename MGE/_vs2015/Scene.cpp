@@ -81,14 +81,17 @@ namespace Engine
 		Rendering::Light_* light = new Rendering::Light_();
 		lightgo->addComponent(light);
 		light->setLightType(Rendering::LightType::Directional);
-		//lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
-		Core::GameObject_* lightgo1 = new Core::GameObject_("Light", "", glm::vec3(-500, 0, 2000));
+		lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
+		lightgo->getTransform()->rotate(lightgo->getTransform()->right(), -glm::radians(30.0f));
+		//Core::GameObject_* lightgo1 = new Core::GameObject_("Light", "", glm::vec3(-500, -500, 2000));
+		Core::GameObject_* lightgo1 = Model::loadModel("mge/models/cube_smooth.obj");
+		lightgo1->getTransform()->translate(glm::vec3(-500, -599, 2000));
 		Rendering::Light_* light1 = new Rendering::Light_();
 		lightgo1->addComponent(light1);
 		light1->setLightType(Rendering::LightType::Point);
 		lightgo1->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
 		light1->setColor(glm::vec3(0, 1, 0));
-		light1->setRange(3500);
+		light1->setRange(350000);
 		light->setRange(3500);
 		Core::Camera_* cameraComp = new Core::Camera_();
 		camera->addComponent(cameraComp);
@@ -96,8 +99,16 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
+<<<<<<< HEAD
 		Core::GameObject_* go = Model::loadModel("Player.obj");
 		go->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+=======
+		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
+		plane->getTransform()->scale(glm::vec3(5000));
+		plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));
+		Core::GameObject_* tower = Model::loadModel("Tower.fbx");
+		tower->getTransform()->setPosition(tower->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+>>>>>>> 3433827dcd8adad71181222d455f9c14d72e27a6
 		//std::cout << glm::to_string(go->getTransform()->getScale()) << std::endl;
 		//lightgo->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//Core::GameObject_* go = Model::loadModel("cube_smooth.obj");

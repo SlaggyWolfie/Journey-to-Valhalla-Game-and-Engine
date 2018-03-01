@@ -232,6 +232,7 @@
     </ClCompile>
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="..\src\Core\LuaScript.cpp" />
+    <ClCompile Include="ShadowMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -497,6 +498,7 @@
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="SceneManager.hpp" />
     <ClInclude Include="..\src\Core\LuaScript.h" />
+    <ClInclude Include="ShadowMap.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

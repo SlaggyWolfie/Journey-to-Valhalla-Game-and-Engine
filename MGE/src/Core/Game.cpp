@@ -126,10 +126,8 @@ namespace Engine
 		Engine::ServiceLocator::instance()->addService(_lightManager);
 		Engine::ServiceLocator::instance()->addService(_renderManager);
 
-		_sceneManager->initialize();
+		//_sceneManager->initialize();
 		_renderManager->initialize();
-		_gameLoop->initialize();
-		_lightManager->initialize();
 	}
 
 	void Game::initializeScene() const

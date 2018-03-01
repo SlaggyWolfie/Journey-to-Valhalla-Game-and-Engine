@@ -81,6 +81,9 @@ namespace Engine
 			static GLint _uniformPointLightsAmount;
 			static GLint _uniformSpotLightsAmount;
 
+			static GLint _uniformLightSpaceMatrix;
+			static GLint _uniformShadowMap;
+
 			//Everything else
 			void initialize();
 			void initializeShader(const std::string& path);

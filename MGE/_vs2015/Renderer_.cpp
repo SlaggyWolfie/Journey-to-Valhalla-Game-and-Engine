@@ -10,6 +10,7 @@
 #include "Light_.hpp"
 #include "ServiceLocator.hpp"
 #include "RenderManager.hpp"
+#include "ShadowMap.hpp"
 
 namespace Engine
 {
@@ -54,6 +55,9 @@ namespace Engine
 		GLint Renderer_::_uniformDirectionalLightsAmount = 0;
 		GLint Renderer_::_uniformPointLightsAmount = 0;
 		GLint Renderer_::_uniformSpotLightsAmount = 0;
+
+		GLint Renderer_::_uniformLightSpaceMatrix = 0;
+		GLint Renderer_::_uniformShadowMap = 0;
 
 		Renderer_::Renderer_() : _lightManager(nullptr), _transform(nullptr),
 			_material(nullptr), _mesh(nullptr), _shader(nullptr), _renderQueue(RenderQueue::Opaque),
@@ -146,6 +150,9 @@ namespace Engine
 			_uniformDirectionalLightsAmount = _shader->getUniformLocation("light.directionalLightsAmount");
 			_uniformPointLightsAmount = _shader->getUniformLocation("light.pointLightsAmount");
 			_uniformSpotLightsAmount = _shader->getUniformLocation("light.spotLightsAmount");
+
+			_uniformLightSpaceMatrix = _shader->getUniformLocation("lightSpaceMatrix");
+			_uniformShadowMap = _shader->getUniformLocation("shadowMap");
 		}
 
 		void Renderer_::pushMatrices() const
@@ -199,6 +206,15 @@ namespace Engine
 					glm::value_ptr(light->getGameObject()->getTransform()->forward()));
 				glUniform1f(_shader->getUniformLocation(localPrefix + "intensity"), light->getLightIntensity());
 				//glUniform1f(_shader->getUniformLocation(localPrefix + "range"), light->getRange()));
+
+				glUniformMatrix4fv(_uniformLightSpaceMatrix, 1, GL_FALSE, glm::value_ptr(light->getLightSpaceMatrix()));
+
+				//setup texture slot
+				ShadowMap* shadowMap = light->getShadowMap();
+				glActiveTexture(GL_TEXTURE3);
+				shadowMap->bindTexture();
+				glUniform1i(_uniformShadowMap, 3);
+				ShadowMap::unbindTexture();
 			}
 
 			prefix = "pointLights";
