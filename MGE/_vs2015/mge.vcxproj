@@ -105,7 +105,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp-vc140-mt.lib;BulletCollision_vs2010_debug.lib;BulletCollision_vs2010.lib;Bullet3Collision_vs2010_debug.lib;Bullet3Collision_vs2010.lib;Bullet3Common_vs2010_debug.lib;Bullet3Common_vs2010.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>assimp-vc140-mt.lib;Bullet3Collision_vs2010.lib;Bullet3Collision_vs2010_debug.lib;Bullet3Common_vs2010.lib;Bullet3Common_vs2010_debug.lib;Bullet3Dynamics_vs2010.lib;Bullet3Dynamics_vs2010_debug.lib;Bullet3Geometry_vs2010.lib;Bullet3Geometry_vs2010_debug.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
