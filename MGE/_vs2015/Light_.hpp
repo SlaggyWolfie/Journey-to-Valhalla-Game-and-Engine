@@ -3,6 +3,7 @@
 #define LIGHT__HPP
 #include "Component.hpp"
 #include <glm/glm.hpp>
+#include <memory>
 
 namespace Engine
 {
@@ -11,16 +12,20 @@ namespace Engine
 		enum class LightType { Directional, Point, Spot };
 
 		class LightManager;
+		class ShadowMap;
 
-		class Light_ :public Core::Component
+		class Light_ : public Core::Component
 		{
 		public:
 
 			Light_();
 			virtual ~Light_();
 
-			virtual void setLightType(LightType type);
-			virtual LightType getLightType();
+			ShadowMap* getShadowMap() const;
+			glm::mat4 getLightSpaceMatrix() const;
+
+			void setLightType(LightType type);
+			LightType getLightType() const;
 
 			void setLightIntensity(float intensity);
 			float getLightIntensity() const;
@@ -41,16 +46,20 @@ namespace Engine
 		protected:
 			bool isUniquePerGameObject() override;
 		private:
-			LightManager * _lightManager;
+			std::unique_ptr<ShadowMap> _shadowMap = nullptr;
 
-			LightType _lightType;
+			LightManager * _lightManager = nullptr;
 
-			float _intensity;
-			float _range;
-			float _fallOffAngle;
-			float _fallOffOuterAngle;
+			LightType _lightType = LightType::Point;
 
-			glm::vec3 _lightColor;
+			float _intensity = 0;
+			float _range = 0;
+			float _fallOffAngle = 0;
+			float _fallOffOuterAngle = 0;
+
+			glm::vec3 _lightColor = glm::vec3(1);
+
+			glm::mat4 calculateLightSpaceMatrix() const;
 		};
 	}
 }

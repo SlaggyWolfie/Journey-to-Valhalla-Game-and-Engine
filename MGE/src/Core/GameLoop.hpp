@@ -38,17 +38,18 @@ namespace Engine
 			void update();
 			void fixedUpdate();
 			void lateUpdate();
-			Rendering::RenderManager* _renderManager{};
+
+			Game* getGame();
+			Rendering::RenderManager* getRenderManager();
+
+			Game* _game = nullptr;
+			Rendering::RenderManager* _renderManager = nullptr;
 			//AnimationManager _animationManager;
 			//CollisionManager _collisionManager;
 			//PhysicsManager _physicsManager;
 
 			void createOwnedLoops();
 			void destroyOwnedLoops();
-
-
-			//sf::RenderWindow* _window;
-			Game* _game{};
 		};
 	}
 }

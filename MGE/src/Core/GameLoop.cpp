@@ -29,11 +29,11 @@ namespace Engine
 
 		void GameLoop::initialize()
 		{
-			_game = ServiceLocator::instance()->getService<Game>();
+			//_game = ServiceLocator::instance()->getService<Game>();
 			//_window = ServiceLocator::instance()->getService<Game>()->getWindow();
 			//_collisionManager = ServiceLocator::instance()->getService<Collisions::CollisionManager>();
 			//_physicsManager = ServiceLocator::instance()->getService<Physics::PhysicsManager>();
-			_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
+			//_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
 		}
 
 		void GameLoop::subscribe(Component* component)
@@ -80,7 +80,7 @@ namespace Engine
 			Utility::Time::start(timePerFixedFrame.asSeconds());
 			float lag = 0;
 
-			while (_game->isRunning())
+			while (getGame()->isRunning())
 			{
 				Utility::Time::update();
 				lag += Utility::Time::deltaTime();
@@ -101,10 +101,10 @@ namespace Engine
 				lateUpdate();
 
 				//0 doesn't matter for now
-				_renderManager->render(0);
+				getRenderManager()->render(0);
 
 				//empty the event queue
-				_game->processEvents();
+				getGame()->processEvents();
 			}
 		}
 
@@ -132,11 +132,25 @@ namespace Engine
 						comp->lateUpdate();
 		}
 
+		Game* GameLoop::getGame()
+		{
+			if (!_game)
+				_game = ServiceLocator::instance()->getService<Game>();
+
+			return _game;
+		}
+
+		Rendering::RenderManager* GameLoop::getRenderManager()
+		{
+			if (!_renderManager)
+				_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
+
+			return _renderManager;
+		}
+
 		void GameLoop::createOwnedLoops()
 		{
 			_components = std::vector<Component*>();
-			//_components.push_back(new Component());
-			//_components = std::vector<std::shared_ptr<Component>>();
 		}
 
 		void GameLoop::destroyOwnedLoops()

@@ -1,4 +1,5 @@
 #include "Texture_.hpp"
+#include <iostream>
 
 namespace Engine
 {
@@ -7,7 +8,7 @@ namespace Engine
 		std::unordered_map<std::string, std::unique_ptr<Texture_>> Texture_::textureMap
 			= std::unordered_map<std::string, std::unique_ptr<Texture_>>();
 
-		Texture_::Texture_(TextureType) : _type(), _id()
+		Texture_::Texture_(const TextureType type) : _type(type), _id()
 		{
 			glGenTextures(1, &_id);
 		}
@@ -21,14 +22,18 @@ namespace Engine
 
 		Texture_* Texture_::loadDefault(const float r, const float g, const float b, const TextureType type)
 		{
+			std::cout << "Warning, creating default texture with color values: (" + std::to_string(r) + ", "
+				+ std::to_string(r) + ", " + std::to_string(r) + ") of type "
+				+ std::to_string(static_cast<int>(type)) + "." << std::endl;
+
 			Texture_ * texture = new Texture_(type);
 			std::vector<GLubyte> emptyData(4, 0);
-			const int color = RGB_to_Hex(r, g, b);
+			const int color = rgb_to_hex(r, g, b);
 			for (unsigned char & i : emptyData)
 				i = color;
 
 			glBindTexture(GL_TEXTURE_2D, texture->getId());
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, &emptyData[0]);
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB_ALPHA, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, &emptyData[0]);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			glGenerateMipmap(GL_TEXTURE_2D);
@@ -55,7 +60,7 @@ namespace Engine
 
 				//Generate Texture
 				glBindTexture(GL_TEXTURE_2D, texture->getId());
-				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+				glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB_ALPHA,
 					image->getSize().x, image->getSize().y, 0,
 					GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -101,7 +106,7 @@ namespace Engine
 			return _type;
 		}
 
-		int Texture_::RGB_to_Hex(float r, float g, float b)
+		int Texture_::rgb_to_hex(float r, float g, float b)
 		{
 			return
 				((static_cast<int>(r * 255) & 0xff) << 16) +

@@ -118,9 +118,9 @@ namespace Engine
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) transform->rotate(transform->right(), glm::radians(1.0f));
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) transform->rotate(transform->right(), glm::radians(-1.0f));
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) transform->rotate(transform->up(), glm::radians(1.0f));
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) transform->rotate(transform->up(), glm::radians(-1.0f));
-			
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) transform->rotate(glm::vec3(0, 1, 0), glm::radians(1.0f));
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) transform->rotate(glm::vec3(0, 1, 0), glm::radians(-1.0f));
+
 			//std::cout << "Position: " + glm::to_string(transform->getPosition()) << std::endl;
 			//std::cout << "Rotation: " + glm::to_string(glm::degrees(glm::eulerAngles(transform->getRotation()))) << std::endl;
 			//std::cout << "Scale: " + glm::to_string(transform->getScale()) << std::endl;

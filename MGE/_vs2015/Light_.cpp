@@ -1,24 +1,41 @@
 #include "Light_.hpp"
 #include "LightManager.hpp"
 #include "ServiceLocator.hpp"
+#include "ShadowMap.hpp"
+#include "Transform.hpp"
+#include "GameObject_.hpp"
 
 namespace Engine
 {
 	namespace Rendering
 	{
 		Light_::Light_() :
+			_shadowMap(nullptr),
 			_lightType(LightType::Point),
 			_intensity(1), _fallOffAngle(15),
 			_fallOffOuterAngle(20), _lightColor(glm::vec3(1, 1, 0))
 		{
 			_lightManager = ServiceLocator::instance()->getService<LightManager>();
 
+			_shadowMap = std::make_unique<ShadowMap>();
 			_lightManager->addLight(this);
 		}
 
 		Light_::~Light_()
 		{
 			_lightManager->removeLight(this);
+			_shadowMap = nullptr;
+		}
+
+		ShadowMap* Light_::getShadowMap() const
+		{
+			return _shadowMap.get();
+		}
+
+		glm::mat4 Light_::getLightSpaceMatrix() const
+		{
+			//space for static and caching later on
+			return calculateLightSpaceMatrix();
 		}
 
 		void Light_::setLightType(const LightType type)
@@ -31,7 +48,7 @@ namespace Engine
 			}
 		}
 
-		LightType Light_::getLightType()
+		LightType Light_::getLightType() const
 		{
 			return _lightType;
 		}
@@ -95,6 +112,17 @@ namespace Engine
 		bool Light_::isUniquePerGameObject()
 		{
 			return true;
+		}
+
+		glm::mat4 Light_::calculateLightSpaceMatrix() const
+		{
+			const glm::mat4 lightProjectionMatrix = _lightType == LightType::Directional ?
+				glm::ortho(-_range, _range, -_range, _range, -_range, _range) :
+				glm::perspective(90.0f, 1.0f, -_range, _range);
+			const glm::mat4 lightViewMatrix = getGameObject()->getTransform()->getMatrix4X4();
+
+			//return lightProjectionMatrix * glm::inverse(lightViewMatrix);
+			return lightProjectionMatrix * lightViewMatrix;
 		}
 
 		glm::vec3 Light_::getColor() const

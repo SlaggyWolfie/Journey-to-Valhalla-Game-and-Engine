@@ -84,8 +84,8 @@ namespace Engine
 
 			glm::mat3 getNormalMatrix();
 
-			glm::vec3 forward();
-			glm::vec3 up();
+			glm::vec3 forward() ;
+			glm::vec3 up() ;
 			glm::vec3 right();
 
 			//Operations
@@ -153,6 +153,8 @@ namespace Engine
 			static glm::vec3 _getScale(const glm::mat4& matrix);
 			static glm::vec3 _getSkew(const glm::mat4& matrix);
 			static glm::vec4 _getPerspective(const glm::mat4& matrix);
+
+			glm::vec3 getLocalSpaceDirection(const glm::vec3& point);
 
 			Game* _game = nullptr;
 
