@@ -234,6 +234,7 @@
     <ClCompile Include="..\src\Core\LuaScript.cpp" />
     <ClCompile Include="ShadowMap.cpp" />
     <ClCompile Include="PlayerBaseComponent.cpp" />
+    <ClCompile Include="collider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -500,8 +501,10 @@
     <ClInclude Include="..\src\Core\LuaScript.h" />
     <ClInclude Include="ShadowMap.hpp" />
     <ClInclude Include="PlayerBaseComponent.h" />
+    <ClInclude Include="collider.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

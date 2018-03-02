@@ -8,12 +8,9 @@
 #include "../_vs2015/Transform.hpp"
 #include "LightManager.hpp"
 #include "ServiceLocator.hpp"
-<<<<<<< HEAD
 #include "../src/Core/Deserealizer.hpp"
 #include "Component.hpp"
 #include "PlayerBaseComponent.h"
-=======
->>>>>>> 1acb3faf321b6ae6a5bf9d5770ae4edbfd6ff9be
 
 
 namespace Engine
@@ -109,14 +106,10 @@ namespace Engine
 		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
 		plane->getTransform()->scale(glm::vec3(5000));
 		plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));
-<<<<<<< HEAD
-		
 		//Collisions
 		//btCollisionObject playerCO;
 		//btScalar radius = 6;
 		//btSphereShape playershape = btSphereShape(radius);
-=======
->>>>>>> 1acb3faf321b6ae6a5bf9d5770ae4edbfd6ff9be
 
 
 		Core::GameObject_* tower = Model::loadModel("Tower.fbx");

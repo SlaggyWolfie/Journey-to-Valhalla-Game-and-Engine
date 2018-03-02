@@ -4,12 +4,12 @@
 #include "Transform.hpp"
 #include "glm.hpp"
 using namespace Engine::Core;
-class PlayerBaseComponent:public Component
+class collider:public Component
 {
 public:
 
-	PlayerBaseComponent();
-	~PlayerBaseComponent();
+	collider();
+	~collider();
 
 	void update() override;
 	 //void start() override;
