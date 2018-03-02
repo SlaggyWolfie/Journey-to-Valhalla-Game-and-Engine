@@ -4,7 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <glm.hpp>
-#include <../_vs2015/Scene.hpp>
+//#include <../_vs2015/Scene.hpp>
 #include <../_vs2015/GameObject_.hpp>
 #include <../_vs2015/Transform.hpp>
 #include "Deserealizer.hpp"
@@ -122,7 +122,7 @@ void Deserealizer::ConstructGameObj()
 	//	//gms.push_back(obj);
 	//}
 
-	Engine::Scene* parsedScene = nullptr;
+	//Engine::Scene* parsedScene = nullptr;
 
 	for (int i = 0; i < structs.size(); i++)
 	{

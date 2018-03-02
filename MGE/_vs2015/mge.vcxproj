@@ -105,7 +105,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp-vc140-mt.lib;Bullet3Collision_vs2010.lib;Bullet3Collision_vs2010_debug.lib;Bullet3Common_vs2010.lib;Bullet3Common_vs2010_debug.lib;Bullet3Dynamics_vs2010.lib;Bullet3Dynamics_vs2010_debug.lib;Bullet3Geometry_vs2010.lib;Bullet3Geometry_vs2010_debug.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>assimp-vc140-mt.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
@@ -119,7 +119,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp-vc140-mt.lib;glew32sd.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies);lua51.lib;lua51.lib</AdditionalDependencies>
+      <AdditionalDependencies>assimp-vc140-mt.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Dynamic|Win32'">
@@ -137,7 +137,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp-vc140-mt.lib;glew32.lib;opengl32.lib;sfml-graphics.lib;sfml-system.lib;sfml-window.lib;sfml-audio.lib;%(AdditionalDependencies);lua51.lib;lua51.lib</AdditionalDependencies>
+      <AdditionalDependencies>assimp-vc140-mt.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Static|Win32'">
@@ -155,7 +155,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp-vc140-mt.lib;glew32s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-audio-s.lib;sfml-system-s.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies);lua51.lib;lua51.lib</AdditionalDependencies>
+      <AdditionalDependencies>assimp-vc140-mt.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
@@ -222,6 +222,7 @@
     <ClInclude Include="Mesh_.hpp" />
     <ClInclude Include="Model.hpp" />
     <ClInclude Include="Object.hpp" />
+    <ClInclude Include="PlayerBaseComponent.h" />
     <ClInclude Include="Renderer_.hpp" />
     <ClInclude Include="RenderManager.hpp" />
     <ClInclude Include="Scene.hpp" />
@@ -289,6 +290,7 @@
     <ClCompile Include="Material_.cpp" />
     <ClCompile Include="Mesh_.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="PlayerBaseComponent.cpp" />
     <ClCompile Include="Renderer_.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="Scene.cpp" />

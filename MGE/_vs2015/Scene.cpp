@@ -8,7 +8,9 @@
 #include "../_vs2015/Transform.hpp"
 #include "LightManager.hpp"
 #include "ServiceLocator.hpp"
-#include "BulletSrc\btBulletCollisionCommon.h"
+#include "../src/Core/Deserealizer.hpp"
+#include "Component.hpp"
+#include "PlayerBaseComponent.h"
 
 
 namespace Engine
@@ -74,6 +76,7 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
+		Deserealizer d;
 		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
 		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(500, 0, 2000));
 		Rendering::Light_* light = new Rendering::Light_();
@@ -97,16 +100,17 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
-		Core::GameObject_* playerModel = Model::loadModel("Player.obj");
+		Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName+".fbx");
 		playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		playerModel->addComponent(new PlayerBaseComponent());
 		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
 		plane->getTransform()->scale(glm::vec3(5000));
 		plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));
 		
 		//Collisions
-		btCollisionObject playerCO;
-		btScalar radius = 6;
-		btSphereShape playershape = btSphereShape(radius);
+		//btCollisionObject playerCO;
+		//btScalar radius = 6;
+		//btSphereShape playershape = btSphereShape(radius);
 
 
 		//Core::GameObject_* tower = Model::loadModel("Tower.fbx");
