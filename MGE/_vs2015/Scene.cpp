@@ -8,7 +8,6 @@
 #include "../_vs2015/Transform.hpp"
 #include "LightManager.hpp"
 #include "ServiceLocator.hpp"
-#include "BulletSrc\btBulletCollisionCommon.h"
 
 
 namespace Engine
@@ -17,7 +16,7 @@ namespace Engine
 	{
 	}
 
-	Scene::Scene(std::string  name) : _name(std::move(name)), _gameObjects(std::vector<std::unique_ptr<Core::GameObject_>>())
+	Scene::Scene(std::string name) : _name(std::move(name)), _gameObjects(std::vector<std::unique_ptr<Core::GameObject_>>())
 	{
 	}
 
@@ -102,15 +101,10 @@ namespace Engine
 		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
 		plane->getTransform()->scale(glm::vec3(5000));
 		plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));
-		
-		//Collisions
-		btCollisionObject playerCO;
-		btScalar radius = 6;
-		btSphereShape playershape = btSphereShape(radius);
 
 
-		//Core::GameObject_* tower = Model::loadModel("Tower.fbx");
-		//tower->getTransform()->setPosition(tower->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		Core::GameObject_* tower = Model::loadModel("Tower.fbx");
+		tower->getTransform()->setPosition(tower->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//std::cout << glm::to_string(go->getTransform()->getScale()) << std::endl;
 		//lightgo->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//Core::GameObject_* go = Model::loadModel("cube_smooth.obj");

@@ -4,12 +4,11 @@
 #include <fstream>
 #include <vector>
 #include <glm.hpp>
-#include <../_vs2015/Scene.hpp>
 #include <../_vs2015/GameObject_.hpp>
 #include <../_vs2015/Transform.hpp>
 #include "Deserealizer.hpp"
 #include "Game.hpp"
-#include "../_vs2015/Scene.hpp"
+//#include "../_vs2015/Scene.hpp"
 
 using namespace nlohmann;
 using namespace std;
