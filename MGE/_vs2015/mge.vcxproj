@@ -105,7 +105,11 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+<<<<<<< HEAD
       <AdditionalDependencies>assimp-vc140-mt.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib</AdditionalDependencies>
+=======
+      <AdditionalDependencies>assimp-vc140-mt.lib;Bullet3Collision_vs2010_debug.lib;Bullet3Common_vs2010_debug.lib;Bullet3Dynamics_vs2010_debug.lib;Bullet3Geometry_vs2010_debug.lib;Bullet3OpenCL_clew_vs2010_debug.lib;BulletCollision_vs2010_debug.lib;BulletDynamics_vs2010_debug.lib;BulletInverseDynamics_vs2010_debug.lib;BulletInverseDynamicsUtils_vs2010_debug.lib;BulletSoftBody_vs2010_debug.lib;BussIK_vs2010_debug.lib;gwen_vs2010_debug.lib;LinearMath_vs2010_debug.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+>>>>>>> 1acb3faf321b6ae6a5bf9d5770ae4edbfd6ff9be
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Static|Win32'">
@@ -119,7 +123,11 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+<<<<<<< HEAD
       <AdditionalDependencies>assimp-vc140-mt.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib</AdditionalDependencies>
+=======
+      <AdditionalDependencies>Bullet3Collision_vs2010_debug.lib;Bullet3Common_vs2010_debug.lib;Bullet3Dynamics_vs2010_debug.lib;Bullet3Geometry_vs2010_debug.lib;Bullet3OpenCL_clew_vs2010_debug.lib;BulletCollision_vs2010_debug.lib;BulletDynamics_vs2010_debug.lib;BulletInverseDynamics_vs2010_debug.lib;BulletInverseDynamicsUtils_vs2010_debug.lib;BulletSoftBody_vs2010_debug.lib;BussIK_vs2010_debug.lib;gwen_vs2010_debug.lib;LinearMath_vs2010_debug.lib;assimp-vc140-mt.lib;glew32sd.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-audio-s-d.lib;sfml-system-s-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies);lua51.lib</AdditionalDependencies>
+>>>>>>> 1acb3faf321b6ae6a5bf9d5770ae4edbfd6ff9be
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Dynamic|Win32'">
@@ -137,7 +145,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+<<<<<<< HEAD
       <AdditionalDependencies>assimp-vc140-mt.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib</AdditionalDependencies>
+=======
+      <AdditionalDependencies>Bullet3Collision_vs2010.lib;Bullet3Common_vs2010.lib;Bullet3Dynamics_vs2010.lib;Bullet3Geometry_vs2010.lib;Bullet3OpenCL_clew_vs2010.lib;BulletCollision_vs2010.lib;BulletDynamics_vs2010.lib;BulletInverseDynamics_vs2010.lib;BulletInverseDynamicsUtils_vs2010.lib;BulletSoftBody_vs2010.lib;BussIK_vs2010.lib;gwen_vs2010.lib;OpenGL_Window_vs2010.lib;LinearMath_vs2010.lib;assimp-vc140-mt.lib;glew32.lib;opengl32.lib;sfml-graphics.lib;sfml-system.lib;sfml-window.lib;sfml-audio.lib;%(AdditionalDependencies);lua51.lib</AdditionalDependencies>
+>>>>>>> 1acb3faf321b6ae6a5bf9d5770ae4edbfd6ff9be
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Static|Win32'">
@@ -155,7 +167,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+<<<<<<< HEAD
       <AdditionalDependencies>assimp-vc140-mt.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-audio-d.lib</AdditionalDependencies>
+=======
+      <AdditionalDependencies>Bullet3Collision_vs2010.lib;Bullet3Common_vs2010.lib;Bullet3Dynamics_vs2010.lib;Bullet3Geometry_vs2010.lib;Bullet3OpenCL_clew_vs2010.lib;BulletCollision_vs2010.lib;BulletDynamics_vs2010.lib;BulletInverseDynamics_vs2010.lib;BulletInverseDynamicsUtils_vs2010.lib;BulletSoftBody_vs2010.lib;BussIK_vs2010.lib;LinearMath_vs2010.lib;assimp-vc140-mt.lib;glew32s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-audio-s.lib;sfml-system-s.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;%(AdditionalDependencies);lua51.lib</AdditionalDependencies>
+>>>>>>> 1acb3faf321b6ae6a5bf9d5770ae4edbfd6ff9be
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
@@ -303,7 +319,6 @@
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

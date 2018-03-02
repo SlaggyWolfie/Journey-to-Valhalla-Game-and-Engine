@@ -108,7 +108,7 @@ namespace Engine
 
 		void RenderManager::render(const float deltaTime)
 		{
-			//getLightManager()->renderShadowMaps();
+			getLightManager()->renderShadowMaps();
 
 			//std::cout << "Pl0x" << std::endl;
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -185,7 +185,7 @@ namespace Engine
 
 			shadowMap->bindFramebuffer();
 			glClear(GL_DEPTH_BUFFER_BIT);
-			shadowMap->bindTexture();
+			//shadowMap->bindTexture();
 			for (Renderer_* renderer : _opaqueRenderers)
 			{
 				if (renderer->isEnabled() && renderer->castsShadows() && renderer->getGameObject()->isActive())
@@ -214,7 +214,7 @@ namespace Engine
 				}
 			}
 
-			ShadowMap::unbindTexture();
+			//ShadowMap::unbindTexture();
 			Shader::unbind();
 			ShadowMap::unbindFramebuffer();
 		}

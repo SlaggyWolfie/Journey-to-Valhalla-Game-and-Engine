@@ -8,9 +8,12 @@
 #include "../_vs2015/Transform.hpp"
 #include "LightManager.hpp"
 #include "ServiceLocator.hpp"
+<<<<<<< HEAD
 #include "../src/Core/Deserealizer.hpp"
 #include "Component.hpp"
 #include "PlayerBaseComponent.h"
+=======
+>>>>>>> 1acb3faf321b6ae6a5bf9d5770ae4edbfd6ff9be
 
 
 namespace Engine
@@ -19,7 +22,7 @@ namespace Engine
 	{
 	}
 
-	Scene::Scene(std::string  name) : _name(std::move(name)), _gameObjects(std::vector<std::unique_ptr<Core::GameObject_>>())
+	Scene::Scene(std::string name) : _name(std::move(name)), _gameObjects(std::vector<std::unique_ptr<Core::GameObject_>>())
 	{
 	}
 
@@ -93,12 +96,12 @@ namespace Engine
 		lightgo1->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
 		light1->setColor(glm::vec3(0, 1, 0));
 		light1->setRange(350000);
-		light->setRange(3500);
+		light->setRange(35000);
 		Core::Camera_* cameraComp = new Core::Camera_();
 		camera->addComponent(cameraComp);
 		Core::Camera_::setMainCamera(cameraComp);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
-		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
+		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
 		Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName+".fbx");
 		playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
@@ -106,15 +109,18 @@ namespace Engine
 		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
 		plane->getTransform()->scale(glm::vec3(5000));
 		plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));
+<<<<<<< HEAD
 		
 		//Collisions
 		//btCollisionObject playerCO;
 		//btScalar radius = 6;
 		//btSphereShape playershape = btSphereShape(radius);
+=======
+>>>>>>> 1acb3faf321b6ae6a5bf9d5770ae4edbfd6ff9be
 
 
-		//Core::GameObject_* tower = Model::loadModel("Tower.fbx");
-		//tower->getTransform()->setPosition(tower->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		Core::GameObject_* tower = Model::loadModel("Tower.fbx");
+		tower->getTransform()->setPosition(tower->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//std::cout << glm::to_string(go->getTransform()->getScale()) << std::endl;
 		//lightgo->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//Core::GameObject_* go = Model::loadModel("cube_smooth.obj");
