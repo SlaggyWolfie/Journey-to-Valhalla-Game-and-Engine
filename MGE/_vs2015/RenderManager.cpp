@@ -108,7 +108,7 @@ namespace Engine
 
 		void RenderManager::render(const float deltaTime)
 		{
-			getLightManager()->renderShadowMaps();
+			//getLightManager()->renderShadowMaps();
 
 			//std::cout << "Pl0x" << std::endl;
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

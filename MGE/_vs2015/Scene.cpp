@@ -112,8 +112,8 @@ namespace Engine
 		//btSphereShape playershape = btSphereShape(radius);
 
 
-		Core::GameObject_* tower = Model::loadModel("Tower.fbx");
-		tower->getTransform()->setPosition(tower->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		/*Core::GameObject_* tower = Model::loadModel("Tower.fbx");
+		tower->getTransform()->setPosition(tower->getTransform()->getPosition() + glm::vec3(0, -600, 0));*/
 		//std::cout << glm::to_string(go->getTransform()->getScale()) << std::endl;
 		//lightgo->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//Core::GameObject_* go = Model::loadModel("cube_smooth.obj");
