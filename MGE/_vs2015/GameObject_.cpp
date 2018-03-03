@@ -78,6 +78,11 @@ namespace Engine
 
 		void GameObject_::addComponent(Component* newComponent)
 		{
+			if (newComponent == nullptr)
+			{
+				std::cout << "Null component!?" << std::endl;
+				return;
+			}
 			newComponent->setGameObject(this);
 			_components.push_back(std::unique_ptr<Component>(newComponent));
 			getGameLoop()->subscribe(newComponent);

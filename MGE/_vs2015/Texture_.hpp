@@ -39,6 +39,8 @@ namespace Engine
 			TextureType _type;
 
 			GLuint _id;
+
+			static bool _debug;
 		};
 	}
 }

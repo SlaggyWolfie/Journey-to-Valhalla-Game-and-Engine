@@ -6,6 +6,7 @@
 #include "NeedsGLSetup.hpp"
 #include <vector>
 #include "GL/glew.h"
+#include "Model.hpp"
 
 namespace Engine
 {
@@ -27,10 +28,10 @@ namespace Engine
 
 		class Mesh_ : public Core::Component
 		{
-			friend class Model;
 		public:
 			Mesh_() = default;
 			~Mesh_() = default;
+			Mesh_(std::vector<Vertex> vertices, std::vector<int> indices);
 			Mesh_(const Mesh_& other) = default;
 			Mesh_& operator=(const Mesh_& other) = default;
 
@@ -64,7 +65,6 @@ namespace Engine
 		protected:
 			void prewake() override;
 		private:
-			Mesh_(std::vector<Vertex> vertices, std::vector<int> indices);
 			std::vector<Vertex> _vertices;
 			std::vector<int> _indices;
 			unsigned int VBO, EBO;
