@@ -11,10 +11,11 @@ class collider:public Component
 {
 public:
 	enum colliderType { box, sphere, point };
-	collider(colliderType pType);
+	collider();
 	~collider();
+	void SetType(int i);
 	void SetBoxSize(int width,int height);
-	void SetSphereRadius(int r);
+	void SetSphereRadius();
 	void update() override;
 	glm::vec3 GetPos();
 	int GetWidth();
@@ -33,9 +34,9 @@ private:
 	glm::vec3 _pos;
 	glm::vec3 _rot;
 	Transform* _t;
-	colliderType _type;
+	colliderType _type=box;
 	int _width = 0;
 	int _height = 0;
-	int _r = 0;
+	int _r=50;
 };
 

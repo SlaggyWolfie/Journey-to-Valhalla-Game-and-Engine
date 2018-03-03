@@ -1,14 +1,15 @@
 #include "ColliderManager.h"
 #include "collider.h"
+#include <vector>
 
 
 void ColliderManager::initialize()
 {
 }
 
-ColliderManager::ColliderManager()
+ColliderManager::ColliderManager():allColliders( std::vector<collider*>())
 {
-
+	
 }
 
 
@@ -20,18 +21,30 @@ ColliderManager::~ColliderManager()
 std::vector<collider*> ColliderManager::CheckCollision(collider* object)
 {
 	std::vector<collider*> collideList;
+	std::cout << allColliders.size() << std::endl;
 	for (int i = allColliders.size(); i > 0; i--)
 	{
-		// get box closest point to object->GetPos() center by clamping
-		int distance = glm::sqrt((object->GetPos().x - allColliders[i]->GetPos().x) * (object->GetPos().x - allColliders[i]->GetPos().x) +
+		std::cout << allColliders[i]->GetPos().y << " pos y";
+		//// get box closest point to object->GetPos() center by clamping
+		/*int distance = glm::sqrt((object->GetPos().x - allColliders[i]->GetPos().x) * (object->GetPos().x - allColliders[i]->GetPos().x) +
 			(object->GetPos().y - allColliders[i]->GetPos().y) * (object->GetPos().y - allColliders[i]->GetPos().y) +
 			(object->GetPos().z - allColliders[i]->GetPos().z) * (object->GetPos().z - allColliders[i]->GetPos().z));
-		if (distance < (object->GetRadius() + allColliders[i]->GetRadius()))
+		std::cout << distance;*/
+		/*if (distance < (object->GetRadius() + allColliders[i]->GetRadius()))
 		{
+
 			collideList.push_back(allColliders[i]);
-		}
+		}*/
+		//else 
+		//{
+			//if (!collideList.empty())
+			//{
+		//		auto element = find(collideList.begin(), collideList.end(), allColliders[i])-collideList.begin();
+		//		std::cout << element;
+		//	//}
+		////}
+		return collideList;
 	}
-	return collideList;
 }
 
 void ColliderManager::addCollider(collider* collider)

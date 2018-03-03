@@ -2,7 +2,7 @@
 #include"ServiceLocator.hpp"
 #include "ColliderManager.h"
 
-collider::collider(colliderType pType): _colliderManager(nullptr), _t(nullptr), _type(pType)
+collider::collider(): _colliderManager(nullptr), _t(nullptr)
 {
 }
 
@@ -10,16 +10,18 @@ collider::collider(colliderType pType): _colliderManager(nullptr), _t(nullptr), 
 collider::~collider()
 {
 }
+void collider::SetType(int t)
+{
+	_type = box;
+}
 void collider::SetBoxSize(int w,int h)
 {
 	if(_type == box)
 	_height = h;
 	_width = w;
 }
-void collider::SetSphereRadius(int r)
+void collider::SetSphereRadius()
 {
-	if (_type == sphere)
-		_r = r;
 }
 
 void collider::update()

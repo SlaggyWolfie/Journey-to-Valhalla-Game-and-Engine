@@ -11,6 +11,7 @@
 #include "../src/Core/Deserealizer.hpp"
 #include "Component.hpp"
 #include "PlayerBaseComponent.h"
+#include "collider.h"
 
 
 namespace Engine
@@ -102,7 +103,19 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
 		Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName+".fbx");
 		playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
-		playerModel->addComponent(new PlayerBaseComponent());
+		//playerModel->addComponent(new PlayerBaseComponent());
+		Core::GameObject_* obj1 = Model::loadModel("Player.obj");
+		obj1->getTransform()->translate(glm::vec3(-700, -599, 2000));
+		obj1->addComponent(new PlayerBaseComponent());
+		obj1->addComponent(new collider());
+		//obj1->getComponent<collider>()->SetType(0);
+
+		Core::GameObject_* obj2 = Model::loadModel("Player.obj");
+		obj2->getTransform()->translate(glm::vec3(-550, -599, 2000));
+		obj2->addComponent(new collider());
+		//obj2->getComponent<collider>()->SetType(0);
+
+
 		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
 		plane->getTransform()->scale(glm::vec3(5000));
 		plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));

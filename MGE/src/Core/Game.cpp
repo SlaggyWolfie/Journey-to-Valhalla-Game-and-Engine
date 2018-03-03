@@ -74,7 +74,7 @@ namespace Engine
 	void Game::initializeWindow() {
 		std::cout << "Initializing window..." << std::endl;
 		_window = std::make_unique<sf::RenderWindow>(
-			sf::VideoMode(1280, 960), "Thot", sf::Style::Default, sf::ContextSettings(24, 8, 0, 3, 3));
+			sf::VideoMode(1280, 960), "Game", sf::Style::Default, sf::ContextSettings(24, 8, 0, 3, 3));
 		//_window->setVerticalSyncEnabled(true);
 		//std::cout << std::to_string(_window.get() != nullptr) << std::endl;
 		std::cout << "Window initialized." << std::endl << std::endl;
