@@ -27,7 +27,7 @@ void collider::SetSphereRadius()
 void collider::update()
 {
 	SetTrans(getGameObject()->getTransform());
-	//this is smart stuff
+	//go to CheckCollision in collider Manager
 	ServiceLocator::instance()->getService<ColliderManager>()->CheckCollision(this);
 }
 

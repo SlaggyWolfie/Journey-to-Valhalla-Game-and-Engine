@@ -163,27 +163,24 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
-<<<<<<< HEAD
 		Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName+".fbx");
-		playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//playerModel->addComponent(new PlayerBaseComponent());
 		Core::GameObject_* obj1 = Model::loadModel("Player.obj");
-		obj1->getTransform()->translate(glm::vec3(-700, -599, 2000));
+		obj1->getTransform()->translate(glm::vec3(-300, -599, 300));
 		obj1->addComponent(new PlayerBaseComponent());
 		obj1->addComponent(new collider());
 		//obj1->getComponent<collider>()->SetType(0);
 
 		Core::GameObject_* obj2 = Model::loadModel("Player.obj");
-		obj2->getTransform()->translate(glm::vec3(-550, -599, 2000));
+		obj2->getTransform()->translate(glm::vec3(-100, -599, 300));
 		obj2->addComponent(new collider());
 		//obj2->getComponent<collider>()->SetType(0);
 
 
-=======
 		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
 		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//playerModel->addComponent(new PlayerBaseComponent());
->>>>>>> c679729c65fe4b1af3936a357cca5b436521298a
 		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
 		plane->getTransform()->scale(glm::vec3(5000));
 		plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));

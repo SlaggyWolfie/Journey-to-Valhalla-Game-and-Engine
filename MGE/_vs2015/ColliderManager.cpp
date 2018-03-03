@@ -7,7 +7,7 @@ void ColliderManager::initialize()
 {
 }
 
-ColliderManager::ColliderManager():allColliders( std::vector<collider*>())
+ColliderManager::ColliderManager()
 {
 	
 }
@@ -24,6 +24,7 @@ std::vector<collider*> ColliderManager::CheckCollision(collider* object)
 	std::cout << allColliders.size() << std::endl;
 	for (int i = allColliders.size(); i > 0; i--)
 	{
+		//this line gives error because of list of pointers(?)
 		std::cout << allColliders[i]->GetPos().y << " pos y";
 		//// get box closest point to object->GetPos() center by clamping
 		/*int distance = glm::sqrt((object->GetPos().x - allColliders[i]->GetPos().x) * (object->GetPos().x - allColliders[i]->GetPos().x) +
