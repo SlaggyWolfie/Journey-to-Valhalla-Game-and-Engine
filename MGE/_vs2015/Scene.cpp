@@ -31,12 +31,16 @@ namespace Engine
 		_gameObjects.clear();
 	}
 
-	void Scene::initialize(const bool hard)
+	void Scene::initialize(const bool hard, const bool fromFile)
 	{
 		if (hard)
-		{
 			hardCode();
-			return;
+		if (fromFile)
+		{
+			//Model::debug(true);
+			Deserealizer deserealizer;
+			deserealizer.deserializeIntoStructs();
+			deserializeStructs(deserealizer.structs);
 		}
 	}
 
@@ -75,6 +79,64 @@ namespace Engine
 		_gameObjects.push_back(std::unique_ptr<Core::GameObject_>(gameObject));
 	}
 
+	void Scene::deserializeStructs(std::vector<GameObject_s> structs)
+	{
+		std::unordered_map<int, GameObject_*> id_to_go;
+		//std::unordered_map<GameObject_*, int> go_to_id;
+
+		//first pass - initialize GOs
+		for (const GameObject_s& gameStruct : structs)
+		{
+			GameObject_* gameObject;
+
+			if (!gameStruct.meshName.empty() && gameStruct.meshName != std::string("")
+				&& gameStruct.meshName.find('.') != std::string::npos)
+			{
+				gameObject = Model::loadModel(gameStruct.meshName);
+				gameObject->setName(gameStruct.name);
+			}
+			else
+			{
+				gameObject = new GameObject_(gameStruct.name, "");
+			}
+			
+
+			Transform* transform = gameObject->getTransform();
+			transform->setLocalPosition(gameStruct.position);
+			std::cout << gameStruct.name + " Position: " + glm::to_string(gameStruct.position) << std::endl;
+			transform->setLocalRotation(glm::eulerAngleXYZ(gameStruct.rotation.x, gameStruct.rotation.y, gameStruct.rotation.z));
+			transform->setLocalScale(gameStruct.scale);
+
+			//if (!gameStruct.meshName.empty() && gameStruct.meshName != std::string("")
+			//	&& gameStruct.meshName.find('.') != std::string::npos)
+			//{
+			//	ShallowMesh* shallow = Model::loadModelShallow(gameStruct.meshName);
+			//	std::cout << "Why are you running: " + std::to_string(shallow != nullptr) << std::endl;
+			//	gameObject->addComponent(shallow->mesh);
+			//	gameObject->addComponent(shallow->material);
+			//	gameObject->addComponent(shallow->renderer);
+			//}
+
+			addGameObject(gameObject);
+			id_to_go[gameStruct.selfID] = gameObject;
+			//go_to_id[gameObject] = gameStruct.selfID;
+		}
+
+		//second pass - set parents
+		for (size_t i = 0; i < structs.size(); i++)
+		{
+			const GameObject_s gameStruct = structs[i];
+			GameObject_* gameObject = _gameObjects[i].get();
+
+			const int parentID = gameStruct.parentID;
+
+			if (parentID == 0) continue;
+
+			Transform* transform = gameObject->getTransform();
+			transform->setParent(id_to_go[parentID]->getTransform(), true);
+		}
+	}
+
 	void Scene::hardCode()
 	{
 		Deserealizer d;
@@ -101,6 +163,7 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
+<<<<<<< HEAD
 		Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName+".fbx");
 		playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//playerModel->addComponent(new PlayerBaseComponent());
@@ -116,9 +179,16 @@ namespace Engine
 		//obj2->getComponent<collider>()->SetType(0);
 
 
+=======
+		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
+		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		//playerModel->addComponent(new PlayerBaseComponent());
+>>>>>>> c679729c65fe4b1af3936a357cca5b436521298a
 		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
 		plane->getTransform()->scale(glm::vec3(5000));
 		plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));
+
+		//Core::GameObject_* mainCharacter = Model::loadModel("MainCharacter.fbx");
 		//Collisions
 		//btCollisionObject playerCO;
 		//btScalar radius = 6;

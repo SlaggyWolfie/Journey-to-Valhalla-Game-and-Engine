@@ -5,6 +5,8 @@ namespace Engine
 {
 	namespace Rendering
 	{
+		bool Texture_::_debug = false;
+
 		std::unordered_map<std::string, std::unique_ptr<Texture_>> Texture_::textureMap
 			= std::unordered_map<std::string, std::unique_ptr<Texture_>>();
 
@@ -22,7 +24,8 @@ namespace Engine
 
 		Texture_* Texture_::loadDefault(const float r, const float g, const float b, const TextureType type)
 		{
-			std::cout << "Warning, creating default texture with color values: (" + std::to_string(r) + ", "
+			if (_debug)
+				std::cout << "Warning, creating default texture with color values: (" + std::to_string(r) + ", "
 				+ std::to_string(r) + ", " + std::to_string(r) + ") of type "
 				+ std::to_string(static_cast<int>(type)) + "." << std::endl;
 

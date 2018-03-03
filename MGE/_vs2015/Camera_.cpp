@@ -112,6 +112,7 @@ namespace Engine
 			float speed = 3.0f;
 			float turnSpeed = 10.0f;
 			Transform* transform = getGameObject()->getTransform();
+<<<<<<< HEAD
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) transform->translate(transform->forward() * speed);
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) transform->translate(transform->forward() * -speed);
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) transform->translate(transform->right() * -speed);
@@ -123,6 +124,27 @@ namespace Engine
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) transform->rotate(transform->right(), glm::radians(-turnSpeed) * Utility::Time::deltaTime());
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) transform->rotate(transform->up(), glm::radians(turnSpeed) * Utility::Time::deltaTime());
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) transform->rotate(transform->up(), glm::radians(-turnSpeed) * Utility::Time::deltaTime());*/
+=======
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) transform->translate(transform->forward() * 1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) transform->translate(transform->forward() * -1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) transform->translate(transform->right() * -1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) transform->translate(transform->right() * 1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) transform->translate(transform->up() * 1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) transform->translate(transform->up() * -1);
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) transform->rotate(transform->right(), glm::radians(1.0f)
+				//* Utility::Time::deltaTime()
+			);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) transform->rotate(transform->right(), glm::radians(-1.0f)
+				//* Utility::Time::deltaTime()
+			);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) transform->rotate(transform->up(), glm::radians(1.0f)
+				//* Utility::Time::deltaTime()
+			);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) transform->rotate(transform->up(), glm::radians(-1.0f)
+				//* Utility::Time::deltaTime()
+			);
+>>>>>>> c679729c65fe4b1af3936a357cca5b436521298a
 
 			//std::cout << "Position: " + glm::to_string(transform->getPosition()) << std::endl;
 			//std::cout << "Rotation: " + glm::to_string(glm::degrees(glm::eulerAngles(transform->getRotation()))) << std::endl;

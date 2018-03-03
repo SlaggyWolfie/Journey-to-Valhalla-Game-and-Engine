@@ -122,6 +122,8 @@ namespace Engine
 			glm::mat4 _worldMatrix = glm::mat4(1);
 			glm::mat3 _normalMatrix = glm::mat4(1);
 
+			void makeLocalMatrixDirty();
+			void makeWorldMatrixDirty();
 			bool _isLocalMatrixDirty = true;
 			bool _isWorldMatrixDirty = true;
 
