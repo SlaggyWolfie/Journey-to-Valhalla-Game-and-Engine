@@ -146,7 +146,7 @@ namespace Engine
 			glBindVertexArray(VAO);
 			//glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 			glDrawElements(GL_TRIANGLES, _indices.size(), GL_UNSIGNED_INT, 0);
-			glBindVertexArray(0);
+			////glBindVertexArray(0);
 		}
 
 		void Mesh_::generateBuffers()

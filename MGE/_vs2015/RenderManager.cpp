@@ -108,7 +108,7 @@ namespace Engine
 
 		void RenderManager::render(const float deltaTime)
 		{
-			//getLightManager()->renderShadowMaps();
+			getLightManager()->renderShadowMaps();
 
 			//std::cout << "Pl0x" << std::endl;
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -185,21 +185,20 @@ namespace Engine
 
 			shadowMap->bindFramebuffer();
 			glClear(GL_DEPTH_BUFFER_BIT);
+			shadowMap->pushLightSpaceMatrix(light->getLightSpaceMatrix());
 			//shadowMap->bindTexture();
 			for (Renderer_* renderer : _opaqueRenderers)
 			{
 				if (renderer->isEnabled() && renderer->castsShadows() && renderer->getGameObject()->isActive())
 				{
 					shadowMap->getShader()->bind();
-
-					shadowMap->pushLightSpaceMatrix(light->getLightSpaceMatrix());
 					shadowMap->pushModelMatrix(renderer->getGameObject()->getTransform()->getMatrix4X4());
+					//renderer->pushMatrices();
 					renderer->pushMesh();
-
 					Shader::unbind();
 					//renderer->pushMatrices();
 					//renderer->pushMesh();
-					renderer->render();
+					//renderer->render();
 					//std::cout << "Heyo";
 				}
 			}

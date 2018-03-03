@@ -197,7 +197,10 @@ namespace Engine
 			//_localRotation *= glm::mat4_cast(rotation);
 			//_localRotation *= glm::mat4();
 			//_localRotation = glm::rotate(_localRotation, angleRotation, axis);
-			setLocalRotation(glm::rotate(_localRotation, angleRotation, axis));
+			setLocalRotation(glm::rotate(getLocalRotation(), angleRotation, axis));
+			//setLocalMatrix4X4(glm::rotate(getLocalMatrix4X4(), angleRotation, axis));
+			//const auto fuckIt = glm::rotate(_localMatrix, angleRotation, axis);
+			//setLocalRotation(_getOrientation(fuckIt));
 		}
 
 		void Transform::scale(const glm::vec3& scaler)
