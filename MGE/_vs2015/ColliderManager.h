@@ -1,7 +1,6 @@
 #pragma once
 #include "Manager.hpp"
 #include <vector>
-#include "glm.hpp"
 using namespace Engine;
 class collider;
 

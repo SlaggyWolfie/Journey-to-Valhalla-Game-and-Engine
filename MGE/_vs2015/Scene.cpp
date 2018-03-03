@@ -163,7 +163,7 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
-		Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName+".fbx");
+		Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
 		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//playerModel->addComponent(new PlayerBaseComponent());
 		Core::GameObject_* obj1 = Model::loadModel("Player.obj");
