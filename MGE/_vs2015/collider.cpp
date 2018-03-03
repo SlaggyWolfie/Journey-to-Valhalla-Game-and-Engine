@@ -1,8 +1,8 @@
 #include "collider.h"
+#include"ServiceLocator.hpp"
 
 
-
-collider::collider(colliderType pType):_type(pType)
+collider::collider(colliderType pType): _colliderManager(nullptr), _t(nullptr), _type(pType)
 {
 }
 
@@ -26,7 +26,7 @@ void collider::update()
 {
 	SetTrans(getGameObject()->getTransform());
 	//this is smart stuff
-	ServiceLocator::instance()->getService<ColliderManager>()->CheckCollision(*this);
+	ServiceLocator::instance()->getService<ColliderManager>()->CheckCollision(this);
 }
 
 glm::vec3 collider::GetPos()
@@ -55,5 +55,11 @@ void collider::SetTrans(Transform* t)
 {
 	_pos = t->getLocalPosition();
 	/*_rot=t->glm::qu*/
+}
+
+void collider::prewake()
+{
+	_colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
+	_colliderManager->addCollider(this);
 }
 

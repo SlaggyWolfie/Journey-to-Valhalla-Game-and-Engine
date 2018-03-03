@@ -3,9 +3,8 @@
 #include "GameObject_.hpp"
 #include "Transform.hpp"
 #include "glm.hpp"
-#include "RenderManager.hpp"
-#include"ServiceLocator.hpp"
 using namespace Engine::Core;
+
 class collider:public Component
 {
 public:
@@ -22,12 +21,13 @@ public:
 	void SetTrans(Transform* t);
 	 //void start() override;
 	 //void awake() override;
-	 //void prewake() override;
+	 void prewake() override;
 	 //void update() override;
 	 //void fixedUpdate() override;
 	 //void lateUpdate() override;
 	 //void onValidate() override;
 private:
+	ColliderManager * _colliderManager;
 	glm::vec3 _pos;
 	glm::vec3 _rot;
 	Transform* _t;
