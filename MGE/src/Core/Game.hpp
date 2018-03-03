@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "../../_vs2015/Service.hpp"
+#include "../_vs2015/ColliderManager.h"
+
 #include <memory>
 
 /**
@@ -55,6 +57,7 @@ namespace Engine
 		//float _fps;                 //stores the real fps
 		Rendering::RenderManager* _renderManager;
 		Rendering::LightManager* _lightManager;
+		ColliderManager* _colliderManager;
 		Core::GameLoop* _gameLoop;
 		SceneManager* _sceneManager;
 

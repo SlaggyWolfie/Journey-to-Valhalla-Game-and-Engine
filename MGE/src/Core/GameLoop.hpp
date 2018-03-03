@@ -7,6 +7,7 @@
 #include "../../_vs2015/FunctionGroup.hpp"
 #include "../_vs2015/RenderManager.hpp"
 #include "../_vs2015/Component.hpp"
+#include "../_vs2015/ColliderManager.h"
 
 namespace Engine
 {
@@ -27,6 +28,7 @@ namespace Engine
 			void subscribe(Component* component);
 			void unsubscribe(Component* component);
 			bool isSubscribed(Component* component);
+			ColliderManager* GetColliderM();
 
 			void run();
 
@@ -41,6 +43,7 @@ namespace Engine
 
 			Game* getGame();
 			Rendering::RenderManager* getRenderManager();
+			ColliderManager* _colliderManager;
 
 			Game* _game = nullptr;
 			Rendering::RenderManager* _renderManager = nullptr;

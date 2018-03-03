@@ -212,6 +212,7 @@
     <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp" />
     <ClInclude Include="Camera_.hpp" />
     <ClInclude Include="collider.h" />
+    <ClInclude Include="ColliderManager.h" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="GameObject_.hpp" />
     <ClInclude Include="GeneralHelpers.hpp" />
@@ -284,6 +285,7 @@
     <ClCompile Include="..\src\myGame\Scenes\ThirdScene.cpp" />
     <ClCompile Include="Camera_.cpp" />
     <ClCompile Include="collider.cpp" />
+    <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject_.cpp" />
     <ClCompile Include="GeneralHelpers.cpp" />
