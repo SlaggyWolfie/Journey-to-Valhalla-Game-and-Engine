@@ -1,6 +1,6 @@
 #include "collider.h"
 #include"ServiceLocator.hpp"
-
+#include "ColliderManager.h"
 
 collider::collider(colliderType pType): _colliderManager(nullptr), _t(nullptr), _type(pType)
 {

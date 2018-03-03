@@ -5,6 +5,8 @@
 #include "glm.hpp"
 using namespace Engine::Core;
 
+class ColliderManager;
+
 class collider:public Component
 {
 public:
