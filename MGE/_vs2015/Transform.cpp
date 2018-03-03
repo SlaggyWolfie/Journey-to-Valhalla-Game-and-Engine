@@ -82,8 +82,10 @@ namespace Engine
 			if (getGameObject()->isStatic() && _game->isRunning()) return;
 
 			_localPosition = position;
-			_isLocalMatrixDirty = true;
-			_isWorldMatrixDirty = true;
+			makeLocalMatrixDirty();
+			makeWorldMatrixDirty();
+			//_isLocalMatrixDirty = true;
+			//_isWorldMatrixDirty = true;
 		}
 
 		glm::vec3 Transform::getLocalPosition() const
@@ -96,8 +98,10 @@ namespace Engine
 			if (getGameObject()->isStatic() && _game->isRunning()) return;
 
 			_localRotation = rotation;
-			_isLocalMatrixDirty = true;
-			_isWorldMatrixDirty = true;
+			makeLocalMatrixDirty();
+			makeWorldMatrixDirty();
+			//_isLocalMatrixDirty = true;
+			//_isWorldMatrixDirty = true;
 		}
 
 		glm::quat Transform::getLocalRotation() const
@@ -110,8 +114,10 @@ namespace Engine
 			if (getGameObject()->isStatic() && _game->isRunning()) return;
 
 			_localScale = scale;
-			_isLocalMatrixDirty = true;
-			_isWorldMatrixDirty = true;
+			makeLocalMatrixDirty();
+			makeWorldMatrixDirty();
+			//_isLocalMatrixDirty = true;
+			//_isWorldMatrixDirty = true;
 		}
 
 		glm::vec3 Transform::getLocalScale() const
@@ -347,7 +353,7 @@ namespace Engine
 				{
 					_worldMatrix = _calculateWorldMatrix();
 					_normalMatrix = glm::mat3(glm::transpose(glm::inverse(_worldMatrix)));
-					_isWorldMatrixDirty = true;
+					_isWorldMatrixDirty = false;
 				}
 			}
 			//for local
@@ -356,7 +362,7 @@ namespace Engine
 				if (_isLocalMatrixDirty)
 				{
 					_localMatrix = _calculateLocalMatrix();
-					_isLocalMatrixDirty = true;
+					_isLocalMatrixDirty = false;
 				}
 			}
 		}
@@ -572,6 +578,18 @@ namespace Engine
 			_game = other._game;
 
 			return *this;
+		}
+
+		void Transform::makeLocalMatrixDirty()
+		{
+			_isLocalMatrixDirty = true;
+		}
+
+		void Transform::makeWorldMatrixDirty()
+		{
+			_isWorldMatrixDirty = true;
+			for (Transform* child : _children)
+				child->makeWorldMatrixDirty();
 		}
 	}
 }
