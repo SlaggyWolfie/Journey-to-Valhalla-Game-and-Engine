@@ -60,6 +60,12 @@ namespace Engine
 			return !_components.empty() && std::find(_components.begin(), _components.end(), component) != _components.end();
 		}
 
+		ColliderManager * GameLoop::GetColliderM()
+		{
+			if (!_colliderManager) _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
+			return _colliderManager;
+		}
+
 		//std::shared_ptr<Component> GameLoop::find(Component* component)
 		//{
 		//	for (std::shared_ptr<Component> i : _components)

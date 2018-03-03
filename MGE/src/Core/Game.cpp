@@ -118,6 +118,7 @@ namespace Engine
 		_renderManager = new Engine::Rendering::RenderManager();
 		_lightManager = new Engine::Rendering::LightManager();
 		_sceneManager = new Engine::SceneManager();
+		_colliderManager = new ColliderManager();
 
 		//Register
 		Engine::ServiceLocator::instance()->addService(this);
@@ -125,6 +126,8 @@ namespace Engine
 		Engine::ServiceLocator::instance()->addService(_gameLoop);
 		Engine::ServiceLocator::instance()->addService(_lightManager);
 		Engine::ServiceLocator::instance()->addService(_renderManager);
+		Engine::ServiceLocator::instance()->addService(_colliderManager);
+
 
 		//_sceneManager->initialize();
 		_renderManager->initialize();
