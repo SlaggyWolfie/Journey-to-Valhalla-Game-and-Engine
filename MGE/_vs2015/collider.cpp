@@ -28,7 +28,11 @@ void collider::update()
 {
 	SetTrans(getGameObject()->getTransform());
 	//go to CheckCollision in collider Manager
-	ServiceLocator::instance()->getService<ColliderManager>()->CheckCollision(this);
+
+	std::vector<collider*> vec;
+	vec=ServiceLocator::instance()->getService<ColliderManager>()->CheckCollision(this);
+	if (vec.size() > 0)
+		std::cout << vec[0]->getGameObject()->getTransform()->getPosition() <<" "<< getGameObject()->getName();
 }
 
 glm::vec3 collider::GetPos()
@@ -38,19 +42,21 @@ glm::vec3 collider::GetPos()
 
 int collider::GetWidth()
 {
-	if (_type == box)
 	return _width;
 }
 
 int collider::GetHeight()
 {
-	if (_type == box)
 	return _height;
 }
 int collider::GetRadius()
 {
-	if (_type == sphere)
 	return _r;
+}
+
+void collider::setI(int i)
+{
+	index = i;
 }
 
 void collider::SetTrans(Transform* t)
@@ -58,6 +64,7 @@ void collider::SetTrans(Transform* t)
 	_pos = t->getLocalPosition();
 	/*_rot=t->glm::qu*/
 }
+
 
 void collider::prewake()
 {

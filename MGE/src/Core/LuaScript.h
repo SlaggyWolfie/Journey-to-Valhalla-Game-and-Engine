@@ -13,6 +13,7 @@ public:
 	void Initialize();
 	static int ShowHint(lua_State * state);
 	static int OpenDoor(lua_State * state);
+	static int KeyDown(lua_State * state);
 	void printMsg();
 	void stackDump(lua_State *state, const char * pre);
 	void update() override;

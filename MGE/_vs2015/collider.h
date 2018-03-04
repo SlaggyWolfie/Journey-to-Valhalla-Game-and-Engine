@@ -21,6 +21,8 @@ public:
 	int GetWidth();
 	int GetHeight();
 	int GetRadius();
+	int index = 1;
+	void setI(int i);
 	void SetTrans(Transform* t);
 	 //void start() override;
 	 //void awake() override;

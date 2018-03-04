@@ -4,9 +4,11 @@
 #include <iostream>
 #include <string>
 #include "LuaScript.h"
+#include <SFML/Graphics/RenderWindow.hpp>
+#include "Core/Game.hpp"
 
 
-std::string LuaScript::message;
+//std::string LuaScript::message;
 
 LuaScript::LuaScript()
 {
@@ -135,4 +137,12 @@ int LuaScript::OpenDoor(lua_State * state)
 {
 	return 0;
 
+}
+
+int LuaScript::KeyDown(lua_State * state)
+{
+	if (lua_gettop(state) == 1 && lua_isstring(state, 1)) {
+		//lua_pushboolean(state, sf::Keyboard::isKeyPressed(sf::Keyboard::((std::string)lua_tostring(state, 1)));
+		return 0;
+	}
 }

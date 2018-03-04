@@ -12,6 +12,8 @@
 #include "Component.hpp"
 #include "PlayerBaseComponent.h"
 #include "collider.h"
+#include <lua\lua.hpp>
+#include "Core\LuaScript.h"
 
 
 namespace Engine
@@ -139,6 +141,11 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
+
+		LuaScript* luaS = new LuaScript();
+		//luaS->start();
+		//luaS->update();
+
 		Deserealizer d;
 		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
 		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(500, 0, 2000));
@@ -170,12 +177,15 @@ namespace Engine
 		obj1->getTransform()->translate(glm::vec3(-300, -599, 300));
 		obj1->addComponent(new PlayerBaseComponent());
 		obj1->addComponent(new collider());
-		//obj1->getComponent<collider>()->SetType(0);
+		obj1->setName("player");
+		obj1->addComponent(luaS);
+
 
 		Core::GameObject_* obj2 = Model::loadModel("Player.obj");
 		obj2->getTransform()->translate(glm::vec3(-100, -599, 300));
 		obj2->addComponent(new collider());
-		//obj2->getComponent<collider>()->SetType(0);
+		obj2->setName("obj2");
+
 
 
 		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
