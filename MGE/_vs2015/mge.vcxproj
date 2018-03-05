@@ -210,6 +210,9 @@
     <ClInclude Include="..\src\myGame\Scenes\SeventhScene.hpp" />
     <ClInclude Include="..\src\myGame\Scenes\SixthScene.hpp" />
     <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp" />
+    <ClInclude Include="AudioListener.hpp" />
+    <ClInclude Include="Music.hpp" />
+    <ClInclude Include="Sound.hpp" />
     <ClInclude Include="Camera_.hpp" />
     <ClInclude Include="collider.h" />
     <ClInclude Include="ColliderManager.h" />
@@ -283,6 +286,7 @@
     <ClCompile Include="..\src\myGame\Scenes\SeventhScene.cpp" />
     <ClCompile Include="..\src\myGame\Scenes\SixthScene.cpp" />
     <ClCompile Include="..\src\myGame\Scenes\ThirdScene.cpp" />
+    <ClCompile Include="AudioListener.cpp" />
     <ClCompile Include="Camera_.cpp" />
     <ClCompile Include="collider.cpp" />
     <ClCompile Include="ColliderManager.cpp" />
@@ -294,6 +298,7 @@
     <ClCompile Include="Material_.cpp" />
     <ClCompile Include="Mesh_.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Music.cpp" />
     <ClCompile Include="PlayerBaseComponent.cpp" />
     <ClCompile Include="Renderer_.cpp" />
     <ClCompile Include="RenderManager.cpp" />
@@ -302,6 +307,7 @@
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShadowMap.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Texture_.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Transform.cpp" />

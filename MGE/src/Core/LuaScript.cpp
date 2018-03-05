@@ -8,7 +8,7 @@
 #include "Core/Game.hpp"
 
 
-//std::string LuaScript::message;
+std::string LuaScript::message;
 
 LuaScript::LuaScript()
 {

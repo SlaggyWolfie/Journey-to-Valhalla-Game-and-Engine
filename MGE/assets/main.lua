@@ -10,5 +10,5 @@ function Start()
 	Game.ShowHint("This is a placeHolder For Hint",1,1,1)
 end
 function Update()
-	print("Update Function Gets called")
+	-- print("Update Function Gets called")
 end

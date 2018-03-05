@@ -117,7 +117,7 @@ namespace Engine
 		else
 			go = new Core::GameObject_(node->mName.C_Str(), "");
 
-		go->getTransform()->setWorldMatrix4X4(convert(node->mTransformation));
+		//go->getTransform()->setWorldMatrix4X4(convert(node->mTransformation));
 
 		for (unsigned int i = 0; i < node->mNumMeshes; i++)
 		{

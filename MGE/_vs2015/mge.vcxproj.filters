@@ -236,6 +236,9 @@
     <ClCompile Include="PlayerBaseComponent.cpp" />
     <ClCompile Include="collider.cpp" />
     <ClCompile Include="ColliderManager.cpp" />
+    <ClCompile Include="Sound.cpp" />
+    <ClCompile Include="Music.cpp" />
+    <ClCompile Include="AudioListener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -504,6 +507,9 @@
     <ClInclude Include="PlayerBaseComponent.h" />
     <ClInclude Include="collider.h" />
     <ClInclude Include="ColliderManager.h" />
+    <ClInclude Include="Sound.hpp" />
+    <ClInclude Include="Music.hpp" />
+    <ClInclude Include="AudioListener.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

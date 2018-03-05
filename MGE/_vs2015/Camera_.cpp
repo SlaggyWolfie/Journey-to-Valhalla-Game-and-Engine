@@ -119,10 +119,24 @@ namespace Engine
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) transform->translate(transform->up() * speed);
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) transform->translate(transform->up() * -speed);
 
-			/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) transform->rotate(transform->right(), glm::radians(turnSpeed) * Utility::Time::deltaTime());
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) transform->rotate(transform->right(), glm::radians(-turnSpeed) * Utility::Time::deltaTime());
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) transform->rotate(transform->up(), glm::radians(turnSpeed) * Utility::Time::deltaTime());
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) transform->rotate(transform->up(), glm::radians(-turnSpeed) * Utility::Time::deltaTime());*/
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad8)) transform->rotate(transform->right(), glm::radians(turnSpeed) 
+				//* Utility::Time::deltaTime()
+			);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2)) transform->rotate(transform->right(), glm::radians(-turnSpeed)
+				//* Utility::Time::deltaTime()
+			);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4)) transform->rotate(transform->up(), glm::radians(turnSpeed)
+				//* Utility::Time::deltaTime()
+			);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6)) transform->rotate(transform->up(), glm::radians(-turnSpeed)
+				//* Utility::Time::deltaTime()
+			);
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+			{
+				transform->setRotation(glm::quat(glm::vec3(0, 0, 0)));
+				transform->setPosition(glm::vec3(0, 0, 0));
+			}
 
 			//std::cout << "Position: " + glm::to_string(transform->getPosition()) << std::endl;
 			//std::cout << "Rotation: " + glm::to_string(glm::degrees(glm::eulerAngles(transform->getRotation()))) << std::endl;

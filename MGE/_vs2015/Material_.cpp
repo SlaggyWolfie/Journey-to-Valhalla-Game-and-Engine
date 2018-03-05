@@ -6,6 +6,7 @@ namespace Engine
 {
 	namespace Rendering
 	{
+		std::unique_ptr<Shader> Material_::_shader = nullptr;
 
 		Material_::Material_(const std::string& path) :
 			_diffuseColor(glm::vec3(1)), _specularColor(glm::vec3(1)), _emissionColor(glm::vec3(0, 1, 0)),
@@ -180,6 +181,7 @@ namespace Engine
 
 		void Material_::initializeShader(const std::string& path)
 		{
+			if (_shader != nullptr) return;
 			_shader = std::make_unique<Shader>();
 			_shader->addShader(GL_VERTEX_SHADER, path + ".vs");
 			_shader->addShader(GL_FRAGMENT_SHADER, path + ".fs");

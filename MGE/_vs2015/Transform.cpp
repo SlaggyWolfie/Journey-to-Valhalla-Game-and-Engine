@@ -162,6 +162,8 @@ namespace Engine
 
 		glm::vec3 Transform::inverseTransformPoint(const glm::vec3& point)
 		{
+			//optimization perhaps
+			//glm::vec4 const transformedPoint = glm::transpose(getMatrix4X4()) * glm::vec4(point, 1);
 			glm::vec4 const transformedPoint = glm::inverse(getMatrix4X4()) * glm::vec4(point, 1);
 			//glm::vec4 const transformedPoint = glm::vec4(point, 1) * glm::inverse(getMatrix4X4());
 			return glm::vec3(transformedPoint);

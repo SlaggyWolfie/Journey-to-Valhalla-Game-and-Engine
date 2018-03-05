@@ -89,24 +89,28 @@ namespace Engine
 		//first pass - initialize GOs
 		for (const GameObject_s& gameStruct : structs)
 		{
-			GameObject_* gameObject;
+			GameObject_* gameObject = nullptr;
 
 			if (!gameStruct.meshName.empty() && gameStruct.meshName != std::string("")
-				&& gameStruct.meshName.find('.') != std::string::npos)
+				//&& gameStruct.meshName.find('.') != std::string::npos)
+				)
 			{
-				gameObject = Model::loadModel(gameStruct.meshName);
-				gameObject->setName(gameStruct.name);
+				gameObject = Model::loadModel(gameStruct.meshName + ".fbx");
 			}
 			else
 			{
-				gameObject = new GameObject_(gameStruct.name, "");
+				gameObject = new GameObject_("", "");
 			}
 			
+			if (gameObject == nullptr) return;
+			gameObject->setName(gameStruct.name);
 
 			Transform* transform = gameObject->getTransform();
 			transform->setLocalPosition(gameStruct.position);
-			std::cout << gameStruct.name + " Position: " + glm::to_string(gameStruct.position) << std::endl;
-			transform->setLocalRotation(glm::eulerAngleXYZ(gameStruct.rotation.x, gameStruct.rotation.y, gameStruct.rotation.z));
+			//std::cout << gameStruct.name + " Position: " + glm::to_string(gameStruct.position) << std::endl;
+			const glm::vec3 rotation = glm::vec3(glm::radians(gameStruct.rotation.x), glm::radians(gameStruct.rotation.y), glm::radians(gameStruct.rotation.z));
+			transform->setLocalRotation(glm::quat(glm::eulerAngleXYZ(rotation.x, rotation.y, rotation.z)));
+			//transform->setLocalRotation(glm::quat(glm::eulerAngleXYZ(gameStruct.rotation.x, gameStruct.rotation.y, gameStruct.rotation.z)));
 			transform->setLocalScale(gameStruct.scale);
 
 			//if (!gameStruct.meshName.empty() && gameStruct.meshName != std::string("")
@@ -137,6 +141,8 @@ namespace Engine
 			Transform* transform = gameObject->getTransform();
 			transform->setParent(id_to_go[parentID]->getTransform(), true);
 		}
+
+		id_to_go.clear();
 	}
 
 	void Scene::hardCode()
@@ -146,11 +152,12 @@ namespace Engine
 		//luaS->start();
 		//luaS->update();
 
-		Deserealizer d;
+		//Deserealizer d;
 		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
 		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(500, 0, 2000));
 		Rendering::Light_* light = new Rendering::Light_();
 		lightgo->addComponent(light);
+		light->setColor(glm::vec3(1));
 		light->setLightType(Rendering::LightType::Directional);
 		lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
 		lightgo->getTransform()->rotate(lightgo->getTransform()->right(), -glm::radians(30.0f));
@@ -170,7 +177,7 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
-		Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
+		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
 		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//playerModel->addComponent(new PlayerBaseComponent());
 		Core::GameObject_* obj1 = Model::loadModel("Player.obj");
