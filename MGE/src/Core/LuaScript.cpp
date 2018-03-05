@@ -166,8 +166,8 @@ int LuaScript::PushBackObj(lua_State * state)
 	{
 		std::string name =lua_tostring(state, 1);
 		ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
-		
-		//std::cout<<_colliderManager->GetColliderByName(name)->getGameObject()->getComponent<PlayerBaseComponent>()->lp;
+		auto comp = _colliderManager->GetColliderByName(name)->getGameObject()->getComponent<PlayerBaseComponent>();
+		std::cout<<comp->lp;
 
 		//_colliderManager->GetColliderByName(name)->getGameObject()->getTransform()->setPosition(glm::vec3(-300, -599, 300));
 		//(_colliderManager->GetColliderByName(name)->getGameObject()->getComponent<PlayerBaseComponent>()->lp);
