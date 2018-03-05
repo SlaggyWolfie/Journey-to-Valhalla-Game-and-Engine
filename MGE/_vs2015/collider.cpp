@@ -30,9 +30,9 @@ void collider::update()
 	//go to CheckCollision in collider Manager
 
 	std::vector<collider*> vec;
-	vec=ServiceLocator::instance()->getService<ColliderManager>()->CheckCollision(this);
-	if (vec.size() > 0)
-		std::cout << vec[0]->getGameObject()->getTransform()->getPosition() <<" "<< getGameObject()->getName();
+	//vec=ServiceLocator::instance()->getService<ColliderManager>()->CheckCollision(this);
+	//if (vec.size() > 0)
+		//std::cout << vec[0]->getGameObject()->getTransform()->getPosition() <<" "<< getGameObject()->getName();
 }
 
 glm::vec3 collider::GetPos()

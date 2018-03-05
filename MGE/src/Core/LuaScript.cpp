@@ -1,14 +1,16 @@
 #include "LuaScript.h"
-#include <list>
 #include <lua/lua.hpp>
 #include <iostream>
 #include <string>
-#include "LuaScript.h"
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "Core/Game.hpp"
+#include "../../_vs2015/ColliderManager.h"
+#include "../../_vs2015/PlayerBaseComponent.h"
+#include "../../_vs2015/LastposStasher.h"
 
 
-//std::string LuaScript::message;
+
+std::string LuaScript::message = std::string();
 
 LuaScript::LuaScript()
 {
@@ -41,6 +43,10 @@ void LuaScript::start()
 		}
 	}
 }
+glm::vec3 LuaScript::GetPos()
+{
+	return lastPos;
+}
 void LuaScript::registerFunctions()
 {
 	lua_newtable(state_);
@@ -49,6 +55,13 @@ void LuaScript::registerFunctions()
 
 	lua_pushcfunction(state_, ShowHint);
 	lua_setfield(state_, -2, "ShowHint");
+	
+	lua_pushcfunction(state_, PushBackObj);
+	lua_setfield(state_, -2, "PushBackObj");
+
+	lua_pushcfunction(state_, CollisionBetween);
+	lua_setfield(state_, -2, "CollisionBetween");
+
 
 	lua_setglobal(state_, "Game");
 
@@ -58,6 +71,8 @@ void LuaScript::registerFunctions()
 
 void LuaScript::update()
 {
+	
+	
 	lua_getglobal(state_, "Update");
 	int isFunc = lua_isfunction(state_, -1);
 	if (isFunc) {
@@ -74,6 +89,7 @@ int LuaScript::MovePlayer(lua_State * state)
 
 void LuaScript::Initialize()
 {
+//	parent = getGameObject()->getComponent<collider>();
 }
 
 int LuaScript::ShowHint(lua_State * state)
@@ -87,7 +103,7 @@ int LuaScript::ShowHint(lua_State * state)
 		message += "\n";
 		//if (lua_pcall(state, 0, 0, 0) != 0) {
 		//}
-		
+		std::cout << message << std::endl;
 		//text.setString((sf::String)lua_tostring(state, 1));
 		//text.setCharacterSize((int)lua_tonumber(state, 4));
 		//text.setPosition(lua_tonumber(state, 2), lua_tonumber(state, 3));
@@ -139,10 +155,45 @@ int LuaScript::OpenDoor(lua_State * state)
 
 }
 
-int LuaScript::KeyDown(lua_State * state)
+int LuaScript::OnTriggerEnter(lua_State * state)
 {
-	if (lua_gettop(state) == 1 && lua_isstring(state, 1)) {
-		//lua_pushboolean(state, sf::Keyboard::isKeyPressed(sf::Keyboard::((std::string)lua_tostring(state, 1)));
-		return 0;
+	return 0;
+}
+
+int LuaScript::PushBackObj(lua_State * state)
+{
+	if (lua_isstring(state, 1))
+	{
+		std::string name =lua_tostring(state, 1);
+		ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
+		
+		//std::cout<<_colliderManager->GetColliderByName(name)->getGameObject()->getComponent<PlayerBaseComponent>()->lp;
+
+		//_colliderManager->GetColliderByName(name)->getGameObject()->getTransform()->setPosition(glm::vec3(-300, -599, 300));
+		//(_colliderManager->GetColliderByName(name)->getGameObject()->getComponent<PlayerBaseComponent>()->lp);
+		
+	return 0;
 	}
+	return luaL_error(state, " faulty arguments");
+}
+
+int LuaScript::CollisionBetween(lua_State * state)
+{
+	if (lua_isstring(state, 1)&& lua_gettop(state) == 2 && lua_isstring(state, 2))
+	{
+		std::string name1= (std::string)lua_tostring(state, 1);
+		std::string name2 = (std::string)lua_tostring(state, 2);
+
+		ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
+		bool result = _colliderManager->CollisionBetween(_colliderManager->GetColliderByName(name1), _colliderManager->GetColliderByName(name2));
+		lua_pushboolean(state,result);
+		//std::cout << result << std::endl;
+		//std::cout << _colliderManager->CollisionBetween(_colliderManager->GetColliderByName(name1), _colliderManager->GetColliderByName(name2))<<std::endl;
+
+		//std::cout<<_colliderManager->GetColliderByName(name2);
+
+		return 1;
+	}
+	return luaL_error(state, " faulty arguments");
+
 }

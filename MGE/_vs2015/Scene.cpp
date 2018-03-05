@@ -11,6 +11,7 @@
 #include "../src/Core/Deserealizer.hpp"
 #include "Component.hpp"
 #include "PlayerBaseComponent.h"
+#include "LastposStasher.h"
 #include "collider.h"
 #include <lua\lua.hpp>
 #include "Core\LuaScript.h"
@@ -141,10 +142,7 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
-
 		LuaScript* luaS = new LuaScript();
-		//luaS->start();
-		//luaS->update();
 
 		Deserealizer d;
 		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
@@ -175,17 +173,19 @@ namespace Engine
 		//playerModel->addComponent(new PlayerBaseComponent());
 		Core::GameObject_* obj1 = Model::loadModel("Player.obj");
 		obj1->getTransform()->translate(glm::vec3(-300, -599, 300));
-		obj1->addComponent(new PlayerBaseComponent());
+		obj1->setName("Player");
 		obj1->addComponent(new collider());
-		obj1->setName("player");
-		obj1->addComponent(luaS);
+		obj1->addComponent(new PlayerBaseComponent());
 
+		
+	
 
 		Core::GameObject_* obj2 = Model::loadModel("Player.obj");
 		obj2->getTransform()->translate(glm::vec3(-100, -599, 300));
-		obj2->addComponent(new collider());
 		obj2->setName("obj2");
-
+		obj2->addComponent(new collider());
+		
+		obj1->addComponent(luaS);
 
 
 		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);

@@ -11,9 +11,11 @@ public:
 	ColliderManager();
 	~ColliderManager();
 	std::vector<collider*> CheckCollision(collider* object);
+	bool CollisionBetween(collider* obj1, collider* obj2);
 	void addCollider(collider* collider);
 	void removeCollider(collider* collider);
 	void removeCollider(int index);
+	collider* GetColliderByName(std::string GameObjectName);
 	collider* getCollider(int index);
 	bool isColliderRegistered(collider* collider);
 private:

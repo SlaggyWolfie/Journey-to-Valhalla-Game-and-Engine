@@ -1,15 +1,14 @@
 #pragma once
 #include "Component.hpp"
-#include "GameObject_.hpp"
-#include "Transform.hpp"
 #include "glm.hpp"
-using namespace Engine::Core;
-class PlayerBaseComponent:public Component
+class PlayerBaseComponent : public Engine::Core::Component
 {
 public:
 
 	PlayerBaseComponent();
-	~PlayerBaseComponent();
+	virtual ~PlayerBaseComponent() = default;
+	PlayerBaseComponent(const PlayerBaseComponent& other) = default;
+	PlayerBaseComponent& operator=(const PlayerBaseComponent& other) = default;
 
 	void update() override;
 	 //void start() override;
@@ -19,5 +18,8 @@ public:
 	 //void fixedUpdate() override;
 	 //void lateUpdate() override;
 	 //void onValidate() override;
+	glm::vec3 lp;
+	void destroy() override;
+	bool isUniquePerGameObject() override;
 };
 

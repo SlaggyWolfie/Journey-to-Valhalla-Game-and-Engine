@@ -58,6 +58,19 @@ std::vector<collider*> ColliderManager::CheckCollision(collider* object)
 	}
 }
 
+bool ColliderManager::CollisionBetween(collider * obj1, collider * obj2)
+{
+	int distance = glm::sqrt((obj1->GetPos().x - obj2->GetPos().x) * (obj1->GetPos().x - obj2->GetPos().x) +
+		(obj1->GetPos().y - obj2->GetPos().y) * (obj1->GetPos().y - obj2->GetPos().y) +
+		(obj1->GetPos().z - obj2->GetPos().z) * (obj1->GetPos().z - obj2->GetPos().z));
+	//std::cout << distance << std::endl;
+	if (distance < (obj1->GetRadius() + obj2->GetRadius()))
+	{
+		return true;
+	}
+	else return false;
+}
+
 void ColliderManager::addCollider(collider* collider)
 {
 	allColliders.push_back(collider);
@@ -71,6 +84,18 @@ void ColliderManager::removeCollider(collider* collider)
 void ColliderManager::removeCollider(int index)
 {
 	allColliders.erase(allColliders.begin() + index);
+}
+
+collider* ColliderManager::GetColliderByName(std::string GameObjectName)
+{
+	
+	for (int i = 0; i < allColliders.size(); i++)
+	{
+		//std::cout << allColliders[i]->getGameObject()->getName() << std::endl;
+		if (GameObjectName==allColliders[i]->getGameObject()->getName())
+			return allColliders[i];
+	}
+	return 0;
 }
 
 collider* ColliderManager::getCollider(int index)

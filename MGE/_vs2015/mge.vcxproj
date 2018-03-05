@@ -217,6 +217,7 @@
     <ClInclude Include="GameObject_.hpp" />
     <ClInclude Include="GeneralHelpers.hpp" />
     <ClInclude Include="FunctionGroup.hpp" />
+    <ClInclude Include="LastposStasher.h" />
     <ClInclude Include="LightManager.hpp" />
     <ClInclude Include="Light_.hpp" />
     <ClInclude Include="Manager.hpp" />
@@ -289,6 +290,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject_.cpp" />
     <ClCompile Include="GeneralHelpers.cpp" />
+    <ClCompile Include="LastposStasher.cpp" />
     <ClCompile Include="LightManager.cpp" />
     <ClCompile Include="Light_.cpp" />
     <ClCompile Include="Material_.cpp" />

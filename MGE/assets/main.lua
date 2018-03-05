@@ -7,8 +7,11 @@ function Initialize()
 end
 function Start()
 	print("this is start method")
-	Game.ShowHint("This is a placeHolder For Hint",1,1,1)
+	
 end
 function Update()
-	print("Update Function Gets called")
+	if(Game.CollisionBetween("Player","obj2")) then
+	Game.PushBackObj("Player")
+	print("i work")
+	end	
 end
