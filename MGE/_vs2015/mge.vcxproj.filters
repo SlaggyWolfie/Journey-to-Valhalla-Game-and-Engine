@@ -239,6 +239,7 @@
     <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="AudioListener.cpp" />
+    <ClCompile Include="LastposStasher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -510,6 +511,7 @@
     <ClInclude Include="Sound.hpp" />
     <ClInclude Include="Music.hpp" />
     <ClInclude Include="AudioListener.hpp" />
+    <ClInclude Include="LastposStasher.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
