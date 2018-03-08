@@ -10,6 +10,12 @@ function Start()
 	
 end
 function Update()
+		obj1="Player"
+		obj2="obj2"
+	if(Game.CollisionBetween(obj1,obj2)) then
+		Game.PushBackObj(obj1,obj2)
+		print("i work")
+		end	
 	-- print("Update Function Gets called")
 	if(Game.CollisionBetween("Player","obj2")) then
 	Game.PushBackObj("Player")

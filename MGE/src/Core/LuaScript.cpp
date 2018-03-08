@@ -160,12 +160,17 @@ int LuaScript::OnTriggerEnter(lua_State * state)
 
 int LuaScript::PushBackObj(lua_State * state)
 {
-	if (lua_isstring(state, 1))
+	if (lua_isstring(state, 1) && lua_gettop(state) == 2 && lua_isstring(state, 2))
 	{
 		//std::string name =lua_tostring(state, 1);
 		//ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
 		//auto comp = _colliderManager->GetColliderByName(name)->getGameObject()->getComponent<PlayerBaseComponent>();
 		//if (comp != nullptr) std::cout<<glm::to_string(comp->lp);
+		std::string name1 = (std::string)lua_tostring(state, 1);
+		std::string name2 = (std::string)lua_tostring(state, 2);
+		ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
+		_colliderManager->GetColliderByName(name1)->PushBackObj(name1,name2);
+		//std::cout<<comp->lp;
 
 		//_colliderManager->GetColliderByName(name)->getGameObject()->getTransform()->setPosition(glm::vec3(-300, -599, 300));
 		//(_colliderManager->GetColliderByName(name)->getGameObject()->getComponent<PlayerBaseComponent>()->lp);

@@ -19,10 +19,17 @@ public:
 	void SetBoxSize(int width,int height);
 	void SetSphereRadius();
 	void update() override;
+	void fixedUpdate() override;
+	void PushBackObj(std::string n, std::string n1);
+	bool Enabled();
+	void SetEnable(bool n);
+
 	glm::vec3 GetPos();
 	int GetWidth();
 	int GetHeight();
 	int GetRadius();
+	void  jumpToObj();
+	glm::vec3 lastPos = glm::vec3(0);
 	int index = 1;
 	void setI(int i);
 	void SetTrans(Transform* t);
@@ -33,14 +40,21 @@ public:
 	 //void fixedUpdate() override;
 	 //void lateUpdate() override;
 	 //void onValidate() override;
+	 glm::vec3 point1;
+	 glm::vec3 point2;
+	 glm::vec3 point3;
+	 glm::vec3 point4;
+	 glm::vec3 point5;
+	 glm::vec3 point6;
 private:
 	ColliderManager * _colliderManager;
 	glm::vec3 _pos;
 	glm::vec3 _rot;
 	Transform* _t;
 	colliderType _type=box;
-	int _width = 0;
-	int _height = 0;
+	int _width = 50;
+	int _height = 50;
 	int _r=50;
+	bool _enabled;
 };
 
