@@ -57,9 +57,38 @@ std::vector<collider*> ColliderManager::CheckCollision(collider* object)
 		}
 	}
 }
-
+std::vector<collider*> ColliderManager::CheckBoxCollision(collider * object)
+{
+	std::vector<collider*> collideList;
+	//std::cout << allColliders.size() << std::endl;
+	for (int i = 0; i <allColliders.size(); i++)
+	{
+		std::cout << (object== allColliders[i]) << std::endl;
+		if (allColliders[i]->getGameObject()->getName() != object->getGameObject()->getName())
+		{
+			//std::cout << " sir!" << std::endl;
+			/*std::cout << ((object->point1.x <= allColliders[i]->point2.x && object->point2.x >= allColliders[i]->point1.x) &&
+				(object->point3.z <= allColliders[i]->point4.z && object->point4.z >= allColliders[i]->point3.z) &&
+				(object->point5.y <= allColliders[i]->point6.y && object->point6.y >= allColliders[i]->point5.y)) << std::endl;*/
+			if ((object->point1.x <= allColliders[i]->point2.x && object->point2.x >= allColliders[i]->point1.x) &&
+				(object->point3.z <= allColliders[i]->point4.z && object->point4.z >= allColliders[i]->point3.z) &&
+				(object->point5.y <= allColliders[i]->point6.y && object->point6.y >= allColliders[i]->point5.y))
+			{
+				std::cout << "its collision, sir!" << std::endl;
+				collideList.push_back(allColliders[i]);
+			}
+		return collideList;
+		}
+	}
+}
+glm::vec3 ColliderManager::GiveVectorBeetweem(collider * obj1, collider * obj2)
+{
+	glm::vec3 l = obj1->getGameObject()->getTransform()->getPosition() - obj2->getGameObject()->getTransform()->getPosition();
+	return l;
+}
 bool ColliderManager::CollisionBetween(collider * obj1, collider * obj2)
 {
+	if (!obj1->Enabled() && obj2->isEnabled()) return false;
 	int distance = glm::sqrt((obj1->GetPos().x - obj2->GetPos().x) * (obj1->GetPos().x - obj2->GetPos().x) +
 		(obj1->GetPos().y - obj2->GetPos().y) * (obj1->GetPos().y - obj2->GetPos().y) +
 		(obj1->GetPos().z - obj2->GetPos().z) * (obj1->GetPos().z - obj2->GetPos().z));
@@ -76,10 +105,10 @@ void ColliderManager::addCollider(collider* collider)
 	allColliders.push_back(collider);
 }
 
-void ColliderManager::removeCollider(collider* collider)
-{
-	allColliders.erase(std::remove(allColliders.begin(), allColliders.end(), collider), allColliders.end());
-}
+//void ColliderManager::removeCollider(collider* collider)
+//{
+//	allColliders.erase(std::remove(allColliders.begin(), allColliders.end(), collider), allColliders.end());
+//}
 
 void ColliderManager::removeCollider(int index)
 {
@@ -101,6 +130,11 @@ collider* ColliderManager::GetColliderByName(std::string GameObjectName)
 collider* ColliderManager::getCollider(int index)
 {
 	return allColliders[index];
+}
+
+std::vector<collider*> ColliderManager::getColliders()
+{
+	return allColliders;
 }
 
 bool ColliderManager::isColliderRegistered(collider* collider)

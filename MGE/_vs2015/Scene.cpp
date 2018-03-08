@@ -15,6 +15,8 @@
 #include "collider.h"
 #include <lua\lua.hpp>
 #include "Core\LuaScript.h"
+#include "SFML\Graphics\RenderWindow.hpp"
+#include "../src/Core/Game.hpp"
 
 
 namespace Engine
@@ -171,21 +173,31 @@ namespace Engine
 		Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
 		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//playerModel->addComponent(new PlayerBaseComponent());
-		Core::GameObject_* obj1 = Model::loadModel("Player.obj");
-		obj1->getTransform()->translate(glm::vec3(-300, -599, 300));
+		Core::GameObject_* obj1 = Model::loadModel("house plant.obj");
+		obj1->getTransform()->translate(glm::vec3(-300, -599, 700));
 		obj1->setName("Player");
 		obj1->addComponent(new collider());
-		obj1->addComponent(new PlayerBaseComponent());
 
-		
+
+		Core::GameObject_* obj3 = Model::loadModel("house plant.obj");
+		obj3->getTransform()->translate(glm::vec3(-500, -599, 100));
+		obj3->setName("enemy");
+		obj3->addComponent(new collider());
+
+		Core::GameObject_* obj4 = Model::loadModel("house plant.obj");
+		obj4->getTransform()->translate(glm::vec3(-700, -599, 600));
+		obj4->setName("npc");
+		obj4->addComponent(new collider());
+		//obj1->addComponent(new PlayerBaseComponent());
 	
 
 		Core::GameObject_* obj2 = Model::loadModel("Player.obj");
-		obj2->getTransform()->translate(glm::vec3(-100, -599, 300));
+		obj2->getTransform()->translate(glm::vec3(-100, -599, 100));
 		obj2->setName("obj2");
 		obj2->addComponent(new collider());
 		
 		obj1->addComponent(luaS);
+
 
 
 		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);

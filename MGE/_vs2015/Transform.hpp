@@ -29,11 +29,15 @@ namespace Engine
 			 * \param position The target world position.
 			 */
 			void setPosition(const glm::vec3& position);
+
+			void setLastPos(const glm::vec3& position);
 			/**
 			 * \brief Gets the transform's world position.
 			 * \return The transform's world position.
 			 */
 			glm::vec3 getPosition();
+
+			glm::vec3 getLastPos();
 
 			/**
 			* \brief Sets the transform's world rotation.
