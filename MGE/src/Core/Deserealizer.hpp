@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 #include "../_vs2015/Scene.hpp"
 
 using namespace std;
@@ -15,7 +16,7 @@ struct GameObject_s
 	string name;
 	string meshName;
 	glm::vec3 position;
-	glm::vec3 rotation;
+	glm::quat rotation;
 	glm::vec3 scale;
 	int parentID;
 	int selfID;

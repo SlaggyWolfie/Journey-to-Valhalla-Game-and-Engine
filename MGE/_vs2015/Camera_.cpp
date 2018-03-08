@@ -109,26 +109,45 @@ namespace Engine
 
 		void Camera_::update()
 		{
-			float speed = 3.0f;
-			float turnSpeed = 10.0f;
-			Transform* transform = getGameObject()->getTransform();
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) transform->translate(transform->forward() * speed);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) transform->translate(transform->forward() * -speed);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) transform->translate(transform->right() * -speed);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) transform->translate(transform->right() * speed);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) transform->translate(transform->up() * speed);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) transform->translate(transform->up() * -speed);
+			float moveSpeed = 113.0f
+				* Utility::Time::deltaTime()
+				;
+			float turnSpeed = 100.0f
+				* Utility::Time::deltaTime()
+				;
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt))
+			{
+				moveSpeed *= 5;
+				turnSpeed *= 5;
+			}
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad8)) transform->rotate(transform->right(), glm::radians(turnSpeed) 
+			Transform* transform = getGameObject()->getTransform();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) transform->translate(transform->forward() * moveSpeed);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) transform->translate(transform->forward() * -moveSpeed);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) transform->translate(transform->right() * -moveSpeed);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) transform->translate(transform->right() * moveSpeed);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) transform->translate(transform->up() * moveSpeed);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) transform->translate(transform->up() * -moveSpeed);
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad8)) transform->rotate(transform->right(), glm::radians(turnSpeed)
 				//* Utility::Time::deltaTime()
 			);
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2)) transform->rotate(transform->right(), glm::radians(-turnSpeed)
-				//* Utility::Time::deltaTime()
+				//* Utility::Time::deltaTime()a
 			);
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4)) transform->rotate(transform->up(), glm::radians(turnSpeed)
-				//* Utility::Time::deltaTime()
+				//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4)) transform->rotate(glm::vec3(0, 1, 0), glm::radians(turnSpeed)
+					//* Utility::Time::deltaTime()
 			);
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6)) transform->rotate(transform->up(), glm::radians(-turnSpeed)
+				//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6)) transform->rotate(glm::vec3(0, 1, 0), glm::radians(-turnSpeed)
+					//* Utility::Time::deltaTime()
+			);
+
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad7)) transform->rotate(transform->forward(), glm::radians(turnSpeed)
+				//* Utility::Time::deltaTime()
+			);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad9)) transform->rotate(transform->forward(), glm::radians(-turnSpeed)
 				//* Utility::Time::deltaTime()
 			);
 
@@ -143,8 +162,10 @@ namespace Engine
 			//std::cout << "Scale: " + glm::to_string(transform->getScale()) << std::endl;
 			//std::cout << "Forward: " + glm::to_string(transform->forward()) << std::endl;
 			//std::cout << "Right: " + glm::to_string(transform->right()) << std::endl;
-			//std::cout << "Up: " + glm::to_string(transform->up()) << std::endl << std::endl;
-
+			//std::cout << "Up: " + glm::to_string(transform->up()) << std::endl;
+			//std::cout << "Quaternion: " + glm::to_string(transform->getRotation() )<<std::endl;
+			//std::cout << "Quat length: " + std::to_string(glm::length(transform->getRotation())) << std::endl << std::endl;
+			//std::
 			//std::cout << "Local Matrix: " << std::endl << glm::to_string(transform->getLocalMatrix4X4()) << std::endl << std::endl;
 			//std::cout << "World Matrix: " <<std::endl << glm::to_string(transform->getMatrix4X4()) << std::endl << std::endl;
 		}

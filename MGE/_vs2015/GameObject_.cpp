@@ -16,11 +16,14 @@ namespace Engine
 		GameObject_::GameObject_(std::string name, std::string tag, const glm::vec3 & position)
 			: _name(std::move(name)), _tag(std::move(tag)), _isStatic(false), _isActive(true)
 		{
-			_transform = std::make_unique<Transform>();
+			//_transform = std::make_unique<Transform>();
 			_components = std::vector<std::unique_ptr<Component>>();
-			_components.push_back(std::unique_ptr<Component>(_transform.get()));
+			_components.push_back(std::make_unique<Transform>());
+			//_components.push_back(std::unique_ptr<Component>(_transform.get()));
+			_transform = findComponent<Transform>();
 			_transform->setGameObject(this);
 			_transform->setPosition(position);
+			getGameLoop()->subscribe(_transform);
 		}
 
 		GameObject_::~GameObject_()
@@ -49,7 +52,7 @@ namespace Engine
 
 		Transform* GameObject_::getTransform() const
 		{
-			return _transform.get();
+			return _transform;
 		}
 
 		bool GameObject_::isStatic() const
@@ -119,6 +122,11 @@ namespace Engine
 			return false;
 		}
 
+		int GameObject_::getComponentsCount() const
+		{
+			return _components.size();
+		}
+
 		GameLoop* GameObject_::getGameLoop()
 		{
 			if (_gameLoop == nullptr) 
@@ -126,9 +134,17 @@ namespace Engine
 			return _gameLoop;
 		}
 
+		int GameObject_::getIndex(Component* component)
+		{
+			for (size_t i = 0; i < _components.size(); i++)
+				if (component == _components[i].get())
+					return i;
+			return -1;
+		}
+
 		GameObject_::GameObject_(const GameObject_& other) :
 			_name(other._name),
-			_tag(other._tag), _gameLoop(nullptr),
+			_tag(other._tag), _transform(other._transform), _gameLoop(nullptr),
 			_isStatic(other._isStatic),
 			_isActive(other._isActive)
 		{

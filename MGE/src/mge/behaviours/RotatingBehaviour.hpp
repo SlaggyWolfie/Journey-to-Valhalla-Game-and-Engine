@@ -12,7 +12,7 @@ class RotatingBehaviour : public AbstractBehaviour
 		RotatingBehaviour();
 		virtual ~RotatingBehaviour();
 
-		virtual void update(float pStep);
+		void update(float pStep)override;
 
 };
 

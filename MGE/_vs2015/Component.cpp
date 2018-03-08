@@ -1,5 +1,7 @@
 #include "Component.hpp"
 #include "GameObject_.hpp"
+#include "ServiceLocator.hpp"
+#include "Core/Game.hpp"
 
 namespace Engine
 {
@@ -10,14 +12,15 @@ namespace Engine
 			return _gameObject;
 		}
 
-		Component::Component() : _gameObject(nullptr), _enabled(true)
+		Component::Component() : _gameObject(nullptr), _enabled(true), _started(false)
 		{
 		}
 
 		Component::~Component()
 			= default;
 
-		Component::Component(const Component& other) : _gameObject(other._gameObject), _enabled(other._enabled)
+		Component::Component(const Component& other) : _gameObject(other._gameObject), _enabled(other._enabled),
+		                                               _started(false)
 		{
 		}
 
@@ -35,6 +38,7 @@ namespace Engine
 		void Component::setEnabled(const bool enable)
 		{
 			_enabled = enable;
+			if (!enable) _started = false;
 		}
 
 		void Component::destroy()
@@ -50,6 +54,12 @@ namespace Engine
 			//std::cout << "Awake() is in setGameObject()" << std::endl;
 			prewake();
 			awake();
+
+			if (ServiceLocator::instance()->getService<GameLoop>()->hasStarted())
+			{
+				_started = true;
+				start();
+			}
 		}
 
 		bool Component::isUniquePerGameObject()

@@ -7,7 +7,6 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp" />
-    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />
     <ClCompile Include="..\src\mge\core\Camera.cpp" />
     <ClCompile Include="..\src\mge\core\GameObject.cpp" />
@@ -240,6 +239,7 @@
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="AudioListener.cpp" />
     <ClCompile Include="LastposStasher.cpp" />
+    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -248,7 +248,6 @@
     <ClInclude Include="..\src\glm.hpp" />
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
-    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
     <ClInclude Include="..\src\mge\config.hpp" />
     <ClInclude Include="..\src\mge\core\AbstractGame.hpp" />
     <ClInclude Include="..\src\mge\core\Camera.hpp" />
@@ -512,9 +511,11 @@
     <ClInclude Include="Music.hpp" />
     <ClInclude Include="AudioListener.hpp" />
     <ClInclude Include="LastposStasher.h" />
+    <ClInclude Include="RotatingComponent.hpp" />
+    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram11.cd" />
   </ItemGroup>
 </Project>

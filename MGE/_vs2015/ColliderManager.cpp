@@ -64,11 +64,7 @@ bool ColliderManager::CollisionBetween(collider * obj1, collider * obj2)
 		(obj1->GetPos().y - obj2->GetPos().y) * (obj1->GetPos().y - obj2->GetPos().y) +
 		(obj1->GetPos().z - obj2->GetPos().z) * (obj1->GetPos().z - obj2->GetPos().z));
 	//std::cout << distance << std::endl;
-	if (distance < (obj1->GetRadius() + obj2->GetRadius()))
-	{
-		return true;
-	}
-	else return false;
+	return distance < (obj1->GetRadius() + obj2->GetRadius());
 }
 
 void ColliderManager::addCollider(collider* collider)

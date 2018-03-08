@@ -92,6 +92,8 @@ namespace Engine
 
 			glm::vec3 transformPoint(const glm::vec3& point);
 			glm::vec3 inverseTransformPoint(const glm::vec3& point);
+			glm::vec3 transformDirection(const glm::vec3& direction);
+			glm::vec3 inverseTransformDirection(const glm::vec3& direction);
 
 			void lookAt(Transform* lookAtTarget, const glm::vec3& up = glm::vec3(0, 1, 0));
 			void translate(const glm::vec3& translation);
@@ -119,35 +121,26 @@ namespace Engine
 			glm::vec3 _localScale = glm::vec3(1);
 			glm::mat4 _localMatrix = glm::mat4(1);
 
+			glm::vec3 _worldPosition = glm::vec3();
+			glm::quat _worldRotation = glm::quat();
+			glm::vec3 _worldScale = glm::vec3(1);
 			glm::mat4 _worldMatrix = glm::mat4(1);
 			glm::mat3 _normalMatrix = glm::mat4(1);
 
-			void makeLocalMatrixDirty();
-			void makeWorldMatrixDirty();
+			void _makeLocalMatrixDirty();
+			void _makeWorldMatrixDirty();
 			bool _isLocalMatrixDirty = true;
 			bool _isWorldMatrixDirty = true;
 
 			void _determineCaching(bool forWorldMatrix);
 
 			glm::mat4 _calculateLocalMatrix() const;
-
-			//good
-			//Recurse through parents to construct World Matrix
-			//Use said matrix to construct TRS
+			glm::mat3 _calculateNormalMatrix() const;
 
 			glm::vec3 _calculateWorldPosition();
 			glm::quat _calculateWorldRotation();
 			glm::vec3 _calculateWorldScale();
 			glm::mat4 _calculateWorldMatrix();
-
-			//bad
-			//Recurse through parents to construct components (TRS)
-			//Use said components to construct World Matrix
-
-			glm::vec3 _calculateWorldPosition2();
-			glm::quat _calculateWorldRotation2();
-			glm::vec3 _calculateWorldScale2();
-			glm::mat4 _calculateWorldMatrix2();
 
 			//Convenience
 			static glm::vec3 _getTranslation(const glm::mat4& matrix);
@@ -155,8 +148,12 @@ namespace Engine
 			static glm::vec3 _getScale(const glm::mat4& matrix);
 			static glm::vec3 _getSkew(const glm::mat4& matrix);
 			static glm::vec4 _getPerspective(const glm::mat4& matrix);
+			static void _getTRS(const glm::mat4& matrix, glm::vec3& position, glm::quat& rotation, glm::vec3& scale);
 
-			glm::vec3 getLocalSpaceDirection(const glm::vec3& point);
+			glm::vec4 _transformVector(glm::vec4 vector);
+			glm::vec4 _inverseTransformVector(glm::vec4 vector);
+
+			glm::vec3 _getLocalSpaceDirection(const glm::vec3& direction);
 
 			Game* _game = nullptr;
 
@@ -164,6 +161,8 @@ namespace Engine
 			bool isUniquePerGameObject() override;
 			void destroy() override;
 			void prewake() override;
+			//void fixedUpdate() override;
+			void update() override;
 		};
 	}
 }

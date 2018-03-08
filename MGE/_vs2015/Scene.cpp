@@ -15,7 +15,7 @@
 #include "collider.h"
 #include <lua\lua.hpp>
 #include "Core\LuaScript.h"
-
+#include "RotatingComponent.hpp"
 
 namespace Engine
 {
@@ -88,15 +88,34 @@ namespace Engine
 		//std::unordered_map<GameObject_*, int> go_to_id;
 
 		//first pass - initialize GOs
-		for (const GameObject_s& gameStruct : structs)
+		int index = 0;
+		std::cout << "Deserealizing " + std::to_string(structs.size()) + " objects." << std::endl;
+		for (GameObject_s& gameStruct : structs)
 		{
+			std::cout << "\tObject " + std::to_string(++index) + "." << std::endl;
 			GameObject_* gameObject = nullptr;
 
 			if (!gameStruct.meshName.empty() && gameStruct.meshName != std::string("")
-				//&& gameStruct.meshName.find('.') != std::string::npos)
+				&& gameStruct.meshName.find('.') != std::string::npos
 				)
 			{
-				gameObject = Model::loadModel(gameStruct.meshName + ".fbx");
+				while (gameStruct.meshName.find('/') != std::string::npos)
+				{
+					gameStruct.meshName = gameStruct.meshName.substr(gameStruct.meshName.find('/') + 1, std::string::npos);
+					std::cout << gameStruct.meshName << std::endl;
+				}
+
+				if (gameStruct.meshName.find("default") != std::string::npos)
+				{
+					//continue;
+					if (gameStruct.name.find("Cylinder") != std::string::npos)
+						gameStruct.meshName = "Cylinder.fbx";
+					else
+						//if (gameStruct.name.find("Cube") != std::string::npos)
+						gameStruct.meshName = "Cube.fbx";
+				}
+
+				gameObject = Model::loadModel(gameStruct.meshName);
 			}
 			else
 			{
@@ -107,10 +126,19 @@ namespace Engine
 			gameObject->setName(gameStruct.name);
 
 			Transform* transform = gameObject->getTransform();
+			gameStruct.position.x *= -1;
+			//gameStruct.position.z *= -1;
+			//gameStruct.position.y *= -1;
 			transform->setLocalPosition(gameStruct.position);
-			//std::cout << gameStruct.name + " Position: " + glm::to_string(gameStruct.position) << std::endl;
-			const glm::vec3 rotation = glm::vec3(glm::radians(gameStruct.rotation.x), glm::radians(gameStruct.rotation.y), glm::radians(gameStruct.rotation.z));
-			transform->setLocalRotation(glm::quat(glm::eulerAngleXYZ(rotation.x, rotation.y, rotation.z)));
+			std::cout << gameStruct.name + " Position: " + glm::to_string(gameStruct.position) << std::endl;
+			//const glm::vec3 rotation = glm::vec3(glm::radians(gameStruct.rotation.x), glm::radians(gameStruct.rotation.y), glm::radians(gameStruct.rotation.z));
+			//transform->setLocalRotation(glm::quat(glm::eulerAngleYXZ(rotation.x, -rotation.y, -rotation.z)));
+			std::cout << glm::to_string(gameStruct.rotation) << std::endl;
+			//gameStruct.rotation.x *= -1;
+			gameStruct.rotation.y *= -1;
+			gameStruct.rotation.z *= -1;
+			transform->setLocalRotation(gameStruct.rotation);
+			std::cout << glm::to_string(gameStruct.rotation) << std::endl;
 			//transform->setLocalRotation(glm::quat(glm::eulerAngleXYZ(gameStruct.rotation.x, gameStruct.rotation.y, gameStruct.rotation.z)));
 			transform->setLocalScale(gameStruct.scale);
 
@@ -140,7 +168,12 @@ namespace Engine
 			if (parentID == 0) continue;
 
 			Transform* transform = gameObject->getTransform();
-			transform->setParent(id_to_go[parentID]->getTransform(), true);
+			transform->setParent(id_to_go[parentID]->getTransform(), false);
+		}
+
+		for (auto& go: _gameObjects)
+		{
+			go->addComponent(new RotatingComponent());
 		}
 
 		id_to_go.clear();
@@ -152,7 +185,7 @@ namespace Engine
 
 		//Deserealizer d;
 		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
-		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(500, 0, 2000));
+		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(100, 0, 1));
 		Rendering::Light_* light = new Rendering::Light_();
 		lightgo->addComponent(light);
 		light->setColor(glm::vec3(1));
@@ -178,22 +211,43 @@ namespace Engine
 		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
 		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//playerModel->addComponent(new PlayerBaseComponent());
-		Core::GameObject_* obj1 = Model::loadModel("Player.obj");
-		obj1->getTransform()->translate(glm::vec3(-300, -599, 300));
+
+		//Core::GameObject_* obj1 = Model::loadModel("MainCharacter_.fbx");
+		Core::GameObject_* obj1 = Model::loadModel("test-for-Slavi.obj");
+		//Core::GameObject_* obj1 = Model::loadModel("Player.obj");
+		
+		obj1->getTransform()->translate(glm::vec3(-0, -199, 0));
 		obj1->setName("Player");
 		obj1->addComponent(new collider());
 		obj1->addComponent(new PlayerBaseComponent());
-
-		
-	
+		obj1->addComponent(new RotatingComponent());
 
 		Core::GameObject_* obj2 = Model::loadModel("Player.obj");
-		obj2->getTransform()->translate(glm::vec3(-100, -599, 300));
+		obj2->getTransform()->translate(glm::vec3(-0, -199, 0));
 		obj2->setName("obj2");
 		obj2->addComponent(new collider());
+		obj2->addComponent(new RotatingComponent());
 		
 		obj1->addComponent(luaS);
 
+		Core::GameObject_* testModel = Model::loadModel("Dungeon_Wall_Corner_001.fbx");
+		Core::GameObject_* testModel1 = Model::loadModel("Forge.fbx");
+		testModel1->addComponent(new RotatingComponent());
+		//testModel1->addComponent<RotatingComponent>();
+		std::cout << "0: " + glm::to_string(testModel->getTransform()->getPosition()) << std::endl;
+		std::cout << "0: " + std::to_string(testModel->getTransform()->getChildCount()) << std::endl;
+		std::cout << "0: " + glm::to_string(testModel->getTransform()->getRotation()) << std::endl;
+		std::cout << "0: " + glm::to_string(testModel->getTransform()->getScale()) << std::endl;
+		std::cout << "1: " + glm::to_string(testModel1->getTransform()->getPosition()) << std::endl;
+		std::cout << "1: " + glm::to_string(testModel1->getTransform()->getRotation()) << std::endl;
+		std::cout << "1: " + glm::to_string(testModel1->getTransform()->getScale()) << std::endl;
+		std::cout << "1: " + std::to_string(testModel1->getTransform()->getChildCount()) << std::endl;
+		//std::cout << "1: " + testModel1->getTransform()->getChild(0)->getGameObject()->getName() << std::endl;
+		std::cout << "1: " + testModel1->getName() << std::endl;
+		//Core::GameObject_* tm_ = Model::loadModel("ketabxane.fbx");
+		//tm_->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(180.0f));
+		//std::cout << tm_->getComponentsCount() << std::endl;
+		//tm_->addComponent(new RotatingComponent());
 
 		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
 		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));

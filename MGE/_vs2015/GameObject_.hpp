@@ -66,16 +66,20 @@ namespace Engine
 			template <typename T>
 			std::vector<T*> getComponentsList();
 
+			int getComponentsCount() const;
+
 		private:
 			std::string _name = nullptr;
 			std::string _tag = nullptr;
-			std::unique_ptr<Transform> _transform;
+			Transform* _transform;
 
 			GameLoop* _gameLoop = nullptr;
 			GameLoop* getGameLoop();
 
 			template <typename T>
-			std::unique_ptr<T> findComponent();
+			T* findComponent();
+
+			int getIndex(Component* component);
 
 			bool _isStatic = false;
 			bool _isActive = true;
@@ -87,11 +91,7 @@ namespace Engine
 		template <typename T>
 		T* GameObject_::getComponent()
 		{
-			const auto comp = findComponent<T>();
-			if (comp != nullptr && comp.get() != nullptr)
-				return comp.get();
-			//std::cout << "boi" << std::endl;
-			return nullptr;
+			return findComponent<T>();
 		}
 
 		template <typename T>
@@ -134,8 +134,8 @@ namespace Engine
 		{
 			const auto comp = findComponent<T>();
 
-			if (comp != nullptr && comp.get() != nullptr
-				&& static_cast<Component*>(comp.get())->isUniquePerGameObject())
+			if (comp != nullptr
+				&& static_cast<Component*>(comp)->isUniquePerGameObject())
 			{
 				std::cout << "Attempting to add unique per game object component:" << std::endl;
 				return;
@@ -144,11 +144,11 @@ namespace Engine
 			//Might crash
 			if (std::is_default_constructible<T>::value)
 			{
-				T* derivedComponent = new T();
-				std::unique_ptr<Component> newComponent = std::unique_ptr<Component>(derivedComponent);
-				newComponent.get()->setGameObject(this);
-				_components.push_back(newComponent);
-				getGameLoop()->subscribe(newComponent.get());
+				//_components.push_back(newComponent);
+				_components.emplace_back(std::make_unique<T>());
+				T* newComponent = static_cast<T*>((&*(_components.end() - 1))->get());
+				newComponent->setGameObject(this);
+				getGameLoop()->subscribe(newComponent);
 			}
 			else std::cout << "Failed to add component. Has no default constructor." << std::endl;
 		}
@@ -156,26 +156,24 @@ namespace Engine
 		template <typename T>
 		void GameObject_::removeComponent()
 		{
-			const auto comp = findComponent<T>();
+			Component* comp = findComponent<T>();
 
 			if (comp == nullptr) return;
 
 			getGameLoop()->unsubscribe(comp);
 
-			List::removeFrom(_components, comp);
-			comp.reset();
+			_components.erase(_components.begin() + getIndex(comp));
+			comp->destroy();
 		}
 
 		template <typename T>
 		bool GameObject_::containsComponent()
 		{
-			const auto comp = findComponent<T>();
-
-			return comp != nullptr && comp.get() != nullptr;
+			return findComponent<T>() != nullptr;
 		}
 
 		template <typename T>
-		std::unique_ptr<T> GameObject_::findComponent()
+		T* GameObject_::findComponent()
 		{
 			if (!std::is_base_of<Component, T>())
 			{
@@ -186,11 +184,10 @@ namespace Engine
 			for (auto & component : _components)
 			{
 				T* cast_component = dynamic_cast<T*>(component.get());
+
+				//std::cout << "I am copying: " + std::string(cast_component != component.get() ? "true." : "false.") << std::endl;
 				if (cast_component != nullptr)
-				{
-					auto x = std::unique_ptr<T>(cast_component);
-					return x;
-				}
+					return cast_component;
 			}
 			//std::cout << "boi_______" << std::endl;
 

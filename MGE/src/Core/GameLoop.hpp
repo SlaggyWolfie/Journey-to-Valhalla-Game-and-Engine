@@ -31,12 +31,14 @@ namespace Engine
 			ColliderManager* GetColliderM();
 
 			void run();
-
+			bool hasStarted();
 		private:
+			bool _started = false;
 
 			std::vector<Component*> _components;
 			//std::vector<std::shared_ptr<Component>> _components;
 			//std::shared_ptr<Component> find(Component* component);
+			void start();
 			void update();
 			void fixedUpdate();
 			void lateUpdate();

@@ -25,9 +25,9 @@
 
 namespace Engine
 {
-	Game::Game()
+	Game::Game(): _renderManager(nullptr), _lightManager(nullptr), _colliderManager(nullptr), _gameLoop(nullptr),
+	              _sceneManager(nullptr)
 	{
-
 		//ctor
 	}
 
@@ -58,7 +58,7 @@ namespace Engine
 
 	bool Game::isRunning() const
 	{
-		if (_window == nullptr && _window.get() == nullptr) return false;
+		if (_window == nullptr) return false;
 		return _window->isOpen();
 	}
 
@@ -166,7 +166,7 @@ namespace Engine
 
 		//std::cout << go->getComponent<Rendering::Renderer_>()->getGameObject()->getName() << std::endl;
 		//go->destroy();
-		_sceneManager->loadScene(filepath)->initialize(true);
+		_sceneManager->loadScene(filepath)->initialize(true, true);
 		std::cout << "Loaded Scene." << std::endl;
 
 	}

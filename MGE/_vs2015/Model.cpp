@@ -10,9 +10,13 @@ namespace Engine
 
 	Core::GameObject_* Model::loadModel(const std::string& path)
 	{
+		 //= false;
 		std::cout << "Loading model at path " + path << std::endl;
 		Assimp::Importer import;
-		const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, true);
+		const aiScene *scene = import.ReadFile(path, 
+			aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_SplitLargeMeshes | aiProcess_ValidateDataStructure | aiProcess_OptimizeGraph 
+		| aiProcess_OptimizeMeshes);
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{
@@ -57,7 +61,7 @@ namespace Engine
 
 		bool skip = false;
 		// then do the same for each of its children
-		if (node->mNumChildren == 1 && node != scene->mRootNode)
+		if (node->mNumChildren == 1 && node == scene->mRootNode)
 		{
 			shallow = processNodeShallow(node->mChildren[0], scene);
 			skip = true;
@@ -102,22 +106,22 @@ namespace Engine
 	{
 		_recursionLevel++;
 		print(std::string("Processing node ") + node->mName.C_Str());
-		Core::GameObject_* go;// = new GameObject_(node->mName.C_Str(), "");
+		Core::GameObject_* gameObject;// = new GameObject_(node->mName.C_Str(), "");
 		// process all the node's meshes (if any)
 		print(std::string("Has ") + std::to_string(node->mNumMeshes) + " amount of meshes.");
 		print(std::string("Has ") + std::to_string(node->mNumChildren) + " amount of children.");
 
 		bool skip = false;
 		// then do the same for each of its children
-		if (node->mNumChildren == 1 && node != scene->mRootNode)
-		{
-			go = processNode(node->mChildren[0], scene);
-			skip = true;
-		}
-		else
-			go = new Core::GameObject_(node->mName.C_Str(), "");
+		//if (node->mNumChildren == 1 && node == scene->mRootNode)
+		//{
+		//	gameObject = processNode(node->mChildren[0], scene);
+		//	skip = true;
+		//}
+		//else
+			gameObject = new Core::GameObject_(node->mName.C_Str(), "");
 
-		//go->getTransform()->setWorldMatrix4X4(convert(node->mTransformation));
+		gameObject->getTransform()->setWorldMatrix4X4(convert(node->mTransformation));
 
 		for (unsigned int i = 0; i < node->mNumMeshes; i++)
 		{
@@ -128,9 +132,11 @@ namespace Engine
 			//std::cout << "Wrong" << std::endl;
 			//std::cout << "My Mesh: " + std::to_string(mymesh != nullptr) << std::endl;
 			//std::cout << "My Material: " + std::to_string(mymat != nullptr) << std::endl;
-			go->addComponent(mymesh);
-			go->addComponent(mymat);
-			go->addComponent(new Rendering::Renderer_(mymat, mymesh, queue, true));
+			Core::GameObject_* meshGO = new Core::GameObject_("Mesh_" + std::string(mesh->mName.C_Str()), "");
+			meshGO->addComponent(mymesh);
+			meshGO->addComponent(mymat);
+			meshGO->addComponent(new Rendering::Renderer_(mymat, mymesh, queue, true));
+			meshGO->getTransform()->setParent(gameObject->getTransform(), false);
 			//go->addComponent<Renderer_>();
 		}
 
@@ -138,14 +144,14 @@ namespace Engine
 			for (unsigned int i = 0; i < node->mNumChildren; i++)
 			{
 				Core::GameObject_* childGO = processNode(node->mChildren[i], scene);
-				childGO->getTransform()->setParent(go->getTransform(), true);
+				childGO->getTransform()->setParent(gameObject->getTransform(), true);
 			}
 
 		print(std::string("Processed node ") + node->mName.C_Str());
 		//std::cout << "Processed node " << node->mName.C_Str() << std::endl;
 
 		_recursionLevel--;
-		return go;
+		return gameObject;
 	}
 
 	Rendering::RenderQueue Model::processMesh(aiMesh *mesh, const aiScene *scene, Rendering::Mesh_*& outMesh, Rendering::Material_*& outMaterial)

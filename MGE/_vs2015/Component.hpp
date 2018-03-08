@@ -39,6 +39,7 @@ namespace Engine
 		private:
 			GameObject_ * _gameObject;
 			bool _enabled;
+			bool _started;
 		};
 	}
 }

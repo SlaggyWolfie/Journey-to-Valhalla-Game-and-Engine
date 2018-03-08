@@ -64,6 +64,10 @@ namespace Engine
 
 		protected:
 			void prewake() override;
+		public:
+			void destroy() override;
+		protected:
+			bool isUniquePerGameObject() override;
 		private:
 			std::vector<Vertex> _vertices;
 			std::vector<int> _indices;

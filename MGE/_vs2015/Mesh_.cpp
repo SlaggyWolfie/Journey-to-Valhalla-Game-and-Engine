@@ -103,6 +103,16 @@ namespace Engine
 			//generateBuffers();
 		}
 
+		void Mesh_::destroy()
+		{
+			delete this;
+		}
+
+		bool Mesh_::isUniquePerGameObject()
+		{
+			return true;
+		}
+
 		void Mesh_::stream(const GLint& verticesAttribute, const GLint& normalsAttribute, const GLint& UVsAttribute) const
 		{
 			if (verticesAttribute != -1)

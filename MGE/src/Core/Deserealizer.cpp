@@ -46,6 +46,7 @@ void Deserealizer::deserializeIntoStructs()
 		gameObjectStruct.rotation.x = jsonScene.at(j).at("GameObject").at("transform")["rotation"]["x"];
 		gameObjectStruct.rotation.y = jsonScene.at(j).at("GameObject").at("transform")["rotation"]["y"];
 		gameObjectStruct.rotation.z = jsonScene.at(j).at("GameObject").at("transform")["rotation"]["z"];
+		gameObjectStruct.rotation.w = jsonScene.at(j).at("GameObject").at("transform")["rotation"]["w"];
 
 		gameObjectStruct.scale.x = jsonScene.at(j).at("GameObject").at("transform")["scale"]["x"];
 		gameObjectStruct.scale.y = jsonScene.at(j).at("GameObject").at("transform")["scale"]["y"];

@@ -12,7 +12,9 @@ class collider:public Component
 public:
 	enum colliderType { box, sphere, point };
 	collider();
-	~collider();
+	virtual ~collider();
+	collider(const collider& other);
+	collider& operator= (const collider& other);
 	void SetType(int i);
 	void SetBoxSize(int width,int height);
 	void SetSphereRadius();

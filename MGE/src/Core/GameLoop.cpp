@@ -87,6 +87,8 @@ namespace Engine
 			Utility::Time::start(timePerFixedFrame.asSeconds());
 			float lag = 0;
 
+			start();
+			_started = true;
 			while (getGame()->isRunning())
 			{
 				//while(_renderManager == nullptr) _renderManager->startFPSClock();
@@ -115,6 +117,22 @@ namespace Engine
 				//empty the event queue
 				getGame()->processEvents();
 			}
+		}
+
+		bool GameLoop::hasStarted()
+		{
+			return _started;
+		}
+
+		void GameLoop::start()
+		{
+			if (!_components.empty())
+				for (const auto& comp : _components)
+					if (comp->isEnabled() && comp->getGameObject()->isActive())
+					{
+						comp->_started = true;
+						comp->start();
+					}
 		}
 
 		void GameLoop::update()
