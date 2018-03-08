@@ -174,19 +174,34 @@ namespace Engine
 			transform->setParent(id_to_go[parentID]->getTransform(), false);
 		}
 
-		for (auto& go: _gameObjects)
-		{
-			go->addComponent(new RotatingComponent());
-		}
+		//for (auto& go: _gameObjects)
+		//{
+		//	go->addComponent(new RotatingComponent());
+		//}
 
 		id_to_go.clear();
 	}
 
 	void Scene::hardCode()
 	{
-		LuaScript* luaS = new LuaScript();
+		Core::GameObject_ * anvil = Model::loadModel("Anvil.fbx");
+		anvil->addComponent(new RotatingComponent());
 
-		//Deserealizer d;
+		//Core::GameObject_ * table = Model::loadModel("Table.fbx");
+		//table->addComponent(new RotatingComponent());
+		Core::GameObject_ * table_C = Model::loadModel("Table_centered.fbx");
+		table_C->addComponent(new RotatingComponent()); 
+		table_C->getTransform()->translate(glm::vec3(10, 0, 0));
+		//Core::GameObject_ * crate = Model::loadModel("Crate.fbx");
+		//crate->addComponent(new RotatingComponent());
+		//Core::GameObject_ *shipOBJ = Model::loadModel("Fence_centered.obj");
+		//shipOBJ->addComponent(new RotatingComponent());
+		//shipOBJ->getTransform()->translate(glm::vec3(250, 0, 0));
+		//Core::GameObject_ *shipFBX = Model::loadModel("Fence_centered.fbx");
+		//shipFBX->getTransform()->translate(glm::vec3(25, 0, 0));
+		//shipFBX->addComponent(new RotatingComponent());
+		//LuaScript* luaS = new LuaScript();
+
 		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
 		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(100, 0, 1));
 		Rendering::Light_* light = new Rendering::Light_();
@@ -211,74 +226,78 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
-		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
-		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
-		//playerModel->addComponent(new PlayerBaseComponent());
+		////Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
+		////playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		////playerModel->addComponent(new PlayerBaseComponent());
 
-		//Core::GameObject_* obj1 = Model::loadModel("MainCharacter_.fbx");
-		Core::GameObject_* obj1 = Model::loadModel("test-for-Slavi.obj");
-		//Core::GameObject_* obj1 = Model::loadModel("Player.obj");
-		
-		obj1->getTransform()->translate(glm::vec3(-0, -199, 0));
-		obj1->setName("Player");
-		obj1->addComponent(new collider());
-		obj1->addComponent(new PlayerBaseComponent());
-		obj1->addComponent(new RotatingComponent());
-
-		Core::GameObject_* obj2 = Model::loadModel("Player.obj");
-		obj2->getTransform()->translate(glm::vec3(-0, -199, 0));
-		Core::GameObject_* obj5 = Model::loadModel("house plant.obj");
-		obj1->getTransform()->translate(glm::vec3(-300, -599, 700));
-		obj1->setName("Player");
-		obj1->addComponent(new collider());
-
-
-		Core::GameObject_* obj3 = Model::loadModel("house plant.obj");
-		obj3->getTransform()->translate(glm::vec3(-500, -599, 100));
-		obj3->setName("enemy");
-		obj3->addComponent(new collider());
-
-		Core::GameObject_* obj4 = Model::loadModel("house plant.obj");
-		obj4->getTransform()->translate(glm::vec3(-700, -599, 600));
-		obj4->setName("npc");
-		obj4->addComponent(new collider());
+		////Core::GameObject_* obj1 = Model::loadModel("MainCharacter_.fbx");
+		//Core::GameObject_* obj1 = Model::loadModel("test-for-Slavi.obj");
+		////Core::GameObject_* obj1 = Model::loadModel("Player.obj");
+		//
+		//obj1->getTransform()->translate(glm::vec3(-0, -199, 0));
+		//obj1->setName("Player");
+		//obj1->addComponent(new collider());
 		//obj1->addComponent(new PlayerBaseComponent());
+		//obj1->addComponent(new RotatingComponent());
+
+		//Core::GameObject_* obj2 = Model::loadModel("Player.obj");
+		//obj2->getTransform()->translate(glm::vec3(-0, -199, 0));
+		//Core::GameObject_* obj5 = Model::loadModel("house plant.obj");
+		//obj5->getTransform()->translate(glm::vec3(-300, -599, 700));
+		//obj5->setName("Player");
+		//obj5->addComponent(new collider());
+
+
+		//Core::GameObject_* obj3 = Model::loadModel("house plant.obj");
+		//obj3->getTransform()->translate(glm::vec3(-500, -599, 1000));
+		//obj3->setName("enemy");
+		//obj3->addComponent(new collider());
+
+		//Core::GameObject_* obj4 = Model::loadModel("house plant.obj");
+		//obj4->getTransform()->translate(glm::vec3(-700, -599, 600));
+		//obj4->setName("npc");
+		//obj4->addComponent(new collider());
+		////obj1->addComponent(new PlayerBaseComponent());
 	
 
-		Core::GameObject_* obj6 = Model::loadModel("Player.obj");
-		obj6->getTransform()->translate(glm::vec3(-100, -599, 100));
-		obj6->setName("obj2");
-		obj6->addComponent(new collider());
-		obj2->addComponent(new RotatingComponent());
-		
-		obj1->addComponent(luaS);
+		//Core::GameObject_* obj6 = Model::loadModel("Player.obj");
+		//obj6->getTransform()->translate(glm::vec3(-100, -599, 100));
+		//obj6->setName("obj2");
+		//obj6->addComponent(new collider());
+		//obj2->addComponent(new RotatingComponent());
+		//
+		//obj1->addComponent(luaS);
 
-		Core::GameObject_* testModel = Model::loadModel("Dungeon_Wall_Corner_001.fbx");
-		Core::GameObject_* testModel1 = Model::loadModel("Forge.fbx");
-		testModel1->addComponent(new RotatingComponent());
-		//testModel1->addComponent<RotatingComponent>();
-		std::cout << "0: " + glm::to_string(testModel->getTransform()->getPosition()) << std::endl;
-		std::cout << "0: " + std::to_string(testModel->getTransform()->getChildCount()) << std::endl;
-		std::cout << "0: " + glm::to_string(testModel->getTransform()->getRotation()) << std::endl;
-		std::cout << "0: " + glm::to_string(testModel->getTransform()->getScale()) << std::endl;
-		std::cout << "1: " + glm::to_string(testModel1->getTransform()->getPosition()) << std::endl;
-		std::cout << "1: " + glm::to_string(testModel1->getTransform()->getRotation()) << std::endl;
-		std::cout << "1: " + glm::to_string(testModel1->getTransform()->getScale()) << std::endl;
-		std::cout << "1: " + std::to_string(testModel1->getTransform()->getChildCount()) << std::endl;
-		//std::cout << "1: " + testModel1->getTransform()->getChild(0)->getGameObject()->getName() << std::endl;
-		std::cout << "1: " + testModel1->getName() << std::endl;
-		//Core::GameObject_* tm_ = Model::loadModel("ketabxane.fbx");
-		//tm_->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(180.0f));
-		//std::cout << tm_->getComponentsCount() << std::endl;
-		//tm_->addComponent(new RotatingComponent());
+		//Core::GameObject_* testModel = Model::loadModel("Dungeon_Wall_Corner_001.fbx");
+		//Core::GameObject_* testModel1 = Model::loadModel("Forge.fbx");
+		//testModel1->addComponent(new RotatingComponent());
+		////testModel1->addComponent<RotatingComponent>();
+		//std::cout << "0: " + glm::to_string(testModel->getTransform()->getPosition()) << std::endl;
+		//std::cout << "0: " + std::to_string(testModel->getTransform()->getChildCount()) << std::endl;
+		//std::cout << "0: " + glm::to_string(testModel->getTransform()->getRotation()) << std::endl;
+		//std::cout << "0: " + glm::to_string(testModel->getTransform()->getScale()) << std::endl;
+		//std::cout << "1: " + glm::to_string(testModel1->getTransform()->getPosition()) << std::endl;
+		//std::cout << "1: " + glm::to_string(testModel1->getTransform()->getRotation()) << std::endl;
+		//std::cout << "1: " + glm::to_string(testModel1->getTransform()->getScale()) << std::endl;
+		//std::cout << "1: " + std::to_string(testModel1->getTransform()->getChildCount()) << std::endl;
+		////std::cout << "1: " + testModel1->getTransform()->getChild(0)->getGameObject()->getName() << std::endl;
+		//std::cout << "1: " + testModel1->getName() << std::endl;
+		////Core::GameObject_* tm_ = Model::loadModel("ketabxane.fbx");
+		////tm_->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(180.0f));
+		////std::cout << tm_->getComponentsCount() << std::endl;
+		////tm_->addComponent(new RotatingComponent());
+		//Core::GameObject_ *shipFBX = Model::loadModel("Ship_test.fbx");
+		//shipFBX->getTransform()->translate(glm::vec3(1000, 0, 0));
+		////Core::GameObject_ *shipObject = Model::loadModel("Ship_test.obj");
+		////shipObject->getTransform()->translate(glm::vec3(1000, 200, 0));
 
 
-		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
-		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
-		//playerModel->addComponent(new PlayerBaseComponent());
-		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
-		plane->getTransform()->scale(glm::vec3(5000));
-		plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));
+		////Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
+		////playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		////playerModel->addComponent(new PlayerBaseComponent());
+		//Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
+		//plane->getTransform()->scale(glm::vec3(5000));
+		//plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));
 
 		//Core::GameObject_* mainCharacter = Model::loadModel("MainCharacter.fbx");
 		//Collisions

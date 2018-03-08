@@ -12,8 +12,10 @@ namespace Engine
 	class Game;
 	namespace Core
 	{
+		enum Space { Local, World };
 		class Transform : public Component
 		{
+
 		public:
 			friend class GameObject_;
 
@@ -30,14 +32,11 @@ namespace Engine
 			 */
 			void setPosition(const glm::vec3& position);
 
-			void setLastPos(const glm::vec3& position);
 			/**
 			 * \brief Gets the transform's world position.
 			 * \return The transform's world position.
 			 */
 			glm::vec3 getPosition();
-
-			glm::vec3 getLastPos();
 
 			/**
 			* \brief Sets the transform's world rotation.
@@ -88,8 +87,8 @@ namespace Engine
 
 			glm::mat3 getNormalMatrix();
 
-			glm::vec3 forward() ;
-			glm::vec3 up() ;
+			glm::vec3 forward();
+			glm::vec3 up();
 			glm::vec3 right();
 
 			//Operations
@@ -101,7 +100,7 @@ namespace Engine
 
 			void lookAt(Transform* lookAtTarget, const glm::vec3& up = glm::vec3(0, 1, 0));
 			void translate(const glm::vec3& translation);
-			void rotate(const glm::vec3& axis, float angleRotation);
+			void rotate(const glm::vec3& axis, float angleRotation, Space space = World);
 			void scale(const glm::vec3& scaler);
 
 			//Parent/Children
@@ -136,7 +135,7 @@ namespace Engine
 			bool _isLocalMatrixDirty = true;
 			bool _isWorldMatrixDirty = true;
 
-			void _determineCaching(bool forWorldMatrix);
+			void _determineCaching(Space space);
 
 			glm::mat4 _calculateLocalMatrix() const;
 			glm::mat3 _calculateNormalMatrix() const;
