@@ -39,11 +39,11 @@ std::vector<collider*> ColliderManager::CheckCollision(collider* object)
 			{
 				std::cout << "Collision!" << std::endl;
 				collideList.push_back(allColliders[i]);
-				std::cout << collideList.size() << std::endl;
+				//std::cout << collideList.size() << std::endl;
 			}
 			else
 			{
-				std::cout << collideList.size() << std::endl;
+				//std::cout << collideList.size() << std::endl;
 
 				/*std::cout << collideList.size() << std::endl;
 				if (!collideList.empty())

@@ -15,6 +15,7 @@
 #include "Light_.hpp"
 #include "Shader.hpp"
 #include "LightManager.hpp"
+#include "mge/config.hpp"
 
 //#include "LightManager.hpp"
 
@@ -31,6 +32,7 @@ namespace Engine
 		RenderManager::~RenderManager()
 		{
 			//delete _lightManager;
+			//delete _fpsClock;
 			_fpsClock = nullptr;
 			destroyOwnedLoops();
 			Texture_::textureMap.clear();
@@ -132,6 +134,9 @@ namespace Engine
 
 		void RenderManager::startFPSClock()
 		{
+			if (this == nullptr) std::cout << "Double What" << std::endl;
+			//_fpsClock = new sf::Clock();
+			//_fpsClock = std::unique_ptr<sf::Clock>(clock);
 			_fpsClock = std::make_unique<sf::Clock>();
 			_frameCount = 0;
 			_timeSinceLastFPSCalculation = 0;
@@ -233,8 +238,6 @@ namespace Engine
 		{
 			_opaqueRenderers.clear();
 			_transparentRenderers.clear();
-			//_renderTransparent.release();
-			//_renderOpaque.release();
 		}
 
 		LightManager* RenderManager::getLightManager()
@@ -253,17 +256,35 @@ namespace Engine
 			return _window;
 		}
 
-		void RenderManager::calculateFPS()
+		void RenderManager::calculateFPS(const bool print)
 		{
 			//fps count is updated once every 1 second
 			_frameCount++;
 			_timeSinceLastFPSCalculation += _fpsClock->restart().asSeconds();
+
 			if (_timeSinceLastFPSCalculation > 1)
 			{
 				_fps = _frameCount / _timeSinceLastFPSCalculation;
 				_timeSinceLastFPSCalculation -= 1;
 				_frameCount = 0;
 			}
+
+			//sf::Text text;
+			//sf::Font font;
+			//text.setString(""); 
+			//font.loadFromFile(config::MGE_FONT_PATH + "arial.ttf");
+			//text.setFont(font);
+			//text.setCharacterSize(16);
+			//text.setFillColor(sf::Color::White);
+
+			//text.setString(std::to_string(static_cast<int>(_fps)));
+			//text.setPosition(10, 10);
+			//glActiveTexture(GL_TEXTURE0);
+			//getWindow()->pushGLStates();
+			//getWindow()->draw(text);
+			//getWindow()->popGLStates();
+			//std::cout << glewGetErrorString(glGetError()) << std::endl;
+			if (print) std::cout << "FPS: " + std::to_string(_fps) << std::endl;
 		}
 	}
 }

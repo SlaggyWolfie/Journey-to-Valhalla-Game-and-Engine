@@ -11,7 +11,7 @@ namespace Engine
 	Scene* SceneManager::loadScene(const std::string& path)
 	{
 		_activeScene = std::make_unique<Scene>(path);
-		_activeScene->initialize();
+		//_activeScene->initialize();
 		return getActiveScene();
 	}
 

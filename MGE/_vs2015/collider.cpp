@@ -98,7 +98,14 @@ void collider::update()
 		}
 
 
+<<<<<<< HEAD
 		
+=======
+	std::vector<collider*> vec;
+	vec=ServiceLocator::instance()->getService<ColliderManager>()->CheckCollision(this);
+	//vec=ServiceLocator::instance()->getService<ColliderManager>()->CheckCollision(this);
+	//if (vec.size() > 0)
+>>>>>>> ba71529894244b191b08893223f0591cbd18c490
 		//std::cout << vec[0]->getGameObject()->getTransform()->getPosition() <<" "<< getGameObject()->getName();
 	}
 }

@@ -8,8 +8,6 @@
 #include "../../_vs2015/PlayerBaseComponent.h"
 #include "../../_vs2015/LastposStasher.h"
 
-
-
 std::string LuaScript::message = std::string();
 
 LuaScript::LuaScript()

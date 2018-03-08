@@ -79,8 +79,9 @@ namespace Engine
 
 		void GameLoop::run()
 		{
-			//_renderManager->startFPSClock();
-
+			//if (getRenderManager() == nullptr) std::cout << "What" << std::endl;
+			getRenderManager()->startFPSClock();
+			
 			//settings to make sure the update loop runs at 60 fps
 			const sf::Time timePerFixedFrame = sf::seconds(1.0f / 60.0f);
 			Utility::Time::start(timePerFixedFrame.asSeconds());
@@ -88,6 +89,7 @@ namespace Engine
 
 			while (getGame()->isRunning())
 			{
+				//while(_renderManager == nullptr) _renderManager->startFPSClock();
 				Utility::Time::update();
 				lag += Utility::Time::deltaTime();
 				const float fixedTimeStep = Utility::Time::fixedDeltaTime();
@@ -108,6 +110,7 @@ namespace Engine
 
 				//0 doesn't matter for now
 				getRenderManager()->render(0);
+				getRenderManager()->calculateFPS();
 
 				//empty the event queue
 				getGame()->processEvents();

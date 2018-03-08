@@ -59,7 +59,8 @@ namespace Engine
 
 		protected:
 			//void setupGL() override;
-			std::unique_ptr<Shader> _shader;
+			static std::unique_ptr<Shader> _shader;
+			//std::unique_ptr<Shader> _shader;
 			void initializeShader(const std::string& path);
 
 			glm::vec3 _diffuseColor;

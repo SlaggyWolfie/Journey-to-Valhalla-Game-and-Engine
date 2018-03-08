@@ -141,13 +141,13 @@ namespace Engine
 
 	void Game::initializeScene(const std::string& filepath) const
 	{
-		Deserealizer d;
+		//Deserealizer d;
 		
 		//Core::GameObject_* sth = Model::loadModel(_d.gms[0]->getName()+".fbx");
 		//sth->getTransform()->setPosition(_d.gms[0]->getTransform()->getPosition());
 		//std::cout << sth->getTransform()->getPosition();
 		std::cout << "Loading Scene..." << std::endl;
-		std::cout << d.structs[0].meshName << std::endl;
+		//std::cout << d.structs[0].meshName << std::endl;
 		//load scene
 		//Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
 		//Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(0,0,2000));

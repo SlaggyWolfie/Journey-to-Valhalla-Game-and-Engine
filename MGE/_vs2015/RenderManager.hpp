@@ -27,7 +27,7 @@ namespace Engine
 			void addRenderer(Renderer_* renderer);
 			void removeRenderer(Renderer_* renderer);
 			bool containsRenderer(Renderer_* renderer) const;
-			void calculateFPS();
+			void calculateFPS(bool print = false);
 
 			void render(float deltaTime);
 
@@ -51,6 +51,7 @@ namespace Engine
 			//FPS
 			float _fps;
 			std::unique_ptr<sf::Clock> _fpsClock;
+			//sf::Clock* _fpsClock;
 			int _frameCount;
 			float _timeSinceLastFPSCalculation;
 
