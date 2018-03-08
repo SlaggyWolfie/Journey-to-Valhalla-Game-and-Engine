@@ -227,7 +227,7 @@ namespace Engine
 
 		Core::GameObject_* obj2 = Model::loadModel("Player.obj");
 		obj2->getTransform()->translate(glm::vec3(-0, -199, 0));
-		Core::GameObject_* obj1 = Model::loadModel("house plant.obj");
+		Core::GameObject_* obj5 = Model::loadModel("house plant.obj");
 		obj1->getTransform()->translate(glm::vec3(-300, -599, 700));
 		obj1->setName("Player");
 		obj1->addComponent(new collider());
@@ -245,10 +245,10 @@ namespace Engine
 		//obj1->addComponent(new PlayerBaseComponent());
 	
 
-		Core::GameObject_* obj2 = Model::loadModel("Player.obj");
-		obj2->getTransform()->translate(glm::vec3(-100, -599, 100));
-		obj2->setName("obj2");
-		obj2->addComponent(new collider());
+		Core::GameObject_* obj6 = Model::loadModel("Player.obj");
+		obj6->getTransform()->translate(glm::vec3(-100, -599, 100));
+		obj6->setName("obj2");
+		obj6->addComponent(new collider());
 		obj2->addComponent(new RotatingComponent());
 		
 		obj1->addComponent(luaS);
