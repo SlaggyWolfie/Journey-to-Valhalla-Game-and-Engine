@@ -1,10 +1,11 @@
 #pragma once
 #include "Component.hpp"
 #include "glm.hpp"
+#include "collider.h"
 class PlayerBaseComponent : public Engine::Core::Component
 {
 public:
-
+	enum _playerState { jumpingToObject, usingObject, idle, jumpingFromObject };
 	PlayerBaseComponent();
 	virtual ~PlayerBaseComponent() = default;
 	PlayerBaseComponent(const PlayerBaseComponent& other) = default;
@@ -18,8 +19,18 @@ public:
 	 //void fixedUpdate() override;
 	 //void lateUpdate() override;
 	 //void onValidate() override;
-	glm::vec3 lp;
+	void MoveInsideObj(GameObject_* obj);
+	void RayCast();
+	bool IsInside();
+	void Movement();
+	void SetInside(bool n);
 	void destroy() override;
 	bool isUniquePerGameObject() override;
+	glm::vec3 lastPos;
+private:
+	bool _insideObj;
+	GameObject_* _objectToMove;
+	_playerState _playerS=idle;
+
 };
 

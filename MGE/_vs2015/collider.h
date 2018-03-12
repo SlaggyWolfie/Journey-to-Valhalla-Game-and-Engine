@@ -16,7 +16,7 @@ public:
 	collider(const collider& other);
 	collider& operator= (const collider& other);
 	void SetType(int i);
-	void SetBoxSize(int width,int height);
+	void SetBoxSize(int width,int height,int length);
 	void SetSphereRadius();
 	void update() override;
 	void fixedUpdate() override;
@@ -46,6 +46,12 @@ public:
 	 glm::vec3 point4;
 	 glm::vec3 point5;
 	 glm::vec3 point6;
+	 glm::vec3 normal1;
+	 glm::vec3 normal2;
+	 glm::vec3 normal3;
+	 glm::vec3 normal4;
+	 glm::vec3 normal5;
+	 glm::vec3 normal6;
 private:
 	ColliderManager * _colliderManager;
 	glm::vec3 _pos;
@@ -53,6 +59,7 @@ private:
 	Transform* _t;
 	colliderType _type=box;
 	int _width = 50;
+	int _length = 50;
 	int _height = 50;
 	int _r=50;
 	bool _enabled;
