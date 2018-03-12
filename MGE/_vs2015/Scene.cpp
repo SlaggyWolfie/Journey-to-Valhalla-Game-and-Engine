@@ -18,6 +18,8 @@
 #include "RotatingComponent.hpp"
 #include "SFML\Graphics\RenderWindow.hpp"
 #include "../src/Core/Game.hpp"
+#include "PressurePlateBehaviour.h"
+#include "GateBehaviour.h"
 
 
 namespace Engine
@@ -205,7 +207,9 @@ namespace Engine
 		//shipFBX->addComponent(new RotatingComponent());
 		//LuaScript* luaS = new LuaScript();
 
-		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
+		//Deserealizer d;
+		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 100, 3000));
+
 		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(100, 0, 1));
 		Rendering::Light_* light = new Rendering::Light_();
 		lightgo->addComponent(light);
@@ -215,7 +219,7 @@ namespace Engine
 		lightgo->getTransform()->rotate(lightgo->getTransform()->right(), -glm::radians(30.0f));
 		//Core::GameObject_* lightgo1 = new Core::GameObject_("Light", "", glm::vec3(-500, -500, 2000));
 		Core::GameObject_* lightgo1 = Model::loadModel("mge/models/cube_smooth.obj");
-		lightgo1->getTransform()->translate(glm::vec3(-500, -599, 2000));
+		lightgo1->getTransform()->translate(glm::vec3(-300, 300, 500));
 		Rendering::Light_* light1 = new Rendering::Light_();
 		lightgo1->addComponent(light1);
 		light1->setLightType(Rendering::LightType::Point);
@@ -231,6 +235,117 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
 
 		std::cout << Engine::File::findPath("Cube.fbx") << std::endl;
+		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
+		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		//playerModel->addComponent(new PlayerBaseComponent());
+
+		//Core::GameObject_* obj1 = Model::loadModel("MainCharacter_.fbx");
+		Core::GameObject_* obj1 = Model::loadModel("Player.obj");
+		//obj1->getTransform()->setScale(glm::vec3(2, 2, 2));
+		//Core::GameObject_* obj1 = Model::loadModel("Player.obj");
+		
+		obj1->getTransform()->translate(glm::vec3(0, 10, -600));
+		obj1->addComponent(new collider());
+		obj1->addComponent(new PlayerBaseComponent());
+		obj1->setName("Player");
+		obj1->getComponent<collider>()->SetBoxSize(50, 50, 50);
+
+
+
+		Core::GameObject_* crate = Model::loadModel("Crate.fbx");
+		crate->getTransform()->setScale(glm::vec3(2, 2, 2));
+		crate->getTransform()->translate(glm::vec3(700, -100, 0));
+		crate->setName("crate");
+		crate->addComponent(new collider());
+		crate->getComponent<collider>()->SetBoxSize(60, 150, 60);
+
+
+
+
+
+
+		//obj1->addComponent(new RotatingComponent());
+
+		//Core::GameObject_* obj2 = Model::loadModel("Player.obj");
+
+		//obj2->getTransform()->translate(glm::vec3(-0, -199, 0));
+
+
+
+
+
+		Core::GameObject_* obj3 = Model::loadModel("Crate.fbx");
+		obj3->getTransform()->setScale(glm::vec3(2, 2, 2));
+		obj3->getTransform()->translate(glm::vec3(-500, 60, 100));
+		obj3->setName("crate");
+		obj3->addComponent(new collider());
+		obj3->getComponent<collider>()->SetBoxSize(60, 150, 60);
+
+		Core::GameObject_* obj4 = Model::loadModel("Crate.fbx");
+		obj4->getTransform()->setScale(glm::vec3(2, 2, 2));
+		obj4->getTransform()->translate(glm::vec3(-700, 60, 600));
+		obj4->setName("crate");
+		obj4->addComponent(new collider());
+		obj4->getComponent<collider>()->SetBoxSize(60, 150, 60);
+	
+
+		Core::GameObject_* obj6 = Model::loadModel("Crate.fbx");
+		obj6->getTransform()->setScale(glm::vec3(2, 2, 2));
+		obj6->getTransform()->translate(glm::vec3(-400, 60, 100));
+		obj6->setName("crate");
+		obj6->addComponent(new collider());
+		obj6->getComponent<collider>()->SetBoxSize(60, 150,60);
+		//obj2->addComponent(new RotatingComponent());
+
+		Core::GameObject_* plateBorder = Model::loadModel("Pressure plate Border.fbx");
+		plateBorder->getTransform()->setScale(glm::vec3(2, 2, 2));
+
+		Core::GameObject_* plate = Model::loadModel("Pressure plate 1.fbx");
+		plate->getTransform()->setScale(glm::vec3(2, 2, 2));
+		plate->setName("plate");
+		//not pressed position glm::vec3(0,3,0)
+		//pressed position glm::vec3(0,-8,0) (or -5(sth like that))
+		plate->getTransform()->setPosition(plateBorder->getTransform()->getPosition() + glm::vec3(0, 3, 0));
+		plate->addComponent(new collider());
+		plate->addComponent(new PressurePlateBehaviour());
+		
+		Core::GameObject_* gate = Model::loadModel("Door 1.fbx");
+		gate->getTransform()->setScale(glm::vec3(0.9, 0.9, 0.9));
+		gate->getTransform()->translate(glm::vec3(500, 200, 700));
+		gate->setName("gate");
+		gate->addComponent(new collider());
+		gate->addComponent(new GateBehaviour());
+		gate->getComponent<collider>()->SetBoxSize(70, 1500,600);
+		gate->getComponent<GateBehaviour>()->AddPlate(plate->getComponent<PressurePlateBehaviour>());
+
+		obj1->addComponent(luaS);
+
+		Core::GameObject_* testModel = Model::loadModel("Dungeon_Wall_Corner_001.fbx");
+		Core::GameObject_* testModel1 = Model::loadModel("Forge.fbx");
+		//testModel1->addComponent(new RotatingComponent());
+		//testModel1->addComponent<RotatingComponent>();
+		std::cout << "0: " + glm::to_string(testModel->getTransform()->getPosition()) << std::endl;
+		std::cout << "0: " + std::to_string(testModel->getTransform()->getChildCount()) << std::endl;
+		std::cout << "0: " + glm::to_string(testModel->getTransform()->getRotation()) << std::endl;
+		std::cout << "0: " + glm::to_string(testModel->getTransform()->getScale()) << std::endl;
+		std::cout << "1: " + glm::to_string(testModel1->getTransform()->getPosition()) << std::endl;
+		std::cout << "1: " + glm::to_string(testModel1->getTransform()->getRotation()) << std::endl;
+		std::cout << "1: " + glm::to_string(testModel1->getTransform()->getScale()) << std::endl;
+		std::cout << "1: " + std::to_string(testModel1->getTransform()->getChildCount()) << std::endl;
+		//std::cout << "1: " + testModel1->getTransform()->getChild(0)->getGameObject()->getName() << std::endl;
+		std::cout << "1: " + testModel1->getName() << std::endl;
+		//Core::GameObject_* tm_ = Model::loadModel("ketabxane.fbx");
+		//tm_->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(180.0f));
+		//std::cout << tm_->getComponentsCount() << std::endl;
+		//tm_->addComponent(new RotatingComponent());
+
+
+		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
+		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		//playerModel->addComponent(new PlayerBaseComponent());
+		Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
+		plane->getTransform()->scale(glm::vec3(5000));
+		plane->getTransform()->translate(glm::vec3(glm::vec3(0, 0, 0)));
 		////Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
 		////playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		////playerModel->addComponent(new PlayerBaseComponent());

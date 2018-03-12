@@ -7,7 +7,7 @@
 #include "../../_vs2015/ColliderManager.h"
 #include "../../_vs2015/PlayerBaseComponent.h"
 #include "../../_vs2015/LastposStasher.h"
-
+using namespace Engine;
 std::string LuaScript::message = std::string();
 
 LuaScript::LuaScript()
@@ -92,7 +92,6 @@ void LuaScript::Initialize()
 
 int LuaScript::ShowHint(lua_State * state)
 {
-
 	if (lua_gettop(state) == 4 && lua_isstring(state, 1) && lua_isnumber(state, 2) &&
 		lua_isnumber(state, 3) && lua_isnumber(state, 4))
 	{
@@ -171,7 +170,6 @@ int LuaScript::PushBackObj(lua_State * state)
 		ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
 		_colliderManager->GetColliderByName(name1)->PushBackObj(name1,name2);
 		//std::cout<<comp->lp;
-
 		//_colliderManager->GetColliderByName(name)->getGameObject()->getTransform()->setPosition(glm::vec3(-300, -599, 300));
 		//(_colliderManager->GetColliderByName(name)->getGameObject()->getComponent<PlayerBaseComponent>()->lp);
 		
@@ -188,7 +186,7 @@ int LuaScript::CollisionBetween(lua_State * state)
 		std::string name2 = (std::string)lua_tostring(state, 2);
 
 		ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
-		bool result = _colliderManager->CollisionBetween(_colliderManager->GetColliderByName(name1), _colliderManager->GetColliderByName(name2));
+		bool result = _colliderManager->CheckBoxCollisionBetween(_colliderManager->GetColliderByName(name1), _colliderManager->GetColliderByName(name2));
 		lua_pushboolean(state,result);
 		//std::cout << result << std::endl;
 		//std::cout << _colliderManager->CollisionBetween(_colliderManager->GetColliderByName(name1), _colliderManager->GetColliderByName(name2))<<std::endl;

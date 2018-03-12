@@ -239,6 +239,8 @@
     <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
     <ClCompile Include="TextHUD.cpp" />
+    <ClCompile Include="PressurePlateBehaviour.cpp" />
+    <ClCompile Include="GateBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -511,6 +513,8 @@
     <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
     <ClInclude Include="TextHUD.hpp" />
+    <ClInclude Include="PressurePlateBehaviour.h" />
+    <ClInclude Include="GateBehaviour.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

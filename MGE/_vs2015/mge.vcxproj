@@ -211,7 +211,9 @@
     <ClInclude Include="..\src\myGame\Scenes\SixthScene.hpp" />
     <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp" />
     <ClInclude Include="AudioListener.hpp" />
+    <ClInclude Include="GateBehaviour.h" />
     <ClInclude Include="Music.hpp" />
+    <ClInclude Include="PressurePlateBehaviour.h" />
     <ClInclude Include="RotatingComponent.hpp" />
     <ClInclude Include="Sound.hpp" />
     <ClInclude Include="Camera_.hpp" />
@@ -295,6 +297,7 @@
     <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject_.cpp" />
+    <ClCompile Include="GateBehaviour.cpp" />
     <ClCompile Include="GeneralHelpers.cpp" />
     <ClCompile Include="LastposStasher.cpp" />
     <ClCompile Include="LightManager.cpp" />
@@ -304,6 +307,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="PlayerBaseComponent.cpp" />
+    <ClCompile Include="PressurePlateBehaviour.cpp" />
     <ClCompile Include="Renderer_.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="Scene.cpp" />
