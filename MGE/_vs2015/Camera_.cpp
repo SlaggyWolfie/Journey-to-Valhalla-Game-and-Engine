@@ -135,18 +135,24 @@ namespace Engine
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q)) transform->translate(transform->up() * moveSpeed);
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::E)) transform->translate(transform->up() * -moveSpeed);
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad8)) transform->rotate(transform->right(), glm::radians(turnSpeed), Local
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad8)) transform->rotate(transform->right(), glm::radians(turnSpeed)
+				//, Local
 			);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2)) transform->rotate(transform->right(), glm::radians(-turnSpeed), Local
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad2)) transform->rotate(transform->right(), glm::radians(-turnSpeed)
+				//, Local
 			);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4)) transform->rotate(transform->up(), glm::radians(turnSpeed), Local
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad4)) transform->rotate(transform->up(), glm::radians(turnSpeed)
+				//, Local
 			);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6)) transform->rotate(transform->up(), glm::radians(-turnSpeed), Local
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad6)) transform->rotate(transform->up(), glm::radians(-turnSpeed)
+				//, Local
 			);
 
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad7)) transform->rotate(transform->forward(), glm::radians(turnSpeed), Local
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad7)) transform->rotate(transform->forward(), glm::radians(turnSpeed)
+				//, Local
 			);
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad9)) transform->rotate(transform->forward(), glm::radians(-turnSpeed), Local
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Numpad9)) transform->rotate(transform->forward(), glm::radians(-turnSpeed)
+				//, Local
 			);
 
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
