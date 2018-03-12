@@ -21,7 +21,7 @@ namespace Engine
 		{
 			if (_parent == nullptr) return getLocalPosition();
 
-			_determineCaching(true);
+			_determineCaching(World);
 			return _worldPosition;
 		}
 
@@ -41,7 +41,7 @@ namespace Engine
 		{
 			if (_parent == nullptr) return getLocalRotation();
 
-			_determineCaching(true);
+			_determineCaching(World);
 			return _worldRotation;
 		}
 
@@ -55,7 +55,7 @@ namespace Engine
 		{
 			if (_parent == nullptr) return getLocalScale();
 
-			_determineCaching(true);
+			_determineCaching(World);
 			return _worldScale;
 		}
 
@@ -78,7 +78,7 @@ namespace Engine
 		{
 			if (_parent == nullptr) return getLocalMatrix4X4();
 
-			_determineCaching(true);
+			_determineCaching(World);
 			return _worldMatrix;
 		}
 
@@ -141,13 +141,13 @@ namespace Engine
 
 		glm::mat4 Transform::getLocalMatrix4X4()
 		{
-			_determineCaching(false);
+			_determineCaching(Local);
 			return _localMatrix;
 		}
 
 		glm::mat3 Transform::getNormalMatrix()
 		{
-			_determineCaching(true);
+			_determineCaching(World);
 			return _normalMatrix;
 		}
 
@@ -197,13 +197,29 @@ namespace Engine
 			setLocalPosition(_localPosition + translation);
 		}
 
-		void Transform::rotate(const glm::vec3& axis, const float angleRotation)
+		void Transform::rotate(const glm::vec3& axis, const float angleRotation, const Space space)
 		{
 			if (getGameObject()->isStatic() && _game->isRunning()) return;
 
+			const bool localOrientation = space == Local;
 			//Angle is in Radians.
 			//setLocalRotation(glm::quat_cast(glm::mat4_cast(getLocalRotation()) * glm::rotate(angleRotation, axis)));
-			setLocalRotation(glm::rotate(getLocalRotation(), angleRotation, axis));
+			//setLocalRotation(glm::rotate(getLocalRotation(), angleRotation, axis));
+			//const auto rotation = glm::rotate(angleRotation, axis);
+			const auto rotation = glm::angleAxis(angleRotation, axis);
+			glm::quat local;
+			if (localOrientation)
+			{
+				local = getLocalRotation() * rotation;
+				setLocalRotation(local);
+			}
+			else
+			{
+				local = rotation * getLocalRotation();
+				setRotation(local);
+			}
+
+			//setLocalRotation(local);
 			//setLocalRotation(glm::cross(_localRotation, glm::quat_cast(glm::rotate(angleRotation, axis))));
 			//setLocalRotation(glm::cross(glm::quat_cast(glm::rotate(angleRotation, axis)), _localRotation));
 			//setLocalRotation(glm::quat_cast(glm::rotate(angleRotation, axis)) * _localRotation);
@@ -332,10 +348,10 @@ namespace Engine
 
 		//Private
 
-		void Transform::_determineCaching(const bool forWorldMatrix)
+		void Transform::_determineCaching(const Space space)
 		{
 			//for world
-			if (forWorldMatrix)
+			if (space == World)
 			{
 				if (_isWorldMatrixDirty)
 				{
@@ -348,7 +364,7 @@ namespace Engine
 				}
 			}
 			//for local
-			else
+			else if (space == Local)
 			{
 				if (_isLocalMatrixDirty)
 				{

@@ -10,13 +10,14 @@ namespace Engine
 
 	Core::GameObject_* Model::loadModel(const std::string& path)
 	{
-		 //= false;
+		//= false;
 		std::cout << "Loading model at path " + path << std::endl;
 		Assimp::Importer import;
 		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, true);
-		const aiScene *scene = import.ReadFile(path, 
-			aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_SplitLargeMeshes | aiProcess_ValidateDataStructure | aiProcess_OptimizeGraph 
-		| aiProcess_OptimizeMeshes);
+		const aiScene *scene = import.ReadFile(path,
+			aiProcess_Triangulate
+			| aiProcess_FlipUVs | aiProcess_SplitLargeMeshes | aiProcess_ValidateDataStructure
+			| aiProcess_OptimizeGraph | aiProcess_OptimizeMeshes | aiProcess_CalcTangentSpace);
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{
@@ -119,7 +120,7 @@ namespace Engine
 		//	skip = true;
 		//}
 		//else
-			gameObject = new Core::GameObject_(node->mName.C_Str(), "");
+		gameObject = new Core::GameObject_(node->mName.C_Str(), "");
 
 		gameObject->getTransform()->setWorldMatrix4X4(convert(node->mTransformation));
 
@@ -203,7 +204,7 @@ namespace Engine
 				indices.push_back(face.mIndices[j]);
 			}
 		}
-		print(std::string("Processing mesh") + mesh->mName.C_Str() + " with " + 
+		print(std::string("Processing mesh") + mesh->mName.C_Str() + " with " +
 			std::to_string(mesh->mNumVertices) + " vertices with " + std::to_string(index) + " indices.");
 		//std::cout << std::endl;
 

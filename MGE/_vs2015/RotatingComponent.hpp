@@ -22,6 +22,6 @@ protected:
 	void update() override
 	{
 		auto transform = getGameObject()->getTransform();
-		transform->rotate(transform->up(), glm::radians(1.0f));
+		transform->rotate(transform->up() + transform->right(), glm::radians(1.0f));
 	}
 };
