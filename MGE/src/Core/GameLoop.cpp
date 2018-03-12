@@ -60,7 +60,7 @@ namespace Engine
 			return !_components.empty() && std::find(_components.begin(), _components.end(), component) != _components.end();
 		}
 
-		ColliderManager * GameLoop::GetColliderM()
+		ColliderManager * GameLoop::getColliderManager()
 		{
 			if (!_colliderManager) _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
 			return _colliderManager;
@@ -112,14 +112,14 @@ namespace Engine
 
 				//0 doesn't matter for now
 				getRenderManager()->render(0);
-				getRenderManager()->calculateFPS();
+				//getRenderManager()->calculateFPS(true);
 
 				//empty the event queue
 				getGame()->processEvents();
 			}
 		}
 
-		bool GameLoop::hasStarted()
+		bool GameLoop::hasStarted() const
 		{
 			return _started;
 		}

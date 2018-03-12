@@ -80,8 +80,6 @@ namespace Engine
 			float _specularStrength;
 			float _emissionStrength;
 			float _diffuseStrength;
-
-			int RGB_to_Hex(glm::vec3 color) const;
 		};
 	}
 }

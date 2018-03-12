@@ -44,9 +44,10 @@ namespace Engine
 		if (fromFile)
 		{
 			//Model::debug(true);
+			Model::clipPaths = false;
 			Deserealizer deserealizer;
 			deserealizer.deserializeIntoStructs();
-			deserializeStructs(deserealizer.structs);
+			deserializeStructs(deserealizer.structs, false);
 		}
 	}
 
@@ -85,27 +86,30 @@ namespace Engine
 		_gameObjects.push_back(std::unique_ptr<Core::GameObject_>(gameObject));
 	}
 
-	void Scene::deserializeStructs(std::vector<GameObject_s> structs)
+	void Scene::deserializeStructs(std::vector<GameObject_s> structs, const bool clipPaths)
 	{
 		std::unordered_map<int, GameObject_*> id_to_go;
 		//std::unordered_map<GameObject_*, int> go_to_id;
 
 		//first pass - initialize GOs
-		int index = 0;
+		//int index = 0;
 		std::cout << "Deserealizing " + std::to_string(structs.size()) + " objects." << std::endl;
 		for (GameObject_s& gameStruct : structs)
 		{
-			std::cout << "\tObject " + std::to_string(++index) + "." << std::endl;
+			//std::cout << "\tObject " + std::to_string(++index) + "." << std::endl;
 			GameObject_* gameObject = nullptr;
 
 			if (!gameStruct.meshName.empty() && gameStruct.meshName != std::string("")
 				&& gameStruct.meshName.find('.') != std::string::npos
 				)
 			{
-				while (gameStruct.meshName.find('/') != std::string::npos)
+				if (clipPaths)
 				{
-					gameStruct.meshName = gameStruct.meshName.substr(gameStruct.meshName.find('/') + 1, std::string::npos);
-					std::cout << gameStruct.meshName << std::endl;
+					while (gameStruct.meshName.find('/') != std::string::npos)
+					{
+						gameStruct.meshName = gameStruct.meshName.substr(gameStruct.meshName.find('/') + 1, std::string::npos);
+						//std::cout << gameStruct.meshName << std::endl;
+					}
 				}
 
 				if (gameStruct.meshName.find("default") != std::string::npos)
@@ -118,13 +122,18 @@ namespace Engine
 						gameStruct.meshName = "Cube.fbx";
 				}
 
+				//gameStruct.meshName.replace();
+				//gameStruct.meshName.replace(
+				//	gameStruct.meshName.end()-4,
+				//	gameStruct.meshName.end(), ".obj");
+
 				gameObject = Model::loadModel(gameStruct.meshName);
 			}
 			else
 			{
 				gameObject = new GameObject_("", "");
 			}
-			
+
 			if (gameObject == nullptr) return;
 			gameObject->setName(gameStruct.name);
 
@@ -133,27 +142,18 @@ namespace Engine
 			//gameStruct.position.z *= -1;
 			//gameStruct.position.y *= -1;
 			transform->setLocalPosition(gameStruct.position);
-			std::cout << gameStruct.name + " Position: " + glm::to_string(gameStruct.position) << std::endl;
+			std::cout << gameStruct.name + " Position: " + glm::to_string(gameStruct.position) << std::endl << std::endl;
 			//const glm::vec3 rotation = glm::vec3(glm::radians(gameStruct.rotation.x), glm::radians(gameStruct.rotation.y), glm::radians(gameStruct.rotation.z));
 			//transform->setLocalRotation(glm::quat(glm::eulerAngleYXZ(rotation.x, -rotation.y, -rotation.z)));
-			std::cout << glm::to_string(gameStruct.rotation) << std::endl;
+			//std::cout << glm::to_string(gameStruct.rotation) << std::endl;
 			//gameStruct.rotation.x *= -1;
 			gameStruct.rotation.y *= -1;
 			gameStruct.rotation.z *= -1;
-			transform->setLocalRotation(gameStruct.rotation);
-			std::cout << glm::to_string(gameStruct.rotation) << std::endl;
+			//transform->setLocalRotation(gameStruct.rotation);
+			//std::cout << glm::to_string(gameStruct.rotation) << std::endl;
 			//transform->setLocalRotation(glm::quat(glm::eulerAngleXYZ(gameStruct.rotation.x, gameStruct.rotation.y, gameStruct.rotation.z)));
-			transform->setLocalScale(gameStruct.scale);
-
-			//if (!gameStruct.meshName.empty() && gameStruct.meshName != std::string("")
-			//	&& gameStruct.meshName.find('.') != std::string::npos)
-			//{
-			//	ShallowMesh* shallow = Model::loadModelShallow(gameStruct.meshName);
-			//	std::cout << "Why are you running: " + std::to_string(shallow != nullptr) << std::endl;
-			//	gameObject->addComponent(shallow->mesh);
-			//	gameObject->addComponent(shallow->material);
-			//	gameObject->addComponent(shallow->renderer);
-			//}
+			//transform->setLocalScale(gameStruct.scale * 0.01f);
+			//transform->setLocalScale(gameStruct.scale);
 
 			addGameObject(gameObject);
 			id_to_go[gameStruct.selfID] = gameObject;
@@ -174,24 +174,27 @@ namespace Engine
 			transform->setParent(id_to_go[parentID]->getTransform(), false);
 		}
 
-		//for (auto& go: _gameObjects)
-		//{
+		//for (auto& go : _gameObjects)
 		//	go->addComponent(new RotatingComponent());
-		//}
 
 		id_to_go.clear();
 	}
 
 	void Scene::hardCode()
 	{
-		Core::GameObject_ * anvil = Model::loadModel("Anvil.fbx");
-		anvil->addComponent(new RotatingComponent());
+		Model::clipPaths = true;
+		//std::cout << "Find path check " + Engine::File::findPath("Viking_House_2_coloured.fbx") << std::endl;
+		//Core::GameObject_ * house = Model::loadModel("Viking_House_2_coloured.fbx");
+		//house->getTransform()->getChild(0)->getGameObject()->getComponent<Rendering::Material_>()->
+		//	setDiffuseMap(Rendering::Texture_::load(
+		//		"Viking_House_2_Viking_House_Texture_2_AlbedoTransparency.png"));
+		//anvil->addComponent(new RotatingComponent());
 
 		//Core::GameObject_ * table = Model::loadModel("Table.fbx");
 		//table->addComponent(new RotatingComponent());
-		Core::GameObject_ * table_C = Model::loadModel("Table_centered.fbx");
-		table_C->addComponent(new RotatingComponent()); 
-		table_C->getTransform()->translate(glm::vec3(10, 0, 0));
+		//Core::GameObject_ * table_C = Model::loadModel("Table_centered.fbx");
+		//table_C->addComponent(new RotatingComponent()); 
+		//table_C->getTransform()->translate(glm::vec3(10, 0, 0));
 		//Core::GameObject_ * crate = Model::loadModel("Crate.fbx");
 		//crate->addComponent(new RotatingComponent());
 		//Core::GameObject_ *shipOBJ = Model::loadModel("Fence_centered.obj");
@@ -226,6 +229,8 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
+
+		std::cout << Engine::File::findPath("Cube.fbx") << std::endl;
 		////Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
 		////playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		////playerModel->addComponent(new PlayerBaseComponent());
@@ -258,7 +263,7 @@ namespace Engine
 		//obj4->setName("npc");
 		//obj4->addComponent(new collider());
 		////obj1->addComponent(new PlayerBaseComponent());
-	
+
 
 		//Core::GameObject_* obj6 = Model::loadModel("Player.obj");
 		//obj6->getTransform()->translate(glm::vec3(-100, -599, 100));
@@ -296,8 +301,8 @@ namespace Engine
 		////playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		////playerModel->addComponent(new PlayerBaseComponent());
 		//Core::GameObject_* plane = Model::loadModel("mge/models/plane.obj");
-		//plane->getTransform()->scale(glm::vec3(5000));
-		//plane->getTransform()->translate(glm::vec3(glm::vec3(0, -600, 0)));
+		//plane->getTransform()->scale(glm::vec3(20));
+		//plane->getTransform()->translate(glm::vec3(glm::vec3(0, -2, 0)));
 
 		//Core::GameObject_* mainCharacter = Model::loadModel("MainCharacter.fbx");
 		//Collisions

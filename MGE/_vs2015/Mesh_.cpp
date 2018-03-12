@@ -9,8 +9,8 @@ namespace Engine
 {
 	namespace Rendering
 	{
-		Vertex::Vertex(const glm::vec3 position, const glm::vec3 normal, const glm::vec2 uv) :
-			position(position), normal(normal), textureCoordinate(uv)
+		Vertex::Vertex(const glm::vec3 position, const glm::vec3 normal, const glm::vec2 uv, const glm::vec3 tangent) :
+			position(position), normal(normal), textureCoordinate(uv), tangent(tangent)
 		{
 
 		}
@@ -20,9 +20,9 @@ namespace Engine
 			_vertices.push_back(vertex);
 		}
 
-		void Mesh_::addVertex(const glm::vec3 position, const glm::vec3 normal, const glm::vec2 uv)
+		void Mesh_::addVertex(const glm::vec3 position, const glm::vec3 normal, const glm::vec2 uv, const glm::vec3 tangent)
 		{
-			_vertices.emplace_back(position, normal, uv);
+			_vertices.emplace_back(position, normal, uv, tangent);
 		}
 
 		void Mesh_::addIndex(const int newIndex)

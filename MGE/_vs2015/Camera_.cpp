@@ -121,6 +121,12 @@ namespace Engine
 				turnSpeed *= 5;
 			}
 
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
+			{
+				moveSpeed /= 5;
+				turnSpeed /= 5;
+			}
+
 			Transform* transform = getGameObject()->getTransform();
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) transform->translate(transform->forward() * moveSpeed);
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) transform->translate(transform->forward() * -moveSpeed);

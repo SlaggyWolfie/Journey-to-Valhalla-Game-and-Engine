@@ -116,6 +116,7 @@ namespace Engine
 			Transform* getChild(int index) const;
 			Transform** getChildren() const;
 		private:
+			int _frames = 0;
 			Transform * _parent = nullptr;
 			std::vector<Transform*> _children;
 

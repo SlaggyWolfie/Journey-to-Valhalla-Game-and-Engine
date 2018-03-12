@@ -2,11 +2,14 @@
 #include "Texture_.hpp"
 #include <assimp/postprocess.h>
 #include <iostream>
+#include <glm/gtx/matrix_decompose.inl>
 
 namespace Engine
 {
 	int Model::_recursionLevel = 0;
+	double Model::_scale = 1;
 	bool Model::_debug = false;
+	bool Model::clipPaths = false;
 
 	Core::GameObject_* Model::loadModel(const std::string& path)
 	{
@@ -14,9 +17,12 @@ namespace Engine
 		std::cout << "Loading model at path " + path << std::endl;
 		Assimp::Importer import;
 		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, true);
+		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_CAMERAS, false);
+		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_ANIMATIONS, false);
+		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_LIGHTS, false);
 		const aiScene *scene = import.ReadFile(path,
 			aiProcess_Triangulate
-			| aiProcess_FlipUVs | aiProcess_SplitLargeMeshes | aiProcess_ValidateDataStructure
+			| aiProcess_SplitLargeMeshes | aiProcess_ValidateDataStructure | aiProcess_CalcTangentSpace
 			| aiProcess_OptimizeGraph | aiProcess_OptimizeMeshes | aiProcess_CalcTangentSpace);
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
@@ -24,83 +30,16 @@ namespace Engine
 			std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
 			return nullptr;
 		}
+
+		if (scene->mMetaData)
+			scene->mMetaData->Get("UnitScaleFactor", _scale);
 		//this->path = path.substr(0, path.find_last_of('/'));
 
 		Core::GameObject_* go = processNode(scene->mRootNode, scene);
 		std::cout << "Loaded model at path " + path << std::endl;
 		_recursionLevel = 0;
+		_scale = 1;
 		return go;
-	}
-
-	ShallowMesh* Model::loadModelShallow(const std::string& path)
-	{
-		std::cout << "Loading model at path " + path << std::endl;
-		Assimp::Importer import;
-		const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
-
-		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
-		{
-			std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
-			return nullptr;
-		}
-		//this->path = path.substr(0, path.find_last_of('/'));
-
-		ShallowMesh* shallow = processNodeShallow(scene->mRootNode, scene);
-		std::cout << "Loaded model at path " + path << std::endl;
-		_recursionLevel = 0;
-		return shallow;
-	}
-
-	ShallowMesh* Model::processNodeShallow(aiNode* node, const aiScene* scene)
-	{
-		_recursionLevel++;
-		print(std::string("Processing node ") + node->mName.C_Str());
-		ShallowMesh* shallow;// = new GameObject_(node->mName.C_Str(), "");
-						// process all the node's meshes (if any)
-		print(std::string("Has ") + std::to_string(node->mNumMeshes) + " amount of meshes.");
-		print(std::string("Has ") + std::to_string(node->mNumChildren) + " amount of children.");
-
-		bool skip = false;
-		// then do the same for each of its children
-		if (node->mNumChildren == 1 && node == scene->mRootNode)
-		{
-			shallow = processNodeShallow(node->mChildren[0], scene);
-			skip = true;
-		}
-		else
-			shallow = new ShallowMesh();
-
-		//go->getTransform()->setWorldMatrix4X4(convert(node->mTransformation));
-
-		for (unsigned int i = 0; i < node->mNumMeshes; i++)
-		{
-			aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
-			Rendering::Material_* mymat = nullptr;
-			Rendering::Mesh_* mymesh = nullptr;
-			const Rendering::RenderQueue queue = processMesh(mesh, scene, mymesh, mymat);
-
-			std::cout << "Wrong" << std::endl;
-			std::cout << "My Mesh: " + std::to_string(mymesh != nullptr) << std::endl;
-			std::cout << "My Material: " + std::to_string(mymat != nullptr) << std::endl;
-			shallow->mesh = mymesh;
-			shallow->material = mymat;
-			shallow->renderer = new Rendering::Renderer_(mymat, mymesh, queue);
-		}
-
-		if (!skip)
-			for (unsigned int i = 0; i < node->mNumChildren; i++)
-			{
-				ShallowMesh* child = processNodeShallow(node->mChildren[i], scene);
-				//childGO->getTransform()->setParent(shallow->getTransform(), true);
-				child->parent = shallow;
-			}
-
-		print(std::string("Processed node ") + node->mName.C_Str());
-		//std::cout << "Processed node " << node->mName.C_Str() << std::endl;
-
-		_recursionLevel--;
-		return shallow;
-		return nullptr;
 	}
 
 	Core::GameObject_* Model::processNode(aiNode *node, const aiScene *scene)
@@ -122,8 +61,14 @@ namespace Engine
 		//else
 		gameObject = new Core::GameObject_(node->mName.C_Str(), "");
 
-		gameObject->getTransform()->setWorldMatrix4X4(convert(node->mTransformation));
+		Engine::Core::Transform* transform = gameObject->getTransform();
+		if (node != scene->mRootNode)
+		{
+			const auto something = convert(node->mTransformation);
+			transform->setLocalMatrix4X4(something);
+		}
 
+		transform->setLocalScale(transform->getLocalScale() * glm::vec3(1 / _scale));
 		for (unsigned int i = 0; i < node->mNumMeshes; i++)
 		{
 			aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
@@ -176,6 +121,11 @@ namespace Engine
 			vector.y = mesh->mNormals[i].y;
 			vector.z = mesh->mNormals[i].z;
 			vertex.normal = vector;
+
+			vector.x = mesh->mTangents[i].x;
+			vector.y = mesh->mTangents[i].y;
+			vector.z = mesh->mTangents[i].z;
+			vertex.tangent = vector;
 
 			if (mesh->mTextureCoords[0]) // do you even UV, bruh?
 			{
@@ -237,19 +187,31 @@ namespace Engine
 		if (material->GetTextureCount(aiTextureType_DIFFUSE) > 0)
 		{
 			material->GetTexture(aiTextureType_DIFFUSE, 0, &str);
-			outMaterial->setDiffuseMap(Rendering::Texture_::load(str.C_Str()));
+			//std::cout << "Texture: " << str.C_Str() << std::endl;
+			const std::string path = Engine::File::findPath(Engine::File::clipPath(str.C_Str()));
+			//std::cout << "T:" << s << std::endl;
+			if (!path.empty() && path.find('*') == std::string::npos) outMaterial->setDiffuseMap(Rendering::Texture_::load(path));
 		}
 
 		if (material->GetTextureCount(aiTextureType_SPECULAR) > 0)
 		{
 			material->GetTexture(aiTextureType_SPECULAR, 0, &str);
-			outMaterial->setSpecularMap(Rendering::Texture_::load(str.C_Str()));
+			const std::string path = Engine::File::findPath(Engine::File::clipPath(str.C_Str()));
+			if (!path.empty() && path.find('*') == std::string::npos) outMaterial->setSpecularMap(Rendering::Texture_::load(path));
 		}
 
 		if (material->GetTextureCount(aiTextureType_EMISSIVE) > 0)
 		{
 			material->GetTexture(aiTextureType_EMISSIVE, 0, &str);
-			outMaterial->setEmissionMap(Rendering::Texture_::load(str.C_Str()));
+			const std::string path = Engine::File::findPath(Engine::File::clipPath(str.C_Str()));
+			if (!path.empty() && path.find('*') == std::string::npos)outMaterial->setEmissionMap(Rendering::Texture_::load(path));
+		}
+
+		if (material->GetTextureCount(aiTextureType_NORMALS) > 0)
+		{
+			material->GetTexture(aiTextureType_NORMALS, 0, &str);
+			const std::string path = Engine::File::findPath(Engine::File::clipPath(str.C_Str()));
+			if (!path.empty() && path.find('*') == std::string::npos)outMaterial->setEmissionMap(Rendering::Texture_::load(path));
 		}
 
 		print("Processed material.");
@@ -282,4 +244,151 @@ namespace Engine
 			std::cout << prefix + message << std::endl;
 		}
 	}
+
+	std::string Model::removeParentFolders(std::string path)
+	{
+		while (path.find('\\') != std::string::npos)
+		{
+			path = path.substr(path.find('\\') + 1, std::string::npos);
+			//std::cout << gameStruct.meshName << std::endl;
+		}
+
+		return path;
+	}
+
+	glm::vec3 Model::_getTranslation(const glm::mat4& matrix)
+	{
+		glm::vec3 translation;
+		glm::quat rotation;
+		glm::vec3 scale;
+		glm::vec3 skew;
+		glm::vec4 perspective;
+
+		glm::decompose(matrix, scale, rotation, translation, skew, perspective);
+
+		return translation;
+	}
+
+	glm::quat Model::_getOrientation(const glm::mat4& matrix)
+	{
+		glm::vec3 translation;
+		glm::quat rotation;
+		glm::vec3 scale;
+		glm::vec3 skew;
+		glm::vec4 perspective;
+
+		glm::decompose(matrix, scale, rotation, translation, skew, perspective);
+
+		return rotation;
+	}
+
+	glm::vec3 Model::_getScale(const glm::mat4& matrix)
+	{
+		glm::vec3 translation;
+		glm::quat rotation;
+		glm::vec3 scale;
+		glm::vec3 skew;
+		glm::vec4 perspective;
+
+		glm::decompose(matrix, scale, rotation, translation, skew, perspective);
+
+		return scale;
+	}
+
+	glm::vec3 Model::_getSkew(const glm::mat4& matrix)
+	{
+		glm::vec3 translation;
+		glm::quat rotation;
+		glm::vec3 scale;
+		glm::vec3 skew;
+		glm::vec4 perspective;
+
+		glm::decompose(matrix, scale, rotation, translation, skew, perspective);
+
+		return skew;
+	}
+
+	glm::vec4 Model::_getPerspective(const glm::mat4& matrix)
+	{
+		glm::vec3 translation;
+		glm::quat rotation;
+		glm::vec3 scale;
+		glm::vec3 skew;
+		glm::vec4 perspective;
+
+		glm::decompose(matrix, scale, rotation, translation, skew, perspective);
+
+		return perspective;
+	}
+
+	//ShallowMesh* Model::loadModelShallow(const std::string& path)
+	//{
+	//	std::cout << "Loading model at path " + path << std::endl;
+	//	Assimp::Importer import;
+	//	const aiScene *scene = import.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+
+	//	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+	//	{
+	//		std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
+	//		return nullptr;
+	//	}
+	//	//this->path = path.substr(0, path.find_last_of('/'));
+
+	//	ShallowMesh* shallow = processNodeShallow(scene->mRootNode, scene);
+	//	std::cout << "Loaded model at path " + path << std::endl;
+	//	_recursionLevel = 0;
+	//	return shallow;
+	//}
+
+	//ShallowMesh* Model::processNodeShallow(aiNode* node, const aiScene* scene)
+	//{
+	//	_recursionLevel++;
+	//	print(std::string("Processing node ") + node->mName.C_Str());
+	//	ShallowMesh* shallow;// = new GameObject_(node->mName.C_Str(), "");
+	//						 // process all the node's meshes (if any)
+	//	print(std::string("Has ") + std::to_string(node->mNumMeshes) + " amount of meshes.");
+	//	print(std::string("Has ") + std::to_string(node->mNumChildren) + " amount of children.");
+
+	//	bool skip = false;
+	//	// then do the same for each of its children
+	//	if (node->mNumChildren == 1 && node == scene->mRootNode)
+	//	{
+	//		shallow = processNodeShallow(node->mChildren[0], scene);
+	//		skip = true;
+	//	}
+	//	else
+	//		shallow = new ShallowMesh();
+
+	//	//go->getTransform()->setWorldMatrix4X4(convert(node->mTransformation));
+
+	//	for (unsigned int i = 0; i < node->mNumMeshes; i++)
+	//	{
+	//		aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
+	//		Rendering::Material_* mymat = nullptr;
+	//		Rendering::Mesh_* mymesh = nullptr;
+	//		const Rendering::RenderQueue queue = processMesh(mesh, scene, mymesh, mymat);
+
+	//		std::cout << "Wrong" << std::endl;
+	//		std::cout << "My Mesh: " + std::to_string(mymesh != nullptr) << std::endl;
+	//		std::cout << "My Material: " + std::to_string(mymat != nullptr) << std::endl;
+	//		shallow->mesh = mymesh;
+	//		shallow->material = mymat;
+	//		shallow->renderer = new Rendering::Renderer_(mymat, mymesh, queue);
+	//	}
+
+	//	if (!skip)
+	//		for (unsigned int i = 0; i < node->mNumChildren; i++)
+	//		{
+	//			ShallowMesh* child = processNodeShallow(node->mChildren[i], scene);
+	//			//childGO->getTransform()->setParent(shallow->getTransform(), true);
+	//			child->parent = shallow;
+	//		}
+
+	//	print(std::string("Processed node ") + node->mName.C_Str());
+	//	//std::cout << "Processed node " << node->mName.C_Str() << std::endl;
+
+	//	_recursionLevel--;
+	//	return shallow;
+	//	return nullptr;
+	//}
 }

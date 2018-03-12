@@ -45,12 +45,20 @@ namespace Engine
 
 	class Vector3
 	{
+	public:
 		static glm::vec3 forward();
 		static glm::vec3 up();
 		static glm::vec3 right();
 		static glm::vec3 backward();
 		static glm::vec3 down();
 		static glm::vec3 left();
+	};
+
+	class File
+	{
+	public:
+		static std::string findPath(const std::string& nameOfFile, const std::string& rootDirectory = "Assets");
+		static std::string clipPath(std::string path);
 	};
 }
 

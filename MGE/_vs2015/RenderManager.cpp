@@ -24,7 +24,7 @@ namespace Engine
 	namespace Rendering
 	{
 		RenderManager::RenderManager() :
-			_fps(0), _frameCount(0), _timeSinceLastFPSCalculation(0), _lightManager(nullptr),
+			_fps(0), _frameCount(0), _timeSinceLastFPSCalculation(0), _fps_hud(nullptr), _lightManager(nullptr),
 			_window(nullptr)
 		{
 		}
@@ -62,6 +62,8 @@ namespace Engine
 				1.0f);
 
 			createOwnedLoops();
+
+			setupFPSHUD();
 		}
 
 		void RenderManager::addRenderer(Renderer_* renderer)
@@ -110,7 +112,8 @@ namespace Engine
 
 		void RenderManager::render(const float deltaTime)
 		{
-			getLightManager()->renderShadowMaps();
+			//getWindow()->clear();
+			//getLightManager()->renderShadowMaps();
 
 			//std::cout << "Pl0x" << std::endl;
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -127,9 +130,13 @@ namespace Engine
 			renderOpaque();
 			renderTransparent();
 
+
+			_fps_hud->setTextInformation("FPS: " + std::to_string(getFPS()));
+			_fps_hud->draw();
+
 			getWindow()->display();
 
-			//calculateFPS();
+			calculateFPS();
 		}
 
 		void RenderManager::startFPSClock()
@@ -169,7 +176,6 @@ namespace Engine
 			//Iterate over, add based on distance squared to camera
 			//const std::vector<Renderer_*> vector = _renderTransparent->getObjects();
 			for (Renderer_* itr : _transparentRenderers)
-				//for (Renderer_* itr : vector)
 				if (itr != nullptr && itr->getGameObject() != nullptr)
 					sorted.insert(std::make_pair(glm::length2(cameraPosition -
 						itr->getGameObject()->getTransform()->getPosition()), itr));
@@ -189,6 +195,7 @@ namespace Engine
 			glViewport(0, 0, shadowMap->getWidth(), shadowMap->getHeight());
 
 			shadowMap->bindFramebuffer();
+			shadowMap->getShader()->bind();
 			glClear(GL_DEPTH_BUFFER_BIT);
 			shadowMap->pushLightSpaceMatrix(light->getLightSpaceMatrix());
 			//shadowMap->bindTexture();
@@ -196,11 +203,9 @@ namespace Engine
 			{
 				if (renderer->isEnabled() && renderer->castsShadows() && renderer->getGameObject()->isActive())
 				{
-					shadowMap->getShader()->bind();
 					shadowMap->pushModelMatrix(renderer->getGameObject()->getTransform()->getMatrix4X4());
 					//renderer->pushMatrices();
 					renderer->pushMesh();
-					Shader::unbind();
 					//renderer->pushMatrices();
 					//renderer->pushMesh();
 					//renderer->render();
@@ -208,15 +213,15 @@ namespace Engine
 				}
 			}
 
-			for (Renderer_* renderer : _transparentRenderers)
-			{
-				if (renderer->isEnabled() && renderer->castsShadows() && renderer->getGameObject()->isActive())
-				{
-					shadowMap->pushModelMatrix(renderer->getGameObject()->getTransform()->getMatrix4X4());
-					renderer->pushMatrices();
-					renderer->pushMesh();
-				}
-			}
+			//for (Renderer_* renderer : _transparentRenderers)
+			//{
+			//	if (renderer->isEnabled() && renderer->castsShadows() && renderer->getGameObject()->isActive())
+			//	{
+			//		shadowMap->pushModelMatrix(renderer->getGameObject()->getTransform()->getMatrix4X4());
+			//		renderer->pushMatrices();
+			//		renderer->pushMesh();
+			//	}
+			//}
 
 			//ShadowMap::unbindTexture();
 			Shader::unbind();
@@ -238,6 +243,20 @@ namespace Engine
 		{
 			_opaqueRenderers.clear();
 			_transparentRenderers.clear();
+		}
+
+		void RenderManager::setupFPSHUD()
+		{
+			//_fps_hud = std::make_unique<TextHUD>(getWindow());
+			_fps_hud = std::make_unique<TextHUD>();
+			_fps_hud->setWindow(getWindow());
+			_fps_hud->setFont("mge/fonts/arial.ttf");
+			_fps_hud->setTextAlignment(Left_Justified);
+			_fps_hud->setTextInformation("FPS");
+			_fps_hud->getTextObject().setPosition(100, 100);
+			_fps_hud->getTextObject().setCharacterSize(16);
+			_fps_hud->getTextObject().setFillColor(sf::Color::White);
+			//_fps_hud->getTextObject()->
 		}
 
 		LightManager* RenderManager::getLightManager()
@@ -269,21 +288,6 @@ namespace Engine
 				_frameCount = 0;
 			}
 
-			//sf::Text text;
-			//sf::Font font;
-			//text.setString(""); 
-			//font.loadFromFile(config::MGE_FONT_PATH + "arial.ttf");
-			//text.setFont(font);
-			//text.setCharacterSize(16);
-			//text.setFillColor(sf::Color::White);
-
-			//text.setString(std::to_string(static_cast<int>(_fps)));
-			//text.setPosition(10, 10);
-			//glActiveTexture(GL_TEXTURE0);
-			//getWindow()->pushGLStates();
-			//getWindow()->draw(text);
-			//getWindow()->popGLStates();
-			//std::cout << glewGetErrorString(glGetError()) << std::endl;
 			if (print) std::cout << "FPS: " + std::to_string(_fps) << std::endl;
 		}
 	}

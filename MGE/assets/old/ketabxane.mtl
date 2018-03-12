@@ -1,0 +1,224 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 23.01.2015 23:18:41
+
+newmtl Material__25
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka H:\Picture\texture\Wood Backgrounds set 1\designtnt-textures-wood-backgrounds-set-1-9.jpg
+	map_Kd H:\Picture\texture\Wood Backgrounds set 1\designtnt-textures-wood-backgrounds-set-1-9.jpg
+
+newmtl Material__35
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka H:\Picture\texture\Wood Backgrounds set 1\designtnt-textures-wood-backgrounds-set-1-7.jpg
+	map_Kd H:\Picture\texture\Wood Backgrounds set 1\designtnt-textures-wood-backgrounds-set-1-7.jpg
+	map_bump H:\Picture\texture\Wood Backgrounds set 1\designtnt-textures-wood-backgrounds-set-1-7.jpg
+	bump H:\Picture\texture\Wood Backgrounds set 1\designtnt-textures-wood-backgrounds-set-1-7.jpg
+
+newmtl wire_196088225
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.7686 0.3451 0.8824
+	Kd 0.7686 0.3451 0.8824
+	Ks 0.3500 0.3500 0.3500
+
+newmtl Material__28
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka H:\yashar\proje\ax\axx\IMG_3428 600.jpg
+	map_Kd H:\yashar\proje\ax\axx\IMG_3428 600.jpg
+
+newmtl Material__30
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Moltaji\Desktop\79471_875.jpg
+	map_Kd C:\Users\Moltaji\Desktop\79471_875.jpg
+
+newmtl Material__29
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Moltaji\Desktop\115000_887.jpg
+	map_Kd C:\Users\Moltaji\Desktop\115000_887.jpg
+
+newmtl Material__31
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Moltaji\Desktop\mouhammad__wwwshiapicsir_20100422_2039063757.jpg
+	map_Kd C:\Users\Moltaji\Desktop\mouhammad__wwwshiapicsir_20100422_2039063757.jpg
+
+newmtl Material__32
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Moltaji\Desktop\index.jpg
+	map_Kd C:\Users\Moltaji\Desktop\index.jpg
+
+newmtl Material__34
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka H:\yashar\proje\ax\axx\1IMG_4183.jpg
+	map_Kd H:\yashar\proje\ax\axx\1IMG_4183.jpg
+
+newmtl _Bookbook_01
+	Ns 96.0784
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.4000 0.4000 0.4000
+	Ks 0.1000 0.1000 0.1000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Moltaji\Documents\Downloads\Compressed\Antique Book\Antique Book\Texture\book_01.jpg
+	map_Kd C:\Users\Moltaji\Documents\Downloads\Compressed\Antique Book\Antique Book\Texture\book_01.jpg
+
+newmtl _Bookbook_02_book_02_jpg
+	Ns 96.0784
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.4000 0.4000 0.4000
+	Ks 0.1000 0.1000 0.1000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Moltaji\Documents\Downloads\Compressed\Antique Book\Antique Book\Texture\book_02.jpg
+	map_Kd C:\Users\Moltaji\Documents\Downloads\Compressed\Antique Book\Antique Book\Texture\book_02.jpg
+
+newmtl _Bookbook_03
+	Ns 96.0784
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.4000 0.4000 0.4000
+	Ks 0.1000 0.1000 0.1000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Moltaji\Documents\Downloads\Compressed\Antique Book\Antique Book\Texture\book_03.jpg
+	map_Kd C:\Users\Moltaji\Documents\Downloads\Compressed\Antique Book\Antique Book\Texture\book_03.jpg
+
+newmtl Material__37254
+	Ns 93.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.2118 0.0941 0.0000
+	Ks 0.9373 0.7020 0.3961
+	Ke 0.0000 0.0000 0.0000
+
+newmtl 35435
+	Ns 100.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.4667 0.4667 0.4667
+	Ks 1.0000 1.0000 1.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl Material__66
+	Ns 0.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.2118 0.0941 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl wire_088144225
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.3451 0.5647 0.8824
+	Kd 0.3451 0.5647 0.8824
+	Ks 0.3500 0.3500 0.3500
+
+newmtl wire_061135006
+	Ns 32
+	d 1
+	Tr 0
+	Tf 1 1 1
+	illum 2
+	Ka 0.2392 0.5294 0.0235
+	Kd 0.2392 0.5294 0.0235
+	Ks 0.3500 0.3500 0.3500

@@ -48,7 +48,7 @@ namespace Engine
 		void Transform::setScale(const glm::vec3& scale)
 		{
 			if (_parent == nullptr) setLocalScale(scale);
-			else setLocalScale(scale / _getScale(_parent->getMatrix4X4()));
+			else setLocalScale(scale / getParent()->getScale());
 		}
 
 		glm::vec3 Transform::getScale()
@@ -529,12 +529,8 @@ namespace Engine
 
 		void Transform::update()
 		{
-			//std::cout /*<< "Matrix: " <<std::endl */<< glm::to_string(getMatrix4X4()[1]) << std::endl;
-			//_localRotation = glm::normalize(_localRotation);
-			//std::cout << "After normalization: " + std::to_string(glm::length(_localRotation)) << std::endl;
-			//_makeLocalMatrixDirty();
-			//_makeWorldMatrixDirty();
-			//setLocalRotation(glm::normalize(_localRotation));
+			if ((++_frames) % 60 == 0)
+				setLocalRotation(glm::normalize(_localRotation));
 		}
 
 		Transform::Transform() :

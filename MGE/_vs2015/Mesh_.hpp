@@ -17,9 +17,10 @@ namespace Engine
 			glm::vec3 position;
 			glm::vec3 normal;
 			glm::vec2 textureCoordinate;
+			glm::vec3 tangent;
 
 			Vertex() = default;
-			Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv);
+			Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv, glm::vec3 tangent);
 			//Vertex(const Vertex& other) = default;
 			//Vertex& operator= (const Vertex& other) = default;
 			//Vertex(const Vertex&& other) = default;
@@ -42,7 +43,7 @@ namespace Engine
 			void generateBuffers2();
 
 			void addVertex(Vertex vertex);
-			void addVertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv);
+			void addVertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv, glm::vec3 tangent);
 			void addIndex(int newIndex);
 
 			void removeVertex(int index);

@@ -28,10 +28,9 @@ namespace Engine
 			void subscribe(Component* component);
 			void unsubscribe(Component* component);
 			bool isSubscribed(Component* component);
-			ColliderManager* GetColliderM();
 
 			void run();
-			bool hasStarted();
+			bool hasStarted() const;
 		private:
 			bool _started = false;
 
@@ -45,6 +44,7 @@ namespace Engine
 
 			Game* getGame();
 			Rendering::RenderManager* getRenderManager();
+			ColliderManager* getColliderManager();
 			ColliderManager* _colliderManager;
 
 			Game* _game = nullptr;

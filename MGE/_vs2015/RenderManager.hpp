@@ -8,6 +8,8 @@
 #include "FunctionGroup.hpp"
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <vector>
+#include <SFML/Graphics/Text.hpp>
+#include "TextHUD.hpp"
 
 namespace Engine
 {
@@ -49,11 +51,12 @@ namespace Engine
 			void destroyOwnedLoops();
 
 			//FPS
-			float _fps;
-			std::unique_ptr<sf::Clock> _fpsClock;
-			//sf::Clock* _fpsClock;
-			int _frameCount;
-			float _timeSinceLastFPSCalculation;
+			float _fps = 0;
+			std::unique_ptr<sf::Clock> _fpsClock = nullptr;
+			int _frameCount =  0;
+			float _timeSinceLastFPSCalculation = 0;
+			std::unique_ptr<TextHUD> _fps_hud;
+			void setupFPSHUD();
 
 			//Other
 			LightManager* getLightManager();

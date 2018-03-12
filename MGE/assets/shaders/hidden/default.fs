@@ -92,6 +92,9 @@ float GetShadows(vec4 lightSpacePosition);
 
 void main() 
 {
+	// finalColor = vec4(vec3(sqrt(1-texture(shadowMap, textureCoordinate))), 1);	
+	// return;
+	
 	vec3 diffuseColor = material.diffuseColor;
 	float alpha = 1;
 	

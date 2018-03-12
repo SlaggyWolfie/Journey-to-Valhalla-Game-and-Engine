@@ -121,7 +121,7 @@ namespace Engine
 				glm::perspective(90.0f, 1.0f, -_range, _range);
 			const glm::mat4 lightViewMatrix = getGameObject()->getTransform()->getMatrix4X4();
 
-			//return lightProjectionMatrix * glm::inverse(lightViewMatrix);
+			return lightProjectionMatrix * glm::inverse(lightViewMatrix);
 			return lightProjectionMatrix * lightViewMatrix;
 		}
 

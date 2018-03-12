@@ -2,6 +2,7 @@
 #include <iostream>
 #include <valarray>
 #include <vector>
+#include <filesystem>
 
 namespace Engine
 {
@@ -76,5 +77,34 @@ namespace Engine
 	glm::vec3 Vector3::left()
 	{
 		return -right();
+	}
+
+	std::string File::findPath(const std::string& nameOfFile, const std::string& rootDirectory)
+	{
+		namespace fs = std::experimental::filesystem;
+		for (auto & p : fs::recursive_directory_iterator(rootDirectory.c_str()))
+		{
+			const std::string actualPath = p.path().generic_string();
+			//std::cout << "Recursive Iterator " << actualPath << std::endl;
+			if (clipPath(actualPath) == nameOfFile)
+			{
+				std::cout << "Found [" + nameOfFile + "] at [" + actualPath + "]!" << std::endl;
+				return actualPath;
+			}
+		}
+
+		std::cout << "Did not find [" + nameOfFile + "] at root[" + rootDirectory + "]!" << std::endl;
+		return std::string();
+	}
+
+	std::string File::clipPath(std::string path)
+	{
+		while (path.find('\\') != std::string::npos)
+			path = path.substr(path.find('\\') + 1, std::string::npos);
+
+		while (path.find('/') != std::string::npos)
+			path = path.substr(path.find('/') + 1, std::string::npos);
+
+		return path;
 	}
 }

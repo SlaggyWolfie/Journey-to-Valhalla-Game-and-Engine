@@ -160,9 +160,6 @@
     <ClCompile Include="..\src\mge\core\ShaderProgram.cpp">
       <Filter>old\mge</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp">
-      <Filter>old\mge</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\myEngine\SystemEvent.cpp">
       <Filter>old\myengine</Filter>
     </ClCompile>
@@ -240,6 +237,8 @@
     <ClCompile Include="AudioListener.cpp" />
     <ClCompile Include="LastposStasher.cpp" />
     <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
+    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
+    <ClCompile Include="TextHUD.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -434,9 +433,6 @@
     <ClInclude Include="..\src\mge\core\ShaderProgram.hpp">
       <Filter>old\mge</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp">
-      <Filter>old\mge</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\myEngine\SystemEvent.hpp">
       <Filter>old\myengine</Filter>
     </ClInclude>
@@ -513,6 +509,8 @@
     <ClInclude Include="LastposStasher.h" />
     <ClInclude Include="RotatingComponent.hpp" />
     <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
+    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
+    <ClInclude Include="TextHUD.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
