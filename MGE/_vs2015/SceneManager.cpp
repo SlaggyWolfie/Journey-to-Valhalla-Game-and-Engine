@@ -11,7 +11,7 @@ namespace Engine
 	Scene* SceneManager::loadScene(const std::string& path)
 	{
 		if (_activeScene)
-			unloadScene(_activeScene);
+			unloadScene();
 
 		_activeScene = std::make_unique<Scene>(Engine::File::clipPath(path), path);
 		_activeScene->initialize(true, true);
@@ -27,10 +27,10 @@ namespace Engine
 	{
 	}
 
-	void SceneManager::unloadScene(std::unique_ptr<Scene>& scene)
+	void SceneManager::unloadScene()
 	{
 		ServiceLocator::instance()->resetServices(this);
-		scene = nullptr;
+		_activeScene = nullptr;
 	}
 
 	Game* SceneManager::getGame()

@@ -99,16 +99,19 @@ namespace Engine
 				while (lag > fixedTimeStep)
 				{
 					lag -= fixedTimeStep;
-					fixedUpdate();
+					if (!Engine::Utility::Time::isPaused()) fixedUpdate();
 				}
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-					ServiceLocator::instance()->getService<SceneManager>()->loadScene("test.json");
+					ServiceLocator::instance()->getService<SceneManager>()->loadScene("Assets/Scenes/test.json");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
 					Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/donnerre2.wav");
 
-				update();
-				lateUpdate();
+				if (!Engine::Utility::Time::isPaused())
+				{
+					update();
+					lateUpdate();
+				}
 
 				getRenderManager()->render();
 

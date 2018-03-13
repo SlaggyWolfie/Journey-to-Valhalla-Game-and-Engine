@@ -20,7 +20,7 @@ namespace Engine
 		void initialize() override;
 	private:
 		std::unique_ptr<Scene> _activeScene = nullptr;
-		void unloadScene(std::unique_ptr<Scene>& scene);
+		void unloadScene();
 		Game* _game = nullptr;
 		Game* getGame();
 	public:

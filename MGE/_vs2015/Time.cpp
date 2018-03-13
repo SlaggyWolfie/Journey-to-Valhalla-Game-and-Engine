@@ -11,6 +11,7 @@ namespace Engine
 		 float Time::_now_seconds = 0;
 		 float Time::_timeStep_seconds = 0;
 		 float Time::_variableTimeStep_seconds = 0;
+		 bool Time::_paused = false;
 		 std::set<Time::TimeoutEvent> Time::_timeouts;
 
 		//TimeoutEvent
@@ -40,6 +41,26 @@ namespace Engine
 				return true;
 			}
 			return false;
+		}
+
+		bool Time::isPaused()
+		{
+			return _paused;
+		}
+
+		void Time::pause()
+		{
+			setPause(true);
+		}
+
+		void Time::unpause()
+		{
+			setPause(false);
+		}
+
+		void Time::setPause(const bool paused)
+		{
+			_paused = paused;
 		}
 
 		//Time
