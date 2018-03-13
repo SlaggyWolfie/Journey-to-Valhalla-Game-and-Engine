@@ -15,16 +15,18 @@
 #include "PressurePlateBehaviour.h"
 #include "GateBehaviour.h"
 #include "Material_.hpp"
-
+#include "Button.hpp"
+#include "ServiceLocator.hpp"
+#include "Core\Game.hpp"
 namespace Engine
 {
 	using namespace Rendering;
-	Scene::Scene() : _name(""), _path (""),_gameObjects(std::vector<std::unique_ptr<Core::GameObject_>>())
+	Scene::Scene() : _name(""), _path(""), _gameObjects(std::vector<std::unique_ptr<Core::GameObject_>>())
 	{
 	}
 
-	Scene::Scene(std::string name, std::string path) : _name(std::move(name)), _path(std::move(path)), 
-	_gameObjects(std::vector<std::unique_ptr<Core::GameObject_>>())
+	Scene::Scene(std::string name, std::string path) : _name(std::move(name)), _path(std::move(path)),
+		_gameObjects(std::vector<std::unique_ptr<Core::GameObject_>>())
 	{
 	}
 
@@ -177,8 +179,49 @@ namespace Engine
 		id_to_go.clear();
 	}
 
+	void Scene::loadMenu()
+	{
+
+		using namespace Engine::UI;
+		sf::RenderWindow* window = ServiceLocator::instance()->getService<Engine::Game>()->getWindow();
+		sf::Vector2u windowSize = window->getSize();
+		float width = windowSize.x;
+		float height = windowSize.y;
+
+		Button* BackGround = new Button();
+		BackGround->loadSprite("bg.jpg");
+
+		Button* playButton = new Button();
+		playButton->loadSprite("Play.png");
+		playButton->getSprite().setPosition(10, height* 6/10 );
+
+		Button* OptionsButton = new Button();
+		OptionsButton->loadSprite("Options.png");
+		OptionsButton->getSprite().setPosition(10, height * 7 / 10);
+
+		Button* CreditsButton = new Button();
+		CreditsButton->loadSprite("Credits.png");
+		CreditsButton->getSprite().setPosition(10, height * 8 / 10);
+
+		Button* ExitButton = new Button();
+		ExitButton->loadSprite("Exit.png");
+		ExitButton->getSprite().setPosition(10, height * 9 / 10);
+
+		
+		//BackGround->getSprite().setScale(2, 2);
+		Text::makeHint();
+		Text::hint->setWindow(window);
+		std::cout << "MENUU" << std::endl;
+		std::cout << Text::hint->getTextObject().getCharacterSize()<<std::endl;
+		Text::hint->getTextObject().setPosition(100, 100);
+		Text::showHint("CABBAGE", 3, 5);
+
+		std::cout << "load menu" << std::endl;
+	}
+
 	void Scene::hardCode()
 	{
+		loadMenu();
 		Model::clipPaths = true;
 		Core::GameObject_* door_1 = Model::loadModel("Assets/Props/Door_1.fbx");
 		door_1->getTransform()->translate(glm::vec3(0, 5, 15));
@@ -232,7 +275,7 @@ namespace Engine
 		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
 
-		
+
 		//return;
 		std::cout << Engine::File::findPath("Cube.fbx") << std::endl;
 		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
@@ -243,7 +286,7 @@ namespace Engine
 		Core::GameObject_* obj1 = Model::loadModel("Player.obj");
 		//obj1->getTransform()->setScale(glm::vec3(2, 2, 2));
 		//Core::GameObject_* obj1 = Model::loadModel("Player.obj");
-		
+
 		obj1->getTransform()->translate(glm::vec3(0, 10, -600));
 		obj1->addComponent(new collider());
 		obj1->addComponent(new PlayerBaseComponent());
@@ -277,7 +320,7 @@ namespace Engine
 		obj4->addComponent(new collider());
 		obj4->getComponent<collider>()->SetBoxSize(60, 150, 60);
 		Texture_* text;
-		text=Texture_::load("white.jpg", TextureType::Specular);
+		text = Texture_::load("white.jpg", TextureType::Specular);
 		obj4->getComponentInChildren<Material_>()->setEmissionMap(text);
 		obj4->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("MementoMori.jpg"));
 		obj4->getComponentInChildren<Material_>()->useSpecularMap();
@@ -288,7 +331,7 @@ namespace Engine
 		obj6->getTransform()->translate(glm::vec3(-400, 60, 100));
 		obj6->setName("crate4");
 		obj6->addComponent(new collider());
-		obj6->getComponent<collider>()->SetBoxSize(60, 150,60);
+		obj6->getComponent<collider>()->SetBoxSize(60, 150, 60);
 		//obj2->addComponent(new RotatingComponent());
 
 		Core::GameObject_* plateBorder = Model::loadModel("Pressure plate Border.fbx");
@@ -302,14 +345,14 @@ namespace Engine
 		plate->getTransform()->setPosition(plateBorder->getTransform()->getPosition() + glm::vec3(0, 3, 0));
 		plate->addComponent(new collider());
 		plate->addComponent(new PressurePlateBehaviour());
-		
+
 		Core::GameObject_* gate = Model::loadModel("Door 1.fbx");
 		gate->getTransform()->setScale(glm::vec3(0.9, 0.9, 0.9));
 		gate->getTransform()->translate(glm::vec3(500, 200, 700));
 		gate->setName("gate");
 		gate->addComponent(new collider());
 		gate->addComponent(new GateBehaviour());
-		gate->getComponent<collider>()->SetBoxSize(70, 1500,600);
+		gate->getComponent<collider>()->SetBoxSize(70, 1500, 600);
 		gate->getComponent<GateBehaviour>()->AddPlate(plate->getComponent<PressurePlateBehaviour>());
 
 		obj1->addComponent(luaS);

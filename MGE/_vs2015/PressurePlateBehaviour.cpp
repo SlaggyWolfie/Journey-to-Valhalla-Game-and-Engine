@@ -42,12 +42,14 @@ void PressurePlateBehaviour::CheckCollision()
 	for (int i = 0; i < colList.size(); i++)
 	{	
 		//std::cout << colList.size() << " "<<"size" << std::endl;
-		if ( colList[i]->getGameObject()->getName()== "crate")
+		/*if (colList[i]->getGameObject()->getName().find(
+			colList[i]->getGameObject()->getName().begin(), colList[i]->getGameObject()->getName().end(), "crate")
+			!= std::string::npos)
 		{
 			std::cout << "I should be pressed" << std::endl;
 			this->SetPressed(true);
 			return;
-		}
+		}*/
 	}
 		//else
 		{

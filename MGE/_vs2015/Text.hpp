@@ -1,21 +1,26 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include "ComponentUI.hpp"
 
 namespace Engine
 {
-	namespace Rendering
+	namespace UI
 	{
 		enum TextAlignment { Left_Justified, Right_Justified, Middle_Justified };
 
-		class TextHUD
+		class Text : public ComponentUI
 		{
 		public:
-			TextHUD();
-			TextHUD(sf::RenderWindow* window);
-			~TextHUD() = default;
-			TextHUD(const TextHUD& other) = default;
-			TextHUD& operator=(const TextHUD& other) = default;
+			static Text* hint;
+			static bool drawHint;
+			static void makeHint();
+			static void showHint(std::string hintText, float startAfterTime = 0, float duration = 6);
+			Text(bool rendering = true);
+			Text(sf::RenderWindow* window, bool rendering = true);
+			virtual ~Text() = default;
+			Text(const Text& other) = default;
+			Text& operator=(const Text& other) = default;
 
 			void setTextInformation(const std::string& text);
 			std::string getTextInformation() const;
@@ -24,12 +29,10 @@ namespace Engine
 			sf::Font& getFontObject();
 			void setFont(const sf::Font& font);
 			void setFont(const std::string& fontPath);
-
-			void setWindow(sf::RenderWindow* window);
 			void setTextAlignment(TextAlignment alignment);
 			TextAlignment getTextAlignment() const;
 
-			void draw();
+			void draw() override;
 		private:
 			//std::unique_ptr<sf::Text> 
 			sf::RenderWindow * _window = nullptr;
@@ -38,6 +41,7 @@ namespace Engine
 
 			sf::Font _font;
 			sf::Text _text;
+
 			TextAlignment _alignment = Left_Justified;
 		};
 	}

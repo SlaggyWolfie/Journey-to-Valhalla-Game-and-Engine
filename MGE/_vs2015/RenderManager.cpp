@@ -80,6 +80,18 @@ namespace Engine
 			}
 		}
 
+		void RenderManager::addUI(ComponentUI * ui)
+		{
+			if (std::find(_uiRenderers.begin(), _uiRenderers.end(), ui) == _uiRenderers.end())
+				_uiRenderers.push_back(ui);
+		}
+
+		void RenderManager::removeUI(ComponentUI * ui)
+		{
+			if (!_uiRenderers.empty() && std::find(_uiRenderers.begin(), _uiRenderers.end(), ui) != _uiRenderers.end())
+				_uiRenderers.erase(std::remove(_uiRenderers.begin(), _uiRenderers.end(), ui), _uiRenderers.end());
+		}
+
 		void RenderManager::removeRenderer(Renderer_* renderer)
 		{
 			if (renderer->_renderQueue == RenderQueue::Opaque)
@@ -118,7 +130,12 @@ namespace Engine
 			renderTransparent();
 
 			_fps_hud->setTextInformation("FPS: " + std::to_string(static_cast<int>(getFPS())));
+			glActiveTexture(GL_TEXTURE0);
+			getWindow()->pushGLStates();
 			_fps_hud->draw();
+			getWindow()->popGLStates();
+
+			renderUI();
 
 			getWindow()->display();
 
@@ -141,31 +158,53 @@ namespace Engine
 
 		void RenderManager::renderOpaque() const
 		{
-			for (auto r : _opaqueRenderers)
-				if (r->isEnabled() && r->getGameObject()->isActive())
-					r->render();
+			if (!_opaqueRenderers.empty())
+			{
+				for (auto r : _opaqueRenderers)
+					if (r->isEnabled() && r->getGameObject()->isActive())
+						r->render();
+			}
 		}
 
 		void RenderManager::renderTransparent() const
 		{
-			glEnable(GL_BLEND);
-			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			if (!_transparentRenderers.empty())
+			{
+				glEnable(GL_BLEND);
+				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-			//Sort transparent renderers
-			std::multimap<float, Renderer_*> sorted;
-			const glm::vec3 cameraPosition = Core::Camera_::getMainCamera()->getPosition();
+				//Sort transparent renderers
+				std::multimap<float, Renderer_*> sorted;
+				const glm::vec3 cameraPosition = Core::Camera_::getMainCamera()->getPosition();
 
-			//Iterate over, add based on distance squared to camera
-			for (Renderer_* itr : _transparentRenderers)
-				if (itr != nullptr && itr->getGameObject() != nullptr)
-					sorted.insert(std::make_pair(glm::length2(cameraPosition -
-						itr->getGameObject()->getTransform()->getPosition()), itr));
+				//Iterate over, add based on distance squared to camera
+				for (Renderer_* itr : _transparentRenderers)
+					if (itr != nullptr && itr->getGameObject() != nullptr)
+						sorted.insert(std::make_pair(glm::length2(cameraPosition -
+							itr->getGameObject()->getTransform()->getPosition()), itr));
 
-			for (const std::multimap<float, Renderer_*>::value_type itr : sorted)
-				if (itr.second->isEnabled() && itr.second->getGameObject()->isActive())
-					itr.second->render();
+				for (const std::multimap<float, Renderer_*>::value_type itr : sorted)
+					if (itr.second->isEnabled() && itr.second->getGameObject()->isActive())
+						itr.second->render();
 
-			glDisable(GL_BLEND);
+				glDisable(GL_BLEND);
+			}
+		}
+
+		void RenderManager::renderUI()
+		{
+			glActiveTexture(GL_TEXTURE0);
+			getWindow()->pushGLStates();
+			if (UI::Text::drawHint) UI::Text::hint->draw();
+
+			if (!_uiRenderers.empty())
+			{
+				for (auto& ui : _uiRenderers)
+					if (ui->isEnabled())
+						ui->draw();
+			}
+
+			getWindow()->popGLStates();
 		}
 
 		void RenderManager::renderShadowBuffer(Light_* light)
@@ -223,10 +262,10 @@ namespace Engine
 		void RenderManager::setupFPSHUD()
 		{
 			//_fps_hud = std::make_unique<TextHUD>(getWindow());
-			_fps_hud = std::make_unique<TextHUD>();
+			_fps_hud = std::make_unique<UI::Text>(false);
 			_fps_hud->setWindow(getWindow());
 			_fps_hud->setFont("mge/fonts/arial.ttf");
-			_fps_hud->setTextAlignment(Left_Justified);
+			_fps_hud->setTextAlignment(UI::Left_Justified);
 			_fps_hud->setTextInformation("FPS");
 			_fps_hud->getTextObject().setPosition(10, 10);
 			_fps_hud->getTextObject().setCharacterSize(100);

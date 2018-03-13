@@ -26,6 +26,7 @@ namespace Engine
 		std::string getName() const;
 		void addGameObject(Core::GameObject_* gameObject);
 		void deserializeStructs(std::vector<GameObject_s> structs, bool clipPaths = true);
+		void loadMenu();
 	private:
 		void hardCode();
 		void neededHardCode();
