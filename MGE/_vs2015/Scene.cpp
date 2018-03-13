@@ -225,6 +225,7 @@ namespace Engine
 		Model::clipPaths = true;
 		Core::GameObject_* door_1 = Model::loadModel("Assets/Props/Door_1.fbx");
 		door_1->getTransform()->translate(glm::vec3(0, 5, 15));
+		door_1->getComponentInChildren<Material_>()->setSpecularStrength(0.001f);
 		//std::cout << "Find path check " + Engine::File::findPath("Viking_House_2_coloured.fbx") << std::endl;
 		//Core::GameObject_ * house = Model::loadModel("Viking_House_2_coloured.fbx");
 		//house->getTransform()->getChild(0)->getGameObject()->getComponent<Rendering::Material_>()->
