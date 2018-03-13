@@ -48,7 +48,7 @@ namespace Engine
 			//Model::debug(true);
 			Model::clipPaths = false;
 			Deserealizer deserealizer;
-			deserealizer.deserializeIntoStructs();
+			deserealizer.deserializeIntoStructs("test.json");
 			deserializeStructs(deserealizer.structs, false);
 		}
 	}
@@ -205,7 +205,7 @@ namespace Engine
 		//Core::GameObject_ *shipFBX = Model::loadModel("Fence_centered.fbx");
 		//shipFBX->getTransform()->translate(glm::vec3(25, 0, 0));
 		//shipFBX->addComponent(new RotatingComponent());
-		//LuaScript* luaS = new LuaScript();
+		LuaScript* luaS = new LuaScript();
 
 		//Deserealizer d;
 		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 100, 3000));

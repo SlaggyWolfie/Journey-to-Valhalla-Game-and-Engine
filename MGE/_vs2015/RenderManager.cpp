@@ -134,6 +134,12 @@ namespace Engine
 			_fps_hud->setTextInformation("FPS: " + std::to_string(getFPS()));
 			_fps_hud->draw();
 
+			sf::Text text;
+			text.setString("hh");
+			sf::Font font;
+			font.loadFromFile("mge/fonts/arial.ttf");
+			text.setFont(font);
+			getWindow()->draw(text);
 			getWindow()->display();
 
 			calculateFPS();

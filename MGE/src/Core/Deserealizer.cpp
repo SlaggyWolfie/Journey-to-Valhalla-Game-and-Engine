@@ -25,9 +25,11 @@ Deserealizer::Deserealizer() {
 }
 
 
-void Deserealizer::deserializeIntoStructs()
+void Deserealizer::deserializeIntoStructs(string fileName)
 {
-	ifstream sceneFile("test.json");
+	ifstream sceneFile(fileName);
+
+	//ifstream sceneFile("test.json");
 	ostringstream temporaryBuffer;
 	temporaryBuffer << sceneFile.rdbuf();
 	const string entireSceneString = temporaryBuffer.str();
