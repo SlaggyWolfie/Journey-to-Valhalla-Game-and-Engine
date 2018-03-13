@@ -32,7 +32,7 @@ namespace Engine
 			bool containsRenderer(Renderer_* renderer) const;
 			void calculateFPS(bool print = false);
 
-			void render(float deltaTime);
+			void render();
 
 			void startFPSClock();
 			float getFPS() const;
@@ -65,6 +65,9 @@ namespace Engine
 			LightManager* _lightManager;
 
 			sf::RenderWindow* getWindow();
+		public:
+			void reset() override;
+		private:
 			sf::RenderWindow* _window;
 		};
 	}

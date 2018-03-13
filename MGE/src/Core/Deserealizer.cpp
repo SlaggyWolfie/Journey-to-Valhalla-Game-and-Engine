@@ -6,14 +6,13 @@
 #include <../_vs2015/GameObject_.hpp>
 #include <../_vs2015/Transform.hpp>
 #include "Deserealizer.hpp"
-#include "Game.hpp"
 
 using namespace nlohmann;
 using namespace std;
 using namespace Engine::Core;
 
 GameObject_s::GameObject_s() :
-	name("defaultName"), meshName("defaultMEshName"), position(glm::vec3(0)), rotation(glm::vec3(0)), scale(glm::vec3(1)), parentID(0),
+	name("defaultName"), meshName("defaultMeshName"), position(glm::vec3(0)), rotation(glm::vec3(0)), scale(glm::vec3(1)), parentID(0),
 	selfID(0)
 {
 }
@@ -25,7 +24,7 @@ Deserealizer::Deserealizer() {
 }
 
 
-void Deserealizer::deserializeIntoStructs(string fileName)
+void Deserealizer::deserializeIntoStructs(const string& fileName)
 {
 	ifstream sceneFile(fileName);
 

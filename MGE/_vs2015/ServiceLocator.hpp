@@ -21,6 +21,7 @@ namespace Engine
 		static ServiceLocator* instance();
 		static void destroyInstance();
 		void removeServiceDirect(Service* service);
+		void resetServices(Service* caller = nullptr);
 
 		template<typename T>
 		void addService(T* service);

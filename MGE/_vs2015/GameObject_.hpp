@@ -23,8 +23,8 @@ namespace Engine
 		{
 		public:
 			GameObject_(
-				std::string name = nullptr,
-				std::string tag = nullptr,
+				std::string name = "",
+				std::string tag = "",
 				const glm::vec3& position = glm::vec3(0.0f, 0.0f, 0.0f));
 			virtual ~GameObject_();
 
@@ -69,8 +69,8 @@ namespace Engine
 			int getComponentsCount() const;
 
 		private:
-			std::string _name = nullptr;
-			std::string _tag = nullptr;
+			std::string _name = "";
+			std::string _tag = "";
 			Transform* _transform;
 
 			GameLoop* _gameLoop = nullptr;

@@ -307,22 +307,26 @@ namespace Engine
 
 		Transform* Transform::removeChild(const int& index)
 		{
+			if (!_children.empty()) return nullptr;
+
 			Transform* child = _children[index];
 
-			_children.erase(
-				std::remove(
-					_children.begin(), _children.end(), child),
-				_children.end());
+			if (child != nullptr)
+				_children.erase(
+					std::remove(
+						_children.begin(), _children.end(), child),
+					_children.end());
 
 			return child;
 		}
 
 		Transform* Transform::removeChild(Transform* child)
 		{
-			_children.erase(
-				std::remove(
-					_children.begin(), _children.end(), child),
-				_children.end());
+			if (!_children.empty() && child != nullptr)
+				_children.erase(
+					std::remove(
+						_children.begin(), _children.end(), child),
+					_children.end());
 
 			return child;
 		}

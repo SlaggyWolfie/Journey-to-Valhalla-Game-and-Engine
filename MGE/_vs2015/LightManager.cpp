@@ -173,5 +173,17 @@ namespace Engine
 				std::find(_pointLights.begin(), _pointLights.end(), light) != _pointLights.end() ||
 				std::find(_spotLights.begin(), _spotLights.end(), light) != _spotLights.end();
 		}
+
+		void LightManager::reset()
+		{
+			_attenuationConstants = glm::vec3(0);
+
+			_ambientLightColor = glm::vec3(0);
+			_ambientLightStrength = 0;
+
+			_directionalLights.clear();
+			_pointLights.clear();
+			_spotLights.clear();
+		}
 	}
 }

@@ -35,8 +35,7 @@ namespace Engine
 			bool _started = false;
 
 			std::vector<Component*> _components;
-			//std::vector<std::shared_ptr<Component>> _components;
-			//std::shared_ptr<Component> find(Component* component);
+
 			void start();
 			void update();
 			void fixedUpdate();
@@ -45,16 +44,15 @@ namespace Engine
 			Game* getGame();
 			Rendering::RenderManager* getRenderManager();
 			ColliderManager* getColliderManager();
-			ColliderManager* _colliderManager;
 
 			Game* _game = nullptr;
 			Rendering::RenderManager* _renderManager = nullptr;
-			//AnimationManager _animationManager;
-			//CollisionManager _collisionManager;
-			//PhysicsManager _physicsManager;
+			ColliderManager* _colliderManager = nullptr;
 
 			void createOwnedLoops();
 			void destroyOwnedLoops();
+		public:
+			void reset() override;
 		};
 	}
 }

@@ -43,9 +43,10 @@ namespace Engine
 		initializeScene();
 	}
 
-	sf::RenderWindow* Game::getWindow() const
+	sf::RenderWindow* Game::getWindow()
 	{
-		return _window.get();
+		//return _window.get();
+		return _window;
 	}
 
 	bool Game::isRunning() const
@@ -66,10 +67,10 @@ namespace Engine
 	void Game::initializeWindow() {
 
 		std::cout << "Initializing window..." << std::endl;
-		_window = std::make_unique<sf::RenderWindow>(
+		_window = new sf::RenderWindow(
 			sf::VideoMode(1280, 960), "Game", sf::Style::Default
 			//)
-			, sf::ContextSettings(24, 8, 0, 3, 3, sf::ContextSettings::Attribute::Default, true));
+			, sf::ContextSettings(24, 0, 0, 3, 3, sf::ContextSettings::Attribute::Default, true));
 		//_window->setVerticalSyncEnabled(true);
 		std::cout << "Window initialized." << std::endl << std::endl;
 
@@ -144,16 +145,12 @@ namespace Engine
 
 	void Game::initializeScene() const
 	{
-		initializeScene(_defaultScenePath);
+		_sceneManager->loadScene(_defaultScenePath);//->initialize(true, true);
 	}
 
-
-	void Game::initializeScene(const std::string& filepath) const
+	void Game::reset()
 	{
-		std::cout << "Loading Scene..." << std::endl;
-		_sceneManager->loadScene(filepath)->initialize(true, true);
-		std::cout << "Loaded Scene." << std::endl;
-
+		
 	}
 
 	void Game::processEvents()

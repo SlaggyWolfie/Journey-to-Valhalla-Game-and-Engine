@@ -24,6 +24,17 @@ namespace Engine
 		void TextHUD::setTextAlignment(const TextAlignment alignment)
 		{
 			_alignment = alignment;
+			switch (alignment)
+			{
+			default:
+				std::cout << "Undefined Text Alignment. Defaulting to Left." << std::endl;
+			case Left_Justified:
+				_text.setOrigin(0, 0); break;
+			case Right_Justified:
+				_text.setOrigin(0, 0); break;
+			case Middle_Justified:
+				_text.setOrigin(0, 0); break;
+			}
 		}
 
 		TextAlignment TextHUD::getTextAlignment() const
@@ -33,13 +44,8 @@ namespace Engine
 
 		void TextHUD::draw() 
 		{
-			_text.setPosition(100, 100);
-			//std::cout << "Text is null" << std::endl;
-			std::cout << _text.getString().toAnsiString() << std::endl;
-
 			glActiveTexture(GL_TEXTURE0);
 			_window->pushGLStates();
-			//_window->resetGLStates();
 			_window->draw(_text);
 			_window->popGLStates();
 		}

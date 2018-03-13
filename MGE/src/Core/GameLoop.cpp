@@ -8,6 +8,7 @@
 #include "../_vs2015/GameObject_.hpp"
 #include "../_vs2015/Component.hpp"
 #include <GL/glew.h>
+#include "../_vs2015/SceneManager.hpp"
 
 namespace Engine
 {
@@ -100,33 +101,13 @@ namespace Engine
 					fixedUpdate();
 				}
 
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+					ServiceLocator::instance()->getService<SceneManager>()->loadScene("test____.json");
 
 				update();
 				lateUpdate();
 
-				//glEnable(0xBE2);
-				//sf::Text text;
-				//sf::Font font;
-				//font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
-				//text.setFont(font);
-				//text.setString("healp");
-				//text.setPosition(0, 0);
-				//text.setFillColor(sf::Color::White);
-				//text.setColor(sf::Color::White);
-				//text.setOutlineColor(sf::Color::Blue);
-				//text.setCharacterSize(24);
-				//sf::RenderWindow* window = getGame()->getWindow();
-				//window->clear();
-				//window->pushGLStates();
-				//window->resetGLStates();
-				//window->draw(text);
-				//window->display();
-				//window->popGLStates();
-
-				//0 doesn't matter for now
-				//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-				getRenderManager()->render(0);
-				//getRenderManager()->calculateFPS(true);
+				getRenderManager()->render();
 
 				//empty the event queue
 				getGame()->processEvents();
@@ -197,6 +178,12 @@ namespace Engine
 		void GameLoop::destroyOwnedLoops()
 		{
 			_components.clear();
+		}
+
+		void GameLoop::reset()
+		{
+			destroyOwnedLoops();
+			createOwnedLoops();
 		}
 	}
 }

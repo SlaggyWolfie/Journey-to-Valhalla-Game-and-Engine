@@ -99,9 +99,8 @@ namespace Engine
 				std::find(_transparentRenderers.begin(), _transparentRenderers.end(), renderer) != _transparentRenderers.end();
 		}
 
-		void RenderManager::render(const float deltaTime)
+		void RenderManager::render()
 		{
-			//getWindow()->clear();
 			//getLightManager()->renderShadowMaps();
 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -118,27 +117,9 @@ namespace Engine
 			renderOpaque();
 			renderTransparent();
 
-			//getWindow()->clear();
-			_fps_hud->setTextInformation("FPS: " + std::to_string(getFPS()));
+			_fps_hud->setTextInformation("FPS: " + std::to_string(static_cast<int>(getFPS())));
 			_fps_hud->draw();
-			//getWindow()->draw(_fps_hud->getTextObject());
-			//_debugHud->draw();
 
-			//sf::Text text;
-			//sf::Font font;
-			//font.loadFromFile("mge/fonts/arial.ttf");
-			//text.setFont(font);
-			//text.setString("healp");
-			//text.setPosition(100, 100);
-			//text.setFillColor(sf::Color::Red);
-			//text.setCharacterSize(24);
-
-			sf::Text text;
-			text.setString("hh");
-			sf::Font font;
-			font.loadFromFile("mge/fonts/arial.ttf");
-			text.setFont(font);
-			getWindow()->draw(text);
 			getWindow()->display();
 
 			calculateFPS();
@@ -212,15 +193,15 @@ namespace Engine
 				}
 			}
 
-			//for (Renderer_* renderer : _transparentRenderers)
-			//{
-			//	if (renderer->isEnabled() && renderer->castsShadows() && renderer->getGameObject()->isActive())
-			//	{
-			//		shadowMap->pushModelMatrix(renderer->getGameObject()->getTransform()->getMatrix4X4());
-			//		renderer->pushMatrices();
-			//		renderer->pushMesh();
-			//	}
-			//}
+			for (Renderer_* renderer : _transparentRenderers)
+			{
+				if (renderer->isEnabled() && renderer->castsShadows() && renderer->getGameObject()->isActive())
+				{
+					shadowMap->pushModelMatrix(renderer->getGameObject()->getTransform()->getMatrix4X4());
+					renderer->pushMatrices();
+					renderer->pushMesh();
+				}
+			}
 
 			//ShadowMap::unbindTexture();
 			Shader::unbind();
@@ -247,13 +228,9 @@ namespace Engine
 			_fps_hud->setFont("mge/fonts/arial.ttf");
 			_fps_hud->setTextAlignment(Left_Justified);
 			_fps_hud->setTextInformation("FPS");
-			_fps_hud->getTextObject().setPosition(100, 100);
-			_fps_hud->getTextObject().setCharacterSize(16);
+			_fps_hud->getTextObject().setPosition(10, 10);
+			_fps_hud->getTextObject().setCharacterSize(100);
 			_fps_hud->getTextObject().setFillColor(sf::Color::White);
-			//_fps_hud->getTextObject()->
-
-			//_debugHud = std::make_unique<DebugHud>(getWindow());
-			//_debugHud->setDebugInfo("Could you please draw?");
 		}
 
 		LightManager* RenderManager::getLightManager()
@@ -270,6 +247,12 @@ namespace Engine
 				_window = ServiceLocator::instance()->getService<Game>()->getWindow();
 
 			return _window;
+		}
+
+		void RenderManager::reset()
+		{
+			destroyOwnedLoops();
+			createOwnedLoops();
 		}
 
 		void RenderManager::calculateFPS(const bool print)

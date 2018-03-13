@@ -22,6 +22,7 @@ public:
 	collider* getCollider(int index);
 	std::vector<collider*> getColliders();
 	bool isColliderRegistered(collider* collider);
+	void reset() override;
 private:
 	std::vector<collider*> allColliders;
 

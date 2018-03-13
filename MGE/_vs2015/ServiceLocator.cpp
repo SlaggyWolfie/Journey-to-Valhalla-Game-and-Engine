@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <iostream>
 #include "Core/Game.hpp"
+#include "SceneManager.hpp"
 
 namespace Engine
 {
@@ -47,5 +48,13 @@ namespace Engine
 		const auto check = std::find(_services.begin(), _services.end(), service);
 
 		if (check != _services.end()) List::removeFrom(_services, service);
+	}
+
+	void ServiceLocator::resetServices(Service* caller)
+	{
+		Game* game = getService<Game>();
+		for (auto& service : _services)
+			if (service != game && service != caller)
+				service->reset();
 	}
 }

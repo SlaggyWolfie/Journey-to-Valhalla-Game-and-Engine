@@ -36,9 +36,11 @@ namespace Engine
 		//this->path = path.substr(0, path.find_last_of('/'));
 
 		Core::GameObject_* go = processNode(scene->mRootNode, scene);
+		
 		std::cout << "Loaded model at path " + path << std::endl;
 		_recursionLevel = 0;
 		_scale = 1;
+		
 		return go;
 	}
 
