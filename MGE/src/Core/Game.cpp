@@ -1,8 +1,6 @@
 #include <iostream>
 
 #include "Game.hpp"
-#include "mge/core/Renderer.hpp"
-#include "mge/core/World.hpp"
 #include "GameLoop.hpp"
 
 #include "../../externals/glew_sfml_glm/include/lua/lua.hpp"
@@ -11,22 +9,16 @@
 #include "../_vs2015/LightManager.hpp"
 #include "../_vs2015/SceneManager.hpp"
 #include "../_vs2015/ServiceLocator.hpp"
-#include "../../_vs2015/GameObject_.hpp"
 #include "../_vs2015/Scene.hpp"
-#include "../_vs2015/Model.hpp"
 #include "../_vs2015/Texture_.hpp"
-#include <map>
-#include "../_vs2015/Camera_.hpp"
-#include "../../_vs2015/Light_.hpp"
-#include "../_vs2015/Transform.hpp"
 #include "Deserealizer.hpp"
 
 //#include "GameLoop.hpp"
 
 namespace Engine
 {
-	Game::Game(): _renderManager(nullptr), _lightManager(nullptr), _colliderManager(nullptr), _gameLoop(nullptr),
-	              _sceneManager(nullptr)
+	Game::Game() : _renderManager(nullptr), _lightManager(nullptr), _colliderManager(nullptr), _gameLoop(nullptr),
+		_sceneManager(nullptr)
 	{
 		//ctor
 	}
@@ -72,12 +64,29 @@ namespace Engine
 	///SETUP
 
 	void Game::initializeWindow() {
+
 		std::cout << "Initializing window..." << std::endl;
 		_window = std::make_unique<sf::RenderWindow>(
-			sf::VideoMode(1280, 960), "Game", sf::Style::Default, sf::ContextSettings(24, 8, 0, 3, 3));
+			sf::VideoMode(1280, 960), "Game", sf::Style::Default
+			//)
+			, sf::ContextSettings(24, 8, 0, 3, 3, sf::ContextSettings::Attribute::Default, true));
 		//_window->setVerticalSyncEnabled(true);
-		//std::cout << std::to_string(_window.get() != nullptr) << std::endl;
 		std::cout << "Window initialized." << std::endl << std::endl;
+
+		//std::cout << std::to_string(_window.get() != nullptr) << std::endl;
+		//sf::Font font;
+		//font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
+
+		//sf::Text text;
+		//text.setFont(font);
+		//text.setPosition(200, 200);
+		//text.setCharacterSize(100);
+		//while(_window->isOpen())
+		//{
+		//	_window->clear();
+		//	_window->draw(text);
+		//	_window->display();
+		//}
 	}
 
 	void Game::printVersionInfo()
@@ -141,31 +150,7 @@ namespace Engine
 
 	void Game::initializeScene(const std::string& filepath) const
 	{
-		//Deserealizer d;
-		
-		//Core::GameObject_* sth = Model::loadModel(_d.gms[0]->getName()+".fbx");
-		//sth->getTransform()->setPosition(_d.gms[0]->getTransform()->getPosition());
-		//std::cout << sth->getTransform()->getPosition();
 		std::cout << "Loading Scene..." << std::endl;
-		//std::cout << d.structs[0].meshName << std::endl;
-		//load scene
-		//Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 0, 2000));
-		//Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(0,0,2000));
-		//Rendering::Light_* light = new Rendering::Light_();
-		//lightgo->addComponent(light);
-		//light->setLightType(Rendering::LightType::Point);
-		//lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
-		//Core::Camera_* cameraComp = new Core::Camera_();
-		//camera->addComponent(cameraComp);
-		//Core::Camera_::setMainCamera(cameraComp);
-
-		//Core::GameObject_* go = Model::loadModel("Tower.fbx");
-		//go->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
-		//lightgo->getTransform()->setPosition(go->getTransform()->getPosition() + glm::vec3(0, -600, 0));
-		//Core::GameObject_* go = Model::loadModel("cube_smooth.obj");
-
-		//std::cout << go->getComponent<Rendering::Renderer_>()->getGameObject()->getName() << std::endl;
-		//go->destroy();
 		_sceneManager->loadScene(filepath)->initialize(true, true);
 		std::cout << "Loaded Scene." << std::endl;
 
@@ -199,9 +184,8 @@ namespace Engine
 				exit = true;
 				break;
 			case sf::Event::KeyPressed:
-				if (event.key.code == sf::Keyboard::Escape) {
+				if (event.key.code == sf::Keyboard::Escape) 
 					exit = true;
-				}
 				break;
 			case sf::Event::Resized:
 				//would be better to move this to the renderer

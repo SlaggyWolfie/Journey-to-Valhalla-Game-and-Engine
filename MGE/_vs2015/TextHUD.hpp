@@ -29,7 +29,7 @@ namespace Engine
 			void setTextAlignment(TextAlignment alignment);
 			TextAlignment getTextAlignment() const;
 
-			void draw() const;
+			void draw();
 		private:
 			//std::unique_ptr<sf::Text> 
 			sf::RenderWindow * _window = nullptr;

@@ -7,6 +7,7 @@
 #include "../../_vs2015/ServiceLocator.hpp"
 #include "../_vs2015/GameObject_.hpp"
 #include "../_vs2015/Component.hpp"
+#include <GL/glew.h>
 
 namespace Engine
 {
@@ -14,14 +15,11 @@ namespace Engine
 	{
 		GameLoop::GameLoop()
 		{
-			//ctor
 			createOwnedLoops();
-			//_components;
 		}
 
 		GameLoop::~GameLoop()
 		{
-			//dtor
 			//delete _renderer;
 			//delete _game;
 			destroyOwnedLoops();
@@ -99,18 +97,34 @@ namespace Engine
 				while (lag > fixedTimeStep)
 				{
 					lag -= fixedTimeStep;
-					//physics update
-					//_collisionManager->execute();
-					//_physicsManager->execute();
 					fixedUpdate();
 				}
 
-				//_animationManager->execute();
 
 				update();
 				lateUpdate();
 
+				//glEnable(0xBE2);
+				//sf::Text text;
+				//sf::Font font;
+				//font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
+				//text.setFont(font);
+				//text.setString("healp");
+				//text.setPosition(0, 0);
+				//text.setFillColor(sf::Color::White);
+				//text.setColor(sf::Color::White);
+				//text.setOutlineColor(sf::Color::Blue);
+				//text.setCharacterSize(24);
+				//sf::RenderWindow* window = getGame()->getWindow();
+				//window->clear();
+				//window->pushGLStates();
+				//window->resetGLStates();
+				//window->draw(text);
+				//window->display();
+				//window->popGLStates();
+
 				//0 doesn't matter for now
+				//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 				getRenderManager()->render(0);
 				//getRenderManager()->calculateFPS(true);
 

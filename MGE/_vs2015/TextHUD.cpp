@@ -1,6 +1,8 @@
 #include "TextHUD.hpp"
 #include <iostream>
 #include <GL/glew.h>
+#include "ServiceLocator.hpp"
+#include "Core/Game.hpp"
 
 namespace Engine
 {
@@ -29,11 +31,16 @@ namespace Engine
 			return _alignment;
 		}
 
-		void TextHUD::draw() const
+		void TextHUD::draw() 
 		{
+			_text.setPosition(100, 100);
+			//std::cout << "Text is null" << std::endl;
+			std::cout << _text.getString().toAnsiString() << std::endl;
+
 			glActiveTexture(GL_TEXTURE0);
 			_window->pushGLStates();
-			//_window->draw(_text);
+			//_window->resetGLStates();
+			_window->draw(_text);
 			_window->popGLStates();
 		}
 
@@ -76,14 +83,14 @@ namespace Engine
 
 		void TextHUD::setFont(const std::string& fontPath)
 		{
-			sf::Font font;
-			if (!font.loadFromFile(fontPath))
+			sf::Font* font = new sf::Font();;
+			if (!font->loadFromFile(fontPath))
 			{
-				std::cout << "Could not load font, exiting..." << std::endl;
+				std::cout << "Could not load font, returning..." << std::endl;
 				return;
 			}
 
-			setFont(font);
+			setFont(*font);
 		}
 
 		void TextHUD::setFont(const sf::Font& font)

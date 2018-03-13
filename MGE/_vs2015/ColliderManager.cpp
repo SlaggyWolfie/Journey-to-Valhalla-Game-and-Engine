@@ -98,7 +98,7 @@ bool ColliderManager::CheckBoxCollisionBetween(collider * object, collider * obj
 			bool yCheck = (object->point5.y <= object2->point6.y && object->point6.y >= object2->point5.y);
 			bool zCheck = (object->point3.z <= object2->point4.z && object->point4.z >= object2->point3.z);
 			bool xCheck = (object->point1.x <= object2->point2.x && object->point2.x >= object2->point1.x);
-			std::cout << "X " << xCheck << " Z " << zCheck << " Y " << yCheck << std::endl;
+			//std::cout << "X " << xCheck << " Z " << zCheck << " Y " << yCheck << std::endl;
 			if (xCheck &&
 				zCheck &&
 				yCheck)
