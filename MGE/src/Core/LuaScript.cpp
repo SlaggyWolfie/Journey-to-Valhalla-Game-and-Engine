@@ -7,6 +7,7 @@
 #include "../../_vs2015/ColliderManager.h"
 #include "../../_vs2015/PlayerBaseComponent.h"
 #include "../../_vs2015/LastposStasher.h"
+#include "../_vs2015/Time.hpp"
 using namespace Engine;
 std::string LuaScript::message = std::string();
 
@@ -63,6 +64,9 @@ void LuaScript::registerFunctions()
 	lua_pushcfunction(state_, SphereCollisionBetween);
 	lua_setfield(state_, -2, "SphereCollisionBetween");
 
+	lua_pushcfunction(state_, GetGameTime);
+	lua_setfield(state_, -2, "GetGameTime");
+
 	lua_setglobal(state_, "Game");
 
 	std::cout << "registered functions" << std::endl;
@@ -94,21 +98,20 @@ void LuaScript::Initialize()
 
 int LuaScript::ShowHint(lua_State * state)
 {
-	if (lua_gettop(state) == 4 && lua_isstring(state, 1) && lua_isnumber(state, 2) &&
-		lua_isnumber(state, 3) && lua_isnumber(state, 4))
-	{
+	if (lua_gettop(state) == 1 && lua_isstring(state, 1)) {
 		//text.setString("start message");
 		message = (std::string)lua_tostring(state, 1);
 		message += "\n";
 		//if (lua_pcall(state, 0, 0, 0) != 0) {
 		//}
+		//oneshotHint()
 		std::cout << message << std::endl;
 		//text.setString((sf::String)lua_tostring(state, 1));
 		//text.setCharacterSize((int)lua_tonumber(state, 4));
 		//text.setPosition(lua_tonumber(state, 2), lua_tonumber(state, 3));
 		return 0;
 	}
-	return luaL_error(state, "Object.ShowMessage( string,x,y, size), faulty arguments");
+	return luaL_error(state, "Object.ShowMessage( string) faulty arguments");
 }
 //int LuaScript::KeyDown(lua_State * state)
 //{
@@ -220,5 +223,11 @@ int LuaScript::SphereCollisionBetween(lua_State * state)
 	}
 	return luaL_error(state, " faulty arguments");
 
+}
+
+int LuaScript::GetGameTime(lua_State * state)
+{
+	lua_pushnumber(state, Engine::Utility::Time::now()/60.0f);
+	return 0;
 }
 

@@ -9,8 +9,9 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <vector>
 #include <SFML/Graphics/Text.hpp>
-#include "TextHUD.hpp"
+#include "Text.hpp"
 #include "mge/util/DebugHud.hpp"
+class ComponentUI;
 
 namespace Engine
 {
@@ -28,6 +29,8 @@ namespace Engine
 			virtual ~RenderManager();
 			void initialize() override;
 			void addRenderer(Renderer_* renderer);
+			void addUI(ComponentUI * ui);
+			void removeUI(ComponentUI * ui);
 			void removeRenderer(Renderer_* renderer);
 			bool containsRenderer(Renderer_* renderer) const;
 			void calculateFPS(bool print = false);
@@ -39,9 +42,11 @@ namespace Engine
 		private:
 			void renderOpaque() const;
 			void renderTransparent() const;
+			void renderUI();
 
 			std::vector<Renderer_*> _opaqueRenderers;
 			std::vector<Renderer_*> _transparentRenderers;
+			std::vector<ComponentUI*> _uiRenderers;
 
 			void renderShadowBuffer(Light_* light);
 			//void renderShadows();
@@ -56,7 +61,7 @@ namespace Engine
 			std::unique_ptr<sf::Clock> _fpsClock = nullptr;
 			int _frameCount =  0;
 			float _timeSinceLastFPSCalculation = 0;
-			std::unique_ptr<TextHUD> _fps_hud;
+			std::unique_ptr<UI::Text> _fps_hud;
 			std::unique_ptr<DebugHud> _debugHud;
 			void setupFPSHUD();
 

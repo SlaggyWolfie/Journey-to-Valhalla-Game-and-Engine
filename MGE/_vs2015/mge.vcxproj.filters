@@ -238,9 +238,12 @@
     <ClCompile Include="LastposStasher.cpp" />
     <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
-    <ClCompile Include="TextHUD.cpp" />
     <ClCompile Include="PressurePlateBehaviour.cpp" />
     <ClCompile Include="GateBehaviour.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="ComponentUI.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Button.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -512,9 +515,12 @@
     <ClInclude Include="RotatingComponent.hpp" />
     <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
-    <ClInclude Include="TextHUD.hpp" />
     <ClInclude Include="PressurePlateBehaviour.h" />
     <ClInclude Include="GateBehaviour.h" />
+    <ClInclude Include="Text.hpp" />
+    <ClInclude Include="ComponentUI.hpp" />
+    <ClInclude Include="Sprite.hpp" />
+    <ClInclude Include="Button.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -16,6 +16,9 @@ function Update()
 		--Game.PushBackObj(obj1,obj2)
 		--print("i work")
 	--end		
+	if(Game.GetGameTime()>1) then
+		Game.ShowHint("sth")
+	end
 	if(Game.CollisionBetween("Player","gate")) then
 		Game.PushBackObj("Player","gate")
 		print("lua scripting in work")
