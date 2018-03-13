@@ -10,6 +10,7 @@
 #include <vector>
 #include <SFML/Graphics/Text.hpp>
 #include "TextHUD.hpp"
+#include "mge/util/DebugHud.hpp"
 
 namespace Engine
 {
@@ -31,7 +32,7 @@ namespace Engine
 			bool containsRenderer(Renderer_* renderer) const;
 			void calculateFPS(bool print = false);
 
-			void render(float deltaTime);
+			void render();
 
 			void startFPSClock();
 			float getFPS() const;
@@ -56,6 +57,7 @@ namespace Engine
 			int _frameCount =  0;
 			float _timeSinceLastFPSCalculation = 0;
 			std::unique_ptr<TextHUD> _fps_hud;
+			std::unique_ptr<DebugHud> _debugHud;
 			void setupFPSHUD();
 
 			//Other
@@ -63,6 +65,9 @@ namespace Engine
 			LightManager* _lightManager;
 
 			sf::RenderWindow* getWindow();
+		public:
+			void reset() override;
+		private:
 			sf::RenderWindow* _window;
 		};
 	}

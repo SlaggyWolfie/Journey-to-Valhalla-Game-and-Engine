@@ -17,7 +17,7 @@ namespace Engine
 	{
 	public:
 		Scene();
-		explicit Scene(std::string name);
+		explicit Scene(std::string name, std::string path);
 		~Scene();
 		void initialize(bool hard = false, bool fromFile = true);
 		Core::GameObject_* findGameObject(const std::string& name) const;
@@ -28,7 +28,9 @@ namespace Engine
 		void deserializeStructs(std::vector<GameObject_s> structs, bool clipPaths = true);
 	private:
 		void hardCode();
-		std::string _name = nullptr;
+		void neededHardCode();
+		std::string _name = "";
+		std::string _path = "";
 		std::vector<std::unique_ptr<Core::GameObject_>> _gameObjects;
 	};
 }

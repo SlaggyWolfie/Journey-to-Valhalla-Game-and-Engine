@@ -171,3 +171,8 @@ bool ColliderManager::isColliderRegistered(collider* collider)
 {
 	return std::find(allColliders.begin(), allColliders.end(), collider) != allColliders.end();
 }
+
+void ColliderManager::reset()
+{
+	allColliders.clear();
+}

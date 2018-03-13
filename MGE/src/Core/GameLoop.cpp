@@ -7,6 +7,8 @@
 #include "../../_vs2015/ServiceLocator.hpp"
 #include "../_vs2015/GameObject_.hpp"
 #include "../_vs2015/Component.hpp"
+#include <GL/glew.h>
+#include "../_vs2015/SceneManager.hpp"
 
 namespace Engine
 {
@@ -14,14 +16,11 @@ namespace Engine
 	{
 		GameLoop::GameLoop()
 		{
-			//ctor
 			createOwnedLoops();
-			//_components;
 		}
 
 		GameLoop::~GameLoop()
 		{
-			//dtor
 			//delete _renderer;
 			//delete _game;
 			destroyOwnedLoops();
@@ -99,20 +98,16 @@ namespace Engine
 				while (lag > fixedTimeStep)
 				{
 					lag -= fixedTimeStep;
-					//physics update
-					//_collisionManager->execute();
-					//_physicsManager->execute();
 					fixedUpdate();
 				}
 
-				//_animationManager->execute();
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+					ServiceLocator::instance()->getService<SceneManager>()->loadScene("test____.json");
 
 				update();
 				lateUpdate();
 
-				//0 doesn't matter for now
-				getRenderManager()->render(0);
-				//getRenderManager()->calculateFPS(true);
+				getRenderManager()->render();
 
 				//empty the event queue
 				getGame()->processEvents();
@@ -183,6 +178,12 @@ namespace Engine
 		void GameLoop::destroyOwnedLoops()
 		{
 			_components.clear();
+		}
+
+		void GameLoop::reset()
+		{
+			destroyOwnedLoops();
+			createOwnedLoops();
 		}
 	}
 }

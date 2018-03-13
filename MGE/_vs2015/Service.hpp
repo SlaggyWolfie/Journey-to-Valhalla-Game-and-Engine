@@ -11,6 +11,7 @@ namespace Engine
 		Service() = default;
 		virtual ~Service() = default;
 		virtual void initialize() = 0;
+		virtual void reset() = 0;
 	};
 
 	//inline Service::~Service()

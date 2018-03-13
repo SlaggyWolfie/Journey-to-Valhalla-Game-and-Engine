@@ -60,9 +60,9 @@ namespace Engine
 				static_cast<float>(0x6b) / 0xff,
 				static_cast<float>(0xce) / 0xff,
 				1.0f);
+			//glClearColor(0, 0, 0, 1.0f);
 
 			createOwnedLoops();
-
 			setupFPSHUD();
 		}
 
@@ -70,20 +70,12 @@ namespace Engine
 		{
 			if (renderer->_renderQueue == RenderQueue::Opaque)
 			{
-				//std::function<void()> func = std::bind(&Renderer_::render, &*renderer);
-				//_renderOpaque->subscribe(renderer, [&] {renderer->render();});
-				//_renderOpaque->subscribe(renderer, *&func);
-				//_ro.push_back(&*renderer);
-				if (!containsRenderer(renderer)) //List::removeFrom(_ro, renderer);
+				if (!containsRenderer(renderer))
 					_opaqueRenderers.push_back(renderer);
-				//_ro.
 			}
 			else
 			{
-				//_renderTransparent->subscribe(renderer, [&] {renderer->render();});
-				//std::function<void()> func = std::bind(&Renderer_::render, &*renderer);
-				//_renderTransparent->subscribe(renderer, *&func);
-				if (!containsRenderer(renderer)) //List::removeFrom(_ro, renderer);
+				if (!containsRenderer(renderer))
 					_transparentRenderers.push_back(renderer);
 			}
 		}
@@ -92,12 +84,10 @@ namespace Engine
 		{
 			if (renderer->_renderQueue == RenderQueue::Opaque)
 			{
-				//_renderOpaque->unsubscribe(renderer);
 				if (containsRenderer(renderer)) List::removeFrom(_opaqueRenderers, renderer);
 			}
 			else
 				if (containsRenderer(renderer)) List::removeFrom(_transparentRenderers, renderer);
-			//_renderTransparent->unsubscribe(renderer);
 		}
 
 		bool RenderManager::containsRenderer(Renderer_* renderer) const
@@ -106,16 +96,13 @@ namespace Engine
 				return std::find(_opaqueRenderers.begin(), _opaqueRenderers.end(), renderer) != _opaqueRenderers.end();
 
 			return
-				//_renderTransparent->isSubscribed(renderer);
 				std::find(_transparentRenderers.begin(), _transparentRenderers.end(), renderer) != _transparentRenderers.end();
 		}
 
-		void RenderManager::render(const float deltaTime)
+		void RenderManager::render()
 		{
-			//getWindow()->clear();
 			//getLightManager()->renderShadowMaps();
 
-			//std::cout << "Pl0x" << std::endl;
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			glDisable(GL_BLEND);
@@ -130,16 +117,9 @@ namespace Engine
 			renderOpaque();
 			renderTransparent();
 
-
-			_fps_hud->setTextInformation("FPS: " + std::to_string(getFPS()));
+			_fps_hud->setTextInformation("FPS: " + std::to_string(static_cast<int>(getFPS())));
 			_fps_hud->draw();
 
-			sf::Text text;
-			text.setString("hh");
-			sf::Font font;
-			font.loadFromFile("mge/fonts/arial.ttf");
-			text.setFont(font);
-			getWindow()->draw(text);
 			getWindow()->display();
 
 			calculateFPS();
@@ -147,7 +127,6 @@ namespace Engine
 
 		void RenderManager::startFPSClock()
 		{
-			if (this == nullptr) std::cout << "Double What" << std::endl;
 			//_fpsClock = new sf::Clock();
 			//_fpsClock = std::unique_ptr<sf::Clock>(clock);
 			_fpsClock = std::make_unique<sf::Clock>();
@@ -162,16 +141,13 @@ namespace Engine
 
 		void RenderManager::renderOpaque() const
 		{
-			for (auto r : _opaqueRenderers) 
+			for (auto r : _opaqueRenderers)
 				if (r->isEnabled() && r->getGameObject()->isActive())
 					r->render();
 		}
 
 		void RenderManager::renderTransparent() const
 		{
-			/*std::cout << "Not Done. RenderManager" << std::endl;
-			_renderTransparent->execute();*/
-
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
@@ -180,7 +156,6 @@ namespace Engine
 			const glm::vec3 cameraPosition = Core::Camera_::getMainCamera()->getPosition();
 
 			//Iterate over, add based on distance squared to camera
-			//const std::vector<Renderer_*> vector = _renderTransparent->getObjects();
 			for (Renderer_* itr : _transparentRenderers)
 				if (itr != nullptr && itr->getGameObject() != nullptr)
 					sorted.insert(std::make_pair(glm::length2(cameraPosition -
@@ -215,19 +190,18 @@ namespace Engine
 					//renderer->pushMatrices();
 					//renderer->pushMesh();
 					//renderer->render();
-					//std::cout << "Heyo";
 				}
 			}
 
-			//for (Renderer_* renderer : _transparentRenderers)
-			//{
-			//	if (renderer->isEnabled() && renderer->castsShadows() && renderer->getGameObject()->isActive())
-			//	{
-			//		shadowMap->pushModelMatrix(renderer->getGameObject()->getTransform()->getMatrix4X4());
-			//		renderer->pushMatrices();
-			//		renderer->pushMesh();
-			//	}
-			//}
+			for (Renderer_* renderer : _transparentRenderers)
+			{
+				if (renderer->isEnabled() && renderer->castsShadows() && renderer->getGameObject()->isActive())
+				{
+					shadowMap->pushModelMatrix(renderer->getGameObject()->getTransform()->getMatrix4X4());
+					renderer->pushMatrices();
+					renderer->pushMesh();
+				}
+			}
 
 			//ShadowMap::unbindTexture();
 			Shader::unbind();
@@ -236,11 +210,6 @@ namespace Engine
 
 		void RenderManager::createOwnedLoops()
 		{
-			//std::function<bool(Renderer_*)> predicate =
-			//	[](Renderer_* comp) -> bool { return comp->isEnabled() && comp->getGameObject()->isActive(); };
-			//_renderOpaque = std::make_unique<Utility::FunctionGroup<Renderer_*>>(predicate);
-			//_renderTransparent = std::make_unique<Utility::FunctionGroup<Renderer_*>>(predicate);
-
 			_opaqueRenderers = std::vector<Renderer_*>();
 			_transparentRenderers = std::vector<Renderer_*>();
 		}
@@ -259,10 +228,9 @@ namespace Engine
 			_fps_hud->setFont("mge/fonts/arial.ttf");
 			_fps_hud->setTextAlignment(Left_Justified);
 			_fps_hud->setTextInformation("FPS");
-			_fps_hud->getTextObject().setPosition(100, 100);
-			_fps_hud->getTextObject().setCharacterSize(16);
+			_fps_hud->getTextObject().setPosition(10, 10);
+			_fps_hud->getTextObject().setCharacterSize(100);
 			_fps_hud->getTextObject().setFillColor(sf::Color::White);
-			//_fps_hud->getTextObject()->
 		}
 
 		LightManager* RenderManager::getLightManager()
@@ -279,6 +247,12 @@ namespace Engine
 				_window = ServiceLocator::instance()->getService<Game>()->getWindow();
 
 			return _window;
+		}
+
+		void RenderManager::reset()
+		{
+			destroyOwnedLoops();
+			createOwnedLoops();
 		}
 
 		void RenderManager::calculateFPS(const bool print)

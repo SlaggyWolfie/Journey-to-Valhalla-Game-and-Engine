@@ -34,7 +34,7 @@ namespace Engine
 
 		//creates a window, initializes glew, a renderer and a world instance
 		void initialize() override;
-		sf::RenderWindow* getWindow() const;
+		sf::RenderWindow* getWindow();
 		void processEvents();
 		void run();
 		bool isRunning() const;
@@ -50,8 +50,9 @@ namespace Engine
 
 		//initialize the actual scene, HAS to be done by a subclass
 		void initializeScene() const;
-		void initializeScene(const std::string& filepath) const;
-		std::unique_ptr<sf::RenderWindow> _window;  //sfml window to render into
+		//void initializeScene(const std::string& filepath) const;
+		//std::unique_ptr<sf::RenderWindow> _window;  //sfml window to render into
+		sf::RenderWindow *  _window;  //sfml window to render into
 		//Renderer* _renderer;        //the renderer class to render the world
 		//World* _world;              //the root game object that represents our scene
 		//float _fps;                 //stores the real fps
@@ -61,10 +62,12 @@ namespace Engine
 		Core::GameLoop* _gameLoop;
 		SceneManager* _sceneManager;
 
-		std::string _defaultScenePath;
+		std::string _defaultScenePath = "test.json";
 
 		Game(const Game&) = delete;
 		Game& operator=(const Game&) = delete;
+	public:
+		void reset() override;
 	};
 }
 

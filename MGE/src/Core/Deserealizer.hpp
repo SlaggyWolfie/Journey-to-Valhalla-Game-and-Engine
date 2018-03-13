@@ -1,13 +1,10 @@
 #ifndef DESEREALIZER_HPP
 #define DESEREALIZER_HPP
 
-#include <SFML/Graphics.hpp>
-#include <GL/glew.h>
 #include <string>
 #include <vector>
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
-#include "../_vs2015/Scene.hpp"
 
 using namespace std;
 
@@ -37,7 +34,7 @@ class Deserealizer
 public:
 	vector<GameObject_s> structs;
 	Deserealizer();
-	void deserializeIntoStructs(string fileName);
+	void deserializeIntoStructs(const string& fileName);
 	string oneMesh;
 };
 

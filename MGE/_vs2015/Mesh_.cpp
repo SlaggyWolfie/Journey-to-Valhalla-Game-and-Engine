@@ -156,7 +156,7 @@ namespace Engine
 			glBindVertexArray(VAO);
 			//glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 			glDrawElements(GL_TRIANGLES, _indices.size(), GL_UNSIGNED_INT, 0);
-			////glBindVertexArray(0);
+			glBindVertexArray(0);
 		}
 
 		void Mesh_::generateBuffers()
@@ -197,6 +197,8 @@ namespace Engine
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, _indices.size() * sizeof(unsigned int), &_indices[0], GL_STATIC_DRAW);
+			
+		
 
 			// set the vertex attribute pointers
 			// vertex positions
@@ -209,7 +211,11 @@ namespace Engine
 			glEnableVertexAttribArray(2);
 			glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, textureCoordinate));
 
+			//return;
 			glBindVertexArray(0);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			//glBindVertexArray(0);
 		}
 	}
 }

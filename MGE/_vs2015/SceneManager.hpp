@@ -2,6 +2,7 @@
 #ifndef SCENE_MANAGER_HPP
 #define SCENE_MANAGER_HPP
 #include "Manager.hpp"
+#include "Core/Game.hpp"
 
 namespace Engine
 {
@@ -19,6 +20,11 @@ namespace Engine
 		void initialize() override;
 	private:
 		std::unique_ptr<Scene> _activeScene = nullptr;
+		void unloadScene(std::unique_ptr<Scene>& scene);
+		Game* _game = nullptr;
+		Game* getGame();
+	public:
+		void reset() override;
 	};
 }
 

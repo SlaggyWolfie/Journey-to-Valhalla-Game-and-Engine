@@ -67,6 +67,8 @@ namespace Engine
 			template <typename T>
 			T* getArray(std::vector<T> list) const;
 
+		public:
+			void reset() override;
 		};
 
 		template <typename T>
