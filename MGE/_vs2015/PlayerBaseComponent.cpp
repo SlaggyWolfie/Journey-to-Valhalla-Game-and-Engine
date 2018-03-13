@@ -16,6 +16,29 @@ PlayerBaseComponent::PlayerBaseComponent()
 
 void PlayerBaseComponent::update()
 {
+
+	sf::Font font;
+	font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
+
+	sf::Text text;
+	text.setFont(font);
+	text.setPosition(200, 200);
+	text.setCharacterSize(100);
+	text.setString("CHEECK");
+
+	sf::Sprite sprite;
+	sf::Texture tex;
+
+	tex.loadFromFile("m.jpg");
+	sprite.setTexture(tex);
+	
+	ServiceLocator::instance()->getService<Game>()->getWindow()->pushGLStates();
+	ServiceLocator::instance()->getService<Game>()->getWindow()->draw(sprite);
+	ServiceLocator::instance()->getService<Game>()->getWindow()->draw(text);
+	ServiceLocator::instance()->getService<Game>()->getWindow()->popGLStates();
+
+
+
 	using namespace Engine::Core;
 	Transform* transform = getGameObject()->getTransform();
 
@@ -117,8 +140,7 @@ void PlayerBaseComponent::update()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) transform->translate(transform->up() * -speed);*/
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && _playerS == usingObject)
 		{
-			this->getGameObject()->getComponent<collider>()->SetEnable(true);
-			_objectToMove->getComponent<collider>()->SetEnable(true);
+
 			_playerS = jumpingFromObject;
 		}
 
@@ -127,14 +149,36 @@ void PlayerBaseComponent::update()
 		
 	if (_playerS == jumpingToObject)
 		{
+		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(0.3, 0.3,0.3), 0.1f));
 			MoveInsideObj(_objectToMove);
 		}
+	if (_playerS == jumpingFromObject)
+	{
+		//hardcode
+		std::cout << "jumping from" << std::endl;
+		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(1,1,1), 0.05f));
+		getGameObject()->getTransform()->setPosition(glm::lerp(getGameObject()->getTransform()->getPosition(), _objectToMove->getTransform()->getPosition() + glm::vec3(250, -40, 40), 0.05f));
+		std::cout << " Length" << glm::length(glm::vec3(
+			getGameObject()->getTransform()->getPosition().x - _objectToMove->getTransform()->getPosition().x - 250,
+			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y + 0,
+			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 40)) << std::endl;
+		if ( glm::length(glm::vec3(
+			getGameObject()->getTransform()->getPosition().x- _objectToMove->getTransform()->getPosition().x-250,
+			getGameObject()->getTransform()->getPosition().y -_objectToMove->getTransform()->getPosition().y +40,
+			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 40))<5.0f)
+		{
+			this->getGameObject()->getComponent<collider>()->SetEnable(true);
+			_objectToMove->getComponent<collider>()->SetEnable(true);
+			_playerS = idle;
+		}
+		
+	}
 }
 
 void PlayerBaseComponent::MoveInsideObj(GameObject_* obj)
 {
 	this->getGameObject()->getComponent<collider>()->SetEnable(false);
-	this->getGameObject()->getTransform()->setPosition(glm::lerp(this->getGameObject()->getTransform()->getPosition(), obj->getTransform()->getPosition(), 0.03f));
+	this->getGameObject()->getTransform()->setPosition(glm::lerp(this->getGameObject()->getTransform()->getPosition(), obj->getTransform()->getPosition(), 0.06f));
 
 	glm::vec3 delta = ServiceLocator::instance()->getService<ColliderManager>()->
 		GiveVectorBeetweenObjects(this->getGameObject(), obj);
@@ -198,6 +242,7 @@ void PlayerBaseComponent::RayCast()
 			//{
 			_objectToMove = child->getGameObject();
 			_playerS = jumpingToObject;
+			this->getGameObject()->getComponent<collider>()->SetEnable(false);
 			std::cout << "jumping" << std::endl;
 			//}
 		}

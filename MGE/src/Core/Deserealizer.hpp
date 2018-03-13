@@ -31,7 +31,7 @@ class Deserealizer
 public:
 	vector<GameObject_s> structs;
 	Deserealizer();
-	void deserializeIntoStructs();
+	void deserializeIntoStructs(string fileName);
 	string oneMesh;
 };
 

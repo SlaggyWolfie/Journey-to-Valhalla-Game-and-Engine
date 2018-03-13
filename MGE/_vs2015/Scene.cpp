@@ -48,7 +48,7 @@ namespace Engine
 			//Model::debug(true);
 			Model::clipPaths = false;
 			Deserealizer deserealizer;
-			deserealizer.deserializeIntoStructs();
+			deserealizer.deserializeIntoStructs("test.json");
 			deserializeStructs(deserealizer.structs, false);
 		}
 	}

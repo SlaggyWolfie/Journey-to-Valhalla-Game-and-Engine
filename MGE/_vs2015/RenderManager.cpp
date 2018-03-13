@@ -133,6 +133,12 @@ namespace Engine
 			//text.setFillColor(sf::Color::Red);
 			//text.setCharacterSize(24);
 
+			sf::Text text;
+			text.setString("hh");
+			sf::Font font;
+			font.loadFromFile("mge/fonts/arial.ttf");
+			text.setFont(font);
+			getWindow()->draw(text);
 			getWindow()->display();
 
 			calculateFPS();
