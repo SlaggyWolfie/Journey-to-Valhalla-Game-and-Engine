@@ -43,6 +43,7 @@ namespace Engine
 			float getMinimumDistance() const;
 
 			void destroy() override;
+			static void playOneShot(const std::string& path);
 		protected:
 			void update() override;
 			bool isUniquePerGameObject() override;
@@ -59,6 +60,7 @@ namespace Engine
 			bool _looping = false;
 			float _attenuation = 0;
 			float _minimumDistance = 0;
+
 		};
 	}
 }

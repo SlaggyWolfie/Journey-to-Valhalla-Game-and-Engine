@@ -9,6 +9,7 @@
 #include "../_vs2015/Component.hpp"
 #include <GL/glew.h>
 #include "../_vs2015/SceneManager.hpp"
+#include "../../_vs2015/Sound.hpp"
 
 namespace Engine
 {
@@ -102,7 +103,9 @@ namespace Engine
 				}
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-					ServiceLocator::instance()->getService<SceneManager>()->loadScene("test____.json");
+					ServiceLocator::instance()->getService<SceneManager>()->loadScene("test.json");
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+					Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/donnerre2.wav");
 
 				update();
 				lateUpdate();

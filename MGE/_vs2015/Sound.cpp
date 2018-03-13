@@ -3,12 +3,14 @@
 #include <SFML/System/Time.hpp>
 #include "GameObject_.hpp"
 #include "Transform.hpp"
+#include "Time.hpp"
+
 namespace Engine
 {
 	namespace Audio
 	{
 		Sound::Sound() : _buffer(nullptr), _instance(nullptr), _filename(""), _status(AudioStatus::NoSound), _volume(1),
-		                 _pitch(1), _looping(false), _attenuation(1), _minimumDistance(1)
+			_pitch(1), _looping(false), _attenuation(1), _minimumDistance(1)
 		{
 		}
 
@@ -199,6 +201,29 @@ namespace Engine
 		bool Sound::isUniquePerGameObject()
 		{
 			return false;
+		}
+
+		void Sound::playOneShot(const std::string& path)
+		{
+			sf::SoundBuffer* buffer = new sf::SoundBuffer();
+			if (!buffer->loadFromFile(path))
+			{
+				std::cout << "Failed to load and play " + path << std::endl;
+				delete buffer;
+				return;
+			}
+
+			sf::Sound* sound = new sf::Sound();
+			sound->setBuffer(*buffer);
+			sound->play();
+
+			const std::function<void()> deleter = [sound, buffer]
+			{
+				delete sound;
+				delete buffer;
+			};
+
+			Engine::Utility::Time::timeout(buffer->getDuration().asSeconds() + 1, deleter);
 		}
 	}
 }

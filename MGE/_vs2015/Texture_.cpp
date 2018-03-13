@@ -63,25 +63,25 @@ namespace Engine
 
 				//Generate Texture
 				glBindTexture(GL_TEXTURE_2D, texture->getId());
-				//switch (type)
-				//{
-				//default:
-				//case TextureType::Diffuse:
-				//	glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB_ALPHA,
-				//		image->getSize().x, image->getSize().y, 0,
-				//		GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
-				//	break;
-				//case TextureType::Emission:
-				//case TextureType::Specular:
-				//case TextureType::Normal:
-				//	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-				//		image->getSize().x, image->getSize().y, 0,
-				//		GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
-				//	break;
-				//}
-				glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
-					image->getSize().x, image->getSize().y, 0,
-					GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
+				switch (type)
+				{
+				default:
+				case TextureType::Diffuse:
+					glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB_ALPHA,
+						image->getSize().x, image->getSize().y, 0,
+						GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
+					break;
+				case TextureType::Emission:
+				case TextureType::Specular:
+				case TextureType::Normal:
+					glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+						image->getSize().x, image->getSize().y, 0,
+						GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
+					break;
+				}
+				//glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+				//	image->getSize().x, image->getSize().y, 0,
+				//	GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 				glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 				glGenerateMipmap(GL_TEXTURE_2D);
