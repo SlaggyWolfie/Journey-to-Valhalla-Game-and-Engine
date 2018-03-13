@@ -18,6 +18,7 @@ public:
 	int OnTriggerEnter(lua_State * state);
 	static int PushBackObj(lua_State * state);
 	static int CollisionBetween(lua_State * state);
+	static int SphereCollisionBetween(lua_State * state);
 
 
 	//static int KeyDown(lua_State * state);

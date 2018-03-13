@@ -77,7 +77,7 @@ void collider::SetEnable(bool n)
 }
 void collider::update()
 {
-
+	if (getGameObject()->getName() == "crate1") std::cout << GetPos() << std::endl;
 
 
 	SetTrans(getGameObject()->getTransform());
@@ -124,7 +124,7 @@ void collider::setI(int i)
 
 void collider::SetTrans(Transform* t)
 {
-	_pos = t->getLocalPosition();
+	_pos = t->getLocalPosition()+glm::vec3();
 
 	glm::mat4 localMatrix = t->getLocalMatrix4X4();
 	glm::vec4 rotatedPoint = localMatrix * glm::vec4(0, 0, -1, 1);

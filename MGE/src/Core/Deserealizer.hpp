@@ -20,6 +20,12 @@ struct GameObject_s
 	glm::vec3 scale;
 	int parentID;
 	int selfID;
+	int lightType;
+	float lightIntencity;
+	glm::vec4 lightColor;
+	glm::vec3 colliderSize;
+	glm::vec3 colliderCenter;
+
 
 	GameObject_s();
 	~GameObject_s() = default;

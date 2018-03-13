@@ -62,6 +62,8 @@ namespace Engine
 			template <typename T>
 			T* getComponent();
 			template <typename T>
+			T* getComponentInChildren();
+			template <typename T>
 			T** getComponents();
 			template <typename T>
 			std::vector<T*> getComponentsList();
@@ -92,6 +94,18 @@ namespace Engine
 		T* GameObject_::getComponent()
 		{
 			return findComponent<T>();
+		}
+
+		template<typename T>
+		T * GameObject_::getComponentInChildren()
+		{
+			for (auto& transform : _transform->_children)
+			{
+				T* component = transform->getGameObject()->getComponentInChildren<T>();
+				if (component != nullptr) return component;
+			}
+
+			return getComponent<T>();
 		}
 
 		template <typename T>

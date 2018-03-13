@@ -17,7 +17,7 @@ PlayerBaseComponent::PlayerBaseComponent()
 void PlayerBaseComponent::update()
 {
 
-	sf::Font font;
+	/*sf::Font font;
 	font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
 
 	sf::Text text;
@@ -36,7 +36,7 @@ void PlayerBaseComponent::update()
 	ServiceLocator::instance()->getService<Game>()->getWindow()->draw(sprite);
 	ServiceLocator::instance()->getService<Game>()->getWindow()->draw(text);
 	ServiceLocator::instance()->getService<Game>()->getWindow()->popGLStates();
-
+*/
 
 
 	using namespace Engine::Core;
@@ -221,7 +221,7 @@ void PlayerBaseComponent::RayCast()
 	glm::vec3 rayWorld = glm::vec3(Camera_::getMainCamera()->getGameObject()->getTransform()->getMatrix4X4() * rayNearPlane);
 	rayWorld = glm::normalize(rayWorld);
 
-	std::cout << ServiceLocator::instance()->getService<ColliderManager>()->getColliders().size() << std::endl;
+	//std::cout << ServiceLocator::instance()->getService<ColliderManager>()->getColliders().size() << std::endl;
 	//fake collision loop in here
 	for (int i = 0; i < ServiceLocator::instance()->getService<ColliderManager>()->getColliders().size(); i++) {
 		collider* child = ServiceLocator::instance()->getService<ColliderManager>()->getColliders()[i];

@@ -60,6 +60,8 @@ void LuaScript::registerFunctions()
 	lua_pushcfunction(state_, CollisionBetween);
 	lua_setfield(state_, -2, "CollisionBetween");
 
+	lua_pushcfunction(state_, SphereCollisionBetween);
+	lua_setfield(state_, -2, "SphereCollisionBetween");
 
 	lua_setglobal(state_, "Game");
 
@@ -198,3 +200,25 @@ int LuaScript::CollisionBetween(lua_State * state)
 	return luaL_error(state, " faulty arguments");
 
 }
+
+int LuaScript::SphereCollisionBetween(lua_State * state)
+{
+	if (lua_isstring(state, 1) && lua_gettop(state) == 2 && lua_isstring(state, 2))
+	{
+		std::string name1 = (std::string)lua_tostring(state, 1);
+		std::string name2 = (std::string)lua_tostring(state, 2);
+
+		ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
+		bool result = _colliderManager->CollisionBetween(_colliderManager->GetColliderByName(name1), _colliderManager->GetColliderByName(name2));
+		lua_pushboolean(state, result);
+		//std::cout << result << std::endl;
+		//std::cout << _colliderManager->CollisionBetween(_colliderManager->GetColliderByName(name1), _colliderManager->GetColliderByName(name2))<<std::endl;
+
+		//std::cout<<_colliderManager->GetColliderByName(name2);
+
+		return 1;
+	}
+	return luaL_error(state, " faulty arguments");
+
+}
+

@@ -98,12 +98,10 @@ bool ColliderManager::CheckBoxCollisionBetween(collider * object, collider * obj
 			bool yCheck = (object->point5.y <= object2->point6.y && object->point6.y >= object2->point5.y);
 			bool zCheck = (object->point3.z <= object2->point4.z && object->point4.z >= object2->point3.z);
 			bool xCheck = (object->point1.x <= object2->point2.x && object->point2.x >= object2->point1.x);
-			std::cout << "X " << xCheck << " Z " << zCheck << " Y " << yCheck << std::endl;
 			if (xCheck &&
 				zCheck &&
 				yCheck)
 			{
-				std::cout << "!!!!" << std::endl;
 				return true;
 			}
 			else return false;
@@ -129,7 +127,6 @@ bool ColliderManager::CollisionBetween(collider * obj1, collider * obj2)
 	int distance = glm::sqrt((obj1->GetPos().x - obj2->GetPos().x) * (obj1->GetPos().x - obj2->GetPos().x) +
 		(obj1->GetPos().y - obj2->GetPos().y) * (obj1->GetPos().y - obj2->GetPos().y) +
 		(obj1->GetPos().z - obj2->GetPos().z) * (obj1->GetPos().z - obj2->GetPos().z));
-	//std::cout << distance << std::endl;
 	return distance < (obj1->GetRadius() + obj2->GetRadius());
 }
 

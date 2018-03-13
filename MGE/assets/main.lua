@@ -17,11 +17,24 @@ function Update()
 		--print("i work")
 	--end		
 	if(Game.CollisionBetween("Player","gate")) then
-	Game.PushBackObj("Player","gate")
+		Game.PushBackObj("Player","gate")
 		print("lua scripting in work")
 	end	
-	--if(Game.CollisionBetween("Player","enemy")) then
---		Game.PushBackObj("Player","enemy")
-		--print("i work")
-	--end	
+	if(Game.SphereCollisionBetween("Player","crate1")) then
+		Game.PushBackObj("Player","crate1")
+		print("lua scripting in work")
+	end	
+	if(Game.SphereCollisionBetween("Player","crate2")) then
+		Game.PushBackObj("Player","crate2")
+		print("lua scripting in work")
+	end
+if(Game.SphereCollisionBetween("Player","crate3")) then
+		Game.PushBackObj("Player","crate3")
+		print("lua scripting in work")
+	end	
+if(Game.SphereCollisionBetween("Player","crate4")) then
+		Game.PushBackObj("Player","crate4")
+		print("lua scripting in work")
+	end		
+	
 end

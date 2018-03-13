@@ -20,10 +20,11 @@
 #include "../src/Core/Game.hpp"
 #include "PressurePlateBehaviour.h"
 #include "GateBehaviour.h"
-
+#include "Material_.hpp"
 
 namespace Engine
 {
+	using namespace Rendering;
 	Scene::Scene() : _name(nullptr), _gameObjects(std::vector<std::unique_ptr<Core::GameObject_>>())
 	{
 	}
@@ -48,7 +49,7 @@ namespace Engine
 			//Model::debug(true);
 			Model::clipPaths = false;
 			Deserealizer deserealizer;
-			deserealizer.deserializeIntoStructs("test.json");
+			deserealizer.deserializeIntoStructs("level1.json");
 			deserializeStructs(deserealizer.structs, false);
 		}
 	}
@@ -214,6 +215,7 @@ namespace Engine
 		Rendering::Light_* light = new Rendering::Light_();
 		lightgo->addComponent(light);
 		light->setColor(glm::vec3(1));
+		light->setLightIntensity(1);
 		light->setLightType(Rendering::LightType::Directional);
 		lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
 		lightgo->getTransform()->rotate(lightgo->getTransform()->right(), -glm::radians(30.0f));
@@ -255,7 +257,7 @@ namespace Engine
 		Core::GameObject_* crate = Model::loadModel("Crate.fbx");
 		crate->getTransform()->setScale(glm::vec3(2, 2, 2));
 		crate->getTransform()->translate(glm::vec3(700, -100, 0));
-		crate->setName("crate");
+		crate->setName("crate1");
 		crate->addComponent(new collider());
 		crate->getComponent<collider>()->SetBoxSize(60, 150, 60);
 
@@ -277,22 +279,27 @@ namespace Engine
 		Core::GameObject_* obj3 = Model::loadModel("Crate.fbx");
 		obj3->getTransform()->setScale(glm::vec3(2, 2, 2));
 		obj3->getTransform()->translate(glm::vec3(-500, 60, 100));
-		obj3->setName("crate");
+		obj3->setName("crate2");
 		obj3->addComponent(new collider());
 		obj3->getComponent<collider>()->SetBoxSize(60, 150, 60);
 
 		Core::GameObject_* obj4 = Model::loadModel("Crate.fbx");
 		obj4->getTransform()->setScale(glm::vec3(2, 2, 2));
 		obj4->getTransform()->translate(glm::vec3(-700, 60, 600));
-		obj4->setName("crate");
+		obj4->setName("crate3");
 		obj4->addComponent(new collider());
 		obj4->getComponent<collider>()->SetBoxSize(60, 150, 60);
-	
-
+		Texture_* text;
+		text=Texture_::load("white.jpg", TextureType::Specular);
+		obj4->getComponentInChildren<Material_>()->setEmissionMap(text);
+		obj4->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("MementoMori.jpg"));
+		obj4->getComponentInChildren<Material_>()->useSpecularMap();
+		obj4->getComponentInChildren<Material_>()->useEmissionMap();
+		obj4->getComponentInChildren<Material_>()->useEmission();
 		Core::GameObject_* obj6 = Model::loadModel("Crate.fbx");
 		obj6->getTransform()->setScale(glm::vec3(2, 2, 2));
 		obj6->getTransform()->translate(glm::vec3(-400, 60, 100));
-		obj6->setName("crate");
+		obj6->setName("crate4");
 		obj6->addComponent(new collider());
 		obj6->getComponent<collider>()->SetBoxSize(60, 150,60);
 		//obj2->addComponent(new RotatingComponent());

@@ -53,6 +53,7 @@ void Deserealizer::deserializeIntoStructs(string fileName)
 		gameObjectStruct.scale.x = jsonScene.at(j).at("GameObject").at("transform")["scale"]["x"];
 		gameObjectStruct.scale.y = jsonScene.at(j).at("GameObject").at("transform")["scale"]["y"];
 		gameObjectStruct.scale.z = jsonScene.at(j).at("GameObject").at("transform")["scale"]["z"];
+
 		const string n = jsonScene.at(j).at("GameObject").at("meshString");
 		gameObjectStruct.meshName = n;
 		if (j == 0)
@@ -60,6 +61,21 @@ void Deserealizer::deserializeIntoStructs(string fileName)
 
 		gameObjectStruct.parentID = jsonScene.at(j).at("GameObject").at("parentID");
 		gameObjectStruct.selfID = jsonScene.at(j).at("GameObject").at("selfID");
+
+		gameObjectStruct.lightType = jsonScene.at(j).at("GameObject").at("lightType");
+		gameObjectStruct.lightIntencity = jsonScene.at(j).at("GameObject").at("lightIntencity");
+		gameObjectStruct.lightColor.x = jsonScene.at(j).at("GameObject").at("lightColor")["x"];
+		gameObjectStruct.lightColor.y = jsonScene.at(j).at("GameObject").at("lightColor")["y"];
+		gameObjectStruct.lightColor.z = jsonScene.at(j).at("GameObject").at("lightColor")["z"];
+		gameObjectStruct.lightColor.w = jsonScene.at(j).at("GameObject").at("lightColor")["w"];
+
+		gameObjectStruct.colliderCenter.x= jsonScene.at(j).at("GameObject").at("colliderCenter")["x"];
+		gameObjectStruct.colliderCenter.y = jsonScene.at(j).at("GameObject").at("colliderCenter")["y"];
+		gameObjectStruct.colliderCenter.z = jsonScene.at(j).at("GameObject").at("colliderCenter")["z"];
+
+		gameObjectStruct.colliderSize.x= jsonScene.at(j).at("GameObject").at("boxColliderSize")["x"];
+		gameObjectStruct.colliderSize.y = jsonScene.at(j).at("GameObject").at("boxColliderSize")["y"];
+		gameObjectStruct.colliderSize.z = jsonScene.at(j).at("GameObject").at("boxColliderSize")["z"];
 
 		structs.push_back(gameObjectStruct);
 	}
