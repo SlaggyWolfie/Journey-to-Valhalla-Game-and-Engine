@@ -17,34 +17,18 @@ PlayerBaseComponent::PlayerBaseComponent()
 void PlayerBaseComponent::update()
 {
 
-	/*sf::Font font;
-	font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
+	Camera_::getMainCamera()->getGameObject()->getTransform()->
+		lookAt(this->getGameObject()->getTransform(), glm::vec3(0, 1, 0));
 
-	sf::Text text;
-	text.setFont(font);
-	text.setPosition(200, 200);
-	text.setCharacterSize(100);
-	text.setString("CHEECK");
-
-	sf::Sprite sprite;
-	sf::Texture tex;
-
-	tex.loadFromFile("m.jpg");
-	sprite.setTexture(tex);
-	
-	ServiceLocator::instance()->getService<Game>()->getWindow()->pushGLStates();
-	ServiceLocator::instance()->getService<Game>()->getWindow()->draw(sprite);
-	ServiceLocator::instance()->getService<Game>()->getWindow()->draw(text);
-	ServiceLocator::instance()->getService<Game>()->getWindow()->popGLStates();
-*/
-
+	Camera_::getMainCamera()->getGameObject()->getTransform()->
+		setPosition(this->getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 5, 0));
 
 	using namespace Engine::Core;
 	Transform* transform = getGameObject()->getTransform();
 
 	RayCast();
-	float speed = 2.0f;
-	float turnSpeed = 3.0f;
+	float speed = 4 * Engine::Utility::Time::deltaTime();
+	float turnSpeed = 0.001f*Engine::Utility::Time::deltaTime();
 	lastPos = transform->getPosition();
 	//getGameObject()->getComponent<LastposStasher>()->SetLastPos(transform->getPosition());
 	if (_playerS != jumpingToObject)
@@ -80,26 +64,33 @@ void PlayerBaseComponent::update()
 		{
 			if (_playerS == usingObject)
 			{
-				transform->translate(transform->right() * -speed);
-				_objectToMove->getTransform()->translate(transform->right() * -speed);
+				//transform->translate(transform->right() * speed);
+				//_objectToMove->getTransform()->translate(transform->right() * speed);
+				transform->rotate(glm::vec3(0, 1, 0), -turnSpeed);
+				_objectToMove->getTransform()->rotate(glm::vec3(0, 1, 0), -turnSpeed);
+
 			}
 			else
 			{
-				transform->translate(transform->right() * -speed);
+				transform->rotate(glm::vec3(0, 1, 0), -turnSpeed);
 
 			}
+
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 			if (_playerS == usingObject)
 			{
-				transform->translate(transform->right() * speed);
-				_objectToMove->getTransform()->translate(transform->right() * speed);
+				//transform->translate(transform->right() * speed);
+				//_objectToMove->getTransform()->translate(transform->right() * speed);
+				transform->rotate(glm::vec3(0, 1, 0), turnSpeed);
+				_objectToMove->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(turnSpeed));
+
 			}
 			else
 			{
-				transform->translate(transform->right() * speed);
+				transform->rotate(glm::vec3(0, 1, 0), glm::radians(turnSpeed), World);
 
 			}
 
@@ -134,44 +125,44 @@ void PlayerBaseComponent::update()
 
 		}
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::U)) transform->rotate(glm::vec3(0,1,0),turnSpeed);
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::U)) transform->rotate(glm::vec3(0,1,0),turnSpeed);
 
 		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) transform->translate(transform->up() * speed);
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) transform->translate(transform->up() * -speed);*/
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && _playerS == usingObject)
-		{
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && _playerS == usingObject)
+	{
 
-			_playerS = jumpingFromObject;
-		}
+		_playerS = jumpingFromObject;
+	}
 
-		//if (sf::Keyboard::isKeyPressed(sf::Keyboard::C)) Camera_::getMainCamera()->getGameObject()->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(30.0f));
-		//transform->rotate(glm::vec3(1, 1, 0), glm::radians(turnSpeed));
-		
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::C)) Camera_::getMainCamera()->getGameObject()->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(30.0f));
+	//transform->rotate(glm::vec3(1, 1, 0), glm::radians(turnSpeed));
+
 	if (_playerS == jumpingToObject)
-		{
-		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(0.3, 0.3,0.3), 0.1f));
-			MoveInsideObj(_objectToMove);
-		}
+	{
+		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(0.3, 0.3, 0.3), 0.1f));
+		MoveInsideObj(_objectToMove);
+	}
 	if (_playerS == jumpingFromObject)
 	{
 		//hardcode
 		std::cout << "jumping from" << std::endl;
-		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(1,1,1), 0.05f));
+		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(1, 1, 1), 0.05f));
 		getGameObject()->getTransform()->setPosition(glm::lerp(getGameObject()->getTransform()->getPosition(), _objectToMove->getTransform()->getPosition() + glm::vec3(250, -40, 40), 0.05f));
 		std::cout << " Length" << glm::length(glm::vec3(
 			getGameObject()->getTransform()->getPosition().x - _objectToMove->getTransform()->getPosition().x - 250,
 			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y + 0,
 			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 40)) << std::endl;
-		if ( glm::length(glm::vec3(
-			getGameObject()->getTransform()->getPosition().x- _objectToMove->getTransform()->getPosition().x-250,
-			getGameObject()->getTransform()->getPosition().y -_objectToMove->getTransform()->getPosition().y +40,
-			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 40))<5.0f)
+		if (glm::length(glm::vec3(
+			getGameObject()->getTransform()->getPosition().x - _objectToMove->getTransform()->getPosition().x - 250,
+			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y + 40,
+			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 40)) < 5.0f)
 		{
 			this->getGameObject()->getComponent<collider>()->SetEnable(true);
 			_objectToMove->getComponent<collider>()->SetEnable(true);
 			_playerS = idle;
 		}
-		
+
 	}
 }
 

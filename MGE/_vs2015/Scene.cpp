@@ -150,6 +150,12 @@ namespace Engine
 				{
 					gameStruct.meshName = "tiles.obj";
 				}
+
+				if (gameStruct.name.find("room1") != std::string::npos)
+				{
+					std::cout << "rendering room" << std::endl;
+					gameStruct.meshName = "roomFinal.obj";
+				}
 				//if (gameStruct.meshName.find("default") != std::string::npos)
 				//{
 				//	//continue;
@@ -181,6 +187,11 @@ namespace Engine
 				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/Grass_ep_basecolor_004.png"));
 			}
 
+			if (gameObject->getName() == "room1")
+			{
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/RockTiles_basecolor.png"));
+			}
+
 			Transform* transform = gameObject->getTransform();
 			gameStruct.position.x *= -1;
 			transform->setLocalPosition(gameStruct.position);
@@ -197,7 +208,8 @@ namespace Engine
 			//transform->setLocalScale(glm::vec3(1, 1, 1));
 			if (gameStruct.meshName == "test-for-Slavi.obj")
 			{
-				//gameObject->getTransform()->setScale(glm::vec3(0.01f, 0.01f, 0.01f));
+				gameObject->getTransform()->setScale(glm::vec3(0.01f, 0.01f, 0.01f));
+				gameObject->addComponent(new PlayerBaseComponent());
 			}
 			
 
@@ -315,7 +327,7 @@ namespace Engine
 
 		obj1->getTransform()->translate(glm::vec3(0, 10, -600));
 		obj1->addComponent(new collider());
-		obj1->addComponent(new PlayerBaseComponent());
+		//obj1->addComponent(new PlayerBaseComponent());
 		obj1->setName("Player");
 		obj1->getComponent<collider>()->SetBoxSize(50, 50, 50);
 
