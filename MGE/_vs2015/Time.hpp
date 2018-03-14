@@ -19,7 +19,7 @@ namespace Engine
 			{
 			public:
 				TimeoutEvent(float interval, std::function<void()> event);
-				~TimeoutEvent() = default;
+				~TimeoutEvent();
 				TimeoutEvent(const TimeoutEvent& other) = default;
 				TimeoutEvent& operator= (const TimeoutEvent& other) = default;
 				bool operator <(const TimeoutEvent& other) const;
@@ -52,7 +52,7 @@ namespace Engine
 			static float _now_seconds;
 			static float _timeStep_seconds;
 			static float _variableTimeStep_seconds;
-			static std::set<TimeoutEvent> _timeouts;
+			static std::set<TimeoutEvent*> _timeouts;
 		};
 	};
 }

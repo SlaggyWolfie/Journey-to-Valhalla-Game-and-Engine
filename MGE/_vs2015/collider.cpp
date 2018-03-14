@@ -77,7 +77,7 @@ void collider::SetEnable(bool n)
 }
 void collider::update()
 {
-	if (getGameObject()->getName() == "crate1") std::cout << GetPos() << std::endl;
+	//if (getGameObject()->getName() == "crate1") std::cout << GetPos() << std::endl;
 
 
 	SetTrans(getGameObject()->getTransform());
