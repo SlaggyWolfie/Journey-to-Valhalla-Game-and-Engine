@@ -103,7 +103,7 @@ namespace Engine
 				}
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-					ServiceLocator::instance()->getService<SceneManager>()->loadScene("test.json");
+					ServiceLocator::instance()->getService<SceneManager>()->loadScene("finalLvl1.json");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
 					Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/donnerre2.wav");
 

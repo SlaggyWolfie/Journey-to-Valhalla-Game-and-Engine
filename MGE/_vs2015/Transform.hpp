@@ -102,6 +102,7 @@ namespace Engine
 			void translate(const glm::vec3& translation);
 			void rotate(const glm::vec3& axis, float angleRotation, Space space = World);
 			void scale(const glm::vec3& scaler);
+			void scaleWithPositions(const glm::vec3& scale);
 
 			//Parent/Children
 			void setParent(Transform* parent, bool keepWorldTransform = false);

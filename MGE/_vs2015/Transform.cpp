@@ -232,6 +232,20 @@ namespace Engine
 			setLocalScale(_localScale * scaler);
 		}
 
+		void Transform::scaleWithPositions(const glm::vec3 & scale)
+		{
+			glm::mat4 newLocal = glm::mat4(1);
+			this->scale(scale);
+
+			newLocal =
+					glm::scale(glm::mat4(), getLocalScale()) *
+					glm::mat4_cast(getLocalRotation()) *
+					glm::translate(glm::mat4(), getLocalPosition()) *
+					glm::mat4(1);
+
+			setLocalMatrix4X4(newLocal);
+		}
+
 		glm::vec3 Transform::forward()
 		{
 			return -glm::normalize(getMatrix4X4()[2]);
