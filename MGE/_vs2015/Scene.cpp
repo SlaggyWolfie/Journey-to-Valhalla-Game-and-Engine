@@ -189,7 +189,7 @@ namespace Engine
 			gameStruct.rotation.z *= -1;
 			transform->setLocalRotation(gameStruct.rotation);
 
-			//const auto check = glm::equal(transform->getScale(), glm::vec3(1));
+			//const auto check = glm::equal(transform->getScale(), glm::vec3(gameStruct.scale));
 			//if (!check.x) transform->scale(glm::vec3(1/gameStruct.scale.x, 1, 1));
 			//if (!check.y) transform->scale(glm::vec3(1, 1/gameStruct.scale.y, 1));
 			//if (!check.z) transform->scale(glm::vec3(1, 1, 1/gameStruct.scale.z));
