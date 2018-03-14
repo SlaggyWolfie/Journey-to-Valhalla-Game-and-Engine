@@ -62,7 +62,7 @@ void collider::PushBackObj(std::string n, std::string n1)
 	GameObject_* obj2 = c->
 		GetColliderByName(n1)->getGameObject();
 	glm::vec3 delta = c->GiveVectorBeetweem(c->GetColliderByName(n), c->GetColliderByName(n1));
-	std::cout << delta << std::endl;
+	/*std::cout << delta << std::endl;*/
 	obj1->getTransform()->setPosition(glm::lerp(obj1->getTransform()->getPosition(),
 		obj1->getComponent<PlayerBaseComponent>()->lastPos + delta * glm::vec3(0.01f), 0.9f));
 

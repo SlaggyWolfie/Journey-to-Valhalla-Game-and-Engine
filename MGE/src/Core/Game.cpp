@@ -145,7 +145,9 @@ namespace Engine
 
 	void Game::initializeScene() const
 	{
-		_sceneManager->loadScene(_defaultScenePath);//->initialize(true, true);
+		//_sceneManager->loadScene("finalLvl1.json");//->initialize(true, true);
+		_sceneManager->loadScene("finalLvl1.json");//->initialize(true, true);
+
 	}
 
 	void Game::reset()
