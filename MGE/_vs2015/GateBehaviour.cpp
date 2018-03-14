@@ -12,23 +12,20 @@ using namespace Engine;
 
 GateBehaviour::GateBehaviour()
 {
-
-	
 }
 
 void GateBehaviour::update()
 {
 	TogglePositions();
 	CheckCollision();
-
-	
+	std::cout << "i am opened " << AllPressed() << std::endl;
 }
 
 bool GateBehaviour::AllPressed()
-{
+{	
 	for (int i = 0; i < _plates.size(); i++)
 	{
-		if (_plates[i]->IsPressed() == false)
+		if (!_plates[i]->IsPressed())
 			return false;
 	}
 	return true;
@@ -41,6 +38,14 @@ void GateBehaviour::CheckCollision()
 
 	//for (int i = 0; i < colList.size(); i++)
 	//{
+	//	if(colList[i]->getGameObject()->getName()=="Crate")
+	//	{
+	//		_open = true;
+	//	}
+	//	else
+	//	{
+	//		_open = true;
+	//	}
 	//}
 }
 
@@ -48,7 +53,7 @@ void GateBehaviour::start()
 {
 	Transform* transform = getGameObject()->getTransform();
 	_notActivatedPos = transform->getPosition();
-	_activatedPos = transform->getPosition() + glm::vec3(0, 400, 0);
+	_activatedPos = transform->getPosition() + glm::vec3(0, -5, 0);
 }
 
 void GateBehaviour::AddPlate(PressurePlateBehaviour * plate)

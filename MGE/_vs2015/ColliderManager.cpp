@@ -60,25 +60,34 @@ std::vector<collider*> ColliderManager::CheckCollision(collider* object)
 std::vector<collider*> ColliderManager::CheckBoxCollision(collider * object)
 {
 	std::vector<collider*> collideList;
-	//std::cout << allColliders.size() << std::endl;
+	std::cout << allColliders.size() << std::endl;
 	for (int i = 0; i <allColliders.size(); i++)
 	{
 		if (allColliders[i]->getGameObject()->getName() != object->getGameObject()->getName())
 		{
-			//std::cout<<allColliders.size() <<"  " << allColliders[i]->getGameObject()->getName() <<"names are different"<< object->getGameObject()->getName() << std::endl;
-			//std::cout << " sir!" << std::endl;
+			if (allColliders[i]->getGameObject()->getName() == "Main character 1.2 updated"&&object->getGameObject()->getName() == "Pressure plate 1")
+			{	/*
+			std::cout<<allColliders.size() <<"  " << allColliders[i]->getGameObject()->getName() <<"names are different"<< object->getGameObject()->getName() << std::endl;
+			std::cout << " sir!" << std::endl;
+			std::cout << object->point1 << "   " << allColliders[i]->point1 << std::endl;*/
 			/*std::cout << ((object->point1.x <= allColliders[i]->point2.x && object->point2.x >= allColliders[i]->point1.x) &&
 				(object->point3.z <= allColliders[i]->point4.z && object->point4.z >= allColliders[i]->point3.z) &&
 				(object->point5.y <= allColliders[i]->point6.y && object->point6.y >= allColliders[i]->point5.y)) << std::endl;*/
-			bool yCheck = (object->point5.y <= allColliders[i]->point6.y && object->point6.y >= allColliders[i]->point5.y);
-			bool zCheck = (object->point3.z <= allColliders[i]->point4.z && object->point4.z >= allColliders[i]->point3.z);
-			bool xCheck = (object->point1.x <= allColliders[i]->point2.x && object->point2.x >= allColliders[i]->point1.x);
-			if (xCheck&&
-				zCheck &&
-				yCheck)
-			{
-				std::cout << "its collision, sir!" << std::endl;
-				collideList.push_back(allColliders[i]);
+				bool yCheck = (object->point5.y <= allColliders[i]->point6.y && object->point6.y >= allColliders[i]->point5.y);
+				bool zCheck = (object->point3.z <= allColliders[i]->point4.z && object->point4.z >= allColliders[i]->point3.z);
+				bool xCheck = (object->point1.x <= allColliders[i]->point2.x && object->point2.x >= allColliders[i]->point1.x);
+
+				std::cout << object->point1 << ":x: " << allColliders[i]->point2 << std::endl;
+				std::cout << object->point3 << ":y: " << allColliders[i]->point3 << std::endl;
+				std::cout << object->point5 << ":z: " << allColliders[i]->point5 << std::endl;
+
+				if (xCheck&&
+					zCheck &&
+					yCheck)
+				{
+					std::cout << "its collision, sir!" << std::endl;
+					collideList.push_back(allColliders[i]);
+				}
 			}
 		}
 	}
@@ -98,13 +107,8 @@ bool ColliderManager::CheckBoxCollisionBetween(collider * object, collider * obj
 			bool yCheck = (object->point5.y <= object2->point6.y && object->point6.y >= object2->point5.y);
 			bool zCheck = (object->point3.z <= object2->point4.z && object->point4.z >= object2->point3.z);
 			bool xCheck = (object->point1.x <= object2->point2.x && object->point2.x >= object2->point1.x);
-			if (xCheck &&
-				zCheck &&
-				yCheck)
-			{
-				return true;
-			}
-			else return false;
+			
+			return xCheck && zCheck && yCheck;
 }
 
 

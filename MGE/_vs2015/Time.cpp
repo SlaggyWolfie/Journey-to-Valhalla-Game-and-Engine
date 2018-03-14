@@ -92,7 +92,7 @@ namespace Engine
 			_now_seconds = _clock->getElapsedTime().asSeconds();
 			_variableTimeStep_seconds = _now_seconds - lastTime;
 
-			std::cout << "Now: " + std::to_string(static_cast<int>(_now_seconds)) << std::endl;
+			//std::cout << "Now: " + std::to_string(static_cast<int>(_now_seconds)) << std::endl;
 
 			// check for timeouts and deliver for all needed
 			if (!_timeouts.empty() && (*_timeouts.begin())->raise())

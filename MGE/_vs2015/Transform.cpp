@@ -202,10 +202,7 @@ namespace Engine
 			if (getGameObject()->isStatic() && _game->isRunning()) return;
 
 			const bool localOrientation = space == Local;
-			//Angle is in Radians.
-			//setLocalRotation(glm::quat_cast(glm::mat4_cast(getLocalRotation()) * glm::rotate(angleRotation, axis)));
-			//setLocalRotation(glm::rotate(getLocalRotation(), angleRotation, axis));
-			//const auto rotation = glm::rotate(angleRotation, axis);
+
 			const auto rotation = glm::angleAxis(angleRotation, axis);
 			glm::quat local;
 			if (localOrientation)
@@ -216,7 +213,7 @@ namespace Engine
 			else
 			{
 				local = rotation * getLocalRotation();
-				setRotation(local);
+				setLocalRotation(local);
 			}
 
 			//setLocalRotation(local);
@@ -235,15 +232,15 @@ namespace Engine
 		void Transform::scaleWithPositions(const glm::vec3 & scale)
 		{
 			glm::mat4 newLocal = glm::mat4(1);
-			this->scale(scale);
+			//this->scale(scale);
 
 			newLocal =
-					glm::scale(glm::mat4(), getLocalScale()) *
-					glm::mat4_cast(getLocalRotation()) *
-					glm::translate(glm::mat4(), getLocalPosition()) *
+					glm::scale(scale * getScale()) *
+					glm::mat4_cast(getRotation()) *
+					glm::translate(getPosition()) *
 					glm::mat4(1);
 
-			setLocalMatrix4X4(newLocal);
+			setWorldMatrix4X4(newLocal);
 		}
 
 		glm::vec3 Transform::forward()

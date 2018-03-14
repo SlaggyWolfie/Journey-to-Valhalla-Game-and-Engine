@@ -16,122 +16,69 @@ PlayerBaseComponent::PlayerBaseComponent()
 
 void PlayerBaseComponent::update()
 {
+	//std::cout << "State: " + std::to_string(_playerS) << std::endl;
+	Camera_::getMainCamera()->getGameObject()->getTransform()->
+		lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
 
 	Camera_::getMainCamera()->getGameObject()->getTransform()->
-		lookAt(this->getGameObject()->getTransform(), glm::vec3(0, 1, 0));
+		setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 5, 0));
 
-	Camera_::getMainCamera()->getGameObject()->getTransform()->
-		setPosition(this->getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 5, 0));
-
+	getGameObject()->getComponent<collider>()->lastPos = getGameObject()->getTransform()->getPosition();
+	std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
 	using namespace Engine::Core;
 	Transform* transform = getGameObject()->getTransform();
 
 	RayCast();
-	float speed = 4 * Engine::Utility::Time::deltaTime();
-	float turnSpeed = 0.001f*Engine::Utility::Time::deltaTime();
+	float speed = 8 * Engine::Utility::Time::deltaTime();
+	float turnSpeed = 90 * Engine::Utility::Time::deltaTime();
 	lastPos = transform->getPosition();
-	//getGameObject()->getComponent<LastposStasher>()->SetLastPos(transform->getPosition());
 	if (_playerS != jumpingToObject)
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		{
+			transform->translate(transform->forward() * -speed);
 			if (_playerS == usingObject)
-			{
-				_objectToMove->getTransform()->translate(transform->forward() * speed);
-				transform->translate(transform->forward() * speed);
-			}
-			else
-			{
-				transform->translate(transform->forward() * speed);
-			}
+				_objectToMove->getTransform()->translate(transform->forward() * -speed);
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		{
+			transform->translate(transform->forward() * speed);
 			if (_playerS == usingObject)
-			{
-				transform->translate(transform->forward() * -speed);
-				_objectToMove->getTransform()->translate(transform->forward() * -speed);
-			}
-			else
-			{
-				transform->translate(transform->forward() * -speed);
-			}
-
+				_objectToMove->getTransform()->translate(transform->forward() * speed);
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
+			transform->rotate(glm::vec3(0, 1, 0), glm::radians(turnSpeed));
 			if (_playerS == usingObject)
-			{
-				//transform->translate(transform->right() * speed);
-				//_objectToMove->getTransform()->translate(transform->right() * speed);
-				transform->rotate(glm::vec3(0, 1, 0), -turnSpeed);
-				_objectToMove->getTransform()->rotate(glm::vec3(0, 1, 0), -turnSpeed);
-
-			}
-			else
-			{
-				transform->rotate(glm::vec3(0, 1, 0), -turnSpeed);
-
-			}
-
+				_objectToMove->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(turnSpeed));
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
+			transform->rotate(glm::vec3(0, 1, 0), glm::radians(-turnSpeed));
 			if (_playerS == usingObject)
-			{
-				//transform->translate(transform->right() * speed);
-				//_objectToMove->getTransform()->translate(transform->right() * speed);
-				transform->rotate(glm::vec3(0, 1, 0), turnSpeed);
-				_objectToMove->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(turnSpeed));
-
-			}
-			else
-			{
-				transform->rotate(glm::vec3(0, 1, 0), glm::radians(turnSpeed), World);
-
-			}
-
+				_objectToMove->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(-turnSpeed));
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 		{
+			transform->translate(transform->up() * speed);
 			if (_playerS == usingObject)
-			{
-				transform->translate(transform->up() * speed);
 				_objectToMove->getTransform()->translate(transform->up() * speed);
-			}
-			else
-			{
-				transform->translate(transform->up() * speed);
-
-			}
-
 		}
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 		{
+			transform->translate(transform->up() * -speed);
 			if (_playerS == usingObject)
-			{
-				transform->translate(transform->up() * -speed);
 				_objectToMove->getTransform()->translate(transform->up() * -speed);
-			}
-			else
-			{
-				transform->translate(transform->up() * -speed);
-
-			}
-
 		}
 	}
-	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::U)) transform->rotate(glm::vec3(0,1,0),turnSpeed);
 
-		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) transform->translate(transform->up() * speed);
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::X)) transform->translate(transform->up() * -speed);*/
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && _playerS == usingObject)
 	{
-
 		_playerS = jumpingFromObject;
 	}
 
@@ -140,25 +87,26 @@ void PlayerBaseComponent::update()
 
 	if (_playerS == jumpingToObject)
 	{
-		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(0.3, 0.3, 0.3), 0.1f));
+		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(0.003, 0.003, 0.003), 0.1f));
 		MoveInsideObj(_objectToMove);
 	}
 	if (_playerS == jumpingFromObject)
 	{
 		//hardcode
 		std::cout << "jumping from" << std::endl;
-		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(1, 1, 1), 0.05f));
-		getGameObject()->getTransform()->setPosition(glm::lerp(getGameObject()->getTransform()->getPosition(), _objectToMove->getTransform()->getPosition() + glm::vec3(250, -40, 40), 0.05f));
+		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(0.01, 0.01, 0.01), 0.05f));
+		getGameObject()->getTransform()->setPosition(glm::lerp(getGameObject()->getTransform()->getPosition(), 
+			_objectToMove->getTransform()->getPosition() + glm::vec3(2, +2, 2), 0.05f));
 		std::cout << " Length" << glm::length(glm::vec3(
-			getGameObject()->getTransform()->getPosition().x - _objectToMove->getTransform()->getPosition().x - 250,
-			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y + 0,
-			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 40)) << std::endl;
+			getGameObject()->getTransform()->getPosition().x - _objectToMove->getTransform()->getPosition().x - 2,
+			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y + 2,
+			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 2)) << std::endl;
 		if (glm::length(glm::vec3(
-			getGameObject()->getTransform()->getPosition().x - _objectToMove->getTransform()->getPosition().x - 250,
-			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y + 40,
-			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 40)) < 5.0f)
+			getGameObject()->getTransform()->getPosition().x - _objectToMove->getTransform()->getPosition().x - 2,
+			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y - 2,
+			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 2)) < 1.0f)
 		{
-			this->getGameObject()->getComponent<collider>()->SetEnable(true);
+			getGameObject()->getComponent<collider>()->SetEnable(true);
 			_objectToMove->getComponent<collider>()->SetEnable(true);
 			_playerS = idle;
 		}
@@ -168,16 +116,43 @@ void PlayerBaseComponent::update()
 
 void PlayerBaseComponent::MoveInsideObj(GameObject_* obj)
 {
-	this->getGameObject()->getComponent<collider>()->SetEnable(false);
-	this->getGameObject()->getTransform()->setPosition(glm::lerp(this->getGameObject()->getTransform()->getPosition(), obj->getTransform()->getPosition(), 0.06f));
+	getGameObject()->getComponent<collider>()->SetEnable(false);
+	//obj->getComponent<collider>()->SetEnable(false);
+	getGameObject()->getTransform()->setParent(nullptr);
+	obj->getTransform()->setParent(nullptr);
+	//getGameObject()->getTransform()->setPosition(obj->getTransform()->getPosition());
 
-	glm::vec3 delta = ServiceLocator::instance()->getService<ColliderManager>()->
-		GiveVectorBeetweenObjects(this->getGameObject(), obj);
+	//getGameObject()->getTransform()->setPosition(glm::lerp(
+	//	getGameObject()->getTransform()->getPosition(), obj->getTransform()->getPosition(), 1.0f));
+	getGameObject()->getTransform()->setPosition(moveTowards(
+		getGameObject()->getTransform()->getPosition(), obj->getTransform()->getPosition(), 1.0f));
+	//const auto check = glm::epsilonEqual(getGameObject()->getTransform()->getPosition(),
+	//	getGameObject()->getComponent<collider>()->lastPos, 0.01f);
+	//if (check.x && check.y && check.z)
+	//if (glm::distance(getGameObject()->getTransform()->getPosition(),
+	//	getGameObject()->getComponent<collider>()->lastPos) < 0.01f)
+	//	getGameObject()->getTransform()->setPosition(_targetPosition);
+
+	//glm::vec3 delta = ServiceLocator::instance()->getService<ColliderManager>()->
+	//	GiveVectorBeetweenObjects(getGameObject(), obj);
+	const glm::vec3 delta = obj->getTransform()->getPosition() - getGameObject()->getTransform()->getPosition();
+
+	//std::cout << glm::to_string(getGameObject()->getTransform()->getPosition()) << std::endl;
+	//std::cout << glm::to_string(obj->getTransform()->getPosition()) << std::endl;
+	//std::cout << glm::to_string(getGameObject()->getComponent<collider>()->lastPos) << std::endl;
+	//std::cout << "Delta length: " + std::to_string(glm::length(delta)) << std::endl;
 	//std::cout << (glm::abs(delta.length() - glm::length(delta)) < 0.000001f ? "true" : "false") << std::endl;
-	if (glm::length(delta) <= 0.5f)
+	if (glm::length(delta) <= 0.1f)
 	{
 		_playerS = usingObject;
 	}
+}
+
+glm::vec3 PlayerBaseComponent::moveTowards(glm::vec3 current, glm::vec3 target, float maxDelta)
+{
+	glm::vec3 delta = target - current;
+	glm::vec3 movementDelta = glm::length2(delta) > maxDelta * maxDelta ? glm::normalize(delta) * maxDelta : delta;
+	return current + movementDelta;
 }
 
 void PlayerBaseComponent::RayCast()
@@ -214,7 +189,8 @@ void PlayerBaseComponent::RayCast()
 
 	//std::cout << ServiceLocator::instance()->getService<ColliderManager>()->getColliders().size() << std::endl;
 	//fake collision loop in here
-	for (int i = 0; i < ServiceLocator::instance()->getService<ColliderManager>()->getColliders().size(); i++) {
+	for (int i = 0; i < ServiceLocator::instance()->getService<ColliderManager>()->getColliders().size(); i++)
+	{
 		collider* child = ServiceLocator::instance()->getService<ColliderManager>()->getColliders()[i];
 		//if (child == _world->getMainCamera()) continue;
 
@@ -228,14 +204,16 @@ void PlayerBaseComponent::RayCast()
 		float distance = glm::length(perpendicular);
 
 		//I know the shere radius is 1, this needs to be replaced with collider radius
-		if (distance <= child->GetRadius() && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
-			//if (child->getGameObject()->getName() == "obj2")
-			//{
-			_objectToMove = child->getGameObject();
-			_playerS = jumpingToObject;
-			this->getGameObject()->getComponent<collider>()->SetEnable(false);
-			std::cout << "jumping" << std::endl;
-			//}
+		if (distance <= 1 && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		{
+			if (child->getGameObject()->getName() == "Crate")
+			{
+				_objectToMove = child->getGameObject();
+				_targetPosition = _objectToMove->getTransform()->getPosition();
+				_playerS = jumpingToObject;
+				getGameObject()->getComponent<collider>()->SetEnable(false);
+				std::cout << "jumping" << std::endl;
+			}
 		}
 	}
 }

@@ -19,6 +19,7 @@
 #include "ServiceLocator.hpp"
 #include "Core\Game.hpp"
 #include "Time.hpp"
+#include "SceneManager.hpp"
 
 namespace Engine
 {
@@ -52,7 +53,7 @@ namespace Engine
 			Model::clipPaths = false;
 			Deserealizer deserealizer;
 			// deserealizer.deserializeIntoStructs("level1.json");
-			deserealizer.deserializeIntoStructs(_path);	
+			deserealizer.deserializeIntoStructs(_path);
 			deserializeStructs(deserealizer.structs, false);
 		}
 		if (hard && fromFile)
@@ -61,13 +62,41 @@ namespace Engine
 		std::cout << "Loaded Scene." << std::endl;
 	}
 
-	Core::GameObject_* Scene::findGameObject(const std::string& name) const
+	Core::GameObject_* Scene::findGameObject(const std::string& name, const bool exact) const
 	{
-		for (const auto& gameObject : _gameObjects)
-			if (gameObject->getName() == name)
-				return gameObject.get();
+		if (exact)
+		{
+			for (const auto& gameObject : _gameObjects)
+				if (gameObject->getName() == name)
+					return gameObject.get();
+		}
+		else
+		{
+			for (const auto& gameObject : _gameObjects)
+				if (gameObject->getName().find(name) != std::string::npos)
+					return gameObject.get();
+		}
 
 		return nullptr;
+	}
+
+	std::vector<Core::GameObject_*> Scene::findGameObjects(const std::string& name, const bool exact) const
+	{
+		std::vector<Core::GameObject_*> gameObjects;
+		if (exact)
+		{
+			for (const auto& gameObject : _gameObjects)
+				if (gameObject->getName() == name)
+					gameObjects.push_back(gameObject.get());
+		}
+		else
+		{
+			for (const auto& gameObject : _gameObjects)
+				if (gameObject->getName().find(name) != std::string::npos)
+					gameObjects.push_back(gameObject.get());
+		}
+
+		return gameObjects;
 	}
 
 	Core::GameObject_** Scene::getGameObjectsArray() const
@@ -110,6 +139,14 @@ namespace Engine
 			//std::cout << "\tObject " + std::to_string(++index) + "." << std::endl;
 			GameObject_* gameObject = nullptr;
 
+
+			if (gameStruct.name.find("Runestone") != std::string::npos)
+			{
+				std::cout << "runestone" << std::endl;
+				gameStruct.meshName = "Crate.fbx";
+				gameStruct.name = "Crate";
+			}
+
 			if (!gameStruct.meshName.empty() && gameStruct.meshName != std::string("")
 				&& gameStruct.meshName.find('.') != std::string::npos
 				)
@@ -135,16 +172,13 @@ namespace Engine
 					//continue;
 					if (gameStruct.name.find("Cylinder") != std::string::npos)
 						gameStruct.meshName = "Cylinder.fbx";
-					if ((gameStruct.name.find("Runestone") != std::string::npos))
-					{
-						gameStruct.meshName = "Crate.fbx";
-					}
+
 				}
 				if (gameStruct.meshName.find("Main character") != std::string::npos)
 				{
 					//continue;
 					std::cout << "Getting here" << std::endl;
-						gameStruct.meshName = "test-for-Slavi.obj";
+					gameStruct.meshName = "test-for-Slavi.obj";
 				}
 				if (gameStruct.name.find("default") != std::string::npos)
 				{
@@ -180,6 +214,23 @@ namespace Engine
 				gameObject = new GameObject_("", "");
 			}
 
+			if (gameStruct.name.find("Crate") != std::string::npos)
+			{
+				gameObject->addComponent(new collider());
+				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+
+				//gameObject->addComponent(new PlayerBaseComponent());
+			}
+
+			if (gameStruct.name.find("Gate") != std::string::npos)
+			{
+				gameObject->addComponent(new collider());
+				gameObject->addComponent(new GateBehaviour());
+
+				for (const auto& plateGameObject : findGameObjects("Pressure plate ", false))
+					gameObject->getComponent<GateBehaviour>()->AddPlate(plateGameObject->getComponent<PressurePlateBehaviour>());
+			}
+
 			if (gameObject == nullptr) return;
 			gameObject->setName(gameStruct.name);
 			if (gameObject->getName() == "default")
@@ -200,6 +251,24 @@ namespace Engine
 			gameStruct.rotation.z *= -1;
 			transform->setLocalRotation(gameStruct.rotation);
 
+
+			if (gameObject->getName() == "plate1_1")
+			{
+				//gameStruct.position.x *= -1;
+				//gameStruct.position.y = -0.001f;
+				//gameStruct
+				transform->setLocalPosition(-gameStruct.position);
+			}
+
+			if (gameObject->getName() == "Pressure plate 1")
+			{
+				gameObject->addComponent(new collider());
+				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+
+				gameObject->addComponent(new PressurePlateBehaviour());
+				//transform->translate(glm::vec3(0.04f, 0, 0));
+			}
+
 			//const auto check = glm::equal(transform->getScale(), glm::vec3(gameStruct.scale));
 			//if (!check.x) transform->scale(glm::vec3(1/gameStruct.scale.x, 1, 1));
 			//if (!check.y) transform->scale(glm::vec3(1, 1/gameStruct.scale.y, 1));
@@ -209,12 +278,13 @@ namespace Engine
 			if (gameStruct.meshName == "test-for-Slavi.obj")
 			{
 				gameObject->getTransform()->setScale(glm::vec3(0.01f, 0.01f, 0.01f));
+				gameObject->addComponent(new collider());
+				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
 				gameObject->addComponent(new PlayerBaseComponent());
 			}
-			
 
 			//transform->scaleWithPositions(glm::vec3(100));
-			
+
 			//transform->setLocalScale(gameStruct.scale);
 			addGameObject(gameObject);
 			id_to_go[gameStruct.selfID] = gameObject;
@@ -232,10 +302,11 @@ namespace Engine
 			if (parentID == 0) continue;
 
 			Transform* transform = gameObject->getTransform();
-			transform->setParent(id_to_go[parentID]->getTransform(), false);
+			transform->setParent(id_to_go[parentID]->getTransform(), true);
 		}
 
 		//for (auto& go : _gameObjects)
+			//go->getTransform()->scaleWithPositions(glm::vec3(10));
 		//	go->addComponent(new RotatingComponent());
 
 		id_to_go.clear();
@@ -283,6 +354,9 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
+		auto plateGO = ServiceLocator::instance()->getService<SceneManager>()->getActiveScene()->findGameObject("Pressure plate border");
+		//std::cout << "Pressure plate 1: " + glm::to_string(plateGO->getTransform()->getPosition()) << std::endl;
+		//plateItself->getGameObject()->
 		//loadMenu();
 		//std::function<void()> pr = ([] {std::cout << "Print" << std::endl; });
 		//Engine::Utility::Time::timeout(1, pr);
@@ -337,8 +411,6 @@ namespace Engine
 		crate->setName("crate1");
 		crate->addComponent(new collider());
 		crate->getComponent<collider>()->SetBoxSize(60, 150, 60);
-
-
 
 		Core::GameObject_* tiles = Model::loadModel("tiles2.obj");
 		tiles->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/Grass_ep_basecolor_004.png"));
@@ -410,7 +482,7 @@ namespace Engine
 		gate->getComponent<collider>()->SetBoxSize(70, 1500, 600);
 		gate->getComponent<GateBehaviour>()->AddPlate(plate->getComponent<PressurePlateBehaviour>());
 */
-		obj1->addComponent(luaS);
+		//obj1->addComponent(luaS);
 
 		//Core::GameObject_* testModel = Model::loadModel("Dungeon_Wall_Corner_001.fbx");
 		//Core::GameObject_* testModel1 = Model::loadModel("Forge.fbx");

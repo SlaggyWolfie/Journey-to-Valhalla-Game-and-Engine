@@ -13,13 +13,15 @@ using namespace Engine;
 PressurePlateBehaviour::PressurePlateBehaviour()
 {
 
-	
+
 }
 
 void PressurePlateBehaviour::update()
 {
 	TogglePositions();
 	CheckCollision();
+	std::cout << "PP: " + glm::to_string(getGameObject()->getTransform()->getPosition() )<< std::endl;
+	std::cout << "PPCP1: " + glm::to_string(getGameObject()->getComponent<collider>()->point1) << std::endl;
 }
 
 bool PressurePlateBehaviour::IsPressed()
@@ -34,46 +36,42 @@ void PressurePlateBehaviour::SetPressed(bool value)
 
 void PressurePlateBehaviour::CheckCollision()
 {
-	std::vector<collider*> colList= ServiceLocator::instance()->getService<ColliderManager>()->
-		CheckBoxCollision(this->getGameObject()->getComponent<collider>());
-	/*std::cout << colList.size()<<" size " << std::endl;*/
+	std::vector<collider*> colList = ServiceLocator::instance()->getService<ColliderManager>()->
+		CheckBoxCollision(getGameObject()->getComponent<collider>());
+	std::cout << colList.size()<<" size " << std::endl;
 	/*std::cout << this->getGameObject()->getComponent<collider>()->GetPos() << " pos " << std::endl;*/
 
 	for (int i = 0; i < colList.size(); i++)
-	{	
+	{
 		//std::cout << colList.size() << " "<<"size" << std::endl;
-		/*if (colList[i]->getGameObject()->getName().find(
-			colList[i]->getGameObject()->getName().begin(), colList[i]->getGameObject()->getName().end(), "crate")
-			!= std::string::npos)
+		std::string name = colList[i]->getGameObject()->getName();
+		if (name.find("Crate") != std::string::npos)
 		{
 			std::cout << "I should be pressed" << std::endl;
-			this->SetPressed(true);
+			SetPressed(true);
 			return;
-		}*/
-	}
-		//else
-		{
-			this->SetPressed(false);
 		}
+	}
+
+	SetPressed(false);
 }
 
 void PressurePlateBehaviour::start()
 {
 	Transform* transform = getGameObject()->getTransform();
 	_notActivatedPos = transform->getPosition();
-	_activatedPos = transform->getPosition() + glm::vec3(0, -9, 0);
+	_activatedPos = _notActivatedPos//transform->getPosition();
+		//;
+		+ glm::vec3(0, -1, 0);
 }
 
 void PressurePlateBehaviour::TogglePositions()
 {
-	if (_isPressed)
-	{
-		this->getGameObject()->getTransform()->setPosition(lerp(this->getGameObject()->getTransform()->getPosition(), _activatedPos, 0.1f));
-	}
-	else
-	{
-		this->getGameObject()->getTransform()->setPosition(lerp(this->getGameObject()->getTransform()->getPosition(), _notActivatedPos, 0.1f));
-	}
+	const glm::vec3 targetPosition = _isPressed ? _activatedPos : _notActivatedPos;
+
+	const auto check = glm::equal(getGameObject()->getTransform()->getPosition(), targetPosition);
+	if (!check.y)
+		getGameObject()->getTransform()->setPosition(lerp(this->getGameObject()->getTransform()->getPosition(), targetPosition, 0.1f));
 }
 void PressurePlateBehaviour::destroy()
 {

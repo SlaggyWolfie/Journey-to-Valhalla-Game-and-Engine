@@ -19,7 +19,7 @@ collider::collider(const collider& other) :
 	_colliderManager(other._colliderManager),
 	_pos(other._pos), _rot(other._rot), _t(other._t),
 	_type(other._type), _width(other._width),
-	_height(other._height), _r(other._r)
+	_height(other._height), _radius(other._radius)
 {
 }
 
@@ -32,7 +32,7 @@ collider& collider::operator=(const collider& other)
 	_type = other._type;
 	_width = other._width;
 	_height = other._height;
-	_r = other._r;
+	_radius = other._radius;
 	return *this;
 }
 
@@ -40,14 +40,15 @@ void collider::SetType(int t)
 {
 	_type = sphere;
 }
-void collider::SetBoxSize(int w, int h, int l)
+void collider::SetBoxSize(float w, float h, float l)
 {
 	_height = h;
 	_width = w;
 	_length = l;
 }
-void collider::SetSphereRadius()
+void collider::SetSphereRadius(float r)
 {
+	_radius = r;
 }
 
 void collider::fixedUpdate()
@@ -98,18 +99,22 @@ glm::vec3 collider::GetPos()
 	return _pos;
 }
 
-int collider::GetWidth()
+float collider::GetWidth()
 {
-	return _width;
+	return _width * getGameObject()->getTransform()->getLocalScale().x;
 }
 
-int collider::GetHeight()
+float collider::GetHeight()
 {
-	return _height;
+	return _height * getGameObject()->getTransform()->getLocalScale().y;;
 }
-int collider::GetRadius()
+float collider::GetLength()
 {
-	return _r;
+	return _length * getGameObject()->getTransform()->getLocalScale().z;;
+}
+float collider::GetRadius()
+{
+	return _radius * getGameObject()->getTransform()->getLocalScale().x;;
 }
 
 void collider::jumpToObj()
@@ -124,20 +129,32 @@ void collider::setI(int i)
 
 void collider::SetTrans(Transform* t)
 {
-	_pos = t->getLocalPosition()+glm::vec3();
+	_pos = t->getLocalPosition() + glm::vec3();
 
 	glm::mat4 localMatrix = t->getLocalMatrix4X4();
 	glm::vec4 rotatedPoint = localMatrix * glm::vec4(0, 0, -1, 1);
 
 	glm::vec4 v4Pos = glm::vec4(_pos, 1);
-	point1 = localMatrix * (v4Pos + glm::vec4(-_width / 2, 0, 0.0f, 0.0f));
-	point2 = localMatrix * (v4Pos + glm::vec4(_width / 2, 0, 0.0f, 0.0f));
 
-	point3 = localMatrix * (v4Pos + glm::vec4(0, 0, -_length / 2, 0.0f));
-	point4 = localMatrix * (v4Pos + glm::vec4(0, 0, _length / 2, 0.0f));
 
-	point5 = localMatrix * (v4Pos + glm::vec4(0, -_height / 2, 0, 0.0f));
-	point6 = localMatrix * (v4Pos + glm::vec4(0, +_height / 2, 0, 0.0f));
+	/*point1 = localMatrix * (v4Pos + glm::vec4(-GetWidth() / 2, 0, 0.0f, 0.0f));
+	point2 = localMatrix * (v4Pos + glm::vec4(GetWidth() / 2, 0, 0.0f, 0.0f));
+
+	point3 = localMatrix * (v4Pos + glm::vec4(0, 0, -GetLength() / 2, 0.0f));
+	point4 = localMatrix * (v4Pos + glm::vec4(0, 0, GetLength() / 2, 0.0f));
+
+	point5 = localMatrix * (v4Pos + glm::vec4(0, -GetHeight() / 2, 0, 0.0f));
+	point6 = localMatrix * (v4Pos + glm::vec4(0, +GetHeight() / 2, 0, 0.0f));*/
+
+
+	point1 = localMatrix * (v4Pos + glm::vec4(-1, 0, 0.0f, 0.0f));
+	point2 = localMatrix * (v4Pos + glm::vec4(1, 0, 0.0f, 0.0f));
+
+	point3 = localMatrix * (v4Pos + glm::vec4(0, 0, -1, 0.0f));
+	point4 = localMatrix * (v4Pos + glm::vec4(0, 0, 1, 0.0f));
+
+	point5 = localMatrix * (v4Pos + glm::vec4(0, -1, 0, 0.0f));
+	point6 = localMatrix * (v4Pos + glm::vec4(0, +1, 0, 0.0f));
 
 	normal1 = glm::normalize(_pos - point1);
 	normal2 = glm::normalize(_pos - point2);

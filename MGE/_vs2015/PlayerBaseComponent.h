@@ -12,17 +12,18 @@ public:
 	PlayerBaseComponent& operator=(const PlayerBaseComponent& other) = default;
 
 	void update() override;
-	 //void start() override;
-	 //void awake() override;
-	 //void prewake() override;
-	 //void update() override;
-	 //void fixedUpdate() override;
-	 //void lateUpdate() override;
-	 //void onValidate() override;
+	//void start() override;
+	//void awake() override;
+	//void prewake() override;
+	//void update() override;
+	//void fixedUpdate() override;
+	//void lateUpdate() override;
+	//void onValidate() override;
 	void MoveInsideObj(GameObject_* obj);
 	void RayCast();
 	bool IsInside();
-	void Movement();
+	//void Movement();
+	glm::vec3 moveTowards(glm::vec3 current, glm::vec3 target, float maxDelta);
 	void SetInside(bool n);
 	void destroy() override;
 	bool isUniquePerGameObject() override;
@@ -30,7 +31,8 @@ public:
 private:
 	bool _insideObj;
 	GameObject_* _objectToMove;
-	_playerState _playerS=idle;
+	glm::vec3 _targetPosition;
+	_playerState _playerS = idle;
 
 };
 

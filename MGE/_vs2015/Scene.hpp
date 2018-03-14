@@ -20,7 +20,8 @@ namespace Engine
 		explicit Scene(std::string name, std::string path);
 		~Scene();
 		void initialize(bool hard = false, bool fromFile = true);
-		Core::GameObject_* findGameObject(const std::string& name) const;
+		Core::GameObject_* findGameObject(const std::string& name, bool exact =true) const;
+		std::vector<Core::GameObject_*> findGameObjects(const std::string& name, bool exact = true) const;
 		Core::GameObject_** getGameObjectsArray() const;
 		std::vector<Core::GameObject_*> getGameObjects()const;
 		std::string getName() const;

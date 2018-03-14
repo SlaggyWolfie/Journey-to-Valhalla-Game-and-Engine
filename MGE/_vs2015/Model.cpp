@@ -36,6 +36,7 @@ namespace Engine
 			scene->mMetaData->Get("UnitScaleFactor", _scale);
 		//this->path = path.substr(0, path.find_last_of('/'));
 		//if (path.find(".obj") != std::string::npos) _scale = 100;
+		//_scale = 0.01f;
 
 		Core::GameObject_* go = processNode(scene->mRootNode, scene);
 		std::cout << path << std::endl;
@@ -73,6 +74,7 @@ namespace Engine
 		}
 
 		transform->setLocalScale(transform->getLocalScale() * glm::vec3(1 / _scale));
+
 		for (unsigned int i = 0; i < node->mNumMeshes; i++)
 		{
 			aiMesh *mesh = scene->mMeshes[node->mMeshes[i]];
@@ -99,6 +101,9 @@ namespace Engine
 
 		print(std::string("Processed node ") + node->mName.C_Str());
 		//std::cout << "Processed node " << node->mName.C_Str() << std::endl;
+		//auto pos = gameObject->getTransform()->getPosition();
+		//pos.x *= -1;
+		//gameObject->getTransform()->setPosition(pos);
 
 		_recursionLevel--;
 		return gameObject;
