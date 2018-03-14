@@ -12,7 +12,7 @@ namespace Engine
 			_diffuseColor(glm::vec3(1)), _specularColor(glm::vec3(1)), _emissionColor(glm::vec3(0, 1, 0)),
 			_diffuseMap(nullptr), _specularMap(nullptr), _emissionMap(nullptr),
 			_useDiffuseMap(false), _useSpecularMap(false), _useEmissionMap(false), _useEmission(false),
-			_shininess(32), _specularStrength(1), _emissionStrength(1), _diffuseStrength(1)
+			_shininess(32), _specularStrength(0.1f), _emissionStrength(1), _diffuseStrength(1)
 		{
 			initializeShader(path);
 		}

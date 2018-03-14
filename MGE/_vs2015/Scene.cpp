@@ -18,6 +18,8 @@
 #include "Button.hpp"
 #include "ServiceLocator.hpp"
 #include "Core\Game.hpp"
+#include "Time.hpp"
+
 namespace Engine
 {
 	using namespace Rendering;
@@ -196,6 +198,14 @@ namespace Engine
 			std::cout << gameStruct.name + " Position: " + glm::to_string(gameStruct.position) << std::endl << std::endl;
 			gameStruct.rotation.y *= -1;
 			gameStruct.rotation.z *= -1;
+			transform->setLocalRotation(gameStruct.rotation);
+
+			//const auto check = glm::equal(transform->getScale(), glm::vec3(1));
+			//if (!check.x) transform->scale(glm::vec3(1/gameStruct.scale.x, 1, 1));
+			//if (!check.y) transform->scale(glm::vec3(1, 1/gameStruct.scale.y, 1));
+			//if (!check.z) transform->scale(glm::vec3(1, 1, 1/gameStruct.scale.z));
+			//transform->scale(gameStruct.scale);
+			//transform->setLocalScale(glm::vec3(1, 1, 1));
 			if (gameStruct.meshName == "test-for-Slavi.obj")
 			{
 				//gameObject->getTransform()->setScale(glm::vec3(0.01f, 0.01f, 0.01f));
@@ -205,7 +215,6 @@ namespace Engine
 			//transform->scaleWithPositions(glm::vec3(100));
 			
 			//transform->setLocalScale(gameStruct.scale);
-
 			addGameObject(gameObject);
 			id_to_go[gameStruct.selfID] = gameObject;
 			//go_to_id[gameObject] = gameStruct.selfID;
@@ -236,7 +245,7 @@ namespace Engine
 
 		using namespace Engine::UI;
 		sf::RenderWindow* window = ServiceLocator::instance()->getService<Engine::Game>()->getWindow();
-		sf::Vector2u windowSize = window->getSize();
+		const sf::Vector2u windowSize = window->getSize();
 		float width = windowSize.x;
 		float height = windowSize.y;
 
@@ -245,7 +254,7 @@ namespace Engine
 
 		Button* playButton = new Button();
 		playButton->loadSprite("Play.png");
-		playButton->getSprite().setPosition(10, height* 6/10 );
+		playButton->getSprite().setPosition(10, height * 6 / 10);
 
 		Button* OptionsButton = new Button();
 		OptionsButton->loadSprite("Options.png");
@@ -259,14 +268,14 @@ namespace Engine
 		ExitButton->loadSprite("Exit.png");
 		ExitButton->getSprite().setPosition(10, height * 9 / 10);
 
-		
+
 		//BackGround->getSprite().setScale(2, 2);
 		Text::makeHint();
 		Text::hint->setWindow(window);
 		std::cout << "MENUU" << std::endl;
-		std::cout << Text::hint->getTextObject().getCharacterSize()<<std::endl;
+		std::cout << Text::hint->getTextObject().getCharacterSize() << std::endl;
 		Text::hint->getTextObject().setPosition(100, 100);
-		Text::showHint("CABBAGE", 3, 5);
+		Text::showHint("CABBAGE", 30, 5);
 
 		std::cout << "load menu" << std::endl;
 	}
@@ -274,6 +283,11 @@ namespace Engine
 	void Scene::hardCode()
 	{
 		//loadMenu();
+		//std::function<void()> pr = ([] {std::cout << "Print" << std::endl; });
+		//Engine::Utility::Time::timeout(1, pr);
+		//Engine::Utility::Time::timeout(2, pr);
+		//Engine::Utility::Time::timeout(3, pr);
+		//Engine::Utility::Time::timeout(4, pr);
 		Model::clipPaths = true;
 		//Core::GameObject_* door_1 = Model::loadModel("Assets/Props/Door_1.fbx");
 		//door_1->getTransform()->translate(glm::vec3(0, 5, 15));
@@ -299,38 +313,8 @@ namespace Engine
 		//shipFBX->getTransform()->translate(glm::vec3(25, 0, 0));
 		//shipFBX->addComponent(new RotatingComponent());
 		LuaScript* luaS = new LuaScript();
-
-		//Deserealizer d;
-		Core::GameObject_* camera = new Core::GameObject_("Cam", "", glm::vec3(0, 100, 3000));
-
-		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(100, 0, 1));
-		Rendering::Light_* light = new Rendering::Light_();
-		lightgo->addComponent(light);
-		light->setColor(glm::vec3(1));
-		light->setLightIntensity(1);
-		light->setLightType(Rendering::LightType::Directional);
-		lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
-		lightgo->getTransform()->rotate(lightgo->getTransform()->right(), -glm::radians(30.0f));
-		//Core::GameObject_* lightgo1 = new Core::GameObject_("Light", "", glm::vec3(-500, -500, 2000));
-		Core::GameObject_* lightgo1 = Model::loadModel("mge/models/cube_smooth.obj");
-		lightgo1->getTransform()->translate(glm::vec3(-300, 300, 500));
-		Rendering::Light_* light1 = new Rendering::Light_();
-		lightgo1->addComponent(light1);
-		light1->setLightType(Rendering::LightType::Point);
-		lightgo1->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
-		light1->setColor(glm::vec3(0, 1, 0));
-		light1->setRange(350000);
-		light->setRange(35000);
-		Core::Camera_* cameraComp = new Core::Camera_();
-		camera->addComponent(cameraComp);
-		Core::Camera_::setMainCamera(cameraComp);
-		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
-		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
-		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
-
-
 		//return;
-		std::cout << Engine::File::findPath("Cube.fbx") << std::endl;
+
 		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
 		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
 		//playerModel->addComponent(new PlayerBaseComponent());
@@ -392,6 +376,8 @@ namespace Engine
 		obj6->getComponent<collider>()->SetBoxSize(60, 150, 60);
 		//obj2->addComponent(new RotatingComponent());
 
+		//Core::GameObject_* plateBorder = Model::loadModel("Pressure plate Border.fbx");
+		//plateBorder->getTransform()->setScale(glm::vec3(2, 2, 2));
 		Core::GameObject_* plateBorder = Model::loadModel("Pressure plate Border.fbx");
 		plateBorder->getTransform()->setScale(glm::vec3(2, 2, 2));
 
@@ -404,6 +390,16 @@ namespace Engine
 		//plate->addComponent(new collider());
 		//plate->addComponent(new PressurePlateBehaviour());
 
+		//Core::GameObject_* gate = Model::loadModel("Door 1.fbx");
+		//gate->getTransform()->setScale(glm::vec3(0.9, 0.9, 0.9));
+		//gate->getTransform()->translate(glm::vec3(500, 200, 700));
+		//gate->setName("gate");
+		//gate->addComponent(new collider());
+		//gate->addComponent(new GateBehaviour());
+		//gate->getComponent<collider>()->SetBoxSize(70, 1500, 600);
+		//gate->getComponent<GateBehaviour>()->AddPlate(plate->getComponent<PressurePlateBehaviour>());
+
+		obj1->addComponent(luaS);
 		/*Core::GameObject_* gate = Model::loadModel("Door 1.fbx");
 		gate->getTransform()->setScale(glm::vec3(0.9, 0.9, 0.9));
 		gate->getTransform()->translate(glm::vec3(500, 200, 700));

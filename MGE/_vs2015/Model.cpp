@@ -21,7 +21,8 @@ namespace Engine
 		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_ANIMATIONS, false);
 		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_LIGHTS, false);
 		const aiScene *scene = import.ReadFile(path,
-			aiProcess_Triangulate | aiProcess_GenUVCoords | aiProcess_GenSmoothNormals | aiProcess_FindInvalidData | aiProcess_FlipUVs
+			aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_GenSmoothNormals
+			| aiProcess_ImproveCacheLocality | aiProcess_GenUVCoords| aiProcess_FindInvalidData
 			| aiProcess_SplitLargeMeshes | aiProcess_ValidateDataStructure | aiProcess_CalcTangentSpace
 			| aiProcess_OptimizeGraph | aiProcess_OptimizeMeshes | aiProcess_CalcTangentSpace);
 
@@ -34,6 +35,7 @@ namespace Engine
 		if (scene->mMetaData)
 			scene->mMetaData->Get("UnitScaleFactor", _scale);
 		//this->path = path.substr(0, path.find_last_of('/'));
+		if (path.find(".obj") != std::string::npos) _scale = 100;
 
 		Core::GameObject_* go = processNode(scene->mRootNode, scene);
 		std::cout << path << std::endl;

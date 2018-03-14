@@ -19,12 +19,15 @@ namespace Engine
 		void Text::showHint(std::string hintText, float startAfterTime, float duration)
 		{
 			if (!hint) makeHint();
+			hint->setTextInformation(hintText);
 			std::cout << "\t\t Call show hint" << std::endl;
-			std::function<void()> hide = [] {
+			std::function<void()> hide = []
+			{
 
 				std::cout << "\t\t hide hint" << std::endl;
-				drawHint = false; };
-			std::function<void()> unhide = [duration, &hide] 
+				drawHint = false; 
+			};
+			std::function<void()> unhide = [duration, hide] 
 			{ 
 				std::cout << "\t\t unhide hint" << std::endl;
 				drawHint = true;
@@ -53,9 +56,9 @@ namespace Engine
 			case Left_Justified:
 				_text.setOrigin(0, 0); break;
 			case Right_Justified:
-				_text.setOrigin(0, 0); break;
+				_text.setOrigin(100, 0); break;
 			case Middle_Justified:
-				_text.setOrigin(0, 0); break;
+				_text.setOrigin(50, 0); break;
 			}
 		}
 
