@@ -32,6 +32,10 @@ namespace Engine
 			};
 
 		public:
+			static bool isPaused();
+			static void pause();
+			static void unpause();
+			static void setPause(bool paused = true);
 			static float now();
 			static float deltaTime();
 			static float fixedDeltaTime();
@@ -44,6 +48,7 @@ namespace Engine
 			static void update();
 			static void stop();
 			static std::unique_ptr<sf::Clock> _clock;
+			static bool _paused;
 			static float _now_seconds;
 			static float _timeStep_seconds;
 			static float _variableTimeStep_seconds;

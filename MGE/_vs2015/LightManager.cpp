@@ -176,10 +176,10 @@ namespace Engine
 
 		void LightManager::reset()
 		{
-			_attenuationConstants = glm::vec3(0);
+			//_attenuationConstants = glm::vec3(0);
 
-			_ambientLightColor = glm::vec3(0);
-			_ambientLightStrength = 0;
+			//_ambientLightColor = glm::vec3(0);
+			//_ambientLightStrength = 0;
 
 			_directionalLights.clear();
 			_pointLights.clear();
