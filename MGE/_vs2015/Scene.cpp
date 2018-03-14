@@ -148,6 +148,12 @@ namespace Engine
 				{
 					gameStruct.meshName = "tiles.obj";
 				}
+
+				if (gameStruct.name.find("room1") != std::string::npos)
+				{
+					std::cout << "rendering room" << std::endl;
+					gameStruct.meshName = "roomFinal.obj";
+				}
 				//if (gameStruct.meshName.find("default") != std::string::npos)
 				//{
 				//	//continue;
@@ -177,6 +183,11 @@ namespace Engine
 			if (gameObject->getName() == "default")
 			{
 				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/Grass_ep_basecolor_004.png"));
+			}
+
+			if (gameObject->getName() == "room1")
+			{
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/RockTiles_basecolor.png"));
 			}
 
 			Transform* transform = gameObject->getTransform();
