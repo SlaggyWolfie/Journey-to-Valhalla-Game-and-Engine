@@ -208,7 +208,8 @@ namespace Engine
 			//transform->setLocalScale(glm::vec3(1, 1, 1));
 			if (gameStruct.meshName == "test-for-Slavi.obj")
 			{
-				//gameObject->getTransform()->setScale(glm::vec3(0.01f, 0.01f, 0.01f));
+				gameObject->getTransform()->setScale(glm::vec3(0.01f, 0.01f, 0.01f));
+				gameObject->addComponent(new PlayerBaseComponent());
 			}
 			
 
@@ -326,7 +327,7 @@ namespace Engine
 
 		obj1->getTransform()->translate(glm::vec3(0, 10, -600));
 		obj1->addComponent(new collider());
-		obj1->addComponent(new PlayerBaseComponent());
+		//obj1->addComponent(new PlayerBaseComponent());
 		obj1->setName("Player");
 		obj1->getComponent<collider>()->SetBoxSize(50, 50, 50);
 

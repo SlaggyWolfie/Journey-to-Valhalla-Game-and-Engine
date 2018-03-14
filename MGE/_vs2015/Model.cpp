@@ -35,7 +35,7 @@ namespace Engine
 		if (scene->mMetaData)
 			scene->mMetaData->Get("UnitScaleFactor", _scale);
 		//this->path = path.substr(0, path.find_last_of('/'));
-		if (path.find(".obj") != std::string::npos) _scale = 100;
+		//if (path.find(".obj") != std::string::npos) _scale = 100;
 
 		Core::GameObject_* go = processNode(scene->mRootNode, scene);
 		std::cout << path << std::endl;

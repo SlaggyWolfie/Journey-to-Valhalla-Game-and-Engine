@@ -175,7 +175,7 @@ namespace Engine
 		{
 			if (getGameObject()->isStatic()) return;
 
-			const glm::vec3 eye = _localPosition;
+			const glm::vec3 eye = getPosition();
 			const glm::vec3 target = lookAtTarget->getPosition();
 
 			const glm::vec3 forward = -glm::normalize(target - eye);
@@ -186,9 +186,9 @@ namespace Engine
 				glm::vec4(side, 0),
 				glm::vec4(upward, 0),
 				glm::vec4(forward, 0),
-				glm::vec4(_localPosition, 1));
+				glm::vec4(eye, 1));
 
-			setRotation(_getOrientation(lookAtMatrix));
+			setLocalRotation(_getOrientation(glm::inverse(lookAtMatrix)));
 		}
 
 		void Transform::translate(const glm::vec3& translation)
