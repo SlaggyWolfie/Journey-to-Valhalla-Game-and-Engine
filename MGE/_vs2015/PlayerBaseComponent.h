@@ -12,7 +12,7 @@ public:
 	PlayerBaseComponent& operator=(const PlayerBaseComponent& other) = default;
 
 	void update() override;
-	//void start() override;
+	void start() override;
 	//void awake() override;
 	//void prewake() override;
 	//void update() override;
@@ -30,6 +30,8 @@ public:
 	glm::vec3 lastPos;
 private:
 	bool _insideObj;
+	glm::vec3 _targetScale;
+	glm::vec3 _originalScale;
 	GameObject_* _objectToMove;
 	glm::vec3 _targetPosition;
 	_playerState _playerS = idle;

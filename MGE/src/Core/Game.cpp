@@ -68,26 +68,11 @@ namespace Engine
 
 		std::cout << "Initializing window..." << std::endl;
 		_window = new sf::RenderWindow(
-			sf::VideoMode(1280, 960), "Game", sf::Style::Default
+			sf::VideoMode(1920, 1080), "Game", sf::Style::Default
 			//)
-			, sf::ContextSettings(24, 0, 0, 3, 3, sf::ContextSettings::Attribute::Default, true));
+			, sf::ContextSettings(24, 8, 0, 3, 3, sf::ContextSettings::Attribute::Default, true));
 		//_window->setVerticalSyncEnabled(true);
 		std::cout << "Window initialized." << std::endl << std::endl;
-
-		//std::cout << std::to_string(_window.get() != nullptr) << std::endl;
-		//sf::Font font;
-		//font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
-
-		//sf::Text text;
-		//text.setFont(font);
-		//text.setPosition(200, 200);
-		//text.setCharacterSize(100);
-		//while(_window->isOpen())
-		//{
-		//	_window->clear();
-		//	_window->draw(text);
-		//	_window->display();
-		//}
 	}
 
 	void Game::printVersionInfo()

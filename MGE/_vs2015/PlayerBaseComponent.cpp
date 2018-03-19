@@ -21,7 +21,7 @@ void PlayerBaseComponent::update()
 		lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
 
 	Camera_::getMainCamera()->getGameObject()->getTransform()->
-		setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 5, 0));
+		setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 10, 10));
 
 	getGameObject()->getComponent<collider>()->lastPos = getGameObject()->getTransform()->getPosition();
 	std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
@@ -87,14 +87,14 @@ void PlayerBaseComponent::update()
 
 	if (_playerS == jumpingToObject)
 	{
-		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(0.003, 0.003, 0.003), 0.1f));
+		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), _targetScale, 0.1f));
 		MoveInsideObj(_objectToMove);
 	}
 	if (_playerS == jumpingFromObject)
 	{
 		//hardcode
 		std::cout << "jumping from" << std::endl;
-		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), glm::vec3(0.01, 0.01, 0.01), 0.05f));
+		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), _originalScale, 0.1f));
 		getGameObject()->getTransform()->setPosition(glm::lerp(getGameObject()->getTransform()->getPosition(), 
 			_objectToMove->getTransform()->getPosition() + glm::vec3(2, +2, 2), 0.05f));
 		std::cout << " Length" << glm::length(glm::vec3(
@@ -112,6 +112,12 @@ void PlayerBaseComponent::update()
 		}
 
 	}
+}
+
+void PlayerBaseComponent::start()
+{
+	_originalScale = getGameObject()->getTransform()->getLocalScale();
+	_targetScale = _originalScale / 80;
 }
 
 void PlayerBaseComponent::MoveInsideObj(GameObject_* obj)
@@ -135,14 +141,18 @@ void PlayerBaseComponent::MoveInsideObj(GameObject_* obj)
 
 	//glm::vec3 delta = ServiceLocator::instance()->getService<ColliderManager>()->
 	//	GiveVectorBeetweenObjects(getGameObject(), obj);
-	const glm::vec3 delta = obj->getTransform()->getPosition() - getGameObject()->getTransform()->getPosition();
+	//const glm::vec3 delta = obj->getTransform()->getPosition() - getGameObject()->getTransform()->getPosition();
+	const glm::vec3 delta = _targetScale - getGameObject()->getTransform()->getLocalScale();
 
 	//std::cout << glm::to_string(getGameObject()->getTransform()->getPosition()) << std::endl;
 	//std::cout << glm::to_string(obj->getTransform()->getPosition()) << std::endl;
 	//std::cout << glm::to_string(getGameObject()->getComponent<collider>()->lastPos) << std::endl;
 	//std::cout << "Delta length: " + std::to_string(glm::length(delta)) << std::endl;
 	//std::cout << (glm::abs(delta.length() - glm::length(delta)) < 0.000001f ? "true" : "false") << std::endl;
-	if (glm::length(delta) <= 0.1f)
+	//if (glm::length(delta) <= 0.1f)
+	const auto check = glm::epsilonEqual(getGameObject()->getTransform()->getLocalScale(),
+		_targetScale, glm::epsilon<float>());
+	if (check.x && check.y && check.z)
 	{
 		_playerS = usingObject;
 	}
