@@ -20,8 +20,8 @@ void PressurePlateBehaviour::update()
 {
 	TogglePositions();
 	CheckCollision();
-	std::cout << "PP: " + glm::to_string(getGameObject()->getTransform()->getPosition() )<< std::endl;
-	std::cout << "PPCP1: " + glm::to_string(getGameObject()->getComponent<collider>()->point1) << std::endl;
+	//std::cout << "PP: " + glm::to_string(getGameObject()->getTransform()->getPosition() )<< std::endl;
+	//std::cout << "PPCP1: " + glm::to_string(getGameObject()->getComponent<collider>()->point1) << std::endl;
 }
 
 bool PressurePlateBehaviour::IsPressed()
@@ -38,7 +38,7 @@ void PressurePlateBehaviour::CheckCollision()
 {
 	std::vector<collider*> colList = ServiceLocator::instance()->getService<ColliderManager>()->
 		CheckBoxCollision(getGameObject()->getComponent<collider>());
-	std::cout << colList.size()<<" size " << std::endl;
+	//std::cout << colList.size()<<" size " << std::endl;
 	/*std::cout << this->getGameObject()->getComponent<collider>()->GetPos() << " pos " << std::endl;*/
 
 	for (int i = 0; i < colList.size(); i++)

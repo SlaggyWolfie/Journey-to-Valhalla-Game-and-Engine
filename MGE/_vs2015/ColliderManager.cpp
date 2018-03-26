@@ -60,7 +60,7 @@ std::vector<collider*> ColliderManager::CheckCollision(collider* object)
 std::vector<collider*> ColliderManager::CheckBoxCollision(collider * object)
 {
 	std::vector<collider*> collideList;
-	std::cout << allColliders.size() << std::endl;
+	//std::cout << allColliders.size() << std::endl;
 	for (int i = 0; i <allColliders.size(); i++)
 	{
 		if (allColliders[i]->getGameObject()->getName() != object->getGameObject()->getName())

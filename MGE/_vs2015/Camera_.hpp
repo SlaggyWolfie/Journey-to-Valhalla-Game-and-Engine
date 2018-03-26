@@ -2,7 +2,8 @@
 #ifndef CAMERA__HPP
 #define CAMERA__HPP
 #include "Component.hpp"
-#include <glm/mat4x3.hpp>
+#include <glm/glm.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
 namespace Engine
 {
@@ -44,6 +45,14 @@ namespace Engine
 			float _nearPlaneDistance;
 			float _farPlaneDistance;
 			ProjectionMode _projectionMode;
+
+			bool _isButtonHeld = false;
+			sf::Vector2i _heldPosition = sf::Vector2i();
+
+			void cameraControl();
+			static glm::vec3 moveTowards(glm::vec3 current, glm::vec3 target, float maxDelta);
+			static sf::Vector2i moveTowards(sf::Vector2i current, sf::Vector2i target, int maxDelta);
+			static sf::Vector2i lerp(sf::Vector2i current, sf::Vector2i target, float t);
 		};
 	}
 }

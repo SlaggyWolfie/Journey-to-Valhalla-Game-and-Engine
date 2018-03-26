@@ -131,7 +131,7 @@ void main()
 		result += GetSpotLight(diffuseColor, specularColor, spotLights[k], normal, viewDirection, light.ambientStrength, 1); 
 	
     //Calculate shadow
-    float shadow = GetShadows(lightSpacePosition);       
+    // float shadow = GetShadows(lightSpacePosition);       
     // result *= (1.0f - shadow);
 	
 	result += light.ambientTerm * diffuseColor;
@@ -148,8 +148,8 @@ void main()
 	
 	// finalColor = vec4(1) * (1-shadow);
 	// finalColor = lightSpacePosition;  
-    //float depthValue = texture(shadowMap, textureCoordinate).r;
-    //finalColor = vec4(vec3(depthValue), 1.0);
+    // float depthValue = texture(shadowMap, textureCoordinate).r;
+    // finalColor = vec4(vec3(depthValue), 1.0);
 	// finalColor = texture2D(shadowMap, textureCoordinate);
      finalColor = vec4(result, alpha);
 	// finalColor = vec4(diffuseColor, alpha);

@@ -68,7 +68,7 @@ namespace Engine
 
 		std::cout << "Initializing window..." << std::endl;
 		_window = new sf::RenderWindow(
-			sf::VideoMode(1920, 1080), "Game", sf::Style::Default
+			sf::VideoMode(1280, 1024), "Game", sf::Style::Default
 			//)
 			, sf::ContextSettings(24, 8, 0, 3, 3, sf::ContextSettings::Attribute::Default, true));
 		//_window->setVerticalSyncEnabled(true);
@@ -131,7 +131,8 @@ namespace Engine
 	void Game::initializeScene() const
 	{
 		//_sceneManager->loadScene("finalLvl1.json");//->initialize(true, true);
-		_sceneManager->loadScene("finalLvl1.json");//->initialize(true, true);
+		//_sceneManager->loadScene("finalLvl1.json");//->initialize(true, true);
+		_sceneManager->loadScene("debug.json");//->initialize(true, true);
 
 	}
 

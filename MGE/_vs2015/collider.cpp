@@ -56,7 +56,7 @@ void collider::fixedUpdate()
 }
 void collider::PushBackObj(std::string n, std::string n1)
 {
-	std::cout << n << " " << n1 << std::endl;
+	//std::cout << n << " " << n1 << std::endl;
 	ColliderManager* c = Engine::ServiceLocator::instance()->getService<ColliderManager>();
 	GameObject_* obj1 = c->
 		GetColliderByName(n)->getGameObject();

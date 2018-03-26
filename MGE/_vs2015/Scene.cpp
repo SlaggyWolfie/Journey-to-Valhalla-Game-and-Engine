@@ -20,6 +20,7 @@
 #include "Core\Game.hpp"
 #include "Time.hpp"
 #include "SceneManager.hpp"
+#include "RotatingComponent.hpp"
 
 namespace Engine
 {
@@ -44,8 +45,6 @@ namespace Engine
 	{
 		std::cout << "Loading Scene..." << std::endl;
 
-		if (hard)
-			hardCode();
 		//return;
 		if (fromFile)
 		{
@@ -56,6 +55,8 @@ namespace Engine
 			deserealizer.deserializeIntoStructs(_path);
 			deserializeStructs(deserealizer.structs, false);
 		}
+		if (hard)
+			hardCode();
 		if (hard && fromFile)
 			neededHardCode();
 
@@ -174,22 +175,22 @@ namespace Engine
 						gameStruct.meshName = "Cylinder.fbx";
 
 				}
-				if (gameStruct.meshName.find("Main character") != std::string::npos)
-				{
-					//continue;
-					std::cout << "Getting here" << std::endl;
-					gameStruct.meshName = "test-for-Slavi.obj";
-				}
-				if (gameStruct.name.find("default") != std::string::npos)
-				{
-					gameStruct.meshName = "tiles.obj";
-				}
+				//if (gameStruct.meshName.find("Main character") != std::string::npos)
+				//{
+				//	//continue;
+				//	std::cout << "Getting here" << std::endl;
+				//	gameStruct.meshName = "test-for-Slavi.obj";
+				//}
+				//if (gameStruct.name.find("default") != std::string::npos)
+				//{
+				//	gameStruct.meshName = "tiles.obj";
+				//}
 
-				if (gameStruct.name.find("room1") != std::string::npos)
-				{
-					std::cout << "rendering room" << std::endl;
-					gameStruct.meshName = "roomFinal.obj";
-				}
+				//if (gameStruct.name.find("room1") != std::string::npos)
+				//{
+				//	std::cout << "rendering room" << std::endl;
+				//	gameStruct.meshName = "roomFinal.obj";
+				//}
 				//if (gameStruct.meshName.find("default") != std::string::npos)
 				//{
 				//	//continue;
@@ -214,34 +215,34 @@ namespace Engine
 				gameObject = new GameObject_("", "");
 			}
 
-			if (gameStruct.name.find("Crate") != std::string::npos)
-			{
-				gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+			//if (gameStruct.name.find("Crate") != std::string::npos)
+			//{
+			//	gameObject->addComponent(new collider());
+			//	gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
 
-				//gameObject->addComponent(new PlayerBaseComponent());
-			}
+			//	//gameObject->addComponent(new PlayerBaseComponent());
+			//}
 
-			if (gameStruct.name.find("Gate") != std::string::npos)
-			{
-				gameObject->addComponent(new collider());
-				gameObject->addComponent(new GateBehaviour());
+			//if (gameStruct.name.find("Gate") != std::string::npos)
+			//{
+			//	gameObject->addComponent(new collider());
+			//	gameObject->addComponent(new GateBehaviour());
 
-				for (const auto& plateGameObject : findGameObjects("Pressure plate ", false))
-					gameObject->getComponent<GateBehaviour>()->AddPlate(plateGameObject->getComponent<PressurePlateBehaviour>());
-			}
+			//	for (const auto& plateGameObject : findGameObjects("Pressure plate ", false))
+			//		gameObject->getComponent<GateBehaviour>()->AddPlate(plateGameObject->getComponent<PressurePlateBehaviour>());
+			//}
 
 			if (gameObject == nullptr) return;
 			gameObject->setName(gameStruct.name);
-			if (gameObject->getName() == "default")
-			{
-				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/Grass_ep_basecolor_004.png"));
-			}
+			//if (gameObject->getName() == "default")
+			//{
+			//	gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/Grass_ep_basecolor_004.png"));
+			//}
 
-			if (gameObject->getName() == "room1")
-			{
-				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/RockTiles_basecolor.png"));
-			}
+			//if (gameObject->getName() == "room1")
+			//{
+			//	gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/RockTiles_basecolor.png"));
+			//}
 
 			Transform* transform = gameObject->getTransform();
 			gameStruct.position.x *= -1;
@@ -283,27 +284,38 @@ namespace Engine
 				gameObject->addComponent(new PlayerBaseComponent());
 			}
 
+			if (gameStruct.name == "Viking_Tower2")
+			{
+				gameObject->addComponent(new RotatingComponent());
+			}
+
+			if (gameStruct.name.find("Pressure plate 1") != std::string::npos)
+			{
+				gameObject->addComponent(new RotatingComponent());
+			}
+
 			//transform->scaleWithPositions(glm::vec3(100));
 
 			//transform->setLocalScale(gameStruct.scale);
+
 			addGameObject(gameObject);
 			id_to_go[gameStruct.selfID] = gameObject;
 			//go_to_id[gameObject] = gameStruct.selfID;
 		}
 
 		//second pass - set parents
-		for (size_t i = 0; i < structs.size(); i++)
-		{
-			const GameObject_s gameStruct = structs[i];
-			GameObject_* gameObject = _gameObjects[i].get();
+		//for (size_t i = 0; i < structs.size(); i++)
+		//{
+		//	const GameObject_s gameStruct = structs[i];
+		//	GameObject_* gameObject = _gameObjects[i].get();
 
-			const int parentID = gameStruct.parentID;
+		//	const int parentID = gameStruct.parentID;
 
-			if (parentID == 0) continue;
+		//	if (parentID == 0) continue;
 
-			Transform* transform = gameObject->getTransform();
-			transform->setParent(id_to_go[parentID]->getTransform(), true);
-		}
+		//	Transform* transform = gameObject->getTransform();
+		//	transform->setParent(id_to_go[parentID]->getTransform(), false);
+		//}
 
 		//for (auto& go : _gameObjects)
 			//go->getTransform()->scaleWithPositions(glm::vec3(10));
@@ -354,105 +366,105 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
-		auto plateGO = ServiceLocator::instance()->getService<SceneManager>()->getActiveScene()->findGameObject("Pressure plate border");
-		//std::cout << "Pressure plate 1: " + glm::to_string(plateGO->getTransform()->getPosition()) << std::endl;
-		//plateItself->getGameObject()->
-		//loadMenu();
 		//std::function<void()> pr = ([] {std::cout << "Print" << std::endl; });
 		//Engine::Utility::Time::timeout(1, pr);
 		//Engine::Utility::Time::timeout(2, pr);
 		//Engine::Utility::Time::timeout(3, pr);
 		//Engine::Utility::Time::timeout(4, pr);
-		Model::clipPaths = true;
-		//Core::GameObject_* door_1 = Model::loadModel("Assets/Props/Door_1.fbx");
-		//door_1->getTransform()->translate(glm::vec3(0, 5, 15));
-		//door_1->getComponentInChildren<Material_>()->setSpecularStrength(0.001f);
-		//std::cout << "Find path check " + Engine::File::findPath("Viking_House_2_coloured.fbx") << std::endl;
-		//Core::GameObject_ * house = Model::loadModel("Viking_House_2_coloured.fbx");
-		//house->getTransform()->getChild(0)->getGameObject()->getComponent<Rendering::Material_>()->
-		//	setDiffuseMap(Rendering::Texture_::load(
-		//		"Viking_House_2_Viking_House_Texture_2_AlbedoTransparency.png"));
-		//anvil->addComponent(new RotatingComponent());
+		//auto plateGO = ServiceLocator::instance()->getService<SceneManager>()->getActiveScene()->findGameObject("Pressure plate border");
+		////std::cout << "Pressure plate 1: " + glm::to_string(plateGO->getTransform()->getPosition()) << std::endl;
+		////plateItself->getGameObject()->
+		////loadMenu();
+		//Model::clipPaths = true;
+		////Core::GameObject_* door_1 = Model::loadModel("Assets/Props/Door_1.fbx");
+		////door_1->getTransform()->translate(glm::vec3(0, 5, 15));
+		////door_1->getComponentInChildren<Material_>()->setSpecularStrength(0.001f);
+		////std::cout << "Find path check " + Engine::File::findPath("Viking_House_2_coloured.fbx") << std::endl;
+		////Core::GameObject_ * house = Model::loadModel("Viking_House_2_coloured.fbx");
+		////house->getTransform()->getChild(0)->getGameObject()->getComponent<Rendering::Material_>()->
+		////	setDiffuseMap(Rendering::Texture_::load(
+		////		"Viking_House_2_Viking_House_Texture_2_AlbedoTransparency.png"));
+		////anvil->addComponent(new RotatingComponent());
 
-		//Core::GameObject_ * table = Model::loadModel("Table.fbx");
-		//table->addComponent(new RotatingComponent());
-		//Core::GameObject_ * table_C = Model::loadModel("Table_centered.fbx");
-		//table_C->addComponent(new RotatingComponent()); 
-		//table_C->getTransform()->translate(glm::vec3(10, 0, 0));
-		//Core::GameObject_ * crate = Model::loadModel("Crate.fbx");
-		//crate->addComponent(new RotatingComponent());
-		//Core::GameObject_ *shipOBJ = Model::loadModel("Fence_centered.obj");
-		//shipOBJ->addComponent(new RotatingComponent());
-		//shipOBJ->getTransform()->translate(glm::vec3(250, 0, 0));
-		//Core::GameObject_ *shipFBX = Model::loadModel("Fence_centered.fbx");
-		//shipFBX->getTransform()->translate(glm::vec3(25, 0, 0));
-		//shipFBX->addComponent(new RotatingComponent());
-		LuaScript* luaS = new LuaScript();
-		//return;
+		////Core::GameObject_ * table = Model::loadModel("Table.fbx");
+		////table->addComponent(new RotatingComponent());
+		////Core::GameObject_ * table_C = Model::loadModel("Table_centered.fbx");
+		////table_C->addComponent(new RotatingComponent()); 
+		////table_C->getTransform()->translate(glm::vec3(10, 0, 0));
+		////Core::GameObject_ * crate = Model::loadModel("Crate.fbx");
+		////crate->addComponent(new RotatingComponent());
+		////Core::GameObject_ *shipOBJ = Model::loadModel("Fence_centered.obj");
+		////shipOBJ->addComponent(new RotatingComponent());
+		////shipOBJ->getTransform()->translate(glm::vec3(250, 0, 0));
+		////Core::GameObject_ *shipFBX = Model::loadModel("Fence_centered.fbx");
+		////shipFBX->getTransform()->translate(glm::vec3(25, 0, 0));
+		////shipFBX->addComponent(new RotatingComponent());
+		//LuaScript* luaS = new LuaScript();
+		////return;
 
-		//Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
-		//playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
-		//playerModel->addComponent(new PlayerBaseComponent());
+		////Core::GameObject_* playerModel = Model::loadModel(d.structs[0].meshName);
+		////playerModel->getTransform()->setPosition(playerModel->getTransform()->getPosition() + glm::vec3(0, -600, 0));
+		////playerModel->addComponent(new PlayerBaseComponent());
 
-		//Core::GameObject_* obj1 = Model::loadModel("MainCharacter_.fbx");
-		Core::GameObject_* obj1 = Model::loadModel("Player.obj");
-		//obj1->getTransform()->setScale(glm::vec3(2, 2, 2));
+		////Core::GameObject_* obj1 = Model::loadModel("MainCharacter_.fbx");
 		//Core::GameObject_* obj1 = Model::loadModel("Player.obj");
+		////obj1->getTransform()->setScale(glm::vec3(2, 2, 2));
+		////Core::GameObject_* obj1 = Model::loadModel("Player.obj");
 
-		obj1->getTransform()->translate(glm::vec3(0, 10, -600));
-		obj1->addComponent(new collider());
-		//obj1->addComponent(new PlayerBaseComponent());
-		obj1->setName("Player");
-		obj1->getComponent<collider>()->SetBoxSize(50, 50, 50);
+		//obj1->getTransform()->translate(glm::vec3(0, 10, -600));
+		//obj1->addComponent(new collider());
+		////obj1->addComponent(new PlayerBaseComponent());
+		//obj1->setName("Player");
+		//obj1->getComponent<collider>()->SetBoxSize(50, 50, 50);
 
-		Core::GameObject_* crate = Model::loadModel("Crate.fbx");
-		crate->getTransform()->setScale(glm::vec3(2, 2, 2));
-		crate->getTransform()->translate(glm::vec3(700, -100, 0));
-		crate->setName("crate1");
-		crate->addComponent(new collider());
-		crate->getComponent<collider>()->SetBoxSize(60, 150, 60);
+		//Core::GameObject_* crate = Model::loadModel("Crate.fbx");
+		//crate->getTransform()->setScale(glm::vec3(2, 2, 2));
+		//crate->getTransform()->translate(glm::vec3(700, -100, 0));
+		//crate->setName("crate1");
+		//crate->addComponent(new collider());
+		//crate->getComponent<collider>()->SetBoxSize(60, 150, 60);
 
-		Core::GameObject_* tiles = Model::loadModel("tiles2.obj");
-		tiles->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/Grass_ep_basecolor_004.png"));
+		//Core::GameObject_* tiles = Model::loadModel("tiles2.obj");
+		//tiles->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("Assets/Materials/Texture Maps/Grass_ep_basecolor_004.png"));
 
-		//obj1->addComponent(new RotatingComponent());
+		////obj1->addComponent(new RotatingComponent());
 
-		//Core::GameObject_* obj2 = Model::loadModel("Player.obj");
+		////Core::GameObject_* obj2 = Model::loadModel("Player.obj");
 
-		//obj2->getTransform()->translate(glm::vec3(-0, -199, 0));
+		////obj2->getTransform()->translate(glm::vec3(-0, -199, 0));
 
-		Core::GameObject_* obj3 = Model::loadModel("Crate.fbx");
-		obj3->getTransform()->setScale(glm::vec3(2, 2, 2));
-		obj3->getTransform()->translate(glm::vec3(-500, 60, 100));
-		obj3->setName("crate2");
-		obj3->addComponent(new collider());
-		obj3->getComponent<collider>()->SetBoxSize(60, 150, 60);
+		//Core::GameObject_* obj3 = Model::loadModel("Crate.fbx");
+		//obj3->getTransform()->setScale(glm::vec3(2, 2, 2));
+		//obj3->getTransform()->translate(glm::vec3(-500, 60, 100));
+		//obj3->setName("crate2");
+		//obj3->addComponent(new collider());
+		//obj3->getComponent<collider>()->SetBoxSize(60, 150, 60);
 
-		Core::GameObject_* obj4 = Model::loadModel("Crate.fbx");
-		obj4->getTransform()->setScale(glm::vec3(2, 2, 2));
-		obj4->getTransform()->translate(glm::vec3(-700, 60, 600));
-		obj4->setName("crate3");
-		obj4->addComponent(new collider());
-		obj4->getComponent<collider>()->SetBoxSize(60, 150, 60);
-		Texture_* text;
-		text = Texture_::load("white.jpg", TextureType::Specular);
-		obj4->getComponentInChildren<Material_>()->setEmissionMap(text);
-		obj4->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("MementoMori.jpg"));
-		obj4->getComponentInChildren<Material_>()->useSpecularMap();
-		obj4->getComponentInChildren<Material_>()->useEmissionMap();
-		obj4->getComponentInChildren<Material_>()->useEmission();
-		Core::GameObject_* obj6 = Model::loadModel("Crate.fbx");
-		obj6->getTransform()->setScale(glm::vec3(2, 2, 2));
-		obj6->getTransform()->translate(glm::vec3(-400, 60, 100));
-		obj6->setName("crate4");
-		obj6->addComponent(new collider());
-		obj6->getComponent<collider>()->SetBoxSize(60, 150, 60);
-		//obj2->addComponent(new RotatingComponent());
+		//Core::GameObject_* obj4 = Model::loadModel("Crate.fbx");
+		//obj4->getTransform()->setScale(glm::vec3(2, 2, 2));
+		//obj4->getTransform()->translate(glm::vec3(-700, 60, 600));
+		//obj4->setName("crate3");
+		//obj4->addComponent(new collider());
+		//obj4->getComponent<collider>()->SetBoxSize(60, 150, 60);
+		//Texture_* text;
+		//text = Texture_::load("white.jpg", TextureType::Specular);
+		//obj4->getComponentInChildren<Material_>()->setEmissionMap(text);
+		//obj4->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load("MementoMori.jpg"));
+		//obj4->getComponentInChildren<Material_>()->useSpecularMap();
+		//obj4->getComponentInChildren<Material_>()->useEmissionMap();
+		//obj4->getComponentInChildren<Material_>()->useEmission();
+		//Core::GameObject_* obj6 = Model::loadModel("Crate.fbx");
+		//obj6->getTransform()->setScale(glm::vec3(2, 2, 2));
+		//obj6->getTransform()->translate(glm::vec3(-400, 60, 100));
+		//obj6->setName("crate4");
+		//obj6->addComponent(new collider());
+		//obj6->getComponent<collider>()->SetBoxSize(60, 150, 60);
+		////obj2->addComponent(new RotatingComponent());
 
+		////Core::GameObject_* plateBorder = Model::loadModel("Pressure plate Border.fbx");
+		////plateBorder->getTransform()->setScale(glm::vec3(2, 2, 2));
 		//Core::GameObject_* plateBorder = Model::loadModel("Pressure plate Border.fbx");
 		//plateBorder->getTransform()->setScale(glm::vec3(2, 2, 2));
-		Core::GameObject_* plateBorder = Model::loadModel("Pressure plate Border.fbx");
-		plateBorder->getTransform()->setScale(glm::vec3(2, 2, 2));
 
 		//Core::GameObject_* plate = Model::loadModel("Pressure plate 1.fbx");
 		//plate->getTransform()->setScale(glm::vec3(2, 2, 2));
@@ -472,7 +484,7 @@ namespace Engine
 		//gate->getComponent<collider>()->SetBoxSize(70, 1500, 600);
 		//gate->getComponent<GateBehaviour>()->AddPlate(plate->getComponent<PressurePlateBehaviour>());
 
-		obj1->addComponent(luaS);
+		//obj1->addComponent(luaS);
 		/*Core::GameObject_* gate = Model::loadModel("Door 1.fbx");
 		gate->getTransform()->setScale(glm::vec3(0.9, 0.9, 0.9));
 		gate->getTransform()->translate(glm::vec3(500, 200, 700));
@@ -482,18 +494,18 @@ namespace Engine
 		gate->getComponent<collider>()->SetBoxSize(70, 1500, 600);
 		gate->getComponent<GateBehaviour>()->AddPlate(plate->getComponent<PressurePlateBehaviour>());
 */
-		//obj1->addComponent(luaS);
+//obj1->addComponent(luaS);
 
-		//Core::GameObject_* testModel = Model::loadModel("Dungeon_Wall_Corner_001.fbx");
-		//Core::GameObject_* testModel1 = Model::loadModel("Forge.fbx");
-		//testModel1->addComponent(new RotatingComponent());
-		//testModel1->addComponent<RotatingComponent>();
-		//std::cout << "1: " + testModel1->getTransform()->getChild(0)->getGameObject()->getName() << std::endl;
-		/*std::cout << "1: " + testModel1->getName() << std::endl;*/
-		//Core::GameObject_* tm_ = Model::loadModel("ketabxane.fbx");
-		//tm_->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(180.0f));
-		//std::cout << tm_->getComponentsCount() << std::endl;
-		//tm_->addComponent(new RotatingComponent());
+//Core::GameObject_* testModel = Model::loadModel("Dungeon_Wall_Corner_001.fbx");
+//Core::GameObject_* testModel1 = Model::loadModel("Forge.fbx");
+//testModel1->addComponent(new RotatingComponent());
+//testModel1->addComponent<RotatingComponent>();
+//std::cout << "1: " + testModel1->getTransform()->getChild(0)->getGameObject()->getName() << std::endl;
+/*std::cout << "1: " + testModel1->getName() << std::endl;*/
+//Core::GameObject_* tm_ = Model::loadModel("ketabxane.fbx");
+//tm_->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(180.0f));
+//std::cout << tm_->getComponentsCount() << std::endl;
+//tm_->addComponent(new RotatingComponent());
 	}
 
 	void Scene::neededHardCode()

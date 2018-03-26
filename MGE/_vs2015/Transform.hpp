@@ -100,7 +100,10 @@ namespace Engine
 
 			void lookAt(Transform* lookAtTarget, const glm::vec3& up = glm::vec3(0, 1, 0));
 			void translate(const glm::vec3& translation);
-			void rotate(const glm::vec3& axis, float angleRotation, Space space = World);
+			void rotate(const glm::vec3& axis, float angleRotation, Space relativeSpace = World);
+			void rotate(const glm::vec3& eulerAngles, bool useLocalAxes = true, Space space = World);
+			void rotateAround(const glm::vec3& axis, float angleRotation, const glm::vec3& point);
+			//void rotate(const glm::vec3& eulerAngles, Space space = World);
 			void scale(const glm::vec3& scaler);
 			void scaleWithPositions(const glm::vec3& scale);
 

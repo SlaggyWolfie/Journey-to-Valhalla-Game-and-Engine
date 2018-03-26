@@ -93,7 +93,7 @@ namespace Engine
 			}
 		}
 
-		std::cout << "Did not find [" + nameOfFile + "] at root[" + rootDirectory + "]!" << std::endl;
+		std::cout << "\tERROR::Did not find [" + nameOfFile + "] at root[" + rootDirectory + "]!" << std::endl;
 		return std::string();
 	}
 

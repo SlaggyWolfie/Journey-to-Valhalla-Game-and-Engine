@@ -18,14 +18,16 @@ void PlayerBaseComponent::update()
 {
 	//std::cout << "State: " + std::to_string(_playerS) << std::endl;
 	Camera_::getMainCamera()->getGameObject()->getTransform()->
-		lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
+		setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 10, 10));
 
 	Camera_::getMainCamera()->getGameObject()->getTransform()->
-		setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 10, 10));
+		lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
+
 
 	getGameObject()->getComponent<collider>()->lastPos = getGameObject()->getTransform()->getPosition();
 	std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
 	using namespace Engine::Core;
+	using namespace Engine::Utility;
 	Transform* transform = getGameObject()->getTransform();
 
 	RayCast();

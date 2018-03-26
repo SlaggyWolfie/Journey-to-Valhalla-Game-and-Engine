@@ -197,11 +197,11 @@ namespace Engine
 			setLocalPosition(_localPosition + translation);
 		}
 
-		void Transform::rotate(const glm::vec3& axis, const float angleRotation, const Space space)
+		void Transform::rotate(const glm::vec3& axis, const float angleRotation, const Space relativeSpace)
 		{
 			if (getGameObject()->isStatic() && _game->isRunning()) return;
 
-			const bool localOrientation = space == Local;
+			const bool localOrientation = relativeSpace == Local;
 
 			const auto rotation = glm::angleAxis(angleRotation, axis);
 			glm::quat local;
@@ -221,6 +221,28 @@ namespace Engine
 			//setLocalRotation(glm::cross(glm::quat_cast(glm::rotate(angleRotation, axis)), _localRotation));
 			//setLocalRotation(glm::quat_cast(glm::rotate(angleRotation, axis)) * _localRotation);
 			//setLocalRotation(_localRotation * glm::quat_cast(glm::rotate(angleRotation, axis)));
+		}
+
+		void Transform::rotate(const glm::vec3& eulerAngles, bool useLocalAxes, const Space space)
+		{
+			const bool world = !useLocalAxes;
+
+			const glm::vec3 up = world ? glm::vec3(0, 1, 0) : this->up();
+			const glm::vec3 forward = world ? glm::vec3(0, 0, -1) : this->forward();
+			const glm::vec3 right = world ? glm::vec3(0, 0, 1) : this->right();
+
+			rotate(forward, eulerAngles.z, space);
+			rotate(right, eulerAngles.x, space);
+			rotate(up, eulerAngles.y, space);
+		}
+
+		void Transform::rotateAround(const glm::vec3& axis, const float angleRotation, const glm::vec3& point)
+		{
+			translate(-point);
+
+			rotate(axis, angleRotation, World);
+
+			translate(point);
 		}
 
 		void Transform::scale(const glm::vec3& scaler)
