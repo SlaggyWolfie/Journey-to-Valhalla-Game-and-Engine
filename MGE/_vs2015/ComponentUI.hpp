@@ -7,14 +7,14 @@
 class ComponentUI : public Engine::Core::Component
 {
 public:
-	ComponentUI(bool rendering = true);
+	explicit ComponentUI(bool rendering = true);
 	ComponentUI(sf::RenderWindow* window, bool rendering);
 	virtual ~ComponentUI();
 
 	virtual void draw() = 0;
 	void setWindow(sf::RenderWindow* window);
 	void setDrawable(sf::Drawable* drawable);
-	sf::Drawable* getDrawable();
+	sf::Drawable* getDrawable() const;
 	sf::RenderWindow* getWindow();
 protected:
 	sf::Drawable* _mainDrawable = nullptr;

@@ -36,7 +36,7 @@ void ComponentUI::setDrawable(sf::Drawable * drawable)
 	_mainDrawable = drawable;
 }
 
-sf::Drawable * ComponentUI::getDrawable()
+sf::Drawable * ComponentUI::getDrawable() const
 {
 	return _mainDrawable;
 }

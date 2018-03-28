@@ -16,26 +16,25 @@ namespace Engine
 		{
 			hint = new Text(false);
 		}
-		void Text::showHint(std::string hintText, float startAfterTime, float duration)
+
+		void Text::showHint(const std::string& hintText, const float startAfterTime, const float duration)
 		{
 			if (!hint) makeHint();
 			hint->setTextInformation(hintText);
-			std::cout << "\t\t Call show hint" << std::endl;
+
 			std::function<void()> hide = []
 			{
-
-				std::cout << "\t\t hide hint" << std::endl;
-				drawHint = false; 
+				Text::drawHint = false;
 			};
-			std::function<void()> unhide = [duration, hide] 
-			{ 
-				std::cout << "\t\t unhide hint" << std::endl;
-				drawHint = true;
+			std::function<void()> unhide = [duration, hide]
+			{
+				Text::drawHint = true;
 				Engine::Utility::Time::timeout(duration, hide);
 			};
 
 			Engine::Utility::Time::timeout(startAfterTime, unhide);
 		}
+
 		Text::Text(const bool rendering) : ComponentUI(rendering)
 		{
 			setTextInformation("");

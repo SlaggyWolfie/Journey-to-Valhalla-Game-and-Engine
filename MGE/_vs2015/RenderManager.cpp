@@ -195,13 +195,17 @@ namespace Engine
 		{
 			glActiveTexture(GL_TEXTURE0);
 			getWindow()->pushGLStates();
-			if (UI::Text::drawHint) UI::Text::hint->draw();
 
 			if (!_uiRenderers.empty())
 			{
 				for (auto& ui : _uiRenderers)
 					if (ui->isEnabled())
 						ui->draw();
+			}
+			if (UI::Text::drawHint)
+			{
+				UI::Text::hint->draw();
+				std::cout << "trying to draw hint" << std::endl;
 			}
 
 			getWindow()->popGLStates();

@@ -16,8 +16,8 @@ namespace Engine
 
 		//TimeoutEvent
 
-		Time::TimeoutEvent::TimeoutEvent(const float interval, std::function<void()>   event) :
-			_interval(interval), _timeout(Time::now() + _interval), _event(std::move(event))
+		Time::TimeoutEvent::TimeoutEvent(const float interval, std::function<void()> event) :
+			_interval(interval), _timeout(Time::now() + _interval), _event(event)
 		{
 			std::cout << "Timeout event with interval " + std::to_string(_timeout) + " created." << std::endl;
 		}
@@ -41,7 +41,7 @@ namespace Engine
 
 		bool Time::TimeoutEvent::raise() const
 		{
-			std::cout << "Test Raise." << std::endl;
+			//std::cout << "Test Raise." << std::endl;
 			const bool result = _timeout <= Time::now();
 			if (result) _event();
 			return result;
@@ -94,13 +94,13 @@ namespace Engine
 			_variableTimeStep_seconds = _now_seconds - lastTime;
 
 			//std::cout << "Now: " + std::to_string(static_cast<int>(_now_seconds)) << std::endl;
-			std::cout << "Timeouts amount: " + std::to_string(static_cast<int>(_timeouts.size())) << std::endl;
+			//std::cout << "Timeouts amount: " + std::to_string(static_cast<int>(_timeouts.size())) << std::endl;
 
 			// check for timeouts and deliver for all needed
 			if (!_timeouts.empty() && (*_timeouts.begin())->raise())
 			{
-				std::cout << "Raise event." << std::endl;
-				delete *_timeouts.erase(_timeouts.begin());
+				//std::cout << "Raise event." << std::endl;
+				_timeouts.erase(_timeouts.begin());
 			}
 		}
 
@@ -143,7 +143,7 @@ namespace Engine
 		void Time::timeout(const float interval, const std::function<void()>& timeoutEvent)
 		{
 			_timeouts.insert(_timeouts.end(), new TimeoutEvent(interval, timeoutEvent));
-			std::cout << "Timeouts insert: " + std::to_string(static_cast<int>(_timeouts.size())) << std::endl;
+			//std::cout << "Timeouts insert: " + std::to_string(static_cast<int>(_timeouts.size())) << std::endl;
 		}
 	}
 }

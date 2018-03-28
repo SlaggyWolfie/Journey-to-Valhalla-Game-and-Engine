@@ -14,6 +14,8 @@ namespace Engine
 		static float range(float min, float max, int decimalAccuracy = 6);
 		static int range(int min, int max);
 		static float value();
+		static void setSeed(unsigned seed);
+		static void defaultSeed();
 	private:
 		static void setup();
 		static bool _setup;

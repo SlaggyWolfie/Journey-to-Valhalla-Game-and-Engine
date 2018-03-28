@@ -22,7 +22,7 @@ namespace Engine
 		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_LIGHTS, false);
 		const aiScene *scene = import.ReadFile(path,
 			aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_GenSmoothNormals
-			| aiProcess_ImproveCacheLocality | aiProcess_GenUVCoords| aiProcess_FindInvalidData
+			| aiProcess_ImproveCacheLocality | aiProcess_GenUVCoords | aiProcess_FindInvalidData
 			| aiProcess_SplitLargeMeshes | aiProcess_ValidateDataStructure | aiProcess_CalcTangentSpace
 			| aiProcess_OptimizeGraph | aiProcess_OptimizeMeshes | aiProcess_CalcTangentSpace);
 
@@ -35,7 +35,7 @@ namespace Engine
 		if (scene->mMetaData)
 			scene->mMetaData->Get("UnitScaleFactor", _scale);
 		//this->path = path.substr(0, path.find_last_of('/'));
-		//if (path.find(".obj") != std::string::npos) _scale = 100;
+		if (path.find(".obj") != std::string::npos) _scale = 100;
 		//_scale = 0.01f;
 
 		Core::GameObject_* go = processNode(scene->mRootNode, scene);
@@ -43,7 +43,7 @@ namespace Engine
 		std::cout << "Loaded model at path " + path << std::endl;
 		_recursionLevel = 0;
 		_scale = 1;
-		
+
 		return go;
 	}
 
@@ -175,6 +175,7 @@ namespace Engine
 		Rendering::RenderQueue queue = Rendering::RenderQueue::Transparent;
 		float opacity;
 		material->Get(AI_MATKEY_OPACITY, opacity);
+		//std::cout << "opacity " + std::to_string(opacity) << std::endl;
 		if (glm::epsilonEqual(opacity, 1.0f, glm::epsilon<float>()))
 			queue = Rendering::RenderQueue::Opaque;
 

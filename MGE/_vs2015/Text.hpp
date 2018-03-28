@@ -15,7 +15,7 @@ namespace Engine
 			static Text* hint;
 			static bool drawHint;
 			static void makeHint();
-			static void showHint(std::string hintText, float startAfterTime = 0, float duration = 6);
+			static void showHint(const std::string& hintText, float startAfterTime = 0, float duration = 6);
 			Text(bool rendering = true);
 			Text(sf::RenderWindow* window, bool rendering = true);
 			virtual ~Text() = default;
@@ -35,7 +35,7 @@ namespace Engine
 			void draw() override;
 		private:
 			//std::unique_ptr<sf::Text> 
-			sf::RenderWindow * _window = nullptr;
+			//sf::RenderWindow * _window = nullptr;
 
 			std::string _info;
 

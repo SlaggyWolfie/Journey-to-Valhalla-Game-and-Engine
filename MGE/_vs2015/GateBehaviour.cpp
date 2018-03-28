@@ -23,9 +23,9 @@ void GateBehaviour::update()
 
 bool GateBehaviour::AllPressed()
 {	
-	for (int i = 0; i < _plates.size(); i++)
+	for (auto & plate : _plates)
 	{
-		if (!_plates[i]->IsPressed())
+		if (!plate->IsPressed())
 			return false;
 	}
 	return true;

@@ -23,7 +23,6 @@ struct GameObject_s
 	glm::vec3 colliderSize;
 	glm::vec3 colliderCenter;
 
-
 	GameObject_s();
 	~GameObject_s() = default;
 	GameObject_s(const GameObject_s& other) = default;

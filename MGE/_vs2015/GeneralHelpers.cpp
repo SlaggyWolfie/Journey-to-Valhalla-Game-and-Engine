@@ -42,6 +42,17 @@ namespace Engine
 		return range(0.0f, 1.0f);
 	}
 
+	void Random::setSeed(const unsigned seed)
+	{
+		srand(seed);
+		_setup = true;
+	}
+
+	void Random::defaultSeed()
+	{
+		setup();
+	}
+
 	void Random::setup()
 	{
 		//srand(0);

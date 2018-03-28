@@ -30,7 +30,7 @@ namespace Engine
 	}
 
 	Scene::Scene(std::string name, std::string path) : _name(std::move(name)), _path(std::move(path)),
-		_gameObjects(std::vector<std::unique_ptr<Core::GameObject_>>())
+		_gameObjects()
 	{
 	}
 
@@ -139,7 +139,6 @@ namespace Engine
 		{
 			//std::cout << "\tObject " + std::to_string(++index) + "." << std::endl;
 			GameObject_* gameObject = nullptr;
-
 
 			if (gameStruct.name.find("Runestone") != std::string::npos)
 			{
@@ -253,6 +252,24 @@ namespace Engine
 			transform->setLocalRotation(gameStruct.rotation);
 
 
+			if (gameStruct.colliderSize.x != 0.0f || gameStruct.colliderSize.y != 0.0f || gameStruct.colliderSize.z != 0.0f)
+			{
+				collider* col = new collider();
+				gameObject->addComponent(col);
+				col->SetBoxSize(gameStruct.colliderSize.x, gameStruct.colliderSize.y, gameStruct.colliderSize.z);
+				//col->SetTrans()
+			}
+
+			if (gameStruct.lightType != 0)
+			{
+				Light_* light = new Light_();
+				light->setLightType(static_cast<LightType>(gameStruct.lightType - 1));
+				light->setColor(gameStruct.lightColor);
+				light->setLightIntensity(gameStruct.lightIntencity);
+				gameObject->addComponent(light);
+				//gameObject->addComponent()
+			}
+
 			if (gameObject->getName() == "plate1_1")
 			{
 				//gameStruct.position.x *= -1;
@@ -282,16 +299,6 @@ namespace Engine
 				gameObject->addComponent(new collider());
 				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
 				gameObject->addComponent(new PlayerBaseComponent());
-			}
-
-			if (gameStruct.name == "Viking_Tower2")
-			{
-				gameObject->addComponent(new RotatingComponent());
-			}
-
-			if (gameStruct.name.find("Pressure plate 1") != std::string::npos)
-			{
-				gameObject->addComponent(new RotatingComponent());
 			}
 
 			//transform->scaleWithPositions(glm::vec3(100));
@@ -326,7 +333,6 @@ namespace Engine
 
 	void Scene::loadMenu()
 	{
-
 		using namespace Engine::UI;
 		sf::RenderWindow* window = ServiceLocator::instance()->getService<Engine::Game>()->getWindow();
 		const sf::Vector2u windowSize = window->getSize();
@@ -353,28 +359,34 @@ namespace Engine
 		ExitButton->getSprite().setPosition(10, height * 9 / 10);
 
 
-		//BackGround->getSprite().setScale(2, 2);
-		Text::makeHint();
-		Text::hint->setWindow(window);
-		std::cout << "MENUU" << std::endl;
-		std::cout << Text::hint->getTextObject().getCharacterSize() << std::endl;
-		Text::hint->getTextObject().setPosition(100, 100);
-		Text::showHint("CABBAGE", 30, 5);
+		BackGround->getSprite().setScale(2, 2);
+
+		//Text::makeHint();
+		//Text::hint->setWindow(window);
+		//std::cout << "MENU" << std::endl;
+		////std::cout << Text::hint->getTextObject().getCharacterSize() << std::endl;
+		//Text::hint->getTextObject().setCharacterSize(24);
+		//Text::hint->getTextObject().setPosition(100, 500);
+		//Text::showHint("CABBAGE", 30, 5);
 
 		std::cout << "load menu" << std::endl;
 	}
 
 	void Scene::hardCode()
 	{
-		//std::function<void()> pr = ([] {std::cout << "Print" << std::endl; });
-		//Engine::Utility::Time::timeout(1, pr);
-		//Engine::Utility::Time::timeout(2, pr);
-		//Engine::Utility::Time::timeout(3, pr);
-		//Engine::Utility::Time::timeout(4, pr);
+		GameObject_* mc = Model::loadModel(File::findPath("shitbitch2.obj"));
+		auto pls = mc->getComponentInChildren<Material_>();
+		
+		pls->setDiffuseMap(Texture_::load(File::findPath("shitbitch2.png")));
+		mc->addComponent(new PlayerBaseComponent());
+		mc->addComponent(new collider());
+
+
+
 		//auto plateGO = ServiceLocator::instance()->getService<SceneManager>()->getActiveScene()->findGameObject("Pressure plate border");
 		////std::cout << "Pressure plate 1: " + glm::to_string(plateGO->getTransform()->getPosition()) << std::endl;
 		////plateItself->getGameObject()->
-		////loadMenu();
+		//loadMenu();
 		//Model::clipPaths = true;
 		////Core::GameObject_* door_1 = Model::loadModel("Assets/Props/Door_1.fbx");
 		////door_1->getTransform()->translate(glm::vec3(0, 5, 15));
@@ -493,19 +505,20 @@ namespace Engine
 		gate->addComponent(new GateBehaviour());
 		gate->getComponent<collider>()->SetBoxSize(70, 1500, 600);
 		gate->getComponent<GateBehaviour>()->AddPlate(plate->getComponent<PressurePlateBehaviour>());
-*/
-//obj1->addComponent(luaS);
+	*/
+	//obj1->addComponent(luaS);
 
-//Core::GameObject_* testModel = Model::loadModel("Dungeon_Wall_Corner_001.fbx");
-//Core::GameObject_* testModel1 = Model::loadModel("Forge.fbx");
-//testModel1->addComponent(new RotatingComponent());
-//testModel1->addComponent<RotatingComponent>();
-//std::cout << "1: " + testModel1->getTransform()->getChild(0)->getGameObject()->getName() << std::endl;
-/*std::cout << "1: " + testModel1->getName() << std::endl;*/
-//Core::GameObject_* tm_ = Model::loadModel("ketabxane.fbx");
-//tm_->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(180.0f));
-//std::cout << tm_->getComponentsCount() << std::endl;
-//tm_->addComponent(new RotatingComponent());
+	//Core::GameObject_* testModel = Model::loadModel("Dungeon_Wall_Corner_001.fbx");
+	//Core::GameObject_* testModel1 = Model::loadModel("Forge.fbx");
+	//testModel1->addComponent(new RotatingComponent());
+	//testModel1->addComponent<RotatingComponent>();
+	//std::cout << "1: " + testModel1->getTransform()->getChild(0)->getGameObject()->getName() << std::endl;
+	/*std::cout << "1: " + testModel1->getName() << std::endl;*/
+	//Core::GameObject_* tm_ = Model::loadModel("ketabxane.fbx");
+	//tm_->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(180.0f));
+	//std::cout << tm_->getComponentsCount() << std::endl;
+	//tm_->addComponent(new RotatingComponent());
+
 	}
 
 	void Scene::neededHardCode()
@@ -516,15 +529,15 @@ namespace Engine
 		camera->addComponent(cameraComp);
 		Core::Camera_::setMainCamera(cameraComp);
 
-		Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(100, 0, 1));
-		Rendering::Light_* light = new Rendering::Light_();
+		//Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(100, 0, 1));
+		//Rendering::Light_* light = new Rendering::Light_();
 
-
-		lightgo->addComponent(light);
-		light->setColor(glm::vec3(1));
-		light->setLightType(Rendering::LightType::Directional);
-		lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
-		lightgo->getTransform()->rotate(lightgo->getTransform()->right(), -glm::radians(30.0f));
+		//lightgo->addComponent(light);
+		//light->setColor(glm::vec3(1));
+		//light->setLightType(Rendering::LightType::Directional);
+		//lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
+		//lightgo->getTransform()->rotate(lightgo->getTransform()->right(), -glm::radians(30.0f));
+		//light->setRange(35000);
 		//Core::GameObject_* lightgo1 = new Core::GameObject_("Light", "", glm::vec3(-500, -500, 2000));
 		Core::GameObject_* lightgo1 = //new Core::GameObject_("point");
 			Model::loadModel("mge/models/cube_smooth.obj");
@@ -535,7 +548,6 @@ namespace Engine
 		lightgo1->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
 		light1->setColor(glm::vec3(0, 1, 0));
 		light1->setRange(350000);
-		light->setRange(35000);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
