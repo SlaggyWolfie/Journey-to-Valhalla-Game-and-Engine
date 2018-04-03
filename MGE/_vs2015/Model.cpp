@@ -14,7 +14,8 @@ namespace Engine
 	Core::GameObject_* Model::loadModel(const std::string& path)
 	{
 		//= false;
-		std::cout << "Loading model at path " + path << std::endl;
+		print("Loading model at [" + path + "].");
+		//std::cout << "Loading model at [" + path + "]." << std::endl;
 		Assimp::Importer import;
 		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_PRESERVE_PIVOTS, true);
 		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_CAMERAS, false);
@@ -36,11 +37,17 @@ namespace Engine
 			scene->mMetaData->Get("UnitScaleFactor", _scale);
 		//this->path = path.substr(0, path.find_last_of('/'));
 		if (path.find(".obj") != std::string::npos) _scale = 100;
+		_scale *= 0.01f;
 		//_scale = 0.01f;
 
 		Core::GameObject_* go = processNode(scene->mRootNode, scene);
-		std::cout << path << std::endl;
-		std::cout << "Loaded model at path " + path << std::endl;
+		//std::cout << path << std::endl;
+		print("Loaded model at [" + path + "].");
+		print("");
+		//std::cout << "Loaded model at [" + path + "]." << std::endl;
+		//std::cout << "Model Scale: " + std::to_string(_scale) << std::endl;
+		//std::cout << std::endl;
+
 		_recursionLevel = 0;
 		_scale = 1;
 
@@ -56,7 +63,7 @@ namespace Engine
 		print(std::string("Has ") + std::to_string(node->mNumMeshes) + " amount of meshes.");
 		print(std::string("Has ") + std::to_string(node->mNumChildren) + " amount of children.");
 
-		bool skip = false;
+		//bool skip = false;
 		// then do the same for each of its children
 		//if (node->mNumChildren == 1 && node == scene->mRootNode)
 		//{
@@ -73,7 +80,8 @@ namespace Engine
 			transform->setLocalMatrix4X4(something);
 		}
 
-		transform->setLocalScale(transform->getLocalScale() * glm::vec3(1 / _scale));
+		//transform->setLocalMatrix4X4(convert(node->mTransformation));
+		//transform->scale(glm::vec3(1 / _scale));
 
 		for (unsigned int i = 0; i < node->mNumMeshes; i++)
 		{
@@ -92,12 +100,12 @@ namespace Engine
 			//go->addComponent<Renderer_>();
 		}
 
-		if (!skip)
-			for (unsigned int i = 0; i < node->mNumChildren; i++)
-			{
-				Core::GameObject_* childGO = processNode(node->mChildren[i], scene);
-				childGO->getTransform()->setParent(gameObject->getTransform(), true);
-			}
+		//if (!skip)
+		for (unsigned int i = 0; i < node->mNumChildren; i++)
+		{
+			Core::GameObject_* childGO = processNode(node->mChildren[i], scene);
+			childGO->getTransform()->setParent(gameObject->getTransform(), true);
+		}
 
 		print(std::string("Processed node ") + node->mName.C_Str());
 		//std::cout << "Processed node " << node->mName.C_Str() << std::endl;
@@ -124,6 +132,7 @@ namespace Engine
 			vector.x = mesh->mVertices[i].x;
 			vector.y = mesh->mVertices[i].y;
 			vector.z = mesh->mVertices[i].z;
+			vector *= 1 / _scale;
 			vertex.position = vector;
 
 			vector.x = mesh->mNormals[i].x;
@@ -131,10 +140,21 @@ namespace Engine
 			vector.z = mesh->mNormals[i].z;
 			vertex.normal = vector;
 
-			vector.x = mesh->mTangents[i].x;
-			vector.y = mesh->mTangents[i].y;
-			vector.z = mesh->mTangents[i].z;
-			vertex.tangent = vector;
+			if (mesh->mTangents)
+			{
+				vector.x = mesh->mTangents[i].x;
+				vector.y = mesh->mTangents[i].y;
+				vector.z = mesh->mTangents[i].z;
+				vertex.tangent = vector;
+			}
+
+			if (mesh->mBitangents)
+			{
+				vector.x = mesh->mBitangents[i].x;
+				vector.y = mesh->mBitangents[i].y;
+				vector.z = mesh->mBitangents[i].z;
+				vertex.bitangent = vector;
+			}
 
 			if (mesh->mTextureCoords[0]) // do you even UV, bruh?
 			{
@@ -192,6 +212,12 @@ namespace Engine
 		//material->Get(AI_MATKEY_OPACITY, opacity);
 		print(std::string("Processing material."));
 
+		const std::function<void(std::string, std::string)> found = [](std::string textureType, std::string path)
+		{
+			//std::cout << "Found a " + textureType + " texture map at [" + path + "]." << std::endl;
+			print("Found a " + textureType + " texture map at [" + path + "].");
+		};
+
 		Rendering::Material_* outMaterial = new Rendering::Material_();
 		aiString str;
 		if (material->GetTextureCount(aiTextureType_DIFFUSE) > 0)
@@ -200,6 +226,8 @@ namespace Engine
 			//std::cout << "Texture: " << str.C_Str() << std::endl;
 			const std::string path = Engine::File::findPath(Engine::File::clipPath(str.C_Str()));
 			//std::cout << "T:" << s << std::endl;
+			//print("Found diffuse texture at [");
+			found("diffuse", path);
 			if (!path.empty() && path.find('*') == std::string::npos) outMaterial->setDiffuseMap(Rendering::Texture_::load(path));
 		}
 
@@ -207,6 +235,7 @@ namespace Engine
 		{
 			material->GetTexture(aiTextureType_SPECULAR, 0, &str);
 			const std::string path = Engine::File::findPath(Engine::File::clipPath(str.C_Str()));
+			found("specular", path);
 			if (!path.empty() && path.find('*') == std::string::npos) outMaterial->setSpecularMap(Rendering::Texture_::load(path));
 		}
 
@@ -214,6 +243,7 @@ namespace Engine
 		{
 			material->GetTexture(aiTextureType_EMISSIVE, 0, &str);
 			const std::string path = Engine::File::findPath(Engine::File::clipPath(str.C_Str()));
+			found("emission", path);
 			if (!path.empty() && path.find('*') == std::string::npos)outMaterial->setEmissionMap(Rendering::Texture_::load(path));
 		}
 
@@ -221,7 +251,8 @@ namespace Engine
 		{
 			material->GetTexture(aiTextureType_NORMALS, 0, &str);
 			const std::string path = Engine::File::findPath(Engine::File::clipPath(str.C_Str()));
-			if (!path.empty() && path.find('*') == std::string::npos)outMaterial->setEmissionMap(Rendering::Texture_::load(path));
+			found("normal", path);
+			//if (!path.empty() && path.find('*') == std::string::npos)outMaterial->setEmissionMap(Rendering::Texture_::load(path));
 		}
 
 		print("Processed material.");
@@ -244,13 +275,14 @@ namespace Engine
 		_debug = debug;
 	}
 
-	void Model::print(const std::string& message)
+	void Model::print(const std::string& message, const bool recursive)
 	{
 		if (_debug)
 		{
 			std::string prefix;
-			for (int i = 0; i < _recursionLevel; i++)
-				prefix += "\t";
+			if (recursive)
+				for (int i = 0; i < _recursionLevel; i++)
+					prefix += "\t";
 			std::cout << prefix + message << std::endl;
 		}
 	}

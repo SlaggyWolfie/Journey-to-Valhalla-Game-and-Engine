@@ -244,6 +244,7 @@
     <ClCompile Include="ComponentUI.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Deserializer2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -521,6 +522,7 @@
     <ClInclude Include="ComponentUI.hpp" />
     <ClInclude Include="Sprite.hpp" />
     <ClInclude Include="Button.hpp" />
+    <ClInclude Include="Deserializer2.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

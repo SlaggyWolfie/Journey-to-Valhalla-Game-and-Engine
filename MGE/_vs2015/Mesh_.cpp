@@ -9,8 +9,9 @@ namespace Engine
 {
 	namespace Rendering
 	{
-		Vertex::Vertex(const glm::vec3 position, const glm::vec3 normal, const glm::vec2 uv, const glm::vec3 tangent) :
-			position(position), normal(normal), textureCoordinate(uv), tangent(tangent)
+		Vertex::Vertex(const glm::vec3 position, const glm::vec3 normal, const glm::vec2 uv,
+			const glm::vec3 tangent, const glm::vec3 bitangent) :
+			position(position), normal(normal), textureCoordinate(uv), tangent(tangent), bitangent(bitangent)
 		{
 
 		}
@@ -197,8 +198,8 @@ namespace Engine
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, _indices.size() * sizeof(unsigned int), &_indices[0], GL_STATIC_DRAW);
-			
-		
+
+
 
 			// set the vertex attribute pointers
 			// vertex positions

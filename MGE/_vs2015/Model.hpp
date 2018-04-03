@@ -46,7 +46,7 @@ namespace Engine
 		static glm::mat4 convert(aiMatrix4x4 aiMatrix);
 		static int _recursionLevel;
 		static bool _debug;
-		static void print(const std::string& message);
+		static void print(const std::string& message, bool recursive = true);
 		static double _scale;
 		static std::string removeParentFolders(std::string path);
 		static glm::vec3 _getTranslation(const glm::mat4& matrix);

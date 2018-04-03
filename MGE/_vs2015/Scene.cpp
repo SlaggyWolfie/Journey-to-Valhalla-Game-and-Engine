@@ -21,6 +21,7 @@
 #include "Time.hpp"
 #include "SceneManager.hpp"
 #include "RotatingComponent.hpp"
+#include "Deserializer2.hpp"
 
 namespace Engine
 {
@@ -48,15 +49,19 @@ namespace Engine
 		//return;
 		if (fromFile)
 		{
+			Deserializer2 deserializer2;
+			deserializer2.deserializeIntoStructs("Level_1.json");
+			deserializeStructs2(deserializer2.gameStructs);
+
 			//Model::debug(true);
-			Model::clipPaths = false;
-			Deserealizer deserealizer;
-			// deserealizer.deserializeIntoStructs("level1.json");
-			deserealizer.deserializeIntoStructs(_path);
-			deserializeStructs(deserealizer.structs, false);
+			//Model::clipPaths = false;
+			//Deserealizer deserealizer;
+			//// deserealizer.deserializeIntoStructs("level1.json");
+			//deserealizer.deserializeIntoStructs(_path);
+			//deserializeStructs(deserealizer.structs, false);
 		}
-		if (hard)
-			hardCode();
+		//if (hard)
+		//	hardCode();
 		if (hard && fromFile)
 			neededHardCode();
 
@@ -128,13 +133,12 @@ namespace Engine
 
 	void Scene::deserializeStructs(std::vector<GameObject_s> structs, const bool clipPaths)
 	{
-		//return;
 		std::unordered_map<int, GameObject_*> id_to_go;
 		//std::unordered_map<GameObject_*, int> go_to_id;
 
-		//first pass - initialize GOs
-		//int index = 0;
 		std::cout << "Deserealizing " + std::to_string(structs.size()) + " objects." << std::endl;
+
+		//first pass - initialize GOs
 		for (GameObject_s& gameStruct : structs)
 		{
 			//std::cout << "\tObject " + std::to_string(++index) + "." << std::endl;
@@ -331,13 +335,120 @@ namespace Engine
 		id_to_go.clear();
 	}
 
+	void Scene::deserializeStructs2(std::vector<GameStruct*> structs, const bool clipPaths)
+	{
+		std::unordered_map<int, GameObject_*> id_to_go;
+		//std::unordered_map<GameObject_*, int> go_to_id;
+
+		std::cout << "Deserealizing " + std::to_string(structs.size()) + " objects." << std::endl;
+
+		//first pass - initialize GOs
+		for (GameStruct* gameStruct : structs)
+		{
+			//Fixes
+			if (gameStruct->name.find("Moveable") != std::string::npos) continue;
+			if (gameStruct->name.find("DrawBridge") != std::string::npos)
+			{
+				MeshStruct* mesh = new MeshStruct;
+				mesh->path = "Assets/Props/Large Props/Wooden_DrawBridge.fbx";
+				gameStruct->components.push_back(mesh);
+				gameStruct->transform->scale *= 0.01f;
+			}
+
+			//std::cout << "\tObject " + std::to_string(++index) + "." << std::endl;
+			GameObject_* gameObject = nullptr;
+
+			//Initialization (+ Mesh Loading if any)
+			auto& components = gameStruct->components;
+			MeshStruct* mesh = gameStruct->getComponent<MeshStruct>();
+			if (mesh)
+			{
+				//Fixes
+				if (mesh->path.find("default") != std::string::npos)
+				{
+					mesh->path = "Crate.fbx";
+					gameStruct->transform->scale *= 0.01f;
+				}
+				if (mesh->path.find("haracter") != std::string::npos)
+					mesh->path = File::findPath("shitbitch2.obj");
+
+				gameObject = Model::loadModel(mesh->path);
+			}
+			else
+				gameObject = new GameObject_();
+
+			gameObject->setName(gameStruct->name);
+			gameObject->setTag(gameStruct->tag);
+
+			//Transform Initialization
+			Transform* transform = gameObject->getTransform();
+			//Fix Orientation
+			gameStruct->transform->position.x *= -1;
+			gameStruct->transform->rotation.y *= -1;
+			gameStruct->transform->rotation.z *= -1;
+
+			if (gameStruct->name.find("Pillar") != std::string::npos)
+			{
+				//gameStruct->transform->position.z *= -1;
+				std::cout << "Found Pillar" << std::endl;
+				gameObject->addComponent(new RotatingComponent);
+			}
+			//Set TRS
+			transform->setLocalPosition(gameStruct->transform->position);
+			transform->setLocalRotation(gameStruct->transform->rotation);
+			transform->setLocalScale(gameStruct->transform->scale);
+
+			std::cout << gameStruct->name + " position: " + glm::to_string(gameStruct->transform->position) << std::endl;
+
+			for (ComponentStruct* component : components)
+			{
+				if (component == mesh) continue;
+
+				gameObject->addComponent(component->makeObject());
+			}
+
+			//Fixes
+			if (mesh && mesh->path.find("Floor.fbx") != std::string::npos)
+			{
+				gameObject->getTransform()->scale(glm::vec3(0.01f));
+				gameObject->getTransform()->scale(glm::vec3(0.01f));
+				//gameObject->getTransform()->scale(glm::vec3(0.01f));
+				std::cout << "Found Floor" << std::endl;
+			}
+
+
+			addGameObject(gameObject);
+			id_to_go[gameStruct->transform->selfID] = gameObject;
+		}
+
+		////second pass - set parents
+		//for (size_t i = 0; i < structs.size(); i++)
+		//{
+		//	const GameStruct* gameStruct = structs[i];
+		//	GameObject_* gameObject = _gameObjects[i].get();
+
+		//	const int parentID = gameStruct->transform->parentID;
+
+		//	if (parentID == 0) continue;
+
+		//	Transform* transform = gameObject->getTransform();
+		//	transform->setParent(id_to_go[parentID]->getTransform(), false);
+		//}
+
+		//for (auto& go : _gameObjects)
+		//go->getTransform()->scaleWithPositions(glm::vec3(10));
+		//	go->addComponent(new RotatingComponent());
+
+		id_to_go.clear();
+	}
+
 	void Scene::loadMenu()
 	{
 		using namespace Engine::UI;
 		sf::RenderWindow* window = ServiceLocator::instance()->getService<Engine::Game>()->getWindow();
 		const sf::Vector2u windowSize = window->getSize();
-		float width = windowSize.x;
-		float height = windowSize.y;
+		const float width = windowSize.x;
+		const float height = windowSize.y;
 
 		Button* BackGround = new Button();
 		BackGround->loadSprite("bg.jpg");
@@ -378,10 +489,8 @@ namespace Engine
 		auto pls = mc->getComponentInChildren<Material_>();
 		
 		pls->setDiffuseMap(Texture_::load(File::findPath("shitbitch2.png")));
-		mc->addComponent(new PlayerBaseComponent());
+		//mc->addComponent(new PlayerBaseComponent());
 		mc->addComponent(new collider());
-
-
 
 		//auto plateGO = ServiceLocator::instance()->getService<SceneManager>()->getActiveScene()->findGameObject("Pressure plate border");
 		////std::cout << "Pressure plate 1: " + glm::to_string(plateGO->getTransform()->getPosition()) << std::endl;
@@ -531,25 +640,27 @@ namespace Engine
 
 		//Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(100, 0, 1));
 		//Rendering::Light_* light = new Rendering::Light_();
-
 		//lightgo->addComponent(light);
 		//light->setColor(glm::vec3(1));
 		//light->setLightType(Rendering::LightType::Directional);
 		//lightgo->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
 		//lightgo->getTransform()->rotate(lightgo->getTransform()->right(), -glm::radians(30.0f));
 		//light->setRange(35000);
-		//Core::GameObject_* lightgo1 = new Core::GameObject_("Light", "", glm::vec3(-500, -500, 2000));
-		Core::GameObject_* lightgo1 = //new Core::GameObject_("point");
-			Model::loadModel("mge/models/cube_smooth.obj");
-		lightgo1->getTransform()->translate(glm::vec3(-300, 300, 500));
-		Rendering::Light_* light1 = new Rendering::Light_();
-		lightgo1->addComponent(light1);
-		light1->setLightType(Rendering::LightType::Point);
-		lightgo1->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
-		light1->setColor(glm::vec3(0, 1, 0));
-		light1->setRange(350000);
+
+		//Core::GameObject_* lightgo1 = newCore::GameObject_("Light", "", glm::vec3(-500, -500, 2000));
+
+		//Core::GameObject_* lightgo1 = //new Core::GameObject_("point");
+		//	Model::loadModel("mge/models/cube_smooth.obj");
+		//lightgo1->getTransform()->translate(glm::vec3(-300, 300, 500));
+		//Rendering::Light_* light1 = new Rendering::Light_();
+		//lightgo1->addComponent(light1);
+		//light1->setLightType(Rendering::LightType::Point);
+		//lightgo1->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(60.0f));
+		//light1->setColor(glm::vec3(0, 1, 0));
+		//light1->setRange(350000);
+
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
-		//ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
+		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
 	}
 }

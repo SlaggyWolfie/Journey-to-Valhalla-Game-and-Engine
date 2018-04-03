@@ -4,6 +4,7 @@
 #include <vector>
 #include <memory>
 #include "Core/Deserealizer.hpp"
+#include "Deserializer2.hpp"
 
 struct GameObject_s;
 
@@ -27,6 +28,7 @@ namespace Engine
 		std::string getName() const;
 		void addGameObject(Core::GameObject_* gameObject);
 		void deserializeStructs(std::vector<GameObject_s> structs, bool clipPaths = true);
+		void deserializeStructs2(std::vector<GameStruct*> structs, bool clipPaths = true);
 		void loadMenu();
 	private:
 		void hardCode();

@@ -213,6 +213,7 @@
     <ClInclude Include="AudioListener.hpp" />
     <ClInclude Include="Button.hpp" />
     <ClInclude Include="ComponentUI.hpp" />
+    <ClInclude Include="Deserializer2.hpp" />
     <ClInclude Include="GateBehaviour.h" />
     <ClInclude Include="Sprite.hpp" />
     <ClInclude Include="Music.hpp" />
@@ -301,6 +302,7 @@
     <ClCompile Include="ColliderManager.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentUI.cpp" />
+    <ClCompile Include="Deserializer2.cpp" />
     <ClCompile Include="GameObject_.cpp" />
     <ClCompile Include="GateBehaviour.cpp" />
     <ClCompile Include="GeneralHelpers.cpp" />

@@ -18,9 +18,10 @@ namespace Engine
 			glm::vec3 normal;
 			glm::vec2 textureCoordinate;
 			glm::vec3 tangent;
+			glm::vec3 bitangent;
 
 			Vertex() = default;
-			Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv, glm::vec3 tangent);
+			Vertex(glm::vec3 position, glm::vec3 normal, glm::vec2 uv, glm::vec3 tangent = glm::vec3(), glm::vec3 bitangent = glm::vec3());
 			//Vertex(const Vertex& other) = default;
 			//Vertex& operator= (const Vertex& other) = default;
 			//Vertex(const Vertex&& other) = default;
