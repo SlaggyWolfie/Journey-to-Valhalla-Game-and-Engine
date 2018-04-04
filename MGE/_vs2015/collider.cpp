@@ -6,6 +6,10 @@
 #include "Time.hpp"
 #include "PlayerBaseComponent.h"
 #include "Camera_.hpp"
+#include "GL\glew.h"
+#include "GameObject_.hpp"
+#include "Model.hpp"
+
 using namespace Engine;
 collider::collider() : _colliderManager(nullptr), _t(nullptr)
 {
@@ -81,10 +85,28 @@ void collider::update()
 	//if (getGameObject()->getName() == "crate1") std::cout << GetPos() << std::endl;
 
 
+
 	SetTrans(getGameObject()->getTransform());
 	//go to CheckCollision in collider Manager
 	using namespace Engine::Core;
 	Transform* transform = getGameObject()->getTransform();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+	{
+		GameObject_* crate = Model::loadModel(File::findPath("Crate.fbx"));
+		crate->getTransform()->setLocalMatrix4X4(getGameObject()->getTransform()->getMatrix4X4());
+		crate->getTransform()->setScale(halfSize*2);
+	
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+	{
+		//std::cout << getGameObject()->getName() << std::endl;
+		//std::cout << corner1 << std::endl;
+		//std::cout << corner7 << std::endl;
+		std::cout << glewGetErrorString(glGetError()) << std::endl;
+	}
+
+	debugRender(Core::Camera_::getMainCamera()->getProjectionMatrix(), Core::Camera_::getMainCamera()->getViewMatrix());
 
 
 
@@ -101,20 +123,20 @@ glm::vec3 collider::GetPos()
 
 float collider::GetWidth()
 {
-	return _width * getGameObject()->getTransform()->getLocalScale().x;
+	return _width;
 }
 
 float collider::GetHeight()
 {
-	return _height * getGameObject()->getTransform()->getLocalScale().y;
+	return _height;
 }
 float collider::GetLength()
 {
-	return _length * getGameObject()->getTransform()->getLocalScale().z;
+	return _length;
 }
 float collider::GetRadius()
 {
-	return _radius * getGameObject()->getTransform()->getLocalScale().x;
+	return _radius;
 }
 
 void collider::jumpToObj()
@@ -187,9 +209,20 @@ glm::vec3 collider::getLocalPosition(int index)
 	return glm::vec3(0);
 }
 
-void collider::debugRender()
+void collider::debugRender(glm::mat4 proj, glm::mat4 view)
 {
+	glUseProgram(0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadMatrixf(glm::value_ptr(proj));
+	glMatrixMode(GL_MODELVIEW);
+	glLoadMatrixf(glm::value_ptr(view * /*Core::Camera_::getMainCamera()->*/getGameObject()->getTransform()->getMatrix4X4()));
+	//glLoadMatrixf(glm::value_ptr(view * getGameObject()->getTransform()->getMatrix4X4()));
+
 	glBegin(GL_LINES);
+	glColor3fv(glm::value_ptr(glm::vec3(1,0,0)));
+
+	drawLine(glm::vec3(0,-500,-1), glm::vec3(0,500,-1));
+
 	drawLine(corner1, corner2);
 	drawLine(corner2, corner3);
 	drawLine(corner3, corner4);
@@ -202,7 +235,15 @@ void collider::debugRender()
 	drawLine(corner2, corner6);
 	drawLine(corner3, corner7);
 	drawLine(corner4, corner8);
+
 	glEnd();
+}
+
+void collider::drawLine(glm::vec3 point1, glm::vec3 point2)
+{
+	glColor3fv(glm::value_ptr(glm::vec3(1, 0, 0)));
+	glVertex3fv(glm::value_ptr(point1));
+	glVertex3fv(glm::value_ptr(point2));
 }
 
 void collider::SetTrans(Transform* t)
@@ -225,14 +266,23 @@ void collider::SetTrans(Transform* t)
 	point6 = localMatrix * (v4Pos + glm::vec4(0, +GetHeight() / 2, 0, 0.0f));*/
 
 
-	point1 = localMatrix * (v4Pos + glm::vec4(-1, 0, 0.0f, 0.0f));
-	point2 = localMatrix * (v4Pos + glm::vec4(1, 0, 0.0f, 0.0f));
+	//point1 = localMatrix * (v4Pos + glm::vec4(-1, 0, 0.0f, 0.0f));
+	//point2 = localMatrix * (v4Pos + glm::vec4(1, 0, 0.0f, 0.0f));
 
-	point3 = localMatrix * (v4Pos + glm::vec4(0, 0, -1, 0.0f));
-	point4 = localMatrix * (v4Pos + glm::vec4(0, 0, 1, 0.0f));
+	//point3 = localMatrix * (v4Pos + glm::vec4(0, 0, -1, 0.0f));
+	//point4 = localMatrix * (v4Pos + glm::vec4(0, 0, 1, 0.0f));
 
-	point5 = localMatrix * (v4Pos + glm::vec4(0, -1, 0, 0.0f));
-	point6 = localMatrix * (v4Pos + glm::vec4(0, +1, 0, 0.0f));
+	//point5 = localMatrix * (v4Pos + glm::vec4(0, -1, 0, 0.0f));
+	//point6 = localMatrix * (v4Pos + glm::vec4(0, +1, 0, 0.0f));	
+
+	point1 = localMatrix * glm::vec4(-1, 0, 0.0f, 1);
+	point2 = localMatrix * glm::vec4(1, 0, 0.0f, 1);
+
+	point3 = localMatrix * glm::vec4(0, 0, -1, 1);
+	point4 = localMatrix * glm::vec4(0, 0, 1, 1);
+
+	point5 = localMatrix * glm::vec4(0, -1, 0, 1);
+	point6 = localMatrix * glm::vec4(0, +1, 0, 1);
 
 	normal1 = glm::normalize(_pos - point1);
 	normal2 = glm::normalize(_pos - point2);
@@ -241,7 +291,9 @@ void collider::SetTrans(Transform* t)
 	normal5 = glm::normalize(_pos - point5);
 	normal6 = glm::normalize(_pos - point6);
 
-	halfSize = glm::vec3(GetWidth(), GetHeight(), GetLength()) / 2;
+	//halfSize = glm::vec3(GetWidth(), GetHeight(), GetLength()) / 2;
+	//halfSize = glm::vec3(localMatrix * glm::vec4(glm::vec3(1.0f) / 2, 0));
+	halfSize = glm::vec3(1.0f) / 2 / 100;
 
 	corner1 = t->getPosition() + halfSize * getLocalPosition(1);
 	corner2 = t->getPosition() + halfSize * getLocalPosition(2);
@@ -251,6 +303,15 @@ void collider::SetTrans(Transform* t)
 	corner6 = t->getPosition() + halfSize * getLocalPosition(6);
 	corner7 = t->getPosition() + halfSize * getLocalPosition(7);
 	corner8 = t->getPosition() + halfSize * getLocalPosition(8);
+
+	//corner1 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(1), 1));
+	//corner2 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(2), 1));
+	//corner3 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(3), 1));
+	//corner4 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(4), 1));
+	//corner5 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(5), 1));
+	//corner6 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(6), 1));
+	//corner7 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(7), 1));
+	//corner8 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(8), 1));
 }
 
 

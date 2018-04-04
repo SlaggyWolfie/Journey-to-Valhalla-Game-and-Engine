@@ -88,10 +88,10 @@ private:
 	float _width = 1;
 	float _length = 1;
 	float  _height = 1;
-	float _radius = 1;
+	float _radius = 0.5f;
 	bool _enabled;
 
-	void debugRender();
+	void debugRender(glm::mat4 proj, glm::mat4 view);
 	void drawLine(glm::vec3 point1, glm::vec3 point2);
 };
 

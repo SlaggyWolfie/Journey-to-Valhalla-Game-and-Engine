@@ -221,7 +221,7 @@ void PlayerBaseComponent::RayCast()
 		}*/
 		//I know the shere radius is 1, this needs to be replaced with collider radius
 
-		if (distance <= 1 && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		if (distance <= child->GetRadius() && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 		{
 			//std::cout << "dist is 1" << std::endl;
 			if (child->getGameObject()->getName() == "Runestone")

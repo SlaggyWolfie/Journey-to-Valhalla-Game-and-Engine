@@ -60,8 +60,8 @@ namespace Engine
 			//deserealizer.deserializeIntoStructs(_path);
 			//deserializeStructs(deserealizer.structs, false);
 		}
-		if (hard)
-			hardCode();
+		//if (hard)
+		//	hardCode();
 		if (hard && fromFile)
 			neededHardCode();
 
@@ -512,6 +512,9 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
+		GameObject_* crate = Model::loadModel(File::findPath("Crate.fbx"));
+		crate->addComponent(new collider());
+
 		//GameObject_* mc = Model::loadModel(File::findPath("shitbitch2.obj"));
 		//auto pls = mc->getComponentInChildren<Material_>();
 		//

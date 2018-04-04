@@ -38,7 +38,7 @@ void PressurePlateBehaviour::CheckCollision()
 {
 
 	std::vector<collider*> colList = ServiceLocator::instance()->getService<ColliderManager>()->
-	CheckBoxCollision(getGameObject()->getComponent<collider>());
+	CheckCollision(getGameObject()->getComponent<collider>());
 
 	//std::cout << colList.size()<<" size " << std::endl;
 	/*std::cout << this->getGameObject()->getComponent<collider>()->GetPos() << " pos " << std::endl;*/
