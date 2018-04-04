@@ -158,7 +158,6 @@ Deserializer2::~Deserializer2()
 	gameStructs.clear();
 }
 
-
 std::vector<GameStruct*> Deserializer2::deserializeIntoStructs(const string& fileName)
 {
 	ifstream sceneFile(fileName);
