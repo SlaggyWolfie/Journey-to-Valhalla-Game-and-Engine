@@ -25,7 +25,7 @@ void PlayerBaseComponent::update()
 
 
 	getGameObject()->getComponent<collider>()->lastPos = getGameObject()->getTransform()->getPosition();
-	std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
+	//std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
 	using namespace Engine::Core;
 	using namespace Engine::Utility;
 	Transform* transform = getGameObject()->getTransform();
@@ -214,17 +214,23 @@ void PlayerBaseComponent::RayCast()
 		glm::vec3 perpendicular = cameraToSphere - parallel;
 		//and get its distance
 		float distance = glm::length(perpendicular);
-
+		/*if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+		{
+			std::cout << "dist: " << distance << std::endl;
+		std::cout << child->getGameObject()->getName() << std::endl;
+		}*/
 		//I know the shere radius is 1, this needs to be replaced with collider radius
+
 		if (distance <= 1 && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 		{
-			if (child->getGameObject()->getName() == "Crate")
+			//std::cout << "dist is 1" << std::endl;
+			if (child->getGameObject()->getName() == "Runestone")
 			{
 				_objectToMove = child->getGameObject();
 				_targetPosition = _objectToMove->getTransform()->getPosition();
 				_playerS = jumpingToObject;
 				getGameObject()->getComponent<collider>()->SetEnable(false);
-				std::cout << "jumping" << std::endl;
+				//std::cout << "jumping" << std::endl;
 			}
 		}
 	}

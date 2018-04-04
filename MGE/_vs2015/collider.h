@@ -53,16 +53,45 @@ public:
 	glm::vec3 normal4;
 	glm::vec3 normal5;
 	glm::vec3 normal6;
+
+	glm::vec3 corner1;
+	glm::vec3 corner2;
+	glm::vec3 corner3;
+	glm::vec3 corner4;
+	glm::vec3 corner5;
+	glm::vec3 corner6;
+	glm::vec3 corner7;
+	glm::vec3 corner8;
+
+
+	//drawing
+	static glm::vec3 leftBottomBack();
+	static glm::vec3 rightBottomBack();
+	static glm::vec3 leftTopBack();
+	static glm::vec3 rightTopBack();
+	static glm::vec3 leftBottomFront();
+	static glm::vec3 rightBottomFront();
+	static glm::vec3 leftTopFront();
+	static glm::vec3 rightTopFront();
+	static glm::vec3 getLocalPosition(int index);
+
+
 private:
 	ColliderManager * _colliderManager;
 	glm::vec3 _pos;
 	glm::vec3 _rot;
 	Transform* _t;
 	colliderType _type = box;
+
+	glm::vec3 halfSize;
+
 	float _width = 1;
 	float _length = 1;
 	float  _height = 1;
 	float _radius = 1;
 	bool _enabled;
+
+	void debugRender();
+	void drawLine(glm::vec3 point1, glm::vec3 point2);
 };
 

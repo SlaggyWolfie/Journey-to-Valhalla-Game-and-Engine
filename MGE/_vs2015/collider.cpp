@@ -106,15 +106,15 @@ float collider::GetWidth()
 
 float collider::GetHeight()
 {
-	return _height * getGameObject()->getTransform()->getLocalScale().y;;
+	return _height * getGameObject()->getTransform()->getLocalScale().y;
 }
 float collider::GetLength()
 {
-	return _length * getGameObject()->getTransform()->getLocalScale().z;;
+	return _length * getGameObject()->getTransform()->getLocalScale().z;
 }
 float collider::GetRadius()
 {
-	return _radius * getGameObject()->getTransform()->getLocalScale().x;;
+	return _radius * getGameObject()->getTransform()->getLocalScale().x;
 }
 
 void collider::jumpToObj()
@@ -125,6 +125,84 @@ void collider::jumpToObj()
 void collider::setI(int i)
 {
 	index = i;
+}
+
+
+glm::vec3 collider::leftBottomBack()
+{
+	return glm::vec3(-1);
+}
+
+glm::vec3 collider::rightBottomBack()
+{
+	return glm::vec3(1, -1, -1);
+}
+
+glm::vec3 collider::leftTopBack()
+{
+	return glm::vec3(-1, 1, -1);
+}
+
+glm::vec3 collider::rightTopBack()
+{
+	return glm::vec3(1, 1, -1);
+}
+
+glm::vec3 collider::leftBottomFront()
+{
+	return glm::vec3(-1, -1, 1);
+}
+
+glm::vec3 collider::rightBottomFront()
+{
+	return glm::vec3(1, -1, 1);
+}
+
+glm::vec3 collider::leftTopFront()
+{
+	return glm::vec3(-1, 1, 1);
+}
+
+glm::vec3 collider::rightTopFront()
+{
+	return glm::vec3(1);
+}
+
+glm::vec3 collider::getLocalPosition(int index)
+{
+	index--;
+	switch (index)
+	{
+	case 0: return leftBottomBack();
+	case 1: return rightBottomBack();
+	case 2: return rightBottomFront();
+	case 3: return leftBottomFront();
+	case 4: return leftTopBack();
+	case 5: return rightTopBack();
+	case 6: return rightTopFront();
+	case 7: return leftTopFront();
+	default: std::cout << "Nani the fuck!?" << std::endl; break;
+	}
+
+	return glm::vec3(0);
+}
+
+void collider::debugRender()
+{
+	glBegin(GL_LINES);
+	drawLine(corner1, corner2);
+	drawLine(corner2, corner3);
+	drawLine(corner3, corner4);
+	drawLine(corner4, corner1);
+	drawLine(corner5, corner6);
+	drawLine(corner6, corner7);
+	drawLine(corner7, corner8);
+	drawLine(corner8, corner5);
+	drawLine(corner1, corner5);
+	drawLine(corner2, corner6);
+	drawLine(corner3, corner7);
+	drawLine(corner4, corner8);
+	glEnd();
 }
 
 void collider::SetTrans(Transform* t)
@@ -162,6 +240,17 @@ void collider::SetTrans(Transform* t)
 	normal4 = glm::normalize(_pos - point4);
 	normal5 = glm::normalize(_pos - point5);
 	normal6 = glm::normalize(_pos - point6);
+
+	halfSize = glm::vec3(GetWidth(), GetHeight(), GetLength()) / 2;
+
+	corner1 = t->getPosition() + halfSize * getLocalPosition(1);
+	corner2 = t->getPosition() + halfSize * getLocalPosition(2);
+	corner3 = t->getPosition() + halfSize * getLocalPosition(3);
+	corner4 = t->getPosition() + halfSize * getLocalPosition(4);
+	corner5 = t->getPosition() + halfSize * getLocalPosition(5);
+	corner6 = t->getPosition() + halfSize * getLocalPosition(6);
+	corner7 = t->getPosition() + halfSize * getLocalPosition(7);
+	corner8 = t->getPosition() + halfSize * getLocalPosition(8);
 }
 
 

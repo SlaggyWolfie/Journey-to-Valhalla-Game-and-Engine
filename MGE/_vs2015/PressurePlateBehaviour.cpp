@@ -36,8 +36,10 @@ void PressurePlateBehaviour::SetPressed(bool value)
 
 void PressurePlateBehaviour::CheckCollision()
 {
+
 	std::vector<collider*> colList = ServiceLocator::instance()->getService<ColliderManager>()->
-		CheckBoxCollision(getGameObject()->getComponent<collider>());
+	CheckBoxCollision(getGameObject()->getComponent<collider>());
+
 	//std::cout << colList.size()<<" size " << std::endl;
 	/*std::cout << this->getGameObject()->getComponent<collider>()->GetPos() << " pos " << std::endl;*/
 
@@ -45,7 +47,7 @@ void PressurePlateBehaviour::CheckCollision()
 	{
 		//std::cout << colList.size() << " "<<"size" << std::endl;
 		std::string name = colList[i]->getGameObject()->getName();
-		if (name.find("Crate") != std::string::npos)
+		if (name.find("Runestone") != std::string::npos)
 		{
 			std::cout << "I should be pressed" << std::endl;
 			SetPressed(true);

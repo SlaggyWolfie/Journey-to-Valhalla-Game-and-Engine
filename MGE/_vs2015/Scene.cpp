@@ -60,8 +60,8 @@ namespace Engine
 			//deserealizer.deserializeIntoStructs(_path);
 			//deserializeStructs(deserealizer.structs, false);
 		}
-		//if (hard)
-		//	hardCode();
+		if (hard)
+			hardCode();
 		if (hard && fromFile)
 			neededHardCode();
 
@@ -282,14 +282,14 @@ namespace Engine
 				transform->setLocalPosition(-gameStruct.position);
 			}
 
-			if (gameObject->getName() == "Pressure plate 1")
-			{
-				gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
-
-				gameObject->addComponent(new PressurePlateBehaviour());
-				//transform->translate(glm::vec3(0.04f, 0, 0));
-			}
+			//if (gameObject->getName() == "Pressure plate 1")
+			//{
+			//	gameObject->addComponent(new collider());
+			//	gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+			//	std::cout << "find PressurePlate1" << std::endl;
+			//	gameObject->addComponent(new PressurePlateBehaviour());
+			//	//transform->translate(glm::vec3(0.04f, 0, 0));
+			//}
 
 			//const auto check = glm::equal(transform->getScale(), glm::vec3(gameStruct.scale));
 			//if (!check.x) transform->scale(glm::vec3(1/gameStruct.scale.x, 1, 1));
@@ -393,6 +393,34 @@ namespace Engine
 				std::cout << "Found Pillar" << std::endl;
 				gameObject->addComponent(new RotatingComponent);
 			}
+
+			if (gameStruct->name.find("Main character 1.2 updated") != std::string::npos)
+			{
+				//gameStruct->transform->position.z *= -1;
+				std::cout << "this is Player" << std::endl;
+
+				gameObject->addComponent(new collider());
+				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+				gameObject->addComponent(new PlayerBaseComponent());
+			}
+			if (gameStruct->name.find("Runestone") != std::string::npos)
+			{
+				//gameStruct->transform->position.z *= -1;
+
+
+				gameObject->addComponent(new collider());
+				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+			}
+
+			if (gameStruct->name.find("Pressure plate 1") != std::string::npos)
+			{
+				//gameStruct->transform->position.z *= -1;
+				std::cout << "this is Plate" << std::endl;
+				gameObject->addComponent(new collider());
+				gameObject->getComponent<collider>()->SetBoxSize(5000, 5000, 5000);
+				gameObject->addComponent(new PressurePlateBehaviour());
+			}
+
 			//Set TRS
 			transform->setLocalPosition(gameStruct->transform->position);
 			transform->setLocalRotation(gameStruct->transform->rotation);
@@ -403,7 +431,6 @@ namespace Engine
 			for (ComponentStruct* component : components)
 			{
 				if (component == mesh) continue;
-
 				gameObject->addComponent(component->makeObject());
 			}
 
@@ -485,12 +512,12 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
-		GameObject_* mc = Model::loadModel(File::findPath("shitbitch2.obj"));
-		auto pls = mc->getComponentInChildren<Material_>();
-		
-		pls->setDiffuseMap(Texture_::load(File::findPath("shitbitch2.png")));
-		//mc->addComponent(new PlayerBaseComponent());
-		mc->addComponent(new collider());
+		//GameObject_* mc = Model::loadModel(File::findPath("shitbitch2.obj"));
+		//auto pls = mc->getComponentInChildren<Material_>();
+		//
+		//pls->setDiffuseMap(Texture_::load(File::findPath("shitbitch2.png")));
+		////mc->addComponent(new PlayerBaseComponent());
+		//mc->addComponent(new collider());
 
 		//auto plateGO = ServiceLocator::instance()->getService<SceneManager>()->getActiveScene()->findGameObject("Pressure plate border");
 		////std::cout << "Pressure plate 1: " + glm::to_string(plateGO->getTransform()->getPosition()) << std::endl;
