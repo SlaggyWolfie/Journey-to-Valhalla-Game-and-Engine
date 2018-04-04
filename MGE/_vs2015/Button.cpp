@@ -176,7 +176,7 @@ namespace Engine
 		void Button::OneShotHint(std::string hint)
 		{
 			using namespace Engine::Utility;
-			Time::now;
+			Time::now();
 		}
 	}
 }

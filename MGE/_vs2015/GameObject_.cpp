@@ -79,16 +79,19 @@ namespace Engine
 			return isActive;
 		}
 
-		void GameObject_::addComponent(Component* newComponent)
+		Component* GameObject_::addComponent(Component* newComponent)
 		{
 			if (newComponent == nullptr)
 			{
 				std::cout << "Null component!?" << std::endl;
-				return;
+				return nullptr;
 			}
 			newComponent->setGameObject(this);
-			_components.push_back(std::unique_ptr<Component>(newComponent));
+			auto comp = std::unique_ptr<Component>(newComponent);
+			_components.push_back(std::move(comp));
 			getGameLoop()->subscribe(newComponent);
+
+			return newComponent;
 		}
 
 		void GameObject_::removeComponent(Component* component)

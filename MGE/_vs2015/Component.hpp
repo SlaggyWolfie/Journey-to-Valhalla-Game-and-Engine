@@ -3,12 +3,12 @@
 #define COMPONENT_HPP
 
 #include "Object.hpp"
-
 namespace Engine
 {
 	namespace Core
 	{
 		class GameObject_;
+		class Transform;
 
 		class Component : public Object
 		{
@@ -16,6 +16,7 @@ namespace Engine
 			friend class GameLoop;
 		public:
 			GameObject_ * getGameObject() const;
+			Transform* getTransform() const;
 			Component();
 			virtual ~Component();
 			Component(const Component&);

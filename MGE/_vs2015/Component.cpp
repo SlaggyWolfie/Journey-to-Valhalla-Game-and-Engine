@@ -12,6 +12,11 @@ namespace Engine
 			return _gameObject;
 		}
 
+		Transform* Component::getTransform() const
+		{
+			return getGameObject()->getTransform();
+		}
+
 		Component::Component() : _gameObject(nullptr), _enabled(true), _started(false)
 		{
 		}

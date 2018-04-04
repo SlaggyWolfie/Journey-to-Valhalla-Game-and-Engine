@@ -60,8 +60,8 @@ namespace Engine
 			//deserealizer.deserializeIntoStructs(_path);
 			//deserializeStructs(deserealizer.structs, false);
 		}
-		//if (hard)
-		//	hardCode();
+		if (hard)
+			hardCode();
 		if (hard && fromFile)
 			neededHardCode();
 
@@ -391,7 +391,7 @@ namespace Engine
 			{
 				//gameStruct->transform->position.z *= -1;
 				std::cout << "Found Pillar" << std::endl;
-				gameObject->addComponent(new RotatingComponent);
+				//gameObject->addComponent(new RotatingComponent);
 			}
 
 			if (gameStruct->name.find("Main character 1.2 updated") != std::string::npos)
@@ -399,6 +399,7 @@ namespace Engine
 				//gameStruct->transform->position.z *= -1;
 				std::cout << "this is Player" << std::endl;
 
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("shitbitch2.png")));
 				gameObject->addComponent(new collider());
 				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
 				gameObject->addComponent(new PlayerBaseComponent());
@@ -512,7 +513,9 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
-		GameObject_* crate = Model::loadModel(File::findPath("Crate.fbx"));
+		//GameObject_* crate = Model::loadModel(File::findPath("Crate.fbx"));
+		GameObject_* crate = new GameObject_("Crate");
+		crate->getTransform()->scale(glm::vec3(0.01f));
 		crate->addComponent(new collider());
 
 		//GameObject_* mc = Model::loadModel(File::findPath("shitbitch2.obj"));

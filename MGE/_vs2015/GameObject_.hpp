@@ -49,13 +49,15 @@ namespace Engine
 			bool setActive(bool isActive = true);
 
 			template <typename T>
-			void addComponent();
+			T* addComponent();
+			//void addComponent();
 			template <typename T>
 			void removeComponent();
 			template <typename T>
 			bool containsComponent();
 
-			void addComponent(Component* newComponent);
+			//void addComponent(Component* newComponent);
+			Component* addComponent(Component* newComponent);
 			void removeComponent(Component* component);
 			bool containsComponent(Component* component);
 
@@ -144,7 +146,8 @@ namespace Engine
 		}
 
 		template <typename T>
-		void GameObject_::addComponent()
+		//void GameObject_::addComponent()
+		T* GameObject_::addComponent()
 		{
 			const auto comp = findComponent<T>();
 
@@ -152,19 +155,24 @@ namespace Engine
 				&& static_cast<Component*>(comp)->isUniquePerGameObject())
 			{
 				std::cout << "Attempting to add unique per game object component:" << std::endl;
-				return;
+				return nullptr;
 			}
 
 			//Might crash
 			if (std::is_default_constructible<T>::value)
 			{
 				//_components.push_back(newComponent);
-				_components.emplace_back(std::make_unique<T>());
-				T* newComponent = static_cast<T*>((&*(_components.end() - 1))->get());
+				auto newComp = std::make_unique<T>();
+				_components.push_back(std::move(newComp));
+				T* newComponent = static_cast<T*>(_components.back().get());
 				newComponent->setGameObject(this);
 				getGameLoop()->subscribe(newComponent);
+
+				return newComponent;
 			}
 			else std::cout << "Failed to add component. Has no default constructor." << std::endl;
+
+			return nullptr;
 		}
 
 		template <typename T>
