@@ -49,9 +49,9 @@ namespace Engine
 		//return;
 		if (fromFile)
 		{
-			Deserializer2 deserializer2;
-			deserializer2.deserializeIntoStructs("Level_1.json");
-			deserializeStructs2(deserializer2.gameStructs);
+			//Deserializer2 deserializer2;
+			//deserializer2.deserializeIntoStructs("Level_1.json");
+			//deserializeStructs2(deserializer2.gameStructs);
 
 			//Model::debug(true);
 			//Model::clipPaths = false;
@@ -176,7 +176,6 @@ namespace Engine
 					//continue;
 					if (gameStruct.name.find("Cylinder") != std::string::npos)
 						gameStruct.meshName = "Cylinder.fbx";
-
 				}
 				//if (gameStruct.meshName.find("Main character") != std::string::npos)
 				//{
@@ -497,6 +496,14 @@ namespace Engine
 		ExitButton->loadSprite("Exit.png");
 		ExitButton->getSprite().setPosition(10, height * 9 / 10);
 
+		//Text* testText = new Text(true);
+		//testText->setFont("mge/fonts/arial.ttf");
+		//testText->setTextInformation("Testxxxx");
+		//testText->getTextObject().setPosition(10, height * 9 / 10);
+		//testText->setWindow(window);
+		//testText->setTextAlignment(UI::Left_Justified);
+		//testText->getTextObject().setCharacterSize(100);
+		//testText->getTextObject().setFillColor(sf::Color::White);
 
 		BackGround->getSprite().setScale(2, 2);
 
@@ -513,13 +520,23 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
+		//loadMenu();
+
+		UI::Text::showHint("THIS IS A HINT! I WORK!", 2, 15);
+
 		//GameObject_* crate = Model::loadModel(File::findPath("Crate.fbx"));
-		GameObject_* crate = new GameObject_("Crate");
-		crate->getTransform()->scale(glm::vec3(0.01f));
-		crate->addComponent(new collider());
-		GameObject_* t = this->findGameObject("Pressure plate 1");
-		t->getComponent<collider>()->SetSphereRadius(1.5f);
-		this->findGameObject("Gate1_1")->addComponent<GateBehaviour>()->AddPlate(t->getComponent<PressurePlateBehaviour>());
+		//GameObject_* crate = new GameObject_("Crate");
+		//crate->getTransform()->scale(glm::vec3(0.01f));
+		//crate->addComponent(new collider());
+		//GameObject_* t = this->findGameObject("Pressure plate 1");
+		//t->getComponent<collider>()->SetSphereRadius(1.5f);
+		//this->findGameObject("Gate1_1")->addComponent<GateBehaviour>()->AddPlate(t->getComponent<PressurePlateBehaviour>());
+
+		//std::function<void()> func = []() {std::cout << "Print" << std::endl; };
+		//Engine::Utility::Time::timeout(10, func);
+		//Engine::Utility::Time::timeout(11, func);
+		//Engine::Utility::Time::timeout(12, func);
+		//Engine::Utility::Time::timeout(13, func);
 
 		//GameObject_* mc = Model::loadModel(File::findPath("shitbitch2.obj"));
 		//auto pls = mc->getComponentInChildren<Material_>();

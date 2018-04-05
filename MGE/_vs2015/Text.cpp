@@ -10,17 +10,26 @@ namespace Engine
 	namespace UI
 	{
 		bool Text::drawHint = false;
-		Text* Text::hint = nullptr;
+		Text* Text::_hint = nullptr;
 
-		void Text::makeHint()
+		Text* Text::hint()
 		{
-			hint = new Text(false);
+			if (!_hint)
+			{
+				_hint = new Text(false);
+				_hint->getTextObject().setPosition(600, 600);
+				_hint->setTextInformation("HINT!");
+				_hint->getTextObject().setCharacterSize(100);
+				_hint->getTextObject().setFillColor(sf::Color::White);
+				_hint->setFont("mge/fonts/arial.ttf");
+			}
+
+			return _hint;
 		}
 
 		void Text::showHint(const std::string& hintText, const float startAfterTime, const float duration)
 		{
-			if (!hint) makeHint();
-			hint->setTextInformation(hintText);
+			hint()->setTextInformation(hintText);
 
 			std::function<void()> hide = []
 			{
@@ -37,6 +46,12 @@ namespace Engine
 
 		Text::Text(const bool rendering) : ComponentUI(rendering)
 		{
+
+			//t =  sf::Text();
+			//sf::Font f;
+			//f.loadFromFile("mge/fonts/arial.ttf");
+			//t.setFont(f);
+			//t.setString("check");
 			setTextInformation("");
 		}
 
@@ -51,7 +66,7 @@ namespace Engine
 			switch (alignment)
 			{
 			default:
-				std::cout << "Undefined Text Alignment. Defaulting to Left." << std::endl;
+				std::cout << "Undefined Text Alignment. Defaulting to Left Justified." << std::endl;
 			case Left_Justified:
 				_text.setOrigin(0, 0); break;
 			case Right_Justified:

@@ -110,7 +110,7 @@ namespace Engine
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
 					Engine::UI::Text::drawHint = !Engine::UI::Text::drawHint;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
-					std::cout << Engine::UI::Text::hint->getTextInformation() << std::endl;
+					std::cout << Engine::UI::Text::hint()->getTextInformation() << std::endl;
 
 				if (!Engine::Utility::Time::isPaused())
 				{

@@ -130,10 +130,6 @@ namespace Engine
 			renderTransparent();
 
 			_fps_hud->setTextInformation("FPS: " + std::to_string(static_cast<int>(getFPS())));
-			glActiveTexture(GL_TEXTURE0);
-			getWindow()->pushGLStates();
-			_fps_hud->draw();
-			getWindow()->popGLStates();
 
 			renderUI();
 
@@ -196,15 +192,18 @@ namespace Engine
 			glActiveTexture(GL_TEXTURE0);
 			getWindow()->pushGLStates();
 
+			_fps_hud->draw();
+
 			if (!_uiRenderers.empty())
 			{
 				for (auto& ui : _uiRenderers)
 					if (ui->isEnabled())
 						ui->draw();
 			}
+
 			if (UI::Text::drawHint)
 			{
-				UI::Text::hint->draw();
+				UI::Text::hint()->draw();
 				std::cout << "trying to draw hint" << std::endl;
 			}
 

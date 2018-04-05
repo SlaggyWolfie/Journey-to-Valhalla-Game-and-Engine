@@ -41,7 +41,7 @@ namespace Engine
 			static float fixedDeltaTime();
 			static void setTimeStep(float timeStep);
 			static float getTimeStep();
-			static void timeout(float interval, const std::function<void()>& timeoutEvent);
+			static void timeout(float interval, std::function<void()> timeoutEvent);
 		private:
 			static void start();
 			static void start(float timeStep);

@@ -3,13 +3,13 @@
 #include "RenderManager.hpp"
 #include "Core/Game.hpp"
 
-ComponentUI::ComponentUI(const bool rendering) : _window(nullptr), _mainDrawable(nullptr)
+ComponentUI::ComponentUI(const bool rendering) : _mainDrawable(nullptr), _window(nullptr)
 {
 	if (rendering)
 		Engine::ServiceLocator::instance()->getService<Engine::Rendering::RenderManager>()->addUI(this);
 }
 
-ComponentUI::ComponentUI(sf::RenderWindow * window, const bool rendering) : _window(window), _mainDrawable(nullptr)
+ComponentUI::ComponentUI(sf::RenderWindow * window, const bool rendering) : _mainDrawable(nullptr), _window(window)
 {
 	if (rendering)
 		Engine::ServiceLocator::instance()->getService<Engine::Rendering::RenderManager>()->addUI(this);

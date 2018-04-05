@@ -37,7 +37,7 @@ std::vector<collider*> ColliderManager::CheckCollision(collider* object)
 
 			if (distance < (object->GetRadius() + allColliders[i]->GetRadius()))
 			{
-				std::cout << "Collision!" << std::endl;
+				//std::cout << "Collision!" << std::endl;
 				collideList.push_back(allColliders[i]);
 				//std::cout << collideList.size() << std::endl;
 			}

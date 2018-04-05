@@ -18,7 +18,7 @@ void GateBehaviour::update()
 {
 	TogglePositions();
 	CheckCollision();
-	std::cout << "i am opened " << AllPressed() << std::endl;
+	//std::cout << "i am opened " << AllPressed() << std::endl;
 }
 
 bool GateBehaviour::AllPressed()

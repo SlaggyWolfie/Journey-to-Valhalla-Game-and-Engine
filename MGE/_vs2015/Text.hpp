@@ -12,9 +12,8 @@ namespace Engine
 		class Text : public ComponentUI
 		{
 		public:
-			static Text* hint;
+			static Text* hint();
 			static bool drawHint;
-			static void makeHint();
 			static void showHint(const std::string& hintText, float startAfterTime = 0, float duration = 6);
 			Text(bool rendering = true);
 			Text(sf::RenderWindow* window, bool rendering = true);
@@ -33,6 +32,7 @@ namespace Engine
 			TextAlignment getTextAlignment() const;
 
 			void draw() override;
+			static Text* _hint;
 		private:
 			//std::unique_ptr<sf::Text> 
 			//sf::RenderWindow * _window = nullptr;
@@ -41,6 +41,7 @@ namespace Engine
 
 			sf::Font _font;
 			sf::Text _text;
+			sf::Text t;
 
 			TextAlignment _alignment = Left_Justified;
 		};

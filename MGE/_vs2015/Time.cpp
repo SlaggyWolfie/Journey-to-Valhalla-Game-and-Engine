@@ -19,12 +19,12 @@ namespace Engine
 		Time::TimeoutEvent::TimeoutEvent(const float interval, std::function<void()> event) :
 			_interval(interval), _timeout(Time::now() + _interval), _event(event)
 		{
-			std::cout << "Timeout event with interval " + std::to_string(_timeout) + " created." << std::endl;
+			//std::cout << "Timeout event with interval " + std::to_string(_timeout) + " created." << std::endl;
 		}
 
 		Time::TimeoutEvent::~TimeoutEvent()
 		{
-			std::cout << "Timeout event with interval " + std::to_string(_timeout) + " completed." << std::endl;
+			//std::cout << "Timeout event with interval " + std::to_string(_timeout) + " completed." << std::endl;
 		}
 
 		bool Time::TimeoutEvent::operator<(const TimeoutEvent& other) const
@@ -140,7 +140,7 @@ namespace Engine
 			return _timeStep_seconds;
 		}
 
-		void Time::timeout(const float interval, const std::function<void()>& timeoutEvent)
+		void Time::timeout(const float interval, const std::function<void()> timeoutEvent)
 		{
 			_timeouts.insert(_timeouts.end(), new TimeoutEvent(interval, timeoutEvent));
 			//std::cout << "Timeouts insert: " + std::to_string(static_cast<int>(_timeouts.size())) << std::endl;
