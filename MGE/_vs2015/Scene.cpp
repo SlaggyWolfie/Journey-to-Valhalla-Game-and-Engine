@@ -517,6 +517,9 @@ namespace Engine
 		GameObject_* crate = new GameObject_("Crate");
 		crate->getTransform()->scale(glm::vec3(0.01f));
 		crate->addComponent(new collider());
+		GameObject_* t = this->findGameObject("Pressure plate 1");
+		t->getComponent<collider>()->SetSphereRadius(1.5f);
+		this->findGameObject("Gate1_1")->addComponent<GateBehaviour>()->AddPlate(t->getComponent<PressurePlateBehaviour>());
 
 		//GameObject_* mc = Model::loadModel(File::findPath("shitbitch2.obj"));
 		//auto pls = mc->getComponentInChildren<Material_>();

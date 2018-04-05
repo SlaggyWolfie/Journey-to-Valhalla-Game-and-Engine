@@ -64,7 +64,7 @@ void PressurePlateBehaviour::start()
 	_notActivatedPos = transform->getPosition();
 	_activatedPos = _notActivatedPos//transform->getPosition();
 		//;
-		+ glm::vec3(0, -1, 0);
+		+ glm::vec3(0, -0.3f, 0);
 }
 
 void PressurePlateBehaviour::TogglePositions()
