@@ -10,6 +10,7 @@
 #include "../_vs2015/Time.hpp"
 #include "../_vs2015/Button.hpp"
 using namespace Engine;
+using namespace Engine::UI;
 std::string LuaScript::message = std::string();
 
 LuaScript::LuaScript()
@@ -233,13 +234,35 @@ int LuaScript::GetGameTime(lua_State * state)
 	return 0;
 }
 
+int LuaScript::NewButton(lua_State * state)
+{
+	if (lua_isstring(state, 1) && lua_isnumber(state,2) && lua_isnumber(state, 3))
+	{
+		std::string path = (std::string) lua_tostring(state, 1);
+		float x = (float)lua_tonumber(state, 2);
+		float y = (float)lua_tonumber(state, 3);
+
+		Button* btn = new Button(false);
+		btn->loadSprite(path);
+		btn->getSprite().setPosition(sf::Vector2f(x, y));
+
+		lua_pushlightuserdata(state, btn);
+		return 1;
+	}
+	return luaL_error(state, " faulty arguments");
+}
+
 int LuaScript::AddToMenu(lua_State * state)
 {
 	if (lua_isstring(state, 1) &&lua_islightuserdata(state,2))
 	{
-		using namespace Engine::UI;
+		
 		int n = lua_gettop(state);
 		std::string name = (std::string)lua_tostring(state, 1);
+
+		if (Button::menus.find(name) == Button::menus.end())
+			Button::menus[name] = std::vector<Button*>();
+
 		std::vector<Button*>& buttons = Button::menus[name];
 		for (int i = 2; i < n; i++)
 		{
@@ -247,6 +270,7 @@ int LuaScript::AddToMenu(lua_State * state)
 			buttons.push_back(b);
 		}
 
+		return 0;
 	}
 	//"MainMenu",btn1,btn2,btn3,btn4,btn5
 	return luaL_error(state, " faulty arguments");
