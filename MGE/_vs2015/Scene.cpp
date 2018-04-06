@@ -496,6 +496,8 @@ namespace Engine
 		ExitButton->loadSprite("Exit.png");
 		ExitButton->getSprite().setPosition(10, height * 9 / 10);
 
+		if(true)
+			//forloop trough all vectors of buttons and disable them except one vector
 		//Text* testText = new Text(true);
 		//testText->setFont("mge/fonts/arial.ttf");
 		//testText->setTextInformation("Testxxxx");

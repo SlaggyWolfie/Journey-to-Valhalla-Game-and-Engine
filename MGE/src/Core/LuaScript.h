@@ -15,15 +15,17 @@ public:
 	void Initialize();
 	static int ShowHint(lua_State * state);
 	static int OpenDoor(lua_State * state);
-	int OnTriggerEnter(lua_State * state);
+	static int OnTriggerEnter(lua_State * state);
 	static int PushBackObj(lua_State * state);
 	static int CollisionBetween(lua_State * state);
 	static int SphereCollisionBetween(lua_State * state);
 	static int GetGameTime(lua_State* state);
+	static int NewButton(lua_State* state);
+	static int AddToMenu(lua_State* state);
+
 
 
 	//static int KeyDown(lua_State * state);
-	void printMsg();
 	void stackDump(lua_State *state, const char * pre);
 	void update() override;
 	void start() override;

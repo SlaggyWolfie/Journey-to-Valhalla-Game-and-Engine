@@ -8,6 +8,7 @@
 #include "../../_vs2015/PlayerBaseComponent.h"
 #include "../../_vs2015/LastposStasher.h"
 #include "../_vs2015/Time.hpp"
+#include "../_vs2015/Button.hpp"
 using namespace Engine;
 std::string LuaScript::message = std::string();
 
@@ -166,6 +167,7 @@ int LuaScript::PushBackObj(lua_State * state)
 {
 	if (lua_isstring(state, 1) && lua_gettop(state) == 2 && lua_isstring(state, 2))
 	{
+		//lua_gettop(state)
 		//std::string name =lua_tostring(state, 1);
 		//ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
 		//auto comp = _colliderManager->GetColliderByName(name)->getGameObject()->getComponent<PlayerBaseComponent>();
@@ -229,5 +231,24 @@ int LuaScript::GetGameTime(lua_State * state)
 {
 	lua_pushnumber(state, Engine::Utility::Time::now()/60.0f);
 	return 0;
+}
+
+int LuaScript::AddToMenu(lua_State * state)
+{
+	if (lua_isstring(state, 1) &&lua_islightuserdata(state,2))
+	{
+		using namespace Engine::UI;
+		int n = lua_gettop(state);
+		std::string name = (std::string)lua_tostring(state, 1);
+		std::vector<Button*>& buttons = Button::menus[name];
+		for (int i = 2; i < n; i++)
+		{
+			Button* b= (Button*)lua_topointer(state, i);
+			buttons.push_back(b);
+		}
+
+	}
+	//"MainMenu",btn1,btn2,btn3,btn4,btn5
+	return luaL_error(state, " faulty arguments");
 }
 
