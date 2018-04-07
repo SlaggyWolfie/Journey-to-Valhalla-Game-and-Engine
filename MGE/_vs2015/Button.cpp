@@ -9,6 +9,8 @@ namespace Engine
 {
 	namespace UI
 	{
+		std::map<std::string, std::vector<Button*>> Button::menus;
+
 		Button::Button(const bool rendering) : ComponentUI(rendering)
 		{
 		}
@@ -19,6 +21,7 @@ namespace Engine
 
 		void Button::draw()
 		{
+			//if (!isEnabled()) return;
 			switch (_status)
 			{
 			case Clicked:
@@ -88,6 +91,7 @@ namespace Engine
 			if (_status == Clicked) return;
 
 			_status = Clicked;
+
 			//if (!_clickingSpriteLoaded)
 			//{
 			//	if (!_hoveringSpriteLoaded) {
@@ -130,7 +134,7 @@ namespace Engine
 			}
 		}
 
-		void Button::loadSprite(const std::string & path, ButtonStatus status)
+		void Button::loadSprite(const std::string & path,float x,float y, ButtonStatus status)
 		{
 			sf::Sprite* sprite = new sf::Sprite();
 			sf::Texture* texture = new sf::Texture();
@@ -139,8 +143,8 @@ namespace Engine
 				std::cout << "Texture not loaded." << std::endl;
 				return;
 			}
-
 			sprite->setTexture(*texture);
+			sprite->setPosition(sf::Vector2f(x, y));
 			loadSprite(*sprite, status);
 		}
 
@@ -171,6 +175,10 @@ namespace Engine
 			//_exitSpr = sf::Button(_exitButton);*/
 
 			//_playSpr.setPosition(sf::Vector2f(50, 100));
+		}
+
+		void Button::SetEvent(std::string event)
+		{
 		}
 
 		void Button::OneShotHint(std::string hint)
