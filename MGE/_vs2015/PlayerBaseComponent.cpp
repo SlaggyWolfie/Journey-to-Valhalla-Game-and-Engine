@@ -201,7 +201,7 @@ void PlayerBaseComponent::RayCast()
 
 	//std::cout << ServiceLocator::instance()->getService<ColliderManager>()->getColliders().size() << std::endl;
 	//fake collision loop in here
-	for (int i = 0; i < ServiceLocator::instance()->getService<ColliderManager>()->getColliders().size(); i++)
+	for (unsigned i = 0; i < ServiceLocator::instance()->getService<ColliderManager>()->getColliders().size(); i++)
 	{
 		collider* child = ServiceLocator::instance()->getService<ColliderManager>()->getColliders()[i];
 		//if (child == _world->getMainCamera()) continue;

@@ -39,6 +39,7 @@ namespace Engine
 		protected:
 			void awake() override;
 			void update() override;
+			void lateUpdate() override;
 		private:
 			static Camera_* _main;
 			float _fov;

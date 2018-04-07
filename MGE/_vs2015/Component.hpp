@@ -3,8 +3,11 @@
 #define COMPONENT_HPP
 
 #include "Object.hpp"
+#include "RenderManager.hpp"
+
 namespace Engine
 {
+	//namespace Rendering { class RenderManager; }
 	namespace Core
 	{
 		class GameObject_;
@@ -12,8 +15,10 @@ namespace Engine
 
 		class Component : public Object
 		{
+			friend class Engine::Rendering::RenderManager;
 			friend class GameObject_;
 			friend class GameLoop;
+			//friend class Engine::Rendering::RenderManager;
 		public:
 			GameObject_ * getGameObject() const;
 			Transform* getTransform() const;
@@ -25,7 +30,7 @@ namespace Engine
 			bool isEnabled() const;
 			void setEnabled(bool enable);
 
-			virtual void destroy() override;
+			void destroy() override;
 		protected:
 			virtual void start() {};
 			virtual void awake() {};
@@ -34,6 +39,7 @@ namespace Engine
 			virtual void fixedUpdate() {};
 			virtual void lateUpdate() {};
 			virtual void onValidate() {};
+			virtual void renderDebug() {};
 
 			void setGameObject(GameObject_* gameObject);
 			virtual bool isUniquePerGameObject();

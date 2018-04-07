@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 #ifndef RENDERER__HPP
 #define RENDERER__HPP
 #include "Component.hpp"
@@ -15,9 +15,9 @@ namespace Engine
 		class Mesh_;
 		class Shader;
 		class LightManager;
-		class RenderManager;
+		//class RenderManager;
 
-		class Renderer_ : public Core::Component
+		class Renderer_ : public Engine::Core::Component
 		{
 			friend class RenderManager;
 		public:
@@ -113,6 +113,7 @@ namespace Engine
 
 			void findMesh();
 			void findMaterial();
+
 			void prewake() override;
 			bool isUniquePerGameObject() override;
 		};

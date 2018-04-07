@@ -1,6 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <memory>
 #include "ComponentUI.hpp"
 
 namespace Engine

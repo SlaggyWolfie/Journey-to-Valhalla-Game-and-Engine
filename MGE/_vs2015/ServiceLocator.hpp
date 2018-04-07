@@ -59,7 +59,13 @@ namespace Engine
 	T* ServiceLocator::getService()
 	{
 		auto check = findService<T>();
-		if (check != nullptr) return check;
+		if (check != nullptr)
+		{
+			//std::cout << "Found Service: " << typeid(T).name() << std::endl;
+			return check;
+		}
+
+		//std::cout << "Found Nothing." << std::endl;
 		return nullptr;
 	}
 
@@ -68,7 +74,7 @@ namespace Engine
 	{
 		if (!std::is_base_of<Service, T>())
 		{
-			std::cout << "Wrong Type T: getService()" << std::endl;
+			std::cout << "Wrong Type T: findService()" << std::endl;
 			return nullptr;
 		}
 
@@ -78,7 +84,7 @@ namespace Engine
 			if (cast_service != nullptr) return cast_service;
 			//std::cout << "Saltier" + std::to_string(typeid(T)) << std::endl;
 		}
-		 //std::cout << "Salty" << std::endl;
+		//std::cout << "Salty" << std::endl;
 
 
 		return nullptr;

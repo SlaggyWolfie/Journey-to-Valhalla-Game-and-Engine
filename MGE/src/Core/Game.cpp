@@ -12,6 +12,7 @@
 #include "../_vs2015/Scene.hpp"
 #include "../_vs2015/Texture_.hpp"
 #include "Deserealizer.hpp"
+#include <glm.hpp>
 
 //#include "GameLoop.hpp"
 
@@ -40,7 +41,72 @@ namespace Engine
 		initializeServices();
 		std::cout << std::endl << "Engine initialized." << std::endl << std::endl;
 
-		initializeScene();
+
+		////make sure we test the depthbuffer
+		//glEnable(GL_DEPTH_TEST);
+
+		////tell opengl which vertex winding is considered to be front facing
+		//glFrontFace(GL_CCW);
+
+		////tell opengl to enable face culling for the back faces
+		//glEnable(GL_CULL_FACE);
+		//glCullFace(GL_BACK);
+
+		//glEnable(GL_BLEND);
+		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		//glEnable(GL_FRAMEBUFFER_SRGB);
+
+		//glClearColor(
+		//	static_cast<float>(0x2d) / 0xff,
+		//	static_cast<float>(0x6b) / 0xff,
+		//	static_cast<float>(0xce) / 0xff,
+		//	1.0f);
+
+		
+
+		initializeScene(); 
+		
+		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		//glDisable(GL_BLEND);
+		////glEnable(GL_BLEND);
+
+		//glDepthFunc(GL_LESS);
+		//glDepthMask(GL_TRUE);
+
+		//glCullFace(GL_BACK);
+
+		//glViewport(0, 0, getWindow()->getSize().x, getWindow()->getSize().y);
+
+		//glm::vec3 translation = glm::vec3(0, 0, 3);
+		//glm::vec3 point1 = glm::vec3(3, 0, -3);
+		//glm::vec3 point2 = glm::vec3(-3, 0, -3);
+
+		//glm::mat4 model = glm::translate(translation);
+		//glm::mat4 view = glm::translate(-translation);
+		//glm::mat4 proj = glm::perspective(glm::radians(45.0f), 1280.0f / 1024.0f, 0.1f, 100.0f);
+
+		//while (true)
+		//{
+		//	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		//	glUseProgram(0);
+		//	glMatrixMode(GL_PROJECTION);
+		//	glLoadMatrixf(glm::value_ptr(proj));
+		//	glMatrixMode(GL_MODELVIEW);
+		//	glLoadMatrixf(glm::value_ptr(view * model));
+
+		//	glBegin(GL_LINES);
+		//	glColor3fv(glm::value_ptr(glm::vec3(1, 0, 0)));
+		//	glVertex3fv(glm::value_ptr(point1));
+		//	glVertex3fv(glm::value_ptr(point2));
+		//	glEnd();
+
+		//	sf::Event event;
+		//	while (_window->pollEvent(event)) {}
+		//	_window->display();
+		//}
 	}
 
 	sf::RenderWindow* Game::getWindow()

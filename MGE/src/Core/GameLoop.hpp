@@ -30,6 +30,7 @@ namespace Engine
 			bool isSubscribed(Component* component);
 
 			void run();
+			void renderDebugging();
 			bool hasStarted() const;
 		private:
 			bool _started = false;
@@ -42,10 +43,12 @@ namespace Engine
 			void lateUpdate();
 
 			Game* getGame();
+			sf::RenderWindow* getWindow();
 			Rendering::RenderManager* getRenderManager();
 			ColliderManager* getColliderManager();
 
 			Game* _game = nullptr;
+			sf::RenderWindow* _window = nullptr;
 			Rendering::RenderManager* _renderManager = nullptr;
 			ColliderManager* _colliderManager = nullptr;
 

@@ -22,6 +22,7 @@
 #include "SceneManager.hpp"
 #include "RotatingComponent.hpp"
 #include "Deserializer2.hpp"
+#include "Text.hpp"
 
 namespace Engine
 {
@@ -49,9 +50,9 @@ namespace Engine
 		//return;
 		if (fromFile)
 		{
-			//Deserializer2 deserializer2;
-			//deserializer2.deserializeIntoStructs("Level_1.json");
-			//deserializeStructs2(deserializer2.gameStructs);
+			Deserializer2 deserializer2;
+			deserializer2.deserializeIntoStructs("Level_1.json");
+			deserializeStructs2(deserializer2.gameStructs);
 
 			//Model::debug(true);
 			//Model::clipPaths = false;
@@ -401,7 +402,7 @@ namespace Engine
 				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("shitbitch2.png")));
 				gameObject->addComponent(new collider());
 				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
-				gameObject->addComponent(new PlayerBaseComponent());
+				//gameObject->addComponent(new PlayerBaseComponent());
 			}
 			if (gameStruct->name.find("Runestone") != std::string::npos)
 			{
@@ -417,7 +418,7 @@ namespace Engine
 				//gameStruct->transform->position.z *= -1;
 				std::cout << "this is Plate" << std::endl;
 				gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(5000, 5000, 5000);
+				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
 				gameObject->addComponent(new PressurePlateBehaviour());
 			}
 
@@ -440,7 +441,15 @@ namespace Engine
 				gameObject->getTransform()->scale(glm::vec3(0.01f));
 				gameObject->getTransform()->scale(glm::vec3(0.01f));
 				//gameObject->getTransform()->scale(glm::vec3(0.01f));
-				std::cout << "Found Floor" << std::endl;
+				//std::cout << "Found Floor" << std::endl;
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("RockTiles_basecolor2.png")));
+			}
+
+			if (gameStruct->name.find("Stone_Coffin") != std::string::npos)
+			{
+				std::cout << "Find Coffin" << std::endl;
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("Stone_Coffin_Coffin_Material_AlbedoTransparency.png")));
+				
 			}
 
 
@@ -474,8 +483,8 @@ namespace Engine
 		using namespace Engine::UI;
 		sf::RenderWindow* window = ServiceLocator::instance()->getService<Engine::Game>()->getWindow();
 		const sf::Vector2u windowSize = window->getSize();
-		const float width = windowSize.x;
-		const float height = windowSize.y;
+		const float width = static_cast<float>(windowSize.x);
+		const float height = static_cast<float>(windowSize.y);
 
 		Button* BackGround = new Button();
 		BackGround->loadSprite("bg.jpg");

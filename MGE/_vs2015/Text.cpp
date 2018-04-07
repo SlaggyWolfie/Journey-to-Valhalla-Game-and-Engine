@@ -1,7 +1,5 @@
 #include "Text.hpp"
 #include <iostream>
-#include <GL/glew.h>
-#include "ServiceLocator.hpp"
 #include "Core/Game.hpp"
 #include "Time.hpp"
 

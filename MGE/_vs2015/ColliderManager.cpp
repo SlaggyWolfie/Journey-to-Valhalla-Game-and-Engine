@@ -3,6 +3,7 @@
 #include "GameObject_.hpp"
 #include <iostream>
 #include "glm.hpp"
+#include <SFML/Window.hpp>
 
 
 void ColliderManager::initialize()
@@ -61,7 +62,7 @@ std::vector<collider*> ColliderManager::CheckBoxCollision(collider * object)
 {
 	std::vector<collider*> collideList;
 	//std::cout << allColliders.size() << std::endl;
-	for (int i = 0; i <allColliders.size(); i++)
+	for (unsigned i = 0; i <allColliders.size(); i++)
 	{
 		if (allColliders[i]->getGameObject()->getName() != object->getGameObject()->getName())
 		{
@@ -170,7 +171,7 @@ void ColliderManager::removeCollider(int index)
 collider* ColliderManager::GetColliderByName(std::string GameObjectName)
 {
 	
-	for (int i = 0; i < allColliders.size(); i++)
+	for (unsigned i = 0; i < allColliders.size(); i++)
 	{
 		//std::cout << allColliders[i]->getGameObject()->getName() << std::endl;
 		if (GameObjectName==allColliders[i]->getGameObject()->getName())

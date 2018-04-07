@@ -10,6 +10,7 @@
 #include <GL/glew.h>
 #include "../_vs2015/SceneManager.hpp"
 #include "../../_vs2015/Sound.hpp"
+#include "../_vs2015/Text.hpp"
 
 namespace Engine
 {
@@ -17,7 +18,7 @@ namespace Engine
 	{
 		GameLoop::GameLoop()
 		{
-			createOwnedLoops();
+			//createOwnedLoops();
 		}
 
 		GameLoop::~GameLoop()
@@ -81,7 +82,7 @@ namespace Engine
 		{
 			//if (getRenderManager() == nullptr) std::cout << "What" << std::endl;
 			getRenderManager()->startFPSClock();
-			
+
 			//settings to make sure the update loop runs at 60 fps
 			const sf::Time timePerFixedFrame = sf::seconds(1.0f / 60.0f);
 			Utility::Time::start(timePerFixedFrame.asSeconds());
@@ -104,7 +105,7 @@ namespace Engine
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
 					ServiceLocator::instance()->getService<SceneManager>()->loadScene("finalLvl1.json");
-					//ServiceLocator::instance()->getService<SceneManager>()->loadScene("Assets/Scenes/test.json");
+				//ServiceLocator::instance()->getService<SceneManager>()->loadScene("Assets/Scenes/test.json");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
 					Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/donnerre2.wav");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
@@ -119,6 +120,10 @@ namespace Engine
 				}
 
 				getRenderManager()->render();
+
+				//getWindow()->display();
+
+				//getRenderManager()->calculateFPS();
 
 				//empty the event queue
 				getGame()->processEvents();
@@ -165,12 +170,26 @@ namespace Engine
 						comp->lateUpdate();
 		}
 
+		void GameLoop::renderDebugging()
+		{
+			if (!_components.empty())
+				for (const auto& comp : _components)
+					if (comp->isEnabled() && comp->getGameObject()->isActive())
+						comp->renderDebug();
+		}
+
 		Game* GameLoop::getGame()
 		{
 			if (!_game)
 				_game = ServiceLocator::instance()->getService<Game>();
 
 			return _game;
+		}
+
+		sf::RenderWindow* GameLoop::getWindow()
+		{
+			if (!_window) _window = getGame()->getWindow();
+			return _window;
 		}
 
 		Rendering::RenderManager* GameLoop::getRenderManager()

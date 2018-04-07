@@ -27,7 +27,7 @@ namespace Engine
 		}
 
 		GameObject_::~GameObject_()
-		= default;
+			= default;
 
 
 		std::string GameObject_::getName() const
@@ -125,6 +125,15 @@ namespace Engine
 			return false;
 		}
 
+		std::vector<Core::Component*> GameObject_::getComponentsList()
+		{
+			std::vector<Core::Component*> components;
+			for (auto& comp : _components)
+				components.push_back(comp.get());
+
+			return components;
+		}
+
 		int GameObject_::getComponentsCount() const
 		{
 			return _components.size();
@@ -132,7 +141,7 @@ namespace Engine
 
 		GameLoop* GameObject_::getGameLoop()
 		{
-			if (_gameLoop == nullptr) 
+			if (_gameLoop == nullptr)
 				_gameLoop = ServiceLocator::instance()->getService<GameLoop>();
 			return _gameLoop;
 		}

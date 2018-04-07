@@ -75,7 +75,7 @@ public:
 	static glm::vec3 rightTopFront();
 	static glm::vec3 getLocalPosition(int index);
 
-
+	void debugRender(glm::mat4 proj, glm::mat4 view);
 private:
 	ColliderManager * _colliderManager;
 	glm::vec3 _pos;
@@ -91,7 +91,8 @@ private:
 	float _radius = 0.5f;
 	bool _enabled;
 
-	void debugRender(glm::mat4 proj, glm::mat4 view);
 	void drawLine(glm::vec3 point1, glm::vec3 point2);
+protected:
+	void renderDebug() override;
 };
 

@@ -43,7 +43,7 @@ void PressurePlateBehaviour::CheckCollision()
 	//std::cout << colList.size()<<" size " << std::endl;
 	/*std::cout << this->getGameObject()->getComponent<collider>()->GetPos() << " pos " << std::endl;*/
 
-	for (int i = 0; i < colList.size(); i++)
+	for (unsigned i = 0; i < colList.size(); i++)
 	{
 		//std::cout << colList.size() << " "<<"size" << std::endl;
 		std::string name = colList[i]->getGameObject()->getName();

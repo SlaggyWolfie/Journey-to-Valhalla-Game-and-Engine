@@ -22,6 +22,7 @@ namespace Engine
 		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_ANIMATIONS, false);
 		import.SetPropertyBool(AI_CONFIG_IMPORT_FBX_READ_LIGHTS, false);
 		const aiScene *scene = import.ReadFile(path,
+			//aiProcess_FlipUVs | 
 			aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_GenSmoothNormals
 			| aiProcess_ImproveCacheLocality | aiProcess_GenUVCoords | aiProcess_FindInvalidData
 			| aiProcess_SplitLargeMeshes | aiProcess_ValidateDataStructure | aiProcess_CalcTangentSpace

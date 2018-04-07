@@ -1,21 +1,24 @@
 #include "RenderManager.hpp"
+
 #include <GL/glew.h>
-#include "Renderer_.hpp"
-#include "FunctionGroup.hpp"
-#include <functional>
-#include "../_vs2015/GameObject_.hpp"
-#include "../_vs2015/Transform.hpp"
+#include <algorithm>
 #include <map>
-#include "../_vs2015/Camera_.hpp"
-#include "Texture_.hpp"
+
 #include "ServiceLocator.hpp"
 #include "Core/Game.hpp"
-#include <algorithm>
 #include "ShadowMap.hpp"
+#include "LightManager.hpp"
+
+#include "Renderer_.hpp"
+#include "GameObject_.hpp"
+#include "Transform.hpp"
+#include "Camera_.hpp"
+#include "Texture_.hpp"
 #include "Light_.hpp"
 #include "Shader.hpp"
-#include "LightManager.hpp"
-#include "mge/config.hpp"
+//#include "ComponentUI.hpp"
+#include "Text.hpp"
+#include "collider.h"
 
 //#include "LightManager.hpp"
 
@@ -126,8 +129,30 @@ namespace Engine
 			glCullFace(GL_BACK);
 
 			glViewport(0, 0, getWindow()->getSize().x, getWindow()->getSize().y);
+
+			//glm::vec3 translation = glm::vec3(0, 0, 3);
+			//glm::vec3 point1 = glm::vec3(3, 0, -3);
+			//glm::vec3 point2 = glm::vec3(-3, 0, -3);
+
+			//glm::mat4 model = glm::translate(translation);
+			//glm::mat4 view = glm::translate(-translation);
+			//glm::mat4 proj = glm::perspective(glm::radians(45.0f), 1280.0f / 1024.0f, 0.1f, 100.0f);
+
+			//glUseProgram(0);
+			//glMatrixMode(GL_PROJECTION);
+			//glLoadMatrixf(glm::value_ptr(proj));
+			//glMatrixMode(GL_MODELVIEW);
+			//glLoadMatrixf(glm::value_ptr(view * model));
+
+			//glBegin(GL_LINES);
+			//glColor3fv(glm::value_ptr(glm::vec3(1, 0, 0)));
+			//glVertex3fv(glm::value_ptr(point1));
+			//glVertex3fv(glm::value_ptr(point2));
+			//glEnd();
+
 			renderOpaque();
 			renderTransparent();
+			if (_debugMode) getGameLoop()->renderDebugging();
 
 			_fps_hud->setTextInformation("FPS: " + std::to_string(static_cast<int>(getFPS())));
 
@@ -184,6 +209,27 @@ namespace Engine
 						itr.second->render();
 
 				glDisable(GL_BLEND);
+			}
+		}
+
+		void RenderManager::renderDebugging()
+		{
+			if (_debugMode)
+			{
+				for (const auto renderer : _opaqueRenderers)
+				{
+					std::vector<Core::Component*> components = renderer->getGameObject()->getComponentsList();
+					if (!components.empty())
+						for (const auto comp : components)
+						{
+							std::cout << "Heyo" << std::endl;
+							if (comp->isEnabled() && comp->getGameObject()->isActive())
+							{
+								comp->renderDebug();
+								std::cout << "Heyo2" << std::endl;
+							}
+						}
+				}
 			}
 		}
 
@@ -273,6 +319,12 @@ namespace Engine
 			_fps_hud->getTextObject().setPosition(10, 10);
 			_fps_hud->getTextObject().setCharacterSize(100);
 			_fps_hud->getTextObject().setFillColor(sf::Color::White);
+		}
+
+		Core::GameLoop* RenderManager::getGameLoop()
+		{
+			if (_gameLoop == nullptr) _gameLoop = ServiceLocator::instance()->getService<GameLoop>();
+			return _gameLoop;
 		}
 
 		LightManager* RenderManager::getLightManager()

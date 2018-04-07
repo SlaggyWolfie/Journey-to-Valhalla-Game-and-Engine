@@ -3,18 +3,19 @@
 #define RENDER_MANAGER_HPP
 
 #include <memory>
-#include "Manager.hpp"
 #include <SFML/System/Clock.hpp>
-#include "FunctionGroup.hpp"
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics.hpp>
+#include "Manager.hpp"
 #include <vector>
-#include <SFML/Graphics/Text.hpp>
-#include "Text.hpp"
-#include "mge/util/DebugHud.hpp"
+#include "Core/GameLoop.hpp"
+//#include "Text.hpp"
+//#include "mge/util/DebugHud.hpp"
+
 class ComponentUI;
 
 namespace Engine
 {
+	namespace UI { class Text; }
 	namespace Rendering
 	{
 		class Renderer_;
@@ -42,7 +43,9 @@ namespace Engine
 		private:
 			void renderOpaque() const;
 			void renderTransparent() const;
+			void renderDebugging();
 			void renderUI();
+			bool _debugMode = true;
 
 			std::vector<Renderer_*> _opaqueRenderers;
 			std::vector<Renderer_*> _transparentRenderers;
@@ -59,15 +62,18 @@ namespace Engine
 			//FPS
 			float _fps = 0;
 			std::unique_ptr<sf::Clock> _fpsClock = nullptr;
-			int _frameCount =  0;
+			int _frameCount = 0;
 			float _timeSinceLastFPSCalculation = 0;
-			std::unique_ptr<UI::Text> _fps_hud;
-			std::unique_ptr<DebugHud> _debugHud;
+			std::unique_ptr<UI::Text> _fps_hud = nullptr;
+			//std::unique_ptr<DebugHud> _debugHud;
 			void setupFPSHUD();
 
 			//Other
+			Core::GameLoop* getGameLoop();
+			Core::GameLoop* _gameLoop = nullptr;
+
 			LightManager* getLightManager();
-			LightManager* _lightManager;
+			LightManager* _lightManager = nullptr;
 
 			sf::RenderWindow* getWindow();
 		public:

@@ -127,6 +127,28 @@ namespace Engine
 			if (_isButtonHeld)
 				cameraControl();
 		}
+		
+		void Camera_::lateUpdate()
+		{
+			//if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+			//{
+			//	Transform* transform = getGameObject()->getTransform();
+			//	transform->setRotation(glm::quat(glm::vec3(0, 0, 0)));
+			//	transform->setPosition(glm::vec3(0, 0, 0));
+			//}
+
+			//if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) ||
+			//	sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+			//{
+			//	if (!_isButtonHeld) _heldPosition = sf::Mouse::getPosition();
+			//	_isButtonHeld = true;
+			//	//return;
+			//}
+			//else _isButtonHeld = false;
+
+			//if (_isButtonHeld)
+			//	cameraControl();
+		}
 
 		void Camera_::cameraControl()
 		{
@@ -177,8 +199,8 @@ namespace Engine
 			if (deltaScreenSpace.x != 0 || deltaScreenSpace.y != 0)
 			{
 				sf::RenderWindow* window = ServiceLocator::instance()->getService<Game>()->getWindow();
-				const float screenWidth = window->getSize().x;
-				const float screenHeight = window->getSize().y;
+				const float screenWidth = static_cast<float>(window->getSize().x);
+				const float screenHeight = static_cast<float>(window->getSize().y);
 				const float x = glm::radians(-deltaScreenSpace.y / screenHeight * turnSpeed);
 				const float y = glm::radians(-deltaScreenSpace.x / screenWidth * turnSpeed);
 

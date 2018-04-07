@@ -69,6 +69,7 @@ namespace Engine
 			T** getComponents();
 			template <typename T>
 			std::vector<T*> getComponentsList();
+			std::vector<Core::Component*> getComponentsList();
 
 			int getComponentsCount() const;
 
@@ -128,10 +129,11 @@ namespace Engine
 			if (!std::is_base_of<Component, T>())
 			{
 				std::cout << std::string("Type T is not of type Component in getComponentsList<T>!") << std::endl;
-				return nullptr;
+				return std::vector<T*>();
 			}
 
-			std::vector<T*> components = new std::vector<T*>();
+			std::vector<T*> components;
+			// = new std::vector<T*>();
 
 			//Search for a component that can be cast to T
 			for (size_t i = 0; i < _components.size(); i++)
