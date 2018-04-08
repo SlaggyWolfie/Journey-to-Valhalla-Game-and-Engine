@@ -3,9 +3,13 @@ print("if you see me I am lua")
 
 function Initialize()
 	print("lua init")
-	Start()
 end
 function Start()
+	play=Game.NewButton("Play.png",	100,100)
+	options=Game.NewButton("Options.png",100,200)
+	credits=Game.NewButton("Credits.png",100,300)
+	exit=Game.NewButton("Exit.png",100,400)
+	Game.AddToMenu("MainMenu",play,options,credits,exit)
 	print("this is start method")
 	
 end

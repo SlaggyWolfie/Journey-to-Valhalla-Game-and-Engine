@@ -1,4 +1,4 @@
-
+print("i am lua")
 function Initialize()
 	Start()
 end

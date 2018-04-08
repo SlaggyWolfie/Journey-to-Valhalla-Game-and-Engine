@@ -36,6 +36,7 @@ namespace Engine
 
 			void draw() override;
 			void lateUpdate() override;
+			void update() override;
 		private:
 			bool _normalSpriteLoaded = false;
 			bool _hoveringSpriteLoaded = false;

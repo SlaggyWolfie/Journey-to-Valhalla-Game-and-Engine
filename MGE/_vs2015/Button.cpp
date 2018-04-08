@@ -4,6 +4,7 @@
 #include "ServiceLocator.hpp"
 #include "Core/Game.hpp"
 #include "Time.hpp"
+#include "Core\GameLoop.hpp"
 
 namespace Engine
 {
@@ -13,6 +14,7 @@ namespace Engine
 
 		Button::Button(const bool rendering) : ComponentUI(rendering)
 		{
+
 		}
 
 		Button::Button(sf::RenderWindow* window, const bool rendering) : ComponentUI(window, rendering)
@@ -21,7 +23,6 @@ namespace Engine
 
 		void Button::draw()
 		{
-			//if (!isEnabled()) return;
 			switch (_status)
 			{
 			case Clicked:
@@ -46,11 +47,14 @@ namespace Engine
 
 		void Button::lateUpdate()
 		{
+		}
+		void Button::update()
+		{
 			sf::Vector2i mousePos = sf::Mouse::getPosition();
 
 			sf::Vector2i btnPos = (sf::Vector2i) _normalSprite.getPosition();
 			sf::Vector2i btnSize = (sf::Vector2i) _normalSprite.getTexture()->getSize();
-
+			std::cout << btnSize.x<<" "<<btnSize.y << std::endl;
 			bool xCheck = mousePos.x > btnPos.x - btnSize.x && mousePos.x > btnPos.x + btnSize.x;
 			bool yCheck = mousePos.y > btnPos.y - btnSize.y && mousePos.y > btnPos.y + btnSize.y;
 
@@ -59,6 +63,7 @@ namespace Engine
 			if (xCheck && yCheck && mouseClick)
 			{
 				//scene load scene1
+				std::cout << "click event" << std::endl;
 				onClick();
 				return;
 			}

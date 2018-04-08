@@ -29,14 +29,12 @@ LuaScript::LuaScript()
 
 	}
 	registerFunctions();
-
-	Initialize();
 }
 void LuaScript::start()
 {
 	std::cout << "initializing Lua" << std::endl;
 
-	lua_getglobal(state_, "Initialize"); // pushes global update
+	lua_getglobal(state_, "Start"); // pushes global update
 	int isFunc = lua_isfunction(state_, -1);
 	if (isFunc) {
 		if (lua_pcall(state_, 0, 0, 0) != 0) {
@@ -59,6 +57,12 @@ void LuaScript::registerFunctions()
 	
 	lua_pushcfunction(state_, PushBackObj);
 	lua_setfield(state_, -2, "PushBackObj");
+
+	lua_pushcfunction(state_, NewButton);
+	lua_setfield(state_, -2, "NewButton");
+
+	lua_pushcfunction(state_, AddToMenu);
+	lua_setfield(state_, -2, "AddToMenu");
 
 	lua_pushcfunction(state_, CollisionBetween);
 	lua_setfield(state_, -2, "CollisionBetween");
@@ -95,7 +99,15 @@ int LuaScript::MovePlayer(lua_State * state)
 
 void LuaScript::Initialize()
 {
-//	parent = getGameObject()->getComponent<collider>();
+	//std::cout << "initializing Lua" << std::endl;
+
+	lua_getglobal(state_, "Initialize"); // pushes global update
+	int isFunc = lua_isfunction(state_, -1);
+	if (isFunc) {
+		if (lua_pcall(state_, 0, 0, 0) != 0) {
+			return;
+		}
+	}
 }
 
 int LuaScript::ShowHint(lua_State * state)

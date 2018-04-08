@@ -524,16 +524,14 @@ namespace Engine
 		////std::cout << Text::hint->getTextObject().getCharacterSize() << std::endl;
 		//Text::hint->getTextObject().setCharacterSize(24);
 		//Text::hint->getTextObject().setPosition(100, 500);
-		//Text::showHint("CABBAGE", 30, 5);
-
-		std::cout << "load menu" << std::endl;
+		//std::cout << "load menu" << std::endl;
 	}
 
 	void Scene::hardCode()
 	{
 		//loadMenu();
 
-		UI::Text::showHint("THIS IS A HINT! I WORK!", 2, 15);
+		//UI::Text::showHint("THIS IS A HINT! I WORK!", 2, 15);
 
 		//GameObject_* crate = Model::loadModel(File::findPath("Crate.fbx"));
 		//GameObject_* crate = new GameObject_("Crate");

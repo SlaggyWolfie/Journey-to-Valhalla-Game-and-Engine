@@ -13,6 +13,7 @@
 #include "../_vs2015/Texture_.hpp"
 #include "Deserealizer.hpp"
 #include <glm.hpp>
+#include "LuaScript.h"
 
 //#include "GameLoop.hpp"
 
@@ -63,9 +64,12 @@ namespace Engine
 		//	static_cast<float>(0xce) / 0xff,
 		//	1.0f);
 
-		
+		LuaScript l = LuaScript();
 
-		initializeScene(); 
+		l.Initialize();
+		l.start();
+		
+		//initializeScene(); 
 		
 		//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
