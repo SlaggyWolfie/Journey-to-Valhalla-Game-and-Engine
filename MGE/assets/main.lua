@@ -11,6 +11,17 @@ function Start()
 	exit=Game.NewButton("Exit.png",100,400)
 	Game.AddToMenu("MainMenu",play,options,credits,exit)
 	print("this is start method")
+
+	level1=Game.NewButton("Play.png",	100,100)
+	level2=Game.NewButton("Options.png",100,200)
+	level3=Game.NewButton("Credits.png",100,300)
+	level4=Game.NewButton("Exit.png",	100,400)
+	level5=Game.NewButton("Play.png",	100,500)
+	level6=Game.NewButton("Options.png",100,600)
+	back=Game.NewButton("Exit.png",		100,700)
+	
+	Game.AddToMenu("PlayMenu",play,options,credits,exit)
+	
 	
 end
 function Update()
