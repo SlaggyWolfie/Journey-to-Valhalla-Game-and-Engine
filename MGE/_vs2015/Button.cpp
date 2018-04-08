@@ -54,7 +54,6 @@ namespace Engine
 
 			sf::Vector2i btnPos = (sf::Vector2i) _normalSprite.getPosition();
 			sf::Vector2i btnSize = (sf::Vector2i) _normalSprite.getTexture()->getSize();
-			std::cout << btnSize.x<<" "<<btnSize.y << std::endl;
 			bool xCheck = mousePos.x > btnPos.x - btnSize.x && mousePos.x > btnPos.x + btnSize.x;
 			bool yCheck = mousePos.y > btnPos.y - btnSize.y && mousePos.y > btnPos.y + btnSize.y;
 
@@ -94,9 +93,7 @@ namespace Engine
 		void Button::onClick()
 		{
 			if (_status == Clicked) return;
-
 			_status = Clicked;
-
 			//if (!_clickingSpriteLoaded)
 			//{
 			//	if (!_hoveringSpriteLoaded) {
