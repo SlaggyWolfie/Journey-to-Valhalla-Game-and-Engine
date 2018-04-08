@@ -139,7 +139,9 @@ namespace Engine
 		{
 			if (!_components.empty())
 				for (const auto& comp : _components)
-					if (comp->isEnabled() && comp->getGameObject()->isActive())
+					if (comp->isEnabled()
+						//&& comp->getGameObject() && comp->getGameObject()->isActive()
+						)
 					{
 						comp->_started = true;
 						comp->start();
@@ -150,7 +152,9 @@ namespace Engine
 		{
 			if (!_components.empty())
 				for (const auto& comp : _components)
-					if (comp->isEnabled() && comp->getGameObject()->isActive())
+					if (comp->isEnabled()
+						//&& comp->getGameObject() && comp->getGameObject()->isActive()
+						)
 						comp->update();
 		}
 
@@ -158,7 +162,9 @@ namespace Engine
 		{
 			if (!_components.empty())
 				for (const auto& comp : _components)
-					if (comp->isEnabled() && comp->getGameObject()->isActive())
+					if (comp->isEnabled()
+						//&& comp->getGameObject() && comp->getGameObject()->isActive()
+						)
 						comp->fixedUpdate();
 		}
 
@@ -166,7 +172,9 @@ namespace Engine
 		{
 			if (!_components.empty())
 				for (const auto& comp : _components)
-					if (comp->isEnabled() && comp->getGameObject()->isActive())
+					if (comp->isEnabled()
+						//&& comp->getGameObject() && comp->getGameObject()->isActive()
+						)
 						comp->lateUpdate();
 		}
 
@@ -174,7 +182,9 @@ namespace Engine
 		{
 			if (!_components.empty())
 				for (const auto& comp : _components)
-					if (comp->isEnabled() && comp->getGameObject()->isActive())
+					if (comp->isEnabled()
+						//&& comp->getGameObject() && comp->getGameObject()->isActive()
+						)
 						comp->renderDebug();
 		}
 

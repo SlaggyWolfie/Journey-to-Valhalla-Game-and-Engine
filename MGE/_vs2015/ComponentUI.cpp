@@ -5,12 +5,14 @@
 
 ComponentUI::ComponentUI(const bool rendering) : _mainDrawable(nullptr), _window(nullptr)
 {
+	Engine::ServiceLocator::instance()->getService<Engine::Core::GameLoop>()->subscribe(this);
 	if (rendering)
 		Engine::ServiceLocator::instance()->getService<Engine::Rendering::RenderManager>()->addUI(this);
 }
 
 ComponentUI::ComponentUI(sf::RenderWindow * window, const bool rendering) : _mainDrawable(nullptr), _window(window)
 {
+	Engine::ServiceLocator::instance()->getService<Engine::Core::GameLoop>()->subscribe(this);
 	if (rendering)
 		Engine::ServiceLocator::instance()->getService<Engine::Rendering::RenderManager>()->addUI(this);
 }
