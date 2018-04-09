@@ -34,6 +34,7 @@ namespace Engine
 			bool isClicked();
 			bool isHovering();
 
+			void start() override;
 			void draw() override;
 			void lateUpdate() override;
 			void update() override;
@@ -46,13 +47,18 @@ namespace Engine
 			sf::Sprite _hoverSprite;
 			sf::Sprite _clickSprite;
 
+			int _levelToOpen;
 			bool _isHovering;
 			bool _isClicked;
-			ButtonFunctionality _function;
+			ButtonFunctionality _function = MainMenu;
 			ButtonStatus _status = Normal;
 			void onHover();
 			void onClick();
 			void onNotHover();
+
+			static void disableAllMenus(std::string exceptionMenu="");
+			static void enableMenu(std::string menu);
+			static bool _initialSetup;
 		};
 	}
 }

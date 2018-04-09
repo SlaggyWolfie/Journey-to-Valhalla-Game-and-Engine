@@ -12,6 +12,7 @@ namespace Engine
 	namespace UI
 	{
 		std::map<std::string, std::vector<Button*>> Button::menus;
+		bool Button::_initialSetup = false;
 
 		Button::Button(const bool rendering) : ComponentUI(rendering)
 		{
@@ -22,11 +23,20 @@ namespace Engine
 			functions["Options"] = ButtonFunctionality::Options;
 			functions["Credits"] = ButtonFunctionality::Credits;
 
-
 		}
 
 		Button::Button(sf::RenderWindow* window, const bool rendering) : ComponentUI(window, rendering)
 		{
+		}
+
+		void Button::start()
+		{
+			if (!_initialSetup)
+			{
+				disableAllMenus();
+				enableMenu("MainMenu");
+				_initialSetup = false;
+			}
 		}
 
 		void Button::draw()
@@ -58,20 +68,24 @@ namespace Engine
 		}
 		void Button::update()
 		{
-			sf::Vector2i mousePos = sf::Mouse::getPosition();
-
+			sf::Vector2i mousePos = sf::Mouse::getPosition(*getWindow());
+			//250x60
 			sf::Vector2i btnPos = (sf::Vector2i) _normalSprite.getPosition();
 			sf::Vector2i btnSize = (sf::Vector2i) _normalSprite.getTexture()->getSize();
-			bool xCheck = mousePos.x > btnPos.x - btnSize.x && mousePos.x > btnPos.x + btnSize.x;
-			bool yCheck = mousePos.y > btnPos.y - btnSize.y && mousePos.y > btnPos.y + btnSize.y;
+			//bool xCheck = mousePos.x > btnPos.x;
+			//bool yCheck = mousePos.y > btnPos.y  && mousePos.y > btnPos.y + 60;
+
+			bool xCheck = mousePos.x > btnPos.x+40 && mousePos.x < btnPos.x + btnSize.x-40;
+			bool yCheck = mousePos.y > btnPos.y+20 && mousePos.y < btnPos.y + btnSize.y-20;
+
 
 			bool mouseClick = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
 
 			if (xCheck && yCheck && mouseClick)
 			{
-				//scene load scene1
 				std::cout << "click event" << std::endl;
 				onClick();
+				std::cout << btnPos.x << " " << mousePos.x << std::endl;
 				return;
 			}
 
@@ -102,7 +116,36 @@ namespace Engine
 		{
 			if (_status == Clicked) return;
 
-			ServiceLocator::instance()->getService<SceneManager>()->loadScene("debug.json");
+
+			switch (_function)
+			{
+			case MainMenu:
+				disableAllMenus();
+				enableMenu("MainMenu");
+				break;
+			case LevelMenu:
+				disableAllMenus();
+				enableMenu("LevelMenu");
+				break;
+			case OpenLevel:
+				disableAllMenus();
+				ServiceLocator::instance()->getService<SceneManager>()->loadScene(std::string("Level_") + std::to_string(_levelToOpen) + ".json");
+				//show loading screen
+				//_levelToOpen
+				break;
+			case Exit:
+				ServiceLocator::instance()->getService<Game>()->exit();
+				break;
+			case Options:
+				disableAllMenus();
+				enableMenu("Options");
+				break;
+			case Credits:
+				disableAllMenus();
+				enableMenu("Credits");
+
+				break;
+			}
 			_status = Clicked;
 			//if (!_clickingSpriteLoaded)
 			//{
@@ -123,6 +166,22 @@ namespace Engine
 			_status = Normal;
 
 			//setDrawable(&_normalSprite);
+		}
+
+		void Button::disableAllMenus(std::string exceptionMenu)
+		{
+			//Disable all
+			for (auto& menu : menus)
+				//if (menu.first != exceptionMenu)
+					for (auto button : menu.second)
+						button->setEnabled(false);
+		}
+
+		void Button::enableMenu(std::string menu)
+		{
+			if (menus.find(menu) != menus.end())
+				for (auto button : menus[menu])
+					button->setEnabled(true);
 		}
 
 		void Button::loadSprite(const sf::Sprite & sprite, ButtonStatus status)
@@ -146,7 +205,7 @@ namespace Engine
 			}
 		}
 
-		void Button::loadSprite(const std::string & path,float x,float y, ButtonStatus status)
+		void Button::loadSprite(const std::string & path, float x, float y, ButtonStatus status)
 		{
 			sf::Sprite* sprite = new sf::Sprite();
 			sf::Texture* texture = new sf::Texture();
@@ -192,9 +251,16 @@ namespace Engine
 		void Button::SetEvent(std::string functionString)
 		{
 			//didnt test yet
-			int level = 0;
-			level = functionString[functionString.length - 2];
-			_function = functions.at(functionString.substr(0,functionString.length-2));
+			if (functionString.substr(0, functionString.length() - 1) == "OpenLevel")
+			{
+				_levelToOpen = functionString[functionString.length() - 1];
+				_function = functions.at(functionString.substr(0, functionString.length() - 1));
+			}
+			else
+			{
+				_function = functions.at(functionString);
+			}
+
 		}
 
 		void Button::OneShotHint(std::string hint)

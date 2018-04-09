@@ -257,7 +257,7 @@ int LuaScript::NewButton(lua_State * state)
 		float x = (float)lua_tonumber(state, 2);
 		float y = (float)lua_tonumber(state, 3);
 
-		Button* btn = new Button(true);
+		Button* btn = new Button();
 		btn->loadSprite(path);
 		btn->getSprite().setPosition(sf::Vector2f(x, y));
 
@@ -276,10 +276,13 @@ int LuaScript::AddToMenu(lua_State * state)
 		std::string name = (std::string)lua_tostring(state, 1);
 
 		if (Button::menus.find(name) == Button::menus.end())
+		{
 			Button::menus[name] = std::vector<Button*>();
+			std::cout << "Not Found " + name << std::endl;
+		}
 
 		std::vector<Button*>& buttons = Button::menus[name];
-		for (int i = 2; i < n; i++)
+		for (int i = 2; i <= n; i++)
 		{
 			Button* b= (Button*)lua_topointer(state, i);
 			buttons.push_back(b);
