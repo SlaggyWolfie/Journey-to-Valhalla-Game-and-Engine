@@ -73,6 +73,9 @@ void LuaScript::registerFunctions()
 	lua_pushcfunction(state_, GetGameTime);
 	lua_setfield(state_, -2, "GetGameTime");
 
+	lua_pushcfunction(state_, SetEvent);
+	lua_setfield(state_, -2, "SetEvent");
+
 	lua_setglobal(state_, "Game");
 
 	std::cout << "registered functions" << std::endl;
