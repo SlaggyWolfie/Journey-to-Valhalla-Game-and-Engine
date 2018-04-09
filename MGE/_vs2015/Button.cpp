@@ -36,7 +36,7 @@ namespace Engine
 			{
 				disableAllMenus();
 				enableMenu("MainMenu");
-				_initialSetup = false;
+				_initialSetup = true;
 			}
 		}
 
@@ -67,26 +67,39 @@ namespace Engine
 		void Button::lateUpdate()
 		{
 		}
+
 		void Button::update()
 		{
+			delay--;
 			sf::Vector2i mousePos = sf::Mouse::getPosition(*getWindow());
 			//250x60
 			sf::Vector2i btnPos = (sf::Vector2i) _normalSprite.getPosition();
 			sf::Vector2i btnSize = (sf::Vector2i) _normalSprite.getTexture()->getSize();
 			//bool xCheck = mousePos.x > btnPos.x;
 			//bool yCheck = mousePos.y > btnPos.y  && mousePos.y > btnPos.y + 60;
-
+			//std::cout << btnPos.x << " " << btnPos.y << " " << _function << std::endl;
 			bool xCheck = mousePos.x > btnPos.x+40 && mousePos.x < btnPos.x + btnSize.x-40;
 			bool yCheck = mousePos.y > btnPos.y+20 && mousePos.y < btnPos.y + btnSize.y-20;
+			//t++;
 
 
-			bool mouseClick = InputHandler::keyUp(sf::Mouse::Button::Left);
-			//bool mouseClick = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+			using namespace Engine::Utility;
+			//not recorded mouse click
+			if(_function==LevelMenu)
+			mouseClick =InputHandler::keyUp(sf::Mouse::Button::Left);
+			else
+			mouseClick = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
 
-			if (xCheck && yCheck && mouseClick)
+			//if (mouseClick && t==0)
+				t -=Time::deltaTime();
+			if (mouseClick) std::cout << std::to_string(xCheck) << " " << std::to_string(yCheck) << std::endl;
+			if (xCheck && yCheck && mouseClick )
 			{
+				delay = 1000;
+				t = 0.5f;
 				std::cout << "click event" << std::endl;
 				onClick();
+				mouseClick = false;
 				std::cout << btnPos.x << " " << mousePos.x << std::endl;
 				return;
 			}
@@ -118,22 +131,29 @@ namespace Engine
 		{
 			if (_status == Clicked) return;
 
-
+			std::cout << "ia tut" << std::endl;
 			switch (_function)
 			{
 			case MainMenu:
 				disableAllMenus();
 				enableMenu("MainMenu");
+				//wait fo 3 sec
+				//reset mouse recorded
 				break;
 			case LevelMenu:
 				disableAllMenus();
+
 				enableMenu("LevelMenu");
+				//reset mouse recorded
+
 				break;
 			case OpenLevel:
 				disableAllMenus();
 				ServiceLocator::instance()->getService<SceneManager>()->loadScene(std::string("Level_") + std::to_string(_levelToOpen) + ".json");
 				//show loading screen
 				//_levelToOpen
+				//reset mouse recorded
+
 				break;
 			case Exit:
 				ServiceLocator::instance()->getService<Game>()->exit();
@@ -260,6 +280,7 @@ namespace Engine
 			}
 			else
 			{
+				std::cout << functionString << std::endl;
 				_function = functions.at(functionString);
 			}
 

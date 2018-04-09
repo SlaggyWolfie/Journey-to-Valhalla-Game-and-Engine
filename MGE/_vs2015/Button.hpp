@@ -33,7 +33,7 @@ namespace Engine
 
 			bool isClicked();
 			bool isHovering();
-
+			void OnReleaseClick();
 			void start() override;
 			void draw() override;
 			void lateUpdate() override;
@@ -47,6 +47,8 @@ namespace Engine
 			sf::Sprite _hoverSprite;
 			sf::Sprite _clickSprite;
 
+			float t = 0;
+			float delay= 0;
 			int _levelToOpen;
 			bool _isHovering;
 			bool _isClicked;
@@ -55,7 +57,8 @@ namespace Engine
 			void onHover();
 			void onClick();
 			void onNotHover();
-
+			bool _recorder = false;
+			bool mouseClick = false;
 			static void disableAllMenus(std::string exceptionMenu="");
 			static void enableMenu(std::string menu);
 			static bool _initialSetup;

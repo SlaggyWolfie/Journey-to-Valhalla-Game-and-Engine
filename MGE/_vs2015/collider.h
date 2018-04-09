@@ -63,6 +63,7 @@ public:
 	glm::vec3 corner7;
 	glm::vec3 corner8;
 
+	glm::vec3 halfSize;
 
 	//drawing
 	static glm::vec3 leftBottomBack();
@@ -82,8 +83,6 @@ private:
 	glm::vec3 _rot;
 	Transform* _t;
 	colliderType _type = box;
-
-	glm::vec3 halfSize;
 
 	float _width = 1;
 	float _length = 1;

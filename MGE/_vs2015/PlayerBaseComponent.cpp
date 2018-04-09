@@ -16,6 +16,9 @@ PlayerBaseComponent::PlayerBaseComponent()
 
 void PlayerBaseComponent::update()
 {
+
+	//if collide with wall then pushback
+	ServiceLocator::instance()->getService<ColliderManager>()->CheckBoxCollision(getGameObject()->getComponent<collider>());
 	//std::cout << "State: " + std::to_string(_playerS) << std::endl;
 	Camera_::getMainCamera()->getGameObject()->getTransform()->
 		setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 10, 10));

@@ -11,7 +11,8 @@ public:
 	~ColliderManager();
 	std::vector<collider*> CheckCollision(collider* object);
 	std::vector<collider*> CheckBoxCollision(collider* object);
-	bool ColliderManager::CheckBoxCollisionBetween(collider * object, collider * object2);
+	bool CheckBoxCollisionBetween(collider * object, collider * object2);
+	bool CheckOBBCollisionBetween(collider * object, collider * object2);
 
 	bool CollisionBetween(collider* obj1, collider* obj2);
 	glm::vec3 GiveVectorBeetweem(collider* obj1, collider* obj2);

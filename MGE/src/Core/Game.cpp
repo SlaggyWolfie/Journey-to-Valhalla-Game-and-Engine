@@ -255,7 +255,6 @@ namespace Engine
 				break;
 			}
 		}
-
 		if (exit) Game::exit();
 		//return event;
 	}

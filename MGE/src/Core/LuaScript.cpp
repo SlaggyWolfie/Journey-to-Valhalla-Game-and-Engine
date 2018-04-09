@@ -257,7 +257,7 @@ int LuaScript::NewButton(lua_State * state)
 		float x = (float)lua_tonumber(state, 2);
 		float y = (float)lua_tonumber(state, 3);
 
-		Button* btn = new Button();
+		Button* btn = new Button(true);
 		btn->loadSprite(path);
 		btn->getSprite().setPosition(sf::Vector2f(x, y));
 
