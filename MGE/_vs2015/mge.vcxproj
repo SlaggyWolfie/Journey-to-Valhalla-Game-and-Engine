@@ -215,6 +215,7 @@
     <ClInclude Include="ComponentUI.hpp" />
     <ClInclude Include="Deserializer2.hpp" />
     <ClInclude Include="GateBehaviour.h" />
+    <ClInclude Include="InputHandler.hpp" />
     <ClInclude Include="Sprite.hpp" />
     <ClInclude Include="Music.hpp" />
     <ClInclude Include="PressurePlateBehaviour.h" />
@@ -306,6 +307,7 @@
     <ClCompile Include="GameObject_.cpp" />
     <ClCompile Include="GateBehaviour.cpp" />
     <ClCompile Include="GeneralHelpers.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="LastposStasher.cpp" />
     <ClCompile Include="LightManager.cpp" />

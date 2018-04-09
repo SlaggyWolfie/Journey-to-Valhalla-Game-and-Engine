@@ -6,6 +6,7 @@
 #include "Time.hpp"
 #include "Core\GameLoop.hpp"
 #include "SceneManager.hpp"
+#include "InputHandler.hpp"
 
 namespace Engine
 {
@@ -79,7 +80,8 @@ namespace Engine
 			bool yCheck = mousePos.y > btnPos.y+20 && mousePos.y < btnPos.y + btnSize.y-20;
 
 
-			bool mouseClick = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+			bool mouseClick = InputHandler::keyUp(sf::Mouse::Button::Left);
+			//bool mouseClick = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
 
 			if (xCheck && yCheck && mouseClick)
 			{

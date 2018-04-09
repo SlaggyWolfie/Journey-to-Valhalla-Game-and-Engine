@@ -14,6 +14,7 @@
 #include "Deserealizer.hpp"
 #include <glm.hpp>
 #include "LuaScript.h"
+#include "../../_vs2015/InputHandler.hpp"
 
 //#include "GameLoop.hpp"
 
@@ -224,6 +225,8 @@ namespace Engine
 			//SystemEventDispatcher / SystemEventListener pair which allows Listeners to
 			//register with the dispatcher and then do something like:
 			//SystemEventDispatcher::dispatchEvent(event);
+
+			InputHandler::updateEvent(event);
 
 			switch (event.type)
 			{

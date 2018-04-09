@@ -245,6 +245,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Deserializer2.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -523,6 +524,7 @@
     <ClInclude Include="Sprite.hpp" />
     <ClInclude Include="Button.hpp" />
     <ClInclude Include="Deserializer2.hpp" />
+    <ClInclude Include="InputHandler.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
