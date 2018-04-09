@@ -10,7 +10,7 @@ namespace Engine
 	namespace UI
 	{
 		enum ButtonStatus { Normal, Hovering, Clicked };
-		enum ButtonFunctionality { LoadLevel, Exit, Options, Credits };
+		enum ButtonFunctionality { LevelMenu, MainMenu, OpenLevel, Exit, Options, Credits };
 
 		class Button : public ComponentUI
 		{
@@ -38,6 +38,7 @@ namespace Engine
 			void lateUpdate() override;
 			void update() override;
 		private:
+			std::map<std::string, ButtonFunctionality> functions;
 			bool _normalSpriteLoaded = false;
 			bool _hoveringSpriteLoaded = false;
 			bool _clickingSpriteLoaded = false;
@@ -47,7 +48,7 @@ namespace Engine
 
 			bool _isHovering;
 			bool _isClicked;
-
+			ButtonFunctionality _function;
 			ButtonStatus _status = Normal;
 			void onHover();
 			void onClick();

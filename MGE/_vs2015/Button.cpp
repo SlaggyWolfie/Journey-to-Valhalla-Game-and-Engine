@@ -5,6 +5,7 @@
 #include "Core/Game.hpp"
 #include "Time.hpp"
 #include "Core\GameLoop.hpp"
+#include "SceneManager.hpp"
 
 namespace Engine
 {
@@ -14,6 +15,13 @@ namespace Engine
 
 		Button::Button(const bool rendering) : ComponentUI(rendering)
 		{
+			functions["LevelMenu"] = ButtonFunctionality::LevelMenu;
+			functions["MainMenu"] = ButtonFunctionality::MainMenu;
+			functions["OpenLevel"] = ButtonFunctionality::OpenLevel;
+			functions["Exit"] = ButtonFunctionality::Exit;
+			functions["Options"] = ButtonFunctionality::Options;
+			functions["Credits"] = ButtonFunctionality::Credits;
+
 
 		}
 
@@ -93,6 +101,8 @@ namespace Engine
 		void Button::onClick()
 		{
 			if (_status == Clicked) return;
+
+			ServiceLocator::instance()->getService<SceneManager>()->loadScene("debug.json");
 			_status = Clicked;
 			//if (!_clickingSpriteLoaded)
 			//{
@@ -103,7 +113,7 @@ namespace Engine
 			//	}
 			//	setDrawable(&_hoverSprite);
 			//	return;
-			//}
+			//}	
 			//setDrawable(&_clickSprite);
 		}
 
@@ -179,8 +189,12 @@ namespace Engine
 			//_playSpr.setPosition(sf::Vector2f(50, 100));
 		}
 
-		void Button::SetEvent(std::string event)
+		void Button::SetEvent(std::string functionString)
 		{
+			//didnt test yet
+			int level = 0;
+			level = functionString[functionString.length - 2];
+			_function = functions.at(functionString.substr(0,functionString.length-2));
 		}
 
 		void Button::OneShotHint(std::string hint)

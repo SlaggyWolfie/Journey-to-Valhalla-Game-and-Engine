@@ -22,6 +22,7 @@ public:
 	static int GetGameTime(lua_State* state);
 	static int NewButton(lua_State* state);
 	static int AddToMenu(lua_State* state);
+	static int SetEvent(lua_State* state);
 
 
 

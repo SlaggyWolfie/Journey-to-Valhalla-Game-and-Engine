@@ -288,3 +288,19 @@ int LuaScript::AddToMenu(lua_State * state)
 	return luaL_error(state, " faulty arguments");
 }
 
+int LuaScript::SetEvent(lua_State * state)
+{
+	if ( lua_islightuserdata(state, 1) && lua_isstring(state, 2) )
+	{
+		Button* btn = (Button*)lua_topointer(state, 1);
+		std::string event = (std::string)lua_tostring(state, 2);
+		btn->SetEvent(event);
+		return 0;
+	}
+	return luaL_error(state, " faulty arguments");
+
+}
+
+
+
+
