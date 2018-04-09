@@ -24,6 +24,9 @@ public:
 	bool Enabled();
 	void SetEnable(bool n);
 
+	void SetCenterOffset(glm::vec3 offset);
+	glm::vec3 GetCenterOffset();
+	glm::vec3 GetCenter();
 	glm::vec3 GetPos();
 	float GetWidth();
 	float GetHeight();
@@ -84,6 +87,7 @@ private:
 	Transform* _t;
 	colliderType _type = box;
 
+	glm::vec3 _centerOffset;
 	float _width = 1;
 	float _length = 1;
 	float  _height = 1;

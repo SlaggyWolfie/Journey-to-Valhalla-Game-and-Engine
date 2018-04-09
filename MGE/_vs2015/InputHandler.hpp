@@ -4,6 +4,7 @@
 #include <set>
 #include <SFML/Window.hpp>
 #include <map>
+#include <unordered_set>
 
 enum KeyState
 {
@@ -15,6 +16,8 @@ class InputHandler
 private:
 	static std::map<sf::Mouse::Button, KeyState> _mouseButtons;
 	static std::map<sf::Keyboard::Key, KeyState> _keyboardKeys;
+	static std::unordered_set<sf::Mouse::Button> _mouseButtonsConsumed;
+	static std::unordered_set<sf::Keyboard::Key> _keyboardKeysConsumed;
 	static void testKey(sf::Keyboard::Key key);
 	static void testKey(sf::Mouse::Button key);
 public:
@@ -26,6 +29,7 @@ public:
 	static bool keyPressed(sf::Keyboard::Key key);
 	static void updateEvent(sf::Event event);
 	static void reset();
+	static void update();
 };
 
 #endif

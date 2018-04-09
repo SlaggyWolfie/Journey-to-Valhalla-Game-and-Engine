@@ -68,7 +68,7 @@
 "components": [{
     "typeID": 3,
     "intensity": 1.0,
-    "type": 0,
+    "type": 1,
     "color": {
         "x": 1.0,
         "y": 0.95686274766922,

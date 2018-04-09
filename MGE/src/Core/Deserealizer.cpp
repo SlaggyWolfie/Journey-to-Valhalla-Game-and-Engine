@@ -39,7 +39,7 @@ void Deserealizer::deserializeIntoStructs(const string& fileName)
 		GameObject_s gameObjectStruct;
 		//GameObject_s gameObjectStruct = GameObject_s();
 		gameObjectStruct.name = jsonScene.at(j).at("GameObject").at("name").get<string>();
-		std::cout << "Desearlizing game object " + gameObjectStruct.name << std::endl;
+		std::cout << "Deserealizing game object " + gameObjectStruct.name << std::endl;
 		gameObjectStruct.position.x = jsonScene.at(j).at("GameObject").at("transform")["position"]["x"];
 		gameObjectStruct.position.y = jsonScene.at(j).at("GameObject").at("transform")["position"]["y"];
 		gameObjectStruct.position.z = jsonScene.at(j).at("GameObject").at("transform")["position"]["z"];

@@ -78,22 +78,22 @@ namespace Engine
 			//bool xCheck = mousePos.x > btnPos.x;
 			//bool yCheck = mousePos.y > btnPos.y  && mousePos.y > btnPos.y + 60;
 			//std::cout << btnPos.x << " " << btnPos.y << " " << _function << std::endl;
-			bool xCheck = mousePos.x > btnPos.x+40 && mousePos.x < btnPos.x + btnSize.x-40;
-			bool yCheck = mousePos.y > btnPos.y+20 && mousePos.y < btnPos.y + btnSize.y-20;
+			bool xCheck = mousePos.x > btnPos.x + 40 && mousePos.x < btnPos.x + btnSize.x - 40;
+			bool yCheck = mousePos.y > btnPos.y + 20 && mousePos.y < btnPos.y + btnSize.y - 20;
 			//t++;
 
 
 			using namespace Engine::Utility;
 			//not recorded mouse click
-			if(_function==LevelMenu)
-			mouseClick =InputHandler::keyUp(sf::Mouse::Button::Left);
+			if (_function == LevelMenu)
+				mouseClick = InputHandler::keyUp(sf::Mouse::Button::Left);
 			else
-			mouseClick = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
+				mouseClick = sf::Mouse::isButtonPressed(sf::Mouse::Button::Left);
 
 			//if (mouseClick && t==0)
-				t -=Time::deltaTime();
+			t -= Time::deltaTime();
 			if (mouseClick) std::cout << std::to_string(xCheck) << " " << std::to_string(yCheck) << std::endl;
-			if (xCheck && yCheck && mouseClick )
+			if (xCheck && yCheck && mouseClick)
 			{
 				delay = 1000;
 				t = 0.5f;
@@ -195,8 +195,8 @@ namespace Engine
 			//Disable all
 			for (auto& menu : menus)
 				//if (menu.first != exceptionMenu)
-					for (auto button : menu.second)
-						button->setEnabled(false);
+				for (auto button : menu.second)
+					button->setEnabled(false);
 		}
 
 		void Button::enableMenu(std::string menu)
@@ -253,23 +253,6 @@ namespace Engine
 			}
 		}
 
-		void Button::createMenu()
-		{
-			//_playButton = new sf::Buttonure();
-			//_optionsButton = new sf::Buttonure();
-			//_creditsButton = new sf::Buttonure();
-			//_exitButton = new sf::Buttonure();
-
-			//_playButton->loadFromFile("");
-
-			///*_playSpr =  sf::Button(_playButton);
-			//_optionsSpr = sf::Button(_optionsButton);
-			//_creditsSpr = sf::Button(_creditsButton);
-			//_exitSpr = sf::Button(_exitButton);*/
-
-			//_playSpr.setPosition(sf::Vector2f(50, 100));
-		}
-
 		void Button::SetEvent(std::string functionString)
 		{
 			//didnt test yet
@@ -280,7 +263,7 @@ namespace Engine
 			}
 			else
 			{
-				std::cout << functionString << std::endl;
+				//std::cout << functionString << std::endl;
 				_function = functions.at(functionString);
 			}
 

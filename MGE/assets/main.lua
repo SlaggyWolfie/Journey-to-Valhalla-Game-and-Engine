@@ -46,7 +46,7 @@ function Start()
 	
 end
 function Update()	
-	print("lua work")
+	-- print("lua work")
 	--obj1="Player"
 	--obj2="obj2"
 	--if(Game.CollisionBetween(obj1,obj2)) then

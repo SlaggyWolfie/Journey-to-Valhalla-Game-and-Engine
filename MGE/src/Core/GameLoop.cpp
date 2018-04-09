@@ -11,6 +11,7 @@
 #include "../_vs2015/SceneManager.hpp"
 #include "../../_vs2015/Sound.hpp"
 #include "../_vs2015/Text.hpp"
+#include "LuaScript.h"
 
 namespace Engine
 {
@@ -146,6 +147,8 @@ namespace Engine
 						comp->_started = true;
 						comp->start();
 					}
+
+			Game::luaScript()->start();
 		}
 
 		void GameLoop::update()
@@ -156,6 +159,8 @@ namespace Engine
 						//&& comp->getGameObject() && comp->getGameObject()->isActive()
 						)
 						comp->update();
+
+			Game::luaScript()->update();
 		}
 
 		void GameLoop::fixedUpdate()

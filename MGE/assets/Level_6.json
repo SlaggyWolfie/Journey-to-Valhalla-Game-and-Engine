@@ -1,0 +1,5799 @@
+[{"GameObject": {"typeID": 0,
+"name": "Directional Light",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 3.0,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.4082178771495819,
+        "y": -0.23456968367099763,
+        "z": 0.10938163101673126,
+        "w": 0.8754261136054993
+    },
+    "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 0.9999999403953552
+    },
+    "parentID": 0,
+    "selfID": 185
+},
+"components": [{
+    "typeID": 3,
+    "intensity": 1.0,
+    "type": 0,
+    "color": {
+        "x": 1.0,
+        "y": 0.95686274766922,
+        "z": 0.8392156958580017,
+        "w": 1.0
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Level 6",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "parentID": 0,
+    "selfID": 184
+},
+"components": []}},
+{"GameObject": {"typeID": 0,
+"name": "Floor",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 44.900001525878909
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "parentID": 184,
+    "selfID": 183
+},
+"components": []}},
+{"GameObject": {"typeID": 0,
+"name": "Interactive",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "parentID": 184,
+    "selfID": 182
+},
+"components": []}},
+{"GameObject": {"typeID": 0,
+"name": "Scenery",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "parentID": 184,
+    "selfID": 181
+},
+"components": []}},
+{"GameObject": {"typeID": 0,
+"name": "Slope_002",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -50.0,
+        "y": 2.625,
+        "z": 20.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 180
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Slope_002.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Slope_Level_003",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -40.0,
+        "y": 2.625,
+        "z": 30.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 179
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Slope_Level_003.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (26)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -43.5,
+        "y": 2.5,
+        "z": 4.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 178
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (10)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -34.16631317138672,
+        "y": 0.6606137752532959,
+        "z": 21.77734375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.285400390625,
+        "z": 0.0,
+        "w": 0.9584084153175354
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 177
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Levelled_Slope_001 (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 20.0,
+        "y": 2.625,
+        "z": -10.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 176
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Levelled_Slope_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (6)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 3.2899999618530275,
+        "y": 0.6060000061988831,
+        "z": 10.079986572265625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 175
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (4)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -5.5,
+        "y": 2.5,
+        "z": 12.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 174
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 100.0,
+        "y": 500.0,
+        "z": 626.898193359375
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -63.4490966796875
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (14)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -33.5,
+        "y": 2.5,
+        "z": 24.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 173
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (4)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -20.0,
+        "y": 1.0000000036274938e-15,
+        "z": -0.00002288818359375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 172
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Floor_Stone (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -20.209999084472658,
+        "y": 0.1899999976158142,
+        "z": 19.71002197265625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 171
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Floor_Stone.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (6)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -18.389999389648439,
+        "y": 0.6100000143051148,
+        "z": -5.20001220703125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.016553469002246858,
+        "z": 0.0,
+        "w": 0.9998630285263062
+    },
+    "scale": {
+        "x": 0.010000002570450306,
+        "y": 0.009999999776482582,
+        "z": 0.010000002570450306
+    },
+    "parentID": 181,
+    "selfID": 170
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (8)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -4.630000114440918,
+        "y": 0.6000000238418579,
+        "z": 12.010009765625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 169
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 3.3010001182556154,
+        "y": 0.6110000014305115,
+        "z": 5.74798583984375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 168
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Levelled_Slope_Corner_004",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 2.625,
+        "z": -10.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 167
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Levelled_Slope_Corner_004.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Forge",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -8.920019149780274,
+        "y": 2.8348891735076906,
+        "z": 21.15997314453125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.9999685883522034,
+        "z": 0.0,
+        "w": 0.00792788714170456
+    },
+    "scale": {
+        "x": 0.010000012814998627,
+        "y": 0.009999999776482582,
+        "z": 0.010000012814998627
+    },
+    "parentID": 181,
+    "selfID": 166
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Forge.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 544.780517578125,
+        "y": 516.977783203125,
+        "z": 961.3632202148438
+    },
+    "center": {
+        "x": -53.42405319213867,
+        "y": -0.00002384185791015625,
+        "z": 166.22891235351563
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wall middle (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -34.599998474121097,
+        "y": 2.0299999713897707,
+        "z": 8.32000732421875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071057558059692,
+        "z": 0.0,
+        "w": 0.7071078419685364
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 165
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Wall middle.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -10.0,
+        "y": 1.0000000036274938e-15,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 164
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Crate (12)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -21.079513549804689,
+        "y": 0.5521425008773804,
+        "z": 23.29473876953125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.5805694460868836,
+        "z": 0.0,
+        "w": 0.8142107725143433
+    },
+    "scale": {
+        "x": 0.010000004433095456,
+        "y": 0.009999999776482582,
+        "z": 0.010000004433095456
+    },
+    "parentID": 181,
+    "selfID": 163
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": ""
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -5.460000038146973,
+        "y": 2.5999999046325685,
+        "z": 14.489990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 162
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner (3)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 4.489999771118164,
+        "y": 2.5999999046325685,
+        "z": 14.489990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 161
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (10)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -13.5,
+        "y": 2.5,
+        "z": 24.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 160
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (12)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -23.5,
+        "y": 2.5,
+        "z": 24.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 159
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -8.666999816894532,
+        "y": 0.6100000143051148,
+        "z": -5.35101318359375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.03647245466709137,
+        "z": 0.0,
+        "w": 0.9993346929550171
+    },
+    "scale": {
+        "x": 0.010000002570450306,
+        "y": 0.009999999776482582,
+        "z": 0.010000002570450306
+    },
+    "parentID": 181,
+    "selfID": 158
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Arch (4)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -22.5,
+        "y": 2.5,
+        "z": 14.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 157
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Arch.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 3.180999994277954,
+        "y": 0.6110000014305115,
+        "z": 6.65301513671875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 156
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 230.86610412597657,
+        "y": 269.0431213378906,
+        "z": 244.140625
+    },
+    "center": {
+        "x": 2.0241737365722658,
+        "y": 93.46025085449219,
+        "z": -76.2359619140625
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (9)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -20.0,
+        "y": 1.0000000036274938e-15,
+        "z": 9.999977111816407
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 155
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (14)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 10.0,
+        "y": 5.0,
+        "z": -20.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 154
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Levelled_Slope_Incline_007",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 2.625,
+        "z": 30.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 153
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Levelled_Slope_Incline_007.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Levelled_Slope_003 (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 20.0,
+        "y": 2.625,
+        "z": 20.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 152
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Levelled_Slope_003.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (16)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 10.0,
+        "y": 1.0000000036274938e-15,
+        "z": -0.00002288818359375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 151
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (12)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -44.22138977050781,
+        "y": 0.6606137752532959,
+        "z": -4.520050048828125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.556105375289917,
+        "z": 0.0,
+        "w": 0.8311118483543396
+    },
+    "scale": {
+        "x": 0.01000000350177288,
+        "y": 0.009999999776482582,
+        "z": 0.01000000350177288
+    },
+    "parentID": 181,
+    "selfID": 150
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Crate (11)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -20.64110565185547,
+        "y": 0.5521425008773804,
+        "z": 20.539794921875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.22743967175483704,
+        "z": 0.0,
+        "w": 0.9737921953201294
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 149
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": ""
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (3)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 2.4579999446868898,
+        "y": 0.6110000014305115,
+        "z": 6.225006103515625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 148
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Levelled_Slope_003",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -10.0,
+        "y": 2.625,
+        "z": 30.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 147
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Levelled_Slope_003.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner (7)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -25.520000457763673,
+        "y": 2.5999999046325685,
+        "z": 4.480010986328125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 146
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (5)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 4.5,
+        "y": 2.5,
+        "z": 7.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 145
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 100.0,
+        "y": 500.0,
+        "z": 2644.955322265625
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -190.67221069335938
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (9)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -34.56336212158203,
+        "y": 0.6606137752532959,
+        "z": 22.73681640625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 144
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (15)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -35.5,
+        "y": 2.5,
+        "z": 21.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 143
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (11)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -18.358556747436525,
+        "y": 0.6570391654968262,
+        "z": 14.74200439453125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 142
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -10.508999824523926,
+        "y": 0.6100000143051148,
+        "z": -5.24200439453125
+    },
+    "rotation": {
+        "x": 0.012427665293216706,
+        "y": 0.015687840059399606,
+        "z": 0.00019500229973345995,
+        "w": 0.9997996687889099
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999996982514859,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 141
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wall middle",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -34.599998474121097,
+        "y": 2.0299999713897707,
+        "z": 6.19000244140625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071057558059692,
+        "z": 0.0,
+        "w": 0.7071078419685364
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 140
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Wall middle.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Boat",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -27.479999542236329,
+        "y": 1.5299999713897706,
+        "z": 2.67999267578125
+    },
+    "rotation": {
+        "x": -0.330549418926239,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.9437887668609619
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.010000002570450306,
+        "z": 0.010000002570450306
+    },
+    "parentID": 181,
+    "selfID": 139
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Boat.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 138
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 6213.31396484375,
+        "y": 50.0,
+        "z": 3834.655029296875
+    },
+    "center": {
+        "x": -2340.08984375,
+        "y": 0.0,
+        "z": 812.6888427734375
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Runestone6_1",
+"tag": "Crate",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -16.399999618530275,
+        "y": 1.1050000190734864,
+        "z": 5.440000057220459
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "parentID": 182,
+    "selfID": 137
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Library/unity default resources"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (14)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -11.520000457763672,
+        "y": 0.6449999809265137,
+        "z": 14.72320556640625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 136
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Anvil",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -7.489999771118164,
+        "y": 0.5458697080612183,
+        "z": 16.72998046875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.7071057558059692,
+        "z": 0.0,
+        "w": 0.7071079015731812
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 135
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Anvil.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pine_Tree_001 (5)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -43.220001220703128,
+        "y": 2.549999952316284,
+        "z": 17.04998779296875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.21957293152809144,
+        "z": 0.0,
+        "w": 0.9755960702896118
+    },
+    "scale": {
+        "x": 0.010000001639127732,
+        "y": 0.009999999776482582,
+        "z": 0.010000001639127732
+    },
+    "parentID": 181,
+    "selfID": 134
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Pine_Tree_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (9)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -8.5,
+        "y": 2.5,
+        "z": 24.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 133
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wall middle (3)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -34.599998474121097,
+        "y": 2.0299999713897707,
+        "z": 12.5400390625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071057558059692,
+        "z": 0.0,
+        "w": 0.7071078419685364
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 132
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Wall middle.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "plate6_2",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -27.451000213623048,
+        "y": 1.3899999856948853,
+        "z": 21.92401123046875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 1.4000003337860108,
+        "y": 2.1559998989105226,
+        "z": 1.4000003337860108
+    },
+    "parentID": 182,
+    "selfID": 131
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Library/unity default resources"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner (10)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -45.45000076293945,
+        "y": 2.5999999046325685,
+        "z": -5.489990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 130
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Arch (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -25.5,
+        "y": 2.5,
+        "z": -2.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 129
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Arch.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 100.0,
+        "y": 500.0,
+        "z": 229.8797607421875
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -243.90106201171876
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (30)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -43.5,
+        "y": 2.499999523162842,
+        "z": -5.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 128
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (4)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -14.395999908447266,
+        "y": 0.5899999737739563,
+        "z": -5.156005859375
+    },
+    "rotation": {
+        "x": -0.030875353142619134,
+        "y": 0.0101590221747756,
+        "z": -0.0003138292522635311,
+        "w": 0.9994715452194214
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 127
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Arch (5)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -17.5,
+        "y": 2.5,
+        "z": 14.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 126
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Arch.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 100.00001525878906,
+        "y": 500.0,
+        "z": 2103.59765625
+    },
+    "center": {
+        "x": 3.160796277490441e-13,
+        "y": 0.0,
+        "z": 173.6265106201172
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "plate6_3",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -0.15000000596046449,
+        "y": 1.4270000457763672,
+        "z": 9.600000381469727
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 1.4000003337860108,
+        "y": 2.1559998989105226,
+        "z": 1.4000003337860108
+    },
+    "parentID": 182,
+    "selfID": 125
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Library/unity default resources"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (22)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -32.5,
+        "y": 2.5,
+        "z": 14.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 124
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 100.00001525878906,
+        "y": 500.0,
+        "z": 820.495849609375
+    },
+    "center": {
+        "x": -2.454635886911527e-13,
+        "y": 0.0,
+        "z": -33.02573013305664
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (24)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -33.5,
+        "y": 2.5,
+        "z": 4.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 123
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 100.00001525878906,
+        "y": 500.0,
+        "z": 2968.718994140625
+    },
+    "center": {
+        "x": -2.9730037875985715e-13,
+        "y": 0.0,
+        "z": -641.3436889648438
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Boat (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -33.689998626708987,
+        "y": 0.6164885759353638,
+        "z": 2.160003662109375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.18605190515518189,
+        "z": 0.0,
+        "w": 0.9825399518013
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 122
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Boat.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (11)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -18.5,
+        "y": 2.5,
+        "z": 24.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 121
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pine_Tree_001 (7)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -42.09000015258789,
+        "y": 2.549999952316284,
+        "z": 22.760009765625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.8443514704704285,
+        "z": 0.0,
+        "w": 0.5357897281646729
+    },
+    "scale": {
+        "x": 0.010000004433095456,
+        "y": 0.009999999776482582,
+        "z": 0.010000004433095456
+    },
+    "parentID": 181,
+    "selfID": 120
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Pine_Tree_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Crate (4)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -3.930000066757202,
+        "y": 0.4915287494659424,
+        "z": 11.739990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 119
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": ""
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 165.57357788085938,
+        "y": 183.20013427734376,
+        "z": 208.6517333984375
+    },
+    "center": {
+        "x": -51.17625045776367,
+        "y": 61.38581466674805,
+        "z": -9.20867919921875
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (11)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -33.49415588378906,
+        "y": 0.6606137752532959,
+        "z": 15.61431884765625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 118
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Boat (3)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -36.47999954223633,
+        "y": 1.2599999904632569,
+        "z": 2.42999267578125
+    },
+    "rotation": {
+        "x": -0.2577134370803833,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.9662213921546936
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 117
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Boat.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (5)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -16.290000915527345,
+        "y": 0.6107678413391113,
+        "z": -5.173004150390625
+    },
+    "rotation": {
+        "x": -0.009088410064578057,
+        "y": 0.010163447819650174,
+        "z": -0.00009237816266249865,
+        "w": 0.9999070763587952
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999996982514859
+    },
+    "parentID": 181,
+    "selfID": 116
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (19)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 2.5,
+        "y": -0.5,
+        "z": 4.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 115
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Gate6_2",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -27.389999389648439,
+        "y": 2.0899999141693117,
+        "z": 14.46197509765625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 182,
+    "selfID": 114
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Runes/Door 9.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 71.82008361816406,
+        "y": 417.99993896484377,
+        "z": 318.16168212890627
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (17)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -7.5,
+        "y": 2.5,
+        "z": 14.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 113
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (15)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -10.0,
+        "y": 1.0000000036274938e-15,
+        "z": 9.999977111816407
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 112
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Levelled_Slope_004",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 2.625,
+        "z": -20.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 111
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Levelled_Slope_004.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Anvil (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -9.489999771118164,
+        "y": 0.5458697080612183,
+        "z": 16.72998046875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.7071057558059692,
+        "z": 0.0,
+        "w": 0.7071079015731812
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 110
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Anvil.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (29)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -50.0,
+        "y": 1.0000000036274938e-15,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 109
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Slope_Level_007",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -20.0,
+        "y": 2.625,
+        "z": 30.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 108
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Slope_Level_007.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 3506.223388671875,
+        "y": 525.0,
+        "z": 1091.546630859375
+    },
+    "center": {
+        "x": -6.851959228515625,
+        "y": 0.0,
+        "z": -45.7733154296875
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Ram sigil with background",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -33.11000061035156,
+        "y": 3.319999933242798,
+        "z": -4.8489990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 107
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Ram sigil with background.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (18)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -2.5,
+        "y": -0.5,
+        "z": 4.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 106
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 100.00001525878906,
+        "y": 707.4334106445313,
+        "z": 1072.8343505859375
+    },
+    "center": {
+        "x": 7.623702016901213e-13,
+        "y": 103.71699523925781,
+        "z": 198.1615753173828
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Arch (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -27.5,
+        "y": 2.5,
+        "z": 14.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 105
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Arch.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner (4)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -5.460000038146973,
+        "y": 2.5999999046325685,
+        "z": 24.489990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 104
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Crate (9)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -20.203649520874025,
+        "y": 0.5521425008773804,
+        "z": 21.3096923828125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.265001118183136,
+        "z": 0.0,
+        "w": 0.9642481207847595
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 103
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": ""
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (27)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -40.0,
+        "y": 1.0000000036274938e-15,
+        "z": 19.999977111816408
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 102
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner (9)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -45.45000076293945,
+        "y": 2.5999999046325685,
+        "z": 4.480010986328125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 101
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Crate (6)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -33.766510009765628,
+        "y": 0.5521425008773804,
+        "z": 16.62420654296875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.04562149569392204,
+        "z": 0.0,
+        "w": 0.9989588260650635
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 100
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": ""
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (8)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -22.110000610351564,
+        "y": 0.6100000143051148,
+        "z": -5.230010986328125
+    },
+    "rotation": {
+        "x": 0.01828676648437977,
+        "y": 0.029913093894720079,
+        "z": 0.0005473503842949867,
+        "w": 0.9993851184844971
+    },
+    "scale": {
+        "x": 0.010000002570450306,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 99
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (28)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -33.5,
+        "y": 2.499999523162842,
+        "z": -5.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 98
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 100.00001525878906,
+        "y": 500.0,
+        "z": 7960.9326171875
+    },
+    "center": {
+        "x": 1.0908489389560572e-11,
+        "y": 0.0,
+        "z": 1849.6990966796875
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Levelled_Slope_003 (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 10.0,
+        "y": 2.625,
+        "z": 20.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 97
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Levelled_Slope_003.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 2091.046142578125,
+        "y": 525.0,
+        "z": 1101.959228515625
+    },
+    "center": {
+        "x": -545.5238037109375,
+        "y": 0.0,
+        "z": -50.9796142578125
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (14)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -44.05856704711914,
+        "y": 0.6606137752532959,
+        "z": 0.20196533203125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.8676169514656067,
+        "z": 0.0,
+        "w": 0.49723321199417117
+    },
+    "scale": {
+        "x": 0.009999996982514859,
+        "y": 0.009999999776482582,
+        "z": 0.009999996982514859
+    },
+    "parentID": 181,
+    "selfID": 96
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Floor_Stone",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -10.210000038146973,
+        "y": 0.1899999976158142,
+        "z": 19.71002197265625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 95
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Floor_Stone.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pine_Tree_001 (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -23.719999313354493,
+        "y": 2.549999952316284,
+        "z": -9.910003662109375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.6105899810791016,
+        "z": 0.0,
+        "w": 0.7919469475746155
+    },
+    "scale": {
+        "x": 0.01000000350177288,
+        "y": 0.009999999776482582,
+        "z": 0.01000000350177288
+    },
+    "parentID": 181,
+    "selfID": 94
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Pine_Tree_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (34)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -60.0,
+        "y": 1.0000000036274938e-15,
+        "z": -10.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 93
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (7)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -4.199999809265137,
+        "y": 0.6000000238418579,
+        "z": 11.029998779296875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 92
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Levelled_Slope_Corner_003",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 2.625,
+        "z": 20.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 91
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Levelled_Slope_Corner_003.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pine_Tree_001",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -5.380000114440918,
+        "y": 2.549999952316284,
+        "z": -6.709991455078125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.21957293152809144,
+        "z": 0.0,
+        "w": 0.9755960702896118
+    },
+    "scale": {
+        "x": 0.010000001639127732,
+        "y": 0.009999999776482582,
+        "z": 0.010000001639127732
+    },
+    "parentID": 181,
+    "selfID": 90
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Pine_Tree_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (6)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 4.5,
+        "y": 2.5,
+        "z": 12.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 89
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (21)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -25.5,
+        "y": 2.5,
+        "z": 2.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 88
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 100.0,
+        "y": 500.0,
+        "z": 648.516845703125
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -51.837158203125
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (32)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -50.0,
+        "y": 2.0000000072549876e-15,
+        "z": -19.999969482421876
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 87
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (6)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -30.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 86
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (30)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -50.0,
+        "y": 1.0000000036274938e-15,
+        "z": -10.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 85
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 4.489999771118164,
+        "y": 2.5999999046325685,
+        "z": 4.480010986328125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 84
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Slope_Corner_002",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -50.0,
+        "y": 2.5,
+        "z": 10.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 83
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Slope_Corner_002.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (7)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -5.5,
+        "y": 2.5,
+        "z": 22.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 82
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (23)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -28.5,
+        "y": 2.5,
+        "z": 4.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 81
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Floor_Plank (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -40.970001220703128,
+        "y": 0.30000001192092898,
+        "z": -0.75
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 80
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Floor_Plank.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Arch (7)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -45.5,
+        "y": 2.5,
+        "z": -2.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 79
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Arch.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 199.8119354248047,
+        "y": 500.0,
+        "z": 179.8614501953125
+    },
+    "center": {
+        "x": 49.905967712402347,
+        "y": 0.0,
+        "z": -214.57061767578126
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (5)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -20.0,
+        "y": 1.0000000036274938e-15,
+        "z": -10.000022888183594
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 78
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Long ladder",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -31.945247650146486,
+        "y": 2.5299999713897707,
+        "z": 2.850006103515625
+    },
+    "rotation": {
+        "x": 0.20448675751686097,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.9788693785667419
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 77
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Long ladder.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (16)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -35.5,
+        "y": 2.5,
+        "z": 16.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 76
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (10)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -10.0,
+        "y": 2.0000000072549876e-15,
+        "z": -20.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 75
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (28)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -40.0,
+        "y": 1.0000000036274938e-15,
+        "z": 9.999977111816407
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 74
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (25)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -38.5,
+        "y": 2.5,
+        "z": 4.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 73
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -6.781000137329102,
+        "y": 0.6100000143051148,
+        "z": -5.35699462890625
+    },
+    "rotation": {
+        "x": -0.02717907540500164,
+        "y": -0.047216590493917468,
+        "z": 0.0012852129293605686,
+        "w": 0.9985140562057495
+    },
+    "scale": {
+        "x": 0.009999996982514859,
+        "y": 0.009999999776482582,
+        "z": 0.009999996982514859
+    },
+    "parentID": 181,
+    "selfID": 72
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (15)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -13.358556747436524,
+        "y": 0.6570391654968262,
+        "z": 14.74200439453125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 71
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (3)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 2.5,
+        "y": 2.5,
+        "z": 14.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 70
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (27)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -28.5,
+        "y": 2.5,
+        "z": -5.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 69
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (10)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -16.520000457763673,
+        "y": 0.6449999809265137,
+        "z": 14.72320556640625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 68
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Levelled_Slope_001",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 10.0,
+        "y": 2.625,
+        "z": -10.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 67
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Levelled_Slope_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (8)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -40.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 66
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner (8)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -25.520000457763673,
+        "y": 2.5999999046325685,
+        "z": -5.489990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 65
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (7)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -30.0,
+        "y": 1.0000000036274938e-15,
+        "z": -10.000022888183594
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 64
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Arch (6)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -12.5,
+        "y": 2.5,
+        "z": 14.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 63
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Arch.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (31)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -40.0,
+        "y": 2.0000000072549876e-15,
+        "z": -20.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 62
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Runestone6_2",
+"tag": "Crate",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -27.600000381469728,
+        "y": 0.9180000424385071,
+        "z": 21.90999984741211
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "parentID": 182,
+    "selfID": 61
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Library/unity default resources"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (31)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -45.5,
+        "y": 2.5,
+        "z": 2.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 60
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 206.61239624023438,
+        "y": 500.0,
+        "z": 643.597412109375
+    },
+    "center": {
+        "x": 53.30619812011719,
+        "y": 0.0,
+        "z": -55.633544921875
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (12)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -20.0,
+        "y": 2.0000000072549876e-15,
+        "z": -20.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 59
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (26)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -40.0,
+        "y": 1.0000000036274938e-15,
+        "z": -10.000022888183594
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 58
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Gate6_1",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -5.510000228881836,
+        "y": 2.0899999141693117,
+        "z": 7.45001220703125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 182,
+    "selfID": 57
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Runes/Door 10.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 71.820068359375,
+        "y": 417.99993896484377,
+        "z": 318.16162109375
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Crate (8)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -33.91413497924805,
+        "y": 0.5521425008773804,
+        "z": 20.64495849609375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7196135520935059,
+        "z": 0.0,
+        "w": 0.6943747997283936
+    },
+    "scale": {
+        "x": 0.009999996051192284,
+        "y": 0.009999999776482582,
+        "z": 0.009999996051192284
+    },
+    "parentID": 181,
+    "selfID": 56
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": ""
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 997.826171875,
+        "y": 248.2913055419922,
+        "z": 107.52146911621094
+    },
+    "center": {
+        "x": 101.62396240234375,
+        "y": 93.93138885498047,
+        "z": 22.184471130371095
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (13)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -23.358556747436525,
+        "y": 0.6570391654968262,
+        "z": 14.74200439453125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 55
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Arch",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -5.5,
+        "y": 2.5,
+        "z": 7.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 54
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Arch.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 100.0,
+        "y": 500.0,
+        "z": 171.9207763671875
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -212.81585693359376
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pine_Tree_001 (3)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -39.13999938964844,
+        "y": 2.549999952316284,
+        "z": -10.480010986328125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.645158588886261,
+        "z": 0.0,
+        "w": 0.7640487551689148
+    },
+    "scale": {
+        "x": 0.01000000350177288,
+        "y": 0.009999999776482582,
+        "z": 0.01000000350177288
+    },
+    "parentID": 181,
+    "selfID": 53
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Pine_Tree_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wall middle (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -34.599998474121097,
+        "y": 2.0299999713897707,
+        "z": 10.410003662109375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071057558059692,
+        "z": 0.0,
+        "w": 0.7071078419685364
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 52
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Wall middle.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 1031.292724609375,
+        "y": 499.9970397949219,
+        "z": 239.67759704589845
+    },
+    "center": {
+        "x": 122.5576400756836,
+        "y": 0.0,
+        "z": 0.00023841859365347773
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Crate (10)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -20.729999542236329,
+        "y": 0.5521425008773804,
+        "z": 22.139999389648439
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.4485476016998291,
+        "z": 0.0,
+        "w": 0.8937589526176453
+    },
+    "scale": {
+        "x": 0.009999998845160008,
+        "y": 0.009999999776482582,
+        "z": 0.009999998845160008
+    },
+    "parentID": 181,
+    "selfID": 51
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": ""
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (9)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -23.950000762939454,
+        "y": 0.6100000143051148,
+        "z": -5.410003662109375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.13176706433296204,
+        "z": 0.0,
+        "w": 0.991280734539032
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 50
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Viking townhall",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -14.470000267028809,
+        "y": 6.980000019073486,
+        "z": -13.600006103515625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.08079497516155243,
+        "z": 0.0,
+        "w": 0.9967307448387146
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 49
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Houses/Viking townhall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pine_Tree_001 (4)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 7.789999961853027,
+        "y": 2.549999952316284,
+        "z": 5.19000244140625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.17872774600982667,
+        "z": 0.0,
+        "w": 0.9838985800743103
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 48
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Pine_Tree_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Slope_003",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -60.0,
+        "y": 2.625,
+        "z": 10.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 47
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Slope_003.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (7)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -20.290000915527345,
+        "y": 0.6090047359466553,
+        "z": -5.269989013671875
+    },
+    "rotation": {
+        "x": -0.009088827297091484,
+        "y": 0.00339075131341815,
+        "z": -0.000030819403036730364,
+        "w": 0.9999529719352722
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 46
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Ram sigil with background (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -38.689998626708987,
+        "y": 3.319999933242798,
+        "z": -4.8489990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 45
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Ram sigil with background.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner (5)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -35.470001220703128,
+        "y": 2.5999999046325685,
+        "z": 14.489990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 44
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -2.5,
+        "y": 2.5,
+        "z": 14.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 43
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Crate (5)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -34.29468536376953,
+        "y": 0.5521425008773804,
+        "z": 15.73956298828125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.03693465515971184,
+        "z": 0.0,
+        "w": 0.9993177056312561
+    },
+    "scale": {
+        "x": 0.010000002570450306,
+        "y": 0.009999999776482582,
+        "z": 0.010000002570450306
+    },
+    "parentID": 181,
+    "selfID": 42
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": ""
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (17)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 20.0,
+        "y": 1.0000000036274938e-15,
+        "z": -0.000030517578125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 41
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (13)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -28.5,
+        "y": 2.5,
+        "z": 24.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 40
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (33)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -60.0,
+        "y": 1.0000000036274938e-15,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 39
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Crate (7)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -34.18804168701172,
+        "y": 0.5521425008773804,
+        "z": 17.4110107421875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.1027839258313179,
+        "z": 0.0,
+        "w": 0.9947037696838379
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 38
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": ""
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (29)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -38.5,
+        "y": 2.499999523162842,
+        "z": -5.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.7071068286895752,
+        "z": 0.0,
+        "w": 0.7071068286895752
+    },
+    "scale": {
+        "x": 0.01000000536441803,
+        "y": 0.009999999776482582,
+        "z": 0.01000000536441803
+    },
+    "parentID": 181,
+    "selfID": 37
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Wall (8)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -5.5,
+        "y": 2.5,
+        "z": 17.5
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 36
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Wall.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (12)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -21.520000457763673,
+        "y": 0.6449999809265137,
+        "z": 14.72320556640625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 35
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (13)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -30.0,
+        "y": 2.0000000072549876e-15,
+        "z": -20.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 34
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (3)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -10.0,
+        "y": 1.0000000036274938e-15,
+        "z": -10.000022888183594
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 33
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Gate6_3",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -25.523000717163087,
+        "y": 2.0899999141693117,
+        "z": -2.489990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 182,
+    "selfID": 32
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Runes/Door 8.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 71.8201904296875,
+        "y": 417.99993896484377,
+        "z": 318.16162109375
+    },
+    "center": {
+        "x": -0.00006103515625,
+        "y": 0.00000762939453125,
+        "z": 0.0
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (13)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -44.57350158691406,
+        "y": 0.6606137752532959,
+        "z": -0.54962158203125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 31
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pine_Tree_001 (6)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -38.540000915527347,
+        "y": 2.549999952316284,
+        "z": 19.57000732421875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.7006068825721741,
+        "z": 0.0,
+        "w": 0.7135474681854248
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 30
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Pine_Tree_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "plate6_1",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -16.600000381469728,
+        "y": 1.5800000429153443,
+        "z": 5.340000152587891
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 1.399999976158142,
+        "y": 2.1559998989105226,
+        "z": 1.399999976158142
+    },
+    "parentID": 182,
+    "selfID": 29
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Library/unity default resources"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Slope_Level_Incline_006",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -50.0,
+        "y": 2.625,
+        "z": 30.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 28
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Slope_Level_Incline_006.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (19)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 10.0,
+        "y": 1.0000000036274938e-15,
+        "z": 9.999977111816407
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 27
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner (6)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -35.470001220703128,
+        "y": 2.5999999046325685,
+        "z": 24.489990234375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 26
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (4)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 3.4200000762939455,
+        "y": 0.6060000061988831,
+        "z": 11.780029296875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 25
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 179.19061279296876,
+        "y": 194.3921356201172,
+        "z": 373.834228515625
+    },
+    "center": {
+        "x": 9.317597389221192,
+        "y": 56.13471221923828,
+        "z": -45.8953857421875
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Wood_Corner",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -5.460000038146973,
+        "y": 2.5999999046325685,
+        "z": 4.480010986328125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 24
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Walls/Wood_Corner.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (35)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -60.0,
+        "y": 2.0000000072549876e-15,
+        "z": -19.999969482421876
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 23
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (11)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -30.0,
+        "y": 1.0000000036274938e-15,
+        "z": 9.999977111816407
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 22
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Floor_Plank",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -30.969999313354493,
+        "y": 0.2999997138977051,
+        "z": -0.75
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 21
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Floor_Plank.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Slope_003",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -30.0,
+        "y": 2.625,
+        "z": 30.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 20
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Slope_003.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Forge (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -17.360000610351564,
+        "y": 2.8348891735076906,
+        "z": 21.489999771118165
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.9999960660934448,
+        "z": 0.0,
+        "w": -0.0028152652084827425
+    },
+    "scale": {
+        "x": 0.010000013746321202,
+        "y": 0.009999999776482582,
+        "z": 0.010000013746321202
+    },
+    "parentID": 181,
+    "selfID": 19
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Forge.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 579.3353881835938,
+        "y": 516.977783203125,
+        "z": 497.933837890625
+    },
+    "center": {
+        "x": 70.70142364501953,
+        "y": -0.00002384185791015625,
+        "z": -0.003886203281581402
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pine_Tree_001 (8)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -31.850000381469728,
+        "y": 2.549999952316284,
+        "z": 6.1400146484375
+    },
+    "rotation": {
+        "x": 0.036225542426109317,
+        "y": -0.3137924373149872,
+        "z": -0.027035843580961229,
+        "w": 0.9484150409698486
+    },
+    "scale": {
+        "x": 0.009999997913837433,
+        "y": 0.010000002570450306,
+        "z": 0.009999997913837433
+    },
+    "parentID": 181,
+    "selfID": 18
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Pine_Tree_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Barrel (5)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 3.0,
+        "y": 0.6060000061988831,
+        "z": 12.53997802734375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 17
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Barrel.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Runestone6_3",
+"tag": "Crate",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -13.4399995803833,
+        "y": 0.5000001192092896,
+        "z": 21.549999237060548
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.21156612038612367,
+        "z": 0.0,
+        "w": 0.9773637056350708
+    },
+    "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "parentID": 182,
+    "selfID": 16
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Library/unity default resources"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Fence (3)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -12.454000473022461,
+        "y": 0.6100000143051148,
+        "z": -5.233001708984375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.03350416198372841,
+        "z": 0.0,
+        "w": 0.9994385838508606
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 15
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Fence.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Plane_001 (20)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 20.0,
+        "y": 1.0000000036274938e-15,
+        "z": 9.999969482421875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 14
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Boat (1)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -30.479999542236329,
+        "y": 0.6164885759353638,
+        "z": 1.709991455078125
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 13
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Boat.fbx"
+},
+{
+    "typeID": 2,
+    "size": {
+        "x": 1159.5439453125,
+        "y": 315.6856689453125,
+        "z": 523.1743774414063
+    },
+    "center": {
+        "x": -78.59225463867188,
+        "y": 121.19398498535156,
+        "z": 66.33334350585938
+    }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Floor_Plank (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -0.38999998569488528,
+        "y": 0.1599999964237213,
+        "z": 9.170013427734375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 12
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Floor_Plank.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Floor_Stone (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -30.209999084472658,
+        "y": 0.1899999976158142,
+        "z": 19.71002197265625
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 183,
+    "selfID": 11
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Terrain Modular/Floor_Stone.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pine_Tree_001 (2)",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -35.34000015258789,
+        "y": 2.549999952316284,
+        "z": -14.160003662109375
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.3852582275867462,
+        "z": 0.0,
+        "w": 0.9228088855743408
+    },
+    "scale": {
+        "x": 0.009999999776482582,
+        "y": 0.009999999776482582,
+        "z": 0.009999999776482582
+    },
+    "parentID": 181,
+    "selfID": 10
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Large Props/Pine_Tree_001.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pressure plate 2",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -16.599998474121095,
+        "y": 0.31442809104919436,
+        "z": 5.340000152587891
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.0139999995008111,
+        "y": 0.021559998393058778,
+        "z": 0.0139999995008111
+    },
+    "parentID": 29,
+    "selfID": 9
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Runes/Pressure plate 2.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pressure plate 3",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -0.15000000596046449,
+        "y": 0.37056005001068118,
+        "z": 9.600000381469727
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.014000003226101399,
+        "y": 0.021559998393058778,
+        "z": 0.014000003226101399
+    },
+    "parentID": 125,
+    "selfID": 8
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Runes/Pressure plate 3.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pressure plate Border",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -27.451000213623048,
+        "y": 0.3615880012512207,
+        "z": 21.92401123046875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.014000003226101399,
+        "y": 0.021559998393058778,
+        "z": 0.014000003226101399
+    },
+    "parentID": 131,
+    "selfID": 7
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Runes/Pressure plate Border.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pressure plate Border",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -16.600000381469728,
+        "y": 0.2734640836715698,
+        "z": 5.340000152587891
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.0139999995008111,
+        "y": 0.021559998393058778,
+        "z": 0.0139999995008111
+    },
+    "parentID": 29,
+    "selfID": 6
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Runes/Pressure plate Border.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pressure plate Border",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -0.15000000596046449,
+        "y": 0.361936092376709,
+        "z": 9.600000381469727
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 0.014000003226101399,
+        "y": 0.021559998393058778,
+        "z": 0.014000003226101399
+    },
+    "parentID": 125,
+    "selfID": 5
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Runes/Pressure plate Border.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Pressure plate 1",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -27.451000213623048,
+        "y": 0.3917720317840576,
+        "z": 21.92401123046875
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 1.0,
+        "z": 0.0,
+        "w": 0.000002950429461634485
+    },
+    "scale": {
+        "x": 0.014000003226101399,
+        "y": 0.021559998393058778,
+        "z": 0.014000003226101399
+    },
+    "parentID": 131,
+    "selfID": 4
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Props/Small Props/Runes/Pressure plate 1.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "ThirdPersonController",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.5129174590110779,
+        "z": 0.0,
+        "w": 0.8584379553794861
+    },
+    "scale": {
+        "x": 1.4000000953674317,
+        "y": 1.399999976158142,
+        "z": 1.4000000953674317
+    },
+    "parentID": 0,
+    "selfID": 3
+},
+"components": []}},
+{"GameObject": {"typeID": 0,
+"name": "Sphere",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 0.699999988079071,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.5129174590110779,
+        "z": 0.0,
+        "w": 0.8584379553794861
+    },
+    "scale": {
+        "x": 4.200000286102295,
+        "y": 4.199999809265137,
+        "z": 4.200000286102295
+    },
+    "parentID": 3,
+    "selfID": 2
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Library/unity default resources"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Main Camera",
+"tag": "MainCamera",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 4.482417106628418,
+        "y": 10.243261337280274,
+        "z": 7.301330089569092
+    },
+    "rotation": {
+        "x": -0.10005326569080353,
+        "y": 0.8963708281517029,
+        "z": -0.343721479177475,
+        "w": -0.26146572828292849
+    },
+    "scale": {
+        "x": 1.4000015258789063,
+        "y": 1.4000003337860108,
+        "z": 1.4000014066696168
+    },
+    "parentID": 3,
+    "selfID": 1
+},
+"components": []}},
+{"GameObject": {"typeID": 0,
+"name": "Main character 1.2 updated",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 0.0,
+        "y": 1.6800000667572022,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.5129174590110779,
+        "z": 0.0,
+        "w": 0.8584379553794861
+    },
+    "scale": {
+        "x": 0.0139999995008111,
+        "y": 0.0139999995008111,
+        "z": 0.0139999995008111
+    },
+    "parentID": 3,
+    "selfID": 0
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Main character 1.2 updated.fbx"
+}]}}]

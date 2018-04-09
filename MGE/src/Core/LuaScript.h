@@ -23,7 +23,7 @@ public:
 	static int NewButton(lua_State* state);
 	static int AddToMenu(lua_State* state);
 	static int SetEvent(lua_State* state);
-
+	static int PlaySoundOneShot(lua_State* state);
 
 
 	//static int KeyDown(lua_State * state);

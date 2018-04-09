@@ -17,7 +17,7 @@ PlayerBaseComponent::PlayerBaseComponent()
 void PlayerBaseComponent::update()
 {
 
-	std::cout << "scale from " + glm::to_string(getGameObject()->getTransform()->getScale()) << std::endl;
+	//std::cout << "scale from " + glm::to_string(getGameObject()->getTransform()->getScale()) << std::endl;
 	//if collide with wall then pushback
 	/*auto collisionList = ServiceLocator::instance()->getService<ColliderManager>()->
 		CheckBoxCollision(getGameObject()->getComponent<collider>());

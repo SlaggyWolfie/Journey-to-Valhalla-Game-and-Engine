@@ -2,6 +2,8 @@
 
 std::map<sf::Keyboard::Key, KeyState> InputHandler::_keyboardKeys;
 std::map<sf::Mouse::Button, KeyState> InputHandler::_mouseButtons;
+std::unordered_set<sf::Mouse::Button> InputHandler::_mouseButtonsConsumed;
+std::unordered_set<sf::Keyboard::Key> InputHandler::_keyboardKeysConsumed;
 
 void InputHandler::testKey(const sf::Keyboard::Key key)
 {
@@ -15,28 +17,14 @@ void InputHandler::testKey(const sf::Mouse::Button key)
 
 bool InputHandler::keyDown(const sf::Mouse::Button key)
 {
-	const bool check = _mouseButtons[key] == PRESSED;
-
-	if (check)
-	{
-		_mouseButtons[key] = NOT_PRESSED;
-		return true;
-	}
-
-	return false;
+	_mouseButtonsConsumed.insert(key);
+	return _mouseButtons[key] == PRESSED;
 }
 
 bool InputHandler::keyUp(const sf::Mouse::Button key)
 {
-	const bool check = _mouseButtons[key] == RELEASED;
-
-	if (check)
-	{
-		_mouseButtons[key] = NOT_PRESSED;
-		return true;
-	}
-
-	return false;
+	_mouseButtonsConsumed.insert(key);
+	return _mouseButtons[key] == RELEASED;
 }
 
 bool InputHandler::keyPressed(const sf::Mouse::Button key)
@@ -46,28 +34,14 @@ bool InputHandler::keyPressed(const sf::Mouse::Button key)
 
 bool InputHandler::keyDown(const sf::Keyboard::Key key)
 {
-	const bool check = _keyboardKeys[key] == PRESSED;
-
-	if (check)
-	{
-		_keyboardKeys[key] = NOT_PRESSED;
-		return true;
-	}
-
-	return false;
+	_keyboardKeysConsumed.insert(key);
+	return _keyboardKeys[key] == PRESSED;
 }
 
 bool InputHandler::keyUp(const sf::Keyboard::Key key)
 {
-	const bool check = _keyboardKeys[key] == RELEASED;
-
-	if (check)
-	{
-		_keyboardKeys[key] = NOT_PRESSED;
-		return true;
-	}
-
-	return false;
+	_keyboardKeysConsumed.insert(key);
+	return _keyboardKeys[key] == RELEASED;
 }
 
 bool InputHandler::keyPressed(const sf::Keyboard::Key key)
@@ -81,6 +55,18 @@ void InputHandler::reset()
 	_mouseButtons.clear();
 }
 
+void InputHandler::update()
+{
+	for (auto& key : _keyboardKeysConsumed)
+		_keyboardKeys[key] = NOT_PRESSED;
+
+	for (auto& key : _mouseButtonsConsumed)
+		_mouseButtons[key] = NOT_PRESSED;
+
+	_keyboardKeysConsumed.clear();
+	_mouseButtonsConsumed.clear();
+}
+
 void InputHandler::updateEvent(const sf::Event event)
 {
 	//const bool keyPressed = event.type == sf::Event::KeyPressed;
@@ -88,34 +74,35 @@ void InputHandler::updateEvent(const sf::Event event)
 
 	//if (keyPressed || keyReleased) 
 
-	if (event.type == sf::Event::KeyPressed)
+	switch (event.type)
+	{
+	case sf::Event::KeyPressed:
 	{
 		const sf::Keyboard::Key key = event.key.code;
 		testKey(key);
 
 		_keyboardKeys[key] = PRESSED;
-
-		return;
+		break;
 	}
-
-	if (event.type == sf::Event::KeyReleased)
+	case sf::Event::KeyReleased:
 	{
 		_keyboardKeys[event.key.code] = RELEASED;
-		return;
+		break;
 	}
-
-	if (event.type == sf::Event::MouseButtonPressed)
+	case sf::Event::MouseButtonPressed:
 	{
 		const sf::Mouse::Button key = event.mouseButton.button;
 		testKey(key);
 
 		_mouseButtons[event.mouseButton.button] = PRESSED;
+		break;
 
-		return;
 	}
-
-	if (event.type == sf::Event::MouseButtonReleased)
+	default:
+	case sf::Event::MouseButtonReleased:
 	{
 		_mouseButtons[event.mouseButton.button] = RELEASED;
+		break;
+	}
 	}
 }

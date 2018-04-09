@@ -9,6 +9,7 @@
 #include "../../_vs2015/LastposStasher.h"
 #include "../_vs2015/Time.hpp"
 #include "../_vs2015/Button.hpp"
+#include "../../_vs2015/Sound.hpp"
 using namespace Engine;
 using namespace Engine::UI;
 std::string LuaScript::message = std::string();
@@ -21,7 +22,7 @@ LuaScript::LuaScript()
 
 	luaL_openlibs(state_);
 
-	if (luaL_dofile(state_, "main.lua") !=0 ) {
+	if (luaL_dofile(state_, "main.lua") != 0) {
 		printf("Read from file-Success\n");
 	}
 	else {
@@ -54,7 +55,7 @@ void LuaScript::registerFunctions()
 
 	lua_pushcfunction(state_, ShowHint);
 	lua_setfield(state_, -2, "ShowHint");
-	
+
 	lua_pushcfunction(state_, PushBackObj);
 	lua_setfield(state_, -2, "PushBackObj");
 
@@ -76,6 +77,9 @@ void LuaScript::registerFunctions()
 	lua_pushcfunction(state_, SetEvent);
 	lua_setfield(state_, -2, "SetEvent");
 
+	lua_pushcfunction(state_, PlaySoundOneShot);
+	lua_setfield(state_, -2, "PlaySoundOneShot");
+
 	lua_setglobal(state_, "Game");
 
 	std::cout << "registered functions" << std::endl;
@@ -84,8 +88,8 @@ void LuaScript::registerFunctions()
 
 void LuaScript::update()
 {
-	
-	
+
+
 	lua_getglobal(state_, "Update");
 	int isFunc = lua_isfunction(state_, -1);
 	if (isFunc) {
@@ -191,26 +195,26 @@ int LuaScript::PushBackObj(lua_State * state)
 		std::string name1 = (std::string)lua_tostring(state, 1);
 		std::string name2 = (std::string)lua_tostring(state, 2);
 		ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
-		_colliderManager->GetColliderByName(name1)->PushBackObj(name1,name2);
+		_colliderManager->GetColliderByName(name1)->PushBackObj(name1, name2);
 		//std::cout<<comp->lp;
 		//_colliderManager->GetColliderByName(name)->getGameObject()->getTransform()->setPosition(glm::vec3(-300, -599, 300));
 		//(_colliderManager->GetColliderByName(name)->getGameObject()->getComponent<PlayerBaseComponent>()->lp);
-		
-	return 0;
+
+		return 0;
 	}
 	return luaL_error(state, " faulty arguments");
 }
 
 int LuaScript::CollisionBetween(lua_State * state)
 {
-	if (lua_isstring(state, 1)&& lua_gettop(state) == 2 && lua_isstring(state, 2))
+	if (lua_isstring(state, 1) && lua_gettop(state) == 2 && lua_isstring(state, 2))
 	{
-		std::string name1= (std::string)lua_tostring(state, 1);
+		std::string name1 = (std::string)lua_tostring(state, 1);
 		std::string name2 = (std::string)lua_tostring(state, 2);
 
 		ColliderManager* _colliderManager = ServiceLocator::instance()->getService<ColliderManager>();
 		bool result = _colliderManager->CheckBoxCollisionBetween(_colliderManager->GetColliderByName(name1), _colliderManager->GetColliderByName(name2));
-		lua_pushboolean(state,result);
+		lua_pushboolean(state, result);
 		//std::cout << result << std::endl;
 		//std::cout << _colliderManager->CollisionBetween(_colliderManager->GetColliderByName(name1), _colliderManager->GetColliderByName(name2))<<std::endl;
 
@@ -245,13 +249,13 @@ int LuaScript::SphereCollisionBetween(lua_State * state)
 
 int LuaScript::GetGameTime(lua_State * state)
 {
-	lua_pushnumber(state, Engine::Utility::Time::now()/60.0f);
+	lua_pushnumber(state, Engine::Utility::Time::now() / 60.0f);
 	return 0;
 }
 
 int LuaScript::NewButton(lua_State * state)
 {
-	if (lua_isstring(state, 1) && lua_isnumber(state,2) && lua_isnumber(state, 3))
+	if (lua_isstring(state, 1) && lua_isnumber(state, 2) && lua_isnumber(state, 3))
 	{
 		std::string path = (std::string) lua_tostring(state, 1);
 		float x = (float)lua_tonumber(state, 2);
@@ -269,22 +273,22 @@ int LuaScript::NewButton(lua_State * state)
 
 int LuaScript::AddToMenu(lua_State * state)
 {
-	if (lua_isstring(state, 1) &&lua_islightuserdata(state,2))
+	if (lua_isstring(state, 1) && lua_islightuserdata(state, 2))
 	{
-		
+
 		int n = lua_gettop(state);
 		std::string name = (std::string)lua_tostring(state, 1);
 
 		if (Button::menus.find(name) == Button::menus.end())
 		{
 			Button::menus[name] = std::vector<Button*>();
-			std::cout << "Not Found " + name << std::endl;
+			//std::cout << "Not Found " + name << std::endl;
 		}
 
 		std::vector<Button*>& buttons = Button::menus[name];
 		for (int i = 2; i <= n; i++)
 		{
-			Button* b= (Button*)lua_topointer(state, i);
+			Button* b = (Button*)lua_topointer(state, i);
 			buttons.push_back(b);
 		}
 
@@ -296,7 +300,7 @@ int LuaScript::AddToMenu(lua_State * state)
 
 int LuaScript::SetEvent(lua_State * state)
 {
-	if ( lua_islightuserdata(state, 1) && lua_isstring(state, 2) )
+	if (lua_islightuserdata(state, 1) && lua_isstring(state, 2))
 	{
 		Button* btn = (Button*)lua_topointer(state, 1);
 		std::string event = (std::string)lua_tostring(state, 2);
@@ -305,6 +309,16 @@ int LuaScript::SetEvent(lua_State * state)
 	}
 	return luaL_error(state, " faulty arguments");
 
+}
+
+int LuaScript::PlaySoundOneShot(lua_State* state)
+{
+	if (lua_isstring(state, 1))
+	{
+		std::string path = (std::string)lua_tostring(state, 1);
+		Audio::Sound::playOneShot(path);
+	}
+	return luaL_error(state, " faulty arguments");
 }
 
 

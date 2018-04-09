@@ -73,7 +73,8 @@ Engine::Core::Component* BoxColliderStruct::makeObject()
 {
 	collider* boxCollider = new collider();
 	boxCollider->SetBoxSize(-size.x, size.y, size.z);
-	//boxCollider->set
+	center.x *= -1;
+	boxCollider->SetCenterOffset(center);
 
 	return boxCollider;
 }
@@ -100,7 +101,7 @@ GameStruct::~GameStruct()
 void GameStruct::deserialize(nlohmann::json& jsonObject)
 {
 	name = jsonObject["name"].get<string>();
-	std::cout << "Desearlizing game object " + name << std::endl;
+	std::cout << "Deserealizing game object " + name << std::endl;
 
 	tag = jsonObject["tag"].get<string>();
 	active = jsonObject["active"].get<bool>();

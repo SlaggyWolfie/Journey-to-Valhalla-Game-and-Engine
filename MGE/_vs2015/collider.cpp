@@ -80,6 +80,22 @@ void collider::SetEnable(bool n)
 {
 	_enabled = n;
 }
+
+void collider::SetCenterOffset(glm::vec3 offset)
+{
+	_centerOffset = offset;
+}
+
+glm::vec3 collider::GetCenterOffset()
+{
+	return _centerOffset;
+}
+
+glm::vec3 collider::GetCenter()
+{
+	return GetPos() + GetCenterOffset();
+}
+
 void collider::update()
 {
 	//if (getGameObject()->getName() == "crate1") std::cout << GetPos() << std::endl;
@@ -300,14 +316,23 @@ void collider::SetTrans(Transform* t)
 	//halfSize = glm::vec3(localMatrix * glm::vec4(glm::vec3(1.0f) / 2, 0));
 	halfSize = glm::vec3(GetWidth(), GetHeight(), GetLength()) / 2;
 
-	corner1 = /*t->getPosition() + */halfSize * getLocalPosition(1);
-	corner2 = /*t->getPosition() + */halfSize * getLocalPosition(2);
-	corner3 = /*t->getPosition() + */halfSize * getLocalPosition(3);
-	corner4 = /*t->getPosition() + */halfSize * getLocalPosition(4);
-	corner5 = /*t->getPosition() + */halfSize * getLocalPosition(5);
-	corner6 = /*t->getPosition() + */halfSize * getLocalPosition(6);
-	corner7 = /*t->getPosition() + */halfSize * getLocalPosition(7);
-	corner8 = /*t->getPosition() + */halfSize * getLocalPosition(8);
+	corner1 = GetCenterOffset() + halfSize * getLocalPosition(1);
+	corner2 = GetCenterOffset() + halfSize * getLocalPosition(2);
+	corner3 = GetCenterOffset() + halfSize * getLocalPosition(3);
+	corner4 = GetCenterOffset() + halfSize * getLocalPosition(4);
+	corner5 = GetCenterOffset() + halfSize * getLocalPosition(5);
+	corner6 = GetCenterOffset() + halfSize * getLocalPosition(6);
+	corner7 = GetCenterOffset() + halfSize * getLocalPosition(7);
+	corner8 = GetCenterOffset() + halfSize * getLocalPosition(8);
+
+	//corner1 = /*t->getPosition() + */halfSize * getLocalPosition(1);
+	//corner2 = /*t->getPosition() + */halfSize * getLocalPosition(2);
+	//corner3 = /*t->getPosition() + */halfSize * getLocalPosition(3);
+	//corner4 = /*t->getPosition() + */halfSize * getLocalPosition(4);
+	//corner5 = /*t->getPosition() + */halfSize * getLocalPosition(5);
+	//corner6 = /*t->getPosition() + */halfSize * getLocalPosition(6);
+	//corner7 = /*t->getPosition() + */halfSize * getLocalPosition(7);
+	//corner8 = /*t->getPosition() + */halfSize * getLocalPosition(8);
 
 	//corner1 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(1), 1));
 	//corner2 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(2), 1));

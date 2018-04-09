@@ -13,6 +13,7 @@
  * The only item that MUST be overridden/implemented is _initializeScene()
  * where you build up your world, the rest is optional to override (with care/caution).
  */
+class LuaScript;
 namespace Engine
 {
 	class SceneManager;
@@ -40,7 +41,9 @@ namespace Engine
 		bool isRunning() const;
 		void exit();
 
+		static LuaScript* luaScript();
 	private:
+		static LuaScript* _luaScript;
 		//print info about the current driver version etc
 		static void printVersionInfo();
 		//initialize the extension wrangler

@@ -418,6 +418,24 @@ namespace Engine
 			//Fixes
 
 
+			if (gameStruct->name.find("Candle") != std::string::npos)
+			{
+				std::cout << "this is a Candle" << std::endl;
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("Candles_001_Candle_Material_AlbedoTransparency.png")));
+			}
+			
+			if (gameStruct->name.find("Pot_001") != std::string::npos)
+			{
+				std::cout << "this is a Vase 1" << std::endl;
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("Small vase_Small_vase_AlbedoTransparency.png")));
+			}
+
+			if (gameStruct->name.find("Pot_002") != std::string::npos || gameStruct->name.find("Pot_003") != std::string::npos)
+			{
+				std::cout << "this is a Vase 2" << std::endl;
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("Small vase_Small_vase2_AlbedoTransparency.png")));
+			}
+
 			if (gameStruct->name.find("Pressure plate 1") != std::string::npos)
 			{
 				//gameStruct->transform->position.z *= -1;
