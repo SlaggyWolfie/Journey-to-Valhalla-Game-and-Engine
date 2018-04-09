@@ -107,7 +107,7 @@ std::vector<collider*> ColliderManager::CheckBoxCollision(collider * object)
 				zCheck &&
 				yCheck)
 			{
-				if (CheckOBBCollisionBetween(object, allColliders[i]))
+				//if (CheckOBBCollisionBetween(object, allColliders[i]))
 				{
 
 					std::cout << "its collision, sir!" << std::endl;

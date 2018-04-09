@@ -393,17 +393,6 @@ namespace Engine
 				std::cout << "Found Pillar" << std::endl;
 				//gameObject->addComponent(new RotatingComponent);
 			}
-
-			if (gameStruct->name.find("Main character 1.2 updated") != std::string::npos)
-			{
-				//gameStruct->transform->position.z *= -1;
-				std::cout << "this is Player" << std::endl;
-
-				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("shitbitch2.png")));
-				gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
-				//gameObject->addComponent(new PlayerBaseComponent());
-			}
 			if (gameStruct->name.find("Runestone") != std::string::npos)
 			{
 				//gameStruct->transform->position.z *= -1;
@@ -411,15 +400,6 @@ namespace Engine
 
 				gameObject->addComponent(new collider());
 				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
-			}
-
-			if (gameStruct->name.find("Pressure plate 1") != std::string::npos)
-			{
-				//gameStruct->transform->position.z *= -1;
-				std::cout << "this is Plate" << std::endl;
-				gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
-				gameObject->addComponent(new PressurePlateBehaviour());
 			}
 
 			//Set TRS
@@ -436,6 +416,28 @@ namespace Engine
 			}
 
 			//Fixes
+
+
+			if (gameStruct->name.find("Pressure plate 1") != std::string::npos)
+			{
+				//gameStruct->transform->position.z *= -1;
+				std::cout << "this is Plate" << std::endl;
+				gameObject->addComponent(new collider());
+				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+				gameObject->addComponent(new PressurePlateBehaviour());
+			}
+
+			if (gameStruct->name.find("Main character 1.2 updated") != std::string::npos)
+			{
+				//gameStruct->transform->position.z *= -1;
+				std::cout << "this is Player" << std::endl;
+
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("shitbitch2.png")));
+				if (!gameObject->getComponent<collider>()) gameObject->addComponent(new collider());
+				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+				gameObject->addComponent(new PlayerBaseComponent());
+			}
+
 			if (mesh && mesh->path.find("Floor.fbx") != std::string::npos)
 			{
 				gameObject->getTransform()->scale(glm::vec3(0.01f));
@@ -537,9 +539,9 @@ namespace Engine
 		//GameObject_* crate = new GameObject_("Crate");
 		//crate->getTransform()->scale(glm::vec3(0.01f));
 		//crate->addComponent(new collider());
-		//GameObject_* t = this->findGameObject("Pressure plate 1");
-		//t->getComponent<collider>()->SetSphereRadius(1.5f);
-		//this->findGameObject("Gate1_1")->addComponent<GateBehaviour>()->AddPlate(t->getComponent<PressurePlateBehaviour>());
+		GameObject_* t = this->findGameObject("Pressure plate 1");
+		t->getComponent<collider>()->SetSphereRadius(1.5f);
+		this->findGameObject("Gate1_1")->addComponent<GateBehaviour>()->AddPlate(t->getComponent<PressurePlateBehaviour>());
 
 		//std::function<void()> func = []() {std::cout << "Print" << std::endl; };
 		//Engine::Utility::Time::timeout(10, func);

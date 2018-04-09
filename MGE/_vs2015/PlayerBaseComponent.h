@@ -17,7 +17,7 @@ public:
 	//void prewake() override;
 	//void update() override;
 	//void fixedUpdate() override;
-	//void lateUpdate() override;
+	void lateUpdate() override;
 	//void onValidate() override;
 	void MoveInsideObj(GameObject_* obj);
 	void RayCast();

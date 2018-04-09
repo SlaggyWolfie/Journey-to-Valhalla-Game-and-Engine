@@ -17,14 +17,22 @@ PlayerBaseComponent::PlayerBaseComponent()
 void PlayerBaseComponent::update()
 {
 
+	std::cout << "scale from " + glm::to_string(getGameObject()->getTransform()->getScale()) << std::endl;
 	//if collide with wall then pushback
-	ServiceLocator::instance()->getService<ColliderManager>()->CheckBoxCollision(getGameObject()->getComponent<collider>());
-	//std::cout << "State: " + std::to_string(_playerS) << std::endl;
-	Camera_::getMainCamera()->getGameObject()->getTransform()->
-		setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 10, 10));
+	/*auto collisionList = ServiceLocator::instance()->getService<ColliderManager>()->
+		CheckBoxCollision(getGameObject()->getComponent<collider>());
+	if (!collisionList.empty())
+	{
+		getGameObject()->getComponent<Transform>()->setPosition(lastPos);
+	}*/
 
-	Camera_::getMainCamera()->getGameObject()->getTransform()->
-		lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
+
+	//std::cout << "State: " + std::to_string(_playerS) << std::endl;
+	//Camera_::getMainCamera()->getGameObject()->getTransform()->
+	//	setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 10, 10));
+
+	//Camera_::getMainCamera()->getGameObject()->getTransform()->
+	//	lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
 
 
 	getGameObject()->getComponent<collider>()->lastPos = getGameObject()->getTransform()->getPosition();
@@ -98,7 +106,7 @@ void PlayerBaseComponent::update()
 	if (_playerS == jumpingFromObject)
 	{
 		//hardcode
-		std::cout << "jumping from" << std::endl;
+		std::cout << "jumping from " + glm::to_string(getGameObject()->getTransform()->getScale()) << std::endl;
 		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), _originalScale, 0.1f));
 		getGameObject()->getTransform()->setPosition(glm::lerp(getGameObject()->getTransform()->getPosition(), 
 			_objectToMove->getTransform()->getPosition() + glm::vec3(2, +2, 2), 0.05f));
@@ -123,6 +131,15 @@ void PlayerBaseComponent::start()
 {
 	_originalScale = getGameObject()->getTransform()->getLocalScale();
 	_targetScale = _originalScale / 80;
+}
+
+void PlayerBaseComponent::lateUpdate()
+{
+	Camera_::getMainCamera()->getGameObject()->getTransform()->
+		setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 10, 10));
+
+	Camera_::getMainCamera()->getGameObject()->getTransform()->
+		lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
 }
 
 void PlayerBaseComponent::MoveInsideObj(GameObject_* obj)
