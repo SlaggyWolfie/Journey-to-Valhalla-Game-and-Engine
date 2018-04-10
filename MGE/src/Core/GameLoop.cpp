@@ -138,6 +138,8 @@ namespace Engine
 
 		void GameLoop::start()
 		{
+			Game::luaScript()->start();
+
 			if (!_components.empty())
 				for (const auto& comp : _components)
 					if (comp->isEnabled()
@@ -147,8 +149,6 @@ namespace Engine
 						comp->_started = true;
 						comp->start();
 					}
-
-			Game::luaScript()->start();
 		}
 
 		void GameLoop::update()
