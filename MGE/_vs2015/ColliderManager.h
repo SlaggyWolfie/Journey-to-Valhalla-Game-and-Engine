@@ -14,6 +14,8 @@ public:
 	bool CheckBoxCollisionBetween(collider * object, collider * object2);
 	bool CheckOBBCollisionBetween(collider * object, collider * object2);
 
+	void CheckOBB(collider* obj);
+
 	bool CollisionBetween(collider* obj1, collider* obj2);
 	glm::vec3 GiveVectorBeetweem(collider* obj1, collider* obj2);
 	glm::vec3 GiveVectorBeetweenObjects(Engine::Core::GameObject_* obj1, Engine::Core::GameObject_* obj2);

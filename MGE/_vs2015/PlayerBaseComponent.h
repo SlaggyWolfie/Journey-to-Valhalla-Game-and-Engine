@@ -28,6 +28,7 @@ public:
 	void destroy() override;
 	bool isUniquePerGameObject() override;
 	glm::vec3 lastPos;
+	float normalY = 0;
 private:
 	bool _insideObj;
 	glm::vec3 _targetScale;

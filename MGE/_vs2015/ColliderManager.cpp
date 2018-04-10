@@ -4,6 +4,7 @@
 #include <iostream>
 #include "glm.hpp"
 #include <SFML/Window.hpp>
+#include "PlayerBaseComponent.h"
 
 
 void ColliderManager::initialize()
@@ -83,35 +84,51 @@ std::vector<collider*> ColliderManager::CheckBoxCollision(collider * object)
 			bool zCheck = (object->point3.z <= allColliders[i]->point4.z && object->point4.z >= allColliders[i]->point3.z);
 			bool xCheck = (object->point1.x <= allColliders[i]->point2.x && object->point2.x >= allColliders[i]->point1.x);
 
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Middle))
-			{
-				//std::cout << "checking collisions" << std::endl;
-				//Main character 1.2 updated
-				if (allColliders[i]->getGameObject()->getName() == "Main character 1.2 updated")
-				{
-					std::cout << allColliders[i]->getGameObject()->getName();
+			//if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Middle))
+			//{
+			//	//std::cout << "checking collisions" << std::endl;
+			//	//Main character 1.2 updated
+			//	if (allColliders[i]->getGameObject()->getName() == "Main character 1.2 updated")
+			//	{
+			//		std::cout << allColliders[i]->getGameObject()->getName();
 
-					std::cout << "Xobj min " << object->point1.x << " Xother max " << allColliders[i]->point2.x << " " <<
-						object->point2.x << " " << allColliders[i]->point1.x << std::endl;
-					std::cout << "Zobj min " << object->point3.z << " Zother max " << allColliders[i]->point4.z << " " <<
-						object->point4.z << " " << allColliders[i]->point3.z << std::endl;
-					/*std::cout << object->point1 << ":x: " << allColliders[i]->point2 << std::endl;
-					std::cout << object->point3 << ":y: " << allColliders[i]->point3 << std::endl;
-					std::cout << object->point5 << ":z: " << allColliders[i]->point5 << std::endl;*/
-				}
+			//		std::cout << "Xobj min " << object->point1.x << " Xother max " << allColliders[i]->point2.x << " " <<
+			//			object->point2.x << " " << allColliders[i]->point1.x << std::endl;
+			//		std::cout << "Zobj min " << object->point3.z << " Zother max " << allColliders[i]->point4.z << " " <<
+			//			object->point4.z << " " << allColliders[i]->point3.z << std::endl;
+			//		/*std::cout << object->point1 << ":x: " << allColliders[i]->point2 << std::endl;
+			//		std::cout << object->point3 << ":y: " << allColliders[i]->point3 << std::endl;
+			//		std::cout << object->point5 << ":z: " << allColliders[i]->point5 << std::endl;*/
+			//	}
 
-			}
+			//}
 
 
 			if (xCheck &&
 				zCheck &&
 				yCheck)
 			{
-				//if (CheckOBBCollisionBetween(object, allColliders[i]))
+				std::cout << "Getting here" << std::endl;
+				if (CheckOBBCollisionBetween(object, allColliders[i]))
 				{
+					//glm::vec3 delta;
+					///*std::cout << delta << std::endl;*/
+					//object->getGameObject()->getTransform()->setPosition(glm::lerp(allColliders[i]->getTransform()->getPosition(),
+					//	object->getGameObject()->getComponent<PlayerBaseComponent>()->lastPos + delta * glm::vec3(0.01f), 0.9f));
+					//collideList.push_back(allColliders[i]);
 
-					std::cout << "its collision, sir!" << std::endl;
-					collideList.push_back(allColliders[i]);
+					//std::cout << n << " " << n1 << std::endl;
+
+
+					std::cout << "check obb is true" << std::endl;
+
+					ColliderManager* c = Engine::ServiceLocator::instance()->getService<ColliderManager>();
+					GameObject_* obj1 = object->getGameObject();
+					GameObject_* obj2 = allColliders[1]->getGameObject();
+					glm::vec3 delta = c->GiveVectorBeetweem(object, allColliders[i]);
+					/*std::cout << delta << std::endl;*/
+					obj1->getTransform()->setPosition(glm::lerp(obj1->getTransform()->getPosition(),
+						obj1->getComponent<PlayerBaseComponent>()->lastPos + delta * glm::vec3(0.01f), 0.9f));
 				}
 			}
 			//}
@@ -143,7 +160,7 @@ bool ColliderManager::CheckOBBCollisionBetween(collider * object, collider * obj
 	glm::mat4 object1transform = glm::scale(object->getGameObject()->getTransform()->getMatrix4X4(), object->halfSize); // scaling for halfsize
 	glm::vec3 object2center = object2->getGameObject()->getTransform()->getPosition();
 	glm::mat4 object2transform = glm::scale(object2->getGameObject()->getTransform()->getMatrix4X4(), object2->halfSize);
-
+	//std::cout << object1transform << " " << object2transform << std::endl;
 	for (int a = 0; a < 3; a++) 
 	{
 		glm::vec3 line = glm::vec3(object1transform[a]); // one axis to project on
@@ -155,6 +172,7 @@ bool ColliderManager::CheckOBBCollisionBetween(collider * object, collider * obj
 			+ glm::abs(glm::dot(line, glm::vec3(object2transform[1])))
 			+ glm::abs(glm::dot(line, glm::vec3(object2transform[2])));
 		float penetration = (object1projection + object2projection) - differenceProjection;
+			//std::cout << "peneration 1 "<<penetration << std::endl;
 		if (penetration <= 0) 
 		{ // no overlap
 			return false;
@@ -172,32 +190,69 @@ bool ColliderManager::CheckOBBCollisionBetween(collider * object, collider * obj
 			+ glm::abs(glm::dot(line, glm::vec3(object2transform[1])))
 			+ glm::abs(glm::dot(line, glm::vec3(object2transform[2])));
 		float penetration = (ra + rb) - tl;
+		//std::cout << "peneration 2 " << penetration << std::endl;
+
 		if (penetration <= 0) 
 		{ // no overlap
+			
 			return false;
 		}
 	}
 
-	for (int a = 0; a < 3; a++) 
-	{
-		glm::vec3 aAxis = glm::vec3(object1transform[a]);
-		for (int b = 0; b < 3; b++) {
-			glm::vec3 bAxis = glm::vec3(object2transform[b]);
-			if (aAxis != bAxis) {
-				glm::vec3 l = glm::cross(aAxis, bAxis); // has flaw when axis are same, result in (0,0,0), solved by if
-				float tl = std::abs(glm::dot(l, object2center) - glm::dot(l, object1center)); // center distance
-				float ra = std::abs(glm::dot(l, glm::vec3(object1transform[0]))) + std::abs(glm::dot(l, glm::vec3(object1transform[1]))) + std::abs(glm::dot(l, glm::vec3(object1transform[2])));
-				float rb = std::abs(glm::dot(l, glm::vec3(object2transform[0]))) + std::abs(glm::dot(l, glm::vec3(object2transform[1]))) + std::abs(glm::dot(l, glm::vec3(object2transform[2])));
-				float penetration = (ra + rb) - tl;
-				if (penetration <= 0) 
-				{ // no overlap
-					return false;
-				}
-			}
-		}
-	}
+	//for (int a = 0; a < 3; a++) 
+	//{
+	//	glm::vec3 aAxis = glm::vec3(object1transform[a]);
+	//	for (int b = 0; b < 3; b++) {
+	//		glm::vec3 bAxis = glm::vec3(object2transform[b]);
+	//		if (aAxis != bAxis) {
+	//			glm::vec3 l = glm::cross(aAxis, bAxis); // has flaw when axis are same, result in (0,0,0), solved by if
+	//			float tl = std::abs(glm::dot(l, object2center) - glm::dot(l, object1center)); // center distance
+	//			float ra = std::abs(glm::dot(l, glm::vec3(object1transform[0]))) + std::abs(glm::dot(l, glm::vec3(object1transform[1]))) + std::abs(glm::dot(l, glm::vec3(object1transform[2])));
+	//			float rb = std::abs(glm::dot(l, glm::vec3(object2transform[0]))) + std::abs(glm::dot(l, glm::vec3(object2transform[1]))) + std::abs(glm::dot(l, glm::vec3(object2transform[2])));
+	//			float penetration = (ra + rb) - tl;
+	//			std::cout << "l  " << l << std::endl;
+
+	//			if (penetration <= 0) 
+	//			{ // no overlap
+	//				return false;
+	//			}
+	//		}
+	//	}
+	//}
 
 	return true;
+}
+
+void ColliderManager::CheckOBB(collider * obj)
+{
+	if (obj->Enabled())
+	{
+		obj->getGameObject()->getTransform()->setPosition(glm::vec3(obj->getGameObject()->getTransform()->getPosition().x, obj->getGameObject()->getComponent<PlayerBaseComponent>()->normalY, obj->getGameObject()->getTransform()->getPosition().z));
+		for (unsigned i = 0; i < allColliders.size(); i++)
+		{
+			//if (allColliders[i]->getGameObject()->getName()=="Pressure plate 1")
+			if (allColliders[i]->getGameObject()->getName() != obj->getGameObject()->getName())
+			{
+				std::cout << "OBB" << CheckOBBCollisionBetween(obj, allColliders[i]) << std::endl;
+				if (CheckOBBCollisionBetween(obj, allColliders[i]))
+					/*std::cout << "checking obb" << std::endl;
+
+								if (CheckOBBCollisionBetween(obj, GetColliderByName("Pressure plate 1")))*/
+				{
+					std::cout << "checking collisions" << std::endl;
+					ColliderManager* c = Engine::ServiceLocator::instance()->getService<ColliderManager>();
+					GameObject_* obj1 = obj->getGameObject();
+					GameObject_* obj2 = allColliders[i]->getGameObject();
+					glm::vec3 delta = c->GiveVectorBeetweem(obj, allColliders[i]);
+					/*std::cout << delta << std::endl;*/
+					obj1->getTransform()->setPosition(glm::lerp(obj1->getTransform()->getPosition(),
+						obj1->getComponent<PlayerBaseComponent>()->lastPos + delta * glm::vec3(0.01f), 0.9f));
+				}
+
+			}
+		}
+		//return false;*/
+	}
 }
 
 

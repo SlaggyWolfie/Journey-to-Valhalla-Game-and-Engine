@@ -16,15 +16,15 @@ PlayerBaseComponent::PlayerBaseComponent()
 
 void PlayerBaseComponent::update()
 {
+	
+
+	ServiceLocator::instance()->getService<ColliderManager>()->CheckOBB(getGameObject()->getComponent<collider>());
 
 	//std::cout << "scale from " + glm::to_string(getGameObject()->getTransform()->getScale()) << std::endl;
 	//if collide with wall then pushback
 	/*auto collisionList = ServiceLocator::instance()->getService<ColliderManager>()->
-		CheckBoxCollision(getGameObject()->getComponent<collider>());
-	if (!collisionList.empty())
-	{
-		getGameObject()->getComponent<Transform>()->setPosition(lastPos);
-	}*/
+		CheckBoxCollision(getGameObject()->getComponent<collider>());*/
+	
 
 
 	//std::cout << "State: " + std::to_string(_playerS) << std::endl;

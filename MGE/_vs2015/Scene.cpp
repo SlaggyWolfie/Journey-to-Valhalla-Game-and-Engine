@@ -441,7 +441,7 @@ namespace Engine
 				//gameStruct->transform->position.z *= -1;
 				std::cout << "this is Plate" << std::endl;
 				gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+				gameObject->getComponent<collider>()->SetBoxSize(50, 100, 50);
 				gameObject->addComponent(new PressurePlateBehaviour());
 			}
 
@@ -454,6 +454,7 @@ namespace Engine
 				if (!gameObject->getComponent<collider>()) gameObject->addComponent(new collider());
 				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
 				gameObject->addComponent(new PlayerBaseComponent());
+				gameObject->getComponent<PlayerBaseComponent>()->normalY = gameObject->getTransform()->getPosition().y;
 			}
 
 			if (mesh && mesh->path.find("Floor.fbx") != std::string::npos)
