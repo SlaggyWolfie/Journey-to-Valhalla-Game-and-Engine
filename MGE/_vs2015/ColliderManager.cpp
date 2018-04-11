@@ -230,11 +230,23 @@ void ColliderManager::CheckOBB(collider * obj)
 {
 	if (obj->Enabled())
 	{
-		obj->getGameObject()->getTransform()->setPosition(glm::vec3(obj->getGameObject()->getTransform()->getPosition().x, obj->getGameObject()->getComponent<PlayerBaseComponent>()->normalY, obj->getGameObject()->getTransform()->getPosition().z));
+		if (obj->getGameObject()->getName() == "Main character 1.2 updated")
+		{
+			PlayerY = obj->getGameObject()->getComponent<PlayerBaseComponent>()->normalY;
+			obj->getGameObject()->getTransform()->setPosition(glm::vec3(obj->getGameObject()->getTransform()->getPosition().x,
+				PlayerY, obj->getGameObject()->getTransform()->getPosition().z));
+		}
+		else
+		{
+			obj->getGameObject()->getTransform()->setPosition(glm::vec3(obj->getGameObject()->getTransform()->getPosition().x,
+				CrateY, obj->getGameObject()->getTransform()->getPosition().z));
+		}
+		
 		for (unsigned i = 0; i < allColliders.size(); i++)
 		{
+			if (!allColliders[i]->Enabled()) return;
 			//if (allColliders[i]->getGameObject()->getName() == "Pressure plate 1")
-				if (allColliders[i]->getGameObject()->getName() != obj->getGameObject()->getName())
+				if (allColliders[i]->getGameObject()->getName() != obj->getGameObject()->getName()&&!allColliders[i]->IsTrigger())
 			{
 				if (CheckOBBCollisionBetween(obj, allColliders[i]))
 					/*std::cout << "checking obb" << std::endl;
@@ -296,8 +308,9 @@ void ColliderManager::CheckOBB(collider * obj)
 							normal = obj2->getTransform()->right();
 					}
 
+					//if ()
 					obj1->getTransform()->setPosition(glm::lerp(obj1->getTransform()->getPosition(),
-						obj1->getComponent<PlayerBaseComponent>()->lastPos + normal * 0.23f, 0.5f));
+						obj1->getTransform()->getPosition() + normal * 0.23f, 0.5f));
 
 					//std::cout << glm::acos(dot)*180/3.14f << std::endl;
 					//std::cout << forwardDot << std::endl;

@@ -19,7 +19,11 @@ void PlayerBaseComponent::update()
 	
 
 	ServiceLocator::instance()->getService<ColliderManager>()->CheckOBB(getGameObject()->getComponent<collider>());
+	if (_objectToMove != nullptr&&_playerS == usingObject)
+	{
+		ServiceLocator::instance()->getService<ColliderManager>()->CheckOBB(_objectToMove->getComponent<collider>());
 
+	}
 	//std::cout << "scale from " + glm::to_string(getGameObject()->getTransform()->getScale()) << std::endl;
 	//if collide with wall then pushback
 	/*auto collisionList = ServiceLocator::instance()->getService<ColliderManager>()->
@@ -33,13 +37,16 @@ void PlayerBaseComponent::update()
 
 	//Camera_::getMainCamera()->getGameObject()->getTransform()->
 	//	lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
-
+		
 
 	getGameObject()->getComponent<collider>()->lastPos = getGameObject()->getTransform()->getPosition();
 	//std::cout << getGameObject()->getTransform()->getPosition() << std::endl;
 	using namespace Engine::Core;
 	using namespace Engine::Utility;
 	Transform* transform = getGameObject()->getTransform();
+
+	if (_playerS == usingObject)
+		transform->getTransform()->setPosition(_objectToMove->getTransform()->getPosition());
 
 	RayCast();
 	float speed = 8 * Engine::Utility::Time::deltaTime();
@@ -52,6 +59,7 @@ void PlayerBaseComponent::update()
 			transform->translate(transform->forward() * -speed);
 			if (_playerS == usingObject)
 				_objectToMove->getTransform()->translate(transform->forward() * -speed);
+
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
@@ -119,6 +127,7 @@ void PlayerBaseComponent::update()
 			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y - 2,
 			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 2)) < 1.0f)
 		{
+			std::cout << "ia ne tut" << std::endl;
 			getGameObject()->getComponent<collider>()->SetEnable(true);
 			_objectToMove->getComponent<collider>()->SetEnable(true);
 			_playerS = idle;

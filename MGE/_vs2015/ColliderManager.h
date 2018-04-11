@@ -14,6 +14,8 @@ public:
 	bool CheckBoxCollisionBetween(collider * object, collider * object2);
 	bool CheckOBBCollisionBetween(collider * object, collider * object2);
 
+	//glm::vec3 GetCollisionNormal(GameO)
+
 	void CheckOBB(collider* obj);
 
 	bool CollisionBetween(collider* obj1, collider* obj2);
@@ -21,6 +23,9 @@ public:
 	glm::vec3 GiveVectorBeetweenObjects(Engine::Core::GameObject_* obj1, Engine::Core::GameObject_* obj2);
 	void addCollider(collider* collider);
 	void removeCollider(int i);
+	float PlayerY;
+	float CrateY = 1.0f;
+
 	collider* GetColliderByName(std::string GameObjectName);
 	collider* getCollider(int index);
 	std::vector<collider*> getColliders();

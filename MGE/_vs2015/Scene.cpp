@@ -405,7 +405,7 @@ namespace Engine
 
 
 				gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+				gameObject->getComponent<collider>()->SetBoxSize(60, 60, 60);
 			}
 
 			//Set TRS
