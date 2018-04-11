@@ -23,6 +23,8 @@ public:
 	void PushBackObj(std::string n, std::string n1);
 	bool Enabled();
 	void SetEnable(bool n);
+	bool IsTrigger();
+	void SetTrigger(bool isTrigger);
 
 	void SetCenterOffset(glm::vec3 offset);
 	glm::vec3 GetCenterOffset();
@@ -92,7 +94,10 @@ private:
 	float _length = 1;
 	float  _height = 1;
 	float _radius = 0.5f;
-	bool _enabled;
+	bool _enabled = true;
+	bool _isTrigger = false;
+
+	glm::vec3 _color = glm::vec3(1, 0, 0);
 
 	void drawLine(glm::vec3 point1, glm::vec3 point2);
 protected:

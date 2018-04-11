@@ -21,7 +21,7 @@
         "z": 0.9999999403953552
     },
     "parentID": 0,
-    "selfID": 185
+    "selfID": 186
 },
 "components": [{
     "typeID": 3,
@@ -57,7 +57,7 @@
         "z": 1.0
     },
     "parentID": 0,
-    "selfID": 184
+    "selfID": 185
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -82,8 +82,8 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 184,
-    "selfID": 183
+    "parentID": 0,
+    "selfID": 184
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -108,8 +108,8 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 184,
-    "selfID": 182
+    "parentID": 0,
+    "selfID": 183
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -134,8 +134,8 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 184,
-    "selfID": 181
+    "parentID": 0,
+    "selfID": 182
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -160,8 +160,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 180
+    "parentID": 0,
+    "selfID": 181
 },
 "components": [{
     "typeID": 4,
@@ -189,8 +189,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 179
+    "parentID": 0,
+    "selfID": 180
 },
 "components": [{
     "typeID": 4,
@@ -218,8 +218,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 178
+    "parentID": 0,
+    "selfID": 179
 },
 "components": [{
     "typeID": 4,
@@ -247,8 +247,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 177
+    "parentID": 0,
+    "selfID": 178
 },
 "components": [{
     "typeID": 4,
@@ -276,8 +276,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 176
+    "parentID": 0,
+    "selfID": 177
 },
 "components": [{
     "typeID": 4,
@@ -305,8 +305,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 175
+    "parentID": 0,
+    "selfID": 176
 },
 "components": [{
     "typeID": 4,
@@ -334,8 +334,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 174
+    "parentID": 0,
+    "selfID": 175
 },
 "components": [{
     "typeID": 4,
@@ -343,6 +343,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 100.0,
         "y": 500.0,
@@ -376,8 +377,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 173
+    "parentID": 0,
+    "selfID": 174
 },
 "components": [{
     "typeID": 4,
@@ -405,8 +406,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 172
+    "parentID": 0,
+    "selfID": 173
 },
 "components": [{
     "typeID": 4,
@@ -434,8 +435,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 171
+    "parentID": 0,
+    "selfID": 172
 },
 "components": [{
     "typeID": 4,
@@ -463,8 +464,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000002570450306
     },
-    "parentID": 181,
-    "selfID": 170
+    "parentID": 0,
+    "selfID": 171
 },
 "components": [{
     "typeID": 4,
@@ -492,8 +493,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 169
+    "parentID": 0,
+    "selfID": 170
 },
 "components": [{
     "typeID": 4,
@@ -521,8 +522,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 168
+    "parentID": 0,
+    "selfID": 169
 },
 "components": [{
     "typeID": 4,
@@ -550,8 +551,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 167
+    "parentID": 0,
+    "selfID": 168
 },
 "components": [{
     "typeID": 4,
@@ -579,8 +580,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000012814998627
     },
-    "parentID": 181,
-    "selfID": 166
+    "parentID": 0,
+    "selfID": 167
 },
 "components": [{
     "typeID": 4,
@@ -588,6 +589,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 544.780517578125,
         "y": 516.977783203125,
@@ -621,8 +623,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 165
+    "parentID": 0,
+    "selfID": 166
 },
 "components": [{
     "typeID": 4,
@@ -650,8 +652,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 164
+    "parentID": 0,
+    "selfID": 165
 },
 "components": [{
     "typeID": 4,
@@ -679,8 +681,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000004433095456
     },
-    "parentID": 181,
-    "selfID": 163
+    "parentID": 0,
+    "selfID": 164
 },
 "components": [{
     "typeID": 4,
@@ -708,8 +710,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 162
+    "parentID": 0,
+    "selfID": 163
 },
 "components": [{
     "typeID": 4,
@@ -737,8 +739,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 161
+    "parentID": 0,
+    "selfID": 162
 },
 "components": [{
     "typeID": 4,
@@ -766,8 +768,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 160
+    "parentID": 0,
+    "selfID": 161
 },
 "components": [{
     "typeID": 4,
@@ -795,8 +797,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 159
+    "parentID": 0,
+    "selfID": 160
 },
 "components": [{
     "typeID": 4,
@@ -824,8 +826,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000002570450306
     },
-    "parentID": 181,
-    "selfID": 158
+    "parentID": 0,
+    "selfID": 159
 },
 "components": [{
     "typeID": 4,
@@ -853,8 +855,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 157
+    "parentID": 0,
+    "selfID": 158
 },
 "components": [{
     "typeID": 4,
@@ -882,8 +884,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 156
+    "parentID": 0,
+    "selfID": 157
 },
 "components": [{
     "typeID": 4,
@@ -891,6 +893,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 230.86610412597657,
         "y": 269.0431213378906,
@@ -924,8 +927,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 155
+    "parentID": 0,
+    "selfID": 156
 },
 "components": [{
     "typeID": 4,
@@ -953,8 +956,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 154
+    "parentID": 0,
+    "selfID": 155
 },
 "components": [{
     "typeID": 4,
@@ -982,8 +985,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 153
+    "parentID": 0,
+    "selfID": 154
 },
 "components": [{
     "typeID": 4,
@@ -1011,8 +1014,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 152
+    "parentID": 0,
+    "selfID": 153
 },
 "components": [{
     "typeID": 4,
@@ -1040,8 +1043,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 151
+    "parentID": 0,
+    "selfID": 152
 },
 "components": [{
     "typeID": 4,
@@ -1069,8 +1072,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000350177288
     },
-    "parentID": 181,
-    "selfID": 150
+    "parentID": 0,
+    "selfID": 151
 },
 "components": [{
     "typeID": 4,
@@ -1098,8 +1101,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 149
+    "parentID": 0,
+    "selfID": 150
 },
 "components": [{
     "typeID": 4,
@@ -1127,8 +1130,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 148
+    "parentID": 0,
+    "selfID": 149
 },
 "components": [{
     "typeID": 4,
@@ -1156,8 +1159,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 147
+    "parentID": 0,
+    "selfID": 148
 },
 "components": [{
     "typeID": 4,
@@ -1185,8 +1188,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 146
+    "parentID": 0,
+    "selfID": 147
 },
 "components": [{
     "typeID": 4,
@@ -1214,8 +1217,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 145
+    "parentID": 0,
+    "selfID": 146
 },
 "components": [{
     "typeID": 4,
@@ -1223,6 +1226,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 100.0,
         "y": 500.0,
@@ -1256,8 +1260,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 144
+    "parentID": 0,
+    "selfID": 145
 },
 "components": [{
     "typeID": 4,
@@ -1285,8 +1289,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 143
+    "parentID": 0,
+    "selfID": 144
 },
 "components": [{
     "typeID": 4,
@@ -1314,8 +1318,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 142
+    "parentID": 0,
+    "selfID": 143
 },
 "components": [{
     "typeID": 4,
@@ -1343,8 +1347,8 @@
         "y": 0.009999996982514859,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 141
+    "parentID": 0,
+    "selfID": 142
 },
 "components": [{
     "typeID": 4,
@@ -1372,8 +1376,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 140
+    "parentID": 0,
+    "selfID": 141
 },
 "components": [{
     "typeID": 4,
@@ -1401,8 +1405,8 @@
         "y": 0.010000002570450306,
         "z": 0.010000002570450306
     },
-    "parentID": 181,
-    "selfID": 139
+    "parentID": 0,
+    "selfID": 140
 },
 "components": [{
     "typeID": 4,
@@ -1430,8 +1434,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 138
+    "parentID": 0,
+    "selfID": 139
 },
 "components": [{
     "typeID": 4,
@@ -1439,6 +1443,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 6213.31396484375,
         "y": 50.0,
@@ -1472,8 +1477,8 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 182,
-    "selfID": 137
+    "parentID": 0,
+    "selfID": 138
 },
 "components": [{
     "typeID": 4,
@@ -1481,6 +1486,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 1.0,
         "y": 1.0,
@@ -1514,8 +1520,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 136
+    "parentID": 0,
+    "selfID": 137
 },
 "components": [{
     "typeID": 4,
@@ -1543,8 +1549,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 135
+    "parentID": 0,
+    "selfID": 136
 },
 "components": [{
     "typeID": 4,
@@ -1572,8 +1578,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000001639127732
     },
-    "parentID": 181,
-    "selfID": 134
+    "parentID": 0,
+    "selfID": 135
 },
 "components": [{
     "typeID": 4,
@@ -1601,8 +1607,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 133
+    "parentID": 0,
+    "selfID": 134
 },
 "components": [{
     "typeID": 4,
@@ -1630,8 +1636,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 132
+    "parentID": 0,
+    "selfID": 133
 },
 "components": [{
     "typeID": 4,
@@ -1659,8 +1665,8 @@
         "y": 2.1559998989105226,
         "z": 1.4000003337860108
     },
-    "parentID": 182,
-    "selfID": 131
+    "parentID": 0,
+    "selfID": 132
 },
 "components": [{
     "typeID": 4,
@@ -1668,6 +1674,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": true,
     "size": {
         "x": 1.0,
         "y": 1.0,
@@ -1701,8 +1708,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 130
+    "parentID": 0,
+    "selfID": 131
 },
 "components": [{
     "typeID": 4,
@@ -1730,8 +1737,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 129
+    "parentID": 0,
+    "selfID": 130
 },
 "components": [{
     "typeID": 4,
@@ -1739,6 +1746,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 100.0,
         "y": 500.0,
@@ -1772,8 +1780,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 128
+    "parentID": 0,
+    "selfID": 129
 },
 "components": [{
     "typeID": 4,
@@ -1801,8 +1809,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 127
+    "parentID": 0,
+    "selfID": 128
 },
 "components": [{
     "typeID": 4,
@@ -1830,8 +1838,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 126
+    "parentID": 0,
+    "selfID": 127
 },
 "components": [{
     "typeID": 4,
@@ -1839,6 +1847,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 100.00001525878906,
         "y": 500.0,
@@ -1872,8 +1881,8 @@
         "y": 2.1559998989105226,
         "z": 1.4000003337860108
     },
-    "parentID": 182,
-    "selfID": 125
+    "parentID": 0,
+    "selfID": 126
 },
 "components": [{
     "typeID": 4,
@@ -1881,6 +1890,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": true,
     "size": {
         "x": 1.0,
         "y": 1.0,
@@ -1914,8 +1924,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 124
+    "parentID": 0,
+    "selfID": 125
 },
 "components": [{
     "typeID": 4,
@@ -1923,6 +1933,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 100.00001525878906,
         "y": 500.0,
@@ -1956,8 +1967,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 123
+    "parentID": 0,
+    "selfID": 124
 },
 "components": [{
     "typeID": 4,
@@ -1965,6 +1976,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 100.00001525878906,
         "y": 500.0,
@@ -1998,8 +2010,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 122
+    "parentID": 0,
+    "selfID": 123
 },
 "components": [{
     "typeID": 4,
@@ -2027,8 +2039,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 121
+    "parentID": 0,
+    "selfID": 122
 },
 "components": [{
     "typeID": 4,
@@ -2056,8 +2068,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000004433095456
     },
-    "parentID": 181,
-    "selfID": 120
+    "parentID": 0,
+    "selfID": 121
 },
 "components": [{
     "typeID": 4,
@@ -2085,8 +2097,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 119
+    "parentID": 0,
+    "selfID": 120
 },
 "components": [{
     "typeID": 4,
@@ -2094,6 +2106,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 165.57357788085938,
         "y": 183.20013427734376,
@@ -2127,8 +2140,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 118
+    "parentID": 0,
+    "selfID": 119
 },
 "components": [{
     "typeID": 4,
@@ -2156,8 +2169,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 117
+    "parentID": 0,
+    "selfID": 118
 },
 "components": [{
     "typeID": 4,
@@ -2185,8 +2198,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999996982514859
     },
-    "parentID": 181,
-    "selfID": 116
+    "parentID": 0,
+    "selfID": 117
 },
 "components": [{
     "typeID": 4,
@@ -2214,8 +2227,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 115
+    "parentID": 0,
+    "selfID": 116
 },
 "components": [{
     "typeID": 4,
@@ -2243,8 +2256,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 182,
-    "selfID": 114
+    "parentID": 0,
+    "selfID": 115
 },
 "components": [{
     "typeID": 4,
@@ -2252,6 +2265,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 71.82008361816406,
         "y": 417.99993896484377,
@@ -2285,8 +2299,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 113
+    "parentID": 0,
+    "selfID": 114
 },
 "components": [{
     "typeID": 4,
@@ -2314,8 +2328,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 112
+    "parentID": 0,
+    "selfID": 113
 },
 "components": [{
     "typeID": 4,
@@ -2343,8 +2357,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 111
+    "parentID": 0,
+    "selfID": 112
 },
 "components": [{
     "typeID": 4,
@@ -2372,8 +2386,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 110
+    "parentID": 0,
+    "selfID": 111
 },
 "components": [{
     "typeID": 4,
@@ -2401,8 +2415,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 109
+    "parentID": 0,
+    "selfID": 110
 },
 "components": [{
     "typeID": 4,
@@ -2430,8 +2444,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 108
+    "parentID": 0,
+    "selfID": 109
 },
 "components": [{
     "typeID": 4,
@@ -2439,6 +2453,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 3506.223388671875,
         "y": 525.0,
@@ -2472,8 +2487,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 107
+    "parentID": 0,
+    "selfID": 108
 },
 "components": [{
     "typeID": 4,
@@ -2501,8 +2516,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 106
+    "parentID": 0,
+    "selfID": 107
 },
 "components": [{
     "typeID": 4,
@@ -2510,6 +2525,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 100.00001525878906,
         "y": 707.4334106445313,
@@ -2543,8 +2559,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 105
+    "parentID": 0,
+    "selfID": 106
 },
 "components": [{
     "typeID": 4,
@@ -2572,8 +2588,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 104
+    "parentID": 0,
+    "selfID": 105
 },
 "components": [{
     "typeID": 4,
@@ -2601,8 +2617,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 103
+    "parentID": 0,
+    "selfID": 104
 },
 "components": [{
     "typeID": 4,
@@ -2630,8 +2646,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 102
+    "parentID": 0,
+    "selfID": 103
 },
 "components": [{
     "typeID": 4,
@@ -2659,8 +2675,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 101
+    "parentID": 0,
+    "selfID": 102
 },
 "components": [{
     "typeID": 4,
@@ -2688,8 +2704,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 100
+    "parentID": 0,
+    "selfID": 101
 },
 "components": [{
     "typeID": 4,
@@ -2717,8 +2733,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 99
+    "parentID": 0,
+    "selfID": 100
 },
 "components": [{
     "typeID": 4,
@@ -2746,8 +2762,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 98
+    "parentID": 0,
+    "selfID": 99
 },
 "components": [{
     "typeID": 4,
@@ -2755,6 +2771,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 100.00001525878906,
         "y": 500.0,
@@ -2788,8 +2805,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 97
+    "parentID": 0,
+    "selfID": 98
 },
 "components": [{
     "typeID": 4,
@@ -2797,6 +2814,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 2091.046142578125,
         "y": 525.0,
@@ -2830,8 +2848,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999996982514859
     },
-    "parentID": 181,
-    "selfID": 96
+    "parentID": 0,
+    "selfID": 97
 },
 "components": [{
     "typeID": 4,
@@ -2859,8 +2877,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 95
+    "parentID": 0,
+    "selfID": 96
 },
 "components": [{
     "typeID": 4,
@@ -2888,8 +2906,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000350177288
     },
-    "parentID": 181,
-    "selfID": 94
+    "parentID": 0,
+    "selfID": 95
 },
 "components": [{
     "typeID": 4,
@@ -2917,8 +2935,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 93
+    "parentID": 0,
+    "selfID": 94
 },
 "components": [{
     "typeID": 4,
@@ -2946,8 +2964,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 92
+    "parentID": 0,
+    "selfID": 93
 },
 "components": [{
     "typeID": 4,
@@ -2975,8 +2993,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 91
+    "parentID": 0,
+    "selfID": 92
 },
 "components": [{
     "typeID": 4,
@@ -3004,8 +3022,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000001639127732
     },
-    "parentID": 181,
-    "selfID": 90
+    "parentID": 0,
+    "selfID": 91
 },
 "components": [{
     "typeID": 4,
@@ -3033,8 +3051,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 89
+    "parentID": 0,
+    "selfID": 90
 },
 "components": [{
     "typeID": 4,
@@ -3062,8 +3080,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 88
+    "parentID": 0,
+    "selfID": 89
 },
 "components": [{
     "typeID": 4,
@@ -3071,6 +3089,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 100.0,
         "y": 500.0,
@@ -3104,8 +3123,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 87
+    "parentID": 0,
+    "selfID": 88
 },
 "components": [{
     "typeID": 4,
@@ -3133,8 +3152,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 86
+    "parentID": 0,
+    "selfID": 87
 },
 "components": [{
     "typeID": 4,
@@ -3162,8 +3181,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 85
+    "parentID": 0,
+    "selfID": 86
 },
 "components": [{
     "typeID": 4,
@@ -3191,8 +3210,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 84
+    "parentID": 0,
+    "selfID": 85
 },
 "components": [{
     "typeID": 4,
@@ -3220,8 +3239,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 83
+    "parentID": 0,
+    "selfID": 84
 },
 "components": [{
     "typeID": 4,
@@ -3249,8 +3268,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 82
+    "parentID": 0,
+    "selfID": 83
 },
 "components": [{
     "typeID": 4,
@@ -3278,8 +3297,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 81
+    "parentID": 0,
+    "selfID": 82
 },
 "components": [{
     "typeID": 4,
@@ -3307,8 +3326,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 80
+    "parentID": 0,
+    "selfID": 81
 },
 "components": [{
     "typeID": 4,
@@ -3336,8 +3355,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 79
+    "parentID": 0,
+    "selfID": 80
 },
 "components": [{
     "typeID": 4,
@@ -3345,6 +3364,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 199.8119354248047,
         "y": 500.0,
@@ -3378,8 +3398,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 78
+    "parentID": 0,
+    "selfID": 79
 },
 "components": [{
     "typeID": 4,
@@ -3407,8 +3427,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 77
+    "parentID": 0,
+    "selfID": 78
 },
 "components": [{
     "typeID": 4,
@@ -3436,8 +3456,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 76
+    "parentID": 0,
+    "selfID": 77
 },
 "components": [{
     "typeID": 4,
@@ -3465,8 +3485,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 75
+    "parentID": 0,
+    "selfID": 76
 },
 "components": [{
     "typeID": 4,
@@ -3494,8 +3514,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 74
+    "parentID": 0,
+    "selfID": 75
 },
 "components": [{
     "typeID": 4,
@@ -3523,8 +3543,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 73
+    "parentID": 0,
+    "selfID": 74
 },
 "components": [{
     "typeID": 4,
@@ -3552,8 +3572,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999996982514859
     },
-    "parentID": 181,
-    "selfID": 72
+    "parentID": 0,
+    "selfID": 73
 },
 "components": [{
     "typeID": 4,
@@ -3581,8 +3601,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 71
+    "parentID": 0,
+    "selfID": 72
 },
 "components": [{
     "typeID": 4,
@@ -3610,8 +3630,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 70
+    "parentID": 0,
+    "selfID": 71
 },
 "components": [{
     "typeID": 4,
@@ -3639,8 +3659,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 69
+    "parentID": 0,
+    "selfID": 70
 },
 "components": [{
     "typeID": 4,
@@ -3668,8 +3688,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 68
+    "parentID": 0,
+    "selfID": 69
 },
 "components": [{
     "typeID": 4,
@@ -3697,8 +3717,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 67
+    "parentID": 0,
+    "selfID": 68
 },
 "components": [{
     "typeID": 4,
@@ -3726,8 +3746,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 66
+    "parentID": 0,
+    "selfID": 67
 },
 "components": [{
     "typeID": 4,
@@ -3755,8 +3775,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 65
+    "parentID": 0,
+    "selfID": 66
 },
 "components": [{
     "typeID": 4,
@@ -3784,8 +3804,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 64
+    "parentID": 0,
+    "selfID": 65
 },
 "components": [{
     "typeID": 4,
@@ -3813,8 +3833,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 63
+    "parentID": 0,
+    "selfID": 64
 },
 "components": [{
     "typeID": 4,
@@ -3842,8 +3862,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 62
+    "parentID": 0,
+    "selfID": 63
 },
 "components": [{
     "typeID": 4,
@@ -3871,8 +3891,8 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 182,
-    "selfID": 61
+    "parentID": 0,
+    "selfID": 62
 },
 "components": [{
     "typeID": 4,
@@ -3880,6 +3900,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 1.0,
         "y": 1.0,
@@ -3913,8 +3934,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 60
+    "parentID": 0,
+    "selfID": 61
 },
 "components": [{
     "typeID": 4,
@@ -3922,6 +3943,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 206.61239624023438,
         "y": 500.0,
@@ -3955,8 +3977,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 59
+    "parentID": 0,
+    "selfID": 60
 },
 "components": [{
     "typeID": 4,
@@ -3984,8 +4006,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 58
+    "parentID": 0,
+    "selfID": 59
 },
 "components": [{
     "typeID": 4,
@@ -4013,8 +4035,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 182,
-    "selfID": 57
+    "parentID": 0,
+    "selfID": 58
 },
 "components": [{
     "typeID": 4,
@@ -4022,6 +4044,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 71.820068359375,
         "y": 417.99993896484377,
@@ -4055,8 +4078,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999996051192284
     },
-    "parentID": 181,
-    "selfID": 56
+    "parentID": 0,
+    "selfID": 57
 },
 "components": [{
     "typeID": 4,
@@ -4064,6 +4087,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 997.826171875,
         "y": 248.2913055419922,
@@ -4097,8 +4121,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 55
+    "parentID": 0,
+    "selfID": 56
 },
 "components": [{
     "typeID": 4,
@@ -4126,8 +4150,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 54
+    "parentID": 0,
+    "selfID": 55
 },
 "components": [{
     "typeID": 4,
@@ -4135,6 +4159,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 100.0,
         "y": 500.0,
@@ -4168,8 +4193,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000350177288
     },
-    "parentID": 181,
-    "selfID": 53
+    "parentID": 0,
+    "selfID": 54
 },
 "components": [{
     "typeID": 4,
@@ -4197,8 +4222,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 52
+    "parentID": 0,
+    "selfID": 53
 },
 "components": [{
     "typeID": 4,
@@ -4206,6 +4231,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 1031.292724609375,
         "y": 499.9970397949219,
@@ -4239,8 +4265,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999998845160008
     },
-    "parentID": 181,
-    "selfID": 51
+    "parentID": 0,
+    "selfID": 52
 },
 "components": [{
     "typeID": 4,
@@ -4268,8 +4294,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 50
+    "parentID": 0,
+    "selfID": 51
 },
 "components": [{
     "typeID": 4,
@@ -4297,8 +4323,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 49
+    "parentID": 0,
+    "selfID": 50
 },
 "components": [{
     "typeID": 4,
@@ -4326,8 +4352,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 48
+    "parentID": 0,
+    "selfID": 49
 },
 "components": [{
     "typeID": 4,
@@ -4355,8 +4381,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 47
+    "parentID": 0,
+    "selfID": 48
 },
 "components": [{
     "typeID": 4,
@@ -4384,8 +4410,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 46
+    "parentID": 0,
+    "selfID": 47
 },
 "components": [{
     "typeID": 4,
@@ -4413,8 +4439,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 45
+    "parentID": 0,
+    "selfID": 46
 },
 "components": [{
     "typeID": 4,
@@ -4442,8 +4468,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 44
+    "parentID": 0,
+    "selfID": 45
 },
 "components": [{
     "typeID": 4,
@@ -4471,8 +4497,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 43
+    "parentID": 0,
+    "selfID": 44
 },
 "components": [{
     "typeID": 4,
@@ -4500,8 +4526,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000002570450306
     },
-    "parentID": 181,
-    "selfID": 42
+    "parentID": 0,
+    "selfID": 43
 },
 "components": [{
     "typeID": 4,
@@ -4529,8 +4555,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 41
+    "parentID": 0,
+    "selfID": 42
 },
 "components": [{
     "typeID": 4,
@@ -4558,8 +4584,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 40
+    "parentID": 0,
+    "selfID": 41
 },
 "components": [{
     "typeID": 4,
@@ -4587,8 +4613,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 39
+    "parentID": 0,
+    "selfID": 40
 },
 "components": [{
     "typeID": 4,
@@ -4616,8 +4642,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 38
+    "parentID": 0,
+    "selfID": 39
 },
 "components": [{
     "typeID": 4,
@@ -4645,8 +4671,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 181,
-    "selfID": 37
+    "parentID": 0,
+    "selfID": 38
 },
 "components": [{
     "typeID": 4,
@@ -4674,8 +4700,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 36
+    "parentID": 0,
+    "selfID": 37
 },
 "components": [{
     "typeID": 4,
@@ -4703,8 +4729,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 35
+    "parentID": 0,
+    "selfID": 36
 },
 "components": [{
     "typeID": 4,
@@ -4732,8 +4758,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 34
+    "parentID": 0,
+    "selfID": 35
 },
 "components": [{
     "typeID": 4,
@@ -4761,8 +4787,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 33
+    "parentID": 0,
+    "selfID": 34
 },
 "components": [{
     "typeID": 4,
@@ -4790,8 +4816,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 182,
-    "selfID": 32
+    "parentID": 0,
+    "selfID": 33
 },
 "components": [{
     "typeID": 4,
@@ -4799,6 +4825,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 71.8201904296875,
         "y": 417.99993896484377,
@@ -4832,8 +4859,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 31
+    "parentID": 0,
+    "selfID": 32
 },
 "components": [{
     "typeID": 4,
@@ -4861,8 +4888,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 30
+    "parentID": 0,
+    "selfID": 31
 },
 "components": [{
     "typeID": 4,
@@ -4890,8 +4917,8 @@
         "y": 2.1559998989105226,
         "z": 1.399999976158142
     },
-    "parentID": 182,
-    "selfID": 29
+    "parentID": 0,
+    "selfID": 30
 },
 "components": [{
     "typeID": 4,
@@ -4899,6 +4926,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": true,
     "size": {
         "x": 1.0,
         "y": 1.0,
@@ -4932,8 +4960,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 28
+    "parentID": 0,
+    "selfID": 29
 },
 "components": [{
     "typeID": 4,
@@ -4961,8 +4989,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 27
+    "parentID": 0,
+    "selfID": 28
 },
 "components": [{
     "typeID": 4,
@@ -4990,8 +5018,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 26
+    "parentID": 0,
+    "selfID": 27
 },
 "components": [{
     "typeID": 4,
@@ -5019,8 +5047,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 25
+    "parentID": 0,
+    "selfID": 26
 },
 "components": [{
     "typeID": 4,
@@ -5028,6 +5056,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 179.19061279296876,
         "y": 194.3921356201172,
@@ -5061,8 +5090,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 24
+    "parentID": 0,
+    "selfID": 25
 },
 "components": [{
     "typeID": 4,
@@ -5090,8 +5119,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 23
+    "parentID": 0,
+    "selfID": 24
 },
 "components": [{
     "typeID": 4,
@@ -5119,8 +5148,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 22
+    "parentID": 0,
+    "selfID": 23
 },
 "components": [{
     "typeID": 4,
@@ -5148,8 +5177,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 21
+    "parentID": 0,
+    "selfID": 22
 },
 "components": [{
     "typeID": 4,
@@ -5177,8 +5206,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 20
+    "parentID": 0,
+    "selfID": 21
 },
 "components": [{
     "typeID": 4,
@@ -5206,8 +5235,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000013746321202
     },
-    "parentID": 181,
-    "selfID": 19
+    "parentID": 0,
+    "selfID": 20
 },
 "components": [{
     "typeID": 4,
@@ -5215,6 +5244,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 579.3353881835938,
         "y": 516.977783203125,
@@ -5248,8 +5278,8 @@
         "y": 0.010000002570450306,
         "z": 0.009999997913837433
     },
-    "parentID": 181,
-    "selfID": 18
+    "parentID": 0,
+    "selfID": 19
 },
 "components": [{
     "typeID": 4,
@@ -5277,8 +5307,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 17
+    "parentID": 0,
+    "selfID": 18
 },
 "components": [{
     "typeID": 4,
@@ -5306,8 +5336,8 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 182,
-    "selfID": 16
+    "parentID": 0,
+    "selfID": 17
 },
 "components": [{
     "typeID": 4,
@@ -5315,6 +5345,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 1.0,
         "y": 1.0,
@@ -5348,8 +5379,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 15
+    "parentID": 0,
+    "selfID": 16
 },
 "components": [{
     "typeID": 4,
@@ -5377,8 +5408,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 14
+    "parentID": 0,
+    "selfID": 15
 },
 "components": [{
     "typeID": 4,
@@ -5406,8 +5437,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 13
+    "parentID": 0,
+    "selfID": 14
 },
 "components": [{
     "typeID": 4,
@@ -5415,6 +5446,7 @@
 },
 {
     "typeID": 2,
+    "isTrigger": false,
     "size": {
         "x": 1159.5439453125,
         "y": 315.6856689453125,
@@ -5448,8 +5480,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 12
+    "parentID": 0,
+    "selfID": 13
 },
 "components": [{
     "typeID": 4,
@@ -5477,8 +5509,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 183,
-    "selfID": 11
+    "parentID": 0,
+    "selfID": 12
 },
 "components": [{
     "typeID": 4,
@@ -5506,15 +5538,15 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 181,
-    "selfID": 10
+    "parentID": 0,
+    "selfID": 11
 },
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Props/Large Props/Pine_Tree_001.fbx"
 }]}},
 {"GameObject": {"typeID": 0,
-"name": "Pressure plate 2",
+"name": "Pressure plate 6_1",
 "tag": "Untagged",
 "active": true,
 "transform": {
@@ -5535,15 +5567,15 @@
         "y": 0.021559998393058778,
         "z": 0.0139999995008111
     },
-    "parentID": 29,
-    "selfID": 9
+    "parentID": 0,
+    "selfID": 10
 },
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Props/Small Props/Runes/Pressure plate 2.fbx"
 }]}},
 {"GameObject": {"typeID": 0,
-"name": "Pressure plate 3",
+"name": "Pressure plate 6_3",
 "tag": "Untagged",
 "active": true,
 "transform": {
@@ -5564,8 +5596,8 @@
         "y": 0.021559998393058778,
         "z": 0.014000003226101399
     },
-    "parentID": 125,
-    "selfID": 8
+    "parentID": 0,
+    "selfID": 9
 },
 "components": [{
     "typeID": 4,
@@ -5593,8 +5625,8 @@
         "y": 0.021559998393058778,
         "z": 0.014000003226101399
     },
-    "parentID": 131,
-    "selfID": 7
+    "parentID": 0,
+    "selfID": 8
 },
 "components": [{
     "typeID": 4,
@@ -5622,8 +5654,8 @@
         "y": 0.021559998393058778,
         "z": 0.0139999995008111
     },
-    "parentID": 29,
-    "selfID": 6
+    "parentID": 0,
+    "selfID": 7
 },
 "components": [{
     "typeID": 4,
@@ -5651,15 +5683,15 @@
         "y": 0.021559998393058778,
         "z": 0.014000003226101399
     },
-    "parentID": 125,
-    "selfID": 5
+    "parentID": 0,
+    "selfID": 6
 },
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Props/Small Props/Runes/Pressure plate Border.fbx"
 }]}},
 {"GameObject": {"typeID": 0,
-"name": "Pressure plate 1",
+"name": "Pressure plate 6_2",
 "tag": "Untagged",
 "active": true,
 "transform": {
@@ -5680,8 +5712,8 @@
         "y": 0.021559998393058778,
         "z": 0.014000003226101399
     },
-    "parentID": 131,
-    "selfID": 4
+    "parentID": 0,
+    "selfID": 5
 },
 "components": [{
     "typeID": 4,
@@ -5710,7 +5742,7 @@
         "z": 1.4000000953674317
     },
     "parentID": 0,
-    "selfID": 3
+    "selfID": 4
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -5735,8 +5767,8 @@
         "y": 4.199999809265137,
         "z": 4.200000286102295
     },
-    "parentID": 3,
-    "selfID": 2
+    "parentID": 0,
+    "selfID": 3
 },
 "components": [{
     "typeID": 4,
@@ -5764,8 +5796,8 @@
         "y": 1.4000003337860108,
         "z": 1.4000014066696168
     },
-    "parentID": 3,
-    "selfID": 1
+    "parentID": 0,
+    "selfID": 2
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -5790,10 +5822,49 @@
         "y": 0.0139999995008111,
         "z": 0.0139999995008111
     },
-    "parentID": 3,
-    "selfID": 0
+    "parentID": 0,
+    "selfID": 1
 },
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Main character 1.2 updated.fbx"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Go_To_Main_Menu",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": -45.619998931884769,
+        "y": 2.4200000762939455,
+        "z": 0.0
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 1.0
+    },
+    "scale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "parentID": 0,
+    "selfID": 0
+},
+"components": [{
+    "typeID": 2,
+    "isTrigger": true,
+    "size": {
+        "x": 10.0,
+        "y": 5.0,
+        "z": 10.0
+    },
+    "center": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    }
 }]}}]

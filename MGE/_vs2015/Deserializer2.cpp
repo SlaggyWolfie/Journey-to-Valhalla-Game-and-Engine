@@ -67,6 +67,7 @@ void BoxColliderStruct::deserialize(nlohmann::json& jsonObject)
 {
 	center = Deserializer2::jsonToVec3(jsonObject["center"]);
 	size = Deserializer2::jsonToVec3(jsonObject["size"]);
+	isTrigger = jsonObject["isTrigger"].get<bool>();
 }
 
 Engine::Core::Component* BoxColliderStruct::makeObject()
@@ -75,6 +76,7 @@ Engine::Core::Component* BoxColliderStruct::makeObject()
 	boxCollider->SetBoxSize(-size.x, size.y, size.z);
 	center.x *= -1;
 	boxCollider->SetCenterOffset(center);
+	boxCollider->SetTrigger(isTrigger);
 
 	return boxCollider;
 }

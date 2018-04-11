@@ -93,6 +93,7 @@ struct BoxColliderStruct : public ComponentStruct
 	Component* makeObject() override;
 	glm::vec3 size = glm::vec3();
 	glm::vec3 center = glm::vec3();
+	bool isTrigger = false;
 };
 
 struct MeshStruct : public ComponentStruct

@@ -5,6 +5,7 @@
 #include "glm.hpp"
 #include <SFML/Window.hpp>
 #include "PlayerBaseComponent.h"
+#include "Time.hpp"
 
 
 void ColliderManager::initialize()
@@ -127,8 +128,10 @@ std::vector<collider*> ColliderManager::CheckBoxCollision(collider * object)
 					GameObject_* obj2 = allColliders[1]->getGameObject();
 					glm::vec3 delta = c->GiveVectorBeetweem(object, allColliders[i]);
 					/*std::cout << delta << std::endl;*/
+					//obj1->getTransform()->setPosition(
+					//	obj1->getComponent<PlayerBaseComponent>()->lastPos);
 					obj1->getTransform()->setPosition(glm::lerp(obj1->getTransform()->getPosition(),
-						obj1->getComponent<PlayerBaseComponent>()->lastPos + delta * glm::vec3(0.01f), 0.9f));
+						obj1->getComponent<PlayerBaseComponent>()->lastPos/* + delta * glm::vec3(0.5f)*/, 0.5f * Engine::Utility::Time::deltaTime()));
 				}
 			}
 			//}

@@ -363,6 +363,12 @@ namespace Engine
 			MeshStruct* mesh = gameStruct->getComponent<MeshStruct>();
 			if (mesh)
 			{
+				if (mesh->path.empty())
+				{
+					std::cout << "Skipping [" + mesh->path + "]" << std::endl;
+					continue;
+				}
+
 				//Fixes
 				if (mesh->path.find("default") != std::string::npos)
 				{
@@ -423,7 +429,7 @@ namespace Engine
 				std::cout << "this is a Candle" << std::endl;
 				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("Candles_001_Candle_Material_AlbedoTransparency.png")));
 			}
-			
+
 			if (gameStruct->name.find("Pot_001") != std::string::npos)
 			{
 				std::cout << "this is a Vase 1" << std::endl;
@@ -440,7 +446,7 @@ namespace Engine
 			{
 				//gameStruct->transform->position.z *= -1;
 				std::cout << "this is Plate" << std::endl;
-				gameObject->addComponent(new collider());
+				if (!gameObject->getComponent<collider>()) gameObject->addComponent(new collider());
 				gameObject->getComponent<collider>()->SetBoxSize(50, 100, 50);
 				gameObject->addComponent(new PressurePlateBehaviour());
 			}
@@ -452,7 +458,8 @@ namespace Engine
 
 				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("shitbitch2.png")));
 				if (!gameObject->getComponent<collider>()) gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(50, 50, 50);
+				gameObject->getComponent<collider>()->SetBoxSize(80, 150, 80);
+
 				gameObject->addComponent(new PlayerBaseComponent());
 				gameObject->getComponent<PlayerBaseComponent>()->normalY = gameObject->getTransform()->getPosition().y;
 			}
@@ -470,7 +477,7 @@ namespace Engine
 			{
 				std::cout << "Find Coffin" << std::endl;
 				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("Stone_Coffin_Coffin_Material_AlbedoTransparency.png")));
-				
+
 			}
 
 
@@ -526,7 +533,7 @@ namespace Engine
 		ExitButton->loadSprite("Exit.png");
 		ExitButton->getSprite().setPosition(10, height * 9 / 10);
 
-		if(true)
+		if (true)
 			//forloop trough all vectors of buttons and disable them except one vector
 		//Text* testText = new Text(true);
 		//testText->setFont("mge/fonts/arial.ttf");
@@ -537,7 +544,7 @@ namespace Engine
 		//testText->getTextObject().setCharacterSize(100);
 		//testText->getTextObject().setFillColor(sf::Color::White);
 
-		BackGround->getSprite().setScale(2, 2);
+			BackGround->getSprite().setScale(2, 2);
 
 		//Text::makeHint();
 		//Text::hint->setWindow(window);
@@ -559,8 +566,11 @@ namespace Engine
 		//crate->getTransform()->scale(glm::vec3(0.01f));
 		//crate->addComponent(new collider());
 		GameObject_* t = this->findGameObject("Pressure plate 1");
-		t->getComponent<collider>()->SetSphereRadius(1.5f);
-		this->findGameObject("Gate1_1")->addComponent<GateBehaviour>()->AddPlate(t->getComponent<PressurePlateBehaviour>());
+		if (t)
+		{
+			t->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Gate1_1")->addComponent<GateBehaviour>()->AddPlate(t->getComponent<PressurePlateBehaviour>());
+		}
 
 		//std::function<void()> func = []() {std::cout << "Print" << std::endl; };
 		//Engine::Utility::Time::timeout(10, func);

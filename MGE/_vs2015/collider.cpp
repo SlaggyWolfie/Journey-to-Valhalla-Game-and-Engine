@@ -81,6 +81,17 @@ void collider::SetEnable(bool n)
 	_enabled = n;
 }
 
+bool collider::IsTrigger()
+{
+	return _isTrigger;
+}
+
+void collider::SetTrigger(bool isTrigger)
+{
+	_isTrigger = isTrigger;
+	_color = !isTrigger ? glm::vec3(1, 0, 0) : glm::vec3(0, 1, 0);
+}
+
 void collider::SetCenterOffset(glm::vec3 offset)
 {
 	_centerOffset = offset;
@@ -107,20 +118,20 @@ void collider::update()
 	using namespace Engine::Core;
 	Transform* transform = getGameObject()->getTransform();
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
-	{
-		GameObject_* crate = Model::loadModel(File::findPath("Crate.fbx"));
-		crate->getTransform()->setLocalMatrix4X4(getGameObject()->getTransform()->getMatrix4X4());
-		crate->getTransform()->setScale(halfSize * 2);
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
+	//{
+	//	GameObject_* crate = Model::loadModel(File::findPath("Crate.fbx"));
+	//	crate->getTransform()->setLocalMatrix4X4(getGameObject()->getTransform()->getMatrix4X4());
+	//	crate->getTransform()->setScale(halfSize * 2);
 
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
-	{
-		//std::cout << getGameObject()->getName() << std::endl;
-		//std::cout << corner1 << std::endl;
-		//std::cout << corner7 << std::endl;
-		std::cout << glewGetErrorString(glGetError()) << std::endl;
-	}
+	//}
+	//if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+	//{
+	//	//std::cout << getGameObject()->getName() << std::endl;
+	//	//std::cout << corner1 << std::endl;
+	//	//std::cout << corner7 << std::endl;
+	//	std::cout << glewGetErrorString(glGetError()) << std::endl;
+	//}
 
 	//debugRender(Core::Camera_::getMainCamera()->getProjectionMatrix(), Core::Camera_::getMainCamera()->getViewMatrix());
 
@@ -256,7 +267,7 @@ void collider::debugRender(glm::mat4 proj, glm::mat4 view)
 
 void collider::drawLine(glm::vec3 point1, glm::vec3 point2)
 {
-	glColor3fv(glm::value_ptr(glm::vec3(1, 0, 0)));
+	glColor3fv(glm::value_ptr(_color));
 	glVertex3fv(glm::value_ptr(point1));
 	glVertex3fv(glm::value_ptr(point2));
 }
@@ -316,23 +327,23 @@ void collider::SetTrans(Transform* t)
 	//halfSize = glm::vec3(localMatrix * glm::vec4(glm::vec3(1.0f) / 2, 0));
 	halfSize = glm::vec3(GetWidth(), GetHeight(), GetLength()) / 2;
 
-	corner1 = GetCenterOffset() + halfSize * getLocalPosition(1);
-	corner2 = GetCenterOffset() + halfSize * getLocalPosition(2);
-	corner3 = GetCenterOffset() + halfSize * getLocalPosition(3);
-	corner4 = GetCenterOffset() + halfSize * getLocalPosition(4);
-	corner5 = GetCenterOffset() + halfSize * getLocalPosition(5);
-	corner6 = GetCenterOffset() + halfSize * getLocalPosition(6);
-	corner7 = GetCenterOffset() + halfSize * getLocalPosition(7);
-	corner8 = GetCenterOffset() + halfSize * getLocalPosition(8);
+	//corner1 = GetCenterOffset() + halfSize * getLocalPosition(1);
+	//corner2 = GetCenterOffset() + halfSize * getLocalPosition(2);
+	//corner3 = GetCenterOffset() + halfSize * getLocalPosition(3);
+	//corner4 = GetCenterOffset() + halfSize * getLocalPosition(4);
+	//corner5 = GetCenterOffset() + halfSize * getLocalPosition(5);
+	//corner6 = GetCenterOffset() + halfSize * getLocalPosition(6);
+	//corner7 = GetCenterOffset() + halfSize * getLocalPosition(7);
+	//corner8 = GetCenterOffset() + halfSize * getLocalPosition(8);
 
-	//corner1 = /*t->getPosition() + */halfSize * getLocalPosition(1);
-	//corner2 = /*t->getPosition() + */halfSize * getLocalPosition(2);
-	//corner3 = /*t->getPosition() + */halfSize * getLocalPosition(3);
-	//corner4 = /*t->getPosition() + */halfSize * getLocalPosition(4);
-	//corner5 = /*t->getPosition() + */halfSize * getLocalPosition(5);
-	//corner6 = /*t->getPosition() + */halfSize * getLocalPosition(6);
-	//corner7 = /*t->getPosition() + */halfSize * getLocalPosition(7);
-	//corner8 = /*t->getPosition() + */halfSize * getLocalPosition(8);
+	corner1 = /*t->getPosition() + */halfSize * getLocalPosition(1);
+	corner2 = /*t->getPosition() + */halfSize * getLocalPosition(2);
+	corner3 = /*t->getPosition() + */halfSize * getLocalPosition(3);
+	corner4 = /*t->getPosition() + */halfSize * getLocalPosition(4);
+	corner5 = /*t->getPosition() + */halfSize * getLocalPosition(5);
+	corner6 = /*t->getPosition() + */halfSize * getLocalPosition(6);
+	corner7 = /*t->getPosition() + */halfSize * getLocalPosition(7);
+	corner8 = /*t->getPosition() + */halfSize * getLocalPosition(8);
 
 	//corner1 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(1), 1));
 	//corner2 = glm::vec3(localMatrix * glm::vec4(halfSize * getLocalPosition(2), 1));
