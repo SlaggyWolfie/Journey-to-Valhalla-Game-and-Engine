@@ -164,7 +164,7 @@ bool ColliderManager::CheckOBBCollisionBetween(collider * object, collider * obj
 	glm::vec3 object2center = object2->getGameObject()->getTransform()->getPosition();
 	glm::mat4 object2transform = glm::scale(object2->getGameObject()->getTransform()->getMatrix4X4(), object2->halfSize);
 	//std::cout << object1transform << " " << object2transform << std::endl;
-	for (int a = 0; a < 3; a++) 
+	for (int a = 0; a < 3; a++)
 	{
 		glm::vec3 line = glm::vec3(object1transform[a]); // one axis to project on
 		float differenceProjection = glm::abs(glm::dot(line, object2center) - glm::dot(line, object1center)); // center distance
@@ -175,14 +175,14 @@ bool ColliderManager::CheckOBBCollisionBetween(collider * object, collider * obj
 			+ glm::abs(glm::dot(line, glm::vec3(object2transform[1])))
 			+ glm::abs(glm::dot(line, glm::vec3(object2transform[2])));
 		float penetration = (object1projection + object2projection) - differenceProjection;
-			//std::cout << "peneration 1 "<<penetration << std::endl;
-		if (penetration <= 0) 
+		//std::cout << "peneration 1 "<<penetration << std::endl;
+		if (penetration <= 0)
 		{ // no overlap
 			return false;
 		}
 	}
 
-	for (int b = 0; b < 3; b++) 
+	for (int b = 0; b < 3; b++)
 	{
 		glm::vec3 line = glm::vec3(object2transform[b]); // other axis to project on
 		float tl = glm::abs(glm::dot(line, object2center) - glm::dot(line, object1center)); // center distance
@@ -195,9 +195,9 @@ bool ColliderManager::CheckOBBCollisionBetween(collider * object, collider * obj
 		float penetration = (ra + rb) - tl;
 		//std::cout << "peneration 2 " << penetration << std::endl;
 
-		if (penetration <= 0) 
+		if (penetration <= 0)
 		{ // no overlap
-			
+
 			return false;
 		}
 	}
@@ -233,10 +233,9 @@ void ColliderManager::CheckOBB(collider * obj)
 		obj->getGameObject()->getTransform()->setPosition(glm::vec3(obj->getGameObject()->getTransform()->getPosition().x, obj->getGameObject()->getComponent<PlayerBaseComponent>()->normalY, obj->getGameObject()->getTransform()->getPosition().z));
 		for (unsigned i = 0; i < allColliders.size(); i++)
 		{
-			//if (allColliders[i]->getGameObject()->getName()=="Pressure plate 1")
-			if (allColliders[i]->getGameObject()->getName() != obj->getGameObject()->getName())
+			if (allColliders[i]->getGameObject()->getName() == "Pressure plate 1")
+				//if (allColliders[i]->getGameObject()->getName() != obj->getGameObject()->getName())
 			{
-				std::cout << "OBB" << CheckOBBCollisionBetween(obj, allColliders[i]) << std::endl;
 				if (CheckOBBCollisionBetween(obj, allColliders[i]))
 					/*std::cout << "checking obb" << std::endl;
 
@@ -246,10 +245,52 @@ void ColliderManager::CheckOBB(collider * obj)
 					ColliderManager* c = Engine::ServiceLocator::instance()->getService<ColliderManager>();
 					GameObject_* obj1 = obj->getGameObject();
 					GameObject_* obj2 = allColliders[i]->getGameObject();
-					glm::vec3 delta = c->GiveVectorBeetweem(obj, allColliders[i]);
+					//glm::vec3 delta = c->GiveVectorBeetweem(obj, allColliders[i]);
+					glm::vec3 delta = glm::normalize(obj1->getTransform()->getPosition() - obj2->getTransform()->getPosition());
+
 					/*std::cout << delta << std::endl;*/
+					float forwardDot = glm::dot(delta, obj2->getTransform()->forward());
+					float rightDot = glm::dot(delta, obj2->getTransform()->right());
+					glm::vec3 normal;
+					//forwardDot > 0 means forward
+					//rightDot > 0 means right
+
+					float alpha = glm::degrees(glm::acos(-rightDot));
+					float beta = 90 - glm::degrees(glm::atan(allColliders[i]->GetLength() / 2, allColliders[i]->GetWidth() / 2));
+					std::cout << beta << " " << alpha << std::endl;
+					if (forwardDot > 0)
+					{
+						bool leftCheck = alpha > beta;
+						bool rightCheck = alpha < 180 - beta;
+						if (leftCheck && rightCheck)
+							normal = obj2->getTransform()->forward();
+						else if (!leftCheck)
+							normal = -obj2->getTransform()->right();
+						else if (!rightCheck)
+							normal = obj2->getTransform()->right();
+					}
+					else
+					{
+						bool leftCheck = alpha > beta;
+						bool rightCheck = alpha < 180 - beta;
+						if (leftCheck && rightCheck)
+							normal = -obj2->getTransform()->forward();
+						else if (!leftCheck)
+							normal = obj2->getTransform()->right();
+						else if (!rightCheck)
+							normal = -obj2->getTransform()->right();
+					}
+
 					obj1->getTransform()->setPosition(glm::lerp(obj1->getTransform()->getPosition(),
 						obj1->getComponent<PlayerBaseComponent>()->lastPos + delta * glm::vec3(0.01f), 0.9f));
+
+					//std::cout << glm::acos(dot)*180/3.14f << std::endl;
+					//std::cout << forwardDot << std::endl;
+					//std::cout << rightDot << std::endl;
+
+
+					/*obj1->getTransform()->setPosition(glm::lerp(obj1->getTransform()->getPosition(),
+						obj1->getComponent<PlayerBaseComponent>()->lastPos + delta * glm::vec3(0.01f), 0.9f));*/
 				}
 
 			}
