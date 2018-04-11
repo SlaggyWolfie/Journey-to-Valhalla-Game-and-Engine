@@ -10,13 +10,13 @@ function Start()
 	credits=Game.NewButton("Credits.png",100,300)
 	exit=Game.NewButton("Exit.png",100,400)
 	
-	level1=Game.NewButton("Play.png",	100,100)
-	level2=Game.NewButton("Options.png",100,200)
-	level3=Game.NewButton("Credits.png",100,300)
-	level4=Game.NewButton("Exit.png",	100,400)
-	level5=Game.NewButton("Play.png",	100,500)
-	level6=Game.NewButton("Options.png",100,600)
-	back=Game.NewButton("Exit.png",		100,700)
+	level1=Game.NewButton("Level 1.png",150,100)
+	level2=Game.NewButton("Level 2.png",150,200)
+	level3=Game.NewButton("Level 3.png",150,300)
+	level4=Game.NewButton("Level 4.png",150,400)
+	level5=Game.NewButton("Level 5.png",150,500)
+	level6=Game.NewButton("Level 6.png",150,600)
+	back=Game.NewButton("Back.png",	150,700)
 
 
 
