@@ -447,9 +447,9 @@ namespace Engine
 				//gameStruct->transform->position.z *= -1;
 				std::cout << "this is Plate" << std::endl;
 				if (!gameObject->getComponent<collider>()) gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(1000, 100, 1000);
+				gameObject->getComponent<collider>()->SetBoxSize(100, 100, 100);
 				gameObject->addComponent(new PressurePlateBehaviour());
-				//gameObject->getComponent<Transform>()->rotate(glm::vec3(0, glm::radians(-180.0f), 0));
+				//gameObject->getComponent<Transform>()->rotate(glm::vec3(0, glm::radians(30.0f), 0));
 			}
 
 			if (gameStruct->name.find("Main character 1.2 updated") != std::string::npos)

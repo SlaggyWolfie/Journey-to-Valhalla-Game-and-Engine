@@ -233,30 +233,45 @@ void ColliderManager::CheckOBB(collider * obj)
 		obj->getGameObject()->getTransform()->setPosition(glm::vec3(obj->getGameObject()->getTransform()->getPosition().x, obj->getGameObject()->getComponent<PlayerBaseComponent>()->normalY, obj->getGameObject()->getTransform()->getPosition().z));
 		for (unsigned i = 0; i < allColliders.size(); i++)
 		{
-			if (allColliders[i]->getGameObject()->getName() == "Pressure plate 1")
-				//if (allColliders[i]->getGameObject()->getName() != obj->getGameObject()->getName())
+			//if (allColliders[i]->getGameObject()->getName() == "Pressure plate 1")
+				if (allColliders[i]->getGameObject()->getName() != obj->getGameObject()->getName())
 			{
 				if (CheckOBBCollisionBetween(obj, allColliders[i]))
 					/*std::cout << "checking obb" << std::endl;
 
 								if (CheckOBBCollisionBetween(obj, GetColliderByName("Pressure plate 1")))*/
 				{
-					std::cout << "checking collisions" << std::endl;
+					//std::cout << "checking collisions" << std::endl;
 					ColliderManager* c = Engine::ServiceLocator::instance()->getService<ColliderManager>();
 					GameObject_* obj1 = obj->getGameObject();
 					GameObject_* obj2 = allColliders[i]->getGameObject();
 					//glm::vec3 delta = c->GiveVectorBeetweem(obj, allColliders[i]);
-					glm::vec3 delta = glm::normalize(obj1->getTransform()->getPosition() - obj2->getTransform()->getPosition());
+					glm::vec3 p1_3 = obj1->getTransform()->getPosition();
+					glm::vec3 p2_3 = obj2->getTransform()->getPosition();
+					glm::vec2 p1_2 = glm::vec2(p1_3.x, p1_3.z);
+					glm::vec2 p2_2 = glm::vec2(p2_3.x, p2_3.z);
+
+					glm::vec3 delta_3 = glm::normalize(p1_3 - p2_3);
+
+					glm::vec2 delta = glm::normalize(p1_2 - p2_2);
 
 					/*std::cout << delta << std::endl;*/
-					float forwardDot = glm::dot(delta, obj2->getTransform()->forward());
-					float rightDot = glm::dot(delta, obj2->getTransform()->right());
-					glm::vec3 normal;
+					glm::vec3 f2_3 = obj2->getTransform()->forward();
+					glm::vec3 r2_3 = obj2->getTransform()->right();
+
+					glm::vec2 f2_2 = glm::vec2(f2_3.x, f2_3.z);
+					glm::vec2 r2_2 = glm::vec2(r2_3.x, r2_3.z);
+
+					float forwardDot = glm::dot(delta, f2_2);
+					float rightDot = glm::dot(delta, r2_2);
+					glm::vec3 normal = delta_3;
 					//forwardDot > 0 means forward
 					//rightDot > 0 means right
 
 					float alpha = glm::degrees(glm::acos(-rightDot));
-					float beta = 90 - glm::degrees(glm::atan(allColliders[i]->GetLength() / 2, allColliders[i]->GetWidth() / 2));
+					float beta = glm::abs(glm::degrees(glm::atan(allColliders[i]->GetWidth(), allColliders[i]->GetLength())));
+					if (beta > 90) beta = 180 - beta;
+					else beta = 90 - beta;
 					std::cout << beta << " " << alpha << std::endl;
 					if (forwardDot > 0)
 					{
@@ -276,13 +291,13 @@ void ColliderManager::CheckOBB(collider * obj)
 						if (leftCheck && rightCheck)
 							normal = -obj2->getTransform()->forward();
 						else if (!leftCheck)
-							normal = obj2->getTransform()->right();
-						else if (!rightCheck)
 							normal = -obj2->getTransform()->right();
+						else if (!rightCheck)
+							normal = obj2->getTransform()->right();
 					}
 
 					obj1->getTransform()->setPosition(glm::lerp(obj1->getTransform()->getPosition(),
-						obj1->getComponent<PlayerBaseComponent>()->lastPos + delta * glm::vec3(0.01f), 0.9f));
+						obj1->getComponent<PlayerBaseComponent>()->lastPos + normal * 0.23f, 0.5f));
 
 					//std::cout << glm::acos(dot)*180/3.14f << std::endl;
 					//std::cout << forwardDot << std::endl;
