@@ -132,6 +132,15 @@ namespace Engine
 			}
 		}
 
+		sf::Vector2f Button::moveTowards(const sf::Vector2f current, const sf::Vector2f target, const float delta)
+		{
+			const sf::Vector2f deltaLocal = target - current;
+			const float length = std::hypot(deltaLocal.x, deltaLocal.y);
+			const sf::Vector2f normalDelta = deltaLocal / length;
+			const sf::Vector2f movementDelta = length > delta ? normalDelta * delta : deltaLocal;
+			return current + movementDelta;
+		}
+
 		void Button::onHover()
 		{
 			if (_status == Hovering) return;

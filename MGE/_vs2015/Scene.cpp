@@ -437,7 +437,7 @@ namespace Engine
 					("Viking_townhall_fixed_TownHall_Texture1_AlbedoTransparency.png")/*, TextureType::Diffuse, true, true*/));
 				gameObject->getTransform()->translate(glm::vec3(0, -6.8f, 0));
 
-				gameObject->getTransform()->scale(glm::vec3(2));
+				gameObject->getTransform()->scale(glm::vec3(1.7f));
 				//gameObject->addComponent<RotatingComponent>();
 			}
 
@@ -506,7 +506,8 @@ namespace Engine
 			if (gameStruct->name.find("Stone_Coffin") != std::string::npos)
 			{
 				std::cout << "Find Coffin" << std::endl;
-				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("Stone_Coffin_Coffin_Material_AlbedoTransparency.png")));
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(
+					File::findPath("Stone_Coffin_Coffin_Material_AlbedoTransparency.png")));
 
 			}
 

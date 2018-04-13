@@ -31,7 +31,7 @@ namespace Engine
 			Button(const Button& other) = default;
 			Button& operator=(const Button& other) = default;
 
-			void loadSprite(const sf::Sprite& texture, ButtonStatus status = Normal);
+			void loadSprite(const sf::Sprite& sprite, ButtonStatus status = Normal);
 			void loadSprite(const std::string& path, float x = 0, float y = 0, ButtonStatus status = Normal);
 			sf::Sprite& getSprite(ButtonStatus status = Normal);
 			void createMenu();
@@ -45,6 +45,8 @@ namespace Engine
 			void lateUpdate() override;
 			void update() override;
 		private:
+			static sf::Vector2f moveTowards(sf::Vector2f current, sf::Vector2f target, float delta);
+
 			std::map<std::string, ButtonFunctionality> functions;
 			bool _normalSpriteLoaded = false;
 			bool _hoveringSpriteLoaded = false;
