@@ -169,6 +169,7 @@ namespace Engine
 				break;
 			case BackToGame:
 				Engine::Utility::Time::unpause();
+				TogglePauseMenu();
 				disableAllMenus();
 				break;
 			case OpenLevel:
