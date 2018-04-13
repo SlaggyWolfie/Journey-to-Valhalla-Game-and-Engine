@@ -378,6 +378,12 @@ namespace Engine
 				if (mesh->path.find("haracter") != std::string::npos)
 					mesh->path = File::findPath("shitbitch2.obj");
 
+				if (mesh->path.find("ownhall") != std::string::npos)
+				{
+					mesh->path = File::findPath("Viking_Townhall.obj");
+					std::cout << "\tTownhall!" << std::endl;
+				}
+
 				gameObject = Model::loadModel(mesh->path);
 			}
 			else
@@ -422,7 +428,16 @@ namespace Engine
 			}
 
 			//Fixes
+			if (mesh && mesh->path.find("Viking_Townhall.obj") != std::string::npos)
+			{
+				gameObject->getComponentInChildren<Material_>()->
+					setDiffuseMap(Texture_::load(File::findPath
+					("Viking_townhall_fixed_TownHall_Texture1_AlbedoTransparency.png")/*, TextureType::Diffuse, true, true*/));
+				gameObject->getTransform()->translate(glm::vec3(0, -6.8f, 0));
 
+				gameObject->getTransform()->scale(glm::vec3(2));
+				//gameObject->addComponent<RotatingComponent>();
+			}
 
 			if (gameStruct->name.find("Candle") != std::string::npos)
 			{
@@ -447,7 +462,7 @@ namespace Engine
 				//gameStruct->transform->position.z *= -1;
 				std::cout << "this is Plate" << std::endl;
 				if (!gameObject->getComponent<collider>()) gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(100, 100, 100); 
+				gameObject->getComponent<collider>()->SetBoxSize(100, 100, 100);
 				gameObject->getComponent<collider>()->SetTrigger(true);
 				gameObject->addComponent(new PressurePlateBehaviour());
 				//gameObject->getComponent<Transform>()->rotate(glm::vec3(0, glm::radians(30.0f), 0));
@@ -492,7 +507,6 @@ namespace Engine
 				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("Stone_Coffin_Coffin_Material_AlbedoTransparency.png")));
 
 			}
-
 
 			addGameObject(gameObject);
 			id_to_go[gameStruct->transform->selfID] = gameObject;
@@ -659,7 +673,7 @@ namespace Engine
 			go->AddPlate(p6_2->getComponent<PressurePlateBehaviour>());
 			go->AddPlate(p6_1->getComponent<PressurePlateBehaviour>());
 		}
-		
+
 		suffix = "6_3";
 		GameObject_* p6_3 = this->findGameObject("Pressure plate " + suffix);
 		if (p6_3)

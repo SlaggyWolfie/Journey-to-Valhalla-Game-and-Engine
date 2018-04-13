@@ -16,7 +16,8 @@ namespace Engine
 		class Texture_
 		{
 		public:
-			static Texture_* load(const std::string& texturePath, TextureType type = TextureType::Diffuse);
+			static Texture_* load(const std::string& texturePath, TextureType type = TextureType::Diffuse, bool flipVertically = false, bool flipHorizontally = false);
+			//static Texture_* load(const std::string& texturePath, TextureType type = TextureType::Diffuse);
 			static Texture_* loadDefault(float r, float g, float b, TextureType type = TextureType::Diffuse);
 
 			~Texture_();
