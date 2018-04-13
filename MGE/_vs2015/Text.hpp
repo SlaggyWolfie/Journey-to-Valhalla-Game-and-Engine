@@ -60,7 +60,8 @@ namespace Engine
 
 			void draw() override;
 			//static Text* _hint;
-			static sf::Vector2f moveTowards(sf::Vector2f current, const sf::Vector2f target, const float delta);
+			static sf::Vector2f moveTowards(sf::Vector2f current, sf::Vector2f target, float delta);
+			static sf::Vector2f lerp(sf::Vector2f current, sf::Vector2f target, float delta);
 		private:
 			//std::unique_ptr<sf::Text> 
 			//sf::RenderWindow * _window = nullptr;

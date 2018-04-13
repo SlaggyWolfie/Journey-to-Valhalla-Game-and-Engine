@@ -247,6 +247,7 @@ namespace Engine
 				//for(UI::B)
 
 			}
+
 			if (!_uiRenderers.empty())
 			{
 				for (auto& ui : _uiRenderers)
@@ -305,8 +306,8 @@ namespace Engine
 
 		void RenderManager::createOwnedLoops()
 		{
-			_opaqueRenderers = std::vector<Renderer_*>();
-			_transparentRenderers = std::vector<Renderer_*>();
+			//_opaqueRenderers = std::vector<Renderer_*>();
+			//_transparentRenderers = std::vector<Renderer_*>();
 		}
 
 		void RenderManager::destroyOwnedLoops()

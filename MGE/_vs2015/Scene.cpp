@@ -437,7 +437,8 @@ namespace Engine
 					("Viking_townhall_fixed_TownHall_Texture1_AlbedoTransparency.png")/*, TextureType::Diffuse, true, true*/));
 				gameObject->getTransform()->translate(glm::vec3(0, -6.8f, 0));
 
-				gameObject->getTransform()->scale(glm::vec3(1.7f));
+
+				gameObject->getTransform()->scale(glm::vec3(1.35f));
 				//gameObject->addComponent<RotatingComponent>();
 			}
 
@@ -600,7 +601,10 @@ namespace Engine
 
 		//BackToGame->setEnabled(false);
 
-		//UI::Text::showHint("THIS IS A HINT! I WORK!", 2, 15);
+		std::function<void()> func = [] {
+			UI::Text::hint()->showHint("THIS IS A HINT! I WORK!", sf::Vector2f(600, 600), 8); };
+
+		Engine::Utility::Time::timeout(3, func);
 
 		//GameObject_* crate = Model::loadModel(File::findPath("Crate.fbx"));
 		//GameObject_* crate = new GameObject_("Crate");

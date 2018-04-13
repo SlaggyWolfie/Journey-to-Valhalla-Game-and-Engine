@@ -234,6 +234,8 @@ namespace Engine
 						comp->update();
 						comp->lateUpdate();
 					}
+
+			UI::Text::hint()->update();
 		}
 
 		Engine::SceneManager* GameLoop::getSceneManager()

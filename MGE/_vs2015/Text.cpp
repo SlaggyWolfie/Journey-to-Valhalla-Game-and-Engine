@@ -28,7 +28,7 @@ namespace Engine
 			sf::Vector2f* hintTargetPosition_p = &targetPosition;
 			sf::Vector2f* startPosition_p = &startPosition;
 
-			const std::function<void()> moveDown = [move_p, hintTargetPosition_p, startPosition_p] () -> void
+			const std::function<void()> moveDown = [move_p, hintTargetPosition_p, startPosition_p]() -> void
 			{
 				*move_p = true;
 				*hintTargetPosition_p = *startPosition_p;
@@ -56,7 +56,11 @@ namespace Engine
 		Hint::Hint(const bool rendering)
 		{
 			text = new Text(rendering);
-			text->getTextObject().setPosition(600, -600);
+
+			const sf::Vector2f windowSize = static_cast<sf::Vector2f>(text->getWindow()->getSize());
+
+			startPosition = sf::Vector2f(windowSize.x * 0.5f, windowSize.y * 1.1f);
+			text->getTextObject().setPosition(startPosition);
 			text->setTextInformation("HINT!");
 			text->getTextObject().setCharacterSize(100);
 			text->getTextObject().setFillColor(sf::Color::White);
@@ -67,7 +71,7 @@ namespace Engine
 		{
 			if (showing && move)
 			{
-				setPosition(Text::moveTowards(text->getTextObject().getPosition(), targetPosition, 0.5f));
+				setPosition(Text::moveTowards(text->getTextObject().getPosition(), targetPosition, 1000 * Engine::Utility::Time::deltaTime()));
 				if (text->getTextObject().getPosition() == targetPosition)
 				{
 					move = false;
@@ -171,6 +175,13 @@ namespace Engine
 			const sf::Vector2f normalDelta = deltaLocal / length;
 			const sf::Vector2f movementDelta = length > delta ? normalDelta * delta : deltaLocal;
 			return current + movementDelta;
+		}
+
+		sf::Vector2f Text::lerp(const sf::Vector2f current, const sf::Vector2f target, float delta)
+		{
+			if (delta > 1) delta = 1;
+			if (delta < 0) delta = 0;
+			return (1 - delta) * current + target * delta;
 		}
 
 		//TextHUD::~TextHUD()
