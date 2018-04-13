@@ -52,12 +52,12 @@ public:
 	glm::vec3 point4;
 	glm::vec3 point5;
 	glm::vec3 point6;
-	glm::vec3 normal1;
-	glm::vec3 normal2;
-	glm::vec3 normal3;
-	glm::vec3 normal4;
-	glm::vec3 normal5;
-	glm::vec3 normal6;
+	//glm::vec3 normal1;
+	//glm::vec3 normal2;
+	//glm::vec3 normal3;
+	//glm::vec3 normal4;
+	//glm::vec3 normal5;
+	//glm::vec3 normal6;
 
 	glm::vec3 corner1;
 	glm::vec3 corner2;
@@ -69,6 +69,8 @@ public:
 	glm::vec3 corner8;
 
 	glm::vec3 halfSize;
+
+	glm::mat4 centeredMatrix;
 
 	//drawing
 	static glm::vec3 leftBottomBack();
@@ -89,13 +91,22 @@ private:
 	Transform* _t;
 	colliderType _type = box;
 
-	glm::vec3 _centerOffset;
+	glm::vec3 _centerOffset = glm::vec3(0);
 	float _width = 1;
 	float _length = 1;
 	float  _height = 1;
 	float _radius = 0.5f;
 	bool _enabled = true;
 	bool _isTrigger = false;
+
+	//glm::vec3 _corner1;
+	//glm::vec3 _corner2;
+	//glm::vec3 _corner3;
+	//glm::vec3 _corner4;
+	//glm::vec3 _corner5;
+	//glm::vec3 _corner6;
+	//glm::vec3 _corner7;
+	//glm::vec3 _corner8;
 
 	glm::vec3 _color = glm::vec3(1, 0, 0);
 

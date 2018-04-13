@@ -49,7 +49,7 @@ namespace Engine
 
 			float t = 0;
 			float delay= 0;
-			int _levelToOpen;
+			int _levelToOpen = 0;
 			bool _isHovering;
 			bool _isClicked;
 			ButtonFunctionality _function = MainMenu;

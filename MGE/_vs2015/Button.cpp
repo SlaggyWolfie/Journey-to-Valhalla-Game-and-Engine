@@ -100,7 +100,7 @@ namespace Engine
 				std::cout << "click event" << std::endl;
 				onClick();
 				mouseClick = false;
-				std::cout << btnPos.x << " " << mousePos.x << std::endl;
+				//std::cout << btnPos.x << " " << mousePos.x << std::endl;
 				return;
 			}
 
@@ -131,7 +131,7 @@ namespace Engine
 		{
 			if (_status == Clicked) return;
 
-			std::cout << "ia tut" << std::endl;
+			//std::cout << "ia tut" << std::endl;
 			switch (_function)
 			{
 			case MainMenu:
@@ -148,13 +148,17 @@ namespace Engine
 
 				break;
 			case OpenLevel:
+			{
 				disableAllMenus();
-				ServiceLocator::instance()->getService<SceneManager>()->loadScene(std::string("Level_") + std::to_string(_levelToOpen) + ".json");
+				SceneManager* scene_m = ServiceLocator::instance()->getService<SceneManager>();
+				scene_m->loadScene(scene_m->getLevel(_levelToOpen));
+				//ServiceLocator::instance()->getService<SceneManager>()->loadScene(std::string("Level_") + std::to_string(_levelToOpen) + ".json");
 				//show loading screen
 				//_levelToOpen
 				//reset mouse recorded
 
 				break;
+			}
 			case Exit:
 				ServiceLocator::instance()->getService<Game>()->exit();
 				break;
@@ -258,7 +262,10 @@ namespace Engine
 			//didnt test yet
 			if (functionString.substr(0, functionString.length() - 1) == "OpenLevel")
 			{
-				_levelToOpen = functionString[functionString.length() - 1];
+				//Hello C
+				auto str = functionString[functionString.length() - 1];
+				sscanf(&str, "%i", &_levelToOpen);
+				//_levelToOpen = functionString[functionString.length() - 1];
 				_function = functions.at(functionString.substr(0, functionString.length() - 1));
 			}
 			else

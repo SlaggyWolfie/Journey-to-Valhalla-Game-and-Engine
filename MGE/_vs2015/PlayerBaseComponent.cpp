@@ -6,6 +6,7 @@
 #include "ServiceLocator.hpp"
 #include "Core/Game.hpp"
 #include "Time.hpp"
+#include "SceneManager.hpp"
 using namespace Engine::Core;
 using namespace Engine;
 
@@ -24,6 +25,8 @@ void PlayerBaseComponent::update()
 		ServiceLocator::instance()->getService<ColliderManager>()->CheckOBB(_objectToMove->getComponent<collider>());
 
 	}
+
+	//if (ServiceLocator::instance()->getService<SceneManager>()->loading) return;
 	//std::cout << "scale from " + glm::to_string(getGameObject()->getTransform()->getScale()) << std::endl;
 	//if collide with wall then pushback
 	/*auto collisionList = ServiceLocator::instance()->getService<ColliderManager>()->
@@ -127,7 +130,7 @@ void PlayerBaseComponent::update()
 			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y - 2,
 			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 2)) < 1.0f)
 		{
-			std::cout << "ia ne tut" << std::endl;
+			//std::cout << "ia ne tut" << std::endl;
 			getGameObject()->getComponent<collider>()->SetEnable(true);
 			_objectToMove->getComponent<collider>()->SetEnable(true);
 			_playerS = idle;

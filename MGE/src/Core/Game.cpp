@@ -151,6 +151,7 @@ namespace Engine
 		//_sceneManager->loadScene("finalLvl1.json");//->initialize(true, true);
 		//_sceneManager->loadScene("finalLvl1.json");//->initialize(true, true);
 		_sceneManager->loadScene("debug.json");//->initialize(true, true);
+		_sceneManager->loadScene(_defaultScenePath);//->initialize(true, true);
 
 	}
 

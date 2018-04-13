@@ -17,7 +17,7 @@ namespace Engine
 			: _name(std::move(name)), _tag(std::move(tag)), _isStatic(false), _isActive(true)
 		{
 			//_transform = std::make_unique<Transform>();
-			_components = std::vector<std::unique_ptr<Component>>();
+			//_components = std::vector<std::unique_ptr<Component>>();
 			_components.push_back(std::make_unique<Transform>());
 			//_components.push_back(std::unique_ptr<Component>(_transform.get()));
 			_transform = findComponent<Transform>();

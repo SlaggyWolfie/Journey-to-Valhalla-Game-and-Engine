@@ -12,6 +12,8 @@
 #include "../../_vs2015/Sound.hpp"
 #include "../_vs2015/Text.hpp"
 #include "LuaScript.h"
+#include "../../_vs2015/SceneManager.hpp"
+#include "../_vs2015/Scene.hpp"
 
 namespace Engine
 {
@@ -104,8 +106,16 @@ namespace Engine
 					if (!Engine::Utility::Time::isPaused()) fixedUpdate();
 				}
 
+				if (!Engine::Utility::Time::isPaused())
+				{
+					update();
+					lateUpdate();
+				}
+
+				getSceneManager()->update();
+
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-					ServiceLocator::instance()->getService<SceneManager>()->loadScene("finalLvl1.json");
+					ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_1.json");
 				//ServiceLocator::instance()->getService<SceneManager>()->loadScene("Assets/Scenes/test.json");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
 					Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/donnerre2.wav");
@@ -113,12 +123,10 @@ namespace Engine
 					Engine::UI::Text::drawHint = !Engine::UI::Text::drawHint;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
 					std::cout << Engine::UI::Text::hint()->getTextInformation() << std::endl;
-
-				if (!Engine::Utility::Time::isPaused())
-				{
-					update();
-					lateUpdate();
-				}
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
+					ServiceLocator::instance()->getService<SceneManager>()->unloadScene();
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num6))
+					ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_2.json");
 
 				getRenderManager()->render();
 
@@ -142,7 +150,7 @@ namespace Engine
 
 			if (!_components.empty())
 				for (const auto& comp : _components)
-					if (comp->isEnabled()
+					if (comp != nullptr && comp->isEnabled()
 						//&& comp->getGameObject() && comp->getGameObject()->isActive()
 						)
 					{
@@ -155,7 +163,7 @@ namespace Engine
 		{
 			if (!_components.empty())
 				for (const auto& comp : _components)
-					if (comp->isEnabled()
+					if (comp != nullptr && comp->isEnabled()
 						//&& comp->getGameObject() && comp->getGameObject()->isActive()
 						)
 						comp->update();
@@ -167,7 +175,7 @@ namespace Engine
 		{
 			if (!_components.empty())
 				for (const auto& comp : _components)
-					if (comp->isEnabled()
+					if (comp != nullptr && comp->isEnabled()
 						//&& comp->getGameObject() && comp->getGameObject()->isActive()
 						)
 						comp->fixedUpdate();
@@ -177,17 +185,23 @@ namespace Engine
 		{
 			if (!_components.empty())
 				for (const auto& comp : _components)
-					if (comp->isEnabled()
+					if (comp != nullptr && comp->isEnabled()
 						//&& comp->getGameObject() && comp->getGameObject()->isActive()
 						)
 						comp->lateUpdate();
+		}
+
+		Engine::SceneManager* GameLoop::getSceneManager()
+		{
+			if (!_sceneManager) _sceneManager = Engine::ServiceLocator::instance()->getService<SceneManager>();
+			return _sceneManager;
 		}
 
 		void GameLoop::renderDebugging()
 		{
 			if (!_components.empty())
 				for (const auto& comp : _components)
-					if (comp->isEnabled()
+					if (comp != nullptr && comp->isEnabled()
 						//&& comp->getGameObject() && comp->getGameObject()->isActive()
 						)
 						comp->renderDebug();

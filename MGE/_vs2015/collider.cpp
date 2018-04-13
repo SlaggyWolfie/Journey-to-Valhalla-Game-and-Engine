@@ -66,7 +66,7 @@ void collider::PushBackObj(std::string n, std::string n1)
 		GetColliderByName(n)->getGameObject();
 	GameObject_* obj2 = c->
 		GetColliderByName(n1)->getGameObject();
-	glm::vec3 delta = c->GiveVectorBeetweem(c->GetColliderByName(n), c->GetColliderByName(n1));
+	glm::vec3 delta = c->GiveVectorBeetween(c->GetColliderByName(n), c->GetColliderByName(n1));
 	/*std::cout << delta << std::endl;*/
 	obj1->getTransform()->setPosition(glm::lerp(obj1->getTransform()->getPosition(),
 		obj1->getComponent<PlayerBaseComponent>()->lastPos + delta * glm::vec3(0.01f), 0.9f));
@@ -99,12 +99,14 @@ void collider::SetCenterOffset(glm::vec3 offset)
 
 glm::vec3 collider::GetCenterOffset()
 {
+	//std::cout << "Center Offset: " << _centerOffset << std::endl;
 	return _centerOffset;
 }
 
 glm::vec3 collider::GetCenter()
 {
-	return GetPos() + GetCenterOffset();
+	return glm::vec3(getTransform()->getMatrix4X4() * glm::vec4(GetCenterOffset(), 1));
+	//return GetPos() + centerOffset;
 }
 
 void collider::update()
@@ -242,7 +244,7 @@ void collider::debugRender(glm::mat4 proj, glm::mat4 view)
 	glMatrixMode(GL_PROJECTION);
 	glLoadMatrixf(glm::value_ptr(proj));
 	glMatrixMode(GL_MODELVIEW);
-	glLoadMatrixf(glm::value_ptr(view * /*Core::Camera_::getMainCamera()->*/getGameObject()->getTransform()->getMatrix4X4()));
+	glLoadMatrixf(glm::value_ptr(view * centeredMatrix));
 	//glLoadMatrixf(glm::value_ptr(view * getGameObject()->getTransform()->getMatrix4X4()));
 
 	glBegin(GL_LINES);
@@ -280,12 +282,14 @@ void collider::renderDebug()
 
 void collider::SetTrans(Transform* t)
 {
-	_pos = t->getLocalPosition() + glm::vec3();
+	_pos = t->getLocalPosition();
 
-	glm::mat4 localMatrix = t->getLocalMatrix4X4();
-	glm::vec4 rotatedPoint = localMatrix * glm::vec4(0, 0, -1, 1);
+	const glm::mat4 matrix = t->getMatrix4X4();
+	centeredMatrix = matrix;
+	centeredMatrix[3] = glm::vec4(GetCenter(), 1);
+	//glm::vec4 rotatedPoint = localMatrix * glm::vec4(0, 0, -1, 1);
 
-	glm::vec4 v4Pos = glm::vec4(_pos, 1);
+	//glm::vec4 v4Pos = glm::vec4(_pos, 1);
 
 
 	/*point1 = localMatrix * (v4Pos + glm::vec4(-GetWidth() / 2, 0, 0.0f, 0.0f));
@@ -307,34 +311,64 @@ void collider::SetTrans(Transform* t)
 	//point5 = localMatrix * (v4Pos + glm::vec4(0, -1, 0, 0.0f));
 	//point6 = localMatrix * (v4Pos + glm::vec4(0, +1, 0, 0.0f));	
 
-	point1 = localMatrix * glm::vec4(-1, 0, 0.0f, 1);
-	point2 = localMatrix * glm::vec4(1, 0, 0.0f, 1);
+	//point1 = localMatrix * glm::vec4(-1, 0, 0.0f, 1);
+	//point2 = localMatrix * glm::vec4(1, 0, 0.0f, 1);
 
-	point3 = localMatrix * glm::vec4(0, 0, -1, 1);
-	point4 = localMatrix * glm::vec4(0, 0, 1, 1);
+	//point3 = localMatrix * glm::vec4(0, 0, -1, 1);
+	//point4 = localMatrix * glm::vec4(0, 0, 1, 1);
 
-	point5 = localMatrix * glm::vec4(0, -1, 0, 1);
-	point6 = localMatrix * glm::vec4(0, +1, 0, 1);
+	//point5 = localMatrix * glm::vec4(0, -1, 0, 1);
+	//point6 = localMatrix * glm::vec4(0, +1, 0, 1);
 
-	normal1 = glm::normalize(_pos - point1);
-	normal2 = glm::normalize(_pos - point2);
-	normal3 = glm::normalize(_pos - point3);
-	normal4 = glm::normalize(_pos - point4);
-	normal5 = glm::normalize(_pos - point5);
-	normal6 = glm::normalize(_pos - point6);
+	//normal1 = glm::normalize(_pos - point1);
+	//normal2 = glm::normalize(_pos - point2);
+	//normal3 = glm::normalize(_pos - point3);
+	//normal4 = glm::normalize(_pos - point4);
+	//normal5 = glm::normalize(_pos - point5);
+	//normal6 = glm::normalize(_pos - point6);
 
 	//halfSize = glm::vec3(GetWidth(), GetHeight(), GetLength()) / 2;
 	//halfSize = glm::vec3(localMatrix * glm::vec4(glm::vec3(1.0f) / 2, 0));
 	halfSize = glm::vec3(GetWidth(), GetHeight(), GetLength()) / 2;
 
-	//corner1 = GetCenterOffset() + halfSize * getLocalPosition(1);
-	//corner2 = GetCenterOffset() + halfSize * getLocalPosition(2);
-	//corner3 = GetCenterOffset() + halfSize * getLocalPosition(3);
-	//corner4 = GetCenterOffset() + halfSize * getLocalPosition(4);
-	//corner5 = GetCenterOffset() + halfSize * getLocalPosition(5);
-	//corner6 = GetCenterOffset() + halfSize * getLocalPosition(6);
-	//corner7 = GetCenterOffset() + halfSize * getLocalPosition(7);
-	//corner8 = GetCenterOffset() + halfSize * getLocalPosition(8);
+	//point1 = localMatrix * glm::vec4(halfSize, 1) * glm::vec4(-1, 0, 0.0f, 1);
+	//point2 = localMatrix * glm::vec4(halfSize, 1) * glm::vec4(+1, 0, 0.0f, 1);
+	//point3 = localMatrix * glm::vec4(halfSize, 1) * glm::vec4(0, 0, -1, 1);
+	//point4 = localMatrix * glm::vec4(halfSize, 1) * glm::vec4(0, 0, +1, 1);
+	//point5 = localMatrix * glm::vec4(halfSize, 1) * glm::vec4(0, -1, 0, 1);
+	//point6 = localMatrix * glm::vec4(halfSize, 1) * glm::vec4(0, +1, 0, 1);
+
+	point1 = centeredMatrix * glm::vec4(halfSize, 1) * glm::vec4(-1, 0, 0.0f, 1);
+	point2 = centeredMatrix * glm::vec4(halfSize, 1) * glm::vec4(+1, 0, 0.0f, 1);
+	point3 = centeredMatrix * glm::vec4(halfSize, 1) * glm::vec4(0, 0, -1, 1);
+	point4 = centeredMatrix * glm::vec4(halfSize, 1) * glm::vec4(0, 0, +1, 1);
+	point5 = centeredMatrix * glm::vec4(halfSize, 1) * glm::vec4(0, -1, 0, 1);
+	point6 = centeredMatrix * glm::vec4(halfSize, 1) * glm::vec4(0, +1, 0, 1);	
+	
+	//point1 = centeredMatrix * glm::vec4(-1, 0, 0.0f, 1);
+	//point2 = centeredMatrix * glm::vec4(+1, 0, 0.0f, 1);
+	//point3 = centeredMatrix * glm::vec4(0, 0, -1, 1);
+	//point4 = centeredMatrix * glm::vec4(0, 0, +1, 1);
+	//point5 = centeredMatrix * glm::vec4(0, -1, 0, 1);
+	//point6 = centeredMatrix * glm::vec4(0, +1, 0, 1);
+
+	//corner1 = _centerOffset + halfSize * getLocalPosition(1);
+	//corner2 = _centerOffset + halfSize * getLocalPosition(2);
+	//corner3 = _centerOffset + halfSize * getLocalPosition(3);
+	//corner4 = _centerOffset + halfSize * getLocalPosition(4);
+	//corner5 = _centerOffset + halfSize * getLocalPosition(5);
+	//corner6 = _centerOffset + halfSize * getLocalPosition(6);
+	//corner7 = _centerOffset + halfSize * getLocalPosition(7);
+	//corner8 = _centerOffset + halfSize * getLocalPosition(8);
+
+	//_corner1 = GetCenterOffset() + halfSize * getLocalPosition(1);
+	//_corner2 = GetCenterOffset() + halfSize * getLocalPosition(2);
+	//_corner3 = GetCenterOffset() + halfSize * getLocalPosition(3);
+	//_corner4 = GetCenterOffset() + halfSize * getLocalPosition(4);
+	//_corner5 = GetCenterOffset() + halfSize * getLocalPosition(5);
+	//_corner6 = GetCenterOffset() + halfSize * getLocalPosition(6);
+	//_corner7 = GetCenterOffset() + halfSize * getLocalPosition(7);
+	//_corner8 = GetCenterOffset() + halfSize * getLocalPosition(8);
 
 	corner1 = /*t->getPosition() + */halfSize * getLocalPosition(1);
 	corner2 = /*t->getPosition() + */halfSize * getLocalPosition(2);

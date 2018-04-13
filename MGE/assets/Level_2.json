@@ -21,7 +21,7 @@
         "z": 1.0
     },
     "parentID": 131,
-    "selfID": 154
+    "selfID": 153
 },
 "components": [{
     "typeID": 2,
@@ -59,13 +59,10 @@
         "y": 4.199999809265137,
         "z": 4.200000286102295
     },
-    "parentID": 150,
-    "selfID": 153
+    "parentID": 0,
+    "selfID": 152
 },
-"components": [{
-    "typeID": 4,
-    "meshPath": "Library/unity default resources"
-}]}},
+"components": []}},
 {"GameObject": {"typeID": 0,
 "name": "Main Camera",
 "tag": "MainCamera",
@@ -88,8 +85,8 @@
         "y": 1.4000003337860108,
         "z": 1.4000014066696168
     },
-    "parentID": 150,
-    "selfID": 152
+    "parentID": 0,
+    "selfID": 151
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -114,39 +111,13 @@
         "y": 0.0139999995008111,
         "z": 0.0139999995008111
     },
-    "parentID": 150,
-    "selfID": 151
+    "parentID": 0,
+    "selfID": 150
 },
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Main character 1.2 updated.fbx"
 }]}},
-{"GameObject": {"typeID": 0,
-"name": "ThirdPersonController",
-"tag": "Untagged",
-"active": true,
-"transform": {
-    "typeID": 1,
-    "position": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    },
-    "rotation": {
-        "x": 0.0,
-        "y": -0.5129174590110779,
-        "z": 0.0,
-        "w": 0.8584379553794861
-    },
-    "scale": {
-        "x": 1.4000000953674317,
-        "y": 1.399999976158142,
-        "z": 1.4000000953674317
-    },
-    "parentID": 0,
-    "selfID": 150
-},
-"components": []}},
 {"GameObject": {"typeID": 0,
 "name": "Floor",
 "tag": "Untagged",
@@ -817,24 +788,7 @@
     "parentID": 131,
     "selfID": 128
 },
-"components": [{
-    "typeID": 4,
-    "meshPath": "Library/unity default resources"
-},
-{
-    "typeID": 2,
-    "isTrigger": true,
-    "size": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-    },
-    "center": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    }
-}]}},
+"components": []}},
 {"GameObject": {"typeID": 0,
 "name": "Pressure plate 2_1",
 "tag": "Untagged",
@@ -918,24 +872,7 @@
     "parentID": 131,
     "selfID": 125
 },
-"components": [{
-    "typeID": 4,
-    "meshPath": "Library/unity default resources"
-},
-{
-    "typeID": 2,
-    "isTrigger": true,
-    "size": {
-        "x": 1.0,
-        "y": 1.0,
-        "z": 1.0
-    },
-    "center": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-    }
-}]}},
+"components": []}},
 {"GameObject": {"typeID": 0,
 "name": "Pressure plate 2_2",
 "tag": "Untagged",
@@ -2724,6 +2661,20 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Placeholders/Pine_Tree_001.fbx"
+},
+{
+    "typeID": 2,
+    "isTrigger": false,
+    "size": {
+        "x": 160.06582641601563,
+        "y": 558.372314453125,
+        "z": 160.06582641601563
+    },
+    "center": {
+        "x": -0.000457763671875,
+        "y": -0.0000152587890625,
+        "z": 0.0
+    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Pine_Tree_001 (8)",
@@ -2753,6 +2704,20 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Placeholders/Pine_Tree_001.fbx"
+},
+{
+    "typeID": 2,
+    "isTrigger": false,
+    "size": {
+        "x": 160.06582641601563,
+        "y": 558.372314453125,
+        "z": 160.06582641601563
+    },
+    "center": {
+        "x": -0.000457763671875,
+        "y": -0.0000152587890625,
+        "z": 0.0
+    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Pine_Tree_001 (9)",
@@ -2782,6 +2747,20 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Placeholders/Pine_Tree_001.fbx"
+},
+{
+    "typeID": 2,
+    "isTrigger": false,
+    "size": {
+        "x": 160.06582641601563,
+        "y": 558.372314453125,
+        "z": 160.06582641601563
+    },
+    "center": {
+        "x": -0.000457763671875,
+        "y": -0.0000152587890625,
+        "z": 0.0
+    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Pine_Tree_001 (10)",
@@ -3749,6 +3728,20 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Placeholders/Pine_Tree_001.fbx"
+},
+{
+    "typeID": 2,
+    "isTrigger": false,
+    "size": {
+        "x": 160.06582641601563,
+        "y": 558.372314453125,
+        "z": 160.06582641601563
+    },
+    "center": {
+        "x": -0.000457763671875,
+        "y": -0.0000152587890625,
+        "z": 0.0
+    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Pine_Tree_001 (16)",
@@ -3778,6 +3771,20 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Placeholders/Pine_Tree_001.fbx"
+},
+{
+    "typeID": 2,
+    "isTrigger": false,
+    "size": {
+        "x": 160.06582641601563,
+        "y": 558.372314453125,
+        "z": 160.06582641601563
+    },
+    "center": {
+        "x": -0.000457763671875,
+        "y": -0.0000152587890625,
+        "z": 0.0
+    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Pine_Tree_001 (17)",
@@ -3807,6 +3814,20 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Placeholders/Pine_Tree_001.fbx"
+},
+{
+    "typeID": 2,
+    "isTrigger": false,
+    "size": {
+        "x": 160.06582641601563,
+        "y": 558.372314453125,
+        "z": 160.06582641601563
+    },
+    "center": {
+        "x": -0.000457763671875,
+        "y": -0.0000152587890625,
+        "z": 0.0
+    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Pine_Tree_001 (18)",
@@ -3836,6 +3857,20 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Placeholders/Pine_Tree_001.fbx"
+},
+{
+    "typeID": 2,
+    "isTrigger": false,
+    "size": {
+        "x": 160.06582641601563,
+        "y": 558.372314453125,
+        "z": 160.06582641601563
+    },
+    "center": {
+        "x": -0.000457763671875,
+        "y": -0.0000152587890625,
+        "z": 0.0
+    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Pine_Tree_001 (19)",
@@ -4184,6 +4219,20 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Placeholders/Pine_Tree_001.fbx"
+},
+{
+    "typeID": 2,
+    "isTrigger": false,
+    "size": {
+        "x": 160.06582641601563,
+        "y": 558.372314453125,
+        "z": 160.06582641601563
+    },
+    "center": {
+        "x": -0.000457763671875,
+        "y": -0.0000152587890625,
+        "z": 0.0
+    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Pine_Tree_001 (31)",
@@ -4213,6 +4262,20 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Placeholders/Pine_Tree_001.fbx"
+},
+{
+    "typeID": 2,
+    "isTrigger": false,
+    "size": {
+        "x": 160.06582641601563,
+        "y": 558.372314453125,
+        "z": 160.06582641601563
+    },
+    "center": {
+        "x": -0.000457763671875,
+        "y": -0.0000152587890625,
+        "z": 0.0
+    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Pine_Tree_001 (32)",
@@ -4242,6 +4305,20 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Placeholders/Pine_Tree_001.fbx"
+},
+{
+    "typeID": 2,
+    "isTrigger": false,
+    "size": {
+        "x": 160.06582641601563,
+        "y": 558.372314453125,
+        "z": 160.06582641601563
+    },
+    "center": {
+        "x": -0.000457763671875,
+        "y": -0.0000152587890625,
+        "z": 0.0
+    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Pine_Tree_001 (34)",

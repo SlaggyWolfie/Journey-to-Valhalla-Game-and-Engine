@@ -49,7 +49,7 @@ void PressurePlateBehaviour::CheckCollision()
 		std::string name = colList[i]->getGameObject()->getName();
 		if (name.find("Runestone") != std::string::npos)
 		{
-			std::cout << "I should be pressed" << std::endl;
+			//std::cout << "I should be pressed" << std::endl;
 			SetPressed(true);
 			return;
 		}

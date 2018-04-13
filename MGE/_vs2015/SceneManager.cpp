@@ -18,13 +18,34 @@ namespace Engine
 		return getActiveScene();
 	}
 
+	void SceneManager::queueScene(const std::string& path)
+	{
+		_queue = path;
+		loading = true;
+	}
+
 	Scene* SceneManager::getActiveScene() const
 	{
 		return _activeScene.get();
 	}
 
+	void SceneManager::update()
+	{
+		if (!_queue.empty())
+		{
+			loadScene(_queue);
+			_queue = std::string();
+			loading = false;
+		}
+	}
+
 	void SceneManager::initialize()
 	{
+	}
+
+	std::string SceneManager::getLevel(const int number) const
+	{
+		return "Level_" + std::to_string(number) + ".json";
 	}
 
 	void SceneManager::unloadScene()

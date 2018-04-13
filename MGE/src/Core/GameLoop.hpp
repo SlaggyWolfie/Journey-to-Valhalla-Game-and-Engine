@@ -12,6 +12,8 @@
 namespace Engine
 {
 	class Game;
+	class SceneManager;
+	class Scene;
 
 	namespace Core
 	{
@@ -42,11 +44,13 @@ namespace Engine
 			void fixedUpdate();
 			void lateUpdate();
 
+			Engine::SceneManager* getSceneManager();
 			Game* getGame();
 			sf::RenderWindow* getWindow();
 			Rendering::RenderManager* getRenderManager();
 			ColliderManager* getColliderManager();
 
+			Engine::SceneManager* _sceneManager = nullptr;
 			Game* _game = nullptr;
 			sf::RenderWindow* _window = nullptr;
 			Rendering::RenderManager* _renderManager = nullptr;

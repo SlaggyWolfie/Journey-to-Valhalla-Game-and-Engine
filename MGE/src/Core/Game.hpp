@@ -65,7 +65,7 @@ namespace Engine
 		Core::GameLoop* _gameLoop;
 		SceneManager* _sceneManager;
 
-		std::string _defaultScenePath = "finalLvl1.json.json";
+		std::string _defaultScenePath = "Level_1.json";
 
 		Game(const Game&) = delete;
 		Game& operator=(const Game&) = delete;

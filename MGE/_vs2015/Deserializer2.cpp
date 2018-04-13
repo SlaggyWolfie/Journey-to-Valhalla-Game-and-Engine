@@ -73,8 +73,12 @@ void BoxColliderStruct::deserialize(nlohmann::json& jsonObject)
 Engine::Core::Component* BoxColliderStruct::makeObject()
 {
 	collider* boxCollider = new collider();
-	boxCollider->SetBoxSize(-size.x, size.y, size.z);
+	boxCollider->SetBoxSize(size.x, size.y, size.z);
+	//boxCollider->SetBoxSize(-size.x, size.y, size.z);
 	center.x *= -1;
+	//center.x *= -1;
+	//center.z *= -1;
+	//center.z = 0;
 	boxCollider->SetCenterOffset(center);
 	boxCollider->SetTrigger(isTrigger);
 

@@ -31,8 +31,7 @@ namespace Engine
 	{
 	}
 
-	Scene::Scene(std::string name, std::string path) : _name(std::move(name)), _path(std::move(path)),
-		_gameObjects()
+	Scene::Scene(std::string name, std::string path) : _name(std::move(name)), _path(std::move(path))
 	{
 	}
 
@@ -45,13 +44,14 @@ namespace Engine
 
 	void Scene::initialize(const bool hard, const bool fromFile)
 	{
-		std::cout << "Loading Scene..." << std::endl;
+		std::cout << "Loading Scene " + _name << std::endl;
 
 		//return;
 		if (fromFile)
 		{
 			Deserializer2 deserializer2;
-			deserializer2.deserializeIntoStructs("Level_1.json");
+			deserializer2.deserializeIntoStructs(_path);
+			//deserializer2.deserializeIntoStructs("Level_1.json");
 			deserializeStructs2(deserializer2.gameStructs);
 
 			//Model::debug(true);
@@ -66,7 +66,7 @@ namespace Engine
 		if (hard && fromFile)
 			neededHardCode();
 
-		std::cout << "Loaded Scene." << std::endl;
+		std::cout << "Loaded Scene " + _name << std::endl;
 	}
 
 	Core::GameObject_* Scene::findGameObject(const std::string& name, const bool exact) const
@@ -442,13 +442,24 @@ namespace Engine
 				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("Small vase_Small_vase2_AlbedoTransparency.png")));
 			}
 
-			if (gameStruct->name.find("Pressure plate 1") != std::string::npos)
+			if (gameStruct->name.find("Pressure plate") != std::string::npos && gameStruct->name.find("order") == std::string::npos)
 			{
 				//gameStruct->transform->position.z *= -1;
 				std::cout << "this is Plate" << std::endl;
 				if (!gameObject->getComponent<collider>()) gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(100, 100, 100);
+				gameObject->getComponent<collider>()->SetBoxSize(100, 100, 100); 
+				gameObject->getComponent<collider>()->SetTrigger(true);
 				gameObject->addComponent(new PressurePlateBehaviour());
+				//gameObject->getComponent<Transform>()->rotate(glm::vec3(0, glm::radians(30.0f), 0));
+			}
+
+			if (gameStruct->name.find("Gate") != std::string::npos || gameStruct->name.find("Door") != std::string::npos)
+			{
+				//gameStruct->transform->position.z *= -1;
+				std::cout << "this is Gate" << std::endl;
+				if (!gameObject->getComponent<collider>()) gameObject->addComponent(new collider());
+				//gameObject->getComponent<collider>()->SetBoxSize(100, 100, 100);
+				gameObject->addComponent(new GateBehaviour());
 				//gameObject->getComponent<Transform>()->rotate(glm::vec3(0, glm::radians(30.0f), 0));
 			}
 
@@ -458,11 +469,12 @@ namespace Engine
 				std::cout << "this is Player" << std::endl;
 
 				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("shitbitch2.png")));
-				if (!gameObject->getComponent<collider>()) gameObject->addComponent(new collider());
-				gameObject->getComponent<collider>()->SetBoxSize(80, 150, 80);
 
 				gameObject->addComponent(new PlayerBaseComponent());
 				gameObject->getComponent<PlayerBaseComponent>()->normalY = gameObject->getTransform()->getPosition().y;
+
+				if (!gameObject->getComponent<collider>()) gameObject->addComponent(new collider());
+				gameObject->getComponent<collider>()->SetBoxSize(80, 150, 80);
 			}
 
 			if (mesh && mesh->path.find("Floor.fbx") != std::string::npos)
@@ -566,11 +578,95 @@ namespace Engine
 		//GameObject_* crate = new GameObject_("Crate");
 		//crate->getTransform()->scale(glm::vec3(0.01f));
 		//crate->addComponent(new collider());
-		GameObject_* t = this->findGameObject("Pressure plate 1");
-		if (t)
+		GameObject_* p1_1 = this->findGameObject("Pressure plate 1");
+		if (p1_1)
 		{
-			t->getComponent<collider>()->SetSphereRadius(1.5f);
-			this->findGameObject("Gate1_1")->addComponent<GateBehaviour>()->AddPlate(t->getComponent<PressurePlateBehaviour>());
+			std::cout << "KJHLKJ" << std::endl;
+			p1_1->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Gate1_1")->getComponent<GateBehaviour>()->AddPlate(p1_1->getComponent<PressurePlateBehaviour>());
+		}
+
+		std::string suffix = "2_1";
+		GameObject_* p2_1 = this->findGameObject("Pressure plate " + suffix);
+		if (p2_1)
+		{
+			p2_1->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Gate" + suffix)->getComponent<GateBehaviour>()->AddPlate(p2_1->getComponent<PressurePlateBehaviour>());
+		}
+
+		suffix = "2_2";
+		GameObject_* p2_2 = this->findGameObject("Pressure plate " + suffix);
+		if (p2_2)
+		{
+			p2_2->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Gate" + suffix)->getComponent<GateBehaviour>()->AddPlate(p2_2->getComponent<PressurePlateBehaviour>());
+		}
+
+		suffix = "3_1";
+		GameObject_* p3_1 = this->findGameObject("Pressure plate " + suffix);
+		if (p3_1)
+		{
+			p3_1->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Door 1")->getComponent<GateBehaviour>()->AddPlate(p3_1->getComponent<PressurePlateBehaviour>());
+		}
+
+		suffix = "3_3";
+		GameObject_* p3_3 = this->findGameObject("Pressure plate " + suffix);
+		if (p3_3)
+		{
+			p3_3->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Door 5")->getComponent<GateBehaviour>()->AddPlate(p3_3->getComponent<PressurePlateBehaviour>());
+		}
+
+		suffix = "3_4";
+		GameObject_* p3_4 = this->findGameObject("Pressure plate " + suffix);
+		if (p3_4)
+		{
+			p3_4->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Door 5")->getComponent<GateBehaviour>()->AddPlate(p3_4->getComponent<PressurePlateBehaviour>());
+		}
+
+		suffix = "5_1";
+		GameObject_* p5_1 = this->findGameObject("Pressure plate " + suffix);
+		if (p5_1)
+		{
+			p5_1->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Gate" + suffix)->getComponent<GateBehaviour>()->AddPlate(p5_1->getComponent<PressurePlateBehaviour>());
+		}
+
+		suffix = "5_2";
+		GameObject_* p5_2 = this->findGameObject("Pressure plate " + suffix);
+		if (p5_2)
+		{
+			p5_2->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Gate5_1")->getComponent<GateBehaviour>()->AddPlate(p5_2->getComponent<PressurePlateBehaviour>());
+		}
+
+		suffix = "6_1";
+		GameObject_* p6_1 = this->findGameObject("Pressure plate " + suffix);
+		if (p6_1)
+		{
+			p6_1->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Gate" + suffix)->getComponent<GateBehaviour>()->AddPlate(p6_1->getComponent<PressurePlateBehaviour>());
+		}
+
+		suffix = "6_2";
+		GameObject_* p6_2 = this->findGameObject("Pressure plate " + suffix);
+		if (p6_2)
+		{
+			p6_2->getComponent<collider>()->SetSphereRadius(1.5f);
+			auto go = this->findGameObject("Gate" + suffix)->getComponent<GateBehaviour>();
+			go->AddPlate(p6_2->getComponent<PressurePlateBehaviour>());
+			go->AddPlate(p6_1->getComponent<PressurePlateBehaviour>());
+		}
+		
+		suffix = "6_3";
+		GameObject_* p6_3 = this->findGameObject("Pressure plate " + suffix);
+		if (p6_3)
+		{
+			p6_3->getComponent<collider>()->SetSphereRadius(1.5f);
+			this->findGameObject("Gate" + suffix)->getComponent<GateBehaviour>()->AddPlate(p6_3->getComponent<PressurePlateBehaviour>());
+			this->findGameObject("Gate6_1")->getComponent<GateBehaviour>()->AddPlate(p6_1->getComponent<PressurePlateBehaviour>());
 		}
 
 		//std::function<void()> func = []() {std::cout << "Print" << std::endl; };
