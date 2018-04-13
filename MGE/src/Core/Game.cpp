@@ -15,6 +15,7 @@
 #include <glm.hpp>
 #include "LuaScript.h"
 #include "../../_vs2015/InputHandler.hpp"
+#include "../_vs2015/Button.hpp"
 
 //#include "GameLoop.hpp"
 
@@ -189,9 +190,16 @@ namespace Engine
 			case sf::Event::Closed:
 				exit = true;
 				break;
-			case sf::Event::KeyPressed:
+			case sf::Event::KeyReleased:
 				if (event.key.code == sf::Keyboard::Escape)
-					exit = true;
+				{
+					UI::Button::DrawPauseMenu = !UI::Button::DrawPauseMenu;
+					UI::Button::disableAllMenus();
+					//UI::Button::enableMenu("");
+				}
+					
+					//exit = true;
+
 				break;
 			case sf::Event::Resized:
 				//would be better to move this to the renderer

@@ -18,6 +18,7 @@
 #include "Shader.hpp"
 //#include "ComponentUI.hpp"
 #include "Text.hpp"
+#include "Button.hpp"
 #include "collider.h"
 
 //#include "LightManager.hpp"
@@ -56,7 +57,7 @@ namespace Engine
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-			glEnable(GL_FRAMEBUFFER_SRGB);
+			//glEnable(GL_FRAMEBUFFER_SRGB);
 
 			glClearColor(
 				static_cast<float>(0x2d) / 0xff,
@@ -240,6 +241,12 @@ namespace Engine
 
 			_fps_hud->draw();
 
+			if (UI::Button::DrawPauseMenu)
+			{
+				getWindow()->draw(UI::Button::pauseMenuBG);
+				//for(UI::B)
+
+			}
 			if (!_uiRenderers.empty())
 			{
 				for (auto& ui : _uiRenderers)
@@ -250,9 +257,9 @@ namespace Engine
 			if (UI::Text::drawHint)
 			{
 				UI::Text::hint()->draw();
-				std::cout << "trying to draw hint" << std::endl;
+				//std::cout << "trying to draw hint" << std::endl;
 			}
-
+			
 			getWindow()->popGLStates();
 		}
 
