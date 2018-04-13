@@ -248,18 +248,18 @@ namespace Engine
 
 			}
 
-			if (!_uiRenderers.empty())
-			{
-				for (auto& ui : _uiRenderers)
-					if (ui->isEnabled())
-						ui->draw();
-			}
-
 			if (UI::Text::hint()->draw)
 			{
 				UI::Text::hint()->text->draw();
 				//std::cout << "trying to draw hint" << std::endl;
 			}
+			if (!_uiRenderers.empty())
+			{
+				for (auto ui : _uiRenderers)
+					if (ui && ui->isEnabled())
+						ui->draw();
+			}
+
 			
 			getWindow()->popGLStates();
 		}

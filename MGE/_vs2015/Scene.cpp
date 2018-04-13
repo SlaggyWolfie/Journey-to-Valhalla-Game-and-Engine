@@ -624,10 +624,9 @@ namespace Engine
 
 		//BackToGame->setEnabled(false);
 
-		std::function<void()> func = [] {
-			UI::Text::hint()->showHint("THIS IS A HINT! I WORK!", sf::Vector2f(600, 600), 8); };
+		//std::function<void()> func = [] {
 
-		Engine::Utility::Time::timeout(3, func);
+		//Engine::Utility::Time::timeout(3, func);
 
 		//GameObject_* crate = Model::loadModel(File::findPath("Crate.fbx"));
 		//GameObject_* crate = new GameObject_("Crate");

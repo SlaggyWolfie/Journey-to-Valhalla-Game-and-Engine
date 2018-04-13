@@ -54,6 +54,7 @@ namespace Engine
 				disableAllMenus();
 				enableMenu("MainMenu");
 				_initialSetup = true;
+				std::cout << "Amount of menus: " << menus.size() << std::endl;
 			}
 		}
 
@@ -110,7 +111,7 @@ namespace Engine
 
 			//if (mouseClick && t==0)
 			t -= Time::deltaTime();
-			if (mouseClick) std::cout << std::to_string(xCheck) << " " << std::to_string(yCheck) << std::endl;
+			//if (mouseClick) std::cout << std::to_string(xCheck) << " " << std::to_string(yCheck) << std::endl;
 			if (xCheck && yCheck && mouseClick)
 			{
 				delay = 1000;
@@ -165,7 +166,7 @@ namespace Engine
 				Engine::Utility::Time::unpause();
 				ServiceLocator::instance()->getService<Game>()->backGround->load("Assets/Audio/Howling wind.wav");
 				ServiceLocator::instance()->getService<Game>()->backGround->play();
-
+				DrawPauseMenu = false;
 				ServiceLocator::instance()->getService<SceneManager>()->unloadScene();
 				disableAllMenus();
 				enableMenu("MainMenu");

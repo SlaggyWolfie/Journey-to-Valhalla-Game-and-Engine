@@ -7,6 +7,7 @@
 #include "Core/Game.hpp"
 #include "Time.hpp"
 #include "SceneManager.hpp"
+#include "../_vs2015/Sound.hpp"
 using namespace Engine::Core;
 using namespace Engine;
 
@@ -103,6 +104,7 @@ void PlayerBaseComponent::update()
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right) && _playerS == usingObject)
 	{
+		Engine::Audio::Sound::playOneShot("Assets/Audio/Ghost exiting object.wav");
 		_playerS = jumpingFromObject;
 	}
 
@@ -111,7 +113,7 @@ void PlayerBaseComponent::update()
 
 	if (_playerS == jumpingToObject)
 	{
-		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), _targetScale, 0.1f));
+		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), _targetScale, 0.06f));
 		MoveInsideObj(_objectToMove);
 	}
 	if (_playerS == jumpingFromObject)
@@ -120,14 +122,14 @@ void PlayerBaseComponent::update()
 		std::cout << "jumping from " + glm::to_string(getGameObject()->getTransform()->getScale()) << std::endl;
 		getGameObject()->getTransform()->setScale(glm::lerp(getGameObject()->getTransform()->getScale(), _originalScale, 0.1f));
 		getGameObject()->getTransform()->setPosition(glm::lerp(getGameObject()->getTransform()->getPosition(), 
-			_objectToMove->getTransform()->getPosition() + glm::vec3(2, +2, 2), 0.05f));
-		std::cout << " Length" << glm::length(glm::vec3(
+			_objectToMove->getTransform()->getPosition() + glm::vec3(2, +1, 2), 0.02f));
+		/*std::cout << " Length" << glm::length(glm::vec3(
 			getGameObject()->getTransform()->getPosition().x - _objectToMove->getTransform()->getPosition().x - 2,
 			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y + 2,
-			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 2)) << std::endl;
+			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 2)) << std::endl;*/
 		if (glm::length(glm::vec3(
 			getGameObject()->getTransform()->getPosition().x - _objectToMove->getTransform()->getPosition().x - 2,
-			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y - 2,
+			getGameObject()->getTransform()->getPosition().y - _objectToMove->getTransform()->getPosition().y -1,
 			getGameObject()->getTransform()->getPosition().z - _objectToMove->getTransform()->getPosition().z - 2)) < 1.0f)
 		{
 			//std::cout << "ia ne tut" << std::endl;
@@ -142,7 +144,7 @@ void PlayerBaseComponent::update()
 void PlayerBaseComponent::start()
 {
 	_originalScale = getGameObject()->getTransform()->getLocalScale();
-	_targetScale = _originalScale / 80;
+	_targetScale = _originalScale / 5;
 }
 
 void PlayerBaseComponent::lateUpdate()
@@ -165,7 +167,7 @@ void PlayerBaseComponent::MoveInsideObj(GameObject_* obj)
 	//getGameObject()->getTransform()->setPosition(glm::lerp(
 	//	getGameObject()->getTransform()->getPosition(), obj->getTransform()->getPosition(), 1.0f));
 	getGameObject()->getTransform()->setPosition(moveTowards(
-		getGameObject()->getTransform()->getPosition(), obj->getTransform()->getPosition(), 1.0f));
+		getGameObject()->getTransform()->getPosition(), obj->getTransform()->getPosition(), 0.2f));
 	//const auto check = glm::epsilonEqual(getGameObject()->getTransform()->getPosition(),
 	//	getGameObject()->getComponent<collider>()->lastPos, 0.01f);
 	//if (check.x && check.y && check.z)
@@ -259,6 +261,7 @@ void PlayerBaseComponent::RayCast()
 			if (child->getGameObject()->getName() == "Runestone")
 			{
 				_objectToMove = child->getGameObject();
+				Engine::Audio::Sound::playOneShot("Assets/Audio/Ghost entering object.wav");
 				_targetPosition = _objectToMove->getTransform()->getPosition();
 				_playerS = jumpingToObject;
 				getGameObject()->getComponent<collider>()->SetEnable(false);

@@ -10,6 +10,7 @@
 #include "../_vs2015/Time.hpp"
 #include "../_vs2015/Button.hpp"
 #include "../../_vs2015/Sound.hpp"
+#include "../_vs2015/Text.hpp"
 using namespace Engine;
 using namespace Engine::UI;
 std::string LuaScript::message = std::string();
@@ -26,7 +27,7 @@ LuaScript::LuaScript()
 		printf("Read from file-Success\n");
 	}
 	else {
-		printf("Read from file-Success\n");
+		printf("Read from file-Failure\n");
 
 	}
 	registerFunctions();
@@ -37,8 +38,10 @@ void LuaScript::start()
 
 	lua_getglobal(state_, "Start"); // pushes global update
 	int isFunc = lua_isfunction(state_, -1);
-	if (isFunc) {
-		if (lua_pcall(state_, 0, 0, 0) != 0) {
+	if (isFunc) 
+	{
+		if (lua_pcall(state_, 0, 0, 0) != 0)
+		{
 			return;
 		}
 	}
@@ -122,11 +125,12 @@ int LuaScript::ShowHint(lua_State * state)
 	if (lua_gettop(state) == 1 && lua_isstring(state, 1)) {
 		//text.setString("start message");
 		message = (std::string)lua_tostring(state, 1);
-		message += "\n";
+		//message += "\n";
 		//if (lua_pcall(state, 0, 0, 0) != 0) {
 		//}
 		//oneshotHint()
-		std::cout << message << std::endl;
+		Engine::UI::Text::hint()->startPosition = sf::Vector2f(600, 1300);
+		Engine::UI::Text::hint()->showHint(message, sf::Vector2f(600,800 ), 3);
 		//text.setString((sf::String)lua_tostring(state, 1));
 		//text.setCharacterSize((int)lua_tonumber(state, 4));
 		//text.setPosition(lua_tonumber(state, 2), lua_tonumber(state, 3));
@@ -249,8 +253,9 @@ int LuaScript::SphereCollisionBetween(lua_State * state)
 
 int LuaScript::GetGameTime(lua_State * state)
 {
-	lua_pushnumber(state, Engine::Utility::Time::now() / 60.0f);
-	return 0;
+	lua_pushnumber(state, Engine::Utility::Time::now());
+	//std::cout << "getting here" << std::endl;
+	return 1;
 }
 
 int LuaScript::NewButton(lua_State * state)

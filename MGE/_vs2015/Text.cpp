@@ -63,7 +63,7 @@ namespace Engine
 			startPosition = sf::Vector2f(windowSize.x * 0.5f, windowSize.y * 1.1f);
 			text->getTextObject().setPosition(startPosition);
 			text->setTextInformation("HINT!");
-			text->getTextObject().setCharacterSize(100);
+			text->getTextObject().setCharacterSize(30);
 			text->getTextObject().setFillColor(sf::Color::White);
 			text->setFont(File::findPath("celtic.ttf"));
 		}

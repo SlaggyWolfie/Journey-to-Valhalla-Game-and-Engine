@@ -2,9 +2,10 @@
 print("if you see me I am lua")
 
 function Initialize()
-	print("lua init")
+	print("--------------------Lua Initialization!-------------------");
 end
 function Start()
+	print("--------------------Lua Starts!-------------------");
 	play=Game.NewButton("Play.png",	100,100)
 	options=Game.NewButton("Options.png",100,200)
 	credits=Game.NewButton("Credits.png",100,300)
@@ -56,52 +57,20 @@ function Start()
 	
 end
 function Update()	
-	
-	-- print("lua work")
-	--obj1="Player"
-	--obj2="obj2"
-	--if(Game.CollisionBetween(obj1,obj2)) then
-		--Game.PushBackObj(obj1,obj2)
-		--print("i work")
-	--end		
-	if(Game.GetGameTime()>1) then
-		Game.ShowHint("sth")
- 	end
--- 	if(Game.CollisionBetween("Player","gate")) then
--- 		Game.PushBackObj("Player","gate")
--- 		print("lua scripting in work")
--- 	end	
--- 	if(Game.SphereCollisionBetween("Player","crate1")) then
--- 		Game.PushBackObj("Player","crate1")
--- 		print("lua scripting in work")
--- 	end	
--- 	if(Game.SphereCollisionBetween("Player","crate2")) then
--- 		Game.PushBackObj("Player","crate2")
--- 		print("lua scripting in work")
--- 	end
--- if(Game.SphereCollisionBetween("Player","crate3")) then
--- 		Game.PushBackObj("Player","crate3")
--- 		print("lua scripting in work")
--- 	end	
--- if(Game.SphereCollisionBetween("Player","crate4")) then
--- 		Game.PushBackObj("Player","crate4")
--- 		print("lua scripting in work")
---	end		
-	
-end
 
-local function lerp(value1, value2, t)
-	return value1 * (1 - t) + value2 * t
-end
+	if Game.GetGameTime()>15 and Game.GetGameTime()<16  then
+		Game.ShowHint("Use WASD to move")
+	 end	
+	 
+	if Game.GetGameTime()>23 and Game.GetGameTime()<24  then
+		Game.ShowHint("Try To Open The door")
+	 end	
+	 
+	 
 
-local function lerp2(value1, value2, t)
-	return value1 + (value2 - value1) * t
-end
+	if 	Game.GetGameTime()>35 and Game.GetGameTime()<36  then
+		Game.ShowHint("Click on Crate To Possess it")
+ 	end	
+	 
 
-local function moveTowards(value1, value2, delta)
-	local result = 0
-	local delta_l = value2 - value1
-	if delta_l > delta then result = value1 + delta
-	else result = value2
-	return result
 end
