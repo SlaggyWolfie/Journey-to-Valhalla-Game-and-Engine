@@ -193,9 +193,7 @@ namespace Engine
 			case sf::Event::KeyReleased:
 				if (event.key.code == sf::Keyboard::Escape)
 				{
-					UI::Button::DrawPauseMenu = !UI::Button::DrawPauseMenu;
-					UI::Button::disableAllMenus();
-					//UI::Button::enableMenu("");
+					UI::Button::TogglePauseMenu();
 				}
 					
 					//exit = true;

@@ -18,6 +18,11 @@ function Start()
 	level6=Game.NewButton("Level 6.png",150,600)
 	back=Game.NewButton("Back.png",	150,700)
 
+	backToMenu=Game.NewButton("Main Menu.png",500,500)
+	backToGame=Game.NewButton("BackToGame.png",500,800)
+
+	
+	
 
 
 	Game.SetEvent(play,"LevelMenu")	
@@ -32,8 +37,12 @@ function Start()
 	Game.SetEvent(back,"MainMenu")
 	Game.SetEvent(exit,"Exit")
 
+	Game.SetEvent(backToMenu,"MainMenu")
+	Game.SetEvent(backToGame,"BackToGame")
+	
 
 	Game.AddToMenu("LevelMenu",level1,level2,level3,level4,level5,level6,back)
+	Game.AddToMenu("PauseMenu",backToGame,backToMenu)
 	Game.AddToMenu("MainMenu",play,options,exit,credits)
 	
 

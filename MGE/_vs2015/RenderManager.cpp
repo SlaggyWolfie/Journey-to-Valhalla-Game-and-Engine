@@ -241,12 +241,12 @@ namespace Engine
 
 			_fps_hud->draw();
 
-			if (UI::Button::DrawPauseMenu)
-			{
-				getWindow()->draw(UI::Button::pauseMenuBG);
-				//for(UI::B)
+			//if (UI::Button::DrawPauseMenu)
+			//{
+			//	getWindow()->draw(UI::Button::pauseMenuBG);
+			//	//for(UI::B)
 
-			}
+			//}
 			if (!_uiRenderers.empty())
 			{
 				for (auto& ui : _uiRenderers)
