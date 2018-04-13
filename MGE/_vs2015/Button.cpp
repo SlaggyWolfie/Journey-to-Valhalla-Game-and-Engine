@@ -14,6 +14,9 @@ namespace Engine
 	{
 		std::map<std::string, std::vector<Button*>> Button::menus;
 		bool Button::_initialSetup = false;
+		sf::Texture Button::textureBG;
+		sf::Sprite Button::pauseMenuBG;
+		bool Button::DrawPauseMenu = true;
 
 		Button::Button(const bool rendering) : ComponentUI(rendering)
 		{
@@ -34,11 +37,14 @@ namespace Engine
 		{
 			if (!_initialSetup)
 			{
+				textureBG.loadFromFile("container.png");
+				pauseMenuBG.setTexture(textureBG);
 				disableAllMenus();
 				enableMenu("MainMenu");
 				_initialSetup = true;
 			}
 		}
+
 
 		void Button::draw()
 		{
@@ -79,7 +85,7 @@ namespace Engine
 			//bool yCheck = mousePos.y > btnPos.y  && mousePos.y > btnPos.y + 60;
 			//std::cout << btnPos.x << " " << btnPos.y << " " << _function << std::endl;
 			bool xCheck = mousePos.x > btnPos.x + 40 && mousePos.x < btnPos.x + btnSize.x - 40;
-			bool yCheck = mousePos.y > btnPos.y + 20 && mousePos.y < btnPos.y + btnSize.y - 20;
+			bool yCheck = mousePos.y > btnPos.y + 5 && mousePos.y < btnPos.y + btnSize.y - 5;
 			//t++;
 
 
@@ -280,6 +286,10 @@ namespace Engine
 		{
 			using namespace Engine::Utility;
 			Time::now();
+		}
+		void Button::TagglePauseMenu()
+		{
+
 		}
 	}
 }

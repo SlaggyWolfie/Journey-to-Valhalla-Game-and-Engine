@@ -16,6 +16,12 @@ namespace Engine
 		{
 		public:
 			static std::map<std::string, std::vector<Button*>> menus;
+			static sf::Sprite pauseMenuBG;
+			static sf::Texture textureBG;
+			static bool DrawPauseMenu;
+			static void  TagglePauseMenu();
+			static void disableAllMenus(std::string exceptionMenu = "");
+			static void enableMenu(std::string menu);
 			//static 
 
 			Button(bool rendering = true);
@@ -30,7 +36,6 @@ namespace Engine
 			void createMenu();
 			void SetEvent(std::string event);
 			void OneShotHint(std::string hint);
-
 			bool isClicked();
 			bool isHovering();
 			void OnReleaseClick();
@@ -59,8 +64,6 @@ namespace Engine
 			void onNotHover();
 			bool _recorder = false;
 			bool mouseClick = false;
-			static void disableAllMenus(std::string exceptionMenu="");
-			static void enableMenu(std::string menu);
 			static bool _initialSetup;
 		};
 	}
