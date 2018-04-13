@@ -45,7 +45,7 @@ namespace Engine
 			//return nullptr;
 		}
 
-		Texture_* Texture_::load(const std::string& texturePath, const TextureType type)
+		Texture_* Texture_::load(const std::string& texturePath, const TextureType type, const bool flipVertically, const bool flipHorizontally)
 		{
 			if (textureMap.count(texturePath) != 0) return textureMap[texturePath].get();
 
@@ -59,6 +59,8 @@ namespace Engine
 
 				//Assign internals
 				texture->_image = std::unique_ptr<sf::Image>(image);
+				if (flipVertically) texture->_image->flipVertically();
+				if (flipHorizontally) texture->_image->flipHorizontally();
 				texture->_path = texturePath;
 
 				//Generate Texture
