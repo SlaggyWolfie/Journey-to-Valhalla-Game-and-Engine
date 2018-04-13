@@ -166,7 +166,7 @@ namespace Engine
 				Engine::Utility::Time::unpause();
 				ServiceLocator::instance()->getService<Game>()->backGround->load("Assets/Audio/Howling wind.wav");
 				ServiceLocator::instance()->getService<Game>()->backGround->play();
-
+				DrawPauseMenu = false;
 				ServiceLocator::instance()->getService<SceneManager>()->unloadScene();
 				disableAllMenus();
 				enableMenu("MainMenu");

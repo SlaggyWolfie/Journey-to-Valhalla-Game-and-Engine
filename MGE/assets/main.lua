@@ -57,36 +57,20 @@ function Start()
 	
 end
 function Update()	
-	
-	-- print("lua work")
-	--obj1="Player"
-	--obj2="obj2"
-	--if(Game.CollisionBetween(obj1,obj2)) then
-		--Game.PushBackObj(obj1,obj2)
-		--print("i work")
-	--end		
-	if(Game.GetGameTime()>1) then
-		Game.ShowHint("sth")
- 	end
--- 	if(Game.CollisionBetween("Player","gate")) then
--- 		Game.PushBackObj("Player","gate")
--- 		print("lua scripting in work")
--- 	end	
--- 	if(Game.SphereCollisionBetween("Player","crate1")) then
--- 		Game.PushBackObj("Player","crate1")
--- 		print("lua scripting in work")
--- 	end	
--- 	if(Game.SphereCollisionBetween("Player","crate2")) then
--- 		Game.PushBackObj("Player","crate2")
--- 		print("lua scripting in work")
--- 	end
--- if(Game.SphereCollisionBetween("Player","crate3")) then
--- 		Game.PushBackObj("Player","crate3")
--- 		print("lua scripting in work")
--- 	end	
--- if(Game.SphereCollisionBetween("Player","crate4")) then
--- 		Game.PushBackObj("Player","crate4")
--- 		print("lua scripting in work")
---	end		
-	
+
+	if Game.GetGameTime()>15 and Game.GetGameTime()<16  then
+		Game.ShowHint("Use WASD to move")
+	 end	
+	 
+	if Game.GetGameTime()>23 and Game.GetGameTime()<24  then
+		Game.ShowHint("Try To Open The door")
+	 end	
+	 
+	 
+
+	if 	Game.GetGameTime()>35 and Game.GetGameTime()<36  then
+		Game.ShowHint("Click on Crate To Possess it")
+ 	end	
+	 
+
 end
