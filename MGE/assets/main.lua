@@ -2,9 +2,10 @@
 print("if you see me I am lua")
 
 function Initialize()
-	print("lua init")
+	print("--------------------Lua Initialization!-------------------");
 end
 function Start()
+	print("--------------------Lua Starts!-------------------");
 	play=Game.NewButton("Play.png",	100,100)
 	options=Game.NewButton("Options.png",100,200)
 	credits=Game.NewButton("Credits.png",100,300)
@@ -88,20 +89,4 @@ function Update()
 -- 		print("lua scripting in work")
 --	end		
 	
-end
-
-local function lerp(value1, value2, t)
-	return value1 * (1 - t) + value2 * t
-end
-
-local function lerp2(value1, value2, t)
-	return value1 + (value2 - value1) * t
-end
-
-local function moveTowards(value1, value2, delta)
-	local result = 0
-	local delta_l = value2 - value1
-	if delta_l > delta then result = value1 + delta
-	else result = value2
-	return result
 end

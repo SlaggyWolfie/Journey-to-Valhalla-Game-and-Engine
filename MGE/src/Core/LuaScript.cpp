@@ -26,7 +26,7 @@ LuaScript::LuaScript()
 		printf("Read from file-Success\n");
 	}
 	else {
-		printf("Read from file-Success\n");
+		printf("Read from file-Failure\n");
 
 	}
 	registerFunctions();
@@ -37,8 +37,10 @@ void LuaScript::start()
 
 	lua_getglobal(state_, "Start"); // pushes global update
 	int isFunc = lua_isfunction(state_, -1);
-	if (isFunc) {
-		if (lua_pcall(state_, 0, 0, 0) != 0) {
+	if (isFunc) 
+	{
+		if (lua_pcall(state_, 0, 0, 0) != 0)
+		{
 			return;
 		}
 	}

@@ -161,8 +161,8 @@ namespace Engine
 	{
 		//_sceneManager->loadScene("finalLvl1.json");//->initialize(true, true);
 		//_sceneManager->loadScene("finalLvl1.json");//->initialize(true, true);
-		_sceneManager->loadScene("debug.json");//->initialize(true, true);
-		_sceneManager->loadScene(_defaultScenePath);//->initialize(true, true);
+		//_sceneManager->loadScene("debug.json");//->initialize(true, true);
+		//_sceneManager->loadScene(_defaultScenePath);//->initialize(true, true);
 
 	}
 
@@ -206,10 +206,7 @@ namespace Engine
 					UI::Button::TogglePauseMenu();
 				}
 
-				if (event.key.code == sf::Keyboard::E)
-				{
-					Engine::Audio::Sound::playOneShot("donnerre2.wav");
-				}
+				
 					
 					//exit = true;
 

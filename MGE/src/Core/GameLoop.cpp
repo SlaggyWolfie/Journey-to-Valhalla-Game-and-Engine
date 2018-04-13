@@ -167,6 +167,7 @@ namespace Engine
 
 		void GameLoop::start()
 		{
+			std::cout << "-------------------Game Loop Start!------------------------" << std::endl;
 			Game::luaScript()->start();
 
 			if (!_components.empty())
@@ -185,6 +186,7 @@ namespace Engine
 						//&& comp->getGameObject() && comp->getGameObject()->isActive()
 						)
 					{
+						comp->_started = true;
 						comp->start();
 					}
 		}
