@@ -17,7 +17,7 @@ PlayerBaseComponent::PlayerBaseComponent()
 
 void PlayerBaseComponent::update()
 {
-	
+	if (ServiceLocator::instance()->getService<SceneManager>()->loading) return;
 
 	ServiceLocator::instance()->getService<ColliderManager>()->CheckOBB(getGameObject()->getComponent<collider>());
 	if (_objectToMove != nullptr&&_playerS == usingObject)

@@ -49,7 +49,7 @@ namespace Engine
 		{
 			if (!_initialSetup)
 			{
-				textureBG.loadFromFile("pauseMenuBG.jpg");
+				textureBG.loadFromFile("BG.png");
 				pauseMenuBG.setTexture(textureBG);
 				disableAllMenus();
 				enableMenu("MainMenu");
