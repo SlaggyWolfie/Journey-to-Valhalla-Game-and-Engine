@@ -1,6 +1,6 @@
 #pragma once
-#ifndef AUDIO_HPP
-#define AUDIO_HPP
+#ifndef SOUND_HPP
+#define SOUND_HPP
 #include "Component.hpp"
 #include <SFML/Audio.hpp>
 #include <memory>

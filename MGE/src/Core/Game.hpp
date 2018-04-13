@@ -5,15 +5,17 @@
 #include <string>
 #include "../../_vs2015/Service.hpp"
 #include "../_vs2015/ColliderManager.h"
-
 #include <memory>
+#include "../_vs2015/Music.hpp"
 
 /**
  * Defines the basic structure for a game, with defaults already filled in.
  * The only item that MUST be overridden/implemented is _initializeScene()
  * where you build up your world, the rest is optional to override (with care/caution).
  */
+using namespace Engine::Audio;
 class LuaScript;
+
 namespace Engine
 {
 	class SceneManager;
@@ -42,6 +44,8 @@ namespace Engine
 		void exit();
 
 		static LuaScript* luaScript();
+
+		Music* backGround;
 	private:
 		static LuaScript* _luaScript;
 		//print info about the current driver version etc
@@ -50,7 +54,7 @@ namespace Engine
 		static void initializeGlew();
 		void initializeWindow();
 		void initializeServices();
-
+		void initializeMusic();	
 		//initialize the actual scene, HAS to be done by a subclass
 		void initializeScene() const;
 		//void initializeScene(const std::string& filepath) const;

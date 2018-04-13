@@ -154,6 +154,9 @@ namespace Engine
 			{
 			case MainMenu:
 				Engine::Utility::Time::unpause();
+				ServiceLocator::instance()->getService<Game>()->backGround->load("Assets/Audio/Howling wind.wav");
+				ServiceLocator::instance()->getService<Game>()->backGround->play();
+
 				ServiceLocator::instance()->getService<SceneManager>()->unloadScene();
 				disableAllMenus();
 				enableMenu("MainMenu");
@@ -174,6 +177,8 @@ namespace Engine
 				break;
 			case OpenLevel:
 			{
+				ServiceLocator::instance()->getService<Game>()->backGround->load("Assets/Audio/Background music.wav");
+				ServiceLocator::instance()->getService<Game>()->backGround->play();
 				disableAllMenus();
 				SceneManager* scene_m = ServiceLocator::instance()->getService<SceneManager>();
 				scene_m->loadScene(scene_m->getLevel(_levelToOpen));

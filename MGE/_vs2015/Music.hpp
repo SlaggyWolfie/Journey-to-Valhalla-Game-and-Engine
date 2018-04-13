@@ -1,6 +1,6 @@
 #pragma once
-#ifndef AUDIO_HPP
-#define AUDIO_HPP
+#ifndef MUSIC_HPP
+#define MUSIC_HPP
 #include "Component.hpp"
 #include <SFML/Audio.hpp>
 #include <memory>
@@ -9,16 +9,16 @@ namespace Engine
 {
 	namespace Audio
 	{
-		enum AudioStatus { NoMusic, Playing, Paused, Stopped };
+		enum AudioStatusMusic { NoMusic, Playing, Paused, Stopped };
 
 		class Music : public Engine::Core::Component
 		{
 		public:
 			Music();
-			explicit Music(const std::string& filename);
+			explicit Music(const std::string filename);
 			virtual ~Music();
 
-			void load(const std::string& filename);
+			void load(const std::string filename);
 
 			void play();
 			void stop();
@@ -26,7 +26,7 @@ namespace Engine
 			bool isPlaying() const;
 			bool isStopped() const;
 			bool isPaused() const;
-			AudioStatus getStatus() const;
+			AudioStatusMusic getStatus() const;
 
 			void atTime(float time) const;
 			float getTime() const;
@@ -46,7 +46,7 @@ namespace Engine
 
 			std::string _filename = "";
 
-			AudioStatus _status = AudioStatus::NoMusic;
+			AudioStatusMusic _status = AudioStatusMusic::NoMusic;
 
 			float _volume = 0;
 			float _pitch = 0;

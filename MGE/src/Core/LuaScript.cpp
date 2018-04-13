@@ -316,8 +316,10 @@ int LuaScript::PlaySoundOneShot(lua_State* state)
 {
 	if (lua_isstring(state, 1))
 	{
+		std::cout << "Getting here" << std::endl;
 		std::string path = (std::string)lua_tostring(state, 1);
 		Audio::Sound::playOneShot(path);
+		return 0;
 	}
 	return luaL_error(state, " faulty arguments");
 }

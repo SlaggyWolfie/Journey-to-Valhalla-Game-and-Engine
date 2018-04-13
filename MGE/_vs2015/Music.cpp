@@ -6,11 +6,11 @@ namespace Engine
 {
 	namespace Audio
 	{
-		Music::Music() :_music(nullptr), _filename(""), _status(AudioStatus::NoMusic), _volume(1), _pitch(1), _looping(false)
+		Music::Music() :_music(nullptr), _filename(""), _status(AudioStatusMusic::NoMusic), _volume(1), _pitch(1), _looping(false)
 		{
 		}
 
-		Music::Music(const std::string& filename) : Music()
+		Music::Music(const std::string filename) : Music()
 		{
 			load(filename);
 		}
@@ -22,11 +22,11 @@ namespace Engine
 			_music = nullptr;
 		}
 
-		void Music::load(const std::string& filename)
+		void Music::load(const std::string filename)
 		{
 			_filename = filename;
 
-			sf::Music* music = nullptr;
+			sf::Music* music = new sf::Music;
 			if (!music->openFromFile(filename))
 			{
 				std::cout << "Failed to load " + filename << std::endl;
@@ -35,7 +35,7 @@ namespace Engine
 			}
 
 			_music = std::unique_ptr<sf::Music>(music);
-			_status = AudioStatus::Stopped;
+			_status = AudioStatusMusic::Stopped;
 		}
 
 		void Music::play()
@@ -47,39 +47,39 @@ namespace Engine
 			_music->setLoop(_looping);
 
 			_music->play();
-			_status = AudioStatus::Playing;
+			_status = AudioStatusMusic::Playing;
 		}
 
 		void Music::stop()
 		{
 			if (_music == nullptr) return;
 			_music->stop();
-			_status = AudioStatus::Stopped;
+			_status = AudioStatusMusic::Stopped;
 		}
 
 		void Music::pause()
 		{
 			if (_music == nullptr) return;
 			_music->pause();
-			_status = AudioStatus::Paused;
+			_status = AudioStatusMusic::Paused;
 		}
 
 		bool Music::isPlaying() const
 		{
-			return getStatus() == AudioStatus::Playing;
+			return getStatus() == AudioStatusMusic::Playing;
 		}
 
 		bool Music::isStopped() const
 		{
-			return getStatus() == AudioStatus::Stopped;
+			return getStatus() == AudioStatusMusic::Stopped;
 		}
 
 		bool Music::isPaused() const
 		{
-			return getStatus() == AudioStatus::Paused;
+			return getStatus() == AudioStatusMusic::Paused;
 		}
 
-		AudioStatus Music::getStatus() const
+		AudioStatusMusic Music::getStatus() const
 		{
 			return _status;
 		}

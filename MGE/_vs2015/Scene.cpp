@@ -586,6 +586,9 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
+		using namespace Engine::Audio;
+
+		
 		//loadMenu();
 		//Engine::UI::Button* ToMainMenu = new Engine::UI::Button(true);
 		//ToMainMenu->loadSprite("Main Menu.png");
