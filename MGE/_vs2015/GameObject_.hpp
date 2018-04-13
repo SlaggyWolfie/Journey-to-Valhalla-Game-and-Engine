@@ -10,6 +10,7 @@
 #include "GeneralHelpers.hpp"
 #include "Core/GameLoop.hpp"
 #include "Component.hpp"
+#include "Transform.hpp"
 
 namespace Engine
 {
@@ -68,6 +69,8 @@ namespace Engine
 			template <typename T>
 			T** getComponents();
 			template <typename T>
+			std::vector<T*> getComponentsInChildren();
+			template <typename T>
 			std::vector<T*> getComponentsList();
 			std::vector<Core::Component*> getComponentsList();
 
@@ -120,6 +123,21 @@ namespace Engine
 			std::copy(components.begin(), components.end(), componentArray);
 
 			return componentArray;
+		}
+
+		template <typename T>
+		std::vector<T*> GameObject_::getComponentsInChildren()
+		{
+			std::vector<T*> components;
+			for (auto& transform : _transform->_children)
+			{
+				T* component = transform->getGameObject()->getComponent<T>();
+				if (component) components.push_back(component);
+				std::vector<T*> childComponents = transform->getGameObject()->getComponentsInChildren<T>();
+				components.insert(components.end(), childComponents.begin(), childComponents.end());
+			}
+
+			return components;
 		}
 
 		template <typename T>

@@ -148,6 +148,8 @@ namespace Engine
 					ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_2.json");
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num7))
 					ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_6.json");
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num8))
+					ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_3.json");
 
 				getRenderManager()->render();
 

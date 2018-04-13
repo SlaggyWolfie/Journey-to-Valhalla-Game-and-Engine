@@ -512,6 +512,26 @@ namespace Engine
 
 			}
 
+			if (gameStruct->name.find("Tree") != std::string::npos)
+			{
+				std::cout << "This is a Tree" << std::endl;
+				auto materials = gameObject->getComponentsInChildren<Material_>();
+				std::cout << "It has " << materials.size() << " materials" << std::endl;
+
+				for (unsigned i = 0; i < materials.size(); i++)
+				{
+					Material_* material = materials[i];
+					std::cout << material->getGameObject()->getName() << std::endl;
+					//if (material->getGameObject()->getName().find("Lea") != std::string::npos)
+					if (i == 0)
+					{
+						std::cout << "This is a Leaf" << std::endl;
+						material->setDiffuseMap(Texture_::load(File::findPath("Leaf_Material_001_Base_Color.png")));
+						continue;
+					}
+				}
+			}
+
 			addGameObject(gameObject);
 			id_to_go[gameStruct->transform->selfID] = gameObject;
 		}
@@ -590,7 +610,7 @@ namespace Engine
 	{
 		using namespace Engine::Audio;
 
-		
+
 		//loadMenu();
 		//Engine::UI::Button* ToMainMenu = new Engine::UI::Button(true);
 		//ToMainMenu->loadSprite("Main Menu.png");
@@ -616,7 +636,7 @@ namespace Engine
 		GameObject_* p1_1 = this->findGameObject("Pressure plate 1");
 		if (p1_1)
 		{
-			std::cout << "KJHLKJ" << std::endl;
+			//std::cout << "KJHLKJ" << std::endl;
 			p1_1->getComponent<collider>()->SetSphereRadius(1.5f);
 			this->findGameObject("Gate1_1")->getComponent<GateBehaviour>()->AddPlate(p1_1->getComponent<PressurePlateBehaviour>());
 		}

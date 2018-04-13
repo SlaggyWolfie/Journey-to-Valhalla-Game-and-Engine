@@ -20,7 +20,7 @@ namespace Engine
 			float duration = 0;
 
 			//static void showHint(const std::string& hintText, float startAfterTime = 0, float duration = 6);
-			void showHint(const std::string& hintText, sf::Vector2f target, float duration = 6);
+			void showHint(std::string hintText, sf::Vector2f target, float duration = 6);
 			void startCountdown();
 			void shouldDraw(bool show);
 			void setPosition(float x, float y) const;

@@ -11,9 +11,10 @@ namespace Engine
 		Hint* Text::_hint = nullptr;
 		//sf::Vector2f Text::hintTargetPosition;
 
-		void Hint::showHint(const std::string& hintText, const sf::Vector2f target, const float duration)
+		void Hint::showHint(const std::string hintText, const sf::Vector2f target, const float duration)
 		{
-			//hint()->setTextInformation(hintText);
+			text->setTextInformation(hintText);
+
 			draw = true;
 			move = true;
 			durationSet = false;

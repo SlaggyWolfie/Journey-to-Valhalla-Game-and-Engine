@@ -93,7 +93,7 @@ namespace Engine
 			//std::cout << "Wrong" << std::endl;
 			//std::cout << "My Mesh: " + std::to_string(mymesh != nullptr) << std::endl;
 			//std::cout << "My Material: " + std::to_string(mymat != nullptr) << std::endl;
-			Core::GameObject_* meshGO = new Core::GameObject_("Mesh_" + std::string(mesh->mName.C_Str()), "");
+			Core::GameObject_* meshGO = new Core::GameObject_("Node_" + std::string(node->mName.C_Str()) + "_Mesh_" + std::string(mesh->mName.C_Str()), "Mesh");
 			meshGO->addComponent(mymesh);
 			meshGO->addComponent(mymat);
 			meshGO->addComponent(new Rendering::Renderer_(mymat, mymesh, queue, true));
