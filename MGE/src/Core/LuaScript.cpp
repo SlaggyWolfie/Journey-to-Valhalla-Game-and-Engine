@@ -129,7 +129,6 @@ int LuaScript::ShowHint(lua_State * state)
 		//if (lua_pcall(state, 0, 0, 0) != 0) {
 		//}
 		//oneshotHint()
-		std::cout << "getting here" << std::endl;
 		Engine::UI::Text::hint()->startPosition = sf::Vector2f(600, 1300);
 		Engine::UI::Text::hint()->showHint(message, sf::Vector2f(600,800 ), 3);
 		//text.setString((sf::String)lua_tostring(state, 1));
