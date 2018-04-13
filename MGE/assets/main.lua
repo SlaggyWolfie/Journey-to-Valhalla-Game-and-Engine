@@ -44,9 +44,9 @@ function Start()
 	Game.AddToMenu("LevelMenu",level1,level2,level3,level4,level5,level6,back)
 	Game.AddToMenu("PauseMenu",backToGame,backToMenu)
 	Game.AddToMenu("MainMenu",play,options,exit,credits)
-	
 
-	
+
+	-- Game.PlaySoundOneShot("Background music.wav")
 
 
 	-- Game.SetEvent(exit,"Exit")
@@ -56,6 +56,7 @@ function Start()
 	
 end
 function Update()	
+	
 	-- print("lua work")
 	--obj1="Player"
 	--obj2="obj2"

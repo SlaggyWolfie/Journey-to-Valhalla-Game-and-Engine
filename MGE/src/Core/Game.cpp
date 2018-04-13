@@ -16,6 +16,8 @@
 #include "LuaScript.h"
 #include "../../_vs2015/InputHandler.hpp"
 #include "../_vs2015/Button.hpp"
+#include "../_vs2015/Sound.hpp"
+
 
 //#include "GameLoop.hpp"
 
@@ -26,6 +28,7 @@ namespace Engine
 	Game::Game() : _renderManager(nullptr), _lightManager(nullptr), _colliderManager(nullptr), _gameLoop(nullptr),
 		_sceneManager(nullptr)
 	{
+		backGround = new Engine::Audio::Music("Assets/Audio/Howling wind.wav");
 		//ctor
 	}
 
@@ -45,6 +48,7 @@ namespace Engine
 		initializeGlew();
 		initializeServices();
 		std::cout << std::endl << "Engine initialized." << std::endl << std::endl;
+		initializeMusic();
 
 		//LuaScript l = LuaScript();
 
@@ -92,6 +96,7 @@ namespace Engine
 			, sf::ContextSettings(24, 8, 0, 3, 3, sf::ContextSettings::Attribute::Default, false));
 		//_window->setVerticalSyncEnabled(true);
 		std::cout << "Window initialized." << std::endl << std::endl;
+		
 	}
 
 	void Game::printVersionInfo()
@@ -146,7 +151,12 @@ namespace Engine
 		//_sceneManager->initialize();
 		_renderManager->initialize();
 	}
-
+	void Game::initializeMusic()
+	{
+		
+		backGround->setLooping(true);
+		backGround->play();
+	}
 	void Game::initializeScene() const
 	{
 		//_sceneManager->loadScene("finalLvl1.json");//->initialize(true, true);
@@ -194,6 +204,11 @@ namespace Engine
 				if (event.key.code == sf::Keyboard::Escape)
 				{
 					UI::Button::TogglePauseMenu();
+				}
+
+				if (event.key.code == sf::Keyboard::E)
+				{
+					Engine::Audio::Sound::playOneShot("donnerre2.wav");
 				}
 					
 					//exit = true;
