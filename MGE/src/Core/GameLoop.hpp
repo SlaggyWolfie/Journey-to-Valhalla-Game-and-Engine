@@ -8,13 +8,13 @@
 #include "../_vs2015/RenderManager.hpp"
 #include "../_vs2015/Component.hpp"
 #include "../_vs2015/ColliderManager.h"
+class ComponentUI;
 
 namespace Engine
 {
 	class Game;
 	class SceneManager;
 	class Scene;
-
 	namespace Core
 	{
 		class Component;
@@ -27,6 +27,10 @@ namespace Engine
 			GameLoop(const GameLoop& other) = delete;
 			GameLoop& operator=(const GameLoop& other) = delete;
 			void initialize() override;
+			void subscribeUI(ComponentUI* component);
+			void unsubscribeUI(ComponentUI* component);
+			bool isSubscribedUI(ComponentUI* component);
+
 			void subscribe(Component* component);
 			void unsubscribe(Component* component);
 			bool isSubscribed(Component* component);
@@ -38,11 +42,13 @@ namespace Engine
 			bool _started = false;
 
 			std::vector<Component*> _components;
+			std::vector<ComponentUI*> _ui;
 
 			void start();
 			void update();
 			void fixedUpdate();
 			void lateUpdate();
+			void uiUpdate();
 
 			Engine::SceneManager* getSceneManager();
 			Game* getGame();

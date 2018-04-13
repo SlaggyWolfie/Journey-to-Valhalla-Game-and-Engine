@@ -49,6 +49,8 @@ namespace Engine
 		//return;
 		if (fromFile)
 		{
+
+
 			Deserializer2 deserializer2;
 			deserializer2.deserializeIntoStructs(_path);
 			//deserializer2.deserializeIntoStructs("Level_1.json");
@@ -586,6 +588,17 @@ namespace Engine
 	void Scene::hardCode()
 	{
 		//loadMenu();
+		//Engine::UI::Button* ToMainMenu = new Engine::UI::Button(true);
+		//ToMainMenu->loadSprite("Main Menu.png");
+		//ToMainMenu->getSprite().setPosition(sf::Vector2f(300,400));
+
+		////ToMainMenu->setEnabled(true);
+
+		//Engine::UI::Button* BackToGame = new Engine::UI::Button(true);
+		//BackToGame->loadSprite("Back.png");
+		//BackToGame->getSprite().setPosition(sf::Vector2f(300, 500));
+
+		//BackToGame->setEnabled(false);
 
 		//UI::Text::showHint("THIS IS A HINT! I WORK!", 2, 15);
 

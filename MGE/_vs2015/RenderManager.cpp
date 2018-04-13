@@ -57,7 +57,7 @@ namespace Engine
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-			//glEnable(GL_FRAMEBUFFER_SRGB);
+			glEnable(GL_FRAMEBUFFER_SRGB);
 
 			glClearColor(
 				static_cast<float>(0x2d) / 0xff,

@@ -89,7 +89,7 @@ namespace Engine
 		_window = new sf::RenderWindow(
 			sf::VideoMode(1280, 1024), "Game", sf::Style::Default
 			//)
-			, sf::ContextSettings(24, 8, 0, 3, 3, sf::ContextSettings::Attribute::Default, true));
+			, sf::ContextSettings(24, 8, 0, 3, 3, sf::ContextSettings::Attribute::Default, false));
 		//_window->setVerticalSyncEnabled(true);
 		std::cout << "Window initialized." << std::endl << std::endl;
 	}
@@ -193,9 +193,7 @@ namespace Engine
 			case sf::Event::KeyReleased:
 				if (event.key.code == sf::Keyboard::Escape)
 				{
-					UI::Button::DrawPauseMenu = !UI::Button::DrawPauseMenu;
-					UI::Button::disableAllMenus();
-					//UI::Button::enableMenu("");
+					UI::Button::TogglePauseMenu();
 				}
 					
 					//exit = true;

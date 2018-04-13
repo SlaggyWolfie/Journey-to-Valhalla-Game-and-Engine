@@ -13,10 +13,11 @@ namespace Engine
 	namespace UI
 	{
 		std::map<std::string, std::vector<Button*>> Button::menus;
+		//std::vector<Button*> Button::allButtons;
 		bool Button::_initialSetup = false;
 		sf::Texture Button::textureBG;
 		sf::Sprite Button::pauseMenuBG;
-		bool Button::DrawPauseMenu = true;
+		bool Button::DrawPauseMenu = false;
 
 		Button::Button(const bool rendering) : ComponentUI(rendering)
 		{
@@ -26,18 +27,29 @@ namespace Engine
 			functions["Exit"] = ButtonFunctionality::Exit;
 			functions["Options"] = ButtonFunctionality::Options;
 			functions["Credits"] = ButtonFunctionality::Credits;
-
+			functions["BackToGame"] = ButtonFunctionality::BackToGame;
+		
+			//allButtons.push_back(this);
 		}
 
 		Button::Button(sf::RenderWindow* window, const bool rendering) : ComponentUI(window, rendering)
 		{
+			functions["LevelMenu"] = ButtonFunctionality::LevelMenu;
+			functions["MainMenu"] = ButtonFunctionality::MainMenu;
+			functions["OpenLevel"] = ButtonFunctionality::OpenLevel;
+			functions["Exit"] = ButtonFunctionality::Exit;
+			functions["Options"] = ButtonFunctionality::Options;
+			functions["Credits"] = ButtonFunctionality::Credits;
+			functions["BackToGame"] = ButtonFunctionality::BackToGame;
+
+			//allButtons.push_back(this);
 		}
 
 		void Button::start()
 		{
 			if (!_initialSetup)
 			{
-				textureBG.loadFromFile("container.png");
+				textureBG.loadFromFile("BG.png");
 				pauseMenuBG.setTexture(textureBG);
 				disableAllMenus();
 				enableMenu("MainMenu");
@@ -150,6 +162,8 @@ namespace Engine
 			switch (_function)
 			{
 			case MainMenu:
+				Engine::Utility::Time::unpause();
+				ServiceLocator::instance()->getService<SceneManager>()->unloadScene();
 				disableAllMenus();
 				enableMenu("MainMenu");
 				//wait fo 3 sec
@@ -161,6 +175,11 @@ namespace Engine
 				enableMenu("LevelMenu");
 				//reset mouse recorded
 
+				break;
+			case BackToGame:
+				Engine::Utility::Time::unpause();
+				TogglePauseMenu();
+				disableAllMenus();
 				break;
 			case OpenLevel:
 			{
@@ -296,9 +315,20 @@ namespace Engine
 			using namespace Engine::Utility;
 			Time::now();
 		}
-		void Button::TagglePauseMenu()
+		void Button::TogglePauseMenu()
 		{
+			UI::Button::DrawPauseMenu = !UI::Button::DrawPauseMenu;
+			UI::Button::disableAllMenus();
+			if (UI::Button::DrawPauseMenu)
+			{
+				enableMenu("PauseMenu");
+				Engine::Utility::Time::pause();
+			}
+			else
+			{
+				Engine::Utility::Time::unpause();
 
+			}
 		}
 	}
 }

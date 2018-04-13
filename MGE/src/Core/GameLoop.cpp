@@ -14,6 +14,7 @@
 #include "LuaScript.h"
 #include "../../_vs2015/SceneManager.hpp"
 #include "../_vs2015/Scene.hpp"
+#include "../_vs2015/Button.hpp"
 
 namespace Engine
 {
@@ -38,6 +39,23 @@ namespace Engine
 			//_collisionManager = ServiceLocator::instance()->getService<Collisions::CollisionManager>();
 			//_physicsManager = ServiceLocator::instance()->getService<Physics::PhysicsManager>();
 			//_renderManager = ServiceLocator::instance()->getService<Rendering::RenderManager>();
+		}
+
+		void GameLoop::subscribeUI(ComponentUI * component)
+		{
+			if (!isSubscribedUI(component))
+				_ui.push_back(component);
+		}
+
+		void GameLoop::unsubscribeUI(ComponentUI * component)
+		{
+			if (isSubscribedUI(component))
+				_ui.erase(std::find(_ui.begin(), _ui.end(), component), _ui.end());
+		}
+
+		bool GameLoop::isSubscribedUI(ComponentUI * component)
+		{
+			return !_ui.empty() && std::find(_ui.begin(), _ui.end(), component) != _ui.end();
 		}
 
 		void GameLoop::subscribe(Component* component)
@@ -112,6 +130,7 @@ namespace Engine
 					lateUpdate();
 				}
 
+				uiUpdate();
 				getSceneManager()->update();
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
@@ -159,6 +178,15 @@ namespace Engine
 						comp->_started = true;
 						comp->start();
 					}
+
+			if (!_ui.empty())
+				for (const auto& comp : _ui)
+					if (comp != nullptr && comp->isEnabled()
+						//&& comp->getGameObject() && comp->getGameObject()->isActive()
+						)
+					{
+						comp->start();
+					}
 		}
 
 		void GameLoop::update()
@@ -191,6 +219,21 @@ namespace Engine
 						//&& comp->getGameObject() && comp->getGameObject()->isActive()
 						)
 						comp->lateUpdate();
+
+		}
+
+		void GameLoop::uiUpdate()
+		{
+
+			if (!_ui.empty())
+				for (const auto& comp : _ui)
+					if (comp != nullptr && comp->isEnabled()
+						//&& comp->getGameObject() && comp->getGameObject()->isActive()
+						)
+					{
+						comp->update();
+						comp->lateUpdate();
+					}
 		}
 
 		Engine::SceneManager* GameLoop::getSceneManager()
@@ -239,6 +282,7 @@ namespace Engine
 		void GameLoop::destroyOwnedLoops()
 		{
 			_components.clear();
+			//_components
 		}
 
 		void GameLoop::reset()

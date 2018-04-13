@@ -10,16 +10,17 @@ namespace Engine
 	namespace UI
 	{
 		enum ButtonStatus { Normal, Hovering, Clicked };
-		enum ButtonFunctionality { LevelMenu, MainMenu, OpenLevel, Exit, Options, Credits };
+		enum ButtonFunctionality { LevelMenu, MainMenu, OpenLevel, Exit, Options, Credits,BackToGame};
 
 		class Button : public ComponentUI
 		{
 		public:
-			static std::map<std::string, std::vector<Button*>> menus;
+			static std::map<std::string, std::vector<Button*>> menus; 
+			//static std::vector<Button*> allButtons;
 			static sf::Sprite pauseMenuBG;
 			static sf::Texture textureBG;
 			static bool DrawPauseMenu;
-			static void  TagglePauseMenu();
+			static void  TogglePauseMenu();
 			static void disableAllMenus(std::string exceptionMenu = "");
 			static void enableMenu(std::string menu);
 			//static 
