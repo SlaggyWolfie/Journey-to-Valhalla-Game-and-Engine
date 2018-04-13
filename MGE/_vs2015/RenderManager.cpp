@@ -254,9 +254,9 @@ namespace Engine
 						ui->draw();
 			}
 
-			if (UI::Text::drawHint)
+			if (UI::Text::hint()->draw)
 			{
-				UI::Text::hint()->draw();
+				UI::Text::hint()->text->draw();
 				//std::cout << "trying to draw hint" << std::endl;
 			}
 			

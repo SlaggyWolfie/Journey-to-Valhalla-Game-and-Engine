@@ -435,7 +435,7 @@ namespace Engine
 					("Viking_townhall_fixed_TownHall_Texture1_AlbedoTransparency.png")/*, TextureType::Diffuse, true, true*/));
 				gameObject->getTransform()->translate(glm::vec3(0, -6.8f, 0));
 
-				gameObject->getTransform()->scale(glm::vec3(2));
+				gameObject->getTransform()->scale(glm::vec3(1.7f));
 				//gameObject->addComponent<RotatingComponent>();
 			}
 

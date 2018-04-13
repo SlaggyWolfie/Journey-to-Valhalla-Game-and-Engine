@@ -7,40 +7,119 @@ namespace Engine
 {
 	namespace UI
 	{
-		bool Text::drawHint = false;
-		Text* Text::_hint = nullptr;
+		//bool Text::drawHint = false;
+		Hint* Text::_hint = nullptr;
+		//sf::Vector2f Text::hintTargetPosition;
 
-		Text* Text::hint()
+		void Hint::showHint(const std::string& hintText, const sf::Vector2f target, const float duration)
 		{
-			if (!_hint)
-			{
-				_hint = new Text(false);
-				_hint->getTextObject().setPosition(600, 600);
-				_hint->setTextInformation("HINT!");
-				_hint->getTextObject().setCharacterSize(100);
-				_hint->getTextObject().setFillColor(sf::Color::White);
-				_hint->setFont("mge/fonts/arial.ttf");
-			}
+			//hint()->setTextInformation(hintText);
+			draw = true;
+			move = true;
+			durationSet = false;
+			showing = true;
+			targetPosition = target;
+			this->duration = duration;
+		}
 
+		void Hint::startCountdown()
+		{
+			bool* move_p = &move;
+			sf::Vector2f* hintTargetPosition_p = &targetPosition;
+			sf::Vector2f* startPosition_p = &startPosition;
+
+			const std::function<void()> moveDown = [move_p, hintTargetPosition_p, startPosition_p] () -> void
+			{
+				*move_p = true;
+				*hintTargetPosition_p = *startPosition_p;
+			};
+
+			Engine::Utility::Time::timeout(duration, moveDown);
+			durationSet = true;
+		}
+
+		void Hint::shouldDraw(const bool show)
+		{
+			draw = show;
+		}
+
+		void Hint::setPosition(const float x, const float y) const
+		{
+			text->getTextObject().setPosition(x, y);
+		}
+
+		void Hint::setPosition(const sf::Vector2f position) const
+		{
+			text->getTextObject().setPosition(position);
+		}
+
+		Hint::Hint(const bool rendering)
+		{
+			text = new Text(rendering);
+			text->getTextObject().setPosition(600, -600);
+			text->setTextInformation("HINT!");
+			text->getTextObject().setCharacterSize(100);
+			text->getTextObject().setFillColor(sf::Color::White);
+			text->setFont(File::findPath("celtic.ttf"));
+		}
+
+		void Hint::update()
+		{
+			if (showing && move)
+			{
+				setPosition(Text::moveTowards(text->getTextObject().getPosition(), targetPosition, 0.5f));
+				if (text->getTextObject().getPosition() == targetPosition)
+				{
+					move = false;
+					if (!durationSet)
+					{
+						durationSet = true;
+						startCountdown();
+						return;
+					}
+
+					showing = false;
+				}
+			}
+		}
+
+		Hint* Text::hint()
+		{
+			if (!_hint) _hint = new Hint(false);
 			return _hint;
 		}
 
-		void Text::showHint(const std::string& hintText, const float startAfterTime, const float duration)
-		{
-			hint()->setTextInformation(hintText);
+		//Text* Text::hint()
+		//{
+		//	if (!_hint)
+		//	{
+		//		_hint = new Text(false);
+		//		_hint->getTextObject().setPosition(600, 600);
+		//		_hint->setTextInformation("HINT!");
+		//		_hint->getTextObject().setCharacterSize(100);
+		//		_hint->getTextObject().setFillColor(sf::Color::White);
+		//		_hint->setFont("mge/fonts/arial.ttf");
+		//	}
 
-			std::function<void()> hide = []
-			{
-				Text::drawHint = false;
-			};
-			std::function<void()> unhide = [duration, hide]
-			{
-				Text::drawHint = true;
-				Engine::Utility::Time::timeout(duration, hide);
-			};
+		//	return _hint;
+		//}
 
-			Engine::Utility::Time::timeout(startAfterTime, unhide);
-		}
+		//void Text::showHint(const std::string& hintText, const float startAfterTime, const float duration)
+		//{
+		//	hint()->setTextInformation(hintText);
+
+		//	std::function<void()> hide = []
+		//	{
+		//		Text::drawHint = false;
+		//	};
+		//	std::function<void()> unhide = [duration, hide]
+		//	{
+		//		Text::drawHint = true;
+		//		Engine::Utility::Time::timeout(duration, hide);
+		//	};
+
+		//	Engine::Utility::Time::timeout(startAfterTime, unhide);
+		//}
 
 		Text::Text(const bool rendering) : ComponentUI(rendering)
 		{
@@ -82,6 +161,16 @@ namespace Engine
 		void Text::draw()
 		{
 			getWindow()->draw(_text);
+		}
+
+
+		sf::Vector2f Text::moveTowards(const sf::Vector2f current, const sf::Vector2f target, const float delta)
+		{
+			const sf::Vector2f deltaLocal = target - current;
+			const float length = std::hypot(deltaLocal.x, deltaLocal.y);
+			const sf::Vector2f normalDelta = deltaLocal / length;
+			const sf::Vector2f movementDelta = length > delta ? normalDelta * delta : deltaLocal;
+			return current + movementDelta;
 		}
 
 		//TextHUD::~TextHUD()
