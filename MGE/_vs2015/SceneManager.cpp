@@ -1,5 +1,6 @@
 #include "SceneManager.hpp"
 #include "Scene.hpp"
+#include "Time.hpp"
 
 namespace Engine
 {
@@ -13,8 +14,11 @@ namespace Engine
 		if (_activeScene)
 			unloadScene();
 
+		//Engine::Utility::Time::pause();
+		Engine::Utility::Time::pause();
 		_activeScene = std::make_unique<Scene>(Engine::File::clipPath(path), path);
 		_activeScene->initialize(true, true);
+		Engine::Utility::Time::unpause();
 		return getActiveScene();
 	}
 
@@ -31,6 +35,12 @@ namespace Engine
 
 	void SceneManager::update()
 	{
+		if (_unloadQueue)
+		{
+			unloadScene();
+			_unloadQueue = false;
+		}
+
 		if (!_queue.empty())
 		{
 			loadScene(_queue);
@@ -52,6 +62,11 @@ namespace Engine
 	{
 		ServiceLocator::instance()->resetServices(this);
 		_activeScene = nullptr;
+	}
+
+	void SceneManager::queueUnloadScene()
+	{
+		_unloadQueue = true;
 	}
 
 	Game* SceneManager::getGame()

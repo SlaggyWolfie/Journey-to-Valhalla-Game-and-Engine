@@ -23,9 +23,11 @@ namespace Engine
 
 		void initialize() override;
 		void unloadScene();
+		void queueUnloadScene();
 		std::string getLevel(int number) const;
 	private:
 		std::string _queue;
+		bool _unloadQueue;
 		std::unique_ptr<Scene> _activeScene = nullptr;
 		Game* _game = nullptr;
 		Game* getGame();

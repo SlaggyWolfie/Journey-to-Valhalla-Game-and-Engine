@@ -16,6 +16,7 @@ namespace Engine
 		{
 			volume = glm::clamp(volume, 0.0f, 1.0f);
 			_volume = volume;
+			//sf::Listener::
 			sf::Listener::setGlobalVolume(volume * 100);
 		}
 

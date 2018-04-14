@@ -75,20 +75,11 @@
     <ClCompile Include="..\src\mge\util\DebugHud.cpp">
       <Filter>old\mge</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\myGame\Scenes\EighthScene.cpp">
-      <Filter>old\mygame</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\myGame\Behaviours\ElevationBehaviour.cpp">
       <Filter>old\mygame</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Core\Deserealizer.cpp">
       <Filter>engine</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\myGame\Scenes\FifthScene.cpp">
-      <Filter>old\mygame</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\myGame\Scenes\FourthScene.cpp">
-      <Filter>old\mygame</Filter>
     </ClCompile>
     <ClCompile Include="..\src\myGame\Materials\FrankenMaterial.cpp">
       <Filter>old\mygame</Filter>
@@ -129,15 +120,6 @@
     <ClCompile Include="..\src\mge\MGEDemo.cpp">
       <Filter>old\mge</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\myGame\Scenes\MyScene.cpp">
-      <Filter>old\mygame</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\myGame\Scenes\MySceneSP.cpp">
-      <Filter>old\mygame</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\myGame\Scenes\NinthScene.cpp">
-      <Filter>old\mygame</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\myEngine\Light\OldLight.cpp">
       <Filter>old\mygame</Filter>
     </ClCompile>
@@ -165,22 +147,10 @@
     <ClCompile Include="RenderManager.cpp">
       <Filter>engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\myGame\Scenes\SecondScene.cpp">
-      <Filter>old\mygame</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\myGame\Scenes\SeventhScene.cpp">
-      <Filter>old\mygame</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\myGame\Scenes\SixthScene.cpp">
-      <Filter>old\mygame</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\myGame\Materials\WobbleMaterial.cpp">
       <Filter>old\mygame</Filter>
     </ClCompile>
     <ClCompile Include="..\src\myGame\Materials\WaterMaterial.cpp">
-      <Filter>old\mygame</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\myGame\Scenes\ThirdScene.cpp">
       <Filter>old\mygame</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\core\Texture.cpp">
@@ -322,20 +292,11 @@
     <ClInclude Include="..\src\mge\util\DebugHud.hpp">
       <Filter>old\mge</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\myGame\Scenes\EighthScene.hpp">
-      <Filter>old\mygame</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\myGame\Behaviours\ElevationBehaviour.hpp">
       <Filter>old\mygame</Filter>
     </ClInclude>
     <ClInclude Include="..\src\Core\Deserealizer.hpp">
       <Filter>engine</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\myGame\Scenes\FifthScene.hpp">
-      <Filter>old\mygame</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\myGame\Scenes\FourthScene.hpp">
-      <Filter>old\mygame</Filter>
     </ClInclude>
     <ClInclude Include="..\src\myGame\Materials\FrankenMaterial.hpp">
       <Filter>old\mygame</Filter>
@@ -397,15 +358,6 @@
     <ClInclude Include="..\src\myGame\MyGameConfig.hpp">
       <Filter>old\mygame</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\myGame\Scenes\MyScene.hpp">
-      <Filter>old\mygame</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\myGame\Scenes\MySceneSP.hpp">
-      <Filter>old\mygame</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\myGame\Scenes\NinthScene.hpp">
-      <Filter>old\mygame</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\myEngine\Light\OldLight.hpp">
       <Filter>old\mygame</Filter>
     </ClInclude>
@@ -433,22 +385,10 @@
     <ClInclude Include="RenderManager.hpp">
       <Filter>engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\myGame\Scenes\SecondScene.hpp">
-      <Filter>old\mygame</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\myGame\Scenes\SeventhScene.hpp">
-      <Filter>old\mygame</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\myGame\Scenes\SixthScene.hpp">
-      <Filter>old\mygame</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\myGame\Materials\WobbleMaterial.hpp">
       <Filter>old\mygame</Filter>
     </ClInclude>
     <ClInclude Include="..\src\myGame\Materials\WaterMaterial.hpp">
-      <Filter>old\mygame</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp">
       <Filter>old\mygame</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mge\core\Texture.hpp">

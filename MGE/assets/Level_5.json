@@ -3081,7 +3081,7 @@
     }
 }]}},
 {"GameObject": {"typeID": 0,
-"name": "Cube",
+"name": "Go_To_Level_6",
 "tag": "Untagged",
 "active": true,
 "transform": {
@@ -6026,20 +6026,6 @@
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
-},
-{
-    "typeID": 2,
-    "isTrigger": false,
-    "size": {
-        "x": 5944.130859375,
-        "y": 50.0,
-        "z": 6023.6630859375
-    },
-    "center": {
-        "x": -2472.068359375,
-        "y": 0.0,
-        "z": 1505.5452880859375
-    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Wood_Corner (1)",

@@ -8,6 +8,7 @@
 #include "Time.hpp"
 #include "SceneManager.hpp"
 #include <regex>
+#include "Button.hpp"
 
 
 void ColliderManager::initialize()
@@ -326,6 +327,8 @@ void ColliderManager::CheckOBB(collider * obj)
 						if (otherCollider->getGameObject()->getName().find("Main_Menu") != std::string::npos)
 						{
 							//load menu
+							sceneManager->queueUnloadScene();
+							Engine::UI::Button::enableMenu("MainMenu");
 						}
 						else
 						{

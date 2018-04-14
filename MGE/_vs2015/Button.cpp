@@ -7,12 +7,13 @@
 #include "Core\GameLoop.hpp"
 #include "SceneManager.hpp"
 #include "InputHandler.hpp"
+#include "Scene.hpp"
 
 namespace Engine
 {
 	namespace UI
 	{
-		std::map<std::string, std::vector<Button*>> Button::menus;
+		std::map<std::string, std::vector<ComponentUI*>> Button::menus;
 		//std::vector<Button*> Button::allButtons;
 		bool Button::_initialSetup = false;
 		sf::Texture Button::textureBG;
@@ -28,7 +29,12 @@ namespace Engine
 			functions["Options"] = ButtonFunctionality::Options;
 			functions["Credits"] = ButtonFunctionality::Credits;
 			functions["BackToGame"] = ButtonFunctionality::BackToGame;
-		
+			functions["Restart"] = ButtonFunctionality::Restart;
+			functions["SFX Off"] = ButtonFunctionality::Restart;
+			functions["SFX On"] = ButtonFunctionality::Restart;
+			functions["Sounds Off"] = ButtonFunctionality::Restart;
+			functions["Sounds On"] = ButtonFunctionality::Restart;
+
 			//allButtons.push_back(this);
 		}
 
@@ -41,6 +47,11 @@ namespace Engine
 			functions["Options"] = ButtonFunctionality::Options;
 			functions["Credits"] = ButtonFunctionality::Credits;
 			functions["BackToGame"] = ButtonFunctionality::BackToGame;
+			functions["Restart"] = ButtonFunctionality::Restart;
+			functions["SFX Off"] = ButtonFunctionality::Restart;
+			functions["SFX On"] = ButtonFunctionality::Restart;
+			functions["Sounds Off"] = ButtonFunctionality::Restart;
+			functions["Sounds On"] = ButtonFunctionality::Restart;
 
 			//allButtons.push_back(this);
 		}
@@ -89,6 +100,9 @@ namespace Engine
 
 		void Button::update()
 		{
+			_hoverSprite.setPosition(_normalSprite.getPosition());
+			_clickSprite.setPosition(_hoverSprite.getPosition());
+
 			delay--;
 			sf::Vector2i mousePos = sf::Mouse::getPosition(*getWindow());
 			//250x60
@@ -211,6 +225,25 @@ namespace Engine
 				enableMenu("Credits");
 
 				break;
+			case Restart:
+			{
+				//ServiceLocator::instance()->getService<Game>()->backGround->load("Assets/Audio/Background music.wav");
+				//ServiceLocator::instance()->getService<Game>()->backGround->play();
+				disableAllMenus();
+				SceneManager* scene_m = ServiceLocator::instance()->getService<SceneManager>();
+				scene_m->loadScene(scene_m->getActiveScene()->getName());
+				//ServiceLocator::instance()->getService<SceneManager>()->loadScene(std::string("Level_") + std::to_string(_levelToOpen) + ".json");
+				//show loading screen
+				//_levelToOpen
+				//reset mouse recorded
+
+				break;
+			}
+			case SFX_Off: break;
+			case SFX_On: break;
+			case Sounds_Off: break;
+			case Sounds_On: break;
+			default:break;
 			}
 			_status = Clicked;
 			//if (!_clickingSpriteLoaded)
@@ -282,6 +315,19 @@ namespace Engine
 			}
 			sprite->setTexture(*texture);
 			sprite->setPosition(sf::Vector2f(x, y));
+			loadSprite(*sprite, status);
+		}
+
+		void Button::loadSprite(const std::string & path, ButtonStatus status)
+		{
+			sf::Sprite* sprite = new sf::Sprite();
+			sf::Texture* texture = new sf::Texture();
+			if (!texture->loadFromFile(path))
+			{
+				std::cout << "Texture not loaded." << std::endl;
+				return;
+			}
+			sprite->setTexture(*texture);
 			loadSprite(*sprite, status);
 		}
 

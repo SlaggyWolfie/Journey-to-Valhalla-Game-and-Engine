@@ -241,18 +241,19 @@ namespace Engine
 
 			_fps_hud->draw();
 
-			if (UI::Button::DrawPauseMenu)
-			{
-				getWindow()->draw(UI::Button::pauseMenuBG);
-				//for(UI::B)
+			//if (UI::Button::DrawPauseMenu)
+			//{
+			//	getWindow()->draw(UI::Button::pauseMenuBG);
+			//	//for(UI::B)
 
-			}
+			//}
 
 			if (UI::Text::hint()->draw)
 			{
 				UI::Text::hint()->text->draw();
 				//std::cout << "trying to draw hint" << std::endl;
 			}
+
 			if (!_uiRenderers.empty())
 			{
 				for (auto ui : _uiRenderers)

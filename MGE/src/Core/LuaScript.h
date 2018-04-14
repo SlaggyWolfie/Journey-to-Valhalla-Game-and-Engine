@@ -21,10 +21,13 @@ public:
 	static int SphereCollisionBetween(lua_State * state);
 	static int GetGameTime(lua_State* state);
 	static int NewButton(lua_State* state);
+	static int NewSprite(lua_State* state);
 	static int AddToMenu(lua_State* state);
 	static int SetEvent(lua_State* state);
 	static int PlaySoundOneShot(lua_State* state);
-
+	static int SetButtonSpriteNormal(lua_State* state);
+	static int SetButtonSpriteHover(lua_State* state);
+	static int SetButtonSpriteClick(lua_State* state);
 
 	//static int KeyDown(lua_State * state);
 	void stackDump(lua_State *state, const char * pre);

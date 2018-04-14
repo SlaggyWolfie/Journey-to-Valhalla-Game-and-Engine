@@ -10,12 +10,16 @@ namespace Engine
 	namespace UI
 	{
 		enum ButtonStatus { Normal, Hovering, Clicked };
-		enum ButtonFunctionality { LevelMenu, MainMenu, OpenLevel, Exit, Options, Credits,BackToGame};
+		enum ButtonFunctionality {
+			LevelMenu, MainMenu, OpenLevel, Exit, Options, Credits,
+			BackToGame, Restart,
+			SFX_Off, SFX_On, Sounds_Off, Sounds_On
+		};
 
 		class Button : public ComponentUI
 		{
 		public:
-			static std::map<std::string, std::vector<Button*>> menus; 
+			static std::map<std::string, std::vector<ComponentUI*>> menus;
 			//static std::vector<Button*> allButtons;
 			static sf::Sprite pauseMenuBG;
 			static sf::Texture textureBG;
@@ -32,7 +36,8 @@ namespace Engine
 			Button& operator=(const Button& other) = default;
 
 			void loadSprite(const sf::Sprite& sprite, ButtonStatus status = Normal);
-			void loadSprite(const std::string& path, float x = 0, float y = 0, ButtonStatus status = Normal);
+			void loadSprite(const std::string& path, float x, float y, ButtonStatus status = Normal);
+			void loadSprite(const std::string& path, ButtonStatus status = Normal);
 			sf::Sprite& getSprite(ButtonStatus status = Normal);
 			void createMenu();
 			void SetEvent(std::string event);
@@ -56,7 +61,7 @@ namespace Engine
 			sf::Sprite _clickSprite;
 
 			float t = 0;
-			float delay= 0;
+			float delay = 0;
 			int _levelToOpen = 0;
 			bool _isHovering;
 			bool _isClicked;

@@ -23,6 +23,7 @@
 #include "RotatingComponent.hpp"
 #include "Deserializer2.hpp"
 #include "Text.hpp"
+#include "AudioListener.hpp"
 
 namespace Engine
 {
@@ -887,6 +888,7 @@ namespace Engine
 		Core::Camera_* cameraComp = new Core::Camera_();
 		camera->addComponent(cameraComp);
 		Core::Camera_::setMainCamera(cameraComp);
+		camera->addComponent<AudioListener>();
 
 		//Core::GameObject_* lightgo = new Core::GameObject_("Light", "", glm::vec3(100, 0, 1));
 		//Rendering::Light_* light = new Rendering::Light_();

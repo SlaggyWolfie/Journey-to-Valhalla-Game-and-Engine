@@ -30,7 +30,7 @@ namespace Engine
 		//	_window = other._window;
 		//}
 
-		sf::Sprite& Sprite::getSpriteObject()
+		sf::Sprite& Sprite::getSprite()
 		{
 			return _sprite;
 		}
@@ -42,21 +42,21 @@ namespace Engine
 
 		void Sprite::loadSprite(const sf::Texture & texture)
 		{
-			sf::Sprite sprite;
-			sprite.setTexture(texture, true);
-			setDrawable(&sprite);
+			//sf::Sprite sprite;
+			_sprite.setTexture(texture, true);
+			setDrawable(&_sprite);
 		}
 
 		void Sprite::loadSprite(const std::string & texturePath)
 		{
-			sf::Texture texture;
-			if (!texture.loadFromFile(texturePath))
+			//sf::Texture texture;
+			if (!_texture.loadFromFile(texturePath))
 			{
 				std::cout << "Texture didn't load in Sprite." << std::endl;
 				return;
 			}
 
-			loadSprite(texture);
+			loadSprite(_texture);
 		}
 
 		void Sprite::changeTexture(const sf::Texture & texture)
@@ -76,6 +76,7 @@ namespace Engine
 
 			changeTexture(texture);
 		}
+
 		void Sprite::draw()
 		{
 			getWindow()->draw(_sprite);

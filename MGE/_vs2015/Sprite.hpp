@@ -16,7 +16,7 @@ namespace Engine
 			Sprite(const Sprite& other) = default;
 			Sprite& operator=(const Sprite& other) = default;
 
-			sf::Sprite& getSpriteObject();
+			sf::Sprite& getSprite();
 			sf::Texture& getTexture();
 			void loadSprite(const sf::Texture& texture);
 			void loadSprite(const std::string& texturePath);
@@ -25,7 +25,6 @@ namespace Engine
 
 			void draw() override;
 		private:
-			//std::unique_ptr<sf::Sprite> 
 			sf::Sprite _sprite;
 			sf::Texture _texture;
 		};

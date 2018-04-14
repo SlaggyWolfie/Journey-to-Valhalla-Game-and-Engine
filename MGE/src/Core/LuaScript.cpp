@@ -9,6 +9,7 @@
 #include "../../_vs2015/LastposStasher.h"
 #include "../_vs2015/Time.hpp"
 #include "../_vs2015/Button.hpp"
+#include "../_vs2015/Sprite.hpp"
 #include "../../_vs2015/Sound.hpp"
 #include "../_vs2015/Text.hpp"
 using namespace Engine;
@@ -65,6 +66,18 @@ void LuaScript::registerFunctions()
 	lua_pushcfunction(state_, NewButton);
 	lua_setfield(state_, -2, "NewButton");
 
+	lua_pushcfunction(state_, NewSprite);
+	lua_setfield(state_, -2, "NewSprite");
+
+	lua_pushcfunction(state_, SetButtonSpriteNormal);
+	lua_setfield(state_, -2, "SetButtonSpriteNormal");
+
+	lua_pushcfunction(state_, SetButtonSpriteHover);
+	lua_setfield(state_, -2, "SetButtonSpriteHover");
+
+	lua_pushcfunction(state_, SetButtonSpriteClick);
+	lua_setfield(state_, -2, "SetButtonSpriteClick");
+
 	lua_pushcfunction(state_, AddToMenu);
 	lua_setfield(state_, -2, "AddToMenu");
 
@@ -91,8 +104,6 @@ void LuaScript::registerFunctions()
 
 void LuaScript::update()
 {
-
-
 	lua_getglobal(state_, "Update");
 	int isFunc = lua_isfunction(state_, -1);
 	if (isFunc) {
@@ -277,6 +288,40 @@ int LuaScript::NewButton(lua_State * state)
 	return luaL_error(state, " faulty arguments");
 }
 
+int LuaScript::NewSprite(lua_State* state)
+{
+	if (lua_isstring(state, 1)
+		&& lua_isnumber(state, 2) && lua_isnumber(state, 3)
+		&& lua_isnumber(state, 4) && lua_isnumber(state, 5)
+		)
+	{
+		std::string path = (std::string) lua_tostring(state, 1);
+		float x = (float)lua_tonumber(state, 2);
+		float y = (float)lua_tonumber(state, 3);
+		float sizeX = (float)lua_tonumber(state, 4);
+		float sizeY = (float)lua_tonumber(state, 5);
+
+		Engine::UI::Sprite* sprite = new Engine::UI::Sprite(true);
+		sprite->loadSprite(path);
+		sprite->getSprite().setPosition(sf::Vector2f(x, y));
+
+		auto windowSize = ServiceLocator::instance()->getService<Game>()->getWindow()->getSize();
+		if (std::abs(sizeX + 1) < 0.01f) sizeX = windowSize.x;
+		if (std::abs(sizeY + 1) < 0.01f) sizeY = windowSize.y;
+		auto oldSize = sprite->getTexture().getSize();
+		//std::cout << sizeX << std::endl;
+		//std::cout << sizeY << std::endl;
+		sprite->getSprite().setScale(sizeX / oldSize.x, sizeY / oldSize.y);
+
+		//btn->setEnabled(false);
+
+		lua_pushlightuserdata(state, sprite);
+		return 1;
+	}
+	else
+	return luaL_error(state, " faulty arguments");
+}
+
 int LuaScript::AddToMenu(lua_State * state)
 {
 	if (lua_isstring(state, 1) && lua_islightuserdata(state, 2))
@@ -287,15 +332,15 @@ int LuaScript::AddToMenu(lua_State * state)
 
 		if (Button::menus.find(name) == Button::menus.end())
 		{
-			Button::menus[name] = std::vector<Button*>();
+			Button::menus[name] = std::vector<ComponentUI*>();
 			//std::cout << "Not Found " + name << std::endl;
 		}
 
-		std::vector<Button*>& buttons = Button::menus[name];
+		std::vector<ComponentUI*>& components = Button::menus[name];
 		for (int i = 2; i <= n; i++)
 		{
-			Button* b = (Button*)lua_topointer(state, i);
-			buttons.push_back(b);
+			ComponentUI* component = (ComponentUI*)lua_topointer(state, i);
+			components.push_back(component);
 		}
 
 		return 0;
@@ -311,6 +356,48 @@ int LuaScript::SetEvent(lua_State * state)
 		Button* btn = (Button*)lua_topointer(state, 1);
 		std::string event = (std::string)lua_tostring(state, 2);
 		btn->SetEvent(event);
+		return 0;
+	}
+	return luaL_error(state, " faulty arguments");
+
+}
+
+int LuaScript::SetButtonSpriteNormal(lua_State * state)
+{
+	if (lua_islightuserdata(state, 1) && lua_isstring(state, 2))
+	{
+		Button* btn = (Button*)lua_topointer(state, 1);
+		std::string path = (std::string)lua_tostring(state, 2);
+		btn->loadSprite(path, Normal);
+
+		return 0;
+	}
+	return luaL_error(state, " faulty arguments");
+
+}
+
+int LuaScript::SetButtonSpriteHover(lua_State * state)
+{
+	if (lua_islightuserdata(state, 1) && lua_isstring(state, 2))
+	{
+		Button* btn = (Button*)lua_topointer(state, 1);
+		std::string path = (std::string)lua_tostring(state, 2);
+		btn->loadSprite(path, Hovering);
+
+		return 0;
+	}
+	return luaL_error(state, " faulty arguments");
+
+}
+
+int LuaScript::SetButtonSpriteClick(lua_State * state)
+{
+	if (lua_islightuserdata(state, 1) && lua_isstring(state, 2))
+	{
+		Button* btn = (Button*)lua_topointer(state, 1);
+		std::string path = (std::string)lua_tostring(state, 2);
+		btn->loadSprite(path, Clicked);
+
 		return 0;
 	}
 	return luaL_error(state, " faulty arguments");
