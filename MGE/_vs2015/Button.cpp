@@ -8,6 +8,7 @@
 #include "SceneManager.hpp"
 #include "InputHandler.hpp"
 #include "Scene.hpp"
+#include "Sound.hpp"
 
 namespace Engine
 {
@@ -173,6 +174,7 @@ namespace Engine
 		{
 			if (_status == Clicked) return;
 
+			Engine::Audio::Sound::playOneShot("Assets/Audio/buttonClickUpdated.wav");
 			//std::cout << "ia tut" << std::endl;
 			switch (_function)
 			{
