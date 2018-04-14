@@ -24,7 +24,9 @@ public:
 	void addCollider(collider* collider);
 	void removeCollider(int index);
 	float PlayerY;
-	float CrateY = 1.0f;
+	float CrateY = 0.0f;
+	//float CrateY = 0.2f;
+	//float CrateY = 1.0f;
 
 	collider* GetColliderByName(std::string GameObjectName);
 	collider* getCollider(int index);

@@ -204,7 +204,7 @@ namespace Engine
 			case OpenLevel:
 			{
 				ServiceLocator::instance()->getService<Game>()->background->load("Assets/Audio/Background music.wav");
-				//ServiceLocator::instance()->getService<Game>()->backGround->play();
+				ServiceLocator::instance()->getService<Game>()->background->play();
 				disableAllMenus();
 				SceneManager* scene_m = ServiceLocator::instance()->getService<SceneManager>();
 				scene_m->loadScene(scene_m->getLevel(_levelToOpen));

@@ -181,7 +181,11 @@ namespace Engine
 	}
 	void Game::initializeMusic()
 	{
-		
+		_resourceManager->cache("Assets/Audio/Sounds/PressurePlateRelease.wav");
+		_resourceManager->cache("Assets/Audio/Sounds/PressurePlateRelease1.wav");
+		_resourceManager->cache("Assets/Audio/Sounds/StoneDoorClose.wav");
+		_resourceManager->cache("Assets/Audio/Sounds/StoneDoorOpen.wav");
+
 		background->setLooping(true);
 		background->play();
 	}
@@ -233,11 +237,6 @@ namespace Engine
 				{
 					UI::Button::TogglePauseMenu();
 				}
-
-				
-					
-					//exit = true;
-
 				break;
 			case sf::Event::Resized:
 				//would be better to move this to the renderer

@@ -209,7 +209,7 @@ namespace Engine
 					if (itr.second->isEnabled() && itr.second->getGameObject()->isActive())
 						itr.second->render();
 
-				glDisable(GL_BLEND);
+				//glDisable(GL_BLEND);
 			}
 		}
 

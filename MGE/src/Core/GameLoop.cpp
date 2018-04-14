@@ -133,23 +133,23 @@ namespace Engine
 				uiUpdate();
 				getSceneManager()->update();
 
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
-					ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_1.json");
-				//ServiceLocator::instance()->getService<SceneManager>()->loadScene("Assets/Scenes/test.json");
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
-					Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/donnerre2.wav");
-				//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
-				//	Engine::UI::Text::drawHint = !Engine::UI::Text::drawHint;
-				//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
-				//	std::cout << Engine::UI::Text::hint()->getTextInformation() << std::endl;
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
-					ServiceLocator::instance()->getService<SceneManager>()->unloadScene();
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num6))
-					ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_2.json");
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num7))
-					ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_6.json");
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num8))
-					ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_3.json");
+				//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+				//	ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_1.json");
+				////ServiceLocator::instance()->getService<SceneManager>()->loadScene("Assets/Scenes/test.json");
+				//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
+				//	Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/donnerre2.wav");
+				////if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
+				////	Engine::UI::Text::drawHint = !Engine::UI::Text::drawHint;
+				////if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
+				////	std::cout << Engine::UI::Text::hint()->getTextInformation() << std::endl;
+				//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
+				//	ServiceLocator::instance()->getService<SceneManager>()->unloadScene();
+				//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num6))
+				//	ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_2.json");
+				//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num7))
+				//	ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_6.json");
+				//if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num8))
+				//	ServiceLocator::instance()->getService<SceneManager>()->loadScene("Level_3.json");
 
 				getRenderManager()->render();
 

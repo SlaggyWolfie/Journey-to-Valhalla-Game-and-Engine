@@ -105,6 +105,7 @@ void main()
 		alpha = diffuseTexture.a;
 	}
 	
+	if (alpha < 0.5f) discard;
 	vec3 specularColor = material.specularColor;
 	
 	if (material.useSpecularMap)

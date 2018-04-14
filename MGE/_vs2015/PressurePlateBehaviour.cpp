@@ -25,7 +25,7 @@ void PressurePlateBehaviour::update()
 	if (_isPressed&&playSound == false)
 	{
 		std::cout << "Getting here" << std::endl;
-		Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/PressurePlatePress.wav");
+		Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/PressurePlateRelease1.wav");
 
 		playSound = true;
 	}

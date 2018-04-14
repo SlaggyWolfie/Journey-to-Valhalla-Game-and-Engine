@@ -22,6 +22,7 @@ namespace Engine
 	public:
 		void cache(const std::string& path, Rendering::Texture_* texture);
 		void cache(const std::string& path, sf::SoundBuffer* soundBuffer);
+		void cache(const std::string& path);
 
 		bool isCached(const std::string& path);
 		//bool isCached(Rendering::Texture_* texture);

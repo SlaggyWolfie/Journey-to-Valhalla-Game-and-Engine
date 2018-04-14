@@ -2,12 +2,41 @@
 
 void Engine::ResourceManager::cache(const std::string& path, Rendering::Texture_* texture)
 {
+	std::cout << "Caching [" + path + "]" << std::endl;
 	_textureCache[path] = std::unique_ptr<Rendering::Texture_>(texture);
 }
 
 void Engine::ResourceManager::cache(const std::string& path, sf::SoundBuffer* soundBuffer)
 {
+	std::cout << "Caching [" + path + "]" << std::endl;
 	_soundBufferCache[path] = std::unique_ptr<sf::SoundBuffer>(soundBuffer);
+}
+
+void Engine::ResourceManager::cache(const std::string& path)
+{
+	std::string filename = File::clipPath(path);
+	std::string extension = filename.substr(filename.find('.'));
+	//std::cout << "Extension: " + extension << std::endl;
+
+	if (extension == ".wav")
+	{
+		//std::cout << "Caching [" + path + "]" << std::endl;
+
+		sf::SoundBuffer* soundBuffer = new sf::SoundBuffer;
+		if (!soundBuffer->loadFromFile(path))
+		{
+			std::cout << "Failed to cache " + path << std::endl;
+			delete soundBuffer;
+		}
+		else
+			cache(path, soundBuffer);
+		return;
+	}
+
+	if (extension == ".png")
+	{
+		Rendering::Texture_::load(path);
+	}
 }
 
 bool Engine::ResourceManager::isCached(const std::string& path)

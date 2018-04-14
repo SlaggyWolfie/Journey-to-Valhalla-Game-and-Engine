@@ -58,7 +58,7 @@ void PlayerBaseComponent::update()
 	lastPos = transform->getPosition();
 	if (_playerS != jumpingToObject)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 		{
 			transform->translate(transform->forward() * -speed);
 			if (_playerS == usingObject)
@@ -66,25 +66,27 @@ void PlayerBaseComponent::update()
 
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 		{
 			transform->translate(transform->forward() * speed);
 			if (_playerS == usingObject)
 				_objectToMove->getTransform()->translate(transform->forward() * speed);
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		{
 			transform->rotate(glm::vec3(0, 1, 0), glm::radians(turnSpeed));
 			if (_playerS == usingObject)
-				_objectToMove->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(turnSpeed));
+				_objectToMove->getTransform()->setRotation(transform->getRotation());
+			//_objectToMove->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(turnSpeed));
 		}
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		{
 			transform->rotate(glm::vec3(0, 1, 0), glm::radians(-turnSpeed));
 			if (_playerS == usingObject)
-				_objectToMove->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(-turnSpeed));
+				_objectToMove->getTransform()->setRotation(transform->getRotation());
+				//_objectToMove->getTransform()->rotate(glm::vec3(0, 1, 0), glm::radians(-turnSpeed));
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))

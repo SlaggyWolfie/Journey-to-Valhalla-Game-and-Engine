@@ -90,11 +90,11 @@ void GateBehaviour::TogglePositions()
 {
 	if (AllPressed())
 	{
-		this->getGameObject()->getTransform()->setPosition(lerp(this->getGameObject()->getTransform()->getPosition(), _activatedPos, 0.05f));
+		this->getGameObject()->getTransform()->setPosition(lerp(this->getGameObject()->getTransform()->getPosition(), _activatedPos, 0.009f));
 	}
 	else
 	{
-		this->getGameObject()->getTransform()->setPosition(lerp(this->getGameObject()->getTransform()->getPosition(), _notActivatedPos, 0.05f));
+		this->getGameObject()->getTransform()->setPosition(lerp(this->getGameObject()->getTransform()->getPosition(), _notActivatedPos, 0.012f));
 	}
 }
 void GateBehaviour::destroy()
