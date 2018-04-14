@@ -19,21 +19,29 @@ PressurePlateBehaviour::PressurePlateBehaviour()
 
 void PressurePlateBehaviour::update()
 {
-	TogglePositions();
-	CheckCollision();
 
-	if(_isPressed&&playSound==false)
+
+
+	if (_isPressed&&playSound == false)
 	{
 		std::cout << "Getting here" << std::endl;
 		Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/PressurePlatePress.wav");
+
 		playSound = true;
 	}
 
-	if(!_isPressed&&playSound)
+
+	if (!_isPressed&&playSound)
 	{
+		std::cout << "Getting here" << std::endl;
 		Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/PressurePlateRelease.wav");
 		playSound = false;
 	}
+
+
+	TogglePositions();
+	CheckCollision();
+
 	//std::cout << "PP: " + glm::to_string(getGameObject()->getTransform()->getPosition() )<< std::endl;
 	//std::cout << "PPCP1: " + glm::to_string(getGameObject()->getComponent<collider>()->point1) << std::endl;
 }

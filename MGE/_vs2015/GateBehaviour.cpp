@@ -6,6 +6,7 @@
 #include "ServiceLocator.hpp"
 #include "Core/Game.hpp"
 #include "Time.hpp"
+#include "Sound.hpp"
 using namespace Engine::Core;
 using namespace Engine;
 
@@ -16,6 +17,25 @@ GateBehaviour::GateBehaviour()
 
 void GateBehaviour::update()
 {
+
+
+	if (AllPressed()&&playSound == false)
+	{
+		std::cout << "Getting here" << std::endl;
+		Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/StoneDoorOpen.wav");
+		playSound = true;
+	}
+
+
+	if (!AllPressed()&&playSound)
+	{
+		std::cout << "Getting here" << std::endl;
+		Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/StoneDoorClose.wav");
+		playSound = false;
+	}
+
+
+
 	TogglePositions();
 	CheckCollision();
 	//std::cout << "i am opened " << AllPressed() << std::endl;

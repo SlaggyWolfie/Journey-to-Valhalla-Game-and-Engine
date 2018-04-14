@@ -9,6 +9,7 @@
 #include "SceneManager.hpp"
 #include <regex>
 #include "Button.hpp"
+#include "Sound.hpp"
 
 
 void ColliderManager::initialize()
@@ -336,6 +337,7 @@ void ColliderManager::CheckOBB(collider * obj)
 								.substr(otherCollider->getGameObject()->getName().find("Level"));
 							//sceneManager->unloadScene();
 							sceneManager->queueScene(nameLevel + ".json");
+							Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/endLevel.wav");
 						}
 					}
 

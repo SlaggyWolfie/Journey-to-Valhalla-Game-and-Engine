@@ -28,6 +28,7 @@ public:
 	void destroy() override;
 	bool isUniquePerGameObject() override;
 private:
+	bool playSound = false;
 	bool _open = false;
 	glm::vec3 _activatedPos;
 	glm::vec3 _notActivatedPos;

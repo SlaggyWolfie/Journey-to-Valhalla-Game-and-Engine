@@ -49,7 +49,8 @@ namespace Engine
 		static void levelLuaLoad(std::string path);
 		static void deleteLevelLuaScript();
 
-		Music* backGround;
+		Music* background = nullptr;
+		Music* music = nullptr;
 	private:
 		static LuaScript* _luaScript;
 		static LuaScript* _levelLuaScript;

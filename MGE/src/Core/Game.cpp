@@ -30,7 +30,7 @@ namespace Engine
 	Game::Game() : _renderManager(nullptr), _lightManager(nullptr), _colliderManager(nullptr), _gameLoop(nullptr),
 		_sceneManager(nullptr)
 	{
-		backGround = new Engine::Audio::Music("Assets/Audio/Howling wind.wav");
+		background = new Engine::Audio::Music("Assets/Audio/Howling wind.wav");
 		//ctor
 	}
 
@@ -182,8 +182,8 @@ namespace Engine
 	void Game::initializeMusic()
 	{
 		
-		backGround->setLooping(true);
-		backGround->play();
+		background->setLooping(true);
+		background->play();
 	}
 	void Game::initializeScene() const
 	{

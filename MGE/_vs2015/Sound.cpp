@@ -242,6 +242,11 @@ namespace Engine
 			}
 
 			sf::Sound* sound = new sf::Sound();
+			if(path== "Assets/Audio/Sounds/PressurePlateRelease.wav")
+			{
+				sound->setRelativeToListener(false);
+				sound->setVolume(100);
+			}
 			sound->setBuffer(*buffer);
 			sound->play();
 		}
