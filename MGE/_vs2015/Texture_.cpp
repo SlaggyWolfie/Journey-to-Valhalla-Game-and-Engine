@@ -1,5 +1,6 @@
 #include "Texture_.hpp"
 #include <iostream>
+#include "ResourceManager.hpp"
 
 namespace Engine
 {
@@ -7,12 +8,20 @@ namespace Engine
 	{
 		bool Texture_::_debug = false;
 
-		std::unordered_map<std::string, std::unique_ptr<Texture_>> Texture_::textureMap
-			= std::unordered_map<std::string, std::unique_ptr<Texture_>>();
+		//std::unordered_map<std::string, std::unique_ptr<Texture_>> Texture_::textureMap
+		//	= std::unordered_map<std::string, std::unique_ptr<Texture_>>();
+
+		ResourceManager* Texture_::_resourceManager = nullptr;
 
 		Texture_::Texture_(const TextureType type) : _type(type), _id()
 		{
 			glGenTextures(1, &_id);
+		}
+
+		Engine::ResourceManager* Texture_::getResourceManager()
+		{
+			if (!_resourceManager) _resourceManager = ServiceLocator::instance()->getService<Engine::ResourceManager>();
+			return _resourceManager;
 		}
 
 		Texture_::~Texture_()
@@ -47,7 +56,7 @@ namespace Engine
 
 		Texture_* Texture_::load(const std::string& texturePath, const TextureType type, const bool flipVertically, const bool flipHorizontally)
 		{
-			if (textureMap.count(texturePath) != 0) return textureMap[texturePath].get();
+			if (getResourceManager()->isCached(texturePath)) return getResourceManager()->retrieveTexture(texturePath);
 
 			// load from file and store in cache
 			sf::Image* image = new sf::Image();;
@@ -89,7 +98,7 @@ namespace Engine
 				glGenerateMipmap(GL_TEXTURE_2D);
 				glBindTexture(GL_TEXTURE_2D, 0);
 
-				textureMap[texturePath] = std::unique_ptr<Texture_>(texture);
+				getResourceManager()->cache(texturePath, texture);
 
 				return texture;
 			}

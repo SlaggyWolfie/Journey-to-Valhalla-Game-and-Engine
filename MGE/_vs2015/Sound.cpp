@@ -4,11 +4,14 @@
 #include "GameObject_.hpp"
 #include "Transform.hpp"
 #include "Time.hpp"
+#include "ResourceManager.hpp"
 
 namespace Engine
 {
 	namespace Audio
 	{
+		ResourceManager* Sound::_resourceManager = nullptr;
+
 		Sound::Sound() : _buffer(nullptr), _instance(nullptr), _filename(""), _status(AudioStatus::NoSound), _volume(1),
 			_pitch(1), _looping(false), _attenuation(1), _minimumDistance(1)
 		{
@@ -31,15 +34,22 @@ namespace Engine
 		{
 			_filename = filename;
 
-			sf::SoundBuffer* buffer = nullptr;
-			if (!buffer->loadFromFile(filename))
+			sf::SoundBuffer* buffer = getResourceManager()->getSoundBuffer(filename);
+
+			if (!buffer)
 			{
-				std::cout << "Failed to load " + filename << std::endl;
-				delete buffer;
-				return;
+				if (!buffer->loadFromFile(filename))
+				{
+					std::cout << "Failed to load " + filename << std::endl;
+					delete buffer;
+					return;
+				}
+
+				getResourceManager()->cache(filename, buffer);
 			}
 
-			_buffer = std::unique_ptr<sf::SoundBuffer>(buffer);
+			_buffer = buffer;
+
 			_status = AudioStatus::Stopped;
 		}
 
@@ -203,7 +213,40 @@ namespace Engine
 			return false;
 		}
 
+		ResourceManager* Sound::getResourceManager()
+		{
+			if (!_resourceManager) _resourceManager = ServiceLocator::instance()->getService<ResourceManager>();
+			return _resourceManager;
+		}
+
 		void Sound::playOneShot(const std::string& path)
+		{
+			//sf::SoundBuffer* buffer = getResourceManager()->getSoundBuffer(path);
+			sf::SoundBuffer* buffer = nullptr;
+
+			if (!getResourceManager()->isCached(path))
+			{
+				buffer = new sf::SoundBuffer();
+				if (!buffer->loadFromFile(path))
+				{
+					std::cout << "Failed to load " + path << std::endl;
+					delete buffer;
+					return;
+				}
+
+				getResourceManager()->cache(path, buffer);
+			}
+			else
+			{
+				buffer = getResourceManager()->retrieveSoundBuffer(path);
+			}
+
+			sf::Sound* sound = new sf::Sound();
+			sound->setBuffer(*buffer);
+			sound->play();
+		}
+		
+		void Sound::playOneShotOld(const std::string& path)
 		{
 			sf::SoundBuffer* buffer = new sf::SoundBuffer();
 			if (!buffer->loadFromFile(path))

@@ -39,7 +39,7 @@ namespace Engine
 			//delete _fpsClock;
 			_fpsClock = nullptr;
 			destroyOwnedLoops();
-			Texture_::textureMap.clear();
+			//Texture_::textureMap.clear();
 		}
 
 		void RenderManager::initialize()

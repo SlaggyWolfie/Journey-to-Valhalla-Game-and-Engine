@@ -171,6 +171,7 @@ namespace Engine
 		{
 			std::cout << "-------------------Game Loop Start!------------------------" << std::endl;
 			Game::luaScript()->start();
+			//Game::levelLuaScript()->start();
 
 			if (!_components.empty())
 				for (const auto& comp : _components)
@@ -203,6 +204,7 @@ namespace Engine
 						comp->update();
 
 			Game::luaScript()->update();
+			//Game::levelLuaScript()->update();
 		}
 
 		void GameLoop::fixedUpdate()

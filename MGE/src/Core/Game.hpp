@@ -19,6 +19,7 @@ class LuaScript;
 namespace Engine
 {
 	class SceneManager;
+	class ResourceManager;
 
 	namespace Rendering
 	{
@@ -44,10 +45,14 @@ namespace Engine
 		void exit();
 
 		static LuaScript* luaScript();
+		static LuaScript* levelLuaScript();
+		static void levelLuaLoad(std::string path);
+		static void deleteLevelLuaScript();
 
 		Music* backGround;
 	private:
 		static LuaScript* _luaScript;
+		static LuaScript* _levelLuaScript;
 		//print info about the current driver version etc
 		static void printVersionInfo();
 		//initialize the extension wrangler
@@ -68,6 +73,7 @@ namespace Engine
 		ColliderManager* _colliderManager;
 		Core::GameLoop* _gameLoop;
 		SceneManager* _sceneManager;
+		ResourceManager* _resourceManager;
 
 		std::string _defaultScenePath = "Level_1.json";
 

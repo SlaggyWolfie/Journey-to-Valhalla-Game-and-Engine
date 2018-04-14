@@ -527,7 +527,13 @@ namespace Engine
 					{
 						std::cout << "This is a Leaf" << std::endl;
 						material->setDiffuseMap(Texture_::load(File::findPath("Leaf_Material_001_Base_Color.png")));
-						continue;
+						//continue;
+					}
+					else
+					{
+						std::cout << "This is Bark" << std::endl;
+						material->setDiffuseMap(Texture_::load(File::findPath("Tree_Material_001_Base_Color.png")));
+						//continue;
 					}
 				}
 			}

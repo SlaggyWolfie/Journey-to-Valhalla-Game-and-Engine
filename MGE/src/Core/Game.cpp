@@ -8,6 +8,7 @@
 #include "../_vs2015/RenderManager.hpp"
 #include "../_vs2015/LightManager.hpp"
 #include "../_vs2015/SceneManager.hpp"
+#include "../_vs2015/ResourceManager.hpp"
 #include "../_vs2015/ServiceLocator.hpp"
 #include "../_vs2015/Scene.hpp"
 #include "../_vs2015/Texture_.hpp"
@@ -24,6 +25,7 @@
 namespace Engine
 {
 	LuaScript* Game::_luaScript = nullptr;
+	LuaScript* Game::_levelLuaScript = nullptr;
 
 	Game::Game() : _renderManager(nullptr), _lightManager(nullptr), _colliderManager(nullptr), _gameLoop(nullptr),
 		_sceneManager(nullptr)
@@ -85,6 +87,30 @@ namespace Engine
 		return _luaScript;
 	}
 
+	LuaScript* Game::levelLuaScript()
+	{
+		if (!_levelLuaScript)
+		{
+			_levelLuaScript = new LuaScript;
+			_levelLuaScript->Initialize();
+		}
+		return _levelLuaScript;
+	}
+
+	void Game::levelLuaLoad(const std::string path)
+	{
+		if (_levelLuaScript) deleteLevelLuaScript();
+		std::cout << "Boi" << std::endl;
+		//_levelLuaScript = new LuaScript(path);
+		_levelLuaScript->Initialize();
+	}
+
+	void Game::deleteLevelLuaScript()
+	{
+		delete _levelLuaScript;
+		_levelLuaScript = nullptr;
+	}
+
 	///SETUP
 
 	void Game::initializeWindow() {
@@ -138,9 +164,11 @@ namespace Engine
 		_lightManager = new Engine::Rendering::LightManager();
 		_sceneManager = new Engine::SceneManager();
 		_colliderManager = new ColliderManager();
+		_resourceManager = new ResourceManager();
 
 		//Register
 		Engine::ServiceLocator::instance()->addService(this);
+		Engine::ServiceLocator::instance()->addService(_resourceManager);
 		Engine::ServiceLocator::instance()->addService(_sceneManager);
 		Engine::ServiceLocator::instance()->addService(_gameLoop);
 		Engine::ServiceLocator::instance()->addService(_lightManager);

@@ -9,6 +9,7 @@
 
 namespace Engine
 {
+	class ResourceManager;
 	namespace Rendering
 	{
 		enum class TextureType : int { Diffuse, Specular, Emission, Normal };
@@ -29,7 +30,7 @@ namespace Engine
 			void bind() const;
 			static void unbind();
 
-			static std::unordered_map<std::string, std::unique_ptr<Texture_>> textureMap;
+			//static std::unordered_map<std::string, std::unique_ptr<Texture_>> textureMap;
 		private:
 			Texture_(TextureType type = TextureType::Diffuse);
 
@@ -42,6 +43,9 @@ namespace Engine
 			GLuint _id;
 
 			static bool _debug;
+
+			static ResourceManager* _resourceManager;
+			static ResourceManager* getResourceManager();
 		};
 	}
 }

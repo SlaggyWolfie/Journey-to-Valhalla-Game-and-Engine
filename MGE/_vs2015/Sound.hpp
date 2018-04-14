@@ -7,6 +7,8 @@
 
 namespace Engine
 {
+	class ResourceManager;
+
 	namespace Audio
 	{
 		enum class AudioStatus { NoSound, Playing, Paused, Stopped };
@@ -43,12 +45,14 @@ namespace Engine
 			float getMinimumDistance() const;
 
 			void destroy() override;
+			static void playOneShotOld(const std::string& path);
 			static void playOneShot(const std::string& path);
 		protected:
 			void update() override;
 			bool isUniquePerGameObject() override;
 		private:
-			std::unique_ptr<sf::SoundBuffer> _buffer = nullptr;
+			//std::unique_ptr<sf::SoundBuffer> _buffer = nullptr;
+			sf::SoundBuffer* _buffer = nullptr;
 			std::unique_ptr<sf::Sound> _instance = nullptr;
 
 			std::string _filename = "";
@@ -61,6 +65,8 @@ namespace Engine
 			float _attenuation = 0;
 			float _minimumDistance = 0;
 
+			static ResourceManager* _resourceManager;
+			static ResourceManager* getResourceManager();
 		};
 	}
 }

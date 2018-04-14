@@ -34,16 +34,6 @@
     <ClCompile Include="..\src\myGame\Materials\WaterMaterial.cpp" />
     <ClCompile Include="..\src\myGame\Materials\WobbleMaterial.cpp" />
     <ClCompile Include="..\src\myGame\Other\MeshGeneration.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\EighthScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\FifthScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\FourthScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\MyScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\MySceneSP.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\NinthScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\SecondScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\SeventhScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\SixthScene.cpp" />
-    <ClCompile Include="..\src\myGame\Scenes\ThirdScene.cpp" />
     <ClCompile Include="Camera_.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject_.cpp" />
@@ -246,6 +236,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Deserializer2.cpp" />
     <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Core\Deserealizer.hpp" />
@@ -284,16 +275,6 @@
     <ClInclude Include="..\src\myGame\Materials\WobbleMaterial.hpp" />
     <ClInclude Include="..\src\myGame\MyGameConfig.hpp" />
     <ClInclude Include="..\src\myGame\Other\MeshGeneration.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\EighthScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\FifthScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\FourthScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\MyScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\MySceneSP.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\NinthScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\SecondScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\SeventhScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\SixthScene.hpp" />
-    <ClInclude Include="..\src\myGame\Scenes\ThirdScene.hpp" />
     <ClInclude Include="Camera_.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="GameObject_.hpp" />
@@ -525,6 +506,7 @@
     <ClInclude Include="Button.hpp" />
     <ClInclude Include="Deserializer2.hpp" />
     <ClInclude Include="InputHandler.hpp" />
+    <ClInclude Include="ResourceManager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

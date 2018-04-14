@@ -258,7 +258,7 @@ void PlayerBaseComponent::RayCast()
 		if (distance <= child->GetRadius() && sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 		{
 			//std::cout << "dist is 1" << std::endl;
-			if (child->getGameObject()->getName() == "Runestone")
+			if (child->getGameObject()->getName().find("Runestone") != std::string::npos)
 			{
 				_objectToMove = child->getGameObject();
 				Engine::Audio::Sound::playOneShot("Assets/Audio/Ghost entering object.wav");
