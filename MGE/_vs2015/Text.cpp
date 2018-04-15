@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Core/Game.hpp"
 #include "Time.hpp"
+#include <algorithm>
 
 namespace Engine
 {
@@ -92,6 +93,35 @@ namespace Engine
 		{
 			if (!_hint) _hint = new Hint(false);
 			return _hint;
+		}
+
+		sf::Color Text::getColor(std::string stringColor)
+		{
+			sf::Color color;
+			std::transform(stringColor.begin(), stringColor.end(), stringColor.begin(), ::tolower);
+
+			if (stringColor == "white")
+				color = sf::Color::White;
+			else if (stringColor == "black")
+				color = sf::Color::Black;
+			else if (stringColor == "yellow")
+				color = sf::Color::Yellow;
+			else if (stringColor == "red")
+				color = sf::Color::Red;
+			else if (stringColor == "green")
+				color = sf::Color::Green;
+			else if (stringColor == "blue")
+				color = sf::Color::Blue;
+			else if (stringColor == "magenta")
+				color = sf::Color::Magenta;
+			else if (stringColor == "cyan")
+				color = sf::Color::Cyan;
+			else if (stringColor == "transparent")
+				color = sf::Color::Transparent;
+			else
+				color = sf::Color::White;
+
+			return color;
 		}
 
 		//Text* Text::hint()

@@ -39,7 +39,7 @@ void LuaScript::start()
 
 	lua_getglobal(state_, "Start"); // pushes global update
 	int isFunc = lua_isfunction(state_, -1);
-	if (isFunc) 
+	if (isFunc)
 	{
 		if (lua_pcall(state_, 0, 0, 0) != 0)
 		{
@@ -69,6 +69,9 @@ void LuaScript::registerFunctions()
 	lua_pushcfunction(state_, NewSprite);
 	lua_setfield(state_, -2, "NewSprite");
 
+	lua_pushcfunction(state_, NewText);
+	lua_setfield(state_, -2, "NewText");
+
 	lua_pushcfunction(state_, SetButtonSpriteNormal);
 	lua_setfield(state_, -2, "SetButtonSpriteNormal");
 
@@ -95,6 +98,12 @@ void LuaScript::registerFunctions()
 
 	lua_pushcfunction(state_, PlaySoundOneShot);
 	lua_setfield(state_, -2, "PlaySoundOneShot");
+
+	lua_pushcfunction(state_, SetUIPosition);
+	lua_setfield(state_, -2, "SetUIPosition");
+
+	lua_pushcfunction(state_, SetText);
+	lua_setfield(state_, -2, "SetText");
 
 	lua_setglobal(state_, "Game");
 
@@ -141,7 +150,7 @@ int LuaScript::ShowHint(lua_State * state)
 		//}
 		//oneshotHint()
 		Engine::UI::Text::hint()->startPosition = sf::Vector2f(600, 1300);
-		Engine::UI::Text::hint()->showHint(message, sf::Vector2f(600,800 ), 3);
+		Engine::UI::Text::hint()->showHint(message, sf::Vector2f(600, 800), 3);
 		//text.setString((sf::String)lua_tostring(state, 1));
 		//text.setCharacterSize((int)lua_tonumber(state, 4));
 		//text.setPosition(lua_tonumber(state, 2), lua_tonumber(state, 3));
@@ -158,7 +167,7 @@ int LuaScript::ShowHint(lua_State * state)
 //	}
 //	return luaL_error(state, "Object.KeyDown( key ), faulty arguments");
 //}
-void stackDump(lua_State *state, const char * pre) {
+void LuaScript::stackDump(lua_State *state, const char * pre) {
 	//printf("Lua Stack (%s)> ", pre);
 	int i;
 	int top = lua_gettop(state);
@@ -319,7 +328,38 @@ int LuaScript::NewSprite(lua_State* state)
 		return 1;
 	}
 	else
-	return luaL_error(state, " faulty arguments");
+		return luaL_error(state, " faulty arguments");
+}
+
+int LuaScript::NewText(lua_State* state)
+{
+	if (lua_isstring(state, 1)
+		&& lua_isnumber(state, 2) && lua_isnumber(state, 3)
+		&& lua_isnumber(state, 4) && lua_isstring(state, 5)
+		&& lua_isstring(state, 6)
+		)
+	{
+		std::string text = (std::string) lua_tostring(state, 1);
+		float x = (float)lua_tonumber(state, 2);
+		float y = (float)lua_tonumber(state, 3);
+		float size = (float)lua_tonumber(state, 4);
+		std::string stringColor = (std::string)lua_tostring(state, 5);
+		std::string font = (std::string)lua_tostring(state, 6);
+
+		UI::Text* textObject = new UI::Text(true);
+		textObject->setTextInformation(text);
+		textObject->setFont(font);
+		textObject->getTextObject().setCharacterSize(size);
+		textObject->getTextObject().setPosition(x, y);
+
+		const sf::Color color = UI::Text::getColor(stringColor);
+		textObject->getTextObject().setFillColor(color);
+
+		lua_pushlightuserdata(state, textObject);
+		return 1;
+	}
+	else
+		return luaL_error(state, " faulty arguments");
 }
 
 int LuaScript::AddToMenu(lua_State * state)
@@ -404,11 +444,56 @@ int LuaScript::SetButtonSpriteClick(lua_State * state)
 
 }
 
+int LuaScript::SetUIPosition(lua_State* state)
+{
+	if (lua_islightuserdata(state, 1) && lua_isstring(state, 2) && lua_isnumber(state, 3) && lua_isnumber(state, 4))
+	{
+		std::string type = (std::string)lua_tostring(state, 2);
+		float x = (float)lua_tonumber(state, 3);
+		float y = (float)lua_tonumber(state, 4);
+
+		std::transform(type.begin(), type.end(), type.begin(), ::tolower);
+		if (type == "button")
+		{
+			UI::Button* button = (UI::Button*)lua_topointer(state, 1);
+			button->getSprite().setPosition(x, y);
+		}
+		else if (type == "text")
+		{
+			UI::Text* button = (UI::Text*)lua_topointer(state, 1);
+			button->getTextObject().setPosition(x, y);
+		}
+		else if (type == "sprite")
+		{
+			UI::Sprite* button = (UI::Sprite*)lua_topointer(state, 1);
+			button->getSprite().setPosition(x, y);
+		}
+		else return luaL_error(state, " faulty arguments");
+
+		return 0;
+	}
+
+	return luaL_error(state, " faulty arguments");
+}
+
+int LuaScript::SetText(lua_State* state)
+{
+	if (lua_islightuserdata(state, 1) && lua_isstring(state, 2))
+	{
+		UI::Text* textObject = (UI::Text*)lua_topointer(state, 1);
+		std::string text = (std::string)lua_tostring(state, 2);
+		textObject->setTextInformation(text);
+		return 0;
+	}
+
+	return luaL_error(state, " faulty arguments");
+}
+
 int LuaScript::PlaySoundOneShot(lua_State* state)
 {
 	if (lua_isstring(state, 1))
 	{
-		std::cout << "Getting here" << std::endl;
+		//std::cout << "Getting here" << std::endl;
 		std::string path = (std::string)lua_tostring(state, 1);
 		Audio::Sound::playOneShot(path);
 		return 0;

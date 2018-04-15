@@ -6,7 +6,7 @@
 #include "../_vs2015/collider.h"
 using namespace Engine::Core;
 
-class LuaScript: public Component
+class LuaScript : public Component
 {
 public:
 	LuaScript();
@@ -22,12 +22,15 @@ public:
 	static int GetGameTime(lua_State* state);
 	static int NewButton(lua_State* state);
 	static int NewSprite(lua_State* state);
+	static int NewText(lua_State* state);
 	static int AddToMenu(lua_State* state);
 	static int SetEvent(lua_State* state);
 	static int PlaySoundOneShot(lua_State* state);
 	static int SetButtonSpriteNormal(lua_State* state);
 	static int SetButtonSpriteHover(lua_State* state);
 	static int SetButtonSpriteClick(lua_State* state);
+	static int SetUIPosition(lua_State* state);
+	static int SetText(lua_State* state);
 
 	//static int KeyDown(lua_State * state);
 	void stackDump(lua_State *state, const char * pre);
@@ -37,7 +40,7 @@ public:
 private:
 	glm::vec3 lastPos;
 	lua_State *  state_;
-	static std::string LuaScript::message;
+	static std::string message;
 	collider* parent;
 };
 

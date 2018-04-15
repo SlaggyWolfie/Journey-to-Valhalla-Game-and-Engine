@@ -41,6 +41,7 @@ namespace Engine
 			//static void shouldDrawHint(bool show);
 			//static void hintSetPosition(float x, float y);
 			//static sf::Vector2f hintTargetPosition;
+			static sf::Color getColor(std::string stringColor);
 
 			Text(bool rendering = true);
 			Text(sf::RenderWindow* window, bool rendering = true);
