@@ -119,6 +119,8 @@ namespace Engine
 			int getChildCount() const;
 			Transform* getChild(int index) const;
 			Transform** getChildren() const;
+			std::vector<Transform*> getChildrenList() const;
+			std::vector<Transform*> getChildrenRecursive() const;
 		private:
 			int _frames = 0;
 			Transform * _parent = nullptr;

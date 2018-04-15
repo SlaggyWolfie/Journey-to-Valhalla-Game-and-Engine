@@ -44,10 +44,10 @@ function Start()
 	level6=Game.NewButton("Level 6.png",150,600)
 	back=Game.NewButton("Back.png",	150,700)
 
-	restart = Game.NewButton(prefix.."Restart.png", 500, 300)
-	backToMenu=Game.NewButton("Main Menu.png",500,500)
+	restart = Game.NewButton(prefix.."Restart.png", 100, 500)
+	backToMenu=Game.NewButton("Main Menu.png",100,600)
 	-- backToGame=Game.NewButton("BackToGame.png",500,800)
-	backToGame=Game.NewButton(prefix.."Resume.png",500,800)
+	backToGame=Game.NewButton(prefix.."Resume.png",100,700)
 	
 	Game.SetButtonSpriteHover(restart, prefix.."Glow/Restart G.png")
 	Game.SetButtonSpriteHover(backToGame, prefix.."Glow/Resume G.png")

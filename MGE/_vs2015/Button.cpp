@@ -203,8 +203,11 @@ namespace Engine
 				break;
 			case OpenLevel:
 			{
-				ServiceLocator::instance()->getService<Game>()->background->load("Assets/Audio/Background music.wav");
-				ServiceLocator::instance()->getService<Game>()->background->play();
+				//ServiceLocator::instance()->getService<Game>()->background->load("Assets/Audio/Background music.wav");
+				//ServiceLocator::instance()->getService<Game>()->background->play();
+				ServiceLocator::instance()->getService<Game>()->background->stop();
+				ServiceLocator::instance()->getService<Game>()->music->stop();
+
 				disableAllMenus();
 				SceneManager* scene_m = ServiceLocator::instance()->getService<SceneManager>();
 				scene_m->loadScene(scene_m->getLevel(_levelToOpen));
@@ -373,15 +376,21 @@ namespace Engine
 		{
 			UI::Button::DrawPauseMenu = !UI::Button::DrawPauseMenu;
 			UI::Button::disableAllMenus();
+
+			Game* game = ServiceLocator::instance()->getService<Game>();
+
 			if (UI::Button::DrawPauseMenu)
 			{
 				enableMenu("PauseMenu");
 				Engine::Utility::Time::pause();
+				game->music->pause();
+				game->background->pause();
 			}
 			else
 			{
 				Engine::Utility::Time::unpause();
-
+				game->music->play();
+				game->background->play();
 			}
 		}
 	}

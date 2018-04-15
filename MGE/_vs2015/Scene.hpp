@@ -36,6 +36,9 @@ namespace Engine
 		std::string _name = "";
 		std::string _path = "";
 		std::vector<std::unique_ptr<Core::GameObject_>> _gameObjects;
+
+		Game* _game = nullptr;
+		Game* getGame();
 	};
 }
 

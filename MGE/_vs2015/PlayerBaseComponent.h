@@ -37,5 +37,6 @@ private:
 	glm::vec3 _targetPosition;
 	_playerState _playerS = idle;
 
+	bool _cameraFollow = true;
 };
 

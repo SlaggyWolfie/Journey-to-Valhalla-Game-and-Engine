@@ -8,6 +8,7 @@
 #include "Time.hpp"
 #include "SceneManager.hpp"
 #include "../_vs2015/Sound.hpp"
+#include "InputHandler.hpp"
 using namespace Engine::Core;
 using namespace Engine;
 
@@ -41,6 +42,14 @@ void PlayerBaseComponent::update()
 
 	//Camera_::getMainCamera()->getGameObject()->getTransform()->
 	//	lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
+
+	if (InputHandler::keyUp(sf::Keyboard::LShift) &&
+		InputHandler::keyUp(sf::Keyboard::LControl) &&
+		InputHandler::keyUp(sf::Keyboard::P))
+	{
+		_cameraFollow = !_cameraFollow;
+		std::cout << "Should follow camera: " + std::to_string(_cameraFollow) << std::endl;
+	}
 		
 
 	getGameObject()->getComponent<collider>()->lastPos = getGameObject()->getTransform()->getPosition();
@@ -151,11 +160,14 @@ void PlayerBaseComponent::start()
 
 void PlayerBaseComponent::lateUpdate()
 {
-	Camera_::getMainCamera()->getGameObject()->getTransform()->
-		setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 10, 10));
+	if (_cameraFollow)
+	{
+		Camera_::getMainCamera()->getGameObject()->getTransform()->
+			setPosition(getGameObject()->getTransform()->getPosition() + glm::vec3(-10, 10, 10));
 
-	Camera_::getMainCamera()->getGameObject()->getTransform()->
-		lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
+		Camera_::getMainCamera()->getGameObject()->getTransform()->
+			lookAt(getGameObject()->getTransform(), glm::vec3(0, 1, 0));
+	}
 }
 
 void PlayerBaseComponent::MoveInsideObj(GameObject_* obj)

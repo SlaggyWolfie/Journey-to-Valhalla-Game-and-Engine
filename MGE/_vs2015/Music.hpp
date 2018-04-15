@@ -15,10 +15,10 @@ namespace Engine
 		{
 		public:
 			Music();
-			explicit Music(const std::string filename);
+			explicit Music(const std::string& filename);
 			virtual ~Music();
 
-			void load(const std::string filename);
+			void load(const std::string& filename);
 
 			void play();
 			void stop();

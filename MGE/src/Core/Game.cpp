@@ -30,7 +30,6 @@ namespace Engine
 	Game::Game() : _renderManager(nullptr), _lightManager(nullptr), _colliderManager(nullptr), _gameLoop(nullptr),
 		_sceneManager(nullptr)
 	{
-		background = new Engine::Audio::Music("Assets/Audio/Howling wind.wav");
 		//ctor
 	}
 
@@ -186,6 +185,10 @@ namespace Engine
 		_resourceManager->cache("Assets/Audio/Sounds/StoneDoorClose.wav");
 		_resourceManager->cache("Assets/Audio/Sounds/StoneDoorOpen.wav");
 
+		music = new Music;
+		music->setVolume(0.15f);
+		background = new Engine::Audio::Music("Assets/Audio/Howling wind.wav");
+		background->setVolume(0.4f);
 		background->setLooping(true);
 		background->play();
 	}

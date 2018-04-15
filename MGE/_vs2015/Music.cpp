@@ -10,7 +10,7 @@ namespace Engine
 		{
 		}
 
-		Music::Music(const std::string filename) : Music()
+		Music::Music(const std::string& filename) : Music()
 		{
 			load(filename);
 		}
@@ -22,7 +22,7 @@ namespace Engine
 			_music = nullptr;
 		}
 
-		void Music::load(const std::string filename)
+		void Music::load(const std::string& filename)
 		{
 			_filename = filename;
 
@@ -33,7 +33,7 @@ namespace Engine
 				delete music;
 				return;
 			}
-
+			if (_music) _music = nullptr;
 			_music = std::unique_ptr<sf::Music>(music);
 			_status = AudioStatusMusic::Stopped;
 		}

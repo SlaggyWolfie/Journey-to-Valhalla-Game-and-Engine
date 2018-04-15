@@ -383,6 +383,23 @@ namespace Engine
 			return children;
 		}
 
+		std::vector<Transform*> Transform::getChildrenList() const
+		{
+			return _children;
+		}
+
+		std::vector<Transform*> Transform::getChildrenRecursive() const
+		{
+			std::vector<Transform*> children = _children;
+			for (Transform* child : _children)
+			{
+				std::vector<Transform*> grandchildren = child->getChildrenRecursive();
+				children.insert(children.end(), grandchildren.begin(), grandchildren.end());
+			}
+
+			return children;
+		}
+
 		//Private
 
 		void Transform::_determineCaching(const Space space)

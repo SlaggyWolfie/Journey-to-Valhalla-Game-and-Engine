@@ -358,6 +358,17 @@ namespace Engine
 				gameStruct->transform->scale *= 0.01f;
 			}
 
+			if (gameStruct->name.find("Corpse") != std::string::npos)
+			{
+				gameStruct->transform->scale *= 0.001f;
+			}
+
+			if (gameStruct->name.find("Viking house 2") != std::string::npos)
+			{
+				std::cout << "\t SKIPPING VIKING HOUSE 2" << std::endl;
+				continue;
+			}
+
 			//std::cout << "\tObject " + std::to_string(++index) + "." << std::endl;
 			GameObject_* gameObject = nullptr;
 
@@ -424,6 +435,22 @@ namespace Engine
 
 			//Fixes
 
+			if (gameStruct->name.find("DrawBridge") != std::string::npos)
+			{
+				std::cout << "This is a Bridge" << std::endl;
+				gameObject->getComponentInChildren<Material_>()->setDiffuseMap(Texture_::load(File::findPath("Wood_basecolor_001.png")));
+
+				//for (int i = 0; i < transform->getChildCount(); i++)
+				//{
+				//	Transform* tf = transform->getChild(i);
+				//	std::cout << tf->getGameObject()->getName() << std::endl;
+				//}
+
+				//auto ch = transform->getChildrenRecursive();
+				//for (Transform* child : ch)
+				//	std::cout << child->getGameObject()->getName() << std::endl;
+			}
+
 			if (gameStruct->name.find("Runestone") != std::string::npos)
 			{
 				//gameStruct->transform->position.z *= -1;
@@ -445,6 +472,28 @@ namespace Engine
 
 
 				gameObject->getTransform()->scale(glm::vec3(1.35f));
+				//gameObject->addComponent<RotatingComponent>();
+			}
+
+			if (gameStruct->name.find("Polearm") != std::string::npos)
+				gameObject->getComponentInChildren<Material_>()->
+				setDiffuseMap(Texture_::load(File::findPath
+				("Polearm_Texture.png")));
+
+			if (gameStruct->name.find("Shield") != std::string::npos)
+				gameObject->getComponentInChildren<Material_>()->
+				setDiffuseMap(Texture_::load(File::findPath
+				("Shield_Red_Texture.png")));
+
+			if (gameStruct->name.find("Viking house 2") != std::string::npos)
+			{
+				gameObject->getComponentInChildren<Material_>()->
+					setDiffuseMap(Texture_::load(File::findPath
+					("Viking_house_2_Viking_House_Texture_3_AlbedoTransparency.png")/*, TextureType::Diffuse, true, true*/));
+				gameObject->getTransform()->translate(glm::vec3(0, -4, 0));
+
+
+				//gameObject->getTransform()->scale(glm::vec3(1.35f));
 				//gameObject->addComponent<RotatingComponent>();
 			}
 
@@ -620,6 +669,53 @@ namespace Engine
 
 	void Scene::hardCode()
 	{
+		if (_name.find("Level") != std::string::npos)
+		{
+			const std::string name = _name.substr(0, _name.find('.'));
+			//std::cout << name << std::endl;
+			switch (name.back())
+			{
+			default: std::cout << "Default case" << std::endl;
+			case '1':
+			case '2':
+			case '3':
+			case '4':
+			{
+				Game* game = getGame();
+
+				game->background->load("Assets/Audio/Howling wind.wav");
+				game->background->setVolume(0.4f);
+				game->background->setLooping(true);
+
+				game->music->load("Assets/Audio/Background music.wav");
+				game->music->setVolume(0.15f);
+				game->music->setLooping(true);
+
+				game->background->play();
+				game->music->play();
+				break;
+			}
+
+			case '5':
+			case '6':
+			{
+				Game* game = getGame();
+
+				game->background->load("Assets/Audio/Village Ambience.wav");
+				game->background->setVolume(0.4f);
+				game->background->setLooping(true);
+
+				game->music->load("Assets/Audio/Background music.wav");
+				game->music->setVolume(0.15f);
+				game->music->setLooping(true);
+
+				game->background->play();
+				game->music->play();
+				break;
+			}
+			}
+		}
+
 		GameObject_* p1_1 = this->findGameObject("Pressure plate 1");
 		if (p1_1)
 		{
@@ -746,5 +842,11 @@ namespace Engine
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientLightColor(glm::vec3(1));
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAmbientStrength(0.3f);
 		ServiceLocator::instance()->getService<Rendering::LightManager>()->setAttenuation(1.0f, 0.07f, 0.017f);
+	}
+
+	Game* Scene::getGame()
+	{
+		if (!_game) _game = ServiceLocator::instance()->getService<Game>();
+		return _game;
 	}
 }
