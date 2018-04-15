@@ -119,7 +119,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-sd.lib;sfml-system-sd.lib;sfml-window-sd.lib;sfml-audio-sd.lib</AdditionalDependencies>
+      <AdditionalDependencies>assimp.lib;lua51.lib;glew32sd.lib;opengl32.lib;openal32.lib;jpeg.lib;freetype.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;Winmm.lib;sfml-system-s-d.lib;sfml-graphics-s-d.lib;sfml-window-s-d.lib;sfml-audio-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Dynamic|Win32'">
@@ -155,7 +155,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>assimp.lib;lua51.lib;glew32d.lib;opengl32.lib;sfml-graphics-s.lib;sfml-system-s.lib;sfml-window-s.lib;sfml-audio-s.lib</AdditionalDependencies>
+      <AdditionalDependencies>assimp.lib;lua51.lib;glew32s.lib;opengl32.lib;openal32.lib;jpeg.lib;freetype.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;Winmm.lib;sfml-system-s.lib;sfml-graphics-s.lib;sfml-window-s.lib;sfml-audio-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>LIBCMT</IgnoreSpecificDefaultLibraries>
@@ -314,8 +314,6 @@
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram11.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

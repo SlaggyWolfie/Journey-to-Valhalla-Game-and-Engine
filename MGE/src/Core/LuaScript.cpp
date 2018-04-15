@@ -342,7 +342,7 @@ int LuaScript::NewText(lua_State* state)
 		std::string text = (std::string) lua_tostring(state, 1);
 		float x = (float)lua_tonumber(state, 2);
 		float y = (float)lua_tonumber(state, 3);
-		float size = (float)lua_tonumber(state, 4);
+		unsigned size = (unsigned)lua_tonumber(state, 4);
 		std::string stringColor = (std::string)lua_tostring(state, 5);
 		std::string font = (std::string)lua_tostring(state, 6);
 

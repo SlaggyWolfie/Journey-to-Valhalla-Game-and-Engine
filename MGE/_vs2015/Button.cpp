@@ -112,8 +112,10 @@ namespace Engine
 			//bool xCheck = mousePos.x > btnPos.x;
 			//bool yCheck = mousePos.y > btnPos.y  && mousePos.y > btnPos.y + 60;
 			//std::cout << btnPos.x << " " << btnPos.y << " " << _function << std::endl;
-			bool xCheck = mousePos.x > btnPos.x + 40 && mousePos.x < btnPos.x + btnSize.x - 40;
-			bool yCheck = mousePos.y > btnPos.y + 5 && mousePos.y < btnPos.y + btnSize.y - 5;
+			//bool xCheck = mousePos.x > btnPos.x + 40 && mousePos.x < btnPos.x + btnSize.x - 40;
+			//bool yCheck = mousePos.y > btnPos.y + 5 && mousePos.y < btnPos.y + btnSize.y - 5;
+			bool xCheck = mousePos.x > btnPos.x && mousePos.x < btnPos.x + btnSize.x;
+			bool yCheck = mousePos.y > btnPos.y && mousePos.y < btnPos.y + btnSize.y;
 			//t++;
 
 

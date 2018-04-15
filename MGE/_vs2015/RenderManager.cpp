@@ -209,7 +209,7 @@ namespace Engine
 					if (itr.second->isEnabled() && itr.second->getGameObject()->isActive())
 						itr.second->render();
 
-				//glDisable(GL_BLEND);
+				glDisable(GL_BLEND);
 			}
 		}
 
@@ -239,7 +239,7 @@ namespace Engine
 			glActiveTexture(GL_TEXTURE0);
 			getWindow()->pushGLStates();
 
-			_fps_hud->draw();
+			//_fps_hud->draw();
 
 			//if (UI::Button::DrawPauseMenu)
 			//{

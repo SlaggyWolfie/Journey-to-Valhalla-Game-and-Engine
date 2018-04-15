@@ -45,7 +45,7 @@ namespace Engine
 			void renderTransparent() const;
 			void renderDebugging();
 			void renderUI();
-			bool _debugMode = true;
+			bool _debugMode = false;
 
 			std::vector<Renderer_*> _opaqueRenderers;
 			std::vector<Renderer_*> _transparentRenderers;

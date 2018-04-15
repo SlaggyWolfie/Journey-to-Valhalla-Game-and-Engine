@@ -1,6 +1,7 @@
 #include "SceneManager.hpp"
 #include "Scene.hpp"
 #include "Time.hpp"
+#include "Button.hpp"
 
 namespace Engine
 {
@@ -15,10 +16,14 @@ namespace Engine
 			unloadScene();
 
 		//Engine::Utility::Time::pause();
+		UI::Button::disableAllMenus();
+		UI::Button::enableMenu("LoadingScreen");
 		Engine::Utility::Time::pause();
+		ServiceLocator::instance()->getService<Rendering::RenderManager>()->render();
 		_activeScene = std::make_unique<Scene>(Engine::File::clipPath(path), path);
 		_activeScene->initialize(true, true);
 		Engine::Utility::Time::unpause();
+		UI::Button::disableAllMenus();
 		return getActiveScene();
 	}
 
