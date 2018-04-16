@@ -475,6 +475,17 @@ namespace Engine
 				//gameObject->addComponent<RotatingComponent>();
 			}
 
+			if (gameStruct->name.find("Crate") != std::string::npos)
+				gameObject->getComponentInChildren<Material_>()->
+				setDiffuseMap(Texture_::load(File::findPath
+				("Crate_001_Crate_Texture_001_AlbedoTransparency.png")));
+
+			if (gameStruct->name.find("Viking_Tower") != std::string::npos)
+				gameObject->getComponentInChildren<Material_>()->
+				setDiffuseMap(Texture_::load(File::findPath
+					//("WoodTiles_basecolor.png")));
+					("Wood_basecolor_001.png")));
+
 			if (gameStruct->name.find("Polearm") != std::string::npos)
 				gameObject->getComponentInChildren<Material_>()->
 				setDiffuseMap(Texture_::load(File::findPath

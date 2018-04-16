@@ -622,7 +622,7 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 5,
+    "parentID": 2,
     "selfID": 159
 },
 "components": [{
@@ -1084,7 +1084,7 @@
         "y": 2.1559998989105226,
         "z": 1.4000003337860108
     },
-    "parentID": 5,
+    "parentID": 2,
     "selfID": 145
 },
 "components": []}},
@@ -1298,7 +1298,7 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 162,
+    "parentID": 0,
     "selfID": 138
 },
 "components": []}},
@@ -1556,7 +1556,7 @@
         "y": 0.009999999776482582,
         "z": 0.009999998845160008
     },
-    "parentID": 145,
+    "parentID": 0,
     "selfID": 129
 },
 "components": [{
@@ -1686,7 +1686,7 @@
         "y": 0.009999999776482582,
         "z": 0.009999998845160008
     },
-    "parentID": 145,
+    "parentID": 0,
     "selfID": 125
 },
 "components": [{
@@ -1715,7 +1715,7 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
+    "parentID": 0,
     "selfID": 124
 },
 "components": [{
@@ -1831,7 +1831,7 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 162,
+    "parentID": 0,
     "selfID": 120
 },
 "components": []}},
@@ -1857,7 +1857,7 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
+    "parentID": 0,
     "selfID": 119
 },
 "components": [{
@@ -1886,7 +1886,7 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
+    "parentID": 0,
     "selfID": 118
 },
 "components": [{
@@ -1915,7 +1915,7 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
+    "parentID": 0,
     "selfID": 117
 },
 "components": [{
@@ -1944,7 +1944,7 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
+    "parentID": 0,
     "selfID": 116
 },
 "components": [{
@@ -1964,6 +1964,90 @@
         "y": 158.57005310058595,
         "z": -0.00011920928955078125
     }
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Sphere",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 1.0,
+        "y": 0.949999988079071,
+        "z": -0.8325953483581543
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.5129174590110779,
+        "z": 0.0,
+        "w": 0.8584379553794861
+    },
+    "scale": {
+        "x": 4.200000286102295,
+        "y": 4.199999809265137,
+        "z": 4.200000286102295
+    },
+    "parentID": 0,
+    "selfID": 115
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Library/unity default resources"
+}]}},
+{"GameObject": {"typeID": 0,
+"name": "Main Camera",
+"tag": "MainCamera",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 5.482417106628418,
+        "y": 10.493261337280274,
+        "z": 6.4687347412109379
+    },
+    "rotation": {
+        "x": -0.10005326569080353,
+        "y": 0.8963708281517029,
+        "z": -0.343721479177475,
+        "w": -0.26146572828292849
+    },
+    "scale": {
+        "x": 1.4000015258789063,
+        "y": 1.4000003337860108,
+        "z": 1.4000014066696168
+    },
+    "parentID": 0,
+    "selfID": 114
+},
+"components": []}},
+{"GameObject": {"typeID": 0,
+"name": "Main character 1.2 updated",
+"tag": "Untagged",
+"active": true,
+"transform": {
+    "typeID": 1,
+    "position": {
+        "x": 1.0,
+        "y": 1.9300000667572022,
+        "z": -0.8325953483581543
+    },
+    "rotation": {
+        "x": 0.0,
+        "y": -0.5129174590110779,
+        "z": 0.0,
+        "w": 0.8584379553794861
+    },
+    "scale": {
+        "x": 0.0139999995008111,
+        "y": 0.0139999995008111,
+        "z": 0.0139999995008111
+    },
+    "parentID": 0,
+    "selfID": 113
+},
+"components": [{
+    "typeID": 4,
+    "meshPath": "Assets/Main character 1.2 updated.fbx"
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "plate3_4",
@@ -1987,8 +2071,8 @@
         "y": 2.1559998989105226,
         "z": 1.399999976158142
     },
-    "parentID": 5,
-    "selfID": 115
+    "parentID": 2,
+    "selfID": 112
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -2013,8 +2097,8 @@
         "y": 0.010000001639127732,
         "z": 0.009999997913837433
     },
-    "parentID": 120,
-    "selfID": 114
+    "parentID": 0,
+    "selfID": 111
 },
 "components": [{
     "typeID": 4,
@@ -2042,8 +2126,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 113
+    "parentID": 0,
+    "selfID": 110
 },
 "components": [{
     "typeID": 4,
@@ -2071,8 +2155,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 112
+    "parentID": 0,
+    "selfID": 109
 },
 "components": [{
     "typeID": 4,
@@ -2114,8 +2198,8 @@
         "y": 2.1559998989105226,
         "z": 1.399999976158142
     },
-    "parentID": 5,
-    "selfID": 111
+    "parentID": 2,
+    "selfID": 108
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -2140,8 +2224,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 110
+    "parentID": 0,
+    "selfID": 107
 },
 "components": [{
     "typeID": 4,
@@ -2169,8 +2253,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999996982514859
     },
-    "parentID": 56,
-    "selfID": 109
+    "parentID": 53,
+    "selfID": 106
 },
 "components": [{
     "typeID": 4,
@@ -2198,8 +2282,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 108
+    "parentID": 0,
+    "selfID": 105
 },
 "components": [{
     "typeID": 4,
@@ -2227,8 +2311,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 107
+    "parentID": 0,
+    "selfID": 104
 },
 "components": [{
     "typeID": 4,
@@ -2270,8 +2354,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 106
+    "parentID": 0,
+    "selfID": 103
 },
 "components": [{
     "typeID": 4,
@@ -2299,8 +2383,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 105
+    "parentID": 0,
+    "selfID": 102
 },
 "components": [{
     "typeID": 4,
@@ -2328,8 +2412,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 104
+    "parentID": 0,
+    "selfID": 101
 },
 "components": [{
     "typeID": 4,
@@ -2357,8 +2441,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 103
+    "parentID": 0,
+    "selfID": 100
 },
 "components": [{
     "typeID": 4,
@@ -2386,8 +2470,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 102
+    "parentID": 0,
+    "selfID": 99
 },
 "components": [{
     "typeID": 4,
@@ -2415,8 +2499,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999998845160008
     },
-    "parentID": 120,
-    "selfID": 101
+    "parentID": 0,
+    "selfID": 98
 },
 "components": [{
     "typeID": 4,
@@ -2444,8 +2528,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 100
+    "parentID": 0,
+    "selfID": 97
 },
 "components": [{
     "typeID": 4,
@@ -2473,8 +2557,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 99
+    "parentID": 0,
+    "selfID": 96
 },
 "components": [{
     "typeID": 4,
@@ -2502,8 +2586,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 98
+    "parentID": 0,
+    "selfID": 95
 },
 "components": [{
     "typeID": 4,
@@ -2545,8 +2629,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 97
+    "parentID": 0,
+    "selfID": 94
 },
 "components": [{
     "typeID": 4,
@@ -2588,8 +2672,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 96
+    "parentID": 0,
+    "selfID": 93
 },
 "components": [{
     "typeID": 4,
@@ -2617,8 +2701,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000008158385754
     },
-    "parentID": 120,
-    "selfID": 95
+    "parentID": 0,
+    "selfID": 92
 },
 "components": [{
     "typeID": 4,
@@ -2660,8 +2744,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 94
+    "parentID": 0,
+    "selfID": 91
 },
 "components": [{
     "typeID": 4,
@@ -2689,8 +2773,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 93
+    "parentID": 0,
+    "selfID": 90
 },
 "components": [{
     "typeID": 4,
@@ -2718,8 +2802,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 92
+    "parentID": 0,
+    "selfID": 89
 },
 "components": [{
     "typeID": 4,
@@ -2747,8 +2831,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 91
+    "parentID": 0,
+    "selfID": 88
 },
 "components": [{
     "typeID": 4,
@@ -2776,8 +2860,8 @@
         "y": 0.009999997913837433,
         "z": 0.009999998845160008
     },
-    "parentID": 120,
-    "selfID": 90
+    "parentID": 0,
+    "selfID": 87
 },
 "components": [{
     "typeID": 4,
@@ -2805,8 +2889,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 89
+    "parentID": 0,
+    "selfID": 86
 },
 "components": [{
     "typeID": 4,
@@ -2835,7 +2919,7 @@
         "z": 0.9999999403953552
     },
     "parentID": 0,
-    "selfID": 88
+    "selfID": 85
 },
 "components": [{
     "typeID": 3,
@@ -2870,8 +2954,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 5,
-    "selfID": 87
+    "parentID": 2,
+    "selfID": 84
 },
 "components": [{
     "typeID": 4,
@@ -2913,8 +2997,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 86
+    "parentID": 0,
+    "selfID": 83
 },
 "components": [{
     "typeID": 4,
@@ -2942,8 +3026,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 85
+    "parentID": 0,
+    "selfID": 82
 },
 "components": [{
     "typeID": 4,
@@ -2971,8 +3055,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 84
+    "parentID": 0,
+    "selfID": 81
 },
 "components": [{
     "typeID": 4,
@@ -3014,8 +3098,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999998845160008
     },
-    "parentID": 115,
-    "selfID": 83
+    "parentID": 0,
+    "selfID": 80
 },
 "components": [{
     "typeID": 4,
@@ -3043,8 +3127,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000000707805157
     },
-    "parentID": 120,
-    "selfID": 82
+    "parentID": 0,
+    "selfID": 79
 },
 "components": [{
     "typeID": 4,
@@ -3072,8 +3156,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000002570450306
     },
-    "parentID": 120,
-    "selfID": 81
+    "parentID": 0,
+    "selfID": 78
 },
 "components": [{
     "typeID": 4,
@@ -3101,8 +3185,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 120,
-    "selfID": 80
+    "parentID": 0,
+    "selfID": 77
 },
 "components": [{
     "typeID": 4,
@@ -3130,8 +3214,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999996982514859
     },
-    "parentID": 111,
-    "selfID": 79
+    "parentID": 0,
+    "selfID": 76
 },
 "components": [{
     "typeID": 4,
@@ -3159,8 +3243,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 78
+    "parentID": 0,
+    "selfID": 75
 },
 "components": [{
     "typeID": 4,
@@ -3188,8 +3272,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 77
+    "parentID": 0,
+    "selfID": 74
 },
 "components": [{
     "typeID": 4,
@@ -3217,8 +3301,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 76
+    "parentID": 0,
+    "selfID": 73
 },
 "components": [{
     "typeID": 4,
@@ -3246,8 +3330,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 75
+    "parentID": 0,
+    "selfID": 72
 },
 "components": [{
     "typeID": 4,
@@ -3275,8 +3359,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 74
+    "parentID": 0,
+    "selfID": 71
 },
 "components": [{
     "typeID": 4,
@@ -3304,8 +3388,8 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 5,
-    "selfID": 73
+    "parentID": 2,
+    "selfID": 70
 },
 "components": [{
     "typeID": 2,
@@ -3343,8 +3427,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 72
+    "parentID": 0,
+    "selfID": 69
 },
 "components": [{
     "typeID": 4,
@@ -3372,8 +3456,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 71
+    "parentID": 0,
+    "selfID": 68
 },
 "components": [{
     "typeID": 4,
@@ -3401,8 +3485,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000008158385754
     },
-    "parentID": 120,
-    "selfID": 70
+    "parentID": 0,
+    "selfID": 67
 },
 "components": [{
     "typeID": 4,
@@ -3430,8 +3514,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 69
+    "parentID": 0,
+    "selfID": 66
 },
 "components": [{
     "typeID": 4,
@@ -3473,8 +3557,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 68
+    "parentID": 0,
+    "selfID": 65
 },
 "components": [{
     "typeID": 4,
@@ -3516,8 +3600,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 67
+    "parentID": 0,
+    "selfID": 64
 },
 "components": [{
     "typeID": 4,
@@ -3545,8 +3629,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 66
+    "parentID": 0,
+    "selfID": 63
 },
 "components": [{
     "typeID": 4,
@@ -3588,8 +3672,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 65
+    "parentID": 0,
+    "selfID": 62
 },
 "components": [{
     "typeID": 4,
@@ -3617,8 +3701,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 64
+    "parentID": 0,
+    "selfID": 61
 },
 "components": [{
     "typeID": 4,
@@ -3646,8 +3730,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 63
+    "parentID": 0,
+    "selfID": 60
 },
 "components": [{
     "typeID": 4,
@@ -3675,8 +3759,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 62
+    "parentID": 0,
+    "selfID": 59
 },
 "components": [{
     "typeID": 4,
@@ -3704,8 +3788,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 5,
-    "selfID": 61
+    "parentID": 2,
+    "selfID": 58
 },
 "components": [{
     "typeID": 4,
@@ -3747,8 +3831,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 60
+    "parentID": 0,
+    "selfID": 57
 },
 "components": [{
     "typeID": 4,
@@ -3776,8 +3860,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 59
+    "parentID": 0,
+    "selfID": 56
 },
 "components": [{
     "typeID": 4,
@@ -3805,8 +3889,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 58
+    "parentID": 0,
+    "selfID": 55
 },
 "components": [{
     "typeID": 4,
@@ -3834,8 +3918,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000002570450306
     },
-    "parentID": 120,
-    "selfID": 57
+    "parentID": 0,
+    "selfID": 54
 },
 "components": [{
     "typeID": 4,
@@ -3863,8 +3947,8 @@
         "y": 2.1559998989105226,
         "z": 1.399999976158142
     },
-    "parentID": 5,
-    "selfID": 56
+    "parentID": 2,
+    "selfID": 53
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -3889,8 +3973,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 55
+    "parentID": 0,
+    "selfID": 52
 },
 "components": [{
     "typeID": 4,
@@ -3918,8 +4002,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000000707805157
     },
-    "parentID": 120,
-    "selfID": 54
+    "parentID": 0,
+    "selfID": 51
 },
 "components": [{
     "typeID": 4,
@@ -3947,8 +4031,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 53
+    "parentID": 0,
+    "selfID": 50
 },
 "components": [{
     "typeID": 4,
@@ -3976,8 +4060,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 120,
-    "selfID": 52
+    "parentID": 0,
+    "selfID": 49
 },
 "components": [{
     "typeID": 4,
@@ -4005,8 +4089,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 51
+    "parentID": 0,
+    "selfID": 48
 },
 "components": [{
     "typeID": 4,
@@ -4034,8 +4118,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 50
+    "parentID": 0,
+    "selfID": 47
 },
 "components": [{
     "typeID": 4,
@@ -4077,26 +4161,12 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 49
+    "parentID": 0,
+    "selfID": 46
 },
 "components": [{
     "typeID": 4,
     "meshPath": "Assets/Terrain Modular/Mountains/Plane_001.fbx"
-},
-{
-    "typeID": 2,
-    "isTrigger": false,
-    "size": {
-        "x": 8958.0537109375,
-        "y": 50.0,
-        "z": 3029.84912109375
-    },
-    "center": {
-        "x": -3979.0283203125,
-        "y": 0.0,
-        "z": 88.65203857421875
-    }
 }]}},
 {"GameObject": {"typeID": 0,
 "name": "Levelled_Slope_001 (3)",
@@ -4120,8 +4190,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 48
+    "parentID": 0,
+    "selfID": 45
 },
 "components": [{
     "typeID": 4,
@@ -4149,8 +4219,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 47
+    "parentID": 0,
+    "selfID": 44
 },
 "components": [{
     "typeID": 4,
@@ -4192,8 +4262,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 46
+    "parentID": 0,
+    "selfID": 43
 },
 "components": [{
     "typeID": 4,
@@ -4221,8 +4291,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 45
+    "parentID": 0,
+    "selfID": 42
 },
 "components": [{
     "typeID": 4,
@@ -4264,8 +4334,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 44
+    "parentID": 0,
+    "selfID": 41
 },
 "components": [{
     "typeID": 4,
@@ -4293,8 +4363,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 43
+    "parentID": 0,
+    "selfID": 40
 },
 "components": [{
     "typeID": 4,
@@ -4336,8 +4406,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 120,
-    "selfID": 42
+    "parentID": 0,
+    "selfID": 39
 },
 "components": [{
     "typeID": 4,
@@ -4365,8 +4435,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000010952353478
     },
-    "parentID": 120,
-    "selfID": 41
+    "parentID": 0,
+    "selfID": 38
 },
 "components": [{
     "typeID": 4,
@@ -4394,8 +4464,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 40
+    "parentID": 0,
+    "selfID": 37
 },
 "components": [{
     "typeID": 4,
@@ -4423,8 +4493,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 39
+    "parentID": 0,
+    "selfID": 36
 },
 "components": [{
     "typeID": 4,
@@ -4452,8 +4522,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999998845160008
     },
-    "parentID": 56,
-    "selfID": 38
+    "parentID": 0,
+    "selfID": 35
 },
 "components": [{
     "typeID": 4,
@@ -4481,8 +4551,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 37
+    "parentID": 0,
+    "selfID": 34
 },
 "components": [{
     "typeID": 4,
@@ -4510,8 +4580,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 36
+    "parentID": 0,
+    "selfID": 33
 },
 "components": [{
     "typeID": 4,
@@ -4539,8 +4609,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 35
+    "parentID": 0,
+    "selfID": 32
 },
 "components": [{
     "typeID": 4,
@@ -4568,8 +4638,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 34
+    "parentID": 0,
+    "selfID": 31
 },
 "components": [{
     "typeID": 4,
@@ -4597,8 +4667,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 33
+    "parentID": 0,
+    "selfID": 30
 },
 "components": [{
     "typeID": 4,
@@ -4640,8 +4710,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 32
+    "parentID": 0,
+    "selfID": 29
 },
 "components": [{
     "typeID": 4,
@@ -4683,8 +4753,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 31
+    "parentID": 0,
+    "selfID": 28
 },
 "components": [{
     "typeID": 4,
@@ -4712,8 +4782,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 30
+    "parentID": 0,
+    "selfID": 27
 },
 "components": [{
     "typeID": 4,
@@ -4741,8 +4811,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 29
+    "parentID": 0,
+    "selfID": 26
 },
 "components": [{
     "typeID": 4,
@@ -4770,8 +4840,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 28
+    "parentID": 0,
+    "selfID": 25
 },
 "components": [{
     "typeID": 4,
@@ -4813,8 +4883,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000002570450306
     },
-    "parentID": 120,
-    "selfID": 27
+    "parentID": 0,
+    "selfID": 24
 },
 "components": [{
     "typeID": 4,
@@ -4842,8 +4912,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 26
+    "parentID": 0,
+    "selfID": 23
 },
 "components": [{
     "typeID": 4,
@@ -4871,8 +4941,8 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 5,
-    "selfID": 25
+    "parentID": 2,
+    "selfID": 22
 },
 "components": [{
     "typeID": 4,
@@ -4914,8 +4984,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 24
+    "parentID": 0,
+    "selfID": 21
 },
 "components": [{
     "typeID": 4,
@@ -4943,8 +5013,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 23
+    "parentID": 0,
+    "selfID": 20
 },
 "components": [{
     "typeID": 4,
@@ -4972,8 +5042,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 22
+    "parentID": 0,
+    "selfID": 19
 },
 "components": [{
     "typeID": 4,
@@ -5001,8 +5071,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 21
+    "parentID": 0,
+    "selfID": 18
 },
 "components": [{
     "typeID": 4,
@@ -5030,8 +5100,8 @@
         "y": 0.009999999776482582,
         "z": 0.01000000536441803
     },
-    "parentID": 120,
-    "selfID": 20
+    "parentID": 0,
+    "selfID": 17
 },
 "components": [{
     "typeID": 4,
@@ -5059,8 +5129,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 19
+    "parentID": 0,
+    "selfID": 16
 },
 "components": [{
     "typeID": 4,
@@ -5088,8 +5158,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 18
+    "parentID": 0,
+    "selfID": 15
 },
 "components": [{
     "typeID": 4,
@@ -5131,8 +5201,8 @@
         "y": 0.010000008158385754,
         "z": 0.010000012814998627
     },
-    "parentID": 120,
-    "selfID": 17
+    "parentID": 0,
+    "selfID": 14
 },
 "components": [{
     "typeID": 4,
@@ -5160,8 +5230,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000000707805157
     },
-    "parentID": 120,
-    "selfID": 16
+    "parentID": 0,
+    "selfID": 13
 },
 "components": [{
     "typeID": 4,
@@ -5189,8 +5259,8 @@
         "y": 0.009999999776482582,
         "z": 0.010000010952353478
     },
-    "parentID": 120,
-    "selfID": 15
+    "parentID": 0,
+    "selfID": 12
 },
 "components": [{
     "typeID": 4,
@@ -5218,8 +5288,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999996982514859
     },
-    "parentID": 115,
-    "selfID": 14
+    "parentID": 0,
+    "selfID": 11
 },
 "components": [{
     "typeID": 4,
@@ -5247,8 +5317,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 13
+    "parentID": 0,
+    "selfID": 10
 },
 "components": [{
     "typeID": 4,
@@ -5276,8 +5346,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 12
+    "parentID": 0,
+    "selfID": 9
 },
 "components": [{
     "typeID": 4,
@@ -5319,8 +5389,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 11
+    "parentID": 0,
+    "selfID": 8
 },
 "components": [{
     "typeID": 4,
@@ -5348,8 +5418,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999996982514859
     },
-    "parentID": 111,
-    "selfID": 10
+    "parentID": 0,
+    "selfID": 7
 },
 "components": [{
     "typeID": 4,
@@ -5377,8 +5447,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 138,
-    "selfID": 9
+    "parentID": 0,
+    "selfID": 6
 },
 "components": [{
     "typeID": 4,
@@ -5406,8 +5476,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 8
+    "parentID": 0,
+    "selfID": 5
 },
 "components": [{
     "typeID": 4,
@@ -5449,8 +5519,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 7
+    "parentID": 0,
+    "selfID": 4
 },
 "components": [{
     "typeID": 4,
@@ -5478,8 +5548,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 6
+    "parentID": 0,
+    "selfID": 3
 },
 "components": [{
     "typeID": 4,
@@ -5507,8 +5577,8 @@
         "y": 1.0,
         "z": 1.0
     },
-    "parentID": 162,
-    "selfID": 5
+    "parentID": 0,
+    "selfID": 2
 },
 "components": []}},
 {"GameObject": {"typeID": 0,
@@ -5533,8 +5603,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 4
+    "parentID": 0,
+    "selfID": 1
 },
 "components": [{
     "typeID": 4,
@@ -5562,8 +5632,8 @@
         "y": 0.009999999776482582,
         "z": 0.009999999776482582
     },
-    "parentID": 120,
-    "selfID": 3
+    "parentID": 0,
+    "selfID": 0
 },
 "components": [{
     "typeID": 4,
@@ -5582,88 +5652,4 @@
         "y": 0.0,
         "z": 479.3785095214844
     }
-}]}},
-{"GameObject": {"typeID": 0,
-"name": "Sphere",
-"tag": "Untagged",
-"active": true,
-"transform": {
-    "typeID": 1,
-    "position": {
-        "x": 1.0,
-        "y": 0.949999988079071,
-        "z": -0.8325953483581543
-    },
-    "rotation": {
-        "x": 0.0,
-        "y": -0.5129174590110779,
-        "z": 0.0,
-        "w": 0.8584379553794861
-    },
-    "scale": {
-        "x": 4.200000286102295,
-        "y": 4.199999809265137,
-        "z": 4.200000286102295
-    },
-    "parentID": 0,
-    "selfID": 2
-},
-"components": [{
-    "typeID": 4,
-    "meshPath": "Library/unity default resources"
-}]}},
-{"GameObject": {"typeID": 0,
-"name": "Main Camera",
-"tag": "MainCamera",
-"active": true,
-"transform": {
-    "typeID": 1,
-    "position": {
-        "x": 5.482417106628418,
-        "y": 10.493261337280274,
-        "z": 6.4687347412109379
-    },
-    "rotation": {
-        "x": -0.10005326569080353,
-        "y": 0.8963708281517029,
-        "z": -0.343721479177475,
-        "w": -0.26146572828292849
-    },
-    "scale": {
-        "x": 1.4000015258789063,
-        "y": 1.4000003337860108,
-        "z": 1.4000014066696168
-    },
-    "parentID": 0,
-    "selfID": 1
-},
-"components": []}},
-{"GameObject": {"typeID": 0,
-"name": "Main character 1.2 updated",
-"tag": "Untagged",
-"active": true,
-"transform": {
-    "typeID": 1,
-    "position": {
-        "x": 1.0,
-        "y": 1.9300000667572022,
-        "z": -0.8325953483581543
-    },
-    "rotation": {
-        "x": 0.0,
-        "y": -0.5129174590110779,
-        "z": 0.0,
-        "w": 0.8584379553794861
-    },
-    "scale": {
-        "x": 0.0139999995008111,
-        "y": 0.0139999995008111,
-        "z": 0.0139999995008111
-    },
-    "parentID": 0,
-    "selfID": 0
-},
-"components": [{
-    "typeID": 4,
-    "meshPath": "Assets/Main character 1.2 updated.fbx"
 }]}}]

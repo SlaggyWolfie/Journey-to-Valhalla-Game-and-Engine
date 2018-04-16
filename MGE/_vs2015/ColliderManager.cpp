@@ -315,7 +315,7 @@ void ColliderManager::CheckOBB(collider * obj)
 
 		for (collider* otherCollider : allColliders)
 		{
-			if (!otherCollider->Enabled()) return;
+			if (!otherCollider->Enabled()) continue;
 			//if (allColliders[i]->getGameObject()->getName() == "Pressure plate 1")
 			if (otherCollider->getGameObject()->getName() != obj->getGameObject()->getName())
 			{
@@ -337,7 +337,7 @@ void ColliderManager::CheckOBB(collider * obj)
 								.substr(otherCollider->getGameObject()->getName().find("Level"));
 							//sceneManager->unloadScene();
 							sceneManager->queueScene(nameLevel + ".json");
-							Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/endLevel.wav");
+							//Engine::Audio::Sound::playOneShot("Assets/Audio/Sounds/endLevel.wav");
 						}
 					}
 
